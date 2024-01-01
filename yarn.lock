@@ -2564,6 +2564,37 @@
     "@types/express" "^4.7.0"
     file-system-cache "2.3.0"
 
+"@tanstack/eslint-plugin-query@^5.14.6":
+  version "5.14.6"
+  resolved "https://registry.yarnpkg.com/@tanstack/eslint-plugin-query/-/eslint-plugin-query-5.14.6.tgz#aef5cabe5a4e156a81f5522c0874f826f71da953"
+  integrity sha512-vpowwoGoB9JgZy8fljf53ZTW2yYLRQ3Tjx4WQFKxiKugQOctxaTjQk7wlYzuqA/gjzfPL9qHfKW5DTT9CmIpkA==
+  dependencies:
+    "@typescript-eslint/utils" "^5.62.0"
+
+"@tanstack/query-core@5.17.0":
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.17.0.tgz#3fd41e8557de9904c76e92b3820f62407223c990"
+  integrity sha512-LoBaPtbMY26kRS+ohII4thTsWkJJsXKGitOLikTo2aqPA4yy7cfFJITs8DRnuERT7tLF5xfG9Lnm33Vp/38Vmw==
+
+"@tanstack/query-devtools@5.15.0":
+  version "5.15.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-devtools/-/query-devtools-5.15.0.tgz#46fe98491be19cbbce8e2f4bb56190f94913ebec"
+  integrity sha512-oz+xBIf+fanmAQ3CZrV4t+1VZiK2nyTcH3zY3G8ukzw+LwX2QGa04ZfF+OCOVF6tPZ2dn1cekMibUb4tevf/aw==
+
+"@tanstack/react-query-devtools@^5.17.0":
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query-devtools/-/react-query-devtools-5.17.0.tgz#32fd9aa23a10f37d5a04a43ea01a9f79075f4fba"
+  integrity sha512-G8sDsK83Zzjr6Nqm4t+8ILi9VWDhg/XjkDD4UYDWqDZHnh/iv4bbQotPLB3PfX7eQtdzgXjGaV8omf1UniyK8w==
+  dependencies:
+    "@tanstack/query-devtools" "5.15.0"
+
+"@tanstack/react-query@^5.17.0":
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.17.0.tgz#3a50e2eb2310cfb560ddf97fd4ffac1da092a586"
+  integrity sha512-iNSn6ZA7mHUjrT0a271eKoa1oR1HznlrGbb475awft1kuP3zrhyUCrI8tlGowOr7zRoAxJholjwxO+gfz1IObw==
+  dependencies:
+    "@tanstack/query-core" "5.17.0"
+
 "@testing-library/dom@^9.3.1":
   version "9.3.3"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-9.3.3.tgz#108c23a5b0ef51121c26ae92eb3179416b0434f5"
@@ -3029,7 +3060,7 @@
     "@typescript-eslint/typescript-estree" "6.16.0"
     semver "^7.5.4"
 
-"@typescript-eslint/utils@^5.45.0":
+"@typescript-eslint/utils@^5.45.0", "@typescript-eslint/utils@^5.62.0":
   version "5.62.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-5.62.0.tgz#141e809c71636e4a75daa39faed2fb5f4b10df86"
   integrity sha512-n8oxjeb5aIbPFEtmQxQYOLI0i9n5ySBEY/ZEHHZqKQSFnxio1rv6dthascc9dLuwrL0RC5mPCxB7vnAVGAYWAQ==
