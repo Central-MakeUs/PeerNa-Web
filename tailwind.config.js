@@ -23,6 +23,7 @@ export default {
         danger01: '#FF7474',
         danger02: '#A64141',
       },
+      fontFamily: { Pretendard: 'Pretendard' },
     },
   },
   plugins: [],
