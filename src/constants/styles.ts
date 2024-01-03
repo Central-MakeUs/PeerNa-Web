@@ -6,7 +6,7 @@ export const Palette = {
   'secondary-orange': '#FF6E22',
   'secondary-yellow': '#FFC31D',
   white: '#FFFFFF',
-  gray01: '#E6E8EB',
+  gray01: '#F6F7F8',
   gray02: '#E6E8EB',
   gray03: '#C8CBD0',
   gray04: '#868C92',
