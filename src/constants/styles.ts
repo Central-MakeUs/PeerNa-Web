@@ -28,7 +28,7 @@ export const FontSizes = {
   caption01: '12px',
 };
 
-export const FontVaraintsClassName = {
+export const FontVariantsClassName = {
   header01: 'font-bold text-header01',
   header02: 'font-bold text-header02',
   header03: 'font-semibold text-header03',
