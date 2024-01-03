@@ -23,9 +23,11 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["@/*"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@components/*": ["components/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "**/*.ts", "**.*.tsx"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
