@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 import { Palette, FontSizes } from './src/constants/styles';
+import { nextui } from '@nextui-org/react';
 export default {
   important: true,
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
       colors: { ...Palette },
@@ -18,5 +22,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [nextui()],
 };
