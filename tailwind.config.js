@@ -32,6 +32,12 @@ export default {
         body02: '14px',
         caption: '12px',
       },
+      lineHeight: {
+        default: '1.4',
+      },
+      letterSpacing: {
+        default: '-0.02rem',
+      },
     },
   },
   plugins: [],
