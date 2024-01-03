@@ -23,7 +23,8 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["@/*"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@components/*": ["components/*"]
     }
   },
   "include": ["src"],
