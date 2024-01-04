@@ -52,13 +52,13 @@ export const Width = {
 
 export const Height = {
   xl: '104px',
-  l: '52px',
-  m: '40px',
-  s: '32px',
+  lg: '52px',
+  md: '40px',
+  sm: '32px',
 };
 
 export const PickerSize = {
-  s: 'w-button01 py-4',
-  m: 'w-input02 py-12',
-  l: 'w-input01 py-6',
+  lg: 'w-input01 py-6',
+  md: 'w-input02 py-12',
+  sm: 'w-button01 py-4',
 };
