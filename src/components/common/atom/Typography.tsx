@@ -1,9 +1,9 @@
-import { FontVaraintsClassName } from '@constants/styles';
+import { FontVariantsClassName } from '@constants/styles';
 import { HTMLAttributes } from 'react';
-import { FontVaraintsClassNameType } from 'types/styles';
+import { FontVariantsKeys } from 'types/styles';
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
-  variant: FontVaraintsClassNameType;
+  variant: FontVariantsKeys;
   text: string;
 }
 
@@ -15,7 +15,7 @@ const Typography = ({
   return (
     <p
       className={`
-        ${FontVaraintsClassName[variant]} 
+        ${FontVariantsClassName[variant]} 
         leading-default 
         tracking-default 
         ${props.className}`}
