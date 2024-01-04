@@ -7,13 +7,13 @@ export const Palette = {
   'secondary-yellow': '#FFC31D',
   white: '#FFFFFF',
   gray01: '#F6F7F8',
-  gray02: '#E6E8EB',
-  gray03: '#C8CBD0',
-  gray04: '#868C92',
-  gray05: '#565D63',
-  gray06: '#353D43',
-  gray07: '#2C333A',
-  gray08: '#0D1326',
+  gray02: '#E3E6E8',
+  gray03: '#C7CCD1',
+  gray04: '#8F99A3',
+  gray05: '#67737E',
+  gray06: '#505962',
+  gray07: '#394046',
+  gray08: '#22262A',
   black: '#000000',
   danger01: '#FF7474',
   danger02: '#A64141',
@@ -38,4 +38,27 @@ export const FontVariantsClassName = {
   body04: 'font-medium text-body02',
   body05: 'font-regular text-body02',
   caption01: 'font-semibold text-caption01 !leading-[1.3]',
+};
+
+export const Width = {
+  input01: '350px',
+  input02: '171px',
+  button01: '146px',
+  button02: '124px',
+  button03: '100px',
+  button04: '76px',
+  button05: '72px',
+};
+
+export const Height = {
+  xl: '104px',
+  l: '52px',
+  m: '40px',
+  s: '32px',
+};
+
+export const PickerSize = {
+  s: 'w-button01 py-4',
+  m: 'w-input02 py-12',
+  l: 'w-input01 py-6',
 };
