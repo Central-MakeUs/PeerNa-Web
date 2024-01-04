@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import { Palette, FontSizes } from './src/constants/styles';
+import { Palette, FontSizes, Width, Height } from './src/constants/styles';
 import { nextui } from '@nextui-org/react';
 export default {
   important: true,
@@ -20,7 +20,16 @@ export default {
       letterSpacing: {
         default: '-0.02rem',
       },
+      borderRadius: {
+        default: '12px',
+      },
+      width: { ...Width },
+      height: { ...Height },
     },
   },
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      themes: {},
+    }),
+  ],
 };
