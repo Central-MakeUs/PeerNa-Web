@@ -29,7 +29,15 @@ export default {
   },
   plugins: [
     nextui({
-      themes: {},
+      themes: {
+        light: {
+          colors: {
+            primary: {
+              DEFAULT: Palette.gray01,
+            },
+          },
+        },
+      },
     }),
   ],
 };
