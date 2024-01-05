@@ -25,10 +25,9 @@
       "@/*": ["@/*"],
       "@constants/*": ["constants/*"],
       "@components/*": ["components/*"],
-      "@assets/*": ["assets/*"],
+      "@assets/*": ["assets/*"]
     }
   },
   "include": ["src", "**/*.ts", "**.*.tsx", "svg.d.ts"],
-  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
