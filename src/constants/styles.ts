@@ -1,6 +1,10 @@
 export const Palette = {
-  primary01: '#475AFF',
-  primary02: '#253AF4',
+  primary100: '#FFEEE5',
+  primary200: '#FFD6C2',
+  primary300: '#FFB48F',
+  primary400: '#FF925C',
+  primary500: '#FF7733',
+  primary600: '#E9570C',
   'secondary-purple': '#A39EFF',
   'secondary-pink': '#FF92FC',
   'secondary-orange': '#FF6E22',
