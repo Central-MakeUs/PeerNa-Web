@@ -8,6 +8,7 @@ interface PickerProps extends ButtonProps {
   text: string;
   size?: PickerSizeTypes;
   fontVariant?: FontVariantsKeys;
+  bgColor?: ColorTypes;
   fontColor?: ColorTypes;
   borderColor?: ColorTypes;
 }
@@ -16,6 +17,7 @@ const Picker = ({
   text,
   size = 'md',
   fontVariant = 'header03',
+  bgColor = 'gray01',
   fontColor = 'gray07',
   borderColor = 'danger01',
   ...props
@@ -35,6 +37,7 @@ const Picker = ({
       ${PickerSize[size]}
       ${FontVariantsClassName[fontVariant]}
       text-[${Palette[fontColor]}]
+      !bg-[${Palette[bgColor]}]
       border-2
       border-[${Palette[borderColor]}] 
       focus:bg-opacity-20
@@ -45,6 +48,7 @@ const Picker = ({
       }
     `}
       color="primary"
+      variant="bordered"
       onClick={handleFocus}
       {...props}
     >

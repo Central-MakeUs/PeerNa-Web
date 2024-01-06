@@ -27,17 +27,5 @@ export default {
       height: { ...Height },
     },
   },
-  plugins: [
-    nextui({
-      themes: {
-        light: {
-          colors: {
-            primary: {
-              DEFAULT: Palette.gray01,
-            },
-          },
-        },
-      },
-    }),
-  ],
+  plugins: [nextui()],
 };

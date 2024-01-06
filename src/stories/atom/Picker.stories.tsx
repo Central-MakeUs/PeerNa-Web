@@ -13,5 +13,9 @@ export const Default: Story = {
   args: {
     size: 'md',
     text: '좋은 리더',
+    fontVariant: 'header03',
+    bgColor: 'gray01',
+    fontColor: 'gray07',
+    borderColor: 'gray02',
   },
 };
