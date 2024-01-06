@@ -21,7 +21,8 @@ module.exports = {
       'error',
       {
         endOfLine: 'auto',
-      }
+      },
     ],
+    'react-hooks/exhaustive-deps': 'off',
   },
 };
