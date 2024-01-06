@@ -1,33 +1,55 @@
-import { useId, forwardRef, ComponentPropsWithRef } from 'react';
-import ClearIcon from '../../../assets/icons/clear.svg?react';
+import {
+  useId,
+  forwardRef,
+  ComponentPropsWithRef,
+  useState,
+  useEffect,
+} from 'react';
+import { Input, InputProps } from '@nextui-org/react';
+import { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
 
-export interface TextInputProps extends ComponentPropsWithRef<'input'> {
-  labelText: string;
+type InputWithoutSpecificProps = Omit<
+  ComponentPropsWithRef<'input'>,
+  | 'color'
+  | 'defaultValue'
+  | 'onBlur'
+  | 'onFocus'
+  | 'onKeyDown'
+  | 'onKeyUp'
+  | 'size'
+  | 'type'
+  | 'value'
+>;
+
+export interface TextInputProps extends InputProps, InputWithoutSpecificProps {
   text: string;
-  onClear: () => void;
+  labelText: string;
+  handleChangeText: (newText: string) => void;
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ labelText, text, onClear, ...rest }, ref) => {
+  ({ text, handleChangeText, ...rest }, ref) => {
     const inputId = useId();
+    const [inputText, setInputText] = useState<string>('');
+    const handleChangeInputText = (newValue: string) => setInputText(newValue);
+    const handleClear = () => setInputText('');
+
+    useEffect(() => {
+      if (text !== inputText) handleChangeText(inputText);
+    }, [inputText, handleChangeInputText]);
 
     return (
-      <div className="flex items-center">
-        <label htmlFor={inputId} className="sr-only">
-          {labelText}
-        </label>
-        <input
-          id={inputId}
-          type="text"
-          ref={ref}
-          className={`w-input01 p-4 border-1 border-gray02
-             focus:outline-none bg-gray01 text-gray08 text-body01 placeholder-gray04 rounded-default`}
-          {...rest}
-        />
-        {text && (
-          <ClearIcon className="-ml-8 cursor-pointer" onClick={onClear} />
-        )}
-      </div>
+      <Input
+        ref={ref}
+        type="text"
+        isClearable
+        id={inputId}
+        value={inputText}
+        endContent={<ClearIcon />}
+        onClear={handleClear}
+        onValueChange={handleChangeInputText}
+        {...rest}
+      />
     );
   },
 );

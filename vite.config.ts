@@ -7,14 +7,20 @@ export default defineConfig({
   plugins: [
     react(),
     svgr({
-      svgrOptions: {},
+      svgrOptions: {
+        exportType: 'named',
+        ref: true,
+        svgo: false,
+        titleProp: true,
+      },
+      include: '**/*.svg',
     }),
   ],
   resolve: {
     alias: [
       { find: '@constants', replacement: '/src/constants' },
       { find: '@components', replacement: '/src/components' },
-      { find: '@components', replacement: '/src/assets' },
+      { find: '@assets', replacement: '/src/assets' },
       { find: '@', replacement: '/src' },
     ],
   },

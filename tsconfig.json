@@ -28,6 +28,6 @@
       "@assets/*": ["assets/*"]
     }
   },
-  "include": ["src", "**/*.ts", "**.*.tsx", "svg.d.ts"],
+  "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
