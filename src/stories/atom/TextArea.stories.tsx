@@ -1,9 +1,12 @@
-import TextArea from '@components/common/molecule/TextArea';
+import TextArea from '@components/common/atom/TextArea';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TextArea> = {
   title: 'TextArea',
   component: TextArea,
+  argTypes: {
+    handleChangeText: { action: 'clicked' },
+  },
 };
 export default meta;
 

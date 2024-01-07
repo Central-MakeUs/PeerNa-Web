@@ -1,55 +1,42 @@
+import { useId, forwardRef, useState, useEffect } from 'react';
 import {
-  useId,
-  forwardRef,
-  ComponentPropsWithRef,
-  useState,
-  useEffect,
-} from 'react';
-import { Input, InputProps } from '@nextui-org/react';
+  Textarea,
+  TextAreaProps as TextAreaPropsWithNextui,
+} from '@nextui-org/react';
 import { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
 
-type InputWithoutSpecificProps = Omit<
-  ComponentPropsWithRef<'input'>,
-  | 'color'
-  | 'defaultValue'
-  | 'onBlur'
-  | 'onFocus'
-  | 'onKeyDown'
-  | 'onKeyUp'
-  | 'size'
-  | 'type'
-  | 'value'
->;
-
-type AdditionalTextInputProps = {
+export interface TextAreaProps extends TextAreaPropsWithNextui {
   text: string;
   handleChangeText: (newText: string) => void;
-};
+}
 
-export interface TextInputProps
-  extends InputWithoutSpecificProps,
-    InputProps,
-    AdditionalTextInputProps {}
-
-const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ text, handleChangeText, ...rest }, ref) => {
     const inputId = useId();
     const [inputText, setInputText] = useState<string>('');
     const handleChangeInputText = (newValue: string) => setInputText(newValue);
-    const handleClear = () => setInputText('');
+    const handleClear = () => {
+      console.log('hello');
+      setInputText('');
+    };
 
     useEffect(() => {
       if (text !== inputText) handleChangeText(inputText);
     }, [inputText, handleChangeInputText]);
 
     return (
-      <Input
+      <Textarea
         ref={ref}
+        classNames={{
+          inputWrapper: '!h-full',
+        }}
         type="text"
         isClearable
+        minRows={3}
+        maxRows={5}
         id={inputId}
         value={inputText}
-        endContent={<ClearIcon />}
+        endContent={<ClearIcon className="z-10" onClick={handleClear} />}
         onClear={handleClear}
         onValueChange={handleChangeInputText}
         {...rest}
@@ -58,4 +45,4 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   },
 );
 
-export default TextInput;
+export default TextArea;
