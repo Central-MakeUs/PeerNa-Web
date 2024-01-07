@@ -21,6 +21,7 @@ export default defineConfig({
       { find: '@constants', replacement: '/src/constants' },
       { find: '@components', replacement: '/src/components' },
       { find: '@assets', replacement: '/src/assets' },
+      { find: '@type', replacement: '/src/type' },
       { find: '@', replacement: '/src' },
     ],
   },

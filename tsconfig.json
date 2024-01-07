@@ -25,7 +25,8 @@
       "@/*": ["@/*"],
       "@constants/*": ["constants/*"],
       "@components/*": ["components/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@type/*": ["type/*"]
     }
   },
   "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],

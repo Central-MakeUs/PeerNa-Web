@@ -1,6 +1,6 @@
 import { FontVariantsClassName } from '@constants/styles';
 import { HTMLAttributes } from 'react';
-import { FontVariantsKeys } from 'types/styles';
+import { FontVariantsKeys } from '@type/styles';
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;

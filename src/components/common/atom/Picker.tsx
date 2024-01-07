@@ -2,7 +2,7 @@ import { FontVariantsClassName, Palette, PickerSize } from '@constants/styles';
 import { Button } from '@nextui-org/react';
 import { ButtonProps } from '@react-types/button';
 import { useEffect, useState } from 'react';
-import { ColorTypes, FontVariantsKeys, PickerSizeTypes } from 'types/styles';
+import { ColorTypes, FontVariantsKeys, PickerSizeTypes } from '@type/styles';
 
 interface PickerProps extends ButtonProps {
   text: string;
