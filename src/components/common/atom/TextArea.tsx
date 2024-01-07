@@ -3,7 +3,7 @@ import {
   Textarea,
   TextAreaProps as TextAreaPropsWithNextui,
 } from '@nextui-org/react';
-import { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
+import { ClearIcon } from '@assets/icons';
 
 export interface TextAreaProps extends TextAreaPropsWithNextui {
   text: string;
@@ -36,7 +36,9 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         maxRows={5}
         id={inputId}
         value={inputText}
-        endContent={<ClearIcon className="z-10" onClick={handleClear} />}
+        endContent={
+          <ClearIcon className="z-10 cursor-pointer" onClick={handleClear} />
+        }
         onClear={handleClear}
         onValueChange={handleChangeInputText}
         {...rest}

@@ -6,7 +6,7 @@ import {
   useEffect,
 } from 'react';
 import { Input, InputProps } from '@nextui-org/react';
-import { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
+import { ClearIcon } from '@assets/icons';
 
 type InputWithoutSpecificProps = Omit<
   ComponentPropsWithRef<'input'>,
