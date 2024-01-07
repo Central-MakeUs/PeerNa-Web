@@ -49,16 +49,17 @@ const Button = ({
 
   return (
     <ButtonWithNextui
+      {...props}
       className={`
-        ${ButtonSize[buttonSize]}
-        ${ButtonVariant[buttonVariant](isFocused)} 
-        ${isDisabled && 'bg-gray02 !text-gray04 opacity-100'}
-        ${buttonVariant === 'naked' && '!bg-transparent'}
+      ${ButtonSize[buttonSize]}
+      ${ButtonVariant[buttonVariant](isFocused)} 
+      ${isDisabled && 'bg-gray02 !text-gray04 opacity-100'}
+      ${buttonVariant === 'naked' && '!bg-transparent'}
+      ${props.className}
       `}
       isDisabled={!!isDisabled}
       onClick={handleFocus}
       variant={buttonVariant === 'naked' ? 'light' : 'solid'}
-      {...props}
     >
       {children}
     </ButtonWithNextui>
