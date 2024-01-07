@@ -37,7 +37,6 @@ const Button = ({
   buttonSize = 'lg',
   ...props
 }: ButtonProps) => {
-  console.log(buttonSize);
   const { isDisabled } = props;
   const [isFocused, setIsFocused] = useState(false);
   const handleFocus = () => setIsFocused(true);
