@@ -12,6 +12,6 @@ type Story = StoryObj<typeof Typography>;
 export const Primary: Story = {
   args: {
     variant: 'header01',
-    text: '디자이너세요? Are you Designer?',
+    children: '디자이너세요? Are you Designer?',
   },
 };

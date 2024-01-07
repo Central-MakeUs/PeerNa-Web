@@ -4,12 +4,12 @@ import { FontVariantsKeys } from '@type/styles';
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;
-  text: string;
+  children: string;
 }
 
 const Typography = ({
   variant = 'body01',
-  text,
+  children,
   ...props
 }: TypographyProps) => {
   return (
@@ -20,7 +20,7 @@ const Typography = ({
         tracking-default 
         ${props.className}`}
     >
-      {text}
+      {children}
     </p>
   );
 };
