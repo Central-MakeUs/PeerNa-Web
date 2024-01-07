@@ -10,6 +10,18 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    viewport: {
+      viewports: {
+        mobile2: {
+          name: 'iPhone 13 / 13 pro',
+          styles: {
+            width: '390px',
+            height: '844px',
+          },
+          type: 'mobile',
+        },
+      },
+    },
   },
 };
 
