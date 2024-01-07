@@ -55,7 +55,7 @@ const Button = ({
         ${isDisabled && 'bg-gray02 !text-gray04 opacity-100'}
         ${buttonVariant === 'naked' && '!bg-transparent'}
       `}
-      isDisabled
+      isDisabled={!!isDisabled}
       onClick={handleFocus}
       variant={buttonVariant === 'naked' ? 'light' : 'solid'}
       {...props}
