@@ -11,3 +11,8 @@ export { ReactComponent as ClipboardFillIcon } from '@assets/icons/Clipboard_Fil
 export { ReactComponent as HomeFillIcon } from '@assets/icons/Home_Fill.svg';
 export { ReactComponent as PeopleFillIcon } from '@assets/icons/People_Fill.svg';
 export { ReactComponent as ContactFillIcon } from '@assets/icons/Contact_Fill.svg';
+export { ReactComponent as ColorIcon } from '@assets/icons/Color.svg';
+export { ReactComponent as ColorLineIcon } from '@assets/icons/ColorLine.svg';
+export { ReactComponent as ConnectedIcon } from '@assets/icons/Connected.svg';
+export { ReactComponent as PersonRibbonIcon } from '@assets/icons/PersonRibbon.svg';
+export { ReactComponent as TaskListIcon } from '@assets/icons/TaskList.svg';
