@@ -55,6 +55,7 @@ const Button = ({
       ${ButtonVariant[buttonVariant](isFocused)} 
       ${isDisabled && 'bg-gray02 !text-gray04 opacity-100'}
       ${buttonVariant === 'naked' && '!bg-transparent'}
+      min-w-[150px]
       ${props.className}
       `}
       isDisabled={!!isDisabled}
