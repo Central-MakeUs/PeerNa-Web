@@ -1,4 +1,5 @@
 export const Palette = {
+  primary: '#FF744D',
   primary100: '#FFEBE5',
   primary200: '#FFD7CC',
   primary300: '#FFAF99',
