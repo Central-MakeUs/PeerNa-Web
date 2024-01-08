@@ -2,7 +2,6 @@
 import { Palette, FontSizes, Width, Height } from './src/constants/styles';
 import { nextui } from '@nextui-org/react';
 export default {
-  important: true,
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
@@ -27,9 +26,5 @@ export default {
       height: { ...Height },
     },
   },
-  plugins: [
-    nextui({
-      themes: {},
-    }),
-  ],
+  plugins: [nextui({ prefix: 'nextui' })],
 };

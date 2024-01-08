@@ -1,6 +1,10 @@
 export const Palette = {
-  primary01: '#475AFF',
-  primary02: '#253AF4',
+  primary100: '#FFEEE5',
+  primary200: '#FFD6C2',
+  primary300: '#FFB48F',
+  primary400: '#FF925C',
+  primary500: '#FF7733',
+  primary600: '#E9570C',
   'secondary-purple': '#A39EFF',
   'secondary-pink': '#FF92FC',
   'secondary-orange': '#FF6E22',
@@ -20,23 +24,23 @@ export const Palette = {
 };
 
 export const FontSizes = {
-  header01: '24px',
-  header02: '20px',
-  header03: '18px',
-  body01: '16px',
-  body02: '14px',
-  caption01: '12px',
+  '3xl': '24px',
+  '2xl': '20px',
+  xl: '18px',
+  lg: '16px',
+  md: '14px',
+  sm: '12px',
 };
 
 export const FontVariantsClassName = {
-  header01: 'font-bold text-header01',
-  header02: 'font-bold text-header02',
-  header03: 'font-semibold text-header03',
-  body01: 'font-semibold text-body01',
-  body02: 'font-medium text-body01',
-  body03: 'font-semibold text-body02',
-  body04: 'font-medium text-body02',
-  body05: 'font-regular text-body02',
+  header01: 'font-bold text-3xl',
+  header02: 'font-bold text-2xl',
+  header03: 'font-semibold text-xl',
+  body01: 'font-semibold text-lg',
+  body02: 'font-medium text-lg',
+  body03: 'font-semibold text-md',
+  body04: 'font-medium text-md',
+  body05: 'font-regular text-md',
   caption01: 'font-semibold text-caption01 !leading-[1.3]',
 };
 
@@ -52,13 +56,11 @@ export const Width = {
 
 export const Height = {
   xl: '104px',
-  l: '52px',
-  m: '40px',
-  s: '32px',
+  lg: '52px',
+  md: '40px',
+  sm: '32px',
 };
 
 export const PickerSize = {
-  s: 'w-button01 py-4',
-  m: 'w-input02 py-12',
-  l: 'w-input01 py-6',
+  md: 'w-[171px] h-[121px]',
 };

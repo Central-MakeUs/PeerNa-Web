@@ -1,0 +1,13 @@
+export { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
+export { ReactComponent as CalendarIcon } from '@assets/icons/calendar.svg';
+export { ReactComponent as IOSRightArrowIcon } from '@assets/icons/iOSRightArrow.svg';
+export { ReactComponent as AlertIcon } from '@assets/icons/Alert.svg';
+export { ReactComponent as ClipboardIcon } from '@assets/icons/Clipboard.svg';
+export { ReactComponent as HomeIcon } from '@assets/icons/Home.svg';
+export { ReactComponent as PeopleIcon } from '@assets/icons/People.svg';
+export { ReactComponent as ContactIcon } from '@assets/icons/Contact.svg';
+export { ReactComponent as AlertFillIcon } from '@assets/icons/Alert_Fill.svg';
+export { ReactComponent as ClipboardFillIcon } from '@assets/icons/Clipboard_Fill.svg';
+export { ReactComponent as HomeFillIcon } from '@assets/icons/Home_Fill.svg';
+export { ReactComponent as PeopleFillIcon } from '@assets/icons/People_Fill.svg';
+export { ReactComponent as ContactFillIcon } from '@assets/icons/Contact_Fill.svg';
