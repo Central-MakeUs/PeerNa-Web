@@ -8,7 +8,7 @@ export const Palette = {
   'secondary-purple': '#A39EFF',
   'secondary-pink': '#FF92FC',
   'secondary-orange': '#FF6E22',
-  'secondary-yellow': '#FFC31D',
+  'secondary-yellow': '#FFC729',
   white: '#FFFFFF',
   gray01: '#F6F7F8',
   gray02: '#E3E6E8',
@@ -40,7 +40,7 @@ export const FontVariantsClassName = {
   body02: 'font-medium text-lg',
   body03: 'font-semibold text-md',
   body04: 'font-medium text-md',
-  body05: 'font-regular text-md',
+  body05: 'font-medium text-[13px]',
   caption01: 'font-semibold text-caption01 !leading-[1.3]',
 };
 
