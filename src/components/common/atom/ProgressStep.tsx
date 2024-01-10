@@ -1,20 +1,20 @@
 import {
-  Avatar,
+  Avatar as AvatorWithNextui,
   AvatarProps as AvatorPropsWithNextui,
 } from '@nextui-org/react';
 
-interface IndicatorProps extends AvatorPropsWithNextui {
+interface ProgressStepProps extends AvatorPropsWithNextui {
   level: number;
   step?: number;
   icon?: React.ReactElement;
 }
 
-const Indicator = ({ name, level, step, icon }: IndicatorProps) => {
+const ProgressStep = ({ name, level, step, icon }: ProgressStepProps) => {
   const isComplete = level === 4 && step === 5;
   const isDisabled = name ? level < parseInt(name, 10) : !isComplete;
 
   return (
-    <Avatar
+    <AvatorWithNextui
       name={icon ? '' : name}
       icon={icon}
       className={`w-5 h-5 text-white text-sm ${
@@ -24,4 +24,4 @@ const Indicator = ({ name, level, step, icon }: IndicatorProps) => {
   );
 };
 
-export default Indicator;
+export default ProgressStep;

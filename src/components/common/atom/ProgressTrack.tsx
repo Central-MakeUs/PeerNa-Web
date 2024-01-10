@@ -1,6 +1,9 @@
-import { Progress, ProgressProps } from '@nextui-org/react';
+import {
+  Progress as ProgressWithNextui,
+  ProgressProps as ProgressPropsWithNextui,
+} from '@nextui-org/react';
 
-interface ProgressBarProps extends ProgressProps {
+interface ProgressTrackProps extends ProgressPropsWithNextui {
   level: number;
   step: number;
   order: number;
@@ -10,26 +13,31 @@ interface ProgressBarProps extends ProgressProps {
 type ProgressBarSizeType = keyof typeof ProgressBarSize;
 
 const ProgressBarSize = {
-  short: 'w-[54.5px] h-[4px]',
-  long: 'w-[390px]',
+  short: '!w-[54.5px] h-2',
+  long: '!w-[390px] h-2',
 };
 
-const ProgressBar = ({ barSize, level, step, order }: ProgressBarProps) => {
+const ProgressTrack = ({
+  barSize = 'short',
+  level,
+  step,
+  order,
+}: ProgressTrackProps) => {
   const isDisabled = order > level;
   const value = isDisabled ? 0 : order < level ? 75 : step * 15;
 
   return (
-    <Progress
+    <ProgressWithNextui
       value={value}
       maxValue={75}
       radius="none"
-      isDisabled={!!isDisabled}
+      isDisabled={isDisabled}
       classNames={{
-        base: `${ProgressBarSize[barSize]}`,
+        base: ProgressBarSize[barSize],
         indicator: isDisabled ? 'bg-gray02' : 'bg-secondary-orange',
       }}
     />
   );
 };
 
-export default ProgressBar;
+export default ProgressTrack;

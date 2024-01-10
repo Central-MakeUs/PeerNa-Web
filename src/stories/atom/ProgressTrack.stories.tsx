@@ -1,13 +1,13 @@
-import ProgressBar from '@components/common/atom/ProgressBar';
+import ProgressTrack from '@components/common/atom/ProgressTrack';
 import { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof ProgressBar> = {
-  title: 'ProgressBar',
-  component: ProgressBar,
+const meta: Meta<typeof ProgressTrack> = {
+  title: 'ProgressTrack',
+  component: ProgressTrack,
 };
 export default meta;
 
-type Story = StoryObj<typeof ProgressBar>;
+type Story = StoryObj<typeof ProgressTrack>;
 
 export const Default: Story = {
   args: {
