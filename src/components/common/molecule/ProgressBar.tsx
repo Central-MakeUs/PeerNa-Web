@@ -1,25 +1,25 @@
 import React from 'react';
 import ProgressTrack from '../atom/ProgressTrack';
 import ProgressStep from '../atom/ProgressStep';
-import SvgIcon from '@components/common/atom/SvgIcon';
+import SvgIcon from '@assets/SvgIcon';
 
 interface ProgressBarProps {
   level: number;
   step: number;
+  stepArray: number[];
 }
 
-const ProgressBar = ({ step, level }: ProgressBarProps) => {
+const ProgressBar = ({ step, level, stepArray }: ProgressBarProps) => {
   return (
     <div className="flex items-center gap-1">
-      {[1, 2, 3, 4, 5].map(order => (
+      {stepArray.map(order => (
         <React.Fragment key={order}>
           {order !== 5 ? (
             <ProgressStep name={String(order)} level={level} />
           ) : (
             <ProgressStep
               level={level}
-              step={step}
-              icon={<SvgIcon id="check" width={11.75} height={8.5} />}
+              icon={<SvgIcon id="Check" width={11.75} height={8.5} />}
             />
           )}
           {order !== 5 && (
