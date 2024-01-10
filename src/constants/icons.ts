@@ -52,4 +52,5 @@ export const Icon = {
   PeopleFill: 'people-focus',
   Project: 'project',
   ProjectFill: 'project-focus',
+  Clear: 'clear',
 };

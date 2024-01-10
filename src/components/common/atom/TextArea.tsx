@@ -1,9 +1,9 @@
-import { useId, forwardRef, useState, useEffect } from 'react';
+import SvgIcon from '@assets/SvgIcon';
 import {
-  Textarea,
   TextAreaProps as TextAreaPropsWithNextui,
+  Textarea,
 } from '@nextui-org/react';
-import { ClearIcon } from '@assets/icons';
+import { forwardRef, useEffect, useId, useState } from 'react';
 
 export interface TextAreaProps extends TextAreaPropsWithNextui {
   text: string;
@@ -37,7 +37,13 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         id={inputId}
         value={inputText}
         endContent={
-          <ClearIcon className="z-10 cursor-pointer" onClick={handleClear} />
+          <div onClick={handleClear}>
+            <SvgIcon
+              id="Clear"
+              color="gray04"
+              className="bg-gray02 rounded-xl"
+            />
+          </div>
         }
         onClear={handleClear}
         onValueChange={handleChangeInputText}
