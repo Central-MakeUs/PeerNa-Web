@@ -41,8 +41,8 @@ export const FontVariantsClassName = {
   body02: 'font-medium text-lg',
   body03: 'font-semibold text-md',
   body04: 'font-medium text-md',
-  body05: 'font-medium text-[13px]',
-  caption01: 'font-semibold text-caption01 !leading-[1.3]',
+  body05: 'font-regular text-md',
+  caption01: 'font-semibold text-sm !leading-[1.3]',
 };
 
 export const Width = {

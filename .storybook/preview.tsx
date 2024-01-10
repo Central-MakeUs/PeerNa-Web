@@ -1,4 +1,6 @@
 import type { Preview } from '@storybook/react';
+import React from 'react';
+import { RecoilRoot } from 'recoil';
 import '../src/index.css';
 
 const preview: Preview = {
@@ -23,6 +25,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    Story => (
+      <RecoilRoot>
+        <Story />
+      </RecoilRoot>
+    ),
+  ],
 };
 
 export default preview;
