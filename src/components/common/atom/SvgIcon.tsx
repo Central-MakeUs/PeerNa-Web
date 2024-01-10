@@ -1,5 +1,7 @@
+import { IconId } from '@constants/icons';
+
 interface SvgIconProps {
-  id: string;
+  id: IconId;
   width?: number;
   height?: number;
   color?: string;
