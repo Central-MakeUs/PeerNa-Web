@@ -6,13 +6,12 @@ import SvgIcon from '@assets/SvgIcon';
 interface ProgressBarProps {
   level: number;
   step: number;
-  stepArray: number[];
 }
 
-const ProgressBar = ({ step, level, stepArray }: ProgressBarProps) => {
+const ProgressBar = ({ step, level }: ProgressBarProps) => {
   return (
     <div className="flex items-center gap-1">
-      {stepArray.map(order => (
+      {[1, 2, 3, 4, 5].map(order => (
         <React.Fragment key={order}>
           {order !== 5 ? (
             <ProgressStep name={String(order)} level={level} />
