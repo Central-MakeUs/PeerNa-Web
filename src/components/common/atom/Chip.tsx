@@ -1,9 +1,9 @@
-import { ColorIcon } from '@assets/icons';
+import SvgIcon from '@assets/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
 import {
-  Chip as ChipWithNextui,
   ChipProps as ChipPropsWithNextui,
+  Chip as ChipWithNextui,
 } from '@nextui-org/react';
 import { ColorTypes } from '@type/styles';
 import { getRgbaColorWithOpacity } from '@utils/styles';
@@ -37,14 +37,14 @@ const Chip = ({ type, children }: ChipProps) => {
     0.2,
   );
 
-  const textColor =
+  const textColor: ColorTypes =
     Palette[ChipTypeClassNames[type]] === Palette.primary100
-      ? Palette.primary500
-      : Palette[ChipTypeClassNames[type]];
+      ? 'primary500'
+      : ChipTypeClassNames[type];
 
   return (
     <ChipWithNextui className={`h-[36px] `} style={bgOpacityOption}>
-      <div className="flex gap-1">
+      <div className="flex flex-nowrap gap-1">
         <Typography
           variant="body04"
           className={`text-[${
@@ -53,7 +53,7 @@ const Chip = ({ type, children }: ChipProps) => {
         >
           {children}
         </Typography>
-        <ColorIcon className={`text-[${textColor}]`} />
+        <SvgIcon id="Process" width={20} height={20} color={textColor} />
       </div>
     </ChipWithNextui>
   );
