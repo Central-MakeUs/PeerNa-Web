@@ -41,7 +41,7 @@ export const FontVariantsClassName = {
   body02: 'font-medium text-lg',
   body03: 'font-semibold text-md',
   body04: 'font-medium text-md',
-  body05: 'font-regular text-md',
+  body05: 'font-regular text-[13px]',
   caption01: 'font-semibold text-sm !leading-[1.3]',
 };
 
