@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
@@ -22,6 +22,8 @@ export default defineConfig({
       { find: '@components', replacement: '/src/components' },
       { find: '@assets', replacement: '/src/assets' },
       { find: '@type', replacement: '/src/type' },
+      { find: '@utils', replacement: '/src/utils' },
+      { find: '@store', replacement: '/src/store' },
       { find: '@', replacement: '/src' },
     ],
   },
