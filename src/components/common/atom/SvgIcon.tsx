@@ -1,17 +1,5 @@
-export type SvgIconId =
-  | 'home'
-  | 'home-focus'
-  | 'people'
-  | 'people-focus'
-  | 'project'
-  | 'project-focus'
-  | 'alert'
-  | 'alert-focus'
-  | 'mypage'
-  | 'mypage-focus';
-
 interface SvgIconProps {
-  id: SvgIconId;
+  id: string;
   width?: number;
   height?: number;
   color?: string;
