@@ -1,15 +1,4 @@
-import {
-  AlertFillIcon,
-  AlertIcon,
-  ClipboardFillIcon,
-  ClipboardIcon,
-  ContactFillIcon,
-  ContactIcon,
-  HomeFillIcon,
-  HomeIcon,
-  PeopleFillIcon,
-  PeopleIcon,
-} from '@assets/icons';
+import SvgIcon from '@assets/SvgIcon';
 import { useFlow } from '@components/common/atom/StackFlow';
 import Typography from '@components/common/atom/Typography';
 import { ActivitiesTypes } from '@type/activities';
@@ -21,30 +10,34 @@ const getIcon = (
 ) => {
   switch (icon) {
     case 'Home':
-      return pathname === 'Home' && isDone ? <HomeFillIcon /> : <HomeIcon />;
+      return pathname === 'Home' && isDone ? (
+        <SvgIcon id="HomeFill" />
+      ) : (
+        <SvgIcon id="Home" />
+      );
     case 'Peer':
       return pathname === 'Peer' && isDone ? (
-        <PeopleFillIcon />
+        <SvgIcon id="PeopleFill" />
       ) : (
-        <PeopleIcon />
+        <SvgIcon id="People" />
       );
     case 'Project':
       return pathname === 'Project' && isDone ? (
-        <ClipboardFillIcon />
+        <SvgIcon id="ProjectFill" />
       ) : (
-        <ClipboardIcon />
+        <SvgIcon id="Project" />
       );
     case 'Notification':
       return pathname === 'Notification' && isDone ? (
-        <AlertFillIcon />
+        <SvgIcon id="AlertFill" />
       ) : (
-        <AlertIcon />
+        <SvgIcon id="Alert" />
       );
     case 'Mypage':
       return pathname === 'Mypage' && isDone ? (
-        <ContactFillIcon />
+        <SvgIcon id="MyPageFill" />
       ) : (
-        <ContactIcon />
+        <SvgIcon id="MyPage" />
       );
     default:
       return null;
