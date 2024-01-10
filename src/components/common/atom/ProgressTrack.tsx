@@ -22,6 +22,7 @@ const ProgressTrack = ({
   level,
   step,
   order,
+  ...props
 }: ProgressTrackProps) => {
   const isDisabled = order > level;
   const value = isDisabled ? 0 : order < level ? 75 : step * 15;
@@ -29,13 +30,13 @@ const ProgressTrack = ({
   return (
     <ProgressWithNextui
       value={value}
-      maxValue={75}
       radius="none"
       isDisabled={isDisabled}
       classNames={{
         base: ProgressBarSize[barSize],
         indicator: isDisabled ? 'bg-gray02' : 'bg-secondary-orange',
       }}
+      {...props}
     />
   );
 };
