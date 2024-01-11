@@ -42,7 +42,7 @@ const Modal = ({ modalHeader, modalBody, children, ...props }: ModalProps) => {
                 {modalBody}
               </Typography>
             </div>
-            <ModalFooter className="m-auto">{children}</ModalFooter>
+            <ModalFooter className="!px-5 m-auto">{children}</ModalFooter>
           </ModalContent>
         </ModalWithNextui>
       )}
