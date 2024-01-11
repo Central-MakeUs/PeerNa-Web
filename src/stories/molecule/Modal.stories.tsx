@@ -22,11 +22,17 @@ export const SubBtn: Story = {
     isOpen: true,
     ...commonArgs,
     children: (
-      <ButtonContainer direction={'col'}>
-        <Button buttonVariant="tertiary" onClick={commonArgs.onClose}>
+      <ButtonContainer direction={'row'}>
+        <Button
+          buttonVariant="tertiary"
+          className="!w-[131px]"
+          onClick={commonArgs.onClose}
+        >
           아니요
         </Button>
-        <Button onClick={commonArgs.onClose}>네</Button>
+        <Button className="!w-[131px]" onClick={commonArgs.onClose}>
+          네
+        </Button>
       </ButtonContainer>
     ),
   },
@@ -37,10 +43,9 @@ export const OneBtn: Story = {
     ...commonArgs,
     children: (
       <ButtonContainer direction={'col'}>
-        <Button buttonVariant="tertiary" onClick={commonArgs.onClose}>
-          아니요
+        <Button className="!w-[270px]" onClick={commonArgs.onClose}>
+          네
         </Button>
-        <Button onClick={commonArgs.onClose}>네</Button>
       </ButtonContainer>
     ),
   },
@@ -51,10 +56,16 @@ export const TwoBtn: Story = {
     ...commonArgs,
     children: (
       <ButtonContainer direction={'col'}>
-        <Button buttonVariant="tertiary" onClick={commonArgs.onClose}>
+        <Button
+          className="!w-[270px]"
+          buttonVariant="tertiary"
+          onClick={commonArgs.onClose}
+        >
           아니요
         </Button>
-        <Button onClick={commonArgs.onClose}>네</Button>
+        <Button className="!w-[270px]" onClick={commonArgs.onClose}>
+          네
+        </Button>
       </ButtonContainer>
     ),
   },
