@@ -14,6 +14,7 @@ export const Icon = {
   Statistic: 'statistic',
   Principle: 'principle',
   ArrowLeft: 'arrow_left',
+  ArrowDown: 'arrow_down',
   BeforeConcern: 'before_concern',
   AfterConcern: 'after_concern',
   Sincere: 'sincere',
