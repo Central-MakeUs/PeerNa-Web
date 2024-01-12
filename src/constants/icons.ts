@@ -55,4 +55,5 @@ export const Icon = {
   Clear: 'clear',
   LockClosed: 'lock_closed',
   GroupPerson: 'group_person',
+  IOSChevronRight: 'iOS_chevron_right',
 };
