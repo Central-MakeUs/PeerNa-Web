@@ -3,13 +3,13 @@ import {
   ButtonProps as ButtonPropsWithNextui,
   Button as ButtonWithNextui,
 } from '@nextui-org/react';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 type ButtonVariantTypes = keyof typeof ButtonVariant;
 type ButtonSizeTypes = keyof typeof ButtonSize;
 
 interface ButtonProps extends ButtonPropsWithNextui {
-  children: string;
+  children: ReactNode;
   buttonVariant?: ButtonVariantTypes;
   buttonSize?: ButtonSizeTypes;
 }
