@@ -1,7 +1,7 @@
 import { FontVariantsClassName } from '@constants/styles';
 import {
-  Button as ButtonWithNextui,
   ButtonProps as ButtonPropsWithNextui,
+  Button as ButtonWithNextui,
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 
@@ -16,19 +16,19 @@ interface ButtonProps extends ButtonPropsWithNextui {
 
 const ButtonVariant = {
   primary: (isFocused: boolean) =>
-    `bg-primary500 text-white ${isFocused && 'focus:bg-[#F36216]'}`,
+    `bg-primary500 text-white ${isFocused ? 'focus:bg-[#F36216]' : ''}`,
   secondary: (isFocused: boolean) =>
-    `bg-gray07 text-white ${isFocused && 'focus:text-gray04'}`,
+    `bg-gray07 text-white ${isFocused ? 'focus:text-gray04' : ''}`,
   tertiary: (isFocused: boolean) =>
-    `bg-gray01 text-black ${isFocused && 'focus:text-gray04'}`,
+    `bg-gray01 text-black ${isFocused ? 'focus:text-gray04' : ''}`,
   naked: (isFocused: boolean) =>
-    `text-primary500 ${isFocused && 'focus:text-[#F36216]'}`,
+    `text-primary500 ${isFocused ? 'focus:text-[#F36216]' : ''}`,
 };
 
 const ButtonSize = {
-  sm: `w-[76px] h-[32px] ${FontVariantsClassName.body03}`,
-  md: `w-[88px] h-[40px] ${FontVariantsClassName.body03}`,
-  lg: `w-[116px] h-[52px] ${FontVariantsClassName.body01}`,
+  sm: `w-[44px] h-[20px] px-4 py-1.5 ${FontVariantsClassName.body03}`,
+  md: `w-[48px] h-[20px] px-4 py-2.5 ${FontVariantsClassName.body03}`,
+  lg: `w-[52px] h-[22px] px-8 py-[15px] ${FontVariantsClassName.body01}`,
 };
 
 const Button = ({
@@ -51,11 +51,11 @@ const Button = ({
     <ButtonWithNextui
       {...props}
       className={`
+      box-content
       ${ButtonSize[buttonSize]}
       ${ButtonVariant[buttonVariant](isFocused)} 
-      ${isDisabled && 'bg-gray02 !text-gray04 opacity-100'}
-      ${buttonVariant === 'naked' && '!bg-transparent'}
-      min-w-[150px]
+      ${isDisabled ? 'bg-gray02 !text-gray04 opacity-100' : ''}
+      ${buttonVariant === 'naked' ? '!bg-transparent' : ''}
       ${props.className}
       `}
       isDisabled={!!isDisabled}
