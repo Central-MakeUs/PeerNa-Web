@@ -19,7 +19,7 @@ export const Default: Story = {
 
 export const Complete: Story = {
   args: {
-    icon: <SvgIcon id="Check" />,
+    icon: <SvgIcon id="Check" width={11.75} height={8.5} color="white" />,
     step: 2,
   },
 };
