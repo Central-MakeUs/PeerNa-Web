@@ -3,6 +3,7 @@ import IconButton from '../atom/IconButton';
 
 interface HeaderProps {
   showBackButton: boolean;
+  title?: TypographyProps;
   showSearchButton: boolean;
   showAddButton: boolean;
   centerAlign: boolean;
@@ -14,14 +15,9 @@ const handleBack = () => {
   console.log('back');
 };
 
-const BackButton = () => (
-  <section className="py-[22px] pl-5">
-    <IconButton id="ArrowLeft" onClick={handleBack} />
-  </section>
-);
-
 const Header = ({
   showBackButton,
+  title,
   showSearchButton,
   showAddButton,
   centerAlign,
@@ -32,7 +28,16 @@ const Header = ({
 
   return (
     <header className="max-w-[600px] m-auto">
-      {showBackButton && <BackButton />}
+      {showBackButton && (
+        <section className="py-[22px] pl-5 flex">
+          <IconButton id="ArrowLeft" onClick={handleBack} />
+          {title && (
+            <Typography variant="header02" className="m-auto">
+              {title.children}
+            </Typography>
+          )}
+        </section>
+      )}
       <section className="px-5">
         <div className="flex items-center justify-between">
           <Typography
