@@ -3,7 +3,7 @@ import { Icon, IconId } from '@constants/icons';
 import { Palette } from '@constants/styles';
 import { ColorTypes } from '@type/styles';
 
-interface SvgIconProps {
+export interface SvgIconProps {
   id: IconId;
   width?: number;
   height?: number;

@@ -4,19 +4,23 @@ import {
 } from '@nextui-org/react';
 
 interface ProgressStepProps extends AvatarPropsWithNextui {
-  level: number;
+  step: number;
   icon?: React.ReactElement;
   complete?: boolean;
 }
 
 const ProgressStep = ({
   name,
-  level,
+  step,
   icon,
   complete,
   ...props
 }: ProgressStepProps) => {
-  const isDisabled = name ? level < parseInt(name, 10) : !complete;
+  /**
+   * @description
+   * 현재 스탭이 아닌 다음 스탭은 isDisabled으로 색상구분
+   */
+  const isDisabled = name ? step < parseInt(name, 10) : !complete;
 
   return (
     <AvatarWithNextui

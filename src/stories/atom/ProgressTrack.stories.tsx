@@ -11,8 +11,9 @@ type Story = StoryObj<typeof ProgressTrack>;
 
 export const Default: Story = {
   args: {
-    step: 1,
+    trackStep: 1,
     barSize: 'short',
+    order: 1,
   },
 };
 
@@ -24,7 +25,8 @@ export const Disabled: Story = {
 
 export const Large: Story = {
   args: {
-    step: 1,
+    trackStep: 1,
     barSize: 'long',
+    order: 1,
   },
 };

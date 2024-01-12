@@ -2,29 +2,32 @@ import React from 'react';
 import ProgressTrack from '../atom/ProgressTrack';
 import ProgressStep from '../atom/ProgressStep';
 import SvgIcon from '@assets/SvgIcon';
+import { ProgressTrackProps } from '../atom/ProgressTrack';
 
-interface ProgressBarProps {
-  level: number;
-  step: number;
-}
-
-const ProgressBar = ({ step, level }: ProgressBarProps) => {
+const ProgressBar = ({ step, trackStep }: ProgressTrackProps) => {
   return (
+    /**
+     * @description
+     * [1, 2, 3, 4, 5]는 ProgressStep과 ProgressTrack의 연속적인 사용으로
+     * 해당 배열의 값은 ProgressStep의 name으로도 사용하기 위함
+     *
+     * 마지막 5는 ProgressTrack에는 4개의 track이 필요하기 때문에 조건부 처리
+     */
     <div className="flex items-center gap-1">
       {[1, 2, 3, 4, 5].map(order => (
         <React.Fragment key={order}>
           {order !== 5 ? (
-            <ProgressStep name={String(order)} level={level} />
+            <ProgressStep name={String(order)} step={step} />
           ) : (
             <ProgressStep
-              level={level}
+              step={step}
               icon={<SvgIcon id="Check" width={11.75} height={8.5} />}
             />
           )}
           {order !== 5 && (
             <ProgressTrack
-              level={level}
               step={step}
+              trackStep={trackStep}
               order={order}
               barSize={'short'}
             />
