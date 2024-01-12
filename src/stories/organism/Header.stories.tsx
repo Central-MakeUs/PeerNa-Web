@@ -15,14 +15,13 @@ export const Default: Story = {
     showSearchButton: false,
     showAddButton: false,
     centerAlign: false,
-    firstTypo: {
+    mainText: {
       variant: 'header01',
       children: '00님이 평가한 00님은 이런 동료에요',
     },
-    secondTypo: {
+    subText: {
       variant: 'header02',
       children: '00님이 평가한 00님은 이런 동료에요',
     },
-    showSecondTypo: false,
   },
 };

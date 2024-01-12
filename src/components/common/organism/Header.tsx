@@ -6,9 +6,8 @@ interface HeaderProps {
   showSearchButton: boolean;
   showAddButton: boolean;
   centerAlign: boolean;
-  firstTypo: TypographyProps;
-  secondTypo: TypographyProps;
-  showSecondTypo: boolean;
+  mainText: TypographyProps;
+  subText?: TypographyProps;
 }
 
 const handleBack = () => {
@@ -26,9 +25,8 @@ const Header = ({
   showSearchButton,
   showAddButton,
   centerAlign,
-  firstTypo,
-  secondTypo,
-  showSecondTypo,
+  mainText,
+  subText,
 }: HeaderProps) => {
   const textAlign = centerAlign && 'text-center m-auto';
 
@@ -40,8 +38,10 @@ const Header = ({
           <Typography
             as="h1"
             className={`${textAlign} mb-2`}
-            {...firstTypo}
-          ></Typography>
+            variant={mainText.variant}
+          >
+            {mainText.children}
+          </Typography>
           <div className="flex gap-2">
             {showAddButton && (
               <IconButton id="AddPerson" onClick={handleBack} />
@@ -51,8 +51,10 @@ const Header = ({
             )}
           </div>
         </div>
-        {showSecondTypo && (
-          <Typography className={`${textAlign}`} {...secondTypo}></Typography>
+        {subText && (
+          <Typography className={`${textAlign}`} variant={subText.variant}>
+            {subText.children}
+          </Typography>
         )}
       </section>
     </header>
