@@ -1,4 +1,4 @@
-import { FontVariantsClassName } from '@constants/styles';
+import { FontVariantsClassName, Palette } from '@constants/styles';
 import { HTMLAttributes } from 'react';
 import { FontVariantsKeys } from '@type/styles';
 
@@ -17,7 +17,8 @@ const Typography = ({
   return (
     <Typo
       className={`
-        ${FontVariantsClassName[variant]} 
+        ${FontVariantsClassName[variant]}
+        text-${Palette}
         leading-default 
         tracking-default 
         ${props.className}`}
