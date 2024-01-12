@@ -1,6 +1,6 @@
 import { FontVariantsClassName } from '@constants/styles';
-import { HTMLAttributes } from 'react';
 import { FontVariantsKeys } from '@type/styles';
+import { HTMLAttributes } from 'react';
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;
@@ -16,11 +16,7 @@ const Typography = ({
 }: TypographyProps) => {
   return (
     <Typo
-      className={`
-        ${FontVariantsClassName[variant]} 
-        leading-default 
-        tracking-default 
-        ${props.className}`}
+      className={`${FontVariantsClassName[variant]} leading-default tracking-default ${props.className}`}
     >
       {children}
     </Typo>
