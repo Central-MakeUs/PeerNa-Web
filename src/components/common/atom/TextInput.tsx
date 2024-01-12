@@ -1,12 +1,12 @@
-import {
-  useId,
-  forwardRef,
-  ComponentPropsWithRef,
-  useState,
-  useEffect,
-} from 'react';
+import SvgIcon from '@assets/SvgIcon';
 import { Input, InputProps } from '@nextui-org/react';
-import { ClearIcon } from '@assets/icons';
+import {
+  ComponentPropsWithRef,
+  forwardRef,
+  useEffect,
+  useId,
+  useState,
+} from 'react';
 
 type InputWithoutSpecificProps = Omit<
   ComponentPropsWithRef<'input'>,
@@ -49,7 +49,9 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         isClearable
         id={inputId}
         value={inputText}
-        endContent={<ClearIcon />}
+        endContent={
+          <SvgIcon id="Clear" color="gray04" className="bg-gray02 rounded-xl" />
+        }
         onClear={handleClear}
         onValueChange={handleChangeInputText}
         {...rest}

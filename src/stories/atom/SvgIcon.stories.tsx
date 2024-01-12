@@ -11,8 +11,9 @@ type Story = StoryObj<typeof SvgIcon>;
 
 export const Default: Story = {
   args: {
+    id: 'AddPerson',
     width: 24,
-    height: 20,
-    color: 'currentColor',
+    height: 24,
+    color: 'black',
   },
 };

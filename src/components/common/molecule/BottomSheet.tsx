@@ -9,10 +9,10 @@ const BottomSheet = () => {
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerContent>
         <div className="p-4">
-          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content">
+          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content cursor-pointer">
             <Typography variant="body01">평판요청</Typography>
           </div>
-          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content gap-3">
+          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content cursor-pointer gap-3">
             <Typography variant="body01">평판작성</Typography>
             <Typography
               variant="caption01"
@@ -21,10 +21,10 @@ const BottomSheet = () => {
               원하는 동료들과 함께해요.
             </Typography>
           </div>
-          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content">
+          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content cursor-pointer">
             <Typography variant="body01">프로젝트 제안</Typography>
           </div>
-          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content">
+          <div className="w-full max-w-[350px] h-[40px] flex items-center py-3 box-content cursor-pointer">
             <Typography variant="body01">오픈 카톡 링크 복사</Typography>
           </div>
         </div>
