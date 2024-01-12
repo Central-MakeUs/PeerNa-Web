@@ -21,7 +21,7 @@ export const SubBtn: Story = {
   args: {
     isOpen: true,
     ...commonArgs,
-    children: (
+    footer: (
       <ButtonContainer direction={'row'}>
         <Button
           buttonVariant="tertiary"
@@ -41,7 +41,7 @@ export const SubBtn: Story = {
 export const OneBtn: Story = {
   args: {
     ...commonArgs,
-    children: (
+    footer: (
       <ButtonContainer direction={'col'}>
         <Button className="!w-[270px]" onClick={commonArgs.onClose}>
           네
@@ -54,7 +54,7 @@ export const OneBtn: Story = {
 export const TwoBtn: Story = {
   args: {
     ...commonArgs,
-    children: (
+    footer: (
       <ButtonContainer direction={'col'}>
         <Button
           className="!w-[270px]"
