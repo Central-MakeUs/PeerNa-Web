@@ -11,7 +11,7 @@ type Story = StoryObj<typeof ProgressBar>;
 
 export const Default: Story = {
   args: {
-    level: 1,
     step: 3,
+    trackStep: 1,
   },
 };

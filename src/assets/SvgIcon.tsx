@@ -1,7 +1,7 @@
 import SpriteIcon from '@assets/SpriteIcon.svg';
 import { Icon, IconId } from '@constants/icons';
 
-interface SvgIconProps {
+export interface SvgIconProps {
   id: IconId;
   width?: number;
   height?: number;

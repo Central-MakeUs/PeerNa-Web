@@ -5,15 +5,17 @@ import { FontVariantsKeys } from '@type/styles';
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;
   children: string;
+  as?: keyof JSX.IntrinsicElements;
 }
 
 const Typography = ({
+  as: Typo = 'p',
   variant = 'body01',
   children,
   ...props
 }: TypographyProps) => {
   return (
-    <p
+    <Typo
       className={`
         ${FontVariantsClassName[variant]} 
         leading-default 
@@ -21,7 +23,7 @@ const Typography = ({
         ${props.className}`}
     >
       {children}
-    </p>
+    </Typo>
   );
 };
 

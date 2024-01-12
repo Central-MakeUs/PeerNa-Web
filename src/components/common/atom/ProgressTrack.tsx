@@ -3,11 +3,11 @@ import {
   ProgressProps as ProgressPropsWithNextui,
 } from '@nextui-org/react';
 
-interface ProgressTrackProps extends ProgressPropsWithNextui {
-  level: number;
+export interface ProgressTrackProps extends ProgressPropsWithNextui {
   step: number;
-  order: number;
-  barSize: ProgressBarSizeType;
+  trackStep: number;
+  order?: number;
+  barSize?: ProgressBarSizeType;
 }
 
 type ProgressBarSizeType = keyof typeof ProgressBarSize;
@@ -17,26 +17,40 @@ const ProgressBarSize = {
   long: '!w-[390px] h-2',
 };
 
+/**
+ * @description
+ * 두번째 스탭과 세번째 스탭은 4의 간격으로, interval 25
+ * 첫번째 스탭과 마지막 스탭은 5의 간격으로, interval 20
+ *
+ * 다음 스탭은 value 0으로, 이전 스탭은 value 100으로
+ * 현재 스탭은 trackStep의 interval만큼의 value
+ */
+
 const ProgressTrack = ({
   barSize = 'short',
-  level,
   step,
-  order,
+  trackStep,
+  order = 1,
   ...props
 }: ProgressTrackProps) => {
-  const isDisabled = order > level;
-  const value = isDisabled ? 0 : order < level ? 75 : step * 15;
+  const nextStep = order > step;
+  const prevStep = order < step;
+
+  const interval = step === 2 || step === 3 ? 25 : 20;
+
+  const value = nextStep ? 0 : prevStep ? 100 : trackStep * interval;
 
   return (
     <ProgressWithNextui
+      {...props}
       value={value}
       radius="none"
-      isDisabled={isDisabled}
+      isDisabled={nextStep}
       classNames={{
         base: ProgressBarSize[barSize],
-        indicator: isDisabled ? 'bg-gray02' : 'bg-secondary-orange',
+        track: nextStep ? 'bg-gray02' : 'bg-secondary-orange/20',
+        indicator: 'bg-secondary-orange',
       }}
-      {...props}
     />
   );
 };
