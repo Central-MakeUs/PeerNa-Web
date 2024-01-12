@@ -24,13 +24,13 @@ export const SubBtn: Story = {
     footer: (
       <ButtonContainer direction={'row'}>
         <Button
+          className="!min-w-[131px]"
           buttonVariant="tertiary"
-          className="!w-[131px]"
           onClick={commonArgs.onClose}
         >
           아니요
         </Button>
-        <Button className="!w-[131px]" onClick={commonArgs.onClose}>
+        <Button className="!min-w-[131px]" onClick={commonArgs.onClose}>
           네
         </Button>
       </ButtonContainer>
