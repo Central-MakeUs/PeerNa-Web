@@ -54,5 +54,5 @@ export const Icon = {
   ProjectFill: 'project-focus',
   Clear: 'clear',
   LockClosed: 'lock_closed',
-  GroupPerson: 'group-person',
+  GroupPerson: 'group_person',
 };
