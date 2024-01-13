@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import IconButton from '@components/common/atom/IconButton';
 import { Input, InputProps } from '@nextui-org/react';
 import {
   ComponentPropsWithRef,
@@ -50,7 +50,14 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         id={inputId}
         value={inputText}
         endContent={
-          <SvgIcon id="Clear" color="gray04" className="bg-gray02 rounded-xl" />
+          <IconButton
+            iconProps={{
+              id: 'Clear',
+              color: 'gray04',
+              className: 'bg-gray02 rounded-xl',
+            }}
+            onClick={() => ''}
+          />
         }
         onClear={handleClear}
         onValueChange={handleChangeInputText}
