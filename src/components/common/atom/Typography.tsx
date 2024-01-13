@@ -1,6 +1,6 @@
-import { FontVariantsClassName, Palette } from '@constants/styles';
+import { FontVariantsClassName } from '@constants/styles';
+import { FontVariantsKeys } from '@type/styles';
 import { HTMLAttributes } from 'react';
-import { ColorTypes, FontVariantsKeys } from '@type/styles';
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;
@@ -19,8 +19,7 @@ const Typography = ({
   return (
     <Typo
       className={`
-        ${FontVariantsClassName[variant]}
-        text-[${Palette[fontColor]}]
+        ${FontVariantsClassName[variant]} 
         leading-default 
         tracking-default 
         ${props.className}`}

@@ -1,14 +1,15 @@
-import SvgIcon from '@assets/SvgIcon';
-import { SvgIconProps } from '@assets/SvgIcon';
+import SvgIcon, { SvgIconProps } from '@assets/SvgIcon';
+import { ButtonHTMLAttributes } from 'react';
 
-interface IconButtonProps extends SvgIconProps {
+interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  iconProps: SvgIconProps;
   onClick: () => void;
 }
 
-const IconButton = ({ onClick, ...props }: IconButtonProps) => {
+const IconButton = ({ onClick, iconProps, ...props }: IconButtonProps) => {
   return (
-    <button onClick={onClick}>
-      <SvgIcon {...props} />
+    <button {...props} onClick={onClick}>
+      <SvgIcon {...iconProps} />
     </button>
   );
 };
