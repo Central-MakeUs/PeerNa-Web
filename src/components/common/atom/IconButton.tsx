@@ -1,4 +1,4 @@
-import SvgIcon, { SvgIconProps } from '@assets/SvgIcon';
+import SvgIcon, { SvgIconProps } from '@components/common/atom/SvgIcon';
 import { ButtonHTMLAttributes } from 'react';
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

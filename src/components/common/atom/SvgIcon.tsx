@@ -16,14 +16,9 @@ const SvgIcon = ({
   width = 24,
   height = 24,
   color = 'gray02',
-  className,
 }: SvgIconProps) => {
   return (
-    <svg
-      width={width}
-      height={height}
-      className={`text-[${Palette[color]}] ${className}`}
-    >
+    <svg width={width} height={height} className={`text-[${Palette[color]}]`}>
       <use href={`${SpriteIcon}#${Icon[id]}`} />
     </svg>
   );

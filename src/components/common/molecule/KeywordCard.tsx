@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Chip from '@components/common/atom/Chip';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';

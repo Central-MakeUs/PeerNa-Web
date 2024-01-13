@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import { IconId } from '@constants/icons';

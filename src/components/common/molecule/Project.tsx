@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
 import { useEffect, useState } from 'react';
