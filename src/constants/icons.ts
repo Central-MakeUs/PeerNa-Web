@@ -14,6 +14,7 @@ export const Icon = {
   Statistic: 'statistic',
   Principle: 'principle',
   ArrowLeft: 'arrow_left',
+  ArrowRight: 'arrow_right',
   ArrowDown: 'arrow_down',
   BeforeConcern: 'before_concern',
   AfterConcern: 'after_concern',
@@ -44,7 +45,6 @@ export const Icon = {
   Check: 'check',
   AddPerson: 'add_person',
   Home: 'home',
-<<<<<<<<< Temporary merge branch 1
   HomeFill: 'home_focus',
   Alert: 'alert',
   AlertFill: 'alert_focus',
@@ -54,17 +54,6 @@ export const Icon = {
   PeopleFill: 'people_focus',
   Project: 'project',
   ProjectFill: 'project_focus',
-=========
-  HomeFill: 'home-fill',
-  Alert: 'alert',
-  AlertFill: 'alert-fill',
-  MyPage: 'mypage',
-  MyPageFill: 'mypage-fill',
-  People: 'people',
-  PeopleFill: 'people-fill',
-  Project: 'project',
-  ProjectFill: 'project-fill',
->>>>>>>>> Temporary merge branch 2
   Clear: 'clear',
   LockClosed: 'lock_closed',
   GroupPerson: 'group_person',
