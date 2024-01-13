@@ -10,8 +10,5 @@ export default meta;
 type Story = StoryObj<typeof DatePicker>;
 
 export const Default: Story = {
-  args: {
-    children: '계획적',
-    type: 'I',
-  },
+  args: {},
 };
