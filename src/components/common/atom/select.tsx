@@ -1,5 +1,5 @@
 import { cn } from '@utils/shadcn';
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import * as React from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import * as SelectPrimitive from '@radix-ui/react-select';

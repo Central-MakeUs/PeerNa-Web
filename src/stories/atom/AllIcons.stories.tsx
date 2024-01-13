@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Icon } from '@constants/icons';
 import { Meta, StoryObj } from '@storybook/react';

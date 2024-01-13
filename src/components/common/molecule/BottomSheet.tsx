@@ -1,5 +1,5 @@
 import Typography from '@components/common/atom/Typography';
-import { Drawer, DrawerContent } from '@components/ui/drawer';
+import { Drawer, DrawerContent } from '@components/common/atom/drawer';
 import { bottomSheetState } from '@store/bottomSheet';
 import { useRecoilState } from 'recoil';
 
