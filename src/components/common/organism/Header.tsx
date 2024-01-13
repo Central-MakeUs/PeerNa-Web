@@ -30,7 +30,15 @@ const Header = ({
     <header className="max-w-[600px] m-auto">
       {showBackButton && (
         <section className="py-[22px] pl-5 flex">
-          <IconButton id="ArrowLeft" onClick={handleBack} />
+          {showBackButton && (
+            <IconButton
+              id="ArrowLeft"
+              color="gray07"
+              width={10.5}
+              height={20}
+              onClick={handleBack}
+            />
+          )}
           {title && (
             <Typography variant="header02" className="m-auto">
               {title.children}
@@ -49,15 +57,30 @@ const Header = ({
           </Typography>
           <div className="flex gap-2">
             {showAddButton && (
-              <IconButton id="AddPerson" onClick={handleBack} />
+              <IconButton
+                id="AddPerson"
+                color="gray07"
+                width={25}
+                height={25}
+                onClick={handleBack}
+              />
             )}
             {showSearchButton && (
-              <IconButton id="Search" onClick={handleBack} />
+              <IconButton
+                id="Search"
+                color="gray07"
+                width={23}
+                height={23}
+                onClick={handleBack}
+              />
             )}
           </div>
         </div>
         {subText && (
-          <Typography className={`${textAlign}`} variant={subText.variant}>
+          <Typography
+            className={`${textAlign} text-gray06`}
+            variant={subText.variant}
+          >
             {subText.children}
           </Typography>
         )}

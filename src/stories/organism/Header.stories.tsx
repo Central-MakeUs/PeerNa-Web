@@ -11,7 +11,11 @@ type Story = StoryObj<typeof Header>;
 
 export const Default: Story = {
   args: {
-    showBackButton: false,
+    showBackButton: true,
+    title: {
+      variant: 'header02',
+      children: '프로젝트',
+    },
     showSearchButton: false,
     showAddButton: false,
     centerAlign: false,
