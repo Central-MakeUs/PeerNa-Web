@@ -32,10 +32,12 @@ const Header = ({
         <section className="py-[22px] pl-5 flex">
           {showBackButton && (
             <IconButton
-              id="ArrowLeft"
-              color="gray07"
-              width={10.5}
-              height={20}
+              iconProps={{
+                id: 'ArrowLeft',
+                color: 'gray07',
+                width: 10.5,
+                height: 20,
+              }}
               onClick={handleBack}
             />
           )}
@@ -58,20 +60,23 @@ const Header = ({
           <div className="flex gap-2">
             {showAddButton && (
               <IconButton
-                id="AddPerson"
+                iconProps={{
+                  id: 'AddPerson',
+                  width: 25,
+                  height: 25,
+                }}
                 color="gray07"
-                width={25}
-                height={25}
                 onClick={handleBack}
               />
             )}
             {showSearchButton && (
               <IconButton
-                id="Search"
-                color="gray07"
-                width={23}
-                height={23}
                 onClick={handleBack}
+                iconProps={{
+                  id: 'Search',
+                  width: 23,
+                  height: 23,
+                }}
               />
             )}
           </div>
