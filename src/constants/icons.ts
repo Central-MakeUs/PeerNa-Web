@@ -44,6 +44,7 @@ export const Icon = {
   Process: 'process',
   Check: 'check',
   AddPerson: 'add_person',
+  Calendar: 'calendar',
   Home: 'home',
   HomeFill: 'home_focus',
   Alert: 'alert',
