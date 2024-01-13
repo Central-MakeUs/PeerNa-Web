@@ -34,6 +34,7 @@
     "@stackflow/react": "^1.1.6",
     "@tanstack/react-query": "^5.17.0",
     "@tanstack/react-query-devtools": "^5.17.0",
+    "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^10.17.4",
@@ -75,7 +76,8 @@
     "storybook": "^7.6.6",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-plugin-mkcert": "^1.17.2"
   },
   "eslintConfig": {
     "extends": "react-app"
