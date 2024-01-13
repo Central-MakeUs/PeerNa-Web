@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import IconButton from '@components/common/atom/IconButton';
 import {
   TextAreaProps as TextAreaPropsWithNextui,
   Textarea,
@@ -15,10 +15,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const inputId = useId();
     const [inputText, setInputText] = useState<string>('');
     const handleChangeInputText = (newValue: string) => setInputText(newValue);
-    const handleClear = () => {
-      console.log('hello');
-      setInputText('');
-    };
+    const handleClear = () => setInputText('');
 
     useEffect(() => {
       if (text !== inputText) handleChangeText(inputText);
@@ -37,13 +34,14 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         id={inputId}
         value={inputText}
         endContent={
-          <div onClick={handleClear}>
-            <SvgIcon
-              id="Clear"
-              color="gray04"
-              className="bg-gray02 rounded-xl"
-            />
-          </div>
+          <IconButton
+            iconProps={{
+              id: 'Clear',
+              color: 'gray04',
+              className: 'bg-gray02 rounded-xl',
+            }}
+            onClick={handleClear}
+          />
         }
         onClear={handleClear}
         onValueChange={handleChangeInputText}

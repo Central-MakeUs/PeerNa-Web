@@ -11,31 +11,31 @@ const getIcon = (
   switch (icon) {
     case 'Home':
       return pathname === 'Home' && isDone ? (
-        <SvgIcon id="HomeFill" />
+        <SvgIcon id="HomeFill" color="gray07" />
       ) : (
         <SvgIcon id="Home" />
       );
     case 'Peer':
       return pathname === 'Peer' && isDone ? (
-        <SvgIcon id="PeopleFill" />
+        <SvgIcon id="PeopleFill" color="gray07" />
       ) : (
         <SvgIcon id="People" />
       );
     case 'Project':
       return pathname === 'Project' && isDone ? (
-        <SvgIcon id="ProjectFill" />
+        <SvgIcon id="ProjectFill" color="gray07" />
       ) : (
         <SvgIcon id="Project" />
       );
     case 'Notification':
       return pathname === 'Notification' && isDone ? (
-        <SvgIcon id="AlertFill" />
+        <SvgIcon id="AlertFill" color="gray07" />
       ) : (
         <SvgIcon id="Alert" />
       );
     case 'Mypage':
       return pathname === 'Mypage' && isDone ? (
-        <SvgIcon id="MyPageFill" />
+        <SvgIcon id="MyPageFill" color="gray07" />
       ) : (
         <SvgIcon id="MyPage" />
       );

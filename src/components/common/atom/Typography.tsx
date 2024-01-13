@@ -18,12 +18,7 @@ const Typography = ({
 }: TypographyProps) => {
   return (
     <Typo
-      className={`
-        ${FontVariantsClassName[variant]}
-        text-[${Palette[fontColor]}]
-        leading-default 
-        tracking-default 
-        ${props.className}`}
+      className={`${FontVariantsClassName[variant]} text-[${Palette[fontColor]}] leading-default tracking-default ${props.className}`}
     >
       {children}
     </Typo>

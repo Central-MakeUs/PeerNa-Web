@@ -55,4 +55,11 @@ export const Icon = {
   ProjectFill: 'project_focus',
   Clear: 'clear',
   LockClosed: 'lock_closed',
+  GroupPerson: 'group_person',
+  IOSChevronRight: 'iOS_chevron_right',
+  DocumentText: 'document_text',
+  ColorLine: 'color_line',
+  AddCircle: 'add_circle',
+  NotepadPerson: 'notepad_person',
+  Person: 'person',
 };
