@@ -1,9 +1,9 @@
 import IconButton from '@components/common/atom/IconButton';
 import { Input, InputProps } from '@nextui-org/react';
-import { ComponentPropsWithRef, forwardRef, useId } from 'react';
+import React, { useId } from 'react';
 
 type InputWithoutSpecificProps = Omit<
-  ComponentPropsWithRef<'input'>,
+  React.ComponentPropsWithRef<'input'>,
   | 'color'
   | 'defaultValue'
   | 'onBlur'
@@ -25,35 +25,37 @@ export interface TextInputProps
     InputProps,
     AdditionalTextInputProps {}
 
-const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ text, handleChangeText, ...props }, ref) => {
-    const inputId = useId();
+function TextInput(
+  { text, handleChangeText, ...rest }: TextInputProps,
+  ref: React.ForwardedRef<HTMLInputElement>,
+) {
+  const inputId = useId();
 
-    const handleClearText = () => handleChangeText('');
+  const handleClearText = () => handleChangeText('');
 
-    return (
-      <Input
-        {...props}
-        ref={ref}
-        type="text"
-        isClearable
-        id={inputId}
-        value={text}
-        endContent={
-          <IconButton
-            iconProps={{
-              id: 'Clear',
-              color: 'gray04',
-              className: 'bg-gray02 rounded-xl',
-            }}
-            onClick={() => undefined}
-          />
-        }
-        onClear={handleClearText}
-        onValueChange={handleChangeText}
-      />
-    );
-  },
-);
+  return (
+    <Input
+      {...rest}
+      ref={ref}
+      type="text"
+      isClearable
+      id={inputId}
+      value={text}
+      endContent={
+        <IconButton
+          iconProps={{
+            id: 'Clear',
+            color: 'gray04',
+            className: 'bg-gray02 rounded-xl',
+          }}
+          onClick={handleClearText}
+        />
+      }
+      onClear={handleClearText}
+      onValueChange={handleChangeText}
+    />
+  );
+}
 
-export default TextInput;
+const ForwardedTextInput = React.forwardRef(TextInput);
+export default ForwardedTextInput;

@@ -6,7 +6,7 @@ import {
 
 interface SliderProps extends SliderPropsWithNextui {}
 
-const Slider = ({ ...props }: SliderProps) => {
+export default function Slider({ ...props }: SliderProps) {
   return (
     <SliderWithNextui
       {...props}
@@ -37,6 +37,4 @@ const Slider = ({ ...props }: SliderProps) => {
       )}
     />
   );
-};
-
-export default Slider;
+}

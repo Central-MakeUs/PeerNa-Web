@@ -2,10 +2,11 @@ import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from './Typography';
 
-const FullBleed = () => {
+export default function FullBleed() {
   const handleClick = () => {
     console.log('클릭');
   };
+
   return (
     <div className="w-[390px] border-t-1 border-[#E2E6E8] flex justify-center">
       <Button buttonVariant="naked" onClick={handleClick} className="w-[390px]">
@@ -21,6 +22,4 @@ const FullBleed = () => {
       </Button>
     </div>
   );
-};
-
-export default FullBleed;
+}

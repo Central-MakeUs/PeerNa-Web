@@ -5,7 +5,10 @@ interface ButtonContainer {
   children: ReactNode;
 }
 
-const ButtonContainer = ({ direction = 'row', children }: ButtonContainer) => {
+export default function ButtonContainer({
+  direction = 'row',
+  children,
+}: ButtonContainer) {
   const flexDirection = `flex-${direction}`;
 
   return (
@@ -13,6 +16,4 @@ const ButtonContainer = ({ direction = 'row', children }: ButtonContainer) => {
       {children}
     </div>
   );
-};
-
-export default ButtonContainer;
+}

@@ -31,7 +31,7 @@ const ChipTypeClassNames: Record<
   isDisabled: 'gray04',
 };
 
-const Chip = ({ type, children }: ChipProps) => {
+export default function Chip({ type, children }: ChipProps) {
   const chipColor = Palette[ChipTypeClassNames[type]];
   const bgOpacityStyle = getRgbaColorWithOpacity(chipColor, 0.2);
   const textColor: ColorTypes =
@@ -49,6 +49,4 @@ const Chip = ({ type, children }: ChipProps) => {
       </div>
     </ChipWithNextui>
   );
-};
-
-export default Chip;
+}

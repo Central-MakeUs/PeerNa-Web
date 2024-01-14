@@ -6,7 +6,7 @@ type AvatarButtonProps = {
   type: string;
 };
 
-const AvatarButton = ({ type }: AvatarButtonProps) => {
+export default function AvatarButton({ type }: AvatarButtonProps) {
   const { isFocused, handleFocus } = useFocusTimeout();
   const iconProps: SvgIconProps = {
     id: 'Person',
@@ -31,6 +31,4 @@ const AvatarButton = ({ type }: AvatarButtonProps) => {
       />
     </div>
   );
-};
-
-export default AvatarButton;
+}

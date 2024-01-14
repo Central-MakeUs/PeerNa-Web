@@ -3,7 +3,7 @@ import { Drawer, DrawerContent } from '@components/shadcn/drawer';
 import { bottomSheetState } from '@store/bottomSheet';
 import { useRecoilValue } from 'recoil';
 
-const BottomSheet = () => {
+export default function BottomSheet() {
   const bottomSheet = useRecoilValue(bottomSheetState);
 
   return (
@@ -22,6 +22,4 @@ const BottomSheet = () => {
       </DrawerContent>
     </Drawer>
   );
-};
-
-export default BottomSheet;
+}

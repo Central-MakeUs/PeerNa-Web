@@ -3,7 +3,7 @@ import React from 'react';
 import ProgressStep from '../atom/ProgressStep';
 import ProgressTrack, { ProgressTrackProps } from '../atom/ProgressTrack';
 
-const ProgressBar = ({ step, trackStep }: ProgressTrackProps) => {
+export default function ProgressBar({ step, trackStep }: ProgressTrackProps) {
   return (
     /**
      * @description
@@ -35,6 +35,4 @@ const ProgressBar = ({ step, trackStep }: ProgressTrackProps) => {
       ))}
     </div>
   );
-};
-
-export default ProgressBar;
+}

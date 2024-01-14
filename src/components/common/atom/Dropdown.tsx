@@ -7,7 +7,7 @@ import {
   SelectValue,
 } from '@components/shadcn/select';
 
-const Dropdown = () => {
+export default function Dropdown() {
   return (
     <Select>
       <SelectTrigger
@@ -29,6 +29,4 @@ const Dropdown = () => {
       </SelectContent>
     </Select>
   );
-};
-
-export default Dropdown;
+}

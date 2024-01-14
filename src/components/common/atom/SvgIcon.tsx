@@ -11,17 +11,15 @@ export interface SvgIconProps {
   className?: string;
 }
 
-const SvgIcon = ({
+export default function SvgIcon({
   id,
   width = 24,
   height = 24,
   color = 'gray02',
-}: SvgIconProps) => {
+}: SvgIconProps) {
   return (
     <svg width={width} height={height} className={`text-[${Palette[color]}]`}>
       <use href={`${SpriteIcon}#${Icon[id]}`} />
     </svg>
   );
-};
-
-export default SvgIcon;
+}

@@ -12,7 +12,7 @@ import {
 } from '@components/shadcn/popover';
 import { cn } from '@utils/shadcn';
 
-const DatePicker = () => {
+export default function DatePicker() {
   const [date, setDate] = React.useState<Date>();
 
   return (
@@ -43,6 +43,4 @@ const DatePicker = () => {
       </PopoverContent>
     </Popover>
   );
-};
-
-export default DatePicker;
+}

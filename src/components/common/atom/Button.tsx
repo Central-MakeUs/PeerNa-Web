@@ -27,12 +27,12 @@ interface ButtonProps extends ButtonPropsWithNextui {
   buttonSize?: ButtonSizeTypes;
 }
 
-const Button = ({
+export default function Button({
   children,
   buttonVariant = 'primary',
   buttonSize = 'lg',
   ...props
-}: ButtonProps) => {
+}: ButtonProps) {
   const { isDisabled, className } = props;
 
   const buttonClassNames = [
@@ -54,6 +54,4 @@ const Button = ({
       {children}
     </ButtonWithNextui>
   );
-};
-
-export default Button;
+}

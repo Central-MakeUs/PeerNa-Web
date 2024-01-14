@@ -9,7 +9,7 @@ interface PickerProps extends ButtonProps {
   size?: PickerSizeTypes;
 }
 
-const Picker = ({ text, size = 'md', ...props }: PickerProps) => {
+export default function Picker({ text, size = 'md', ...props }: PickerProps) {
   const { isFocused, handleFocus } = useFocusTimeout();
 
   const focusStyles = isFocused
@@ -37,6 +37,4 @@ const Picker = ({ text, size = 'md', ...props }: PickerProps) => {
       {text}
     </Button>
   );
-};
-
-export default Picker;
+}

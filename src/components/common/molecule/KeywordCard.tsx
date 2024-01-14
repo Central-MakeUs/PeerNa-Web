@@ -11,7 +11,11 @@ interface KeywordCard {
   keywords: string[];
 }
 
-const KeywordCard = ({ title, subtitle, keywords }: KeywordCard) => {
+export default function KeywordCard({
+  title,
+  subtitle,
+  keywords,
+}: KeywordCard) {
   return (
     <div className="w-[350px] h-[200px] border-1 rounded-xl py-[24px] px-[18px]">
       <div className="flex flex-col gap-1">
@@ -38,6 +42,4 @@ const KeywordCard = ({ title, subtitle, keywords }: KeywordCard) => {
       </div>
     </div>
   );
-};
-
-export default KeywordCard;
+}

@@ -6,7 +6,7 @@ interface BadgeProps extends CodeProps {
   children: string;
 }
 
-const Badge = ({ type = 'default', children }: BadgeProps) => {
+export default function Badge({ type = 'default', children }: BadgeProps) {
   const badgeVariantClassed =
     type === 'default'
       ? 'text-gray07 bg-gray02'
@@ -17,6 +17,4 @@ const Badge = ({ type = 'default', children }: BadgeProps) => {
       <Typography variant="caption01">{children}</Typography>
     </Code>
   );
-};
-
-export default Badge;
+}

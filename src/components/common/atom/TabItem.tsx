@@ -11,7 +11,12 @@ interface TabItemProps {
   isDone: boolean;
 }
 
-const TabItem = ({ icon, name, pathname, isDone }: TabItemProps) => {
+export default function TabItem({
+  icon,
+  name,
+  pathname,
+  isDone,
+}: TabItemProps) {
   const { replace } = useFlow();
   const handleClick = () => replace(icon, {});
 
@@ -24,14 +29,17 @@ const TabItem = ({ icon, name, pathname, isDone }: TabItemProps) => {
         isDone && pathname === 'Notification' ? 'AlertFill' : 'Alert',
       Mypage: isDone && pathname === 'Mypage' ? 'MyPageFill' : 'MyPage',
     };
-
     const iconId = iconMap[icon];
-    return iconId ? (
-      <SvgIcon
-        id={iconId as IconKeyType}
-        color={isDone ? 'gray07' : undefined}
-      />
-    ) : null;
+
+    if (iconId) {
+      return (
+        <SvgIcon
+          id={iconId as IconKeyType}
+          color={isDone ? 'gray07' : undefined}
+        />
+      );
+    }
+    return null;
   };
 
   return (
@@ -45,6 +53,4 @@ const TabItem = ({ icon, name, pathname, isDone }: TabItemProps) => {
       </Typography>
     </div>
   );
-};
-
-export default TabItem;
+}

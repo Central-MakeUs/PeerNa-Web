@@ -14,7 +14,12 @@ interface ModalProps extends ModalPropsWithNextui {
   footer: React.ReactNode;
 }
 
-const Modal = ({ modalHeader, modalBody, footer, ...props }: ModalProps) => {
+export default function Modal({
+  modalHeader,
+  modalBody,
+  footer,
+  ...props
+}: ModalProps) {
   /** Open Modal 버튼 삭제 & 해당 함수는 props로 사용할 예정 */
   const [isOpen, setIsOpen] = useRecoilState(modalState);
 
@@ -47,6 +52,4 @@ const Modal = ({ modalHeader, modalBody, footer, ...props }: ModalProps) => {
       )}
     </>
   );
-};
-
-export default Modal;
+}

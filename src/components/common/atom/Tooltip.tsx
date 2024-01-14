@@ -9,7 +9,7 @@ interface TooltipProps extends TooltipPropsWithNextui {
   children: ReactNode;
 }
 
-const Tooltip = ({ children, ...props }: TooltipProps) => {
+export default function Tooltip({ children, ...props }: TooltipProps) {
   return (
     <TooltipWithNextui
       {...props}
@@ -23,6 +23,4 @@ const Tooltip = ({ children, ...props }: TooltipProps) => {
       {children}
     </TooltipWithNextui>
   );
-};
-
-export default Tooltip;
+}
