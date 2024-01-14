@@ -3,7 +3,7 @@ import {
   TextAreaProps as TextAreaPropsWithNextui,
   Textarea,
 } from '@nextui-org/react';
-import { forwardRef, useEffect, useId, useState } from 'react';
+import { forwardRef, useEffect, useId } from 'react';
 
 export interface TextAreaProps extends TextAreaPropsWithNextui {
   text: string;
@@ -11,18 +11,16 @@ export interface TextAreaProps extends TextAreaPropsWithNextui {
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ text, handleChangeText, ...rest }, ref) => {
+  ({ text, handleChangeText, ...props }, ref) => {
     const inputId = useId();
-    const [inputText, setInputText] = useState<string>('');
-    const handleChangeInputText = (newValue: string) => setInputText(newValue);
-    const handleClear = () => setInputText('');
 
     useEffect(() => {
-      if (text !== inputText) handleChangeText(inputText);
-    }, [inputText, handleChangeInputText]);
+      handleChangeText(text);
+    }, [text]);
 
     return (
       <Textarea
+        {...props}
         ref={ref}
         classNames={{
           inputWrapper: '!h-full',
@@ -32,7 +30,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         minRows={3}
         maxRows={5}
         id={inputId}
-        value={inputText}
+        value={text}
         endContent={
           <IconButton
             iconProps={{
@@ -40,12 +38,11 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               color: 'gray04',
               className: 'bg-gray02 rounded-xl',
             }}
-            onClick={handleClear}
+            onClick={() => handleChangeText('')}
           />
         }
-        onClear={handleClear}
-        onValueChange={handleChangeInputText}
-        {...rest}
+        onClear={() => handleChangeText('')}
+        onValueChange={newText => handleChangeText(newText)}
       />
     );
   },
