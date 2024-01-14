@@ -1,4 +1,4 @@
-import '@constants/trash.ts';
+import '@constants/tailwind.storybook.ts';
 import { NextUIProvider } from '@nextui-org/react';
 import '@stackflow/plugin-basic-ui/index.css';
 import {
