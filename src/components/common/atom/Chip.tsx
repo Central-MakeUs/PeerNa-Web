@@ -32,25 +32,17 @@ const ChipTypeClassNames: Record<
 };
 
 const Chip = ({ type, children }: ChipProps) => {
-  const bgOpacityOption = getRgbaColorWithOpacity(
-    Palette[ChipTypeClassNames[type]],
-    0.2,
-  );
-
+  const chipColor = Palette[ChipTypeClassNames[type]];
+  const bgOpacityStyle = getRgbaColorWithOpacity(chipColor, 0.2);
   const textColor: ColorTypes =
-    Palette[ChipTypeClassNames[type]] === Palette.primary100
-      ? 'primary500'
-      : ChipTypeClassNames[type];
+    chipColor === Palette.primary100 ? 'primary500' : ChipTypeClassNames[type];
+  const textStyle =
+    type === 'isDisabled' ? { color: Palette.gray04 } : undefined;
 
   return (
-    <ChipWithNextui className={`h-[36px] `} style={bgOpacityOption}>
+    <ChipWithNextui className="h-[36px]" style={bgOpacityStyle}>
       <div className="flex flex-nowrap gap-1">
-        <Typography
-          variant="body04"
-          className={`text-[${
-            type === 'isDisabled' ? Palette.gray04 : undefined
-          }]`}
-        >
+        <Typography variant="body04" style={textStyle}>
           {children}
         </Typography>
         <SvgIcon id="Process" width={20} height={20} color={textColor} />
