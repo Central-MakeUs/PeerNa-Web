@@ -2,7 +2,6 @@ import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { IconKeyType } from '@constants/icons';
-import { Palette } from '@constants/styles';
 
 interface ProfileListItemProps {
   bezeled: Extract<
@@ -42,17 +41,14 @@ export default function ProfileListItem({
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-1">
             <Typography variant="body01">{username}</Typography>
-            <Typography
-              variant="caption01"
-              className={`text-[${Palette.primary500}]`}
-            >
+            <Typography variant="caption01" className={`text-primary500`}>
               {position}
             </Typography>
           </div>
-          <Typography variant="body05" className={`text-[${Palette.gray07}]`}>
+          <Typography variant="body05" className={`text-gray07`}>
             {information}
           </Typography>
-          <Typography variant="body05" className={`text-[${Palette.gray05}]`}>
+          <Typography variant="body05" className={`text-gray05`}>
             {introduce}
           </Typography>
         </div>
@@ -62,7 +58,7 @@ export default function ProfileListItem({
           buttonVariant="tertiary"
           className="!w-[36px] !h-[20px] !px-5 !py-2.5 flex-1 !min-w-min"
         >
-          <Typography variant="body03" className={`text-[${Palette.gray08}]`}>
+          <Typography variant="body03" className={`text-gray08`}>
             자세히
           </Typography>
         </Button>
