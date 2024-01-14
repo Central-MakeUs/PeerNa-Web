@@ -1,6 +1,6 @@
 import Button from '@components/common/atom/Button';
-import RequestListItem from '@components/common/atom/RequestListItem';
 import Typography from '@components/common/atom/Typography';
+import RequestListItem from '@components/common/molecule/RequestListItem';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof RequestListItem> = {

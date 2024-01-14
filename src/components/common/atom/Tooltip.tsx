@@ -1,7 +1,7 @@
 import { FontVariantsClassName } from '@constants/styles';
 import {
-  Tooltip as TooltipWithNextui,
   TooltipProps as TooltipPropsWithNextui,
+  Tooltip as TooltipWithNextui,
 } from '@nextui-org/react';
 import { ReactNode } from 'react';
 

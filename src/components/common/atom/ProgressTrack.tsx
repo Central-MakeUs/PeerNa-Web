@@ -1,6 +1,6 @@
 import {
-  Progress as ProgressWithNextui,
   ProgressProps as ProgressPropsWithNextui,
+  Progress as ProgressWithNextui,
 } from '@nextui-org/react';
 
 export interface ProgressTrackProps extends ProgressPropsWithNextui {

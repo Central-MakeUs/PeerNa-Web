@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@components/common/atom/select';
+} from '@components/shadcn/select';
 
 const Dropdown = () => {
   return (

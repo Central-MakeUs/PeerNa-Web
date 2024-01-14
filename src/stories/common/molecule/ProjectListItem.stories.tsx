@@ -1,8 +1,8 @@
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Button from '@components/common/atom/Button';
-import ProjectListItem from '@components/common/atom/ProjectListItem';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import ButtonContainer from '@components/common/molecule/ButtonContainer';
+import ProjectListItem from '@components/common/molecule/ProjectListItem';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ProjectListItem> = {

@@ -1,4 +1,4 @@
-import Dropdown from '@components/common/molecule/Dropdown';
+import Dropdown from '@components/common/atom/Dropdown';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Dropdown> = {

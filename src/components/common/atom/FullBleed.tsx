@@ -1,6 +1,6 @@
 import Button from '@components/common/atom/Button';
-import Typography from './Typography';
 import SvgIcon from '@components/common/atom/SvgIcon';
+import Typography from './Typography';
 
 const FullBleed = () => {
   const handleClick = () => {

@@ -1,8 +1,8 @@
-import { cn } from '@utils/shadcn';
 import SvgIcon from '@components/common/atom/SvgIcon';
-import * as React from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import * as SelectPrimitive from '@radix-ui/react-select';
+import { cn } from '@utils/shadcn';
+import * as React from 'react';
 
 const Select = SelectPrimitive.Root;
 
@@ -141,13 +141,13 @@ SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 export {
   Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
   SelectContent,
-  SelectLabel,
+  SelectGroup,
   SelectItem,
-  SelectSeparator,
-  SelectScrollUpButton,
+  SelectLabel,
   SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
 };

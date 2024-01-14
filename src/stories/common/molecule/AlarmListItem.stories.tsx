@@ -1,4 +1,4 @@
-import AlarmListItem from '@components/common/atom/AlarmListItem';
+import AlarmListItem from '@components/common/molecule/AlarmListItem';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof AlarmListItem> = {

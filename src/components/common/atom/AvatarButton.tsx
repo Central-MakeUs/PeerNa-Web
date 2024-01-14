@@ -1,5 +1,5 @@
+import { useEffect, useState } from 'react';
 import IconButton from './IconButton';
-import { useState, useEffect } from 'react';
 
 type AvatarButtonProps = {
   type: string;

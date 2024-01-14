@@ -1,12 +1,12 @@
 import {
-  Modal as ModalWithNextui,
-  ModalProps as ModalPropsWithNextui,
   ModalContent,
   ModalFooter,
+  ModalProps as ModalPropsWithNextui,
+  Modal as ModalWithNextui,
 } from '@nextui-org/react';
-import Typography from '../atom/Typography';
 import { modalState } from '@store/modal';
 import { useRecoilState } from 'recoil';
+import Typography from '../atom/Typography';
 
 interface ModalProps extends ModalPropsWithNextui {
   modalHeader: string;

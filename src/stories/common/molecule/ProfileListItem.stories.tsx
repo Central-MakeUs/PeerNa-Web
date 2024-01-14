@@ -1,4 +1,4 @@
-import ProfileListItem from '@components/common/atom/ProfileListItem';
+import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ProfileListItem> = {

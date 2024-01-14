@@ -1,5 +1,5 @@
-import Typography, { TypographyProps } from '../atom/Typography';
 import IconButton from '../atom/IconButton';
+import Typography, { TypographyProps } from '../atom/Typography';
 
 interface HeaderProps {
   showBackButton: boolean;
@@ -11,10 +11,6 @@ interface HeaderProps {
   subText?: TypographyProps;
 }
 
-const handleBack = () => {
-  console.log('back');
-};
-
 const Header = ({
   showBackButton,
   title,
@@ -25,6 +21,9 @@ const Header = ({
   subText,
 }: HeaderProps) => {
   const textAlign = centerAlign && 'text-center m-auto';
+  const handleBack = () => {
+    console.log('back');
+  };
 
   return (
     <header className="max-w-[600px] m-auto">

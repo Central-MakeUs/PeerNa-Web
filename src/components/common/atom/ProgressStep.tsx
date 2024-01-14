@@ -1,6 +1,6 @@
 import {
-  Avatar as AvatarWithNextui,
   AvatarProps as AvatarPropsWithNextui,
+  Avatar as AvatarWithNextui,
 } from '@nextui-org/react';
 
 interface ProgressStepProps extends AvatarPropsWithNextui {

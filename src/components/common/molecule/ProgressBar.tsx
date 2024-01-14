@@ -1,8 +1,7 @@
-import React from 'react';
-import ProgressTrack from '../atom/ProgressTrack';
-import ProgressStep from '../atom/ProgressStep';
 import SvgIcon from '@components/common/atom/SvgIcon';
-import { ProgressTrackProps } from '../atom/ProgressTrack';
+import React from 'react';
+import ProgressStep from '../atom/ProgressStep';
+import ProgressTrack, { ProgressTrackProps } from '../atom/ProgressTrack';
 
 const ProgressBar = ({ step, trackStep }: ProgressTrackProps) => {
   return (
