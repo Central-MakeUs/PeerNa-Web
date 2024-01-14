@@ -22,8 +22,10 @@ const KeywordCard = ({ title, subtitle, keywords }: KeywordCard) => {
       </div>
       <Spacer y={6} />
       <div className="flex flex-wrap gap-2">
-        {keywords.map(keyword => (
-          <Chip type="I">{keyword}</Chip>
+        {keywords.map((keyword, index) => (
+          <Chip key={index} type="I">
+            {keyword}
+          </Chip>
         ))}
         {keywords.length === 0 && (
           <div className="w-[310px] h-[80px] bg-gray01 py-[14px] px-[58px] flex flex-col gap-1 items-center rounded-xl">
