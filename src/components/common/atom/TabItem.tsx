@@ -1,6 +1,6 @@
-import { useFlow } from '@components/common/atom/StackFlow';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
+import { useFlow } from '@hooks/StackFlow';
 import { ActivitiesTypes } from '@type/activities';
 
 const getIcon = (

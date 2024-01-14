@@ -1,8 +1,8 @@
-import Home from '@components/template/Home';
-import Mypage from '@components/template/Mypage';
-import Notification from '@components/template/Notification';
-import Peer from '@components/template/Peer';
-import Project from '@components/template/Project';
+import Home from '@components/home/template/Home';
+import Mypage from '@components/mypage/template/Mypage';
+import Notification from '@components/notification/template/Notification';
+import Peer from '@components/peer/template/Peer';
+import Project from '@components/project/template/Project';
 
 export const Activities = {
   Home,
