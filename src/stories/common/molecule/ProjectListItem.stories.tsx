@@ -29,7 +29,9 @@ export const Default: Story = {
           buttonVariant="secondary"
           className="!w-[24px] !h-[20px] !px-5 !py-2.5 flex-1 !min-w-max"
         >
-          <Typography variant="body03">참여</Typography>
+          <Typography variant="body03" fontColor="white">
+            참여
+          </Typography>
         </Button>
       </ButtonContainer>
     ),
