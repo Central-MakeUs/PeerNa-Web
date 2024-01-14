@@ -1,7 +1,7 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
-import { useEffect, useState } from 'react';
+import useFocusTimeout from '@hooks/useFocusTimeout';
 
 interface ProjectProps {
   title: string;
@@ -10,17 +10,7 @@ interface ProjectProps {
 }
 
 export default function Project({ title, subtitle, date }: ProjectProps) {
-  const [isFocused, setIsFocused] = useState(false);
-  const handleFocus = () => {
-    console.log(1);
-    setIsFocused(true);
-  };
-
-  useEffect(() => {
-    let focusTimeout: NodeJS.Timeout;
-    if (isFocused) focusTimeout = setTimeout(() => setIsFocused(false), 500);
-    return () => clearTimeout(focusTimeout);
-  }, [isFocused]);
+  const { isFocused, handleFocus } = useFocusTimeout();
 
   return (
     <div

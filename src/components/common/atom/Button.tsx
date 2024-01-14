@@ -1,9 +1,10 @@
 import { FontVariantsClassName } from '@constants/styles';
+import useFocusTimeout from '@hooks/useFocusTimeout';
 import {
   ButtonProps as ButtonPropsWithNextui,
   Button as ButtonWithNextui,
 } from '@nextui-org/react';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 
 type ButtonVariantTypes = keyof typeof ButtonVariant;
 type ButtonSizeTypes = keyof typeof ButtonSize;
@@ -38,14 +39,7 @@ const Button = ({
   ...props
 }: ButtonProps) => {
   const { isDisabled } = props;
-  const [isFocused, setIsFocused] = useState(false);
-  const handleFocus = () => setIsFocused(true);
-
-  useEffect(() => {
-    let focusTimeout: NodeJS.Timeout;
-    if (isFocused) focusTimeout = setTimeout(() => setIsFocused(false), 500);
-    return () => clearTimeout(focusTimeout);
-  }, [isFocused]);
+  const { isFocused, handleFocus } = useFocusTimeout();
 
   return (
     <ButtonWithNextui

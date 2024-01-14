@@ -1,8 +1,8 @@
 import { FontVariantsClassName, Palette, PickerSize } from '@constants/styles';
+import useFocusTimeout from '@hooks/useFocusTimeout';
 import { Button } from '@nextui-org/react';
 import { ButtonProps } from '@react-types/button';
 import { ColorTypes, FontVariantsKeys, PickerSizeTypes } from '@type/styles';
-import { useEffect, useState } from 'react';
 
 interface PickerProps extends ButtonProps {
   text: string;
@@ -22,14 +22,7 @@ const Picker = ({
   borderColor = 'danger01',
   ...props
 }: PickerProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const handleFocus = () => setIsFocused(true);
-
-  useEffect(() => {
-    let focusTimeout: NodeJS.Timeout;
-    if (isFocused) focusTimeout = setTimeout(() => setIsFocused(false), 500);
-    return () => clearTimeout(focusTimeout);
-  }, [isFocused]);
+  const { isFocused, handleFocus } = useFocusTimeout();
 
   return (
     <Button

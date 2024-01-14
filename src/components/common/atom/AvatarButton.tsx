@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import useFocusTimeout from '@hooks/useFocusTimeout';
 import IconButton from './IconButton';
 
 type AvatarButtonProps = {
@@ -6,14 +6,7 @@ type AvatarButtonProps = {
 };
 
 const AvatarButton = ({ type }: AvatarButtonProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const handleFocus = () => setIsFocused(true);
-
-  useEffect(() => {
-    let focusTimeout: NodeJS.Timeout;
-    if (isFocused) focusTimeout = setTimeout(() => setIsFocused(false), 500);
-    return () => clearTimeout(focusTimeout);
-  }, [isFocused]);
+  const { isFocused, handleFocus } = useFocusTimeout();
 
   return (
     <div className="flex justify-center items-center shadow-default !w-[72px] !h-[72px] rounded-full">
