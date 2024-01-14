@@ -1,4 +1,4 @@
-export type IconId = keyof typeof Icon;
+export type IconKeyType = keyof typeof Icon;
 
 export const Icon = {
   Search: 'search',

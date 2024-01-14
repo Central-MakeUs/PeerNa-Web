@@ -1,12 +1,12 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { IconId } from '@constants/icons';
+import { IconKeyType } from '@constants/icons';
 import { Palette } from '@constants/styles';
 import { ReactNode } from 'react';
 
 interface RequestListItemProps {
   bezeled: Extract<
-    IconId,
+    IconKeyType,
     | 'AlertFill'
     | 'NotepadPerson'
     | 'AddCircle'
