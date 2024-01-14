@@ -12,20 +12,11 @@ type Story = StoryObj<typeof Header>;
 export const Default: Story = {
   args: {
     showBackButton: true,
-    title: {
-      variant: 'header02',
-      children: '프로젝트',
-    },
+    title: '프로젝트',
     showSearchButton: false,
     showAddButton: false,
     centerAlign: false,
-    mainText: {
-      variant: 'header01',
-      children: '00님이 평가한 00님은 이런 동료에요',
-    },
-    subText: {
-      variant: 'header02',
-      children: '00님이 평가한 00님은 이런 동료에요',
-    },
+    mainText: '00님이 평가한 00님은 이런 동료에요',
+    subText: '00님이 평가한 00님은 이런 동료에요',
   },
 };
