@@ -1,6 +1,6 @@
 import TabItem from '@components/common/atom/TabItem';
+import { ActivitiesTypes } from '@constants/activities';
 import { useActivity } from '@stackflow/react';
-import { ActivitiesTypes } from '@type/activities';
 
 const BottomNavigation = () => {
   const activity = useActivity();

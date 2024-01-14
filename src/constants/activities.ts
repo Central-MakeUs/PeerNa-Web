@@ -11,3 +11,5 @@ export const Activities = {
   Notification,
   Mypage,
 };
+
+export type ActivitiesTypes = keyof typeof Activities;
