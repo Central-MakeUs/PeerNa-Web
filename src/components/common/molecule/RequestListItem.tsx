@@ -1,7 +1,6 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { IconKeyType } from '@constants/icons';
-import { Palette } from '@constants/styles';
 import { ReactNode } from 'react';
 
 interface RequestListItemProps {
@@ -41,7 +40,7 @@ export default function ProfileListItem({
           <Typography variant="body02" className="w-full">
             {title}
           </Typography>
-          <Typography variant="body05" className={`text-[${Palette.gray05}]`}>
+          <Typography variant="body05" className="text-gray05">
             {subtitle}
           </Typography>
         </div>
