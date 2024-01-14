@@ -45,7 +45,9 @@ export const Onebtn: Story = {
         buttonVariant="naked"
         className="!w-[72px] !h-[20px] !px-5 !py-2.5 flex-1 !min-w-max"
       >
-        <Typography variant="body03">거절</Typography>
+        <Typography variant="body03" fontColor="white">
+          거절
+        </Typography>
         <SvgIcon id="IOSChevronRight" width={20} height={20} color="danger01" />
       </Button>
     ),

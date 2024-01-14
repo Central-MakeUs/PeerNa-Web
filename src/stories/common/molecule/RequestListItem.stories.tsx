@@ -21,7 +21,9 @@ export const Default: Story = {
         buttonVariant="secondary"
         className="!w-[24px] !h-[20px] !px-5 !py-2.5 flex-1 !min-w-min"
       >
-        <Typography variant="body03">작성</Typography>
+        <Typography variant="body03" fontColor="white">
+          작성
+        </Typography>
       </Button>
     ),
   },
