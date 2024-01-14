@@ -71,6 +71,7 @@ export default function Header({
                   id: 'Search',
                   width: 23,
                   height: 23,
+                  color: 'gray07',
                 }}
               />
             )}
