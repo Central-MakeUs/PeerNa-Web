@@ -7,14 +7,13 @@ interface BadgeProps extends CodeProps {
 }
 
 const Badge = ({ type = 'default', children }: BadgeProps) => {
+  const badgeVariantClassed =
+    type === 'default'
+      ? 'text-gray07 bg-gray02'
+      : 'text-primary500 bg-primary100';
+
   return (
-    <Code
-      className={`${
-        type === 'default'
-          ? 'text-gray07 bg-gray02'
-          : 'text-primary500 bg-primary100'
-      }`}
-    >
+    <Code className={badgeVariantClassed}>
       <Typography variant="caption01">{children}</Typography>
     </Code>
   );
