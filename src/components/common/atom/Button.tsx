@@ -42,6 +42,8 @@ export default function Button({
     isDisabled ? 'bg-gray02 text-gray04 opacity-100' : '',
     buttonVariant === 'naked' ? 'bg-transparent' : '',
     className || '',
+    'w-full',
+    'min-w-0',
   ].join(' ');
 
   return (

@@ -46,7 +46,7 @@ export default function Modal({
                 {modalBody}
               </Typography>
             </div>
-            <ModalFooter className="!px-5 m-auto">{footer}</ModalFooter>
+            <ModalFooter>{footer}</ModalFooter>
           </ModalContent>
         </ModalWithNextui>
       )}

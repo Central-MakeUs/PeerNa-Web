@@ -1,5 +1,5 @@
-import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import Button from '@components/common/atom/Button';
+import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import Modal from '@components/common/molecule/Modal';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -24,13 +24,13 @@ export const SubBtn: Story = {
     footer: (
       <ButtonContainer direction={'row'}>
         <Button
-          className="!min-w-[131px]"
+          className="flex-1"
           buttonVariant="tertiary"
           onClick={commonArgs.onClose}
         >
           아니요
         </Button>
-        <Button className="!min-w-[131px]" onClick={commonArgs.onClose}>
+        <Button className="flex-1" onClick={commonArgs.onClose}>
           네
         </Button>
       </ButtonContainer>
@@ -43,7 +43,7 @@ export const OneBtn: Story = {
     ...commonArgs,
     footer: (
       <ButtonContainer direction={'col'}>
-        <Button className="!w-[270px]" onClick={commonArgs.onClose}>
+        <Button className="flex-1 box-border" onClick={commonArgs.onClose}>
           네
         </Button>
       </ButtonContainer>
@@ -57,13 +57,13 @@ export const TwoBtn: Story = {
     footer: (
       <ButtonContainer direction={'col'}>
         <Button
-          className="!w-[270px]"
+          className="flex-1 box-border"
           buttonVariant="tertiary"
           onClick={commonArgs.onClose}
         >
           아니요
         </Button>
-        <Button className="!w-[270px]" onClick={commonArgs.onClose}>
+        <Button className="flex-1 box-border" onClick={commonArgs.onClose}>
           네
         </Button>
       </ButtonContainer>
