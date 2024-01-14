@@ -1,4 +1,4 @@
-export const TRASH_CLASS = `
+export const TRASH_CLASSES = `
   border-[#FFEBE5]
   border-[#FFD7CC]
   border-[#FFAF99]
