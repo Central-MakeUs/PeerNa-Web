@@ -1,19 +1,19 @@
 import { format } from 'date-fns';
-import * as React from 'react';
 
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Calendar } from '@components/shadcn/calendar';
-import Button from '@components/shadcn/calendarButton';
+import { Button } from '@components/shadcn/calendarButton';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@components/shadcn/popover';
 import { cn } from '@utils/shadcn';
+import { useState } from 'react';
 
 export default function DatePicker() {
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = useState<Date | undefined>(new Date());
 
   return (
     <Popover>

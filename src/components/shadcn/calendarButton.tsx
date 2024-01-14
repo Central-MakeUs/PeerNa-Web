@@ -3,8 +3,7 @@ import { cn } from '@utils/shadcn';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const buttonVariants = cva(
+const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
@@ -40,18 +39,19 @@ export interface ButtonProps
   asChild?: boolean;
 }
 
-export default function Button(
-  { className, variant, size, asChild = false, ...props }: ButtonProps,
-  ref: React.Ref<HTMLButtonElement>,
-) {
-  const Comp = asChild ? Slot : 'button';
-  return (
-    <Comp
-      className={cn(buttonVariants({ variant, size, className }))}
-      ref={ref}
-      {...props}
-    />
-  );
-}
-
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : 'button';
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
 Button.displayName = 'Button';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export { Button, buttonVariants };
