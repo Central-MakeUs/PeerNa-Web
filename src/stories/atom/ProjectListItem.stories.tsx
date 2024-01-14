@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Button from '@components/common/atom/Button';
 import ProjectListItem from '@components/common/atom/ProjectListItem';
 import Typography from '@components/common/atom/Typography';

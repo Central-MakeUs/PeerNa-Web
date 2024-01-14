@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import { useFlow } from '@components/common/atom/StackFlow';
 import Typography from '@components/common/atom/Typography';
 import { ActivitiesTypes } from '@type/activities';

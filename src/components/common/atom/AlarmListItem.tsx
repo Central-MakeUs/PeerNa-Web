@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import IconButton from '@components/common/atom/IconButton';
 import { useFlow } from '@components/common/atom/StackFlow';
 import Typography from '@components/common/atom/Typography';
@@ -31,7 +31,13 @@ export default function AlarmListItem({ title, subtitle }: AlarmListItemProps) {
           </Typography>
         </div>
       </div>
-      <IconButton id="IOSChevronRight" color="gray07" onClick={handleClick} />
+      <IconButton
+        onClick={handleClick}
+        iconProps={{
+          id: 'IOSChevronRight',
+          color: 'gray07',
+        }}
+      />
     </div>
   );
 }

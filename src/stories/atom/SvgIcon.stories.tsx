@@ -1,4 +1,4 @@
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof SvgIcon> = {

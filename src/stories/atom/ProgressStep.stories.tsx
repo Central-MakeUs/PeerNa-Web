@@ -1,6 +1,6 @@
 import ProgressStep from '@components/common/atom/ProgressStep';
 import { Meta, StoryObj } from '@storybook/react';
-import SvgIcon from '@assets/SvgIcon';
+import SvgIcon from '@components/common/atom/SvgIcon';
 
 const meta: Meta<typeof ProgressStep> = {
   title: 'ProgressStep',
