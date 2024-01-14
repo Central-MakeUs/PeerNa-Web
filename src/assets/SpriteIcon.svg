@@ -76,6 +76,7 @@
         fill="currentColor"
         d="M10.727 1.687A1 1 0 1 0 9.273.313l-8.5 9a1 1 0 0 0 0 1.374l8.5 9.001a1 1 0 1 0 1.454-1.373L2.875 10l7.852-8.313z"
       />
+    </symbol>
     <symbol id="arrow_right" viewBox="0 0 6 11">
     <path fill="currentColor" d="M.22 1.28A.75.75 0 1 1 1.28.22l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5A.75.75 0 1 1 .22 9.22l3.97-3.97L.22 1.28z"/></symbol>
     <symbol id="arrow_down" viewBox="0 0 16 8">
