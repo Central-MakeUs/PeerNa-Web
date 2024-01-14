@@ -28,7 +28,8 @@
       "@type/*": ["type/*"],
       "@utils/*": ["utils/*"],
       "@store/*": ["store/*"],
-      "@apis/*": ["apis/*"]
+      "@apis/*": ["apis/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],

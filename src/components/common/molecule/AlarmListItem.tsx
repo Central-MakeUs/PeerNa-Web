@@ -2,7 +2,7 @@ import IconButton from '@components/common/atom/IconButton';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
-import { useFlow } from '@hooks/StackFlow';
+import { useFlow } from '@hooks/useStackFlow';
 
 interface AlarmListItemProps {
   title: string;
@@ -11,7 +11,6 @@ interface AlarmListItemProps {
 
 export default function AlarmListItem({ title, subtitle }: AlarmListItemProps) {
   const { push } = useFlow();
-
   const handleClick = () => {
     push('Project', {});
   };
