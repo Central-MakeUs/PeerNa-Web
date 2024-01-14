@@ -8,4 +8,5 @@ interface ImportMeta {
 
 interface ImportMetaEnv {
   MODE: ModeTypes;
+  VITE_BASE_URL: string;
 }

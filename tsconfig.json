@@ -27,7 +27,8 @@
       "@assets/*": ["assets/*"],
       "@type/*": ["type/*"],
       "@utils/*": ["utils/*"],
-      "@store/*": ["store/*"]
+      "@store/*": ["store/*"],
+      "@apis/*": ["apis/*"]
     }
   },
   "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],

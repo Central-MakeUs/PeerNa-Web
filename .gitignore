@@ -25,3 +25,5 @@ dist-ssr
 
 .eslintcache
 
+.env*
+*.pem
