@@ -1,12 +1,6 @@
 import IconButton from '@components/common/atom/IconButton';
 import { Input, InputProps } from '@nextui-org/react';
-import {
-  ComponentPropsWithRef,
-  forwardRef,
-  useEffect,
-  useId,
-  useState,
-} from 'react';
+import { ComponentPropsWithRef, forwardRef, useId } from 'react';
 
 type InputWithoutSpecificProps = Omit<
   ComponentPropsWithRef<'input'>,
@@ -32,23 +26,19 @@ export interface TextInputProps
     AdditionalTextInputProps {}
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ text, handleChangeText, ...rest }, ref) => {
+  ({ text, handleChangeText, ...props }, ref) => {
     const inputId = useId();
-    const [inputText, setInputText] = useState<string>('');
-    const handleChangeInputText = (newValue: string) => setInputText(newValue);
-    const handleClear = () => setInputText('');
 
-    useEffect(() => {
-      if (text !== inputText) handleChangeText(inputText);
-    }, [inputText, handleChangeInputText]);
+    const handleClearText = () => handleChangeText('');
 
     return (
       <Input
+        {...props}
         ref={ref}
         type="text"
         isClearable
         id={inputId}
-        value={inputText}
+        value={text}
         endContent={
           <IconButton
             iconProps={{
@@ -56,12 +46,11 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               color: 'gray04',
               className: 'bg-gray02 rounded-xl',
             }}
-            onClick={() => ''}
+            onClick={() => undefined}
           />
         }
-        onClear={handleClear}
-        onValueChange={handleChangeInputText}
-        {...rest}
+        onClear={handleClearText}
+        onValueChange={handleChangeText}
       />
     );
   },

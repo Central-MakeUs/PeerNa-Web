@@ -3,7 +3,7 @@ import {
   TextAreaProps as TextAreaPropsWithNextui,
   Textarea,
 } from '@nextui-org/react';
-import { forwardRef, useEffect, useId } from 'react';
+import { forwardRef, useId } from 'react';
 
 export interface TextAreaProps extends TextAreaPropsWithNextui {
   text: string;
@@ -14,9 +14,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ text, handleChangeText, ...props }, ref) => {
     const inputId = useId();
 
-    useEffect(() => {
-      handleChangeText(text);
-    }, [text]);
+    const handleClearText = () => handleChangeText('');
 
     return (
       <Textarea
@@ -38,11 +36,11 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
               color: 'gray04',
               className: 'bg-gray02 rounded-xl',
             }}
-            onClick={() => handleChangeText('')}
+            onClick={() => undefined}
           />
         }
-        onClear={() => handleChangeText('')}
-        onValueChange={newText => handleChangeText(newText)}
+        onClear={handleClearText}
+        onValueChange={handleChangeText}
       />
     );
   },
