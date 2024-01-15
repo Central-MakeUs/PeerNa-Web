@@ -18,10 +18,10 @@ export default function TabItem({
   isDone,
 }: TabItemProps) {
   const { replace } = useFlow();
-  const handleClick = () => replace(icon, {});
+  const handleClick = () => replace(icon, {}, { animate: false });
 
   const getIcon = () => {
-    const iconMap: Record<ActivitiesTypes, string> = {
+    const iconMap: Record<string, string> = {
       HomePage: isDone && pathname === 'HomePage' ? 'HomeFill' : 'Home',
       PeerPage: isDone && pathname === 'PeerPage' ? 'PeopleFill' : 'People',
       ProjectPage:
