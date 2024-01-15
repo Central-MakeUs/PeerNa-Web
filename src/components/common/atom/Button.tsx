@@ -13,9 +13,9 @@ const ButtonVariant = {
 };
 
 const ButtonSize = {
-  sm: `w-[44px] h-[20px] px-4 py-1.5 ${FontVariantsClassName.body03}`,
-  md: `w-[48px] h-[20px] px-4 py-2.5 ${FontVariantsClassName.body03}`,
-  lg: `w-[52px] h-[22px] px-8 py-[15px] ${FontVariantsClassName.body01}`,
+  sm: `h-[32px] px-4 py-1.5 ${FontVariantsClassName.body03}`,
+  md: `h-[40px] px-4 py-2.5 ${FontVariantsClassName.body03}`,
+  lg: `h-[52px] px-8 py-[15px] ${FontVariantsClassName.body01}`,
 };
 
 type ButtonVariantTypes = keyof typeof ButtonVariant;
@@ -36,7 +36,6 @@ export default function Button({
   const { isDisabled, className } = props;
 
   const buttonClassNames = [
-    'box-content',
     ButtonSize[buttonSize],
     ButtonVariant[buttonVariant],
     isDisabled ? 'bg-gray02 text-gray04 opacity-100' : '',
