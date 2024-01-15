@@ -4,7 +4,7 @@ import Typography from '@components/common/atom/Typography';
 import OnBoardCard from '@components/pages/onboard/organism/OnBoardCard';
 import { OnboardStep } from '@constants/onboard';
 import { useFlow } from '@hooks/useStackFlow';
-import { AppScreen } from '@stackflow/plugin-basic-ui';
+import { AppScreen, IconBack } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
 
 type OnboardParams = {
@@ -29,7 +29,8 @@ const OnBoard: ActivityComponentType<OnboardParams> = ({ params }) => {
   return (
     <AppScreen>
       <div className="w-full h-screen flex flex-col items-center">
-        <div className="box-border w-full h-[68px] px-2 py-[18px] flex justify-end bg-transparent">
+        <div className="box-border w-full h-[68px] px-2 py-[18px] flex items-center justify-between bg-transparent">
+          {curStep !== 1 && curStep !== lastStep ? <IconBack /> : <div />}
           <Typography variant="body03" fontColor="gray07">
             바로 시작하기
           </Typography>
@@ -39,7 +40,9 @@ const OnBoard: ActivityComponentType<OnboardParams> = ({ params }) => {
       </div>
 
       <div className="absolute bottom-5 w-full px-5">
-        <Button onClick={handleClickStepPush}>다음</Button>
+        <Button onClick={handleClickStepPush}>
+          {curStep === lastStep ? '시작하기' : '다음'}
+        </Button>
       </div>
     </AppScreen>
   );
