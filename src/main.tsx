@@ -1,5 +1,4 @@
-import { DEVELOPMENT, MODE } from '@constants/environments.ts';
-import '@constants/trash.ts';
+import '@constants/tailwind.storybook.ts';
 import { NextUIProvider } from '@nextui-org/react';
 import '@stackflow/plugin-basic-ui/index.css';
 import {
@@ -37,8 +36,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <NextUIProvider>
         <RecoilRoot>
-          {MODE === DEVELOPMENT && <ReactQueryDevtools initialIsOpen={false} />}
           <App />
+          <ReactQueryDevtools initialIsOpen={false} />
         </RecoilRoot>
       </NextUIProvider>
     </QueryClientProvider>

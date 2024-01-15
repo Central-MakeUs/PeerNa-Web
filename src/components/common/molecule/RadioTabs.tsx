@@ -6,7 +6,7 @@ interface RadioTabsProps extends TabsProps {
   children: ReactNode;
 }
 
-const RadioTabs = ({ children, ...props }: RadioTabsProps) => {
+export default function RadioTabs({ children, ...props }: RadioTabsProps) {
   return (
     <Tabs
       {...props}
@@ -24,6 +24,4 @@ const RadioTabs = ({ children, ...props }: RadioTabsProps) => {
       {children}
     </Tabs>
   );
-};
-
-export default RadioTabs;
+}

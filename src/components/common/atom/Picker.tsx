@@ -1,60 +1,40 @@
-import { FontVariantsClassName, Palette, PickerSize } from '@constants/styles';
+import { FontVariantsClassName, PickerSize } from '@constants/styles';
+import useFocusTimeout from '@hooks/useFocusTimeout';
 import { Button } from '@nextui-org/react';
 import { ButtonProps } from '@react-types/button';
-import { useEffect, useState } from 'react';
-import { ColorTypes, FontVariantsKeys, PickerSizeTypes } from '@type/styles';
+import { PickerSizeTypes } from '@type/styles';
 
 interface PickerProps extends ButtonProps {
   text: string;
   size?: PickerSizeTypes;
-  fontVariant?: FontVariantsKeys;
-  bgColor?: ColorTypes;
-  fontColor?: ColorTypes;
-  borderColor?: ColorTypes;
 }
 
-const Picker = ({
-  text,
-  size = 'md',
-  fontVariant = 'header03',
-  bgColor = 'gray01',
-  fontColor = 'gray07',
-  borderColor = 'danger01',
-  ...props
-}: PickerProps) => {
-  const [isFocused, setIsFocused] = useState(false);
-  const handleFocus = () => setIsFocused(true);
+export default function Picker({ text, size = 'md', ...props }: PickerProps) {
+  const { isFocused, handleFocus } = useFocusTimeout();
 
-  useEffect(() => {
-    let focusTimeout: NodeJS.Timeout;
-    if (isFocused) focusTimeout = setTimeout(() => setIsFocused(false), 500);
-    return () => clearTimeout(focusTimeout);
-  }, [isFocused]);
+  const focusStyles = isFocused
+    ? 'focus:bg-secondary-orange focus:border-secondary-orange focus:text-secondary-orange'
+    : '';
+
+  const buttonClassName = `${PickerSize[size]} 
+  ${FontVariantsClassName.header03} 
+    text-gray07
+    bg-gray01 
+    border-2 
+    border-gray02
+    focus:bg-opacity-20 
+    ${focusStyles}
+  `;
 
   return (
     <Button
-      className={`
-      ${PickerSize[size]}
-      ${FontVariantsClassName[fontVariant]}
-      text-[${Palette[fontColor]}]
-      !bg-[${Palette[bgColor]}]
-      border-2
-      border-[${Palette[borderColor]}] 
-      focus:bg-opacity-20
-      ${
-        isFocused
-          ? 'focus:bg-secondary-orange focus:border-secondary-orange focus:text-secondary-orange'
-          : ''
-      }
-    `}
+      {...props}
+      className={buttonClassName}
       color="primary"
       variant="bordered"
       onClick={handleFocus}
-      {...props}
     >
       {text}
     </Button>
   );
-};
-
-export default Picker;
+}

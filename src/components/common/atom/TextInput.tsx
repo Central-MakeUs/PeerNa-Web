@@ -1,15 +1,9 @@
 import IconButton from '@components/common/atom/IconButton';
 import { Input, InputProps } from '@nextui-org/react';
-import {
-  ComponentPropsWithRef,
-  forwardRef,
-  useEffect,
-  useId,
-  useState,
-} from 'react';
+import React, { useId } from 'react';
 
 type InputWithoutSpecificProps = Omit<
-  ComponentPropsWithRef<'input'>,
+  React.ComponentPropsWithRef<'input'>,
   | 'color'
   | 'defaultValue'
   | 'onBlur'
@@ -31,40 +25,37 @@ export interface TextInputProps
     InputProps,
     AdditionalTextInputProps {}
 
-const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ text, handleChangeText, ...rest }, ref) => {
-    const inputId = useId();
-    const [inputText, setInputText] = useState<string>('');
-    const handleChangeInputText = (newValue: string) => setInputText(newValue);
-    const handleClear = () => setInputText('');
+function TextInput(
+  { text, handleChangeText, ...rest }: TextInputProps,
+  ref: React.ForwardedRef<HTMLInputElement>,
+) {
+  const inputId = useId();
 
-    useEffect(() => {
-      if (text !== inputText) handleChangeText(inputText);
-    }, [inputText, handleChangeInputText]);
+  const handleClearText = () => handleChangeText('');
 
-    return (
-      <Input
-        ref={ref}
-        type="text"
-        isClearable
-        id={inputId}
-        value={inputText}
-        endContent={
-          <IconButton
-            iconProps={{
-              id: 'Clear',
-              color: 'gray04',
-              className: 'bg-gray02 rounded-xl',
-            }}
-            onClick={() => ''}
-          />
-        }
-        onClear={handleClear}
-        onValueChange={handleChangeInputText}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <Input
+      {...rest}
+      ref={ref}
+      type="text"
+      isClearable
+      id={inputId}
+      value={text}
+      endContent={
+        <IconButton
+          iconProps={{
+            id: 'Clear',
+            color: 'gray04',
+            className: 'bg-gray02 rounded-xl',
+          }}
+          onClick={handleClearText}
+        />
+      }
+      onClear={handleClearText}
+      onValueChange={handleChangeText}
+    />
+  );
+}
 
-export default TextInput;
+const ForwardedTextInput = React.forwardRef(TextInput);
+export default ForwardedTextInput;

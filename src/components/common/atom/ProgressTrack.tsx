@@ -1,6 +1,6 @@
 import {
-  Progress as ProgressWithNextui,
   ProgressProps as ProgressPropsWithNextui,
+  Progress as ProgressWithNextui,
 } from '@nextui-org/react';
 
 export interface ProgressTrackProps extends ProgressPropsWithNextui {
@@ -26,13 +26,13 @@ const ProgressBarSize = {
  * 현재 스탭은 trackStep의 interval만큼의 value
  */
 
-const ProgressTrack = ({
+export default function ProgressTrack({
   barSize = 'short',
   step,
   trackStep,
   order = 1,
   ...props
-}: ProgressTrackProps) => {
+}: ProgressTrackProps) {
   const nextStep = order > step;
   const prevStep = order < step;
 
@@ -53,6 +53,4 @@ const ProgressTrack = ({
       }}
     />
   );
-};
-
-export default ProgressTrack;
+}

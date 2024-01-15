@@ -4,7 +4,7 @@ interface ToggleProps extends SwitchProps {
   isDisabled?: boolean;
 }
 
-const Toggle = ({ isDisabled, ...props }: ToggleProps) => {
+export default function Toggle({ isDisabled, ...props }: ToggleProps) {
   return (
     <Switch
       {...props}
@@ -17,6 +17,4 @@ const Toggle = ({ isDisabled, ...props }: ToggleProps) => {
       }}
     />
   );
-};
-
-export default Toggle;
+}

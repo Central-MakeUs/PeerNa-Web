@@ -1,6 +1,7 @@
 import { FontVariantsClassName, Palette } from '@constants/styles';
-import { HTMLAttributes } from 'react';
 import { ColorTypes, FontVariantsKeys } from '@type/styles';
+import { HTMLAttributes } from 'react';
+
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;
   children: string;
@@ -8,13 +9,13 @@ export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   as?: keyof JSX.IntrinsicElements;
 }
 
-const Typography = ({
+export default function Typography({
   as: Typo = 'p',
   variant = 'body01',
   fontColor = 'gray07',
   children,
   ...props
-}: TypographyProps) => {
+}: TypographyProps) {
   return (
     <Typo
       className={`
@@ -27,6 +28,4 @@ const Typography = ({
       {children}
     </Typo>
   );
-};
-
-export default Typography;
+}

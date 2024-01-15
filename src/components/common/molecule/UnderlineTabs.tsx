@@ -6,7 +6,10 @@ interface UnderlineTabsProps extends TabsProps {
   children: ReactNode;
 }
 
-const UnderlineTabs = ({ children, ...props }: UnderlineTabsProps) => {
+export default function UnderlineTabs({
+  children,
+  ...props
+}: UnderlineTabsProps) {
   return (
     <Tabs
       {...props}
@@ -25,6 +28,4 @@ const UnderlineTabs = ({ children, ...props }: UnderlineTabsProps) => {
       {children}
     </Tabs>
   );
-};
-
-export default UnderlineTabs;
+}

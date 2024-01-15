@@ -1,6 +1,6 @@
 import {
-  Avatar as AvatarWithNextui,
   AvatarProps as AvatarPropsWithNextui,
+  Avatar as AvatarWithNextui,
 } from '@nextui-org/react';
 
 interface ProgressStepProps extends AvatarPropsWithNextui {
@@ -9,13 +9,13 @@ interface ProgressStepProps extends AvatarPropsWithNextui {
   complete?: boolean;
 }
 
-const ProgressStep = ({
+export default function ProgressStep({
   name,
   step,
   icon,
   complete,
   ...props
-}: ProgressStepProps) => {
+}: ProgressStepProps) {
   /**
    * @description
    * 현재 스탭이 아닌 다음 스탭은 isDisabled으로 색상구분
@@ -32,6 +32,4 @@ const ProgressStep = ({
       {...props}
     />
   );
-};
-
-export default ProgressStep;
+}

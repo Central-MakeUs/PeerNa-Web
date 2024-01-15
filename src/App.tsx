@@ -1,4 +1,4 @@
-import { Stack } from '@components/common/atom/StackFlow';
+import { Stack } from '@hooks/useStackFlow';
 
 function App() {
   return (

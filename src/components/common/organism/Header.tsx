@@ -1,21 +1,17 @@
-import Typography, { TypographyProps } from '../atom/Typography';
 import IconButton from '../atom/IconButton';
+import Typography from '../atom/Typography';
 
 interface HeaderProps {
   showBackButton: boolean;
-  title?: TypographyProps;
+  title?: string;
   showSearchButton: boolean;
   showAddButton: boolean;
   centerAlign: boolean;
-  mainText: TypographyProps;
-  subText?: TypographyProps;
+  mainText: string;
+  subText?: string;
 }
 
-const handleBack = () => {
-  console.log('back');
-};
-
-const Header = ({
+export default function Header({
   showBackButton,
   title,
   showSearchButton,
@@ -23,39 +19,38 @@ const Header = ({
   centerAlign,
   mainText,
   subText,
-}: HeaderProps) => {
-  const textAlign = centerAlign && 'text-center m-auto';
+}: HeaderProps) {
+  const handleBack = () => {
+    console.log('Back button clicked');
+  };
 
   return (
-    <header className="max-w-[600px] m-auto">
+    <header className="max-w-[600px] px-5 mx-auto">
       {showBackButton && (
-        <section className="py-[22px] pl-5 flex">
-          {showBackButton && (
-            <IconButton
-              iconProps={{
-                id: 'ArrowLeft',
-                color: 'gray07',
-                width: 10.5,
-                height: 20,
-              }}
-              onClick={handleBack}
-            />
-          )}
+        <section className="py-[22px] w-full flex items-center">
+          <IconButton
+            iconProps={{
+              id: 'ArrowLeft',
+              color: 'gray07',
+              width: 10.5,
+              height: 20,
+            }}
+            onClick={handleBack}
+          />
           {title && (
-            <Typography variant="header02" className="m-auto">
-              {title.children}
+            <Typography variant="header02" className="w-full text-center">
+              {title}
             </Typography>
           )}
+          <div className="w-[10.5px]"></div>
         </section>
       )}
-      <section className="px-5">
-        <div className="flex items-center justify-between">
-          <Typography
-            as="h1"
-            className={`${textAlign} mb-2`}
-            variant={mainText.variant}
-          >
-            {mainText.children}
+      <section className="w-full">
+        <div
+          className={`flex items-center justify-between ${centerAlign ? 'text-center' : ''}`}
+        >
+          <Typography as="h1" className="w-full mb-2" variant="header01">
+            {mainText}
           </Typography>
           <div className="flex gap-2">
             {showAddButton && (
@@ -64,8 +59,8 @@ const Header = ({
                   id: 'AddPerson',
                   width: 25,
                   height: 25,
+                  color: 'gray07',
                 }}
-                color="gray07"
                 onClick={handleBack}
               />
             )}
@@ -76,6 +71,7 @@ const Header = ({
                   id: 'Search',
                   width: 23,
                   height: 23,
+                  color: 'gray07',
                 }}
               />
             )}
@@ -83,15 +79,13 @@ const Header = ({
         </div>
         {subText && (
           <Typography
-            className={`${textAlign} text-gray06`}
-            variant={subText.variant}
+            className={`text-gray06 ${centerAlign ? 'text-center' : ''}`}
+            variant="body02"
           >
-            {subText.children}
+            {subText}
           </Typography>
         )}
       </section>
     </header>
   );
-};
-
-export default Header;
+}

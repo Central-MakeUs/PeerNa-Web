@@ -1,12 +1,12 @@
 import {
-  Modal as ModalWithNextui,
-  ModalProps as ModalPropsWithNextui,
   ModalContent,
   ModalFooter,
+  ModalProps as ModalPropsWithNextui,
+  Modal as ModalWithNextui,
 } from '@nextui-org/react';
-import Typography from '../atom/Typography';
 import { modalState } from '@store/modal';
 import { useRecoilState } from 'recoil';
+import Typography from '../atom/Typography';
 
 interface ModalProps extends ModalPropsWithNextui {
   modalHeader: string;
@@ -14,7 +14,12 @@ interface ModalProps extends ModalPropsWithNextui {
   footer: React.ReactNode;
 }
 
-const Modal = ({ modalHeader, modalBody, footer, ...props }: ModalProps) => {
+export default function Modal({
+  modalHeader,
+  modalBody,
+  footer,
+  ...props
+}: ModalProps) {
   /** Open Modal 버튼 삭제 & 해당 함수는 props로 사용할 예정 */
   const [isOpen, setIsOpen] = useRecoilState(modalState);
 
@@ -41,12 +46,10 @@ const Modal = ({ modalHeader, modalBody, footer, ...props }: ModalProps) => {
                 {modalBody}
               </Typography>
             </div>
-            <ModalFooter className="!px-5 m-auto">{footer}</ModalFooter>
+            <ModalFooter>{footer}</ModalFooter>
           </ModalContent>
         </ModalWithNextui>
       )}
     </>
   );
-};
-
-export default Modal;
+}

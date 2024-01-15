@@ -7,7 +7,7 @@ interface StepProps extends ChipProps {
   isDisabled?: boolean;
 }
 
-const Step = ({ children, isDisabled, ...props }: StepProps) => {
+export default function Step({ children, isDisabled, ...props }: StepProps) {
   return (
     <Chip
       {...props}
@@ -20,6 +20,4 @@ const Step = ({ children, isDisabled, ...props }: StepProps) => {
       {children}
     </Chip>
   );
-};
-
-export default Step;
+}

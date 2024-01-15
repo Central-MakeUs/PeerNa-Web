@@ -3,52 +3,49 @@ import {
   TextAreaProps as TextAreaPropsWithNextui,
   Textarea,
 } from '@nextui-org/react';
-import { forwardRef, useEffect, useId, useState } from 'react';
+import React, { useId } from 'react';
 
 export interface TextAreaProps extends TextAreaPropsWithNextui {
   text: string;
   handleChangeText: (newText: string) => void;
 }
 
-const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ text, handleChangeText, ...rest }, ref) => {
-    const inputId = useId();
-    const [inputText, setInputText] = useState<string>('');
-    const handleChangeInputText = (newValue: string) => setInputText(newValue);
-    const handleClear = () => setInputText('');
+function TextArea(
+  props: TextAreaProps,
+  ref: React.ForwardedRef<HTMLTextAreaElement>,
+) {
+  const { text, handleChangeText, ...rest } = props;
+  const inputId = useId();
 
-    useEffect(() => {
-      if (text !== inputText) handleChangeText(inputText);
-    }, [inputText, handleChangeInputText]);
+  const handleClearText = () => handleChangeText('');
 
-    return (
-      <Textarea
-        ref={ref}
-        classNames={{
-          inputWrapper: '!h-full',
-        }}
-        type="text"
-        isClearable
-        minRows={3}
-        maxRows={5}
-        id={inputId}
-        value={inputText}
-        endContent={
-          <IconButton
-            iconProps={{
-              id: 'Clear',
-              color: 'gray04',
-              className: 'bg-gray02 rounded-xl',
-            }}
-            onClick={handleClear}
-          />
-        }
-        onClear={handleClear}
-        onValueChange={handleChangeInputText}
-        {...rest}
-      />
-    );
-  },
-);
-
-export default TextArea;
+  return (
+    <Textarea
+      {...rest}
+      ref={ref}
+      classNames={{
+        inputWrapper: '!h-full',
+      }}
+      type="text"
+      isClearable
+      minRows={3}
+      maxRows={5}
+      id={inputId}
+      value={text}
+      endContent={
+        <IconButton
+          iconProps={{
+            id: 'Clear',
+            color: 'gray04',
+            className: 'bg-gray02 rounded-xl',
+          }}
+          onClick={handleClearText}
+        />
+      }
+      onClear={handleClearText}
+      onValueChange={handleChangeText}
+    />
+  );
+}
+const ForwardedTextArea = React.forwardRef(TextArea);
+export default ForwardedTextArea;

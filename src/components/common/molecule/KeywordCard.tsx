@@ -1,5 +1,5 @@
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Chip from '@components/common/atom/Chip';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
 import { Spacer } from '@nextui-org/react';
@@ -11,7 +11,11 @@ interface KeywordCard {
   keywords: string[];
 }
 
-const KeywordCard = ({ title, subtitle, keywords }: KeywordCard) => {
+export default function KeywordCard({
+  title,
+  subtitle,
+  keywords,
+}: KeywordCard) {
   return (
     <div className="w-[350px] h-[200px] border-1 rounded-xl py-[24px] px-[18px]">
       <div className="flex flex-col gap-1">
@@ -22,8 +26,10 @@ const KeywordCard = ({ title, subtitle, keywords }: KeywordCard) => {
       </div>
       <Spacer y={6} />
       <div className="flex flex-wrap gap-2">
-        {keywords.map(keyword => (
-          <Chip type="I">{keyword}</Chip>
+        {keywords.map((keyword, index) => (
+          <Chip key={index} type="I">
+            {keyword}
+          </Chip>
         ))}
         {keywords.length === 0 && (
           <div className="w-[310px] h-[80px] bg-gray01 py-[14px] px-[58px] flex flex-col gap-1 items-center rounded-xl">
@@ -36,6 +42,4 @@ const KeywordCard = ({ title, subtitle, keywords }: KeywordCard) => {
       </div>
     </div>
   );
-};
-
-export default KeywordCard;
+}

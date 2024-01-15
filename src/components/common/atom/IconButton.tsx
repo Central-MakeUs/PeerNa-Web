@@ -6,12 +6,14 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void;
 }
 
-const IconButton = ({ onClick, iconProps, ...props }: IconButtonProps) => {
+export default function IconButton({
+  onClick,
+  iconProps,
+  ...props
+}: IconButtonProps) {
   return (
     <button {...props} onClick={onClick}>
       <SvgIcon {...iconProps} />
     </button>
   );
-};
-
-export default IconButton;
+}

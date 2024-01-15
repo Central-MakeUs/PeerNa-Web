@@ -1,27 +1,25 @@
 import SpriteIcon from '@assets/SpriteIcon.svg';
-import { Icon, IconId } from '@constants/icons';
+import { Icon, IconKeyType } from '@constants/icons';
 import { Palette } from '@constants/styles';
 import { ColorTypes } from '@type/styles';
 
 export interface SvgIconProps {
-  id: IconId;
+  id: IconKeyType;
   width?: number;
   height?: number;
   color?: ColorTypes;
   className?: string;
 }
 
-const SvgIcon = ({
+export default function SvgIcon({
   id,
   width = 24,
   height = 24,
   color = 'gray02',
-}: SvgIconProps) => {
+}: SvgIconProps) {
   return (
     <svg width={width} height={height} className={`text-[${Palette[color]}]`}>
       <use href={`${SpriteIcon}#${Icon[id]}`} />
     </svg>
   );
-};
-
-export default SvgIcon;
+}

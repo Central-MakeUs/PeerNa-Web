@@ -1,8 +1,8 @@
 import TabItem from '@components/common/atom/TabItem';
+import { ActivitiesTypes } from '@constants/activities';
 import { useActivity } from '@stackflow/react';
-import { ActivitiesTypes } from '@type/activities';
 
-const BottomNavigation = () => {
+export default function BottomNavigation() {
   const activity = useActivity();
   const activities = [
     { icon: 'Home', name: '홈' },
@@ -28,6 +28,4 @@ const BottomNavigation = () => {
       ))}
     </div>
   );
-};
-
-export default BottomNavigation;
+}

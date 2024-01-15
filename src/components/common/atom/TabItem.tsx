@@ -1,48 +1,8 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
-import { useFlow } from '@components/common/atom/StackFlow';
 import Typography from '@components/common/atom/Typography';
-import { ActivitiesTypes } from '@type/activities';
-
-const getIcon = (
-  icon: ActivitiesTypes,
-  pathname: ActivitiesTypes,
-  isDone: boolean,
-) => {
-  switch (icon) {
-    case 'Home':
-      return pathname === 'Home' && isDone ? (
-        <SvgIcon id="HomeFill" color="gray07" />
-      ) : (
-        <SvgIcon id="Home" />
-      );
-    case 'Peer':
-      return pathname === 'Peer' && isDone ? (
-        <SvgIcon id="PeopleFill" color="gray07" />
-      ) : (
-        <SvgIcon id="People" />
-      );
-    case 'Project':
-      return pathname === 'Project' && isDone ? (
-        <SvgIcon id="ProjectFill" color="gray07" />
-      ) : (
-        <SvgIcon id="Project" />
-      );
-    case 'Notification':
-      return pathname === 'Notification' && isDone ? (
-        <SvgIcon id="AlertFill" color="gray07" />
-      ) : (
-        <SvgIcon id="Alert" />
-      );
-    case 'Mypage':
-      return pathname === 'Mypage' && isDone ? (
-        <SvgIcon id="MyPageFill" color="gray07" />
-      ) : (
-        <SvgIcon id="MyPage" />
-      );
-    default:
-      return null;
-  }
-};
+import { ActivitiesTypes } from '@constants/activities';
+import { IconKeyType } from '@constants/icons';
+import { useFlow } from '@hooks/useStackFlow';
 
 interface TabItemProps {
   icon: ActivitiesTypes;
@@ -51,21 +11,46 @@ interface TabItemProps {
   isDone: boolean;
 }
 
-const TabItem = ({ icon, name, pathname, isDone }: TabItemProps) => {
+export default function TabItem({
+  icon,
+  name,
+  pathname,
+  isDone,
+}: TabItemProps) {
   const { replace } = useFlow();
   const handleClick = () => replace(icon, {});
+
+  const getIcon = () => {
+    const iconMap: Record<ActivitiesTypes, string> = {
+      Home: isDone && pathname === 'Home' ? 'HomeFill' : 'Home',
+      Peer: isDone && pathname === 'Peer' ? 'PeopleFill' : 'People',
+      Project: isDone && pathname === 'Project' ? 'ProjectFill' : 'Project',
+      Notification:
+        isDone && pathname === 'Notification' ? 'AlertFill' : 'Alert',
+      Mypage: isDone && pathname === 'Mypage' ? 'MyPageFill' : 'MyPage',
+    };
+    const iconId = iconMap[icon];
+
+    if (iconId) {
+      return (
+        <SvgIcon
+          id={iconId as IconKeyType}
+          color={isDone ? 'gray07' : undefined}
+        />
+      );
+    }
+    return null;
+  };
 
   return (
     <div
       className="flex-1 flex flex-col items-center cursor-pointer"
       onClick={handleClick}
     >
-      {getIcon(icon, pathname, isDone)}
+      {getIcon()}
       <Typography variant="body05" className="text-[10px] text-gray06">
         {name}
       </Typography>
     </div>
   );
-};
-
-export default TabItem;
+}
