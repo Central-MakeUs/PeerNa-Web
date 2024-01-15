@@ -22,12 +22,13 @@ export default function TabItem({
 
   const getIcon = () => {
     const iconMap: Record<ActivitiesTypes, string> = {
-      Home: isDone && pathname === 'Home' ? 'HomeFill' : 'Home',
-      Peer: isDone && pathname === 'Peer' ? 'PeopleFill' : 'People',
-      Project: isDone && pathname === 'Project' ? 'ProjectFill' : 'Project',
-      Notification:
-        isDone && pathname === 'Notification' ? 'AlertFill' : 'Alert',
-      Mypage: isDone && pathname === 'Mypage' ? 'MyPageFill' : 'MyPage',
+      HomePage: isDone && pathname === 'HomePage' ? 'HomeFill' : 'Home',
+      PeerPage: isDone && pathname === 'PeerPage' ? 'PeopleFill' : 'People',
+      ProjectPage:
+        isDone && pathname === 'ProjectPage' ? 'ProjectFill' : 'Project',
+      NotificationPage:
+        isDone && pathname === 'NotificationPage' ? 'AlertFill' : 'Alert',
+      MyPage: isDone && pathname === 'MyPage' ? 'MyPageFill' : 'MyPage',
     };
     const iconId = iconMap[icon];
 

@@ -1,13 +1,13 @@
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import { ActivityComponentType } from '@stackflow/react';
 
-const Peer: ActivityComponentType = () => {
+const ProjectPage: ActivityComponentType = () => {
   return (
     <div>
-      <div>Peer</div>
+      <div>ProjectPage</div>
       <BottomNavigation />
     </div>
   );
 };
 
-export default Peer;
+export default ProjectPage;

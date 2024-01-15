@@ -9,13 +9,13 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     webRendererPlugin(),
     historySyncPlugin({
       routes: {
-        Home: '/',
-        Peer: '/peer',
-        Project: '/project',
-        Notification: '/notification',
-        Mypage: '/mypage',
+        HomePage: '/',
+        PeerPage: '/peer',
+        ProjectPage: '/project',
+        NotificationPage: '/notification',
+        MyPage: '/mypage',
       },
-      fallbackActivity: () => 'Home',
+      fallbackActivity: () => 'HomePage',
     }),
   ],
   activities: {

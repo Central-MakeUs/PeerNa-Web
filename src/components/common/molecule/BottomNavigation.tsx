@@ -5,11 +5,11 @@ import { useActivity } from '@stackflow/react';
 export default function BottomNavigation() {
   const activity = useActivity();
   const activities = [
-    { icon: 'Home', name: '홈' },
-    { icon: 'Peer', name: '동료' },
-    { icon: 'Project', name: '프로젝트' },
-    { icon: 'Notification', name: '알림' },
-    { icon: 'Mypage', name: '마이페이지' },
+    { icon: 'HomePage', name: '홈' },
+    { icon: 'PeerPage', name: '동료' },
+    { icon: 'ProjectPage', name: '프로젝트' },
+    { icon: 'NotificationPage', name: '알림' },
+    { icon: 'MyPage', name: '마이페이지' },
   ];
 
   return (

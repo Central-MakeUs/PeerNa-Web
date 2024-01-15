@@ -1,15 +1,15 @@
-import Home from '@components/home/template/Home';
-import Mypage from '@components/mypage/template/Mypage';
-import Notification from '@components/notification/template/Notification';
-import Peer from '@components/peer/template/Peer';
-import Project from '@components/project/template/Project';
+import HomePage from '@components/pages/home/template/HomePage';
+import MyPage from '@components/pages/mypage/template/MyPage';
+import NotificationPage from '@components/pages/notification/template/NotificationPage';
+import PeerPage from '@components/pages/peer/template/PeerPage';
+import ProjectPage from '@components/pages/project/template/ProjectPage';
 
 export const Activities = {
-  Home,
-  Peer,
-  Project,
-  Notification,
-  Mypage,
+  HomePage,
+  PeerPage,
+  ProjectPage,
+  NotificationPage,
+  MyPage,
 };
 
 export type ActivitiesTypes = keyof typeof Activities;

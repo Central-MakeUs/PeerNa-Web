@@ -1,13 +1,13 @@
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import { ActivityComponentType } from '@stackflow/react';
 
-const Notification: ActivityComponentType = () => {
+const NotificationPage: ActivityComponentType = () => {
   return (
     <div>
-      <div>Notification</div>
+      <div>NotificationPage</div>
       <BottomNavigation />
     </div>
   );
 };
 
-export default Notification;
+export default NotificationPage;
