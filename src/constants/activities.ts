@@ -1,3 +1,4 @@
+import CommonTestPage from '@components/pages/commonTest/template/CommonTestPage';
 import HomePage from '@components/pages/home/template/HomePage';
 import MyPage from '@components/pages/mypage/template/MyPage';
 import NotificationPage from '@components/pages/notification/template/NotificationPage';
@@ -14,6 +15,7 @@ export const Activities = {
   MyPage,
   OnBoard,
   SelfTestPage,
+  CommonTestPage,
 };
 
 export type ActivitiesTypes = keyof typeof Activities;

@@ -21,6 +21,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         MyPage: '/mypage',
         OnBoard: '/onBoard',
         SelfTestPage: '/self/test',
+        CommonTestPage: '/test',
       },
       fallbackActivity: () => 'HomePage',
     }),

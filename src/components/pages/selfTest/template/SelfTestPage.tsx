@@ -24,8 +24,7 @@ const SelfTestPage: ActivityComponentType<OnboardParams> = ({ params }) => {
   const { push, pop, replace } = useFlow();
   const handleClickStepPush = () => {
     if (curStep === lastStep) {
-      push('SelfTestPage', { step: nextStep }, { animate: true });
-      localStorage.setItem('OnBoard', 'true');
+      push('CommonTestPage', { type: 'self' });
       return;
     }
 
