@@ -19,7 +19,7 @@ const OnBoard: ActivityComponentType<OnboardParams> = ({ params }) => {
 
   const handleClickStepPush = () => {
     if (curStep === lastStep) {
-      replace('HomePage', {}, { animate: true });
+      replace('SelfTestPage', { step: '1' }, { animate: true });
       localStorage.setItem('OnBoard', 'true');
       return;
     }

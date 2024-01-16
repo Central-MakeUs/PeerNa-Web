@@ -20,6 +20,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         NotificationPage: '/notification',
         MyPage: '/mypage',
         OnBoard: '/onBoard',
+        SelfTestPage: '/self/test',
       },
       fallbackActivity: () => 'HomePage',
     }),

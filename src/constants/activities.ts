@@ -4,6 +4,7 @@ import NotificationPage from '@components/pages/notification/template/Notificati
 import OnBoard from '@components/pages/onboard/template/OnBoard';
 import PeerPage from '@components/pages/peer/template/PeerPage';
 import ProjectPage from '@components/pages/project/template/ProjectPage';
+import SelfTestPage from '@components/pages/selfTest/template/selftTestPage';
 
 export const Activities = {
   HomePage,
@@ -12,6 +13,7 @@ export const Activities = {
   NotificationPage,
   MyPage,
   OnBoard,
+  SelfTestPage,
 };
 
 export type ActivitiesTypes = keyof typeof Activities;
