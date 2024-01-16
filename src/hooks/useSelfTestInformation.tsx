@@ -1,4 +1,4 @@
-import { nameSizeValidator, selfTestState } from '@store/selfTest';
+import { nameSizeValidator, selfTestState } from '@store/selftTest';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 export default function useSelfTestInformation() {
