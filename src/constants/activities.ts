@@ -4,7 +4,7 @@ import NotificationPage from '@components/pages/notification/template/Notificati
 import OnBoard from '@components/pages/onboard/template/OnBoard';
 import PeerPage from '@components/pages/peer/template/PeerPage';
 import ProjectPage from '@components/pages/project/template/ProjectPage';
-import SelfTestPage from '@components/pages/selfTest/template/selftTestPage';
+import SelfTestPage from '@components/pages/selfTest/template/SelfTestPage';
 
 export const Activities = {
   HomePage,

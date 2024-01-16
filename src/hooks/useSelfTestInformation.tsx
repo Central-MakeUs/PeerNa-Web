@@ -19,7 +19,7 @@ export default function useSelfTestInformation() {
   const handleChangePosition = (newPosition: string) => {
     setSelfTest(prev => ({
       ...prev,
-      name: newPosition,
+      position: newPosition,
     }));
   };
 

@@ -19,6 +19,6 @@ export const nameSizeValidator = selector({
   key: 'nameSizeValidator',
   get: ({ get }) => {
     const selfTest = get(selfTestState);
-    return selfTest.name.length <= 5;
+    return selfTest.name.length > 0 && selfTest.name.length <= 5;
   },
 });
