@@ -10,5 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    values: ['직업이요', '직업이에요', '직업'],
+  },
 };
