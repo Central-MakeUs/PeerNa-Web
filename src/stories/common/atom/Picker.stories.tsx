@@ -1,5 +1,6 @@
 import Picker from '@components/common/atom/Picker';
 import { Meta, StoryObj } from '@storybook/react';
+import SvgIcon from '@components/common/atom/SvgIcon';
 
 const meta: Meta<typeof Picker> = {
   title: 'Picker',
@@ -13,9 +14,6 @@ export const Default: Story = {
   args: {
     size: 'md',
     text: '좋은 리더',
-    fontVariant: 'header03',
-    bgColor: 'gray01',
-    fontColor: 'gray07',
-    borderColor: 'gray02',
+    icon: <SvgIcon id="HeartedPerson" color="primary" />,
   },
 };
