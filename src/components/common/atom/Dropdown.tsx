@@ -2,30 +2,35 @@ import Typography from '@components/common/atom/Typography';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from '@components/shadcn/select';
 
-export default function Dropdown() {
+interface DropdownProps {
+  values: string[];
+  onSelect: (value: string) => void;
+}
+
+export default function Dropdown({ values, onSelect }: DropdownProps) {
   return (
     <Select>
-      <SelectTrigger
-        className="w-[350px] 
-      !bg-[#F6F7F8] border-[#E3E6E8]"
-      >
+      <SelectTrigger className="w-[350px] !bg-[#F6F7F8] border-[#E3E6E8]">
         <SelectValue placeholder="선택" />
       </SelectTrigger>
       <SelectContent sideOffset={5}>
-        <SelectItem value="직업이에요">
-          <Typography variant={'body05'}>직업이에요</Typography>
-        </SelectItem>
-        <SelectItem value="직업이요">
-          <Typography variant={'body05'}>직업이요</Typography>
-        </SelectItem>
-        <SelectItem value="직업">
-          <Typography variant={'body05'}>직업</Typography>
-        </SelectItem>
+        <SelectGroup>
+          {values.map((value, index) => (
+            <SelectItem
+              key={index}
+              value={value}
+              onSelect={() => onSelect(value)}
+            >
+              <Typography variant={'body05'}>{value}</Typography>
+            </SelectItem>
+          ))}
+        </SelectGroup>
       </SelectContent>
     </Select>
   );
