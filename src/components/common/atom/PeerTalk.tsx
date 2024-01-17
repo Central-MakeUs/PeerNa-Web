@@ -3,7 +3,6 @@ import {
   Chip as ChipWithNextui,
 } from '@nextui-org/react';
 import Typography from '@components/common/atom/Typography';
-import { Palette } from '@constants/styles';
 
 interface TalkProps extends ChipPropsWithNextui {
   count: number;
@@ -28,7 +27,7 @@ export default function PeerTalk({
         startContent={icon}
         className={talkStyle}
         classNames={{
-          base: `bg-[${Palette.gray01}] border-1 border-${Palette.gray02}`,
+          base: `bg-gray01 border-1 border-gray02`,
         }}
       >
         <Typography variant="body02">{children}</Typography>
