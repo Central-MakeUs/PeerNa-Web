@@ -28,11 +28,12 @@ export default function Picker({ text, size, icon, ...props }: PickerProps) {
 
   const buttonClassName = `${PickerSize[size]} 
   ${
-    size === 'sm'
-      ? `${FontVariantsClassName.body02} ${commonStyle}`
-      : `${FontVariantsClassName.header03} ${commonStyle}`
-  } 
-    
+    size === 'md'
+      ? `${FontVariantsClassName.header03} ${commonStyle}`
+      : size === 'sm'
+        ? `${FontVariantsClassName.body02} ${commonStyle}`
+        : ''
+  }
   `;
 
   return (

@@ -14,6 +14,13 @@ export const Default: Story = {
   args: {
     size: 'md',
     text: '좋은 리더',
-    icon: <SvgIcon id="HeartedPerson" color="primary" />,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: 'sm',
+    text: '좋은 리더',
+    icon: <SvgIcon id="HeartedPerson" color="primary" width={24} height={24} />,
   },
 };
