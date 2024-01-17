@@ -64,4 +64,7 @@ export const Icon = {
   AddCircle: 'add_circle',
   NotepadPerson: 'notepad_person',
   Person: 'person',
+  Complete: 'complete',
+  HeartedPerson: 'hearted_person',
+  Error: 'error',
 };

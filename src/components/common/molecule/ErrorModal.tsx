@@ -4,30 +4,30 @@ import {
   ModalProps as ModalPropsWithNextui,
   Modal as ModalWithNextui,
 } from '@nextui-org/react';
-import { modalState } from '@store/modal';
+import Typography from '@components/common/atom/Typography';
 import { useRecoilState } from 'recoil';
-import Typography from '../atom/Typography';
+import { modalState } from '@store/modal';
+import SvgIcon from '../atom/SvgIcon';
 
-interface ModalProps extends ModalPropsWithNextui {
+interface ErrorModalProps extends ModalPropsWithNextui {
   modalHeader: string;
-  modalBody: string;
+  modalBody: JSX.Element;
   footer: React.ReactNode;
 }
 
-export default function Modal({
+export default function ErrorModal({
   modalHeader,
   modalBody,
   footer,
   ...props
-}: ModalProps) {
-  /** Open Modal 버튼 삭제 & 해당 함수는 props로 사용할 예정 */
+}: ErrorModalProps) {
   const [modal, setModal] = useRecoilState(modalState);
 
   const handleSetIsOpen = (isOpen: boolean) => {
     setModal({
       ...modal,
       isOpen: !isOpen,
-      modalType: 'default',
+      modalType: 'error',
     });
   };
 
@@ -46,8 +46,12 @@ export default function Modal({
           }}
         >
           <ModalContent className="w-[310px] m-auto">
-            <div className="pt-10 pb-4">
-              <Typography className="text-center mb-2" variant={'header03'}>
+            <div className="pt-10 pb-4 flex flex-col items-center">
+              <SvgIcon id="Error" color="danger01" />
+              <Typography
+                className="text-center mt-2 mb-2"
+                variant={'header03'}
+              >
                 {modalHeader}
               </Typography>
               <Typography className="text-center" variant={'body04'}>

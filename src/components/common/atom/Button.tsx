@@ -10,6 +10,7 @@ const ButtonVariant = {
   secondary: 'bg-gray07 text-white',
   tertiary: 'bg-gray01 text-black',
   naked: 'text-primary500',
+  error: 'bg-danger01 text-white',
 };
 
 const ButtonSize = {

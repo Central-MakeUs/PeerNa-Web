@@ -20,7 +20,7 @@ export const Palette = {
   gray07: '#394046',
   gray08: '#22262A',
   black: '#000000',
-  danger01: '#FF7474',
+  danger01: '#FF4D4D',
   danger02: '#A64141',
 };
 
@@ -64,4 +64,5 @@ export const Height = {
 
 export const PickerSize = {
   md: 'w-[171px] h-[121px]',
+  sm: 'w-[122px] h-[48px]',
 };
