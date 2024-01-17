@@ -5,12 +5,11 @@ import { ButtonProps } from '@react-types/button';
 import { PickerSizeTypes } from '@type/styles';
 
 interface PickerProps extends ButtonProps {
-  text: string;
   size: PickerSizeTypes;
-  icon?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export default function Picker({ text, size, icon, ...props }: PickerProps) {
+export default function Picker({ size, children, ...props }: PickerProps) {
   const { isFocused, handleFocus } = useFocusTimeout();
 
   const focusStyles = isFocused
@@ -22,19 +21,16 @@ export default function Picker({ text, size, icon, ...props }: PickerProps) {
     bg-gray01 
     border-2 
     border-gray02
-    focus:bg-opacity-20 
+    focus:bg-opacity-20
     ${focusStyles}
   `;
 
-  const buttonClassName = `${PickerSize[size]} 
+  const buttonClassName = `${PickerSize[size]}
   ${
     size === 'md'
-      ? `${FontVariantsClassName.header03} ${commonStyle}`
-      : size === 'sm'
-        ? `${FontVariantsClassName.body02} ${commonStyle}`
-        : ''
-  }
-  `;
+      ? FontVariantsClassName.header03
+      : `${FontVariantsClassName.body02} gap-1`
+  } ${commonStyle}`;
 
   return (
     <Button
@@ -44,8 +40,7 @@ export default function Picker({ text, size, icon, ...props }: PickerProps) {
       variant="bordered"
       onClick={handleFocus}
     >
-      {icon && icon}
-      {text}
+      {children}
     </Button>
   );
 }
