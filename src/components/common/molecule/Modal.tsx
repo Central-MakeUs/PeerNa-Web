@@ -21,16 +21,24 @@ export default function Modal({
   ...props
 }: ModalProps) {
   /** Open Modal 버튼 삭제 & 해당 함수는 props로 사용할 예정 */
-  const [isOpen, setIsOpen] = useRecoilState(modalState);
+  const [modal, setModal] = useRecoilState(modalState);
+
+  const handleSetIsOpen = (isOpen: boolean) => {
+    setModal({
+      ...modal,
+      isOpen: !isOpen,
+      modalType: 'default',
+    });
+  };
 
   return (
     <>
-      {isOpen && (
+      {modal.isOpen && (
         <ModalWithNextui
           {...props}
           backdrop="opaque"
-          isOpen={isOpen}
-          onOpenChange={setIsOpen}
+          isOpen={modal.isOpen}
+          onOpenChange={handleSetIsOpen}
           hideCloseButton={true}
           classNames={{
             backdrop:
