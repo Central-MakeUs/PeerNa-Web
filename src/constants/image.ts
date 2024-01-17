@@ -1,8 +1,13 @@
+import card_purple from '@assets/image/card_purple.png';
+import card_orange from '@assets/image/card_orange.png';
+import card_pink from '@assets/image/card_pink.png';
+import card_yellow from '@assets/image/card_yellow.png';
+
 export const Image = {
-  CardPurple: '@assets/image/card_purple.png',
-  CardOrange: '@assets/image/card_orange.png',
-  CardPink: '@assets/image/card_pink.png',
-  CardYellow: '@assets/image/card_yellow.png',
+  CardPurple: card_purple,
+  CardOrange: card_orange,
+  CardPink: card_pink,
+  CardYellow: card_yellow,
 };
 
 export const Value = {
