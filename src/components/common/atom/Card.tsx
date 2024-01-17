@@ -1,27 +1,32 @@
-import card_purple from '@assets/image/card_purple.png';
+import { Image, CardType } from '@constants/image';
 import Typography from './Typography';
 
 interface CardItemProps {
-  cardItem: {
-    value: string;
-    keyword: string;
-    description: string;
-  };
+  type: CardType;
+  value: string;
+  keyword: string;
+  description: string;
 }
 
-export default function Card({ cardItem }: CardItemProps) {
+export default function Card({
+  type,
+  value,
+  keyword,
+  description,
+}: CardItemProps) {
+  const path = Image[type];
   return (
     <section className="flex w-[350px] gap-3">
-      <img src={card_purple} width={82} height={144} />
+      <img src={path} width={82} height={144} alt={`${type} card`} />
       <div className="py-[12.5px]">
         <Typography variant="caption01" fontColor="gray05" className="mb-1">
-          {cardItem.value}
+          {value}
         </Typography>
         <Typography variant="header03" fontColor="gray08" className="mb-1">
-          {cardItem.keyword}
+          {keyword}
         </Typography>
         <Typography variant="body04" fontColor="gray06">
-          {cardItem.description}
+          {description}
         </Typography>
       </div>
     </section>
