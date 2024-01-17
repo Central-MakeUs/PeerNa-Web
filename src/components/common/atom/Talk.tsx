@@ -14,17 +14,15 @@ interface TalkProps extends ChipPropsWithNextui {
 export default function Talk({ type, children }: TalkProps) {
   const bgOpacity = getRgbaColorWithOpacity(Palette.white, 0.4);
 
+  const bgStyle = `${type === 'dimed' ? `bg-[${Palette.gray01}]` : type === 'filled' ? `bg-[${bgOpacity}]` : ''}`;
+
   const textStyle = `"${children}"`;
 
-  const bgStyle = () => {
-    if (type === 'dimed') return `bg-[${Palette.gray01}]`;
-    if (type === 'filled') return `bg-[${bgOpacity}]`;
-  };
   return (
     <ChipWithNextui
       className="rounded-xl px-4 py-2 box-content"
       classNames={{
-        base: bgStyle(),
+        base: bgStyle,
       }}
     >
       <Typography variant="body02">{textStyle}</Typography>
