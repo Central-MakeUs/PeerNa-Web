@@ -6,6 +6,7 @@ import {
 export interface ProgressTrackProps extends ProgressPropsWithNextui {
   step: number;
   trackStep: number;
+  maxStep: number; // 추가된 최대 step 프로퍼티
   order?: number;
   barSize?: ProgressBarSizeType;
 }
@@ -30,13 +31,15 @@ export default function ProgressTrack({
   barSize = 'short',
   step,
   trackStep,
+  maxStep,
   order = 1,
   ...props
 }: ProgressTrackProps) {
   const nextStep = order > step;
   const prevStep = order < step;
 
-  const interval = step === 2 || step === 3 ? 25 : 20;
+  // interval 계산을 maxStep에 따라 동적으로 조정
+  const interval = 100 / maxStep;
 
   const value = nextStep ? 0 : prevStep ? 100 : trackStep * interval;
 

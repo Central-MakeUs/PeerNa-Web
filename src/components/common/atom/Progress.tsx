@@ -4,16 +4,16 @@ import {
 } from '@nextui-org/react';
 
 export interface ProgressProps extends ProgressPropsWithNextui {
-  currentStep: number;
+  curStep: number;
   lastStep: number;
 }
 
 export default function Progress({
-  currentStep,
+  curStep,
   lastStep,
   ...props
 }: ProgressProps) {
-  const value = (100 / lastStep) * currentStep;
+  const value = (100 / lastStep) * curStep;
   return (
     <ProgressWithNextui
       {...props}
