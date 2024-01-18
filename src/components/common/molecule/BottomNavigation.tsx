@@ -1,5 +1,5 @@
 import TabItem from '@components/common/atom/TabItem';
-import { ActivitiesTypes } from '@constants/activities';
+import { TabItemTypes } from '@constants/activities';
 import { useActivity } from '@stackflow/react';
 
 export default function BottomNavigation() {
@@ -17,9 +17,9 @@ export default function BottomNavigation() {
       {activities.map(({ icon, name }) => (
         <TabItem
           key={icon}
-          icon={icon as ActivitiesTypes}
+          icon={icon as TabItemTypes}
           name={name}
-          pathname={activity.name as ActivitiesTypes}
+          pathname={activity.name as TabItemTypes}
           isDone={
             activity.transitionState === 'enter-done' ||
             activity.transitionState === 'enter-active'
