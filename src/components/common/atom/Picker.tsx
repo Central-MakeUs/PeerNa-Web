@@ -1,15 +1,19 @@
 import { FontVariantsClassName, PickerSize } from '@constants/styles';
 import useFocusTimeout from '@hooks/useFocusTimeout';
-import { Button } from '@nextui-org/react';
-import { ButtonProps } from '@react-types/button';
+import { Button, ButtonProps } from '@nextui-org/react';
 import { PickerSizeTypes } from '@type/styles';
+import { ReactNode } from 'react';
 
 interface PickerProps extends ButtonProps {
-  size: PickerSizeTypes;
-  children: React.ReactNode;
+  children: ReactNode;
+  size?: PickerSizeTypes;
 }
 
-export default function Picker({ size, children, ...props }: PickerProps) {
+export default function Picker({
+  children,
+  size = 'md',
+  ...props
+}: PickerProps) {
   const { isFocused, handleFocus } = useFocusTimeout();
 
   const focusStyles = isFocused
@@ -32,13 +36,18 @@ export default function Picker({ size, children, ...props }: PickerProps) {
       : `${FontVariantsClassName.body02} gap-1`
   } ${commonStyle}`;
 
+  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    handleFocus();
+    props.onClick?.(event);
+  };
+
   return (
     <Button
       {...props}
       className={buttonClassName}
       color="primary"
       variant="bordered"
-      onClick={handleFocus}
+      onClick={handleButtonClick}
     >
       {children}
     </Button>
