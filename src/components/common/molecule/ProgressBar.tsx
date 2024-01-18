@@ -3,7 +3,11 @@ import React from 'react';
 import ProgressStep from '../atom/ProgressStep';
 import ProgressTrack, { ProgressTrackProps } from '../atom/ProgressTrack';
 
-export default function ProgressBar({ step, trackStep }: ProgressTrackProps) {
+export default function ProgressBar({
+  step,
+  maxStep,
+  trackStep,
+}: ProgressTrackProps) {
   return (
     /**
      * @description
@@ -26,6 +30,7 @@ export default function ProgressBar({ step, trackStep }: ProgressTrackProps) {
           {order !== 5 && (
             <ProgressTrack
               step={step}
+              maxStep={maxStep}
               trackStep={trackStep}
               order={order}
               barSize={'short'}
