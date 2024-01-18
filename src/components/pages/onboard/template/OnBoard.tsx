@@ -35,7 +35,7 @@ const OnBoard: ActivityComponentType<OnboardParams> = ({ params }) => {
             바로 시작하기
           </Typography>
         </div>
-        <Progress currentStep={curStep} lastStep={4} />
+        <Progress curStep={curStep} lastStep={4} />
         <OnBoardCard step={curStep - 1} />
       </div>
 

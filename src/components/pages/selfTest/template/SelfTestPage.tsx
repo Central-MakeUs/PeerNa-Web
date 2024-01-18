@@ -24,7 +24,7 @@ const SelfTestPage: ActivityComponentType<OnboardParams> = ({ params }) => {
   const { push, pop, replace } = useFlow();
   const handleClickStepPush = () => {
     if (curStep === lastStep) {
-      push('CommonTestPage', { type: 'self' });
+      push('CommonTestPage', { type: 'self', step: '1' });
       return;
     }
 

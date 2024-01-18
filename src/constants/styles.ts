@@ -64,5 +64,5 @@ export const Height = {
 
 export const PickerSize = {
   md: 'w-[171px] h-[121px]',
-  sm: 'w-[122px] h-[48px]',
+  sm: 'h-[48px]',
 };

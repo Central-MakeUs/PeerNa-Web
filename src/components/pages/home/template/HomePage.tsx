@@ -44,7 +44,9 @@ const HomePage: ActivityComponentType = () => {
       >
         OpenDrawer
       </Button>
-      <Button onClick={() => push('SelfTestPage', { step: '1' })}>
+      <Button
+        onClick={() => push('CommonTestPage', { type: 'self', step: '4' })}
+      >
         go now
       </Button>
       <div className="h-full">HomePage</div>
