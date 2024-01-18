@@ -14,4 +14,13 @@ export const Activities = {
   Mypage,
 };
 
+export const TabItem = {
+  Home,
+  Peer,
+  Project,
+  Notification,
+  Mypage,
+};
+
 export type ActivitiesTypes = keyof typeof Activities;
+export type TabItemTypes = keyof typeof TabItem;

@@ -1,13 +1,13 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { ActivitiesTypes } from '@constants/activities';
+import { TabItemTypes } from '@constants/activities';
 import { IconKeyType } from '@constants/icons';
 import { useFlow } from '@hooks/useStackFlow';
 
 interface TabItemProps {
-  icon: ActivitiesTypes;
+  icon: TabItemTypes;
   name: string;
-  pathname: ActivitiesTypes;
+  pathname: TabItemTypes;
   isDone: boolean;
 }
 
@@ -21,7 +21,7 @@ export default function TabItem({
   const handleClick = () => replace(icon, {});
 
   const getIcon = () => {
-    const iconMap: Record<ActivitiesTypes, string> = {
+    const iconMap: Record<TabItemTypes, string> = {
       Home: isDone && pathname === 'Home' ? 'HomeFill' : 'Home',
       Peer: isDone && pathname === 'Peer' ? 'PeopleFill' : 'People',
       Project: isDone && pathname === 'Project' ? 'ProjectFill' : 'Project',
