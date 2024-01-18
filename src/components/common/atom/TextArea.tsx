@@ -10,7 +10,7 @@ export interface TextAreaProps extends TextAreaPropsWithNextui {
   handleChangeText: (newText: string) => void;
 }
 
-function TextArea(
+function CustomTextArea(
   props: TextAreaProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
@@ -47,5 +47,5 @@ function TextArea(
     />
   );
 }
-const ForwardedTextArea = React.forwardRef(TextArea);
-export default ForwardedTextArea;
+const TextArea = React.forwardRef(CustomTextArea);
+export default TextArea;
