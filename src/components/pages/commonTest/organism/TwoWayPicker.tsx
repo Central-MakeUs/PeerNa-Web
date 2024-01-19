@@ -15,8 +15,7 @@ export default function TwoWayPicker({
   answerStep,
   handleClickNextStep,
 }: TwoWayPicker) {
-  const { commonTest, handleAddAnswers } = useCommonTestState();
-  console.log(commonTest.answers);
+  const { handleAddAnswers } = useCommonTestState();
 
   const [isClickDisabled, setIsClickDisabled] = useState(false);
 
