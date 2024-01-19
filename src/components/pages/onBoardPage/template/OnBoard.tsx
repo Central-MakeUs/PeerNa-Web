@@ -1,17 +1,17 @@
 import Button from '@components/common/atom/Button';
 import Progress from '@components/common/atom/Progress';
 import Typography from '@components/common/atom/Typography';
-import OnBoardCard from '@components/pages/onboard/organism/OnBoardCard';
+import OnBoardCard from '@components/pages/onBoardPage/organism/OnBoardCard';
 import { OnboardStep } from '@constants/onboard';
 import { useFlow } from '@hooks/useStackFlow';
 import { AppScreen, IconBack } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
 
-type OnboardParams = {
+type OnBoardPageParams = {
   step: string;
 };
 
-const OnBoard: ActivityComponentType<OnboardParams> = ({ params }) => {
+const OnBoardPage: ActivityComponentType<OnBoardPageParams> = ({ params }) => {
   const { push, replace } = useFlow();
   const curStep = parseInt(params.step ?? 1);
   const nextStep = String(curStep + 1);
@@ -48,4 +48,4 @@ const OnBoard: ActivityComponentType<OnboardParams> = ({ params }) => {
   );
 };
 
-export default OnBoard;
+export default OnBoardPage;
