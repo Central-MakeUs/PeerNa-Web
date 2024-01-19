@@ -1,4 +1,4 @@
-import SelectListItem from '@components/common/atom/selectListItem';
+import SelectListItem from '@components/common/atom/SelectListItem';
 import { positionList } from '@constants/selfTest';
 import useSelfTestInformation from '@hooks/useSelfTestInformation';
 import { useEffect } from 'react';
