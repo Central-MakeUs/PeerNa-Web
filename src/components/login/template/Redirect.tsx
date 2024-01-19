@@ -2,7 +2,7 @@ import { ActivityComponentType } from '@stackflow/react';
 import { useFlow } from '@hooks/useStackFlow';
 import Spinner from '@components/common/atom/Spinner';
 import useToken from '@hooks/useToken';
-import { LocalStorage } from '@constants/localStorage';
+import { Member_Id } from '@constants/localStorage';
 import { useEffect } from 'react';
 
 interface AuthData {
@@ -26,7 +26,7 @@ const Redirect: ActivityComponentType = () => {
 
   useEffect(() => {
     if (memberId && accessToken && refreshToken) {
-      localStorage.setItem(LocalStorage.MemberId, memberId);
+      localStorage.setItem(Member_Id, memberId);
       updateToken(accessToken, refreshToken);
       replace('Home', {});
     }

@@ -1,7 +1,3 @@
-export const LocalStorage = {
-  MemberId: 'memberId',
-  AccessToken: 'accessToken',
-  RefreshToken: 'refreshToken',
-};
-
-export type LocalStorageKeyType = keyof typeof LocalStorage;
+export const Member_Id = 'memberId';
+export const Access_Token = 'accessToken';
+export const Refresh_Token = 'refreshToken';
