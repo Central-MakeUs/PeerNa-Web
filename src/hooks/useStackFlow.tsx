@@ -10,6 +10,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     historySyncPlugin({
       routes: {
         Home: '/',
+        Redirect: '/login/kakao',
         Peer: '/peer',
         Project: '/project',
         Notification: '/notification',

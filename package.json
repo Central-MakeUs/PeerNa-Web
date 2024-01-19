@@ -51,7 +51,8 @@
     "recoil": "^0.7.7",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.8.0"
+    "vaul": "^0.8.0",
+    "vite-plugin-mkcert": "1.17.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",
