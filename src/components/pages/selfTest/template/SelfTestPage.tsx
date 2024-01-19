@@ -8,7 +8,6 @@ import useSelfTestInformation from '@hooks/useSelfTestInformation';
 import { useFlow } from '@hooks/useStackFlow';
 import { AppScreen, IconBack } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
-import { useEffect } from 'react';
 
 type OnboardParams = {
   step: string;
@@ -36,16 +35,6 @@ const SelfTestPage: ActivityComponentType<OnboardParams> = ({ params }) => {
     if (curStep === 2) return selfTest.job === '';
     if (curStep === 3) return selfTest.position === '';
   };
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    if (selfTest.job !== '' && curStep === 2) {
-      timeout = setTimeout(() => {
-        push('SelfTestPage', { step: nextStep });
-      }, 500);
-    }
-    return () => clearTimeout(timeout);
-  }, [selfTest]);
 
   return (
     <AppScreen>
