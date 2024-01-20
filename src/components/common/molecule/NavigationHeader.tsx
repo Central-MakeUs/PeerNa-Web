@@ -29,7 +29,7 @@ export default function NavigationHeader({
   bodyProps = {},
 }: NavigationHeaderProps) {
   return (
-    <div className="box-borde flex flex-col bg-transparent">
+    <div className="w-full box-border flex flex-col bg-transparent">
       <div className="w-full flex items-center justify-between  h-[68px] px-2 py-[18px]">
         {backIconProps.isShow && backIconProps.handleClick && (
           <IconButton
@@ -51,7 +51,7 @@ export default function NavigationHeader({
       </div>
       {bodyProps.isShow && (
         <div className="w-full flex flex-col">
-          <div className="w-full flex justify-between">
+          <div className="w-full flex flex-col gap-2 justify-between">
             {bodyProps.textAlign === 'center' && (
               <div className="w-1 h-1"></div>
             )}
