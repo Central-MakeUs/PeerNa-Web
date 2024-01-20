@@ -28,7 +28,7 @@ function CustomTextArea(
       }}
       type="text"
       isClearable
-      minRows={3}
+      minRows={4}
       maxRows={5}
       id={inputId}
       value={text}

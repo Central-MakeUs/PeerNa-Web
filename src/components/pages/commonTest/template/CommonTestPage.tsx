@@ -1,10 +1,11 @@
-import Button from '@components/common/atom/Button';
 import IconButton from '@components/common/atom/IconButton';
+import Typography from '@components/common/atom/Typography';
 import TestHeader from '@components/pages/commonTest/molecule/TestHeader';
 import TestImage from '@components/pages/commonTest/molecule/TestImage';
 import OneLineReview from '@components/pages/commonTest/organism/OneLineReview';
 import PeerType from '@components/pages/commonTest/organism/PeerType';
 import TwoWayPicker from '@components/pages/commonTest/organism/TwoWayPicker';
+import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { commonTestAnswer } from '@constants/commonTest';
 import useCommonTestState from '@hooks/useCommonTestState';
 import { useFlow, useStepFlow } from '@hooks/useStackFlow';
@@ -137,11 +138,11 @@ const CommonTestPage: ActivityComponentType<CommonTestPageParams> = ({
           </div>
         </div>
         {curStep === 4 && trackStep === 7 && (
-          <div className="absolute bottom-5 w-full px-5">
-            <Button fullWidth onClick={handleClickLastButton}>
+          <FixedBottomButton handleClick={handleClickLastButton}>
+            <Typography variant="body02" fontColor="white">
               시작하기
-            </Button>
-          </div>
+            </Typography>
+          </FixedBottomButton>
         )}
       </div>
     </AppScreen>
