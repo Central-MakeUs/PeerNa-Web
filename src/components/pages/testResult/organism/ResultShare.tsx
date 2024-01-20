@@ -71,7 +71,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         }}
         bodyProps={{
           isShow: true,
-          title: '뇽뇽뇽뇽뇽 님의 피어 유형은 성취하는 행동 대장이에요',
+          title: 'username 님의 피어 유형은 성취하는 행동 대장이에요',
           textAlign: 'center',
         }}
       />

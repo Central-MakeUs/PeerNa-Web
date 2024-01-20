@@ -52,7 +52,7 @@ export default function AnalyzePeerCard({ handleClick }: AnalyzePeerCardProps) {
     <Fragment>
       <div className="box-content w-full h-[68px] py-[18px] mt-6 flex items-center justify-between bg-transparent px-5">
         <Typography variant="header01" fontColor="gray07">
-          뇽뇽뇽뇽뇽님의 셀프 테스트 결과를
+          username님의 셀프 테스트 결과를
           <br /> 분석한 피어 카드에요
         </Typography>
       </div>
