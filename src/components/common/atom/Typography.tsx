@@ -22,7 +22,9 @@ export default function Typography({
         ${FontVariantsClassName[variant]}
         text-[${Palette[fontColor]}]
         leading-default 
-        tracking-default 
+        tracking-default
+        break-all
+        whitespace-pre-line
         ${props.className}`}
     >
       {children}

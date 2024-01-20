@@ -12,8 +12,12 @@ import {
 import { cn } from '@utils/shadcn';
 import { useState } from 'react';
 
-export default function DatePicker() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+interface DatePickerProps {
+  placeholder: string;
+}
+
+export default function DatePicker({ placeholder }: DatePickerProps) {
+  const [date, setDate] = useState<Date | undefined>(undefined);
 
   return (
     <Popover>
@@ -29,7 +33,7 @@ export default function DatePicker() {
           {date ? (
             format(date, 'yyyy.MM.dd')
           ) : (
-            <Typography variant={'body02'}>시작일</Typography>
+            <Typography variant={'body02'}>{placeholder}</Typography>
           )}
         </Button>
       </PopoverTrigger>

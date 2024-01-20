@@ -22,7 +22,7 @@ const ButtonSize = {
 type ButtonVariantTypes = keyof typeof ButtonVariant;
 type ButtonSizeTypes = keyof typeof ButtonSize;
 
-interface ButtonProps extends ButtonPropsWithNextui {
+export interface ButtonProps extends ButtonPropsWithNextui {
   children: ReactNode;
   buttonVariant?: ButtonVariantTypes;
   buttonSize?: ButtonSizeTypes;
