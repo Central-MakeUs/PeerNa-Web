@@ -37,7 +37,7 @@ const CommonTestPage: ActivityComponentType<CommonTestPageParams> = ({
   const handleClickNextStep = () => {
     if (trackStep >= maxStep) {
       const stepTimer = setTimeout(() => {
-        stepPush({ type: 'self', step: nextStep });
+        stepPush({ type: type, step: nextStep });
         setTrackStep(() => 1);
         setAnswerStep(() => 1);
       }, 500);
@@ -57,7 +57,7 @@ const CommonTestPage: ActivityComponentType<CommonTestPageParams> = ({
       return;
     }
     if (trackStep === 1) {
-      stepReplace({ type: 'self', step: (curStep - 1).toString() });
+      stepReplace({ type: type, step: (curStep - 1).toString() });
       handleRemoveLastAnswers();
       setAnswerStep(commonTestAnswer[curStep - 1]?.length - 1 || 0);
       setTrackStep(commonTestAnswer[curStep - 1]?.length / 2 || 0);
@@ -65,6 +65,17 @@ const CommonTestPage: ActivityComponentType<CommonTestPageParams> = ({
       handleRemoveLastAnswers();
       setTrackStep(prev => prev - 1);
       if (trackStep <= 6) setAnswerStep(prev => prev - 2);
+    }
+  };
+
+  console.log(type);
+
+  const handleClickLastButton = () => {
+    if (type === 'self') {
+      push('TestResultPage', { type: type, step: '1' });
+    }
+    if (type === 'peer') {
+      push('PeerReviewPage', { step: '5' });
     }
   };
 
@@ -127,10 +138,7 @@ const CommonTestPage: ActivityComponentType<CommonTestPageParams> = ({
         </div>
         {curStep === 4 && trackStep === 7 && (
           <div className="absolute bottom-5 w-full px-5">
-            <Button
-              fullWidth
-              onClick={() => push('TestResultPage', { type: type, step: '1' })}
-            >
+            <Button fullWidth onClick={handleClickLastButton}>
               시작하기
             </Button>
           </div>

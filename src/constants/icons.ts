@@ -74,4 +74,6 @@ export const Icon = {
   CommentError: 'comment_error',
   PersonDelete: 'person_delete',
   Share: 'share',
+  CalendarError: 'calendar_error',
+  CheckboxPerson: 'checkbox_person',
 };

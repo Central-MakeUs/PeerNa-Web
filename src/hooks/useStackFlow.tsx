@@ -23,6 +23,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         SelfTestPage: '/test/self',
         CommonTestPage: '/test',
         TestResultPage: '/test/result',
+        PeerReviewPage: '/test/peer',
       },
       fallbackActivity: () => 'HomePage',
     }),
