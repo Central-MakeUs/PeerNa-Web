@@ -11,7 +11,7 @@ export default function SelectPosition() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="w-full flex flex-col gap-4">
       {positionList.map((position, index) => (
         <SelectListItem
           key={position + index}

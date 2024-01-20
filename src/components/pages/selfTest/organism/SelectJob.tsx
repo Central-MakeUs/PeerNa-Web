@@ -11,7 +11,7 @@ export default function SelectJob() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="w-full flex flex-col gap-4">
       {jobList.map((job, index) => (
         <SelectListItem
           key={job + index}

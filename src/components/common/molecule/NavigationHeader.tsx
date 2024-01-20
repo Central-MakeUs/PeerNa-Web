@@ -15,6 +15,7 @@ interface NavigationHeaderProps {
     isShow?: boolean;
     title?: string;
     subtitle?: string;
+    marginClass?: string;
     textAlign?: 'left' | 'center';
     showAddPerson?: boolean;
     showSearchButton?: boolean;
@@ -50,8 +51,8 @@ export default function NavigationHeader({
         )}
       </div>
       {bodyProps.isShow && (
-        <div className="w-full flex flex-col">
-          <div className="w-full flex flex-col gap-2 justify-between">
+        <div className={`w-full flex flex-col ${bodyProps.marginClass}`}>
+          <div className="w-full flex flex-col gap-2 justify-between py-4">
             {bodyProps.textAlign === 'center' && (
               <div className="w-1 h-1"></div>
             )}
