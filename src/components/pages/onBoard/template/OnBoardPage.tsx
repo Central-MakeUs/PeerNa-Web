@@ -1,10 +1,11 @@
-import Button from '@components/common/atom/Button';
 import Progress from '@components/common/atom/Progress';
 import Typography from '@components/common/atom/Typography';
 import OnBoardCard from '@components/pages/onBoard/organism/OnBoardCard';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { OnboardStep } from '@constants/onboard';
 import { useFlow } from '@hooks/useStackFlow';
-import { AppScreen, IconBack } from '@stackflow/plugin-basic-ui';
+import { IconBack } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
 
 type OnBoardPageParams = {
@@ -26,25 +27,30 @@ const OnBoardPage: ActivityComponentType<OnBoardPageParams> = ({ params }) => {
     push('OnBoard', { step: nextStep });
   };
 
+  const handleClickStart = () =>
+    push('CommonTestPage', { type: 'self', step: '1' });
+
   return (
-    <AppScreen>
+    <AppScreenContainer>
       <div className="w-full h-screen flex flex-col items-center">
         <div className="box-border w-full h-[68px] px-2 py-[18px] flex items-center justify-between bg-transparent">
           {curStep !== 1 && curStep !== lastStep ? <IconBack /> : <div />}
-          <Typography variant="body03" fontColor="gray07">
-            바로 시작하기
-          </Typography>
+          <button onClick={handleClickStart}>
+            <Typography variant="body03" fontColor="gray07">
+              바로 시작하기
+            </Typography>
+          </button>
         </div>
         <Progress curStep={curStep} lastStep={4} />
         <OnBoardCard step={curStep - 1} />
       </div>
 
-      <div className="absolute bottom-5 w-full px-5">
-        <Button onClick={handleClickStepPush}>
+      <FixedBottomButton handleClick={handleClickStepPush}>
+        <Typography variant="body02" fontColor="white">
           {curStep === lastStep ? '시작하기' : '다음'}
-        </Button>
-      </div>
-    </AppScreen>
+        </Typography>
+      </FixedBottomButton>
+    </AppScreenContainer>
   );
 };
 
