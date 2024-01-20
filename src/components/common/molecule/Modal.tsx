@@ -4,13 +4,13 @@ import {
   ModalProps as ModalPropsWithNextui,
   Modal as ModalWithNextui,
 } from '@nextui-org/react';
-import { modalState } from '@store/modal';
-import { useRecoilState } from 'recoil';
-import Typography from '../atom/Typography';
 
-interface ModalProps extends ModalPropsWithNextui {
+import Typography from '../atom/Typography';
+import useModal from '@hooks/useModal';
+
+interface ModalProps extends Omit<ModalPropsWithNextui, 'children'> {
   modalHeader: string;
-  modalBody: string;
+  modalBody: string | JSX.Element;
   footer: React.ReactNode;
 }
 
@@ -20,25 +20,25 @@ export default function Modal({
   footer,
   ...props
 }: ModalProps) {
-  /** Open Modal 버튼 삭제 & 해당 함수는 props로 사용할 예정 */
-  const [modal, setModal] = useRecoilState(modalState);
+  const { isOpen, openModal, closeModal } = useModal();
+  const modalType: 'default' | 'login' | 'error' = 'default';
 
-  const handleSetIsOpen = (isOpen: boolean) => {
-    setModal({
-      ...modal,
-      isOpen: !isOpen,
-      modalType: 'default',
-    });
+  const handleOpenChange = (isOpen: boolean) => {
+    if (isOpen) {
+      openModal(modalType);
+    } else {
+      closeModal();
+    }
   };
 
   return (
     <>
-      {modal.isOpen && (
+      {isOpen && (
         <ModalWithNextui
           {...props}
           backdrop="opaque"
-          isOpen={modal.isOpen}
-          onOpenChange={handleSetIsOpen}
+          isOpen={isOpen}
+          onOpenChange={handleOpenChange}
           hideCloseButton={true}
           classNames={{
             backdrop:
@@ -47,7 +47,7 @@ export default function Modal({
         >
           <ModalContent className="w-[310px] m-auto">
             <div className="pt-10 pb-4">
-              <Typography className="text-center mb-2" variant={'header03'}>
+              <Typography className="text-center mb-5" variant={'header03'}>
                 {modalHeader}
               </Typography>
               <Typography className="text-center" variant={'body04'}>

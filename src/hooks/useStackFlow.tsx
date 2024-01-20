@@ -24,6 +24,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         CommonTestPage: '/test',
         TestResultPage: '/test/result',
         PeerReviewPage: '/test/peer',
+        Redirect: '/login/kakao',
       },
       fallbackActivity: () => 'HomePage',
     }),
