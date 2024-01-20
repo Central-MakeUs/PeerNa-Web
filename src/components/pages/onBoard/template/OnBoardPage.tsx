@@ -1,7 +1,7 @@
 import Button from '@components/common/atom/Button';
 import Progress from '@components/common/atom/Progress';
 import Typography from '@components/common/atom/Typography';
-import OnBoardCard from '@components/pages/onBoardPage/organism/OnBoardCard';
+import OnBoardCard from '@components/pages/onBoard/organism/OnBoardCard';
 import { OnboardStep } from '@constants/onboard';
 import { useFlow } from '@hooks/useStackFlow';
 import { AppScreen, IconBack } from '@stackflow/plugin-basic-ui';
