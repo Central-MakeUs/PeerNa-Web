@@ -2,10 +2,10 @@ import Button from '@components/common/atom/Button';
 import IconButton from '@components/common/atom/IconButton';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FlipCard from '@components/pages/testResult/molecule/FlipCard';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
+import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import { KakaoShareImage } from '@constants/images';
 import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/spacer';
@@ -77,8 +77,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       />
       <Spacer y={10} />
       <FlipCard ref={ref} />
-      {/* <TestFlipCard ref={ref} /> */}
-      <ButtonContainer direction="row">
+      <FixedButtonContainer direction="row">
         <Button buttonVariant="tertiary" onClick={handleClickDownload}>
           <Typography variant="body01">카드 저장하기</Typography>
         </Button>
@@ -87,7 +86,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
             카드 공유하기
           </Typography>
         </Button>
-      </ButtonContainer>
+      </FixedButtonContainer>
       <Drawer
         open={openBottomSheet}
         onOpenChange={open => setOpenBottomSheet(open)}
