@@ -43,6 +43,7 @@ const CommonTestPage: ActivityComponentType<CommonTestPageParams> = ({
       }, 500);
       return () => clearTimeout(stepTimer);
     }
+
     const answerTimer = setTimeout(() => {
       setTrackStep(prev => prev + 1);
       setAnswerStep(prev => prev + 2);
@@ -126,7 +127,10 @@ const CommonTestPage: ActivityComponentType<CommonTestPageParams> = ({
         </div>
         {curStep === 4 && trackStep === 7 && (
           <div className="absolute bottom-5 w-full px-5">
-            <Button fullWidth onClick={() => push('TestResult', {})}>
+            <Button
+              fullWidth
+              onClick={() => push('TestResultPage', { type: type, step: '1' })}
+            >
               시작하기
             </Button>
           </div>

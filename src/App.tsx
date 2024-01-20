@@ -1,5 +1,6 @@
 import BottomSheet from '@components/common/organism/BottomSheet';
 import { Stack } from '@hooks/useStackFlow';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -8,6 +9,13 @@ function App() {
       {/*         react-router-dom의 createBrowseRouter */}
       <Stack />
       <BottomSheet />
+      <Toaster
+        toastOptions={{
+          style: {
+            borderRadius: '100px',
+          },
+        }}
+      />
     </div>
   );
 }

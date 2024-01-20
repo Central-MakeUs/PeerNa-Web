@@ -73,4 +73,5 @@ export const Icon = {
   ThumbLikeDisLike: 'thumb_like_dislike',
   CommentError: 'comment_error',
   PersonDelete: 'person_delete',
+  Share: 'share',
 };
