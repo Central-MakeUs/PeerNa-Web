@@ -19,7 +19,7 @@ export default function TestHeader({
     if (curStep === 4 && trackStep === 7)
       return commonTestTitle.oneLineReviewPrompt();
     if (type === 'self') return commonTestTitle.self[curStep - 1];
-    else return commonTestTitle.peer('Test')[curStep - 1];
+    else return commonTestTitle.peer('username')[curStep - 1];
   };
 
   const title = getTitle();
