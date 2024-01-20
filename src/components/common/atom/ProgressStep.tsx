@@ -6,7 +6,7 @@ import {
 interface ProgressStepProps extends AvatarPropsWithNextui {
   step: number;
   icon?: React.ReactElement;
-  complete?: boolean;
+  complete: boolean;
 }
 
 export default function ProgressStep({
@@ -21,7 +21,6 @@ export default function ProgressStep({
    * 현재 스탭이 아닌 다음 스탭은 isDisabled으로 색상구분
    */
   const isDisabled = name ? step < parseInt(name, 10) : !complete;
-
   return (
     <AvatarWithNextui
       name={icon ? '' : name}
