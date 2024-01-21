@@ -34,11 +34,11 @@ const OnBoardPage: ActivityComponentType<OnBoardPageParams> = ({ params }) => {
     <AppScreenContainer>
       <NavigationHeader
         backIconProps={{
-          isShow: true,
+          isShow: curStep !== 1,
           handleClick: handleClickBackIcon,
         }}
         rightButtonProps={{
-          isShow: true,
+          isShow: curStep !== 4,
           text: '바로시작하기',
           handleClick: handleClickStart,
         }}
