@@ -25,7 +25,7 @@ export interface TextInputProps
     InputProps,
     AdditionalTextInputProps {}
 
-function TextInput(
+function CustomTextInput(
   { text, handleChangeText, ...rest }: TextInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
@@ -57,5 +57,5 @@ function TextInput(
   );
 }
 
-const ForwardedTextInput = React.forwardRef(TextInput);
-export default ForwardedTextInput;
+const TextInput = React.forwardRef(CustomTextInput);
+export default TextInput;

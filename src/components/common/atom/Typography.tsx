@@ -1,10 +1,10 @@
 import { FontVariantsClassName, Palette } from '@constants/styles';
 import { ColorTypes, FontVariantsKeys } from '@type/styles';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;
-  children: string | number | JSX.Element;
+  children: ReactNode;
   fontColor?: ColorTypes;
   as?: keyof JSX.IntrinsicElements;
 }
@@ -22,7 +22,9 @@ export default function Typography({
         ${FontVariantsClassName[variant]}
         text-[${Palette[fontColor]}]
         leading-default 
-        tracking-default 
+        tracking-default
+        break-all
+        whitespace-pre-line
         ${props.className}`}
     >
       {children}
