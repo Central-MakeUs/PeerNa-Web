@@ -1,4 +1,4 @@
-import { PeerTypes, reviewState } from '@store/commonTest';
+import { PeerTypes, reviewState } from '@store/reviewState';
 import { useRecoilState } from 'recoil';
 
 export default function useReviewState() {
