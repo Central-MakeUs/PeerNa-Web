@@ -28,7 +28,7 @@ export default function TestHeader({
   const maxStep = curStep !== 4 ? calcStep : calcStep + 2;
 
   return (
-    <div className="w-[350px]">
+    <div className="w-full">
       <ProgressBar step={curStep} maxStep={maxStep} trackStep={trackStep} />
       <div className="py-4">
         <Typography variant="header01">{title}</Typography>

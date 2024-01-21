@@ -13,6 +13,8 @@ export default function ShakeBox({ trigger, children }: ShakeBoxProps) {
   };
 
   return (
-    <motion.div animate={trigger ? shakeAnimation : {}}>{children}</motion.div>
+    <motion.div animate={trigger ? shakeAnimation : {}} className="w-full">
+      {children}
+    </motion.div>
   );
 }
