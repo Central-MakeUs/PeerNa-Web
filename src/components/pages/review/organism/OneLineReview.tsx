@@ -9,27 +9,27 @@ interface OneLineReviewProps {
 }
 
 export default function OneLineReview({ answerStep }: OneLineReviewProps) {
-  const { review, handleChangeOneLineReview } = useReviewState();
-  const { oneLineReview } = review;
-  const validOneLineReview = oneLineReview.length < 20;
+  const { review, handleChangeFeedback } = useReviewState();
+  const { feedback } = review;
+  const validFeedback = feedback.length < 20;
   return (
     <SlideBox trigger={answerStep}>
       <div className="w-full flex justify-center">
         <div className="w-[350px]">
-          <ShakeBox trigger={!validOneLineReview}>
+          <ShakeBox trigger={!validFeedback}>
             <TextArea
               fullWidth
               placeholder="동료를 가장 잘 표현하는 한 줄을 적어주세요"
-              text={oneLineReview}
-              handleChangeText={handleChangeOneLineReview}
+              text={feedback}
+              handleChangeText={handleChangeFeedback}
             />
           </ShakeBox>
           <div className="flex justify-end">
             <Typography
               variant="body02"
-              className={validOneLineReview ? 'text-gray06' : 'text-danger01'}
+              className={validFeedback ? 'text-gray06' : 'text-danger01'}
             >
-              {oneLineReview.length}/20
+              {`${feedback.length}/20`}
             </Typography>
           </div>
         </div>

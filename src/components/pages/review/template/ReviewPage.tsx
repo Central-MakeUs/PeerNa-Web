@@ -5,12 +5,13 @@ import TestHeader from '@components/pages/review/molecule/ReviewHeader';
 import OneLineReview from '@components/pages/review/organism/OneLineReview';
 import PeerType from '@components/pages/review/organism/PeerType';
 import TwoWayPicker from '@components/pages/review/organism/TwoWayPicker';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { REVIEW_PICKER } from '@constants/review';
 import useReviewState from '@hooks/useReviewState';
 import { useFlow, useStepFlow } from '@hooks/useStackFlow';
-import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
+import { PeerGradeTypes } from '@store/reviewState';
 import { useEffect, useState } from 'react';
 
 type ReviewPageParams = {
@@ -19,7 +20,7 @@ type ReviewPageParams = {
 };
 
 const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
-  const { handleRemoveLastAnswers, handleChangePeerType } = useReviewState();
+  const { handleRemoveLastAnswers, handleChangePeerGrade } = useReviewState();
   const { push } = useFlow();
   const { stepPush, stepReplace } = useStepFlow('ReviewPage');
   const type = params.type;
@@ -66,8 +67,6 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
     }
   };
 
-  console.log(type);
-
   const handleClickLastButton = () => {
     if (type === 'self') {
       push('ReviewResultPage', { type: type, step: '1' });
@@ -77,22 +76,29 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
     }
   };
 
+  const handleClickPeerTypeButton = (type: PeerGradeTypes) => {
+    handleChangePeerGrade(type);
+    const peerTimer = setTimeout(() => {
+      setTrackStep(prev => prev + 1);
+    }, 500);
+    return () => clearTimeout(peerTimer);
+  };
+
   useEffect(() => {
-    const handleBackNavigation = () => {
+    const popStateEventListener = () => {
       setTrackStep(() => 1);
       setAnswerStep(() => 1);
     };
 
-    window.addEventListener('popstate', handleBackNavigation);
-
-    return () => window.removeEventListener('popstate', handleBackNavigation);
+    window.addEventListener('popstate', popStateEventListener);
+    return () => window.removeEventListener('popstate', popStateEventListener);
   }, []);
 
   return (
-    <AppScreen>
+    <AppScreenContainer>
       <div className="w-screen min-h-screen flex justify-center">
         <div className="w-full max-w-[690px] flex flex-col px-5">
-          <div className="box-border w-full h-[68px] px-2 py-[18px] flex items-center justify-between bg-transparent">
+          <div className="box-border w-full h-[68px] px-2 py-ㅁ[18px] flex items-center justify-between bg-transparent">
             <IconButton
               iconProps={{
                 id: 'ArrowLeft',
@@ -120,13 +126,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
             {curStep === 4 && trackStep === 6 && (
               <PeerType
                 answerStep={answerStep}
-                handleClick={type => {
-                  handleChangePeerType(type);
-                  const peerTimer = setTimeout(() => {
-                    setTrackStep(prev => prev + 1);
-                  }, 500);
-                  return () => clearTimeout(peerTimer);
-                }}
+                handleClick={handleClickPeerTypeButton}
               />
             )}
             {curStep === 4 && trackStep === 7 && (
@@ -142,7 +142,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
           </FixedBottomButton>
         )}
       </div>
-    </AppScreen>
+    </AppScreenContainer>
   );
 };
 

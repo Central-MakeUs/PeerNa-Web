@@ -1,4 +1,4 @@
-import { PeerTypes, reviewState } from '@store/reviewState';
+import { PeerGradeTypes, reviewState } from '@store/reviewState';
 import { useRecoilState } from 'recoil';
 
 export default function useReviewState() {
@@ -18,17 +18,17 @@ export default function useReviewState() {
     }));
   };
 
-  const handleChangePeerType = (type: PeerTypes) => {
+  const handleChangePeerGrade = (type: PeerGradeTypes) => {
     setReview(prev => ({
       ...prev,
       peerType: type,
     }));
   };
 
-  const handleChangeOneLineReview = (oneLineReview: string) => {
+  const handleChangeFeedback = (feedback: string) => {
     setReview(prev => ({
       ...prev,
-      oneLineReview,
+      feedback,
     }));
   };
 
@@ -36,7 +36,7 @@ export default function useReviewState() {
     review,
     handleAddAnswers,
     handleRemoveLastAnswers,
-    handleChangePeerType,
-    handleChangeOneLineReview,
+    handleChangePeerGrade,
+    handleChangeFeedback,
   };
 }
