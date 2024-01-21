@@ -1,7 +1,7 @@
 import ShakeBox from '@components/animate/ShakeBox';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
-import useSelfTestInformation from '@hooks/useSelfTestInformation';
+import useSelfTestInformation from '@hooks/useReviewSelfState';
 
 export default function InputName() {
   const { selfTest, isValidName, handleChangeName } = useSelfTestInformation();

@@ -1,33 +1,36 @@
-import { nameSizeValidator, selfTestState } from '@store/selfTest';
+import { nameSizeValidator, reviewSelfState } from '@store/reviewSelfState';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 export default function useSelfTestInformation() {
-  const [selfTest, setSelfTest] = useRecoilState(selfTestState);
+  const [reviewSelf, setReviewSelf] = useRecoilState(reviewSelfState);
   const isValidName = useRecoilValue(nameSizeValidator);
+
   const handleChangeName = (newName: string) => {
-    setSelfTest(prev => ({
+    setReviewSelf(prev => ({
       ...prev,
       name: newName,
     }));
   };
+
   const handleChangeJob = (newJob: string) => {
-    setSelfTest(prev => ({
+    setReviewSelf(prev => ({
       ...prev,
       job: newJob,
     }));
   };
-  const handleChangePosition = (newPosition: string) => {
-    setSelfTest(prev => ({
+
+  const handleChangePart = (newPart: string) => {
+    setReviewSelf(prev => ({
       ...prev,
-      position: newPosition,
+      part: newPart,
     }));
   };
 
   return {
-    selfTest,
+    reviewSelf,
     isValidName,
     handleChangeName,
     handleChangeJob,
-    handleChangePosition,
+    handleChangePart,
   };
 }

@@ -1,24 +1,24 @@
 import { atom, selector } from 'recoil';
 
-type SelfTestInfomation = {
+type ReviewSelfStateType = {
   name: string;
   job: string;
-  position: string;
+  part: string;
 };
 
-export const selfTestState = atom<SelfTestInfomation>({
+export const reviewSelfState = atom<ReviewSelfStateType>({
   key: 'selfTest',
   default: {
     name: '',
     job: '',
-    position: '',
+    part: '',
   },
 });
 
 export const nameSizeValidator = selector({
   key: 'nameSizeValidator',
   get: ({ get }) => {
-    const selfTest = get(selfTestState);
+    const selfTest = get(reviewSelfState);
     return selfTest.name.length > 0 && selfTest.name.length <= 5;
   },
 });
