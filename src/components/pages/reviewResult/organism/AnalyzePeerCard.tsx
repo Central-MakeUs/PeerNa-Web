@@ -11,6 +11,7 @@ interface AnalyzePeerCardProps {
 }
 
 // TODO 데이터 서버에서 받아와야 함.
+// TODO Card image 변경 및 서버에서 데이터 받아와야 함.
 export default function AnalyzePeerCard({ handleClick }: AnalyzePeerCardProps) {
   const cardTypes = [
     {

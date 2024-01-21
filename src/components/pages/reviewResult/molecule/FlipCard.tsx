@@ -10,6 +10,7 @@ import {
   useState,
 } from 'react';
 
+// TODO Card 정보 서버에서 받아서 변경해야 함.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const FlipCard = forwardRef<HTMLDivElement>(({ ...props }, ref) => {
   const bgOpacity = getRgbaColorWithOpacity('#ffffff', 0.4);

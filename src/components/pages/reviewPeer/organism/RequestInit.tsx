@@ -7,6 +7,7 @@ import FixedCenter from '@components/wrapper/FixedCenter';
 import { useFlow } from '@hooks/useStackFlow';
 import { Fragment } from 'react';
 
+// TODO username 전체 변경 필요함.
 export default function RequestInit() {
   const { push } = useFlow();
   const handleClick = () => push('ReviewPeerPage', { step: '2' });
