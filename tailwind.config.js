@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-import { Palette, FontSizes, Width, Height } from './src/constants/styles';
 import { nextui } from '@nextui-org/react';
 import tailwindAnimate from 'tailwindcss-animate';
+import { FontSizes, Height, Palette, Width } from './src/constants/styles';
 
 export default {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './.yarn/cache/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   prefix: '',
   theme: {

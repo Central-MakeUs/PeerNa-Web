@@ -8,7 +8,7 @@ import { Drawer, DrawerContent } from '@components/shadcn/drawer';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import { KakaoShareImage } from '@constants/images';
 import { useFlow } from '@hooks/useStackFlow';
-import { Spacer } from '@nextui-org/spacer';
+import { Spacer } from '@nextui-org/react';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useRef, useState } from 'react';
