@@ -10,11 +10,18 @@ import {
   PopoverTrigger,
 } from '@components/shadcn/popover';
 import { cn } from '@utils/shadcn';
-import { useState } from 'react';
 
-export default function DatePicker() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+interface DatePickerProps {
+  date: Date | undefined;
+  handleDate: (newDate: Date | undefined) => void;
+  placeholder: string;
+}
 
+export default function DatePicker({
+  date,
+  handleDate,
+  placeholder,
+}: DatePickerProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -29,7 +36,7 @@ export default function DatePicker() {
           {date ? (
             format(date, 'yyyy.MM.dd')
           ) : (
-            <Typography variant={'body02'}>시작일</Typography>
+            <Typography variant={'body02'}>{placeholder}</Typography>
           )}
         </Button>
       </PopoverTrigger>
@@ -37,7 +44,7 @@ export default function DatePicker() {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={setDate}
+          onSelect={handleDate}
           initialFocus
         />
       </PopoverContent>

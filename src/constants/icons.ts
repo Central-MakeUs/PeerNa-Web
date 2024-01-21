@@ -67,4 +67,13 @@ export const Icon = {
   Complete: 'complete',
   HeartedPerson: 'hearted_person',
   Error: 'error',
+  RibbonStar: 'ribbon_star',
+  HeartPulse: 'heart_pulse',
+  LightBulb: 'light_bulb',
+  ThumbLikeDisLike: 'thumb_like_dislike',
+  CommentError: 'comment_error',
+  PersonDelete: 'person_delete',
+  Share: 'share',
+  CalendarError: 'calendar_error',
+  CheckboxPerson: 'checkbox_person',
 };
