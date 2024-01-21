@@ -1,6 +1,6 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { TabItemTypes } from '@constants/activities';
+import { ActivitiesTypes, TabItemTypes } from '@constants/activities';
 import { IconKeyType } from '@constants/icons';
 import { useFlow } from '@hooks/useStackFlow';
 
@@ -18,16 +18,18 @@ export default function TabItem({
   isDone,
 }: TabItemProps) {
   const { replace } = useFlow();
-  const handleClick = () => replace(icon, {});
+  const handleClick = () =>
+    replace(icon as ActivitiesTypes, {}, { animate: false });
 
   const getIcon = () => {
     const iconMap: Record<TabItemTypes, string> = {
-      Home: isDone && pathname === 'Home' ? 'HomeFill' : 'Home',
-      Peer: isDone && pathname === 'Peer' ? 'PeopleFill' : 'People',
-      Project: isDone && pathname === 'Project' ? 'ProjectFill' : 'Project',
-      Notification:
-        isDone && pathname === 'Notification' ? 'AlertFill' : 'Alert',
-      Mypage: isDone && pathname === 'Mypage' ? 'MyPageFill' : 'MyPage',
+      HomePage: isDone && pathname === 'HomePage' ? 'HomeFill' : 'Home',
+      PeerPage: isDone && pathname === 'PeerPage' ? 'PeopleFill' : 'People',
+      ProjectPage:
+        isDone && pathname === 'ProjectPage' ? 'ProjectFill' : 'Project',
+      NotificationPage:
+        isDone && pathname === 'NotificationPage' ? 'AlertFill' : 'Alert',
+      MyPage: isDone && pathname === 'MyPage' ? 'MyPageFill' : 'MyPage',
     };
     const iconId = iconMap[icon];
 

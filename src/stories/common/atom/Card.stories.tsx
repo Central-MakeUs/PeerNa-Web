@@ -1,6 +1,6 @@
-import Card from '@components/common/atom/Card';
+import Card from '@components/pages/testResult/molecule/Card';
+import { Description, Keyword, Value } from '@constants/image';
 import { Meta, StoryObj } from '@storybook/react';
-import { Value, Keyword, Description } from '@constants/image';
 
 const meta: Meta<typeof Card> = {
   title: 'Card',
