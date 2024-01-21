@@ -3,6 +3,7 @@ import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { useFlow } from '@hooks/useStackFlow';
 import { Divider, Spacer } from '@nextui-org/react';
+import { differenceInDays } from 'date-fns';
 import { Fragment } from 'react';
 
 interface InputProjectDateProps {
@@ -18,8 +19,18 @@ export default function InputProjectDate({
   handleChangeStartDate,
   handleChangeEndDate,
 }: InputProjectDateProps) {
+  function isLessThan30Days(startDate: Date, endDate: Date) {
+    const diffDays = differenceInDays(endDate, startDate);
+    return diffDays >= 30;
+  }
+
+  // 30일보다 크면 3번(진행), 작으면 4번(에러)
+  const isValidDate = isLessThan30Days(new Date(startDate), new Date(endDate));
+
   const { push } = useFlow();
-  const handleClick = () => push('PeerReviewPage', { step: '3' });
+  const handleClick = () =>
+    push('PeerReviewPage', { step: isValidDate ? '3' : '4' });
+
   return (
     <Fragment>
       <NavigationHeader
