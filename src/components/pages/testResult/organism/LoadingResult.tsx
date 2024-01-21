@@ -15,7 +15,7 @@ export default function LoadingResult({ curStep }: LoadingResultProps) {
     if (curStep === 1) {
       setTimeout(() => {
         push('TestResultPage', { type: 'self', step: nextStep });
-      }, 3000);
+      }, 100000);
     }
   }, []);
 

@@ -6,7 +6,7 @@ import { FontSizes, Height, Palette, Width } from './src/constants/styles';
 export default {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
-    './.yarn/cache/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   prefix: '',
   theme: {
