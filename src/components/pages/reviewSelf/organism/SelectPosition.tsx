@@ -4,20 +4,20 @@ import useReviewSelfState from '@hooks/useReviewSelfState';
 import { useEffect } from 'react';
 
 export default function SelectPosition() {
-  const { selfTest, handleChangePosition } = useReviewSelfState();
+  const { reviewSelf, handleChangePart } = useReviewSelfState();
 
   useEffect(() => {
-    handleChangePosition('');
+    handleChangePart('');
   }, []);
 
   return (
     <div className="w-full flex flex-col gap-4">
-      {POSITION_LIST.map((position, index) => (
+      {POSITION_LIST.map((part, index) => (
         <SelectListItem
-          key={position + index}
-          title={position}
-          isSelect={selfTest.position === position}
-          onClick={() => handleChangePosition(position)}
+          key={part + index}
+          title={part}
+          isSelect={reviewSelf.part === part}
+          onClick={() => handleChangePart(part)}
         />
       ))}
     </div>

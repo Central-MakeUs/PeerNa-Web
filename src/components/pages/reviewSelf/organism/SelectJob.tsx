@@ -4,7 +4,7 @@ import useReviewSelfState from '@hooks/useReviewSelfState';
 import { useEffect } from 'react';
 
 export default function SelectJob() {
-  const { selfTest, handleChangeJob } = useReviewSelfState();
+  const { reviewSelf, handleChangeJob } = useReviewSelfState();
 
   useEffect(() => {
     handleChangeJob('');
@@ -16,7 +16,7 @@ export default function SelectJob() {
         <SelectListItem
           key={job + index}
           title={job}
-          isSelect={selfTest.job === job}
+          isSelect={reviewSelf.job === job}
           onClick={() => handleChangeJob(job)}
         />
       ))}

@@ -4,13 +4,13 @@ import Typography from '@components/common/atom/Typography';
 import useReviewSelfState from '@hooks/useReviewSelfState';
 
 export default function InputName() {
-  const { , isValidName, handleChangeName } = useReviewSelfState();
+  const { reviewSelf, isValidName, handleChangeName } = useReviewSelfState();
 
   return (
     <div className="w-full flex flex-col gap-2">
       <ShakeBox trigger={!isValidName}>
         <TextInput
-          text={selfTest.name}
+          text={reviewSelf.name}
           handleChangeText={handleChangeName}
           placeholder="본명을 입력해주세요"
         />
@@ -20,7 +20,7 @@ export default function InputName() {
           variant="body02"
           className={isValidName ? 'text-gray06' : 'text-danger01'}
         >
-          {selfTest.name.length}/5
+          {`${reviewSelf.name.length}/5`}
         </Typography>
       </div>
     </div>

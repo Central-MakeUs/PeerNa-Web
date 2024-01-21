@@ -17,7 +17,7 @@ type ReviewSelfParams = {
 const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
   params,
 }) => {
-  const { selfTest, isValidName } = useReviewSelfState();
+  const { reviewSelf, isValidName } = useReviewSelfState();
 
   const curStep = parseInt(params.step ?? 1);
   const nextStep = String(curStep + 1);
@@ -35,8 +35,8 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
 
   const stepValidation = () => {
     if (curStep === 1) return !isValidName;
-    if (curStep === 2) return selfTest.job === '';
-    if (curStep === 3) return selfTest.position === '';
+    if (curStep === 2) return reviewSelf.job === '';
+    if (curStep === 3) return reviewSelf.part === '';
   };
 
   const isValidPush = stepValidation();
