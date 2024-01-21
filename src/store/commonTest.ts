@@ -8,14 +8,14 @@ export type PeerTypes =
   | 'Poor'
   | 'Bad';
 
-type CommonTestStateTypes = {
+type ReviewStateTypes = {
   answers: number[];
   peerType: PeerTypes;
   oneLineReview: string;
 };
 
-export const commonTestState = atom<CommonTestStateTypes>({
-  key: 'commonTestState',
+export const reviewState = atom<ReviewStateTypes>({
+  key: 'reviewState',
   default: {
     answers: [],
     peerType: 'Fair',

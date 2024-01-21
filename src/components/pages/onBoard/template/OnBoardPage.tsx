@@ -20,15 +20,14 @@ const OnBoardPage: ActivityComponentType<OnBoardPageParams> = ({ params }) => {
 
   const handleClickStepPush = () => {
     if (curStep === lastStep) {
-      replace('SelfTestPage', { step: '1' }, { animate: true });
+      replace('ReviewSelfPage', { step: '1' }, { animate: true });
       localStorage.setItem('OnBoard', 'true');
       return;
     }
-    push('OnBoard', { step: nextStep });
+    push('OnBoardPage', { step: nextStep });
   };
 
-  const handleClickStart = () =>
-    push('CommonTestPage', { type: 'self', step: '1' });
+  const handleClickStart = () => push('ReviewSelfPage', { step: '1' });
 
   return (
     <AppScreenContainer>

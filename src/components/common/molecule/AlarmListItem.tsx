@@ -12,7 +12,7 @@ interface AlarmListItemProps {
 export default function AlarmListItem({ title, subtitle }: AlarmListItemProps) {
   const { push } = useFlow();
   const handleClick = () => {
-    push('Project', {});
+    push('ProjectPage', {});
   };
 
   return (

@@ -1,4 +1,4 @@
-import { Activities, pageUrlMapping } from '@constants/activities';
+import { PageRoutes, Pages } from '@constants/activities';
 import { basicUIPlugin } from '@stackflow/plugin-basic-ui';
 import { historySyncPlugin } from '@stackflow/plugin-history-sync';
 import { webRendererPlugin } from '@stackflow/plugin-renderer-web';
@@ -14,12 +14,12 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     webRendererPlugin(),
     historySyncPlugin({
       routes: {
-        ...pageUrlMapping,
+        ...PageRoutes,
       },
       fallbackActivity: () => 'HomePage',
     }),
   ],
   activities: {
-    ...Activities,
+    ...Pages,
   },
 });

@@ -14,7 +14,7 @@ const HomePage: ActivityComponentType = () => {
 
   useEffect(() => {
     if (localStorage.getItem('OnBoard') === null) {
-      push('OnBoard', { step: '1' });
+      push('OnBoardPage', { step: '1' });
     }
   }, []);
 
@@ -45,7 +45,7 @@ const HomePage: ActivityComponentType = () => {
         OpenDrawer
       </Button>
       <Button
-        onClick={() => push('TestResultPage', { type: 'self', step: '1' })}
+        onClick={() => push('ReviewResultPage', { type: 'self', step: '1' })}
       >
         go now
       </Button>
