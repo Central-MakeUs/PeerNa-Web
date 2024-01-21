@@ -1,5 +1,5 @@
 import Typography from '@components/common/atom/Typography';
-import { Card } from '@nextui-org/card';
+import { Card } from '@nextui-org/react';
 import { getRgbaColorWithOpacity } from '@utils/styles';
 import { motion } from 'framer-motion';
 import {
