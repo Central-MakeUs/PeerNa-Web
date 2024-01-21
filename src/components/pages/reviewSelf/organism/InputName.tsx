@@ -1,10 +1,10 @@
 import ShakeBox from '@components/animate/ShakeBox';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
-import useSelfTestInformation from '@hooks/useReviewSelfState';
+import useReviewSelfState from '@hooks/useReviewSelfState';
 
 export default function InputName() {
-  const { selfTest, isValidName, handleChangeName } = useSelfTestInformation();
+  const { , isValidName, handleChangeName } = useReviewSelfState();
 
   return (
     <div className="w-full flex flex-col gap-2">

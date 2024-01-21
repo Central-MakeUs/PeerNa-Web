@@ -1,7 +1,7 @@
 import { nameSizeValidator, reviewSelfState } from '@store/reviewSelfState';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-export default function useSelfTestInformation() {
+export default function useReviewSelfState() {
   const [reviewSelf, setReviewSelf] = useRecoilState(reviewSelfState);
   const isValidName = useRecoilValue(nameSizeValidator);
 

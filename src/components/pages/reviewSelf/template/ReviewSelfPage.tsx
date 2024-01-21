@@ -6,7 +6,7 @@ import SelectPosition from '@components/pages/reviewSelf/organism/SelectPosition
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { REVIEW_SELF_TITLE } from '@constants/review';
-import useSelfTestInformation from '@hooks/useReviewSelfState';
+import useReviewSelfState from '@hooks/useReviewSelfState';
 import { useFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
 
@@ -17,7 +17,7 @@ type ReviewSelfParams = {
 const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
   params,
 }) => {
-  const { selfTest, isValidName } = useSelfTestInformation();
+  const { selfTest, isValidName } = useReviewSelfState();
 
   const curStep = parseInt(params.step ?? 1);
   const nextStep = String(curStep + 1);

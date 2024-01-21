@@ -1,10 +1,10 @@
 import SelectListItem from '@components/common/atom/SelectListItem';
 import { POSITION_LIST } from '@constants/review';
-import useSelfTestInformation from '@hooks/useReviewSelfState';
+import useReviewSelfState from '@hooks/useReviewSelfState';
 import { useEffect } from 'react';
 
 export default function SelectPosition() {
-  const { selfTest, handleChangePosition } = useSelfTestInformation();
+  const { selfTest, handleChangePosition } = useReviewSelfState();
 
   useEffect(() => {
     handleChangePosition('');
