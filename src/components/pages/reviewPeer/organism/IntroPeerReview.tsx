@@ -6,7 +6,7 @@ import { Fragment } from 'react';
 
 export default function IntroPeerReview() {
   const { push } = useFlow();
-  const handleClick = () => push('ReviewPeerPage', { step: '4' });
+  const handleClick = () => push('ReviewPeerPage', { step: '5' });
   return (
     <Fragment>
       <NavigationHeader

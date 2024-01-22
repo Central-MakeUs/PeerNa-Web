@@ -7,7 +7,6 @@ import ThanksReview from '@components/pages/reviewPeer/organism/ThanksReview';
 import WonderingMyCard from '@components/pages/reviewPeer/organism/WonderingMyCard';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import { ActivityComponentType } from '@stackflow/react';
-import { differenceInDays } from 'date-fns';
 import { useState } from 'react';
 
 type ReviewPeerPageParams = {
@@ -24,12 +23,6 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
     setStartDate((newDate ?? new Date()).toISOString());
   const handleChangeEndDate = (newDate: Date | undefined) =>
     setEndDate((newDate ?? new Date()).toISOString());
-  function isLessThan30Days(startDate: Date, endDate: Date) {
-    const diffDays = differenceInDays(endDate, startDate);
-    return diffDays;
-  }
-
-  const isValidDate = isLessThan30Days(new Date(startDate), new Date(endDate));
 
   const bgColor =
     curStep === 6
@@ -39,7 +32,6 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
   return (
     <AppScreenContainer className={bgColor}>
       {curStep === 1 && <RequestInit />}
-
       {curStep === 2 && (
         <InputProjectDate
           startDate={startDate}
@@ -48,13 +40,11 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
           handleChangeEndDate={handleChangeEndDate}
         />
       )}
-
-      {curStep === 3 && isValidDate && <IntroPeerReview />}
-      {curStep === 3 && !isValidDate && <OverDate />}
-
-      {curStep === 4 && <IsOffendedResponse />}
-      {curStep === 5 && <ThanksReview />}
-      {curStep === 6 && <WonderingMyCard />}
+      {curStep === 3 && <IntroPeerReview />}
+      {curStep === 4 && <OverDate />}
+      {curStep === 5 && <IsOffendedResponse />}
+      {curStep === 6 && <ThanksReview />}
+      {curStep === 7 && <WonderingMyCard />}
     </AppScreenContainer>
   );
 };
