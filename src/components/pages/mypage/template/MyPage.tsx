@@ -5,7 +5,7 @@ import useModal from '@hooks/useModal';
 import useToken from '@hooks/useToken';
 import { ActivityComponentType } from '@stackflow/react';
 
-const Mypage: ActivityComponentType = () => {
+const MyPage: ActivityComponentType = () => {
   const { openModal } = useModal();
   const { accessToken } = useToken();
 
@@ -24,4 +24,4 @@ const Mypage: ActivityComponentType = () => {
   );
 };
 
-export default Mypage;
+export default MyPage;

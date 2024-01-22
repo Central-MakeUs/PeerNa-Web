@@ -1,5 +1,6 @@
 import Button from '@components/common/atom/Button';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
+import { MODE } from '@constants/index';
 import { useFlow } from '@hooks/useStackFlow';
 import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
@@ -13,9 +14,10 @@ const HomePage: ActivityComponentType = () => {
   const { push } = useFlow();
 
   useEffect(() => {
-    if (localStorage.getItem('OnBoard') === null) {
-      push('OnBoard', { step: '1' });
-    }
+    if (MODE === 'production')
+      if (localStorage.getItem('OnBoard') === null) {
+        push('OnBoardPage', { step: '1' });
+      }
   }, []);
 
   return (
@@ -45,7 +47,7 @@ const HomePage: ActivityComponentType = () => {
         OpenDrawer
       </Button>
       <Button
-        onClick={() => push('TestResultPage', { type: 'self', step: '1' })}
+        onClick={() => push('ReviewResultPage', { type: 'self', step: '1' })}
       >
         go now
       </Button>

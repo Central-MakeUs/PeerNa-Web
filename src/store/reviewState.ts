@@ -1,0 +1,24 @@
+import { atom } from 'recoil';
+
+export type PeerGradeTypes =
+  | 'OUTSTANDING'
+  | 'EXCELLENT'
+  | 'GOOD'
+  | 'AVERAGE'
+  | 'BELOW_AVERAGE'
+  | 'POOR';
+
+type ReviewStateTypes = {
+  answers: number[];
+  peerGrade: PeerGradeTypes;
+  feedback: string;
+};
+
+export const reviewState = atom<ReviewStateTypes>({
+  key: 'reviewState',
+  default: {
+    answers: [],
+    peerGrade: 'AVERAGE',
+    feedback: '',
+  },
+});

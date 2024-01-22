@@ -1,4 +1,4 @@
-import { Activities } from '@constants/activities';
+import { PageRoutes, Pages } from '@constants/activities';
 import { basicUIPlugin } from '@stackflow/plugin-basic-ui';
 import { historySyncPlugin } from '@stackflow/plugin-history-sync';
 import { webRendererPlugin } from '@stackflow/plugin-renderer-web';
@@ -14,22 +14,12 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     webRendererPlugin(),
     historySyncPlugin({
       routes: {
-        HomePage: '/',
-        PeerPage: '/peer',
-        ProjectPage: '/project',
-        NotificationPage: '/notification',
-        MyPage: '/mypage',
-        OnBoard: '/onBoard',
-        SelfTestPage: '/test/self',
-        CommonTestPage: '/test',
-        TestResultPage: '/test/result',
-        PeerReviewPage: '/test/peer',
-        Redirect: '/login/kakao',
+        ...PageRoutes,
       },
       fallbackActivity: () => 'HomePage',
     }),
   ],
   activities: {
-    ...Activities,
+    ...Pages,
   },
 });
