@@ -1,10 +1,9 @@
-import { postMemberInfo, postReviewSelf } from '@apis/member';
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
+import { usePostMemberInfo, usePostReviewSelf } from '@hooks/queries/member';
 import useReviewSelfState from '@hooks/useReviewSelfState';
 import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
-import { useMutation } from '@tanstack/react-query';
 import { getAccessToken } from '@utils/token';
 import { Fragment, useEffect } from 'react';
 
@@ -15,12 +14,8 @@ export default function LoadingResult() {
   const { peerGrade, feedback } = review;
   const { name, job, part } = reviewSelf;
 
-  const postMemberMutation = useMutation({
-    mutationFn: postMemberInfo,
-  });
-  const postReviewSelfMutation = useMutation({
-    mutationFn: postReviewSelf,
-  });
+  const postMemberMutation = usePostMemberInfo();
+  const postReviewSelfMutation = usePostReviewSelf();
 
   useEffect(() => {
     if (getAccessToken()) {
