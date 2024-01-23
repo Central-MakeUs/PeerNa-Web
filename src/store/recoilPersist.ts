@@ -1,6 +1,6 @@
 import { recoilPersist } from 'recoil-persist';
 
 export const { persistAtom } = recoilPersist({
-  key: 'history-persist',
+  key: 'recoil-persist',
   storage: localStorage,
 });
