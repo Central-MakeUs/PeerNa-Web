@@ -1,14 +1,17 @@
-import { TestImages } from '@constants/images';
+import { ReviewImages } from '@constants/images';
 import { motion } from 'framer-motion';
 
-interface TestImageProps {
+interface ReviewCenterImageProps {
   curStep: number;
   trackStep: number;
   answerStep: number;
 }
 
-export default function TestImage({ curStep, answerStep }: TestImageProps) {
-  const imgSrc = TestImages[curStep - 1];
+export default function ReviewCenterImage({
+  curStep,
+  answerStep,
+}: ReviewCenterImageProps) {
+  const imgSrc = ReviewImages[curStep - 1];
   return (
     <div className={`w-full flex justify-center py-12`}>
       <motion.img
