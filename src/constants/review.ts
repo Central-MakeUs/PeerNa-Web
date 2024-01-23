@@ -25,12 +25,24 @@ export const JOB_LIST: {
   { title: '기타', job: 'OTHER' },
 ];
 
-export const POSITION_LIST = [
-  '기획자',
-  '디자이너',
-  'FE개발자',
-  'BE개발자',
-  '기타',
+export type PartType =
+  | 'PLANNER'
+  | 'DESIGNER'
+  | 'FRONT_END'
+  | 'BACK_END'
+  | 'MARKETER'
+  | 'OTHER'
+  | '';
+
+export const PART_LIST: {
+  title: string;
+  part: PartType;
+}[] = [
+  { title: '기획자', part: 'PLANNER' },
+  { title: '디자이너', part: 'DESIGNER' },
+  { title: 'FE개발자', part: 'FRONT_END' },
+  { title: 'BE개발자', part: 'BACK_END' },
+  { title: '기타', part: 'OTHER' },
 ];
 
 export const REVIEW_TITLE = {

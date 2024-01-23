@@ -1,5 +1,5 @@
 import SelectListItem from '@components/common/atom/SelectListItem';
-import { POSITION_LIST } from '@constants/review';
+import { PART_LIST } from '@constants/review';
 import useReviewSelfState from '@hooks/useReviewSelfState';
 import { useEffect } from 'react';
 
@@ -12,10 +12,10 @@ export default function SelectPosition() {
 
   return (
     <div className="w-full flex flex-col gap-4">
-      {POSITION_LIST.map((part, index) => (
+      {PART_LIST.map(({ title, part }) => (
         <SelectListItem
-          key={part + index}
-          title={part}
+          key={part}
+          title={title}
           isSelect={reviewSelf.part === part}
           onClick={() => handleChangePart(part)}
         />
