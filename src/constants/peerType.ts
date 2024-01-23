@@ -38,4 +38,9 @@ export const PeerTypeArray: PeerTypeArrayType[] = [
     iconId: 'PersonDelete',
     title: '더 이상 함께 하고 싶지 않은 동료에요',
   },
+  {
+    type: 'WORST',
+    iconId: 'ThumbDown',
+    title: '같이 일 하기 힘든 최악의 동료에요',
+  },
 ];
