@@ -6,7 +6,8 @@ export type PeerGradeTypes =
   | 'GOOD'
   | 'AVERAGE'
   | 'BELOW_AVERAGE'
-  | 'POOR';
+  | 'POOR'
+  | 'WORST';
 
 type ReviewStateTypes = {
   answers: number[];

@@ -76,4 +76,5 @@ export const Icon = {
   Share: 'share',
   CalendarError: 'calendar_error',
   CheckboxPerson: 'checkbox_person',
+  ThumbDown: 'thumb_down',
 };
