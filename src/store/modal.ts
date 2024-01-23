@@ -1,3 +1,4 @@
+import { persistAtom } from '@store/recoilPersist';
 import { atom } from 'recoil';
 
 export interface ModalStateType {
@@ -11,4 +12,5 @@ export const modalState = atom<ModalStateType>({
     isOpen: false,
     modalType: 'default',
   },
+  effects_UNSTABLE: [persistAtom],
 });
