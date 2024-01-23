@@ -1,3 +1,4 @@
+import { getAccessToken } from '@utils/token';
 import axios, { AxiosResponse } from 'axios';
 
 export const http = axios.create({
@@ -12,6 +13,10 @@ export const http = axios.create({
 
 http.interceptors.request.use(async config => {
   // TODO: authorization logic
+  const accessToken = getAccessToken();
+  if (accessToken) {
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
   return config;
 });
 
