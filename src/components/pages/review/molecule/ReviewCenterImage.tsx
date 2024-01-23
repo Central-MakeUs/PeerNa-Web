@@ -7,20 +7,10 @@ interface TestImageProps {
   answerStep: number;
 }
 
-export default function TestImage({
-  curStep,
-  trackStep,
-  answerStep,
-}: TestImageProps) {
-  const isExcept = curStep === 4 && trackStep === 6;
-  const getImgSrc = () => {
-    if (isExcept) return TestImages.at(-1);
-    else return TestImages[curStep - 1];
-  };
-
-  const imgSrc = getImgSrc();
+export default function TestImage({ curStep, answerStep }: TestImageProps) {
+  const imgSrc = TestImages[curStep - 1];
   return (
-    <div className={`w-full flex justify-center ${isExcept ? '' : 'py-12'}`}>
+    <div className={`w-full flex justify-center py-12`}>
       <motion.img
         key={answerStep}
         src={imgSrc}

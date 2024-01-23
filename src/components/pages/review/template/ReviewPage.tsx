@@ -109,13 +109,14 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
           </div>
           <div className="flex flex-col items-center mt-6 gap-4">
             <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
-            {(curStep !== 4 || trackStep !== 7) && (
-              <TestImage
-                curStep={curStep}
-                trackStep={trackStep}
-                answerStep={answerStep}
-              />
-            )}
+            {(curStep !== 4 || trackStep !== 7) &&
+              (curStep !== 4 || trackStep !== 6) && (
+                <TestImage
+                  curStep={curStep}
+                  trackStep={trackStep}
+                  answerStep={answerStep}
+                />
+              )}
             {!(curStep === 4 && (trackStep === 6 || trackStep === 7)) && (
               <TwoWayPicker
                 curStep={curStep}
