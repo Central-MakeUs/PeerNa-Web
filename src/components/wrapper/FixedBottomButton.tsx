@@ -14,7 +14,7 @@ export default function FixedBottomButton({
 }: FixedBottomButton) {
   return ReactDOM.createPortal(
     <div className="fixed z-30 left-2/4 translate-x-[-50%] bottom-5 w-full flex justify-center">
-      <div className="w-full max-w-[600px] px-5 sm:px-0">
+      <div className="w-full max-w-screen-md px-5 sm:px-0">
         <Button onClick={handleClick} {...props}>
           {children}
         </Button>

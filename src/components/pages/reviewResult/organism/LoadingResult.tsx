@@ -1,22 +1,18 @@
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import { useFlow } from '@hooks/useStackFlow';
+import { getAccessToken } from '@utils/token';
 import { Fragment, useEffect } from 'react';
 
-interface LoadingResultProps {
-  curStep: number;
-}
-
-export default function LoadingResult({ curStep }: LoadingResultProps) {
+export default function LoadingResult() {
   const { push } = useFlow();
-  const nextStep = String(curStep + 1);
 
   useEffect(() => {
-    if (curStep === 1) {
-      setTimeout(() => {
-        push('ReviewResultPage', { type: 'self', step: nextStep });
-      }, 1500);
-    }
+    setTimeout(() => {
+      if (getAccessToken())
+        push('ReviewResultPage', { type: 'self', step: '2' });
+      else push('ReviewResultPage', { type: 'self', step: '3' });
+    }, 1500);
   }, []);
 
   return (
