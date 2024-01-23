@@ -24,7 +24,7 @@ export default function ResultLoginRequired({
 
   useEffect(() => {
     if (history.activity !== 'ReviewResultPage') {
-      handleChangeHistory('ReviewResultPage', { type: 'self', step: '2' });
+      handleChangeHistory('ReviewResultPage', { type: 'self', step: '1' });
     }
     if (!accessToken) {
       openModal('login');
