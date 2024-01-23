@@ -97,7 +97,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
   return (
     <AppScreenContainer>
       <div className="w-screen min-h-screen flex justify-center">
-        <div className="w-full max-w-[690px] flex flex-col px-5">
+        <div className="w-full max-w-screen-md` flex flex-col px-5">
           <div className="box-border w-full h-[68px] px-2 py-ㅁ[18px] flex items-center justify-between bg-transparent">
             <IconButton
               iconProps={{

@@ -25,7 +25,7 @@ export default function Header({
   };
 
   return (
-    <header className="max-w-[600px] px-5 mx-auto">
+    <header className="max-w-screen-md px-5 mx-auto">
       {showBackButton && (
         <section className="py-[22px] w-full flex items-center">
           <IconButton

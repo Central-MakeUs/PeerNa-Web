@@ -14,7 +14,9 @@ export default function FixedButtonContainer({
 
   return ReactDOM.createPortal(
     <div className="fixed z-30 left-2/4 translate-x-[-50%] bottom-5 w-full flex justify-center">
-      <div className={` w-full max-w-[600px] px-5 flex ${flexDirection} gap-2`}>
+      <div
+        className={` w-full max-w-screen-md px-5 flex ${flexDirection} gap-2`}
+      >
         {children}
       </div>
     </div>,
