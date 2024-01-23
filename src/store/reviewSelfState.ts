@@ -1,9 +1,10 @@
+import { JobType } from '@constants/review';
 import { persistAtom } from '@store/recoilPersist';
 import { atom, selector } from 'recoil';
 
 type ReviewSelfStateType = {
   name: string;
-  job: string;
+  job: JobType;
   part: string;
 };
 
