@@ -1,5 +1,6 @@
 import Spinner from '@components/common/atom/Spinner';
 import { Member_Id } from '@constants/localStorage';
+import useHistory from '@hooks/useHistory';
 import { useFlow } from '@hooks/useStackFlow';
 import useToken from '@hooks/useToken';
 import { ActivityComponentType } from '@stackflow/react';
@@ -13,6 +14,7 @@ interface AuthData {
 
 const RedirectPage: ActivityComponentType = () => {
   const { push } = useFlow();
+  const { history } = useHistory();
   const { updateToken } = useToken();
 
   const url = window.location.search;
@@ -28,7 +30,7 @@ const RedirectPage: ActivityComponentType = () => {
     if (memberId && accessToken && refreshToken) {
       localStorage.setItem(Member_Id, memberId);
       updateToken(accessToken, refreshToken);
-      push('HomePage', {});
+      push(history.activity, history.params);
     }
   }, [memberId, accessToken, refreshToken]);
 

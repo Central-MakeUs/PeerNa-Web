@@ -1,5 +1,5 @@
-import IconButton from '@components/common/atom/IconButton';
 import Typography from '@components/common/atom/Typography';
+import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import TestImage from '@components/pages/review/molecule/ReviewCenterImage';
 import TestHeader from '@components/pages/review/molecule/ReviewHeader';
 import OneLineReview from '@components/pages/review/organism/OneLineReview';
@@ -96,53 +96,45 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
 
   return (
     <AppScreenContainer>
-      <div className="w-screen min-h-screen flex justify-center">
-        <div className="w-full max-w-[690px] flex flex-col px-5">
-          <div className="box-border w-full h-[68px] px-2 py-ㅁ[18px] flex items-center justify-between bg-transparent">
-            <IconButton
-              iconProps={{
-                id: 'ArrowLeft',
-                color: 'black',
-              }}
-              onClick={handleClickBackButton}
-            />
-          </div>
-          <div className="flex flex-col items-center mt-6 gap-4">
-            <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
-            {(curStep !== 4 || trackStep !== 7) &&
-              (curStep !== 4 || trackStep !== 6) && (
-                <TestImage
-                  curStep={curStep}
-                  trackStep={trackStep}
-                  answerStep={answerStep}
-                />
-              )}
-            {!(curStep === 4 && (trackStep === 6 || trackStep === 7)) && (
-              <TwoWayPicker
-                curStep={curStep}
-                answerStep={answerStep}
-                handleClickNextStep={handleClickNextStep}
-              />
-            )}
-            {curStep === 4 && trackStep === 6 && (
-              <PeerType
-                answerStep={answerStep}
-                handleClick={handleClickPeerTypeButton}
-              />
-            )}
-            {curStep === 4 && trackStep === 7 && (
-              <OneLineReview answerStep={answerStep} />
-            )}
-          </div>
-        </div>
+      <NavigationHeader
+        backIconProps={{
+          isShow: true,
+          handleClick: handleClickBackButton,
+        }}
+      />
+      <div className="flex flex-col items-center mt-6 gap-4">
+        <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
+        {(curStep !== 4 || trackStep !== 7) && (
+          <TestImage
+            curStep={curStep}
+            trackStep={trackStep}
+            answerStep={answerStep}
+          />
+        )}
+        {!(curStep === 4 && (trackStep === 6 || trackStep === 7)) && (
+          <TwoWayPicker
+            curStep={curStep}
+            answerStep={answerStep}
+            handleClickNextStep={handleClickNextStep}
+          />
+        )}
+        {curStep === 4 && trackStep === 6 && (
+          <PeerType
+            answerStep={answerStep}
+            handleClick={handleClickPeerTypeButton}
+          />
+        )}
         {curStep === 4 && trackStep === 7 && (
-          <FixedBottomButton handleClick={handleClickLastButton}>
-            <Typography variant="body02" fontColor="white">
-              시작하기
-            </Typography>
-          </FixedBottomButton>
+          <OneLineReview answerStep={answerStep} />
         )}
       </div>
+      {curStep === 4 && trackStep === 7 && (
+        <FixedBottomButton handleClick={handleClickLastButton}>
+          <Typography variant="body02" fontColor="white">
+            시작하기
+          </Typography>
+        </FixedBottomButton>
+      )}
     </AppScreenContainer>
   );
 };
