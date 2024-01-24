@@ -1,5 +1,5 @@
-import { getAccessToken } from '@utils/token';
-import axios, { AxiosResponse } from 'axios';
+import { getAccessToken, getRefreshToken } from '@utils/token';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export const http = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -24,9 +24,30 @@ const onFulfilled = (response: AxiosResponse) => {
   return response;
 };
 
-const onRejected = (error: unknown) => {
+const onRejected = async (error: AxiosError) => {
   // TODO: error handle logic
   console.error(error);
+  const originalRequest = error.config;
+
+  if (!originalRequest) return Promise.reject(error);
+
+  if (error.response?.status === 401) {
+    try {
+      const response = await http.post('/member/new-token', {
+        refreshToken: getRefreshToken(),
+      });
+
+      const newAccessToken = response.data.result.accessToken;
+
+      originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+
+      return http(originalRequest);
+    } catch (refreshError) {
+      console.error(refreshError);
+    }
+  }
+
+  return Promise.reject(error);
 };
 
 http.interceptors.response.use(onFulfilled, onRejected);
