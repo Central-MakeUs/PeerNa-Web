@@ -1,5 +1,5 @@
-import { postMemberInfo, postReviewSelf } from '@apis/member';
-import { useMutation } from '@tanstack/react-query';
+import { getReviewResult, postMemberInfo, postReviewSelf } from '@apis/member';
+import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 
 export const usePostMemberInfo = (
   successCallback?: () => void,
@@ -20,5 +20,13 @@ export const usePostReviewSelf = (
     mutationFn: postReviewSelf,
     onSuccess: successCallback,
     onError: errorCallback,
+  });
+};
+
+export const useGetReviewResult = () => {
+  return useSuspenseQuery({
+    queryKey: ['reviewResult'],
+    queryFn: getReviewResult,
+    select: data => data.result,
   });
 };

@@ -2,6 +2,7 @@ import { http } from '@apis/index';
 import { ApiResponse } from 'models';
 import { MemberBasicInfoRequestDTO } from 'models/member/request/memberBasicInfoRequestDTO';
 import { MemberbasicInfoResponseDTO } from 'models/member/response/memberBasicInfoResponseDTO';
+import { MemberReviewResultResponseDTO } from 'models/member/response/memberReviewResultResponseDTO';
 
 export const postMemberInfo = async ({
   name,
@@ -23,4 +24,11 @@ export const postMemberInfo = async ({
 
 export const postReviewSelf = async (answerIdList: number[]) => {
   return await http.post('/member/self-test', { answerIdList });
+};
+
+export const getReviewResult = async (): Promise<
+  ApiResponse<MemberReviewResultResponseDTO>
+> => {
+  const response = await http.get('/member/self-test-result');
+  return response.data;
 };
