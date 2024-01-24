@@ -1,4 +1,10 @@
-import { getReviewResult, postMemberInfo, postReviewSelf } from '@apis/member';
+import {
+  getMe,
+  getReviewResult,
+  getUserName,
+  postMemberInfo,
+  postReviewSelf,
+} from '@apis/member';
 import { useMutation, useSuspenseQuery } from '@tanstack/react-query';
 
 export const usePostMemberInfo = (
@@ -25,8 +31,23 @@ export const usePostReviewSelf = (
 
 export const useGetReviewResult = () => {
   return useSuspenseQuery({
-    queryKey: ['reviewResult'],
+    queryKey: ['getReviewResult'],
     queryFn: getReviewResult,
     select: data => data.result,
+  });
+};
+
+export const useGetUserName = (uuid: string) => {
+  return useSuspenseQuery({
+    queryKey: ['getUserName', uuid],
+    queryFn: () => getUserName(uuid),
+    select: data => data.result,
+  });
+};
+
+export const useMe = () => {
+  return useSuspenseQuery({
+    queryKey: ['getMe'],
+    queryFn: getMe,
   });
 };
