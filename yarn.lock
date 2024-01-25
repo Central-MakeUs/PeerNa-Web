@@ -12552,6 +12552,7 @@ __metadata:
     react-error-boundary: "npm:^4.0.12"
     react-hot-toast: "npm:^2.4.1"
     recoil: "npm:^0.7.7"
+    recoil-persist: "npm:^5.1.0"
     storybook: "npm:^7.6.6"
     tailwind-merge: "npm:^2.2.0"
     tailwindcss: "npm:^3.4.0"
@@ -13294,6 +13295,15 @@ __metadata:
     source-map: "npm:~0.6.1"
     tslib: "npm:^2.0.1"
   checksum: d719633be8029e28f23b8191d4a525c5dbdac721792ab3cb5e9dfcf1694fb93f3c147b186916195a9c7fa0711f1e4990ba457cdcee02faed3899d4a80da1bd1f
+  languageName: node
+  linkType: hard
+
+"recoil-persist@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "recoil-persist@npm:5.1.0"
+  peerDependencies:
+    recoil: ^0.7.2
+  checksum: 76cf9c0a41511d50d5f7b5b8feaf5d1df275617aa9c4980a8517a1f364a83df63ac159d002e1da8d5dba402b138cb38cc196c44b010ebf3f5b4943945d008687
   languageName: node
   linkType: hard
 

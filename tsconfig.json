@@ -29,9 +29,9 @@
       "@utils/*": ["utils/*"],
       "@store/*": ["store/*"],
       "@apis/*": ["apis/*"],
-      "@hooks/*": ["hooks/*"]
-    }
+      "@hooks/*": ["hooks/*"],
+    },
   },
   "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
 }

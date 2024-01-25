@@ -1,27 +1,41 @@
-import CommonTestPage from '@components/pages/commonTest/template/CommonTestPage';
 import HomePage from '@components/pages/home/template/HomePage';
-import Redirect from '@components/pages/login/template/Redirect';
+import RedirectPage from '@components/pages/login/template/RedirectPage';
 import MyPage from '@components/pages/mypage/template/MyPage';
 import NotificationPage from '@components/pages/notification/template/NotificationPage';
 import OnBoardPage from '@components/pages/onBoard/template/OnBoardPage';
 import PeerPage from '@components/pages/peer/template/PeerPage';
-import PeerReviewPage from '@components/pages/peerReview/template/PeerReviewPage';
 import ProjectPage from '@components/pages/project/template/ProjectPage';
-import SelfTestPage from '@components/pages/selfTest/template/SelfTestPage';
-import TestResultPage from '@components/pages/testResult/template/TestResultPage';
+import ReviewPage from '@components/pages/review/template/ReviewPage';
+import ReviewPeerPage from '@components/pages/reviewPeer/template/ReviewPeerPage';
+import ReviewResultPage from '@components/pages/reviewResult/template/ReviewResultPage';
+import ReviewSelfPage from '@components/pages/reviewSelf/template/ReviewSelfPage';
 
-export const Activities = {
+export const Pages = {
   HomePage,
   PeerPage,
   ProjectPage,
   NotificationPage,
   MyPage,
-  OnBoard: OnBoardPage,
-  SelfTestPage,
-  CommonTestPage,
-  TestResultPage,
-  PeerReviewPage,
-  Redirect,
+  OnBoardPage,
+  ReviewPage,
+  ReviewSelfPage,
+  ReviewPeerPage,
+  ReviewResultPage,
+  RedirectPage,
+};
+
+export const PageRoutes: Record<keyof typeof Pages, string> = {
+  HomePage: '/',
+  PeerPage: '/peer',
+  ProjectPage: '/project',
+  NotificationPage: '/notification',
+  MyPage: '/mypage',
+  OnBoardPage: '/onBoard',
+  ReviewPage: '/review',
+  ReviewSelfPage: '/review/self',
+  ReviewPeerPage: '/review/peer',
+  ReviewResultPage: '/review/result',
+  RedirectPage: '/login/kakao',
 };
 
 export const TabItem = {
@@ -32,5 +46,5 @@ export const TabItem = {
   MyPage,
 };
 
-export type ActivitiesTypes = keyof typeof Activities;
+export type PageTypes = keyof typeof Pages;
 export type TabItemTypes = keyof typeof TabItem;

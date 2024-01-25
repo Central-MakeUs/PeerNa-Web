@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import { Access_Token, Refresh_Token } from '@constants/localStorage';
+import { WebviewBridge } from '@utils/webview';
+import { useState } from 'react';
 
 export default function useToken() {
   const [accessToken, setAccessToken] = useState(
@@ -14,6 +15,13 @@ export default function useToken() {
     setRefreshToken(newRefreshToken);
     localStorage.setItem(Access_Token, newAccessToken);
     localStorage.setItem(Refresh_Token, newRefreshToken);
+    WebviewBridge.postMessage({
+      type: 'login',
+      data: {
+        accessToken: newAccessToken,
+        refreshToken: newRefreshToken,
+      },
+    });
   };
 
   const resetToken = () => {

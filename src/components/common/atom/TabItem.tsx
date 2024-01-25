@@ -1,6 +1,6 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { ActivitiesTypes, TabItemTypes } from '@constants/activities';
+import { PageTypes, TabItemTypes } from '@constants/activities';
 import { IconKeyType } from '@constants/icons';
 import { useFlow } from '@hooks/useStackFlow';
 
@@ -18,8 +18,7 @@ export default function TabItem({
   isDone,
 }: TabItemProps) {
   const { replace } = useFlow();
-  const handleClick = () =>
-    replace(icon as ActivitiesTypes, {}, { animate: false });
+  const handleClick = () => replace(icon as PageTypes, {}, { animate: false });
 
   const getIcon = () => {
     const iconMap: Record<TabItemTypes, string> = {
