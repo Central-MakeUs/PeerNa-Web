@@ -72,8 +72,6 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
   const mutation = usePostReviewPeer();
   const { review } = useReviewState();
   const handleClickLastButton = () => {
-    if (type === 'self') push('ReviewResultPage', { type: type, step: '1' });
-
     if (type === 'peer') {
       mutation.mutate({
         targetUuid: review.uuid!,
@@ -83,7 +81,9 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
         peerGrade: review.peerGrade,
       });
       push('ReviewPeerPage', { step: '6' });
+      return;
     }
+    push('ReviewResultPage', { type: type, step: '1' });
   };
 
   const handleClickPeerTypeButton = (type: PeerGradeTypes) => {
