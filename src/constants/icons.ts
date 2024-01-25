@@ -16,6 +16,7 @@ export const Icon = {
   ArrowLeft: 'arrow_left',
   ArrowRight: 'arrow_right',
   ArrowDown: 'arrow_down',
+  ArrowUp: 'arrow_up',
   BeforeConcern: 'before_concern',
   AfterConcern: 'after_concern',
   Sincere: 'sincere',

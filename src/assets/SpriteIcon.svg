@@ -82,6 +82,9 @@
     <symbol id="arrow_down" viewBox="0 0 16 8">
     <path fill="currentColor" d="M14.954.28a.9.9 0 0 1-.031 1.272l-6.3 6.001a.9.9 0 0 1-1.242 0L1.08 1.552A.9.9 0 0 1 2.322.248l5.68 5.41 5.68-5.41a.9.9 0 0 1 1.272.031z"/>
     </symbol>
+     <symbol id="arrow_up" viewBox="0 0 12 7">
+    <path fill="currentColor" d="M.207 6.267a.75.75 0 0 1 .026-1.06L5.483.204a.75.75 0 0 1 1.035 0l5.25 5.001a.75.75 0 1 1-1.034 1.086L6 1.784 1.267 6.292a.75.75 0 0 1-1.06-.025z"/>
+    </symbol>
     <symbol id="before_concern" viewBox="0 0 17 17">
       <path
         fill="currentColor"
