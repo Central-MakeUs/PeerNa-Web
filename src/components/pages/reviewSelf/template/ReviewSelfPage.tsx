@@ -7,8 +7,10 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { REVIEW_SELF_TITLE } from '@constants/review';
 import useReviewSelfState from '@hooks/useReviewSelfState';
+import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
+import { useEffect } from 'react';
 
 type ReviewSelfParams = {
   step: string;
@@ -40,6 +42,11 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
   };
 
   const isValidPush = stepValidation();
+
+  const { handleClearReviews } = useReviewState();
+  useEffect(() => {
+    if (curStep === 1) handleClearReviews();
+  }, []);
 
   return (
     <AppScreenContainer>

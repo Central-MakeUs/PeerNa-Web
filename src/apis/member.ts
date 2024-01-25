@@ -7,7 +7,6 @@ import { MemberReviewResultResponseDTO } from 'models/member/response/memberRevi
 import { MemberUserNameResponseDTO } from 'models/member/response/memberUserNameResponseDTO';
 
 export const postMemberInfo = async ({
-  name,
   job,
   part,
   selfPeerGrade,
@@ -38,7 +37,7 @@ export const getReviewResult = async (): Promise<
 export const getUserName = async (
   uuid: string,
 ): Promise<ApiResponse<MemberUserNameResponseDTO>> => {
-  const response = await http.get(`member/name?uuid=${uuid}`);
+  const response = await http.get(`/member/name?uuid=${uuid}`);
   return response.data;
 };
 

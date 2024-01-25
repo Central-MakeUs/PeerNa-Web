@@ -1,6 +1,7 @@
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
 import { Card } from '@nextui-org/react';
 import { getRgbaColorWithOpacity } from '@utils/styles';
@@ -9,7 +10,11 @@ import { Fragment } from 'react';
 
 export default function WonderingMyCard() {
   const { push } = useFlow();
-  const handleClick = () => push('OnBoardPage', { step: '1' });
+  const { handleClearReviews } = useReviewState();
+  const handleClick = () => {
+    handleClearReviews();
+    push('OnBoardPage', { step: '1' });
+  };
   const handleClickRightButton = () => push('HomePage', {});
   const bgOpacity = getRgbaColorWithOpacity('#ffffff', 0.4);
 

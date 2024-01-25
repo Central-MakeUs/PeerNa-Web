@@ -14,6 +14,8 @@ type ReviewStateTypes = {
   answers: number[];
   peerGrade: PeerGradeTypes;
   feedback: string;
+  uuid?: string;
+  peerName?: string;
 };
 
 export const reviewState = atom<ReviewStateTypes>({

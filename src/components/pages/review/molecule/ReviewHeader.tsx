@@ -1,6 +1,7 @@
 import Typography from '@components/common/atom/Typography';
 import ProgressBar from '@components/common/molecule/ProgressBar';
 import { REVIEW_PICKER, REVIEW_TITLE } from '@constants/review';
+import useReviewState from '@hooks/useReviewState';
 
 interface TestTitleProps {
   type: string;
@@ -13,13 +14,16 @@ export default function TestHeader({
   curStep,
   trackStep,
 }: TestTitleProps) {
+  const { review } = useReviewState();
   const getTitle = () => {
     if (curStep === 4 && trackStep === 6)
       return REVIEW_TITLE.peerReviewPrompt();
     if (curStep === 4 && trackStep === 7)
       return REVIEW_TITLE.oneLineReviewPrompt();
     if (type === 'self') return REVIEW_TITLE.self[curStep - 1];
-    else return REVIEW_TITLE.peer('username')[curStep - 1];
+    else {
+      return REVIEW_TITLE.peer(review.peerName as string)[curStep - 1];
+    }
   };
 
   const title = getTitle();

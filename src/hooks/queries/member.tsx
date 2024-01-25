@@ -45,9 +45,10 @@ export const useGetUserName = (uuid: string) => {
   });
 };
 
-export const useMe = () => {
+export const useGetMe = () => {
   return useSuspenseQuery({
     queryKey: ['getMe'],
     queryFn: getMe,
+    select: data => data.result,
   });
 };

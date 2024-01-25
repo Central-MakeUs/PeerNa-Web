@@ -28,12 +28,16 @@ export default function LoadingResult() {
       });
       postReviewSelfMutation.mutate(review.answers);
     } else {
-      push('ReviewResultPage', { type: 'self', step: '3' });
+      setTimeout(() => {
+        push('ReviewResultPage', { type: 'self', step: '3' });
+      }, 1000);
     }
   }, []);
 
   if (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) {
-    push('ReviewResultPage', { type: 'self', step: '2' });
+    setTimeout(() => {
+      push('ReviewResultPage', { type: 'self', step: '2' });
+    }, 1000);
     return;
   }
 

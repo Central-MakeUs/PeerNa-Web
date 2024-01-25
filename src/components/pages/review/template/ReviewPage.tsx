@@ -8,11 +8,13 @@ import TwoWayPicker from '@components/pages/review/organism/TwoWayPicker';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { REVIEW_PICKER } from '@constants/review';
+import { usePostReviewPeer } from '@hooks/queries/review';
 import useReviewState from '@hooks/useReviewState';
 import { useFlow, useStepFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
 import { PeerGradeTypes } from '@store/reviewState';
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 type ReviewPageParams = {
   type: string;
@@ -67,12 +69,20 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
     }
   };
 
+  const mutation = usePostReviewPeer();
+  const { review } = useReviewState();
   const handleClickLastButton = () => {
-    if (type === 'self') {
-      push('ReviewResultPage', { type: type, step: '1' });
-    }
+    if (type === 'self') push('ReviewResultPage', { type: type, step: '1' });
+
     if (type === 'peer') {
-      push('ReviewPeerPage', { step: '5' });
+      mutation.mutate({
+        targetUuid: review.uuid!,
+        uuid: uuidv4(),
+        answerIdList: review.answers,
+        feedback: review.feedback,
+        peerGrade: review.peerGrade,
+      });
+      push('ReviewPeerPage', { step: '6' });
     }
   };
 

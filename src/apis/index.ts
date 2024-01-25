@@ -1,4 +1,9 @@
-import { getAccessToken, getRefreshToken } from '@utils/token';
+import {
+  getAccessToken,
+  getRefreshToken,
+  removeAccessToken,
+  setAccessToken,
+} from '@utils/token';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export const http = axios.create({
@@ -28,16 +33,23 @@ const onRejected = async (error: AxiosError) => {
   // TODO: error handle logic
   console.error(error);
   const originalRequest = error.config;
-
+  console.log(originalRequest?.url);
   if (!originalRequest) return Promise.reject(error);
 
-  if (error.response?.status === 401) {
+  if (
+    error.response?.status === 401 &&
+    originalRequest.url !== '/member/new-token'
+  ) {
+    delete http.defaults.headers.common['Authorization'];
+    removeAccessToken();
+
     try {
       const response = await http.post('/member/new-token', {
         refreshToken: getRefreshToken(),
       });
 
       const newAccessToken = response.data.result.accessToken;
+      setAccessToken(newAccessToken);
 
       originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
 
