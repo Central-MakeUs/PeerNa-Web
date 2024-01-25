@@ -14,7 +14,7 @@ export default function Project({ title, subtitle, date }: ProjectProps) {
 
   return (
     <div
-      className={`w-[318px] h-[71px] p-5 bg-gray01 flex gap-3 box-content cursor-pointer rounded-xl border-1 transition-colors ${
+      className={`w-full p-5 bg-gray01 flex gap-3 cursor-pointer rounded-xl border-1 transition-colors ${
         isFocused ? 'bg-primary100 border-primary500' : null
       }`}
       onClick={handleFocus}
