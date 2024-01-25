@@ -1,14 +1,58 @@
-import card_orange from '@assets/image/card_orange.png';
-import card_pink from '@assets/image/card_pink.png';
-import card_purple from '@assets/image/card_purple.png';
-import card_yellow from '@assets/image/card_yellow.png';
+import driving from '@assets/image/DRIVING.png';
+import cooperative from '@assets/image/COOPERATIVE.png';
+import analyical from '@assets/image/ANALYICAL.png';
+import comprehensive from '@assets/image/COOPERATIVE.png';
+import future_oriented from '@assets/image/FUTURE_ORIENTED.png';
+import pragmative from '@assets/image/PRAGMATIC.png';
+import multidimensional from '@assets/image/MULTIDIMENSIONAL.png';
+import warmhearted from '@assets/image/WARMHEARTED.png';
+import cautious from '@assets/image/CAUTIOUS.png';
+import challenging from '@assets/image/CHALLENGING.png';
+import card_locked from '@assets/image/card_locked.png';
+import card_result from '@assets/image/userType.png';
 
-export const Image = {
-  CardPurple: card_purple,
-  CardOrange: card_orange,
-  CardPink: card_pink,
-  CardYellow: card_yellow,
+export const TestCardImage = {
+  DRIVING: driving,
+  COOPERATIVE: cooperative,
+  ANALYTICAL: analyical,
+  COMPREHENSIVE: comprehensive,
+  FUTURE_ORIENTED: future_oriented,
+  PRAGMATIC: pragmative,
+  MULTIDIMENSIONAL: multidimensional,
+  WARMHEARTED: warmhearted,
+  CAUTIOUS: cautious,
+  CHALLENGING: challenging,
+  LOCKED: card_locked,
+  RESULT: card_result,
 };
+
+export const TestCardKeyword = {
+  DRIVING: '추진하는',
+  COOPERATIVE: '협조하는',
+  ANALYTICAL: '분석적인',
+  COMPREHENSIVE: '종합적인',
+  FUTURE_ORIENTED: '미래지향적인',
+  PRAGMATIC: '냉철한',
+  MULTIDIMENSIONAL: '입체적인',
+  WARMHEARTED: '따뜻한',
+  CAUTIOUS: '신중한',
+  CHALLENGING: '도전적인',
+};
+
+export const TestResultCardDescription = {
+  DRIVING: '팀을 이끈느 배의 선장 같은 동료에요',
+  COOPERATIVE: '팀을 든든히 받쳐주는 버팀목 같은 동료에요',
+  ANALYTICAL: '목표 실현 가능성을 높이는 동료에요',
+  COMPREHENSIVE: '현실과 이상을 두루 고려하는 동료에요',
+  FUTURE_ORIENTED: '넓은 시야로 큰 그림을 그리는 동료에요',
+  PRAGMATIC: '솔직한 대화를 이끌어 내는 동료에요',
+  MULTIDIMENSIONAL: '안정적이고 견고한 외유내강의 동료에요',
+  WARMHEARTED: '힘과 용기를 불어넣는 동료에요',
+  CAUTIOUS: '위험성과 변수를 줄여 줄 동료에요',
+  CHALLENGING: '팀에게 새로운 길을 열어 줄 동료에요',
+};
+
+export type CardType = keyof typeof TestCardKeyword;
 
 export const Value = {
   CardPurple: '가치관',
@@ -34,18 +78,3 @@ export const Description = {
   CardYellow:
     '해보자 해보자 후회하지 말고! 결정을 내려야 하는 순간에는 새로운 것을 시도할 줄 아는군요!',
 };
-
-export const CardDescription = {
-  DRIVING: '팀을 이끄는 배의 선장 같은 동료에요',
-  COOPERATIVE: '팀을 든든히 받쳐주는 버팀목 같은 동료에요',
-  ANALYTICAL: '목표 실현 가능성을 높이는 동료에요',
-  COMPREHENSIVE: '현실과 이상을 두루 고려하는 동료에요',
-  FUTURE_ORIENTED: '넓은 시야로 큰 그림을 그리는 동료에요',
-  PRAGMATIC: '솔직한 대화를 이끌어 내는 동료에요',
-  MULTIDIMENSIONAL: '안정적이고 견고한 외유내강의 동료에요',
-  WARMHEARTED: '힘과 용기를 불어넣는 동료에요',
-  CAUTIOUS: '위험성과 변수를 줄여 줄 동료에요',
-  CHANLLANGE: '',
-};
-
-export type CardType = keyof typeof Image;
