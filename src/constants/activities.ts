@@ -1,7 +1,10 @@
 import HomePage from '@components/pages/home/template/HomePage';
 import RedirectPage from '@components/pages/login/template/RedirectPage';
 import MyPage from '@components/pages/mypage/template/MyPage';
+import SettingPage from '@components/pages/setting/template/SettingPage';
+import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
 import NotificationPage from '@components/pages/notification/template/NotificationPage';
+import ProfileEditPage from '@components/pages/profileEdit/template/ProfileEditPage';
 import OnBoardPage from '@components/pages/onBoard/template/OnBoardPage';
 import PeerPage from '@components/pages/peer/template/PeerPage';
 import ProjectPage from '@components/pages/project/template/ProjectPage';
@@ -16,6 +19,9 @@ export const Pages = {
   ProjectPage,
   NotificationPage,
   MyPage,
+  SettingPage,
+  MoreFeedbackPage,
+  ProfileEditPage,
   OnBoardPage,
   ReviewPage,
   ReviewSelfPage,
@@ -30,6 +36,9 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ProjectPage: '/project',
   NotificationPage: '/notification',
   MyPage: '/mypage',
+  MoreFeedbackPage: '/mypage/feedback',
+  ProfileEditPage: '/mypage/profile/edit',
+  SettingPage: '/mypage/setting',
   OnBoardPage: '/onBoard',
   ReviewPage: '/review',
   ReviewSelfPage: '/review/self',
