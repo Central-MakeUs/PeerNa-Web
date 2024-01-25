@@ -12,7 +12,7 @@ interface AuthData {
   refreshToken: string;
 }
 
-const RedirectPage: ActivityComponentType = () => {
+const KakaoRedirectpage: ActivityComponentType = () => {
   const { push } = useFlow();
   const { history } = useHistory();
   const { updateToken } = useToken();
@@ -37,4 +37,4 @@ const RedirectPage: ActivityComponentType = () => {
   return <Spinner />;
 };
 
-export default RedirectPage;
+export default KakaoRedirectpage;

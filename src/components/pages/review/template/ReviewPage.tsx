@@ -1,6 +1,6 @@
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import TestImage from '@components/pages/review/molecule/ReviewCenterImage';
+import ReviewCenterImage from '@components/pages/review/atom/ReviewCenterImage';
 import TestHeader from '@components/pages/review/molecule/ReviewHeader';
 import OneLineReview from '@components/pages/review/organism/OneLineReview';
 import PeerType from '@components/pages/review/organism/PeerType';
@@ -105,7 +105,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
       <div className="flex flex-col items-center mt-6 gap-4">
         <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
         {(curStep !== 4 || trackStep !== 7) && (
-          <TestImage
+          <ReviewCenterImage
             curStep={curStep}
             trackStep={trackStep}
             answerStep={answerStep}
