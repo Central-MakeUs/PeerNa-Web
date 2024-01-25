@@ -77,4 +77,7 @@ export const Icon = {
   CalendarError: 'calendar_error',
   CheckboxPerson: 'checkbox_person',
   ThumbDown: 'thumb_down',
+  Menu: 'menu',
+  Help: 'help',
+  Save: 'save',
 };
