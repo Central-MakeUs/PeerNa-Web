@@ -25,7 +25,10 @@ export default function AlarmListItem({ title, subtitle }: AlarmListItemProps) {
         </div>
         <div className="flex flex-col gap-1">
           <Typography variant="body01">{title}</Typography>
-          <Typography variant="body05" className={`text-[${Palette.gray05}]`}>
+          <Typography
+            variant="body05"
+            className={`text-[${Palette.gray05}] text-left`}
+          >
             {subtitle}
           </Typography>
         </div>
