@@ -1,6 +1,7 @@
 import TabItem from '@components/common/atom/TabItem';
 import { TabItemTypes } from '@constants/activities';
 import { useActivity } from '@stackflow/react';
+import ReactDOM from 'react-dom';
 
 export default function BottomNavigation() {
   const activity = useActivity();
@@ -12,8 +13,8 @@ export default function BottomNavigation() {
     { icon: 'MyPage', name: '마이페이지' },
   ];
 
-  return (
-    <div className="fixed left-2/4 translate-x-[-50%] bottom-0 flex flex-row items-center max-w-screen-md w-full h-[64px] border-t-1 border-x-1 rounded-t-xl">
+  return ReactDOM.createPortal(
+    <div className="fixed left-2/4 translate-x-[-50%] bottom-0 z-50 flex flex-row items-center max-w-screen-md w-full h-[64px] border-t-1 border-x-1 rounded-t-xl bg-white">
       {activities.map(({ icon, name }) => (
         <TabItem
           key={icon}
@@ -26,6 +27,7 @@ export default function BottomNavigation() {
           }
         />
       ))}
-    </div>
+    </div>,
+    document.body,
   );
 }

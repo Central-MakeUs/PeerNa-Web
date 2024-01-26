@@ -1,4 +1,3 @@
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
 import useFocusTimeout from '@hooks/useFocusTimeout';
@@ -19,9 +18,9 @@ export default function Project({ title, subtitle, date }: ProjectProps) {
       }`}
       onClick={handleFocus}
     >
-      <div>
+      {/* <div>
         <SvgIcon id="GroupPerson" color="white" width={52} height={52} />
-      </div>
+      </div> */}
       <div className="w-[calc(100%-52px)] flex flex-col gap-1">
         <Typography variant="header03">{title}</Typography>
         <Typography

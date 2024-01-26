@@ -16,7 +16,7 @@ export default function AlarmListItem({ title, subtitle }: AlarmListItemProps) {
   };
 
   return (
-    <div className="flex justify-between items-center w-[318px] h-[48px] px-5 py-4 rounded-xl box-content bg-primary100 cursor-pointer">
+    <div className="flex justify-between items-center w-full px-5 py-4 rounded-xl bg-primary100 cursor-pointer">
       <div className="flex gap-3">
         <div
           className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary200`}
