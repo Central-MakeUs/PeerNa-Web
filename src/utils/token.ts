@@ -6,3 +6,7 @@ export const setAccessToken = (accessToken: string) =>
   localStorage.setItem(Access_Token, JSON.stringify(accessToken));
 export const setRefreshToken = (refreshToken: string) =>
   localStorage.setItem(Refresh_Token, JSON.stringify({ refreshToken }));
+
+export const removeAccessToken = () => {
+  localStorage.removeItem(Access_Token);
+};

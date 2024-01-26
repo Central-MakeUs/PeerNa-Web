@@ -14,14 +14,16 @@ export default function PeerType({ answerStep, handleClick }: PeerTypeProps) {
   return (
     <SlideBox trigger={answerStep}>
       <div className="flex flex-col justify-center items-center gap-3 mt-[52px]">
-        {PeerTypeArray.map(({ type, iconId, title }: PeerTypeArrayType) => (
-          <div className="w-[350px]">
-            <Picker size="sm" onClick={() => handleClick(type)}>
-              <SvgIcon id={iconId} color="primary" />
-              <Typography variant="body02">{title}</Typography>
-            </Picker>
-          </div>
-        ))}
+        {PeerTypeArray.map(
+          ({ type, iconId, title }: PeerTypeArrayType, index) => (
+            <div key={index} className="w-[350px]">
+              <Picker size="sm" onClick={() => handleClick(type)}>
+                <SvgIcon id={iconId} color="primary" />
+                <Typography variant="body02">{title}</Typography>
+              </Picker>
+            </div>
+          ),
+        )}
       </div>
     </SlideBox>
   );

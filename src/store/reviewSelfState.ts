@@ -1,9 +1,11 @@
+import { JobType, PartType } from '@constants/review';
+import { persistAtom } from '@store/recoilPersist';
 import { atom, selector } from 'recoil';
 
 type ReviewSelfStateType = {
   name: string;
-  job: string;
-  part: string;
+  job: JobType;
+  part: PartType;
 };
 
 export const reviewSelfState = atom<ReviewSelfStateType>({
@@ -13,6 +15,7 @@ export const reviewSelfState = atom<ReviewSelfStateType>({
     job: '',
     part: '',
   },
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const nameSizeValidator = selector({

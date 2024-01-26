@@ -1,3 +1,4 @@
+import { persistAtom } from '@store/recoilPersist';
 import { atom } from 'recoil';
 
 export type PeerGradeTypes =
@@ -13,6 +14,8 @@ type ReviewStateTypes = {
   answers: number[];
   peerGrade: PeerGradeTypes;
   feedback: string;
+  uuid?: string;
+  peerName?: string;
 };
 
 export const reviewState = atom<ReviewStateTypes>({
@@ -22,4 +25,5 @@ export const reviewState = atom<ReviewStateTypes>({
     peerGrade: 'AVERAGE',
     feedback: '',
   },
+  effects_UNSTABLE: [persistAtom],
 });

@@ -3,10 +3,12 @@ import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import FixedCenter from '@components/wrapper/FixedCenter';
+import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
 import { Fragment } from 'react';
 
 export default function ThanksReview() {
+  const { review } = useReviewState();
   const { push } = useFlow();
   const handleClick = () => push('ReviewPeerPage', { step: '7' });
   return (
@@ -15,7 +17,7 @@ export default function ThanksReview() {
         bodyProps={{
           isShow: true,
           title: '소중한 응답 감사해요!',
-          subtitle: 'username님도 매우 고마워할 거에요!',
+          subtitle: `${review.peerName}님도 매우 고마워할 거에요!`,
         }}
       />
       <FixedCenter>

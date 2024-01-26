@@ -1,32 +1,24 @@
 import Typography from '@components/common/atom/Typography';
-import { CardType, Image } from '@constants/image';
+import { CardInformation, PeerCardType } from '@constants/image';
 
 interface CardItemProps {
-  type: CardType;
-  value: string;
-  keyword: string;
-  description: string;
+  type: PeerCardType;
 }
 
-export default function Card({
-  type,
-  value,
-  keyword,
-  description,
-}: CardItemProps) {
-  const path = Image[type];
+export default function Card({ type }: CardItemProps) {
+  const { image, caption, title, content } = CardInformation[type];
   return (
     <section className="flex w-[350px] gap-3">
-      <img src={path} width={82} height={144} alt={`${type} card`} />
+      <img src={image} width={82} height={144} alt={`${type} card`} />
       <div className="py-[12.5px]">
         <Typography variant="caption01" fontColor="gray05" className="mb-1">
-          {value}
+          {caption}
         </Typography>
         <Typography variant="header03" fontColor="gray08" className="mb-1">
-          {keyword}
+          {title}
         </Typography>
         <Typography variant="body04" fontColor="gray06">
-          {description}
+          {content}
         </Typography>
       </div>
     </section>
