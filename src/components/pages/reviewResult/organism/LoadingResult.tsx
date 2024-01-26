@@ -1,19 +1,45 @@
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
+import { usePostMemberInfo, usePostReviewSelf } from '@hooks/queries/member';
+import useReviewSelfState from '@hooks/useReviewSelfState';
+import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
 import { getAccessToken } from '@utils/token';
 import { Fragment, useEffect } from 'react';
 
 export default function LoadingResult() {
   const { push } = useFlow();
+  const { review } = useReviewState();
+  const { reviewSelf } = useReviewSelfState();
+  const { peerGrade, feedback } = review;
+  const { name, job, part } = reviewSelf;
+
+  const postMemberMutation = usePostMemberInfo();
+  const postReviewSelfMutation = usePostReviewSelf();
 
   useEffect(() => {
-    setTimeout(() => {
-      if (getAccessToken())
-        push('ReviewResultPage', { type: 'self', step: '2' });
-      else push('ReviewResultPage', { type: 'self', step: '3' });
-    }, 1500);
+    if (getAccessToken()) {
+      postMemberMutation.mutate({
+        name,
+        job,
+        part,
+        selfPeerGrade: peerGrade,
+        oneLiner: feedback,
+      });
+      postReviewSelfMutation.mutate(review.answers);
+    } else {
+      setTimeout(() => {
+        push('ReviewResultPage', { type: 'self', step: '3' });
+      }, 1000);
+    }
   }, []);
+
+  if (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) {
+    setTimeout(() => {
+      push('ReviewResultPage', { type: 'self', step: '2' });
+    }, 1000);
+    return;
+  }
 
   return (
     <Fragment>

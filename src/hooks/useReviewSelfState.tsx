@@ -1,3 +1,4 @@
+import { JobType, PartType } from '@constants/review';
 import { nameSizeValidator, reviewSelfState } from '@store/reviewSelfState';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -12,14 +13,14 @@ export default function useReviewSelfState() {
     }));
   };
 
-  const handleChangeJob = (newJob: string) => {
+  const handleChangeJob = (newJob: JobType) => {
     setReviewSelf(prev => ({
       ...prev,
       job: newJob,
     }));
   };
 
-  const handleChangePart = (newPart: string) => {
+  const handleChangePart = (newPart: PartType) => {
     setReviewSelf(prev => ({
       ...prev,
       part: newPart,

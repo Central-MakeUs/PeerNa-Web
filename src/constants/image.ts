@@ -45,7 +45,89 @@ export const CardDescription = {
   MULTIDIMENSIONAL: '안정적이고 견고한 외유내강의 동료에요',
   WARMHEARTED: '힘과 용기를 불어넣는 동료에요',
   CAUTIOUS: '위험성과 변수를 줄여 줄 동료에요',
-  CHANLLANGE: '',
+  CHANLLANGE: '팀에게 새로운 길을 열어 줄 동료에요',
+};
+
+export type PeerCardType =
+  | 'DRIVING'
+  | 'COOPERATIVE'
+  | 'ANALYTICAL'
+  | 'COMPREHENSIVE'
+  | 'FUTURE_ORIENTED'
+  | 'PRAGMATIC'
+  | 'MULTIDIMENSIONAL'
+  | 'WARMHEARTED'
+  | 'CAUTIOUS'
+  | 'CHANLLANGE';
+export const CardInformation: Record<
+  PeerCardType,
+  {
+    image: string;
+    caption: string;
+    title: string;
+    content: string;
+  }
+> = {
+  DRIVING: {
+    image: card_purple,
+    caption: '가치관',
+    title: '추진하는',
+    content: '팀을 이끄는 배의 선장 같은 동료에요',
+  },
+  COOPERATIVE: {
+    image: card_purple,
+    caption: '가치관',
+    title: '협조하는',
+    content: '팀을 든든히 받쳐주는 버팀목 같은 동료에요',
+  },
+  ANALYTICAL: {
+    image: card_orange,
+    caption: '사고 방식',
+    title: '분석적인',
+    content: '목표 실현 가능성을 높이는 동료에요',
+  },
+  COMPREHENSIVE: {
+    image: card_orange,
+    caption: '사고 방식',
+    title: '종합적인',
+    content: '현실과 이상을 두루 고려하는 동료에요',
+  },
+  FUTURE_ORIENTED: {
+    image: card_orange,
+    caption: '사고 방식',
+    title: '미래지향적인',
+    content: '넓은 시야로 큰 그림을 그리는 동료에요',
+  },
+  PRAGMATIC: {
+    image: card_pink,
+    caption: '소통 방식',
+    title: '냉철한',
+    content: '솔직한 대화를 이끌어 내는 동료에요',
+  },
+  MULTIDIMENSIONAL: {
+    image: card_pink,
+    caption: '소통 방식',
+    title: '입체적인',
+    content: '안정적이고 견고한 외유내강의 동료에요',
+  },
+  WARMHEARTED: {
+    image: card_pink,
+    caption: '소통 방식',
+    title: '따듯한',
+    content: '힘과 용기를 불어넣는 동료에요',
+  },
+  CAUTIOUS: {
+    image: card_yellow,
+    caption: '결정 방식',
+    title: '신중한',
+    content: '위험성과 변수를 줄여 줄 동료에요',
+  },
+  CHANLLANGE: {
+    image: card_yellow,
+    caption: '결정 방식',
+    title: '신중한',
+    content: '팀에게 새로운 길을 열어 줄 동료에요',
+  },
 };
 
 export type CardType = keyof typeof Image;

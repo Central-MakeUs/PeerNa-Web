@@ -32,11 +32,36 @@ export default function useReviewState() {
     }));
   };
 
+  const handleChangeUuid = (uuid: string) => {
+    setReview(prev => ({
+      ...prev,
+      uuid,
+    }));
+  };
+
+  const handleChangePeerName = (peerName: string) => {
+    setReview(prev => ({
+      ...prev,
+      peerName,
+    }));
+  };
+
+  const handleClearReviews = () => {
+    setReview({
+      answers: [],
+      feedback: '',
+      peerGrade: 'GOOD',
+    });
+  };
+
   return {
     review,
     handleAddAnswers,
     handleRemoveLastAnswers,
     handleChangePeerGrade,
     handleChangeFeedback,
+    handleClearReviews,
+    handleChangeUuid,
+    handleChangePeerName,
   };
 }

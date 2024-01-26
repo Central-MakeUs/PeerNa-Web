@@ -2,7 +2,7 @@ import Typography from '@components/common/atom/Typography';
 import Card from '@components/pages/reviewResult/molecule/Card';
 
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { CardType, Description, Keyword, Value } from '@constants/image';
+import { PeerCardType } from '@constants/image';
 import useHistory from '@hooks/useHistory';
 import useModal from '@hooks/useModal';
 import useToken from '@hooks/useToken';
@@ -24,38 +24,18 @@ export default function ResultLoginRequired({
 
   useEffect(() => {
     if (history.activity !== 'ReviewResultPage') {
-      handleChangeHistory('ReviewResultPage', { type: 'self', step: '2' });
+      handleChangeHistory('ReviewResultPage', { type: 'self', step: '1' });
     }
     if (!accessToken) {
       openModal('login');
     }
   }, [history]);
 
-  const cardTypes = [
-    {
-      type: 'CardPurple',
-      value: Value.CardPurple,
-      keyword: Keyword.CardPurple,
-      description: Description.CardPurple,
-    },
-    {
-      type: 'CardOrange',
-      value: Value.CardOrange,
-      keyword: Keyword.CardOrange,
-      description: Description.CardOrange,
-    },
-    {
-      type: 'CardPink',
-      value: Value.CardPink,
-      keyword: Keyword.CardPink,
-      description: Description.CardPink,
-    },
-    {
-      type: 'CardYellow',
-      value: Value.CardYellow,
-      keyword: Keyword.CardYellow,
-      description: Description.CardYellow,
-    },
+  const cardTypes: PeerCardType[] = [
+    'ANALYTICAL',
+    'COMPREHENSIVE',
+    'FUTURE_ORIENTED',
+    'WARMHEARTED',
   ];
 
   const cardVariants = {
@@ -73,24 +53,19 @@ export default function ResultLoginRequired({
     <Fragment>
       <div className="box-content w-full h-[68px] py-[18px] mt-6 flex items-center justify-between bg-transparent px-5">
         <Typography variant="header01" fontColor="gray07">
-          {'username님의 셀프 테스트 결과를 \n 분석한 피어 카드에요'}
+          {'회원님의 셀프 테스트 결과를 \n 분석한 피어 카드에요'}
         </Typography>
       </div>
       <div className="py-6 flex flex-col gap-3">
         {cardTypes.map((card, index) => (
           <motion.div
-            key={card.type}
+            key={card}
             custom={index}
             initial="hidden"
             animate="visible"
             variants={cardVariants}
           >
-            <Card
-              type={card.type as CardType}
-              value={card.value}
-              keyword={card.keyword}
-              description={card.description}
-            />
+            <Card type={card} />
           </motion.div>
         ))}
       </div>
