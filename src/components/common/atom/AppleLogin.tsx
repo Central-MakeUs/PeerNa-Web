@@ -6,13 +6,6 @@ const AppleLogin = () => {
   const loginWithApple = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
 
-    window.AppleID.auth.init({
-      clientId: 'com.peerna.service',
-      scope: 'email',
-      redirectURI: 'https://dev.peerna.me/member/login/oauth2/apple',
-      usePopup: false,
-    });
-
     try {
       await window.AppleID.auth.signIn();
     } catch (error) {
