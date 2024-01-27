@@ -17,12 +17,12 @@ const SingleChildPortal: React.FC<SingleChildPortalProps> = ({ children }) => {
       return;
     }
 
+    if (portalContainer.hasChildNodes()) {
+      portalContainer.innerHTML = '';
+    }
+
     portalContainer.appendChild(newPortalElement);
     setPortalElement(newPortalElement);
-
-    return () => {
-      portalContainer.removeChild(newPortalElement);
-    };
   }, []);
 
   return portalElement ? ReactDOM.createPortal(children, portalElement) : null;
