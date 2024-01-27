@@ -32,6 +32,8 @@ export const Pages = {
   ProjectProposePage,
 };
 
+export type ActivityTypes = keyof typeof Pages;
+
 export const PageRoutes: Record<keyof typeof Pages, string> = {
   HomePage: '/',
   PeerPage: '/peer',
