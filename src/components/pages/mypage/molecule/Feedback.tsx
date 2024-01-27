@@ -1,8 +1,8 @@
 import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
 import Talk from '@components/common/atom/Talk';
 import Typography from '@components/common/atom/Typography';
-import FullBleed from '@components/common/atom/FullBleed';
 import { useFlow } from '@hooks/useStackFlow';
+import IconButton from '@components/common/atom/IconButton';
 
 export default function Feedback({
   peerFeedbackList,
@@ -15,10 +15,19 @@ export default function Feedback({
   };
   return (
     <>
-      <HeaderContainer size="md">
+      <HeaderContainer size="md" arrow={true}>
         <Typography variant="header03" fontColor="gray08">
           한 줄 피드백
         </Typography>
+        <IconButton
+          iconProps={{
+            id: 'ArrowRight',
+            color: 'gray07',
+            width: 10.5,
+            height: 20,
+          }}
+          onClick={handleMoreFeedback}
+        />
       </HeaderContainer>
       <ul className="flex flex-col gap-3 mb-6">
         {peerFeedbackList.map((item, index) => (
@@ -27,7 +36,6 @@ export default function Feedback({
           </li>
         ))}
       </ul>
-      <FullBleed type="showMore" onClick={handleMoreFeedback} />
     </>
   );
 }
