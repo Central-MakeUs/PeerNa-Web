@@ -78,4 +78,6 @@ export const Icon = {
   CalendarError: 'calendar_error',
   CheckboxPerson: 'checkbox_person',
   ThumbDown: 'thumb_down',
+  Menu: 'menu',
+  Save: 'save',
 };
