@@ -2,10 +2,13 @@ import { useFlow } from '@hooks/useStackFlow';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
+import { JobList } from '@constants/member';
+import { PartList } from '@constants/member';
+import { CardType } from '@constants/card';
 
 export interface ProfileCardInfo {
   name: string;
-  testType: string;
+  testType: CardType;
   part: string;
   job: string;
   totalScore: number;
@@ -22,15 +25,17 @@ export default function ProfileCard({
     push('ProfileEditPage', {});
   };
 
-  console.log(memberInfo);
-
   return (
     <article className="pb-10">
       <ProfileListItem
-        bezeled="Person"
         username={memberInfo.name}
-        position={memberInfo.part}
-        information={memberInfo.job}
+        position={
+          PartList.find(item => item.key === memberInfo.part)?.text as string
+        }
+        information={
+          JobList.find(item => item.key === memberInfo.job)?.text as string
+        }
+        testType={memberInfo.testType}
         score={memberInfo.totalScore}
         introduce={memberInfo.oneLiner}
       >
