@@ -1,37 +1,22 @@
 import Typography from '@components/common/atom/Typography';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@components/shadcn/select';
+import SvgIcon from './SvgIcon';
 
 interface DropdownProps {
-  values: string[];
-  onSelect: (value: string) => void;
+  value: string;
+  onClick: () => void;
 }
 
-export default function Dropdown({ values, onSelect }: DropdownProps) {
+export default function Dropdown({ value, onClick }: DropdownProps) {
   return (
-    <Select>
-      <SelectTrigger className="w-[350px] !bg-[#F6F7F8] border-[#E3E6E8]">
-        <SelectValue placeholder="선택" />
-      </SelectTrigger>
-      <SelectContent sideOffset={5}>
-        <SelectGroup>
-          {values.map((value, index) => (
-            <SelectItem
-              key={index}
-              value={value}
-              onSelect={() => onSelect(value)}
-            >
-              <Typography variant={'body05'}>{value}</Typography>
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    <div
+      className="w-[350px] h-[52px] flex justify-between 
+    items-center !px-[16px] !py-[14px] !bg-[#F6F7F8] border-1 border-[#E3E6E8] rounded-lg"
+      onClick={onClick}
+    >
+      <Typography variant="body02" fontColor="gray08">
+        {value}
+      </Typography>
+      <SvgIcon id="ArrowDown" color="gray07" width={14.4} height={7.8} />
+    </div>
   );
 }
