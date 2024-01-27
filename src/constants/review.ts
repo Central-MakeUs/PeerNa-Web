@@ -4,21 +4,45 @@ export const REVIEW_SELF_TITLE = [
   '어떤 역할을 맡고 있나요?',
 ];
 
-export const JOB_LIST = [
-  '대학생',
-  '취준생',
-  '직장인',
-  '창업가',
-  '프리랜서',
-  '기타',
+export type JobType =
+  | 'STUDENT'
+  | 'JOB_SEEKER'
+  | 'WORKER'
+  | 'ENTREPRENEUR'
+  | 'FREELANCER'
+  | 'OTHER'
+  | '';
+
+export const JOB_LIST: {
+  title: string;
+  job: JobType;
+}[] = [
+  { title: '대학생', job: 'STUDENT' },
+  { title: '취준생', job: 'JOB_SEEKER' },
+  { title: '직장인', job: 'WORKER' },
+  { title: '창업가', job: 'ENTREPRENEUR' },
+  { title: '프리랜서', job: 'FREELANCER' },
+  { title: '기타', job: 'OTHER' },
 ];
 
-export const POSITION_LIST = [
-  '기획자',
-  '디자이너',
-  'FE개발자',
-  'BE개발자',
-  '기타',
+export type PartType =
+  | 'PLANNER'
+  | 'DESIGNER'
+  | 'FRONT_END'
+  | 'BACK_END'
+  | 'MARKETER'
+  | 'OTHER'
+  | '';
+
+export const PART_LIST: {
+  title: string;
+  part: PartType;
+}[] = [
+  { title: '기획자', part: 'PLANNER' },
+  { title: '디자이너', part: 'DESIGNER' },
+  { title: 'FE개발자', part: 'FRONT_END' },
+  { title: 'BE개발자', part: 'BACK_END' },
+  { title: '기타', part: 'OTHER' },
 ];
 
 export const REVIEW_TITLE = {

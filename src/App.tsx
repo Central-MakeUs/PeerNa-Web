@@ -8,7 +8,14 @@ import { Toaster } from 'react-hot-toast';
 function App() {
   useEffect(() => {
     WebviewBridge.registerMessageListener();
+    window.AppleID.auth.init({
+      clientId: 'com.peerna.service',
+      scope: 'email',
+      redirectURI: 'https://dev.peerna.me/member/login/oauth2/apple',
+      usePopup: false,
+    });
   }, []);
+
   return (
     <div className="w-screen min-h-screen flex justify-center">
       {/* Notice)Stack은 StackFlow의 진입점입니다. */}

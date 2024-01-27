@@ -1,3 +1,4 @@
+import { persistAtom } from '@store/recoilPersist';
 import { atom } from 'recoil';
 
 export type BottomSheetListItem = {
@@ -19,4 +20,5 @@ export const bottomSheetState = atom<BottomSheetStateType>({
     isOpen: false,
     contents: [],
   },
+  effects_UNSTABLE: [persistAtom],
 });

@@ -1,3 +1,4 @@
+import Spinner from '@components/common/atom/Spinner';
 import InputProjectDate from '@components/pages/reviewPeer/organism/InputProjectDate';
 import IntroPeerReview from '@components/pages/reviewPeer/organism/IntroPeerReview';
 import IsOffendedResponse from '@components/pages/reviewPeer/organism/IsOffendedResponse';
@@ -7,10 +8,11 @@ import ThanksReview from '@components/pages/reviewPeer/organism/ThanksReview';
 import WonderingMyCard from '@components/pages/reviewPeer/organism/WonderingMyCard';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import { ActivityComponentType } from '@stackflow/react';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 type ReviewPeerPageParams = {
   step: string;
+  uuid?: string;
 };
 
 const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
@@ -25,13 +27,17 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
     setEndDate((newDate ?? new Date()).toISOString());
 
   const bgColor =
-    curStep === 6
+    curStep > 6
       ? `bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300`
       : 'bg-transparent';
 
   return (
     <AppScreenContainer className={bgColor}>
-      {curStep === 1 && <RequestInit />}
+      {curStep === 1 && (
+        <Suspense fallback={<Spinner />}>
+          <RequestInit uuid={curStep === 1 ? params.uuid! : ''} />
+        </Suspense>
+      )}
       {curStep === 2 && (
         <InputProjectDate
           startDate={startDate}

@@ -18,7 +18,7 @@ export default function OneLineReview({ answerStep }: OneLineReviewProps) {
         <ShakeBox trigger={!validFeedback}>
           <TextArea
             fullWidth
-            placeholder="동료를 가장 잘 표현하는 한 줄을 적어주세요"
+            placeholder="가장 잘 표현하는 한 줄을 적어주세요"
             text={feedback}
             handleChangeText={handleChangeFeedback}
           />

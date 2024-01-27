@@ -4,6 +4,7 @@ import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FlipCard from '@components/pages/reviewResult/molecule/FlipCard';
 import ShareDrawer from '@components/pages/reviewResult/molecule/ShareDrawer';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import { useGetReviewResult } from '@hooks/queries/member';
 import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import domtoimage from 'dom-to-image';
@@ -18,6 +19,7 @@ interface ResultShareProps {
 // TODO 유저네임 변경 필요
 export default function ResultShare({ type, curStep }: ResultShareProps) {
   const { push } = useFlow();
+  const { data } = useGetReviewResult();
   const ref = useRef<HTMLDivElement>(null);
   const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
 
@@ -26,6 +28,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
 
   const handleClickRightButton = () => push('HomePage', {});
 
+  // TODO 다운로드 할 때에는 애니메이션을 정상으로 돌려야 함.
   const handleClickDownload = () => {
     if (ref.current) {
       domtoimage
@@ -55,14 +58,14 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         }}
         bodyProps={{
           isShow: true,
-          title: 'username 님의 피어 유형은 성취하는 행동 대장이에요',
+          title: `${data.memberName} 님의 피어 유형은 성취하는 행동 대장이에요`,
           textAlign: 'center',
         }}
       />
 
       <Spacer y={10} />
 
-      <FlipCard ref={ref} />
+      <FlipCard testType={data.testType} ref={ref} />
 
       <FixedButtonContainer direction="row">
         <Button buttonVariant="tertiary" onClick={handleClickDownload}>
@@ -74,7 +77,6 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           </Typography>
         </Button>
       </FixedButtonContainer>
-
       <ShareDrawer
         openBottomSheet={openBottomSheet}
         setOpenBottomSheet={setOpenBottomSheet}

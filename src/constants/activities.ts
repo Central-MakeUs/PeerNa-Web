@@ -1,5 +1,6 @@
 import HomePage from '@components/pages/home/template/HomePage';
-import RedirectPage from '@components/pages/login/template/RedirectPage';
+import AppleRedirectPage from '@components/pages/login/template/AppleRedirectPage';
+import KakaoRedirectPage from '@components/pages/login/template/KakaoRedirectPage';
 import MyPage from '@components/pages/mypage/template/MyPage';
 import SettingPage from '@components/pages/setting/template/SettingPage';
 import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
@@ -27,7 +28,8 @@ export const Pages = {
   ReviewSelfPage,
   ReviewPeerPage,
   ReviewResultPage,
-  RedirectPage,
+  KakaoRedirectPage,
+  AppleRedirectPage,
 };
 
 export const PageRoutes: Record<keyof typeof Pages, string> = {
@@ -44,7 +46,8 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ReviewSelfPage: '/review/self',
   ReviewPeerPage: '/review/peer',
   ReviewResultPage: '/review/result',
-  RedirectPage: '/login/kakao',
+  KakaoRedirectPage: '/login/kakao',
+  AppleRedirectPage: '/login/apple',
 };
 
 export const TabItem = {

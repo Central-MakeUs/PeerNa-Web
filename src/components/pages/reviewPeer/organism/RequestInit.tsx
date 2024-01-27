@@ -4,21 +4,37 @@ import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import FixedCenter from '@components/wrapper/FixedCenter';
+import { useGetUserName } from '@hooks/queries/member';
+import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
+
+interface RequestInitProps {
+  uuid: string;
+}
 
 // TODO username 전체 변경 필요함.
-export default function RequestInit() {
+export default function RequestInit({ uuid }: RequestInitProps) {
+  const { handleChangeUuid, handleChangePeerName } = useReviewState();
+  const { data } = useGetUserName(uuid);
+  const username = data.name;
+
   const { push } = useFlow();
   const handleClick = () => push('ReviewPeerPage', { step: '2' });
+
+  useEffect(() => {
+    if (username) {
+      handleChangeUuid(uuid);
+      handleChangePeerName(username);
+    }
+  }, []);
   return (
     <Fragment>
       <NavigationHeader
         bodyProps={{
           isShow: true,
-          title: 'username 님이\n 피어 테스트 응답을 요청했어요',
-          subtitle:
-            '테스트에 응답해주신다면\n username 님이 매우 고마워할 거에요!',
+          title: `${username} 님이\n 피어 테스트 응답을 요청했어요`,
+          subtitle: `테스트에 응답해주신다면\n ${username} 님이 매우 고마워할 거에요!`,
         }}
       />
       <FixedCenter>

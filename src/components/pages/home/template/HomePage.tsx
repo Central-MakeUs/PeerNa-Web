@@ -1,3 +1,4 @@
+import AppleLogin from '@components/common/atom/AppleLogin';
 import Button from '@components/common/atom/Button';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import { MODE } from '@constants/index';
@@ -22,6 +23,7 @@ const HomePage: ActivityComponentType = () => {
 
   return (
     <AppScreen>
+      <AppleLogin />
       <Button
         onClick={() => {
           localStorage.removeItem('OnBoard');

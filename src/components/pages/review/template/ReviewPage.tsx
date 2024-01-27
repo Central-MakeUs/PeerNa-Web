@@ -1,6 +1,6 @@
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import TestImage from '@components/pages/review/molecule/ReviewCenterImage';
+import ReviewCenterImage from '@components/pages/review/atom/ReviewCenterImage';
 import TestHeader from '@components/pages/review/molecule/ReviewHeader';
 import OneLineReview from '@components/pages/review/organism/OneLineReview';
 import PeerType from '@components/pages/review/organism/PeerType';
@@ -8,11 +8,13 @@ import TwoWayPicker from '@components/pages/review/organism/TwoWayPicker';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { REVIEW_PICKER } from '@constants/review';
+import { usePostReviewPeer } from '@hooks/queries/review';
 import useReviewState from '@hooks/useReviewState';
 import { useFlow, useStepFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
 import { PeerGradeTypes } from '@store/reviewState';
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 type ReviewPageParams = {
   type: string;
@@ -67,13 +69,21 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
     }
   };
 
+  const mutation = usePostReviewPeer();
+  const { review } = useReviewState();
   const handleClickLastButton = () => {
-    if (type === 'self') {
-      push('ReviewResultPage', { type: type, step: '1' });
-    }
     if (type === 'peer') {
-      push('ReviewPeerPage', { step: '5' });
+      mutation.mutate({
+        targetUuid: review.uuid!,
+        uuid: uuidv4(),
+        answerIdList: review.answers,
+        feedback: review.feedback,
+        peerGrade: review.peerGrade,
+      });
+      push('ReviewPeerPage', { step: '6' });
+      return;
     }
+    push('ReviewResultPage', { type: type, step: '1' });
   };
 
   const handleClickPeerTypeButton = (type: PeerGradeTypes) => {
@@ -105,7 +115,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
       <div className="flex flex-col items-center mt-6 gap-4">
         <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
         {(curStep !== 4 || trackStep !== 7) && (
-          <TestImage
+          <ReviewCenterImage
             curStep={curStep}
             trackStep={trackStep}
             answerStep={answerStep}

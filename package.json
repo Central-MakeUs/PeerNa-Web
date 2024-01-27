@@ -54,6 +54,7 @@
     "recoil-persist": "^5.1.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^9.0.1",
     "vaul": "^0.8.0",
     "vite-plugin-mkcert": "1.17.0"
   },
@@ -73,6 +74,7 @@
     "@types/file-saver": "^2.0.7",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
+    "@types/uuid": "^9",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
