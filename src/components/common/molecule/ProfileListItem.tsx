@@ -1,29 +1,18 @@
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { IconKeyType } from '@constants/icons';
+import { cardItem, CardType } from '@constants/card';
 
 interface ProfileListItemProps {
-  bezeled: Extract<
-    IconKeyType,
-    | 'AlertFill'
-    | 'NotepadPerson'
-    | 'AddCircle'
-    | 'ColorLine'
-    | 'DocumentText'
-    | 'Person'
-  >;
-  isGrayIcon?: boolean;
+  testType: CardType;
   username: string;
   position: string;
-  score: number;
+  score?: number;
   information: string;
   introduce: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function ProfileListItem({
-  bezeled,
-  isGrayIcon = false,
+  testType,
   username,
   position,
   score,
@@ -35,11 +24,9 @@ export default function ProfileListItem({
     <div className="flex justify-between items-center h-[44px] px-5 py-4 box-content">
       <div className="flex gap-3">
         <div
-          className={`w-[24px] h-[24px] p-3 box-content rounded-full ${
-            isGrayIcon ? 'bg-gray01' : 'bg-primary100'
-          }`}
+          className={`w-[24px] h-[24px] p-3 box-content rounded-full ${'bg-gray01'}`}
         >
-          <SvgIcon id={bezeled} color={isGrayIcon ? 'gray04' : 'primary400'} />
+          <img src={cardItem[testType]} alt="테스트 결과 카드" />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center gap-1">
