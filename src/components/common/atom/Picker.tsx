@@ -21,6 +21,7 @@ export default function Picker({
     : '';
 
   const commonStyle = `
+    flex-1
     text-gray07
     bg-gray01 
     border-2 
