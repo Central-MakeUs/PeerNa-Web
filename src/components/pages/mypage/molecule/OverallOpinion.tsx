@@ -21,6 +21,8 @@ export default function OverallOpinion({
     initialVisibleItems: 3,
   });
 
+  const showMoreButton = totalEvaluation.length > 3;
+
   const evaluation = totalEvaluation.slice(0, visibleItems);
 
   return (
@@ -30,7 +32,9 @@ export default function OverallOpinion({
           종합 평가
         </Typography>
       </HeaderContainer>
-      <ul className="flex flex-col gap-2 px-5 mb-6">
+      <ul
+        className={`flex flex-col gap-2 px-5 ${showMoreButton ? 'mb-6' : 'mb-[98px]'}`}
+      >
         {evaluation.map((item, index) => (
           <li key={index}>
             <PeerTalk
@@ -51,10 +55,12 @@ export default function OverallOpinion({
           </li>
         ))}
       </ul>
-      <FullBleed
-        type={fullBleedType}
-        onClick={() => handleShowMore(3)}
-      ></FullBleed>
+      {showMoreButton && (
+        <FullBleed
+          type={fullBleedType}
+          onClick={() => handleShowMore(3)}
+        ></FullBleed>
+      )}
     </>
   );
 }
