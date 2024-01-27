@@ -1,39 +1,107 @@
-import Header from '@components/common/organism/Header';
-import { useSetRecoilState } from 'recoil';
-import { bottomSheetState } from '@store/bottomSheet';
-import ProfileEditList from '@components/pages/profileEdit/organism/ProfileEditList';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import TopHeader from '@components/common/organism/TopHeader';
+import { useProfileInfo } from '@hooks/query/useProfileInfo';
+import { useRecoilState } from 'recoil';
+import { profileSelfState } from '@store/profileSelfState';
+import PositionDrawer from '../molecule/PosititonDrawer';
+import JobDrawer from '../molecule/JobDrawer';
+import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import { useFlow } from '@hooks/useStackFlow';
+import ProfileEditList from '../organism/ProfileEditList';
+import { JobList } from '@constants/member';
+import { PartList } from '@constants/member';
+import { useProfileEdit } from '@hooks/query/useProfileEdit';
+import Spinner from '@components/common/atom/Spinner';
+import { useEffect, useState } from 'react';
 
 export default function ProfileEditPage() {
-  const setOpen = useSetRecoilState(bottomSheetState);
-  setOpen(() => ({
-    isOpen: false,
-    type: 'job',
-    contents: [
-      { title: '직업', onClick: undefined },
-      { title: '대학생', onClick: undefined },
-      { title: '취준생', onClick: undefined },
-      { title: '직장인', onClick: undefined },
-      { title: '창업가', onClick: undefined },
-      { title: '프리랜서', onClick: undefined },
-      { title: '기타', onClick: undefined },
-    ],
-  }));
+  const { pop } = useFlow();
+  const { data: myProfileInfo, isLoading, isError } = useProfileInfo();
+  const [profileSelf, setProfileSelf] = useRecoilState(profileSelfState);
+  const [openJobBottomSheet, setOpenJobBottomSheet] = useState<boolean>(false);
+  const [openPartBottomSheet, setOpenPartBottomSheet] =
+    useState<boolean>(false);
+  const [isModified, setIsModified] = useState<boolean>(false);
 
-  const values = '직장인';
+  useEffect(() => {
+    if (myProfileInfo) {
+      setProfileSelf({
+        job: JobList.find(job => job.key === myProfileInfo.job)?.text as string,
+        part: PartList.find(part => part.key === myProfileInfo.part)
+          ?.text as string,
+        oneLiner: myProfileInfo.oneLiner,
+      });
+    }
+  }, [myProfileInfo]);
+
+  const profileData = {
+    job: JobList.find(job => job.text === profileSelf.job)?.key as string,
+    part: PartList.find(part => part.text === profileSelf.part)?.key as string,
+    oneLiner: profileSelf?.oneLiner,
+  };
+
+  const { mutate } = useProfileEdit();
+
+  const handleClickJob = () => {
+    setOpenJobBottomSheet(true);
+    setIsModified(true);
+  };
+
+  const handleClickPart = () => {
+    setOpenPartBottomSheet(true);
+    setIsModified(true);
+  };
+
+  const handleProfile = () => {
+    mutate(profileData);
+  };
+
+  const handleChangeOneLiner = (newLiner: string) => {
+    setProfileSelf(prev => ({
+      ...prev,
+      oneLiner: newLiner,
+    }));
+    setIsModified(true);
+  };
+
+  const handleClick = () => pop();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <p>에러 발생!</p>;
+  }
 
   return (
-    <div className="w-[390px] mx-auto">
-      <Header
-        showBackButton={true}
-        showSearchButton={false}
-        showAddButton={false}
-        centerAlign={true}
-        title="프로필 수정"
-        mainText={''}
-      />
+    <AppScreenContainer>
+      <TopHeader title="프로필 수정" onClick={handleClick} />
       <main>
-        <ProfileEditList values={values} />
+        <PositionDrawer
+          openPartBottomSheet={openPartBottomSheet}
+          setOpenPartBottomSheet={setOpenPartBottomSheet}
+        />
+        <JobDrawer
+          openJobBottomSheet={openJobBottomSheet}
+          setOpenJobBottomSheet={setOpenJobBottomSheet}
+        />
+        {myProfileInfo && (
+          <ProfileEditList
+            profileSelf={profileSelf}
+            myProfileInfo={myProfileInfo}
+            handleClickJob={handleClickJob}
+            handleClickPart={handleClickPart}
+            handleChangeOneLiner={handleChangeOneLiner}
+          />
+        )}
       </main>
-    </div>
+      <FixedButtonContainer direction="row">
+        <FixedBottomButton handleClick={handleProfile} isDisabled={!isModified}>
+          저장
+        </FixedBottomButton>
+      </FixedButtonContainer>
+    </AppScreenContainer>
   );
 }
