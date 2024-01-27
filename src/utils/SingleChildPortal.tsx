@@ -6,33 +6,26 @@ interface SingleChildPortalProps {
 }
 
 const SingleChildPortal: React.FC<SingleChildPortalProps> = ({ children }) => {
-  const [portalContent, setPortalContent] = useState<React.ReactPortal | null>(
-    null,
-  );
+  const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    const portalElement = document.getElementById('portal')!;
-    if (!portalElement) {
+    const newPortalElement = document.createElement('div');
+
+    const portalContainer = document.getElementById('portal');
+    if (!portalContainer) {
       console.error('Portal element not found');
       return;
     }
 
-    while (portalElement.firstChild) {
-      portalElement.removeChild(portalElement.firstChild);
-    }
-
-    const element = document.createElement('div');
-    portalElement.appendChild(element);
-
-    const portal = ReactDOM.createPortal(children, element);
-    setPortalContent(portal);
+    portalContainer.appendChild(newPortalElement);
+    setPortalElement(newPortalElement);
 
     return () => {
-      portalElement.innerHTML = '';
+      portalContainer.removeChild(newPortalElement);
     };
-  }, [children]);
+  }, []);
 
-  return portalContent;
+  return portalElement ? ReactDOM.createPortal(children, portalElement) : null;
 };
 
 export default SingleChildPortal;
