@@ -79,4 +79,5 @@ export const Icon = {
   ThumbDown: 'thumb_down',
   Apple: 'apple',
   DocumentSplitHint: 'document_split_hint',
+  Shape: 'shape',
 };
