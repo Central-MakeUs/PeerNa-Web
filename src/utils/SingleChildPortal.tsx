@@ -28,9 +28,7 @@ const SingleChildPortal: React.FC<SingleChildPortalProps> = ({ children }) => {
     setPortalContent(portal);
 
     return () => {
-      if (portalElement.contains(element)) {
-        portalElement.removeChild(element);
-      }
+      portalElement.innerHTML = '';
     };
   }, [children]);
 
