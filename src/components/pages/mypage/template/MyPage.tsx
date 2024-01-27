@@ -17,6 +17,7 @@ import NoPeerTestResult from '../molecule/NoPeerTestResult';
 import Spinner from '@components/common/atom/Spinner';
 import Button from '@components/common/atom/Button';
 import SaveImageButton from '../atom/SaveImageButton';
+import BottomNavigation from '@components/common/molecule/BottomNavigation';
 
 export default function Mypage() {
   const { data: mypageInfo, isLoading, isError } = useMyPageInfo();
@@ -99,6 +100,8 @@ export default function Mypage() {
             동료에서 물어보기
           </Button>
           <SaveImageButton />
+
+          <BottomNavigation />
         </Layout>
       </div>
     </AppScreenContainer>
