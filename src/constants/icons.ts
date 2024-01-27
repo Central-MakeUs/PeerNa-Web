@@ -80,4 +80,5 @@ export const Icon = {
   ThumbDown: 'thumb_down',
   Menu: 'menu',
   Save: 'save',
+  Help: 'help',
 };
