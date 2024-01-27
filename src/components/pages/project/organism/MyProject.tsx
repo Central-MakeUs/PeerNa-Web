@@ -12,12 +12,12 @@ export default function MyProject() {
 
   return (
     <Fragment>
-      <button className="w-full" onClick={handlePushCreateProjectPage}>
+      <div className="w-full" onClick={handlePushCreateProjectPage}>
         <AlarmListItem
           title="내 프로젝트를 만들어보세요"
           subtitle="원하는 동료들과 함께해요"
         />
-      </button>
+      </div>
       <Spacer y={5} />
       <Typography variant="caption01" fontColor="gray04" className="text-left">
         최신순

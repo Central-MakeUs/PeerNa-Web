@@ -7,6 +7,7 @@ import OnBoardPage from '@components/pages/onBoard/template/OnBoardPage';
 import PeerPage from '@components/pages/peer/template/PeerPage';
 import ProjectPage from '@components/pages/project/template/ProjectPage';
 import ProjectCreatePage from '@components/pages/projectCreate/template/ProjectCreatePage';
+import ProjectDetailPage from '@components/pages/projectDetail/template/ProjectDetailPage';
 import ReviewPage from '@components/pages/review/template/ReviewPage';
 import ReviewPeerPage from '@components/pages/reviewPeer/template/ReviewPeerPage';
 import ReviewResultPage from '@components/pages/reviewResult/template/ReviewResultPage';
@@ -26,6 +27,7 @@ export const Pages = {
   KakaoRedirectPage,
   AppleRedirectPage,
   ProjectCreatePage,
+  ProjectDetailPage,
 };
 
 export const PageRoutes: Record<keyof typeof Pages, string> = {
@@ -33,6 +35,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   PeerPage: '/peer',
   ProjectPage: '/project',
   ProjectCreatePage: '/project/create',
+  ProjectDetailPage: '/project/:id',
   NotificationPage: '/notification',
   MyPage: '/mypage',
   OnBoardPage: '/onBoard',

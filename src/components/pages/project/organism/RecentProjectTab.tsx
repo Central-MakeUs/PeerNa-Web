@@ -1,9 +1,11 @@
 import Typography from '@components/common/atom/Typography';
 import Project from '@components/common/molecule/Project';
+import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import { Fragment } from 'react';
 
 export default function RecentProjectTab() {
+  const { push } = useFlow();
   return (
     <Fragment>
       <Spacer y={5} />
@@ -15,12 +17,17 @@ export default function RecentProjectTab() {
         {Array(10)
           .fill({})
           .map((_, i) => (
-            <Project
+            <button
               key={i}
-              title="프로젝트 제목"
-              subtitle="설명글입니다."
-              date="2023.12.20 ~ 2023.12.31"
-            />
+              className="w-full text-left"
+              onClick={() => push('ProjectDetailPage', { id: 1 })}
+            >
+              <Project
+                title="프로젝트 제목"
+                subtitle="설명글입니다."
+                date="2023.12.20 ~ 2023.12.31"
+              />
+            </button>
           ))}
       </div>
     </Fragment>

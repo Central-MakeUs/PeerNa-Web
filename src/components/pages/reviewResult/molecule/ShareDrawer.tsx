@@ -1,35 +1,19 @@
 import IconButton from '@components/common/atom/IconButton';
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
 import { KakaoShareImage } from '@constants/images';
-import { useGetMe } from '@hooks/queries/member';
-import toast from 'react-hot-toast';
 
 interface ShareDrawerProps {
   openBottomSheet: boolean;
   setOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClickShareLink: () => void;
 }
 
 export default function ShareDrawer({
   openBottomSheet,
   setOpenBottomSheet,
+  handleClickShareLink,
 }: ShareDrawerProps) {
-  const { data: user } = useGetMe();
-
-  const handleClickShareLink = async () => {
-    try {
-      await navigator.clipboard.writeText(
-        `${window.location.origin}/review/peer/?uuid=${user.uuid}&step=1`,
-      );
-      toast.success('링크 복사 완료!', {
-        icon: <SvgIcon id="Complete" color="gray08" />,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <Drawer
       open={openBottomSheet}
