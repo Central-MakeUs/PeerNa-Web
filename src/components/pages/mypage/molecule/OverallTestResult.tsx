@@ -6,6 +6,7 @@ import { TestKeywordData, TestKeywordType } from '@constants/keyword';
 import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
 import { CardType, TestResultCardDescription } from '@constants/image';
 import { Button } from '@nextui-org/react';
+import { Fragment } from 'react';
 
 interface OverallTestResultProps {
   colorAnswerIdList: number[];
@@ -27,15 +28,10 @@ export default function OverallTestResult({
     const result: { [key: string]: number[] } = { D: [], I: [], S: [], C: [] };
 
     idList.forEach(id => {
-      if (id <= 10) {
-        result.D.push(id);
-      } else if (id <= 18) {
-        result.I.push(id - 10);
-      } else if (id <= 26) {
-        result.S.push(id - 18);
-      } else if (id <= 36) {
-        result.C.push(id - 26);
-      }
+      if (id <= 10) result.D.push(id);
+      else if (id <= 18) result.I.push(id - 10);
+      else if (id <= 26) result.S.push(id - 18);
+      else if (id <= 36) result.C.push(id - 26);
     });
 
     return result;
@@ -49,7 +45,7 @@ export default function OverallTestResult({
   };
 
   return (
-    <>
+    <Fragment>
       <HeaderContainer size="sm">
         <div className="flex items-center gap-[6px]">
           <Typography variant="header03" fontColor="gray08">
@@ -98,6 +94,6 @@ export default function OverallTestResult({
           selfTestIdList={selfIdList.C}
         />
       </section>
-    </>
+    </Fragment>
   );
 }
