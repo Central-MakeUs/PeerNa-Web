@@ -78,10 +78,10 @@ export const Icon = {
   CalendarError: 'calendar_error',
   CheckboxPerson: 'checkbox_person',
   ThumbDown: 'thumb_down',
-  Apple: 'apple',
-  DocumentSplitHint: 'document_split_hint',
-  Shape: 'shape',
   Menu: 'menu',
   Save: 'save',
   Help: 'help',
+  Apple: 'apple',
+  DocumentSplitHint: 'document_split_hint',
+  Shape: 'shape',
 };
