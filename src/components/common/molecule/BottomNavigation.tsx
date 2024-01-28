@@ -1,7 +1,7 @@
 import TabItem from '@components/common/atom/TabItem';
 import { TabItemTypes } from '@constants/activities';
 import { useActivity } from '@stackflow/react';
-import ReactDOM from 'react-dom';
+import SingleChildPortal from '@utils/SingleChildPortal';
 
 export default function BottomNavigation() {
   const activity = useActivity();
@@ -13,25 +13,22 @@ export default function BottomNavigation() {
     { icon: 'MyPage', name: '마이페이지' },
   ];
 
-  const container = document.createElement('div');
-
-  document.body.appendChild(container);
-
-  return ReactDOM.createPortal(
-    <div className="fixed z-20 bg-white left-2/4 translate-x-[-50%] bottom-0 flex flex-row items-center max-w-screen-md w-full h-[64px] border-t-1 border-x-1 rounded-t-xl">
-      {activities.map(({ icon, name }) => (
-        <TabItem
-          key={icon}
-          icon={icon as TabItemTypes}
-          name={name}
-          pathname={activity.name as TabItemTypes}
-          isDone={
-            activity.transitionState === 'enter-done' ||
-            activity.transitionState === 'enter-active'
-          }
-        />
-      ))}
-    </div>,
-    container,
+  return (
+    <SingleChildPortal>
+      <div className="fixed left-2/4 translate-x-[-50%] bottom-0 flex flex-row items-center max-w-screen-md w-full h-[64px] border-t-1 border-x-1 rounded-t-xl">
+        {activities.map(({ icon, name }) => (
+          <TabItem
+            key={icon}
+            icon={icon as TabItemTypes}
+            name={name}
+            pathname={activity.name as TabItemTypes}
+            isDone={
+              activity.transitionState === 'enter-done' ||
+              activity.transitionState === 'enter-active'
+            }
+          />
+        ))}
+      </div>
+    </SingleChildPortal>
   );
 }
