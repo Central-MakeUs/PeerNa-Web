@@ -1,17 +1,15 @@
 import Button from '@components/common/atom/Button';
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FlipCard from '@components/pages/reviewResult/molecule/FlipCard';
 import ShareDrawer from '@components/pages/reviewResult/molecule/ShareDrawer';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import { useGetMe, useGetReviewResult } from '@hooks/queries/member';
+import { useGetReviewResult } from '@hooks/queries/member';
 import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useRef, useState } from 'react';
-import toast from 'react-hot-toast';
 
 interface ResultShareProps {
   type: string;
@@ -45,20 +43,6 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   };
 
   const handleClickShare = () => setOpenBottomSheet(true);
-
-  const { data: user } = useGetMe();
-  const handleClickShareLink = async () => {
-    try {
-      await navigator.clipboard.writeText(
-        `${window.location.origin}/review/peer/?uuid=${user.uuid}&step=1`,
-      );
-      toast.success('링크 복사 완료!', {
-        icon: <SvgIcon id="Complete" color="gray08" />,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   return (
     <div className="w-full h-full flex flex-col items-center">
@@ -96,7 +80,6 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       <ShareDrawer
         openBottomSheet={openBottomSheet}
         setOpenBottomSheet={setOpenBottomSheet}
-        handleClickShareLink={handleClickShareLink}
       />
     </div>
   );

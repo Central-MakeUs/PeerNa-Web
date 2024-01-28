@@ -16,7 +16,7 @@ export default function PeerTalk({
   children,
   ...props
 }: TalkProps) {
-  const talkStyle = 'rounded-xl pl-4 pr-2 py-2 box-content flex gap-2';
+  const talkStyle = 'rounded-xl pl-4 pr-2 py-2 box-content !w-full';
   return (
     <div className="flex gap-3 items-center">
       <Typography variant="body01" fontColor="primary">
@@ -27,7 +27,7 @@ export default function PeerTalk({
         startContent={icon}
         className={talkStyle}
         classNames={{
-          base: `bg-gray01 border-1 border-gray02`,
+          base: `bg-primary100 !max-w-full`,
         }}
       >
         <Typography variant="body02">{children}</Typography>

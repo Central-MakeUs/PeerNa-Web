@@ -15,7 +15,7 @@ export default function BottomSheetListItem({
 }: BottomSheetListItemProps) {
   return (
     <div
-      className={`w-full max-w-[350px] h-[40px] flex items-center py-3 box-content cursor-pointer ${subtitle ? 'gap-3' : ''}`}
+      className={`w-full max-w-[350px] z-20 h-[40px] flex items-center py-3 box-content cursor-pointer ${subtitle ? 'gap-3' : ''}`}
       onClick={onClick}
     >
       <Typography variant="body01">{title}</Typography>
