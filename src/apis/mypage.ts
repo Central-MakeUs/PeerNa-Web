@@ -1,6 +1,5 @@
 import { ProfileCardInfo } from '@components/pages/mypage/molecule/ProfileCard';
 import { http } from '.';
-import { api } from './common';
 import { CardType } from '@constants/image';
 import { OverallOpinionProps } from '@components/pages/mypage/molecule/OverallOpinion';
 
@@ -25,7 +24,7 @@ interface MyPageInfo {
 
 /** 마이페이지 조회 */
 export const getMypageInfo = () => {
-  return api.get<MyPageResponse>('/member/mypage');
+  return http.get<MyPageResponse>('/member/mypage');
 };
 
 /** 피드백 더보기 */
@@ -49,5 +48,5 @@ interface ProfileEdit {
 
 /** 프로필 수정 */
 export const editProfileInfo = async (body: ProfileEdit) => {
-  return await api.patch('/member/mypage/profile', body);
+  return await http.patch('/member/mypage/profile', body);
 };

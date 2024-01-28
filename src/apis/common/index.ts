@@ -1,5 +1,4 @@
 import { http } from '@apis/index';
-import { AxiosError } from 'axios';
 
 // 서버가 정상인지 확인하는 테스트 api
 export const getHealthCheck = async () => {
@@ -18,42 +17,4 @@ export const getPostHealthCheck = async () => {
     body: 'peerna',
   });
   return response.data;
-};
-
-export const api = {
-  get: async <T>(url: string): Promise<T> => {
-    try {
-      const response = await http.get(url);
-      return response.data;
-    } catch (error) {
-      throw (error as AxiosError).response;
-    }
-  },
-
-  post: async (url: string, body: unknown) => {
-    try {
-      const response = await http.post(url, body);
-      return response.data;
-    } catch (error) {
-      throw (error as AxiosError).response;
-    }
-  },
-
-  patch: async (url: string, body: unknown) => {
-    try {
-      const response = await http.patch(url, body);
-      return response.data;
-    } catch (error) {
-      throw (error as AxiosError).response;
-    }
-  },
-
-  delete: async (url: string) => {
-    try {
-      const response = await http.delete(url);
-      return response;
-    } catch (error) {
-      throw (error as AxiosError).response;
-    }
-  },
 };
