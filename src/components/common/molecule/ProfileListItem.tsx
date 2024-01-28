@@ -2,6 +2,7 @@ import Typography from '@components/common/atom/Typography';
 import { cardItem, CardType } from '@constants/card';
 
 interface ProfileListItemProps {
+  isMyProfile: boolean;
   testType: CardType;
   username: string;
   position: string;
@@ -12,6 +13,7 @@ interface ProfileListItemProps {
 }
 
 export default function ProfileListItem({
+  isMyProfile,
   testType,
   username,
   position,
@@ -21,32 +23,51 @@ export default function ProfileListItem({
   children,
 }: ProfileListItemProps) {
   return (
-    <div className="flex justify-between items-center h-[44px] px-5 py-4 box-content">
-      <div className="flex gap-3">
+    <div
+      className={`flex justify-between items-center ${isMyProfile ? 'w-full' : 'w-[524px]'} px-5 mx-auto pt-8 pb-4`}
+    >
+      <div className="flex gap-3 items-center">
         <div
-          className={`w-[24px] h-[24px] p-3 box-content rounded-full ${'bg-gray01'}`}
+          className={`!w-[64px] !h-[64px] flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
         >
-          <img src={cardItem[testType]} alt="테스트 결과 카드" />
+          <img
+            src={cardItem[testType]}
+            alt="테스트 결과 카드"
+            className="w-[32px] h-[32px]"
+          />
         </div>
         <div className="flex flex-col">
           <div className="flex items-center gap-1">
-            <Typography variant="body01" fontColor="white">
+            <Typography
+              variant="body01"
+              fontColor={isMyProfile ? 'white' : 'gray08'}
+            >
               {username}
             </Typography>
-            <Typography variant="caption01" className="text-primary500">
+            <Typography variant="caption01" fontColor="primary500">
               {position}
             </Typography>
           </div>
           <div className="flex items-center">
-            <Typography variant="body05" className="text-gray04 mr-1">
+            <Typography
+              variant="body04"
+              fontColor={isMyProfile ? 'gray04' : 'gray07'}
+              className="mr-1"
+            >
               {information}
             </Typography>
-            <span className="text-gray04">|</span>
-            <Typography variant="caption01" className="text-gray04 ml-1">
-              {` 종합점수 ${score}점`}
+            <span className={`text-${isMyProfile ? 'gray04' : 'gray07'}`}>
+              |
+            </span>
+            <Typography
+              variant="body04"
+              fontColor={isMyProfile ? 'gray04' : 'gray07'}
+              className="ml-1"
+            >
+              {`종합점수 ${score}점`}
             </Typography>
           </div>
-          <Typography variant="body05" className="text-gray05">
+          <Typography variant="body05" fontColor="gray05">
             {introduce}
           </Typography>
         </div>
