@@ -26,13 +26,19 @@ export default function ProfileEditList({
         <HeaderContainer>
           <Typography variant="header03">직업</Typography>
         </HeaderContainer>
-        <Dropdown value={profileSelf.job} onClick={handleClickJob}></Dropdown>
+        <Dropdown
+          value={profileSelf.job}
+          handleClick={handleClickJob}
+        ></Dropdown>
       </li>
       <li className="px-5">
         <HeaderContainer>
           <Typography variant="header03">직무</Typography>
         </HeaderContainer>
-        <Dropdown value={profileSelf.part} onClick={handleClickPart}></Dropdown>
+        <Dropdown
+          value={profileSelf.part}
+          handleClick={handleClickPart}
+        ></Dropdown>
       </li>
       <li className="px-5">
         <HeaderContainer>
