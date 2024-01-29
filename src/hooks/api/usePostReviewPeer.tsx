@@ -1,12 +1,6 @@
-import { http } from '@apis/index';
+import { http, ApiResponse } from '@apis/index';
 import { PeerGradeTypes } from '@store/reviewState';
 import { useMutation } from '@tanstack/react-query';
-
-export type ApiResponse<T = object> = {
-  code: number;
-  message: string;
-  result: T;
-};
 
 interface ReviewPeerRequestDTO {
   targetUuid: string;
@@ -16,13 +10,17 @@ interface ReviewPeerRequestDTO {
   uuid: string;
 }
 
+interface ReviewPeerResponseDTO {
+  peerTestId: number;
+}
+
 const postReviewPeer = async ({
   targetUuid,
   answerIdList,
   uuid,
   feedback,
   peerGrade,
-}: ReviewPeerRequestDTO) => {
+}: ReviewPeerRequestDTO): Promise<ApiResponse<ReviewPeerResponseDTO>> => {
   return await http.post(`/review/peer-test?target-uuid=${targetUuid}`, {
     answerIdList,
     uuid,

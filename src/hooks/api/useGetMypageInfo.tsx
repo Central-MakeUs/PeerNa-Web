@@ -1,14 +1,8 @@
-import { http } from '@apis/index';
+import { http, ApiResponse } from '@apis/index';
 import { OverallOpinionProps } from '@components/pages/mypage/molecule/OverallOpinion';
 import { ProfileCardInfo } from '@components/pages/mypage/molecule/ProfileCard';
 import { CardType } from '@constants/image';
 import { useSuspenseQuery } from '@tanstack/react-query';
-
-export type ApiResponse<T = object> = {
-  code: number;
-  message: string;
-  result: T;
-};
 
 interface MemberMyPageResponseDTO {
   peerTestMoreThanTree: boolean;

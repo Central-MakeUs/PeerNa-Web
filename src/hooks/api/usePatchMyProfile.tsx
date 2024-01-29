@@ -1,11 +1,5 @@
-import { http } from '@apis/index';
+import { http, ApiResponse } from '@apis/index';
 import { useMutation } from '@tanstack/react-query';
-
-export type ApiResponse<T = object> = {
-  code: number;
-  message: string;
-  result: T;
-};
 
 interface MemberProfileEditRequestDTO {
   job: string;

@@ -1,15 +1,8 @@
-import { http } from '@apis/index';
+import { http, ApiResponse } from '@apis/index';
 import { PeerCardType } from '@constants/image';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 type ReviewResultType = 'C' | 'I' | 'D' | 'S';
-
-type ApiResponse<T = object> = {
-  code: number;
-  message: string;
-  result: T;
-};
-
 interface MemberReviewResultResponseDTO {
   memberName: string;
   testType: ReviewResultType;

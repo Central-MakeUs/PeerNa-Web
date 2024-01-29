@@ -1,13 +1,7 @@
-import { http } from '@apis/index';
+import { http, ApiResponse } from '@apis/index';
 import { JobType, PartType } from '@constants/review';
 import { PeerGradeTypes } from '@store/reviewState';
 import { useMutation } from '@tanstack/react-query';
-
-export type ApiResponse<T = object> = {
-  code: number;
-  message: string;
-  result: T;
-};
 
 interface MemberBasicInfoRequestDTO {
   name: string;

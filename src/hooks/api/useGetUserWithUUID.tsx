@@ -1,12 +1,6 @@
-import { http } from '@apis/index';
+import { http, ApiResponse } from '@apis/index';
 import { JobType, PartType } from '@constants/review';
 import { useSuspenseQuery } from '@tanstack/react-query';
-
-export type ApiResponse<T = object> = {
-  code: number;
-  message: string;
-  result: T;
-};
 
 export interface MemberMeResponseDTO {
   name: string;
