@@ -4,7 +4,7 @@ import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import FixedCenter from '@components/wrapper/FixedCenter';
-import { useGetUserName } from '@hooks/queries/member';
+import { useGetUserName } from '@hooks/api/useGetUserName';
 import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
 import { Fragment, useEffect } from 'react';

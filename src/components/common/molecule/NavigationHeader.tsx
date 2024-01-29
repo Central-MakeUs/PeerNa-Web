@@ -11,6 +11,10 @@ interface NavigationHeaderProps {
     text?: string;
     handleClick?: () => void;
   };
+  headProps?: {
+    isShow?: boolean;
+    title?: string;
+  };
   bodyProps?: {
     isShow?: boolean;
     title?: string;
@@ -28,6 +32,7 @@ export default function NavigationHeader({
   backIconProps = {},
   rightButtonProps = {},
   bodyProps = {},
+  headProps = {},
 }: NavigationHeaderProps) {
   return (
     <div className="w-full box-border flex flex-col bg-transparent">
@@ -41,7 +46,13 @@ export default function NavigationHeader({
             onClick={backIconProps.handleClick}
           />
         )}
+        {headProps.isShow && (
+          <Typography variant="header02" fontColor="gray08">
+            {headProps.title}
+          </Typography>
+        )}
         {!backIconProps.isShow && <div />}
+        {headProps.isShow && <div className="w-6 h-6" />}
         {rightButtonProps.isShow && (
           <button onClick={rightButtonProps.handleClick}>
             <Typography variant="body03" fontColor="gray07">

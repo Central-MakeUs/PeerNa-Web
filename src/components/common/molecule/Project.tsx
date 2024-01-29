@@ -1,4 +1,3 @@
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
 import useFocusTimeout from '@hooks/useFocusTimeout';
@@ -14,14 +13,14 @@ export default function Project({ title, subtitle, date }: ProjectProps) {
 
   return (
     <div
-      className={`w-[318px] h-[71px] p-5 bg-gray01 flex gap-3 box-content cursor-pointer rounded-xl border-1 transition-colors ${
+      className={`w-full p-5 bg-gray01 flex gap-3 cursor-pointer rounded-xl border-1 transition-colors ${
         isFocused ? 'bg-primary100 border-primary500' : null
       }`}
       onClick={handleFocus}
     >
-      <div>
+      {/* <div>
         <SvgIcon id="GroupPerson" color="white" width={52} height={52} />
-      </div>
+      </div> */}
       <div className="w-[calc(100%-52px)] flex flex-col gap-1">
         <Typography variant="header03">{title}</Typography>
         <Typography
