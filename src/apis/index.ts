@@ -25,6 +25,12 @@ http.interceptors.request.use(async config => {
   return config;
 });
 
+export type ApiResponse<T = object> = {
+  code: number;
+  message: string;
+  result: T;
+};
+
 const onFulfilled = (response: AxiosResponse) => {
   return response;
 };
