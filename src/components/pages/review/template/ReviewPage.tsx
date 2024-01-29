@@ -8,7 +8,7 @@ import TwoWayPicker from '@components/pages/review/organism/TwoWayPicker';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { REVIEW_PICKER } from '@constants/review';
-import { usePostReviewPeer } from '@hooks/queries/review';
+import { usePostReviewPeer } from '@hooks/api/usePostReviewPeer';
 import useReviewState from '@hooks/useReviewState';
 import { useFlow, useStepFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';

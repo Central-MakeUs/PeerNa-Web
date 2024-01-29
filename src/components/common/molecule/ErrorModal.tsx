@@ -1,17 +1,17 @@
+import Typography from '@components/common/atom/Typography';
 import {
   ModalContent,
   ModalFooter,
   ModalProps as ModalPropsWithNextui,
   Modal as ModalWithNextui,
 } from '@nextui-org/react';
-import Typography from '@components/common/atom/Typography';
-import { useRecoilState } from 'recoil';
 import { modalState } from '@store/modal';
+import { useRecoilState } from 'recoil';
 import SvgIcon from '../atom/SvgIcon';
 
 interface ErrorModalProps extends ModalPropsWithNextui {
   modalHeader: string;
-  modalBody: JSX.Element;
+  modalBody: string;
   footer: React.ReactNode;
 }
 

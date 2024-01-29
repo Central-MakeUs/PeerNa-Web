@@ -5,13 +5,14 @@ import {
   Modal as ModalWithNextui,
 } from '@nextui-org/react';
 
-import Typography from '../atom/Typography';
 import useModal from '@hooks/useModal';
+import { ReactNode } from 'react';
+import Typography from '../atom/Typography';
 
 interface ModalProps extends Omit<ModalPropsWithNextui, 'children'> {
   modalHeader: string;
-  modalBody: string | JSX.Element;
-  footer: React.ReactNode;
+  modalBody: string;
+  footer: ReactNode;
 }
 
 export default function Modal({
