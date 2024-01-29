@@ -2,7 +2,7 @@ import { http, ApiResponse } from '@apis/index';
 import { JobType, PartType } from '@constants/review';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-export interface MemberMeResponseDTO {
+export interface MemberMeDTO {
   name: string;
   job: JobType;
   part: PartType;
@@ -10,9 +10,7 @@ export interface MemberMeResponseDTO {
   uuid: string;
 }
 
-export const getUserWithUUID = async (): Promise<
-  ApiResponse<MemberMeResponseDTO>
-> => {
+export const getUserWithUUID = async (): Promise<ApiResponse<MemberMeDTO>> => {
   const response = await http.get('/member/me');
   return response.data;
 };

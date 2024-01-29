@@ -11,7 +11,7 @@ interface MemberBasicInfoRequestDTO {
   oneLiner: string;
 }
 
-interface MemberbasicInfoResponseDTO {
+interface MemberbasicInfoDTO {
   uuid: string;
   name: string;
   job: JobType;
@@ -25,9 +25,7 @@ export const postMemberInfo = async ({
   part,
   selfPeerGrade,
   oneLiner,
-}: MemberBasicInfoRequestDTO): Promise<
-  ApiResponse<MemberbasicInfoResponseDTO>
-> => {
+}: MemberBasicInfoRequestDTO): Promise<ApiResponse<MemberbasicInfoDTO>> => {
   return await http.post('/member/basic-info', {
     name,
     job,

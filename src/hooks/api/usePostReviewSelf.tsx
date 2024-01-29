@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 
 type ReviewResultType = 'C' | 'I' | 'D' | 'S';
 
-interface MemberReviewResultResponseDTO {
+interface MemberReviewResultDTO {
   memberName: string;
   testType: ReviewResultType;
   group1: PeerCardType;
@@ -15,7 +15,7 @@ interface MemberReviewResultResponseDTO {
 
 const postReviewSelf = async (
   answerIdList: number[],
-): Promise<ApiResponse<MemberReviewResultResponseDTO>> => {
+): Promise<ApiResponse<MemberReviewResultDTO>> => {
   return await http.post('/member/self-test', { answerIdList });
 };
 

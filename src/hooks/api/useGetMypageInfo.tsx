@@ -4,7 +4,7 @@ import { ProfileCardInfo } from '@components/pages/mypage/molecule/ProfileCard';
 import { CardType } from '@constants/image';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-interface MemberMyPageResponseDTO {
+interface MyPageDTO {
   peerTestMoreThanTree: boolean;
   memberSimpleInfoDto: ProfileCardInfo;
   peerTestType: string;
@@ -17,9 +17,7 @@ interface MemberMyPageResponseDTO {
   colorAnswerIdList: number[];
 }
 
-export const getMyPageInfo = async (): Promise<
-  ApiResponse<MemberMyPageResponseDTO>
-> => {
+export const getMyPageInfo = async (): Promise<ApiResponse<MyPageDTO>> => {
   const response = await http.get('/member/mypage');
   return response.data;
 };

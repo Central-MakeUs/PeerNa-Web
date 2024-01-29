@@ -10,7 +10,7 @@ interface ReviewPeerRequestDTO {
   uuid: string;
 }
 
-interface ReviewPeerResponseDTO {
+interface ReviewPeerDTO {
   peerTestId: number;
 }
 
@@ -20,7 +20,7 @@ const postReviewPeer = async ({
   uuid,
   feedback,
   peerGrade,
-}: ReviewPeerRequestDTO): Promise<ApiResponse<ReviewPeerResponseDTO>> => {
+}: ReviewPeerRequestDTO): Promise<ApiResponse<ReviewPeerDTO>> => {
   return await http.post(`/review/peer-test?target-uuid=${targetUuid}`, {
     answerIdList,
     uuid,

@@ -1,6 +1,15 @@
 import { http, ApiResponse } from '@apis/index';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
+interface MemberSimpleDTOPage {
+  memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
+  totalElements: number;
+  currentPageElements: number;
+  totalPage: number;
+  isFirst: boolean;
+  isLast: boolean;
+}
+
 export interface MemberSimpleProfileDTO {
   memberId: number;
   name: 'string';
@@ -11,19 +20,10 @@ export interface MemberSimpleProfileDTO {
   totalScore: number;
 }
 
-interface GetSearchPeerTypeResponseDTO {
-  memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
-  totalElements: number;
-  currentPageElements: number;
-  totalPage: number;
-  isFirst: boolean;
-  isLast: boolean;
-}
-
 export const getSearchPeerType = async (
   peerType: string,
   page: number,
-): Promise<ApiResponse<GetSearchPeerTypeResponseDTO>> => {
+): Promise<ApiResponse<MemberSimpleDTOPage>> => {
   const response = await http.get(
     `/home/search/peer-type?peerType=${peerType}&page=${page}`,
   );

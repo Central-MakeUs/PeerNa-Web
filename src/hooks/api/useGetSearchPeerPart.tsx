@@ -1,6 +1,15 @@
 import { http, ApiResponse } from '@apis/index';
 import { useQuery } from '@tanstack/react-query';
 
+interface MemberSimpleDTOPage {
+  memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
+  totalElements: number;
+  currentPageElements: number;
+  totalPage: number;
+  isFirst: boolean;
+  isLast: boolean;
+}
+
 export interface MemberSimpleProfileDTO {
   memberId: number;
   name: 'string';
@@ -11,14 +20,10 @@ export interface MemberSimpleProfileDTO {
   totalScore: number;
 }
 
-interface GetSearchPeerPartResponseDTO {
-  memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
-}
-
 export const getSearchPeerPart = async (
   peerPart: string,
   page: number,
-): Promise<ApiResponse<GetSearchPeerPartResponseDTO>> => {
+): Promise<ApiResponse<MemberSimpleDTOPage>> => {
   const response = await http.get(
     `/home/search/peer-part?part=${peerPart}&page=${page}`,
   );

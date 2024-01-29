@@ -1,13 +1,13 @@
 import { http, ApiResponse } from '@apis/index';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-interface MemberUserNameResponseDTO {
+interface MemberUserNameDTO {
   name: string;
 }
 
 export const getUserName = async (
   uuid: string,
-): Promise<ApiResponse<MemberUserNameResponseDTO>> => {
+): Promise<ApiResponse<MemberUserNameDTO>> => {
   const response = await http.get(`/member/name?uuid=${uuid}`);
   return response.data;
 };

@@ -7,7 +7,7 @@ interface MemberProfileEditRequestDTO {
   oneLiner: string;
 }
 
-interface MemberProfileEditResponseDTO {
+interface MemberProfileEditDTO {
   job: string;
   part: string;
   oneLiner: string;
@@ -17,9 +17,7 @@ export const editProfileInfo = async ({
   job,
   part,
   oneLiner,
-}: MemberProfileEditRequestDTO): Promise<
-  ApiResponse<MemberProfileEditResponseDTO>
-> => {
+}: MemberProfileEditRequestDTO): Promise<ApiResponse<MemberProfileEditDTO>> => {
   return await http.patch('/member/mypage/profile', {
     job,
     part,

@@ -1,7 +1,7 @@
 import { http, ApiResponse } from '@apis/index';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
-interface GetMoreFeedbackResponseDTO {
+interface AllFeedbackDTO {
   feedbackList: string[];
   totalElements: number;
   currentPageElements: number;
@@ -12,7 +12,7 @@ interface GetMoreFeedbackResponseDTO {
 
 export const getMoreFeedback = async (
   page: number,
-): Promise<ApiResponse<GetMoreFeedbackResponseDTO>> => {
+): Promise<ApiResponse<AllFeedbackDTO>> => {
   const response = await http.get(`/member/mypage/feedback?page=${page}`);
   return response.data;
 };

@@ -3,7 +3,8 @@ import { PeerCardType } from '@constants/image';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 type ReviewResultType = 'C' | 'I' | 'D' | 'S';
-interface MemberReviewResultResponseDTO {
+
+interface SelfReviewResultDTO {
   memberName: string;
   testType: ReviewResultType;
   group1: PeerCardType;
@@ -12,9 +13,7 @@ interface MemberReviewResultResponseDTO {
   group4: PeerCardType;
 }
 
-const getReviewResult = async (): Promise<
-  ApiResponse<MemberReviewResultResponseDTO>
-> => {
+const getReviewResult = async (): Promise<ApiResponse<SelfReviewResultDTO>> => {
   const response = await http.get('/member/self-test-result');
   return response.data;
 };
