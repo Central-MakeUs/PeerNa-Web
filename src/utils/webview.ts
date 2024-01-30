@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { setAccessToken, setRefreshToken } from '@utils/token';
+import { setAccessToken, setFcmToken, setRefreshToken } from '@utils/token';
 
 export class WebviewBridge {
   static postMessage({ type, data }: WebviewPostMessageRequestType) {
@@ -30,9 +30,10 @@ export class WebviewBridge {
         switch (message.type) {
           case 'init':
             // eslint-disable-next-line no-case-declarations
-            const { accessToken, refreshToken } = message.data;
+            const { accessToken, refreshToken, fcmToken } = message.data;
             setAccessToken(accessToken);
             setRefreshToken(refreshToken);
+            setFcmToken(fcmToken);
             break;
           default:
             break;
