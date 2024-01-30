@@ -1,26 +1,27 @@
-import Header from '../organism/Header';
-import ProfileCard from '../molecule/ProfileCard';
-import Layout from '../organism/Layout';
-import CardTestResult from '../molecule/CardTestResult';
-import SelfTestResult from '../molecule/SelfTestResult';
-import PeerTestResult from '../molecule/PeerTestResult';
-import OverallTestResult from '../molecule/OverallTestResult';
-import OverallOpinion from '../molecule/OverallOpinion';
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import RadioTabs from '@components/common/molecule/RadioTabs';
-import { Tab } from '@nextui-org/react';
-import OverallScore from '../molecule/OverallScore';
-import Feedback from '../molecule/Feedback';
-import { useMyPageInfo } from '@hooks/query/useMyPageInfo';
-import NoTestKeywordResult from '../molecule/NoTestKeywordResult';
-import NoPeerTestResult from '../molecule/NoPeerTestResult';
-import Spinner from '@components/common/atom/Spinner';
 import Button from '@components/common/atom/Button';
-import SaveImageButton from '../atom/SaveImageButton';
+import Spinner from '@components/common/atom/Spinner';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
+import RadioTabs from '@components/common/molecule/RadioTabs';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import { useGetMyPageInfo } from '@hooks/api/useGetMypageInfo';
+import { Tab } from '@nextui-org/react';
+import { ActivityComponentType } from '@stackflow/react';
+import SaveImageButton from '../atom/SaveImageButton';
+import CardTestResult from '../molecule/CardTestResult';
+import Feedback from '../molecule/Feedback';
+import NoPeerTestResult from '../molecule/NoPeerTestResult';
+import NoTestKeywordResult from '../molecule/NoTestKeywordResult';
+import OverallOpinion from '../molecule/OverallOpinion';
+import OverallScore from '../molecule/OverallScore';
+import OverallTestResult from '../molecule/OverallTestResult';
+import PeerTestResult from '../molecule/PeerTestResult';
+import ProfileCard from '../molecule/ProfileCard';
+import SelfTestResult from '../molecule/SelfTestResult';
+import Header from '../organism/Header';
+import Layout from '../organism/Layout';
 
-export default function Mypage() {
-  const { data: mypageInfo, isLoading, isError } = useMyPageInfo();
+const Mypage: ActivityComponentType = () => {
+  const { data: mypageInfo, isLoading, isError } = useGetMyPageInfo();
 
   if (isLoading) {
     return (
@@ -106,4 +107,6 @@ export default function Mypage() {
       </div>
     </AppScreenContainer>
   );
-}
+};
+
+export default Mypage;

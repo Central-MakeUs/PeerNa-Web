@@ -1,13 +1,15 @@
-import driving from '@assets/image/DRIVING.png';
-import cooperative from '@assets/image/COOPERATIVE.png';
 import analyical from '@assets/image/ANALYICAL.png';
-import comprehensive from '@assets/image/COOPERATIVE.png';
-import future_oriented from '@assets/image/FUTURE_ORIENTED.png';
-import pragmative from '@assets/image/PRAGMATIC.png';
-import multidimensional from '@assets/image/MULTIDIMENSIONAL.png';
-import warmhearted from '@assets/image/WARMHEARTED.png';
 import cautious from '@assets/image/CAUTIOUS.png';
 import challenging from '@assets/image/CHALLENGING.png';
+import {
+  default as comprehensive,
+  default as cooperative,
+} from '@assets/image/COOPERATIVE.png';
+import driving from '@assets/image/DRIVING.png';
+import future_oriented from '@assets/image/FUTURE_ORIENTED.png';
+import multidimensional from '@assets/image/MULTIDIMENSIONAL.png';
+import pragmative from '@assets/image/PRAGMATIC.png';
+import warmhearted from '@assets/image/WARMHEARTED.png';
 import card_locked from '@assets/image/card_locked.png';
 import card_result from '@assets/image/userType.png';
 
@@ -113,65 +115,63 @@ export const CardInformation: Record<
   }
 > = {
   DRIVING: {
-    image: card_purple,
+    image: TestCardImage.DRIVING,
     caption: '가치관',
     title: '추진하는',
     content: '팀을 이끄는 배의 선장 같은 동료에요',
   },
   COOPERATIVE: {
-    image: card_purple,
+    image: TestCardImage.COOPERATIVE,
     caption: '가치관',
     title: '협조하는',
     content: '팀을 든든히 받쳐주는 버팀목 같은 동료에요',
   },
   ANALYTICAL: {
-    image: card_orange,
+    image: TestCardImage.ANALYTICAL,
     caption: '사고 방식',
     title: '분석적인',
     content: '목표 실현 가능성을 높이는 동료에요',
   },
   COMPREHENSIVE: {
-    image: card_orange,
+    image: TestCardImage.COMPREHENSIVE,
     caption: '사고 방식',
     title: '종합적인',
     content: '현실과 이상을 두루 고려하는 동료에요',
   },
   FUTURE_ORIENTED: {
-    image: card_orange,
+    image: TestCardImage.FUTURE_ORIENTED,
     caption: '사고 방식',
     title: '미래지향적인',
     content: '넓은 시야로 큰 그림을 그리는 동료에요',
   },
   PRAGMATIC: {
-    image: card_pink,
+    image: TestCardImage.PRAGMATIC,
     caption: '소통 방식',
     title: '냉철한',
     content: '솔직한 대화를 이끌어 내는 동료에요',
   },
   MULTIDIMENSIONAL: {
-    image: card_pink,
+    image: TestCardImage.MULTIDIMENSIONAL,
     caption: '소통 방식',
     title: '입체적인',
     content: '안정적이고 견고한 외유내강의 동료에요',
   },
   WARMHEARTED: {
-    image: card_pink,
+    image: TestCardImage.WARMHEARTED,
     caption: '소통 방식',
     title: '따듯한',
     content: '힘과 용기를 불어넣는 동료에요',
   },
   CAUTIOUS: {
-    image: card_yellow,
+    image: TestCardImage.CAUTIOUS,
     caption: '결정 방식',
     title: '신중한',
     content: '위험성과 변수를 줄여 줄 동료에요',
   },
   CHANLLANGE: {
-    image: card_yellow,
+    image: TestCardImage.CHALLENGING,
     caption: '결정 방식',
     title: '신중한',
     content: '팀에게 새로운 길을 열어 줄 동료에요',
   },
 };
-
-export type CardType = keyof typeof Image;

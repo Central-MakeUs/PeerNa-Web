@@ -1,23 +1,24 @@
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import TopHeader from '@components/common/organism/TopHeader';
-import { useProfileInfo } from '@hooks/query/useProfileInfo';
-import { useRecoilState } from 'recoil';
-import { profileSelfState } from '@store/profileSelfState';
-import PositionDrawer from '../molecule/PosititonDrawer';
-import JobDrawer from '../molecule/JobDrawer';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { useFlow } from '@hooks/useStackFlow';
-import ProfileEditList from '../organism/ProfileEditList';
-import { JobList } from '@constants/member';
-import { PartList } from '@constants/member';
-import { useProfileEdit } from '@hooks/query/useProfileEdit';
 import Spinner from '@components/common/atom/Spinner';
-import { useEffect, useState } from 'react';
+import TopHeader from '@components/common/organism/TopHeader';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import { JobList, PartList } from '@constants/member';
 
-export default function ProfileEditPage() {
+import { useGetMe } from '@hooks/api/useGetMe';
+import { usePatchMyProfile } from '@hooks/api/usePatchMyProfile';
+import { useFlow } from '@hooks/useStackFlow';
+import { ActivityComponentType } from '@stackflow/react';
+import { profileSelfState } from '@store/profileSelfState';
+import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import JobDrawer from '../molecule/JobDrawer';
+import PositionDrawer from '../molecule/PosititonDrawer';
+import ProfileEditList from '../organism/ProfileEditList';
+
+const ProfileEditPage: ActivityComponentType = () => {
   const { pop } = useFlow();
-  const { data: myProfileInfo, isLoading, isError } = useProfileInfo();
+  const { data: myProfileInfo, isLoading, isError } = useGetMe();
   const [profileSelf, setProfileSelf] = useRecoilState(profileSelfState);
   const [openJobBottomSheet, setOpenJobBottomSheet] = useState<boolean>(false);
   const [openPartBottomSheet, setOpenPartBottomSheet] =
@@ -41,7 +42,7 @@ export default function ProfileEditPage() {
     oneLiner: profileSelf?.oneLiner,
   };
 
-  const { mutate } = useProfileEdit();
+  const { mutate } = usePatchMyProfile();
 
   const handleClickJob = () => {
     setOpenJobBottomSheet(true);
@@ -90,7 +91,6 @@ export default function ProfileEditPage() {
         {myProfileInfo && (
           <ProfileEditList
             profileSelf={profileSelf}
-            myProfileInfo={myProfileInfo}
             handleClickJob={handleClickJob}
             handleClickPart={handleClickPart}
             handleChangeOneLiner={handleChangeOneLiner}
@@ -104,4 +104,6 @@ export default function ProfileEditPage() {
       </FixedButtonContainer>
     </AppScreenContainer>
   );
-}
+};
+
+export default ProfileEditPage;

@@ -1,11 +1,12 @@
 import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import SettingMenu from '../molecule/SettingMenu';
-import { useFlow } from '@hooks/useStackFlow';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import { useFlow } from '@hooks/useStackFlow';
+import { ActivityComponentType } from '@stackflow/react';
+import SettingMenu from '../molecule/SettingMenu';
 
-export default function SettingPage() {
+const SettingPage: ActivityComponentType = () => {
   const { pop } = useFlow();
   const handleClick = () => pop();
   const handleLogout = () => {
@@ -24,4 +25,6 @@ export default function SettingPage() {
       </FixedButtonContainer>
     </>
   );
-}
+};
+
+export default SettingPage;

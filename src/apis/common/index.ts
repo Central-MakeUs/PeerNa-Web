@@ -18,3 +18,7 @@ export const getPostHealthCheck = async () => {
   });
   return response.data;
 };
+
+export const postFcmToken = async (fcmToken: string) => {
+  return http.post('/test/fcm', { fcmToken });
+};

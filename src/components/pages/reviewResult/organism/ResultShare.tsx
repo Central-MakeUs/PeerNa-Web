@@ -5,7 +5,7 @@ import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FlipCard from '@components/pages/reviewResult/molecule/FlipCard';
 import ShareDrawer from '@components/pages/reviewResult/molecule/ShareDrawer';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import { useGetUserWithUUID } from '@hooks/api/useGetUserWithUUID';
+import { useGetMe } from '@hooks/api/useGetMe';
 import { useGetReviewResult } from '@hooks/api/useGetReviewResult';
 import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/react';
@@ -47,7 +47,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
 
   const handleClickShare = () => setOpenBottomSheet(true);
 
-  const { data: user } = useGetUserWithUUID();
+  const { data: user } = useGetMe();
   const handleClickShareLink = async () => {
     try {
       await navigator.clipboard.writeText(

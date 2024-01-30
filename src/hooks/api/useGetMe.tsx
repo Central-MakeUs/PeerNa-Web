@@ -1,4 +1,4 @@
-import { http, ApiResponse } from '@apis/index';
+import { ApiResponse, http } from '@apis/index';
 import { JobType, PartType } from '@constants/review';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
@@ -10,15 +10,15 @@ export interface MemberMeDTO {
   uuid: string;
 }
 
-export const getUserWithUUID = async (): Promise<ApiResponse<MemberMeDTO>> => {
+export const getMe = async (): Promise<ApiResponse<MemberMeDTO>> => {
   const response = await http.get('/member/me');
   return response.data;
 };
 
-export const useGetUserWithUUID = () => {
+export const useGetMe = () => {
   return useSuspenseQuery({
     queryKey: ['getMemberWithUUID'],
-    queryFn: getUserWithUUID,
+    queryFn: getMe,
     select: data => data.result,
   });
 };
