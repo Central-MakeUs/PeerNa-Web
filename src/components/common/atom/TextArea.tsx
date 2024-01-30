@@ -24,6 +24,8 @@ function CustomTextArea(
       {...rest}
       ref={ref}
       classNames={{
+        base: 'border-1 border-[#E3E6E8] rounded-xl',
+        input: '!text-lg',
         inputWrapper: '!h-full',
       }}
       type="text"

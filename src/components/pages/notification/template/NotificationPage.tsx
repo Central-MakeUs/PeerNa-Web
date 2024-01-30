@@ -28,5 +28,3 @@ const NotificationPage: ActivityComponentType = () => {
     </AppScreenContainer>
   );
 };
-
-export default NotificationPage;

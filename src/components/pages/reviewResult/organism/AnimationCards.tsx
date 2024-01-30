@@ -1,7 +1,7 @@
 import Typography from '@components/common/atom/Typography';
 import Card from '@components/pages/reviewResult/molecule/Card';
 import { PeerCardType } from '@constants/image';
-import { useGetReviewResult } from '@hooks/queries/member';
+import { useGetReviewResult } from '@hooks/api/useGetReviewResult';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';
 

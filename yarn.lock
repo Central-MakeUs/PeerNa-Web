@@ -12551,7 +12551,6 @@ __metadata:
     react-day-picker: "npm:^8.10.0"
     react-dom: "npm:^18.2.0"
     react-error-boundary: "npm:^4.0.12"
-    react-hook-form: "npm:^7.49.3"
     react-hot-toast: "npm:^2.4.1"
     recoil: "npm:^0.7.7"
     recoil-persist: "npm:^5.1.0"
@@ -13078,15 +13077,6 @@ __metadata:
   version: 3.2.2
   resolution: "react-fast-compare@npm:3.2.2"
   checksum: 0bbd2f3eb41ab2ff7380daaa55105db698d965c396df73e6874831dbafec8c4b5b08ba36ff09df01526caa3c61595247e3269558c284e37646241cba2b90a367
-  languageName: node
-  linkType: hard
-
-"react-hook-form@npm:^7.49.3":
-  version: 7.49.3
-  resolution: "react-hook-form@npm:7.49.3"
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: f8e5b2dcc3d97c820b4fbac262d7e914d74f385f26f34da31b8efc6c0f32ba995f2a2330bdfd3d8b7c8b56a52349a0cbc0c0dbe9053b3971e5e0c78003dfb7f0
   languageName: node
   linkType: hard
 
