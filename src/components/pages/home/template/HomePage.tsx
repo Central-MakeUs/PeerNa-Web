@@ -2,6 +2,7 @@ import AppleLogin from '@components/common/atom/AppleLogin';
 import Button from '@components/common/atom/Button';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import { MODE } from '@constants/index';
+import useModal from '@hooks/useModal';
 import { useFlow } from '@hooks/useStackFlow';
 import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
@@ -20,6 +21,8 @@ const HomePage: ActivityComponentType = () => {
         push('OnBoardPage', { step: '1' });
       }
   }, []);
+
+  const { openModal } = useModal();
 
   return (
     <AppScreen>
@@ -53,6 +56,7 @@ const HomePage: ActivityComponentType = () => {
       >
         go now
       </Button>
+      <Button onClick={() => openModal('login')}>로그인</Button>
       <div className="h-full">HomePage</div>
       <BottomNavigation />
     </AppScreen>

@@ -1,8 +1,8 @@
-import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
-import Typography from '@components/common/atom/Typography';
 import Badge from '@components/common/atom/Badge';
-import TestCardList from './TestCardList';
+import Typography from '@components/common/atom/Typography';
+import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
 import { CardType } from '@constants/image';
+import TestCardList from './TestCardList';
 
 export default function SelfTestResult({
   selfTestCardList,

@@ -1,11 +1,14 @@
 import Typography from '@components/common/atom/Typography';
 import Project from '@components/common/molecule/Project';
+import { useGetProjectList } from '@hooks/api/project/useGetProjectList';
 import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import { Fragment } from 'react';
 
 export default function RecentProjectTab() {
   const { push } = useFlow();
+  const { data } = useGetProjectList(1);
+  console.log(data);
   return (
     <Fragment>
       <Spacer y={5} />
