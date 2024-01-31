@@ -1,17 +1,18 @@
-import TopHeader from '@components/common/organism/TopHeader';
-import { useMoreFeedback } from '@hooks/query/useMoreFeedback';
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import Talk from '@components/common/atom/Talk';
 import Spinner from '@components/common/atom/Spinner';
+import Talk from '@components/common/atom/Talk';
+import TopHeader from '@components/common/organism/TopHeader';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import { useGetMoreFeedback } from '@hooks/api/useGetMoreFeedback';
 import { useFlow } from '@hooks/useStackFlow';
+import { ActivityComponentType } from '@stackflow/react';
 
-export default function MoreFeedbackPage() {
+const MoreFeedbackPage: ActivityComponentType = () => {
   const currentPage = 1;
   const {
     data: moreFeedback,
     isLoading,
     isError,
-  } = useMoreFeedback(currentPage);
+  } = useGetMoreFeedback(currentPage);
 
   const { pop } = useFlow();
   const handleClick = () => pop();
@@ -54,4 +55,6 @@ export default function MoreFeedbackPage() {
       )}
     </AppScreenContainer>
   );
-}
+};
+
+export default MoreFeedbackPage;

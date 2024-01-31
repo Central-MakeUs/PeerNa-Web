@@ -1,13 +1,11 @@
 import Dropdown from '@components/common/atom/Dropdown';
 import TextArea from '@components/common/atom/TextArea';
-import HeaderContainer from '@components/pages/profileEdit/molecule/HeaderContainer';
 import Typography from '@components/common/atom/Typography';
-import { ProfileInfo } from '@hooks/query/useProfileInfo';
+import HeaderContainer from '@components/pages/profileEdit/molecule/HeaderContainer';
 import { ProfileSelfStateType } from '@store/profileSelfState';
 
 interface ProfileEditProps {
   profileSelf: ProfileSelfStateType;
-  myProfileInfo: ProfileInfo;
   handleClickJob: () => void;
   handleClickPart: () => void;
   handleChangeOneLiner: (newLiner: string) => void;
