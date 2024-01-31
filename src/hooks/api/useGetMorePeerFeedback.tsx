@@ -11,17 +11,20 @@ interface AllFeedbackDTO {
   isLast: boolean;
 }
 
-export const getMoreFeedback = async (
+export const getMorePeerFeedback = async (
+  peerId: number,
   pageParam: number,
 ): Promise<ApiResponse<AllFeedbackDTO>> => {
-  const response = await http.get(`/member/mypage/feedback?page=${pageParam}`);
+  const response = await http.get(
+    `/home/${peerId}/peer-feedback?page=${pageParam}`,
+  );
   return { ...response.data, pageParam };
 };
 
-export const useGetMoreFeedback = () =>
+export const useGetMorePeerFeedback = (peerId: string) =>
   useInfiniteQuery<ApiResponse<AllFeedbackDTO>, AxiosError>({
-    queryKey: ['getMoreFeedback'],
-    queryFn: ({ pageParam = 1 }) => getMoreFeedback(pageParam),
+    queryKey: ['getMorePeerFeedback', peerId],
+    queryFn: ({ pageParam = 1 }) => getMorePeerFeedback(peerId, pageParam),
     getNextPageParam: lastPage => {
       const nextPage =
         lastPage?.result?.isLast === false ? lastPage.pageParam + 1 : undefined;

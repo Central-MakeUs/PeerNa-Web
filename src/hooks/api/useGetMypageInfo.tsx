@@ -6,7 +6,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 
 interface MyPageDTO {
   peerTestMoreThanTree: boolean;
-  memberSimpleInfoDto: ProfileCardInfo;
+  memberMyPageInfoDto: ProfileCardInfo;
   peerTestType: string;
   selfTestCardList: CardType[];
   peerCardList: CardType[];
