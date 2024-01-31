@@ -2,15 +2,14 @@ import { useFlow } from '@hooks/useStackFlow';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
-import { JobList } from '@constants/member';
-import { PartList } from '@constants/member';
+import { JobType, PartType } from '@constants/member';
 import { CardType } from '@constants/card';
 
 export interface ProfileCardInfo {
   name: string;
   testType: CardType;
-  part: string;
-  job: string;
+  part: PartType;
+  job: JobType;
   totalScore: number;
   oneLiner: string;
 }
@@ -28,13 +27,10 @@ export default function ProfileCard({
   return (
     <article className="pb-10">
       <ProfileListItem
+        isMyProfile={true}
         username={memberInfo.name}
-        position={
-          PartList.find(item => item.key === memberInfo.part)?.text as string
-        }
-        information={
-          JobList.find(item => item.key === memberInfo.job)?.text as string
-        }
+        part={memberInfo.part}
+        job={memberInfo.job}
         testType={memberInfo.testType}
         score={memberInfo.totalScore}
         introduce={memberInfo.oneLiner}
