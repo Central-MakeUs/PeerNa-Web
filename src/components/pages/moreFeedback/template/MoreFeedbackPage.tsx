@@ -1,58 +1,42 @@
-import Spinner from '@components/common/atom/Spinner';
-import Talk from '@components/common/atom/Talk';
 import TopHeader from '@components/common/organism/TopHeader';
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import { useGetMoreFeedback } from '@hooks/api/useGetMoreFeedback';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Talk from '@components/common/atom/Talk';
+import Spinner from '@components/common/atom/Spinner';
 import { useFlow } from '@hooks/useStackFlow';
+import useIntersection from '@hooks/useIntersection';
 import { ActivityComponentType } from '@stackflow/react';
 
 const MoreFeedbackPage: ActivityComponentType = () => {
-  const currentPage = 1;
-  const {
-    data: moreFeedback,
-    isLoading,
-    isError,
-  } = useGetMoreFeedback(currentPage);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useGetMoreFeedback();
 
   const { pop } = useFlow();
   const handleClick = () => pop();
 
-  //TODO) 무한스크롤 구현
+  const handleIntersection = (entry: IntersectionObserverEntry) => {
+    if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  };
 
-  if (isLoading) {
-    return (
-      <AppScreenContainer>
-        <TopHeader title="동료들의 한 줄 피드백" onClick={handleClick} />
-        <Spinner />
-      </AppScreenContainer>
-    );
-  }
-
-  if (isError) {
-    return (
-      <AppScreenContainer>
-        <TopHeader title="동료들의 한 줄 피드백" onClick={handleClick} />
-
-        <div>에러 발생</div>
-      </AppScreenContainer>
-    );
-  }
-
-  const peerFeedbackList = moreFeedback?.feedbackList;
+  const intersectionRef = useIntersection(handleIntersection);
 
   return (
     <AppScreenContainer>
       <TopHeader title="동료들의 한 줄 피드백" onClick={handleClick} />
 
-      {peerFeedbackList && (
-        <ul className="w-full flex flex-col gap-3 px-[24px] py-[20px]">
-          {peerFeedbackList.map((item: string, index: number) => (
-            <li key={index}>
-              <Talk type="dimed">{item}</Talk>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="w-full flex flex-col gap-3 px-[24px] py-[20px]">
+        {data?.map(item => (
+          <li>
+            <Talk type="dimed">{item}</Talk>
+          </li>
+        ))}
+      </ul>
+
+      <div ref={intersectionRef} style={{ height: '10px' }} />
+
+      {isFetchingNextPage && <Spinner />}
     </AppScreenContainer>
   );
 };
