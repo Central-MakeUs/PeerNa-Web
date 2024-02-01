@@ -1,68 +1,57 @@
-import Button from '@components/common/atom/Button';
-import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { IconKeyType } from '@constants/icons';
+import { cardItem, CardType } from '@constants/card';
 
 interface ProfileListItemProps {
-  bezeled: Extract<
-    IconKeyType,
-    | 'AlertFill'
-    | 'NotepadPerson'
-    | 'AddCircle'
-    | 'ColorLine'
-    | 'DocumentText'
-    | 'Person'
-  >;
-  isGrayIcon?: boolean;
+  testType: CardType;
   username: string;
   position: string;
+  score?: number;
   information: string;
   introduce: string;
+  children?: React.ReactNode;
 }
 
 export default function ProfileListItem({
-  bezeled,
-  isGrayIcon = false,
+  testType,
   username,
   position,
+  score,
   information,
   introduce,
+  children,
 }: ProfileListItemProps) {
   return (
-    <div className="flex justify-between items-center w-[350px] h-[44px] px-5 py-4 box-content">
+    <div className="flex justify-between items-center h-[44px] px-5 py-4 box-content">
       <div className="flex gap-3">
         <div
-          className={`w-[24px] h-[24px] p-3 box-content rounded-full ${
-            isGrayIcon ? 'bg-gray01' : 'bg-primary100'
-          }`}
+          className={`w-[24px] h-[24px] p-3 box-content rounded-full ${'bg-gray01'}`}
         >
-          <SvgIcon id={bezeled} color={isGrayIcon ? 'gray04' : 'primary400'} />
+          <img src={cardItem[testType]} alt="테스트 결과 카드" />
         </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col">
           <div className="flex items-center gap-1">
-            <Typography variant="body01">{username}</Typography>
+            <Typography variant="body01" fontColor="white">
+              {username}
+            </Typography>
             <Typography variant="caption01" className="text-primary500">
               {position}
             </Typography>
           </div>
-          <Typography variant="body05" className="text-gray07">
-            {information}
-          </Typography>
+          <div className="flex items-center">
+            <Typography variant="body05" className="text-gray04 mr-1">
+              {information}
+            </Typography>
+            <span className="text-gray04">|</span>
+            <Typography variant="caption01" className="text-gray04 ml-1">
+              {` 종합점수 ${score}점`}
+            </Typography>
+          </div>
           <Typography variant="body05" className="text-gray05">
             {introduce}
           </Typography>
         </div>
       </div>
-      <div className="h-full">
-        <Button
-          buttonVariant="tertiary"
-          className="!w-[36px] !h-[20px] !px-5 !py-2.5 flex-1 !min-w-min"
-        >
-          <Typography variant="body03" className="text-gray08">
-            자세히
-          </Typography>
-        </Button>
-      </div>
+      <div className="h-full">{children}</div>
     </div>
   );
 }

@@ -13,11 +13,11 @@ export default function RadioTabs({ children, ...props }: RadioTabsProps) {
       aria-label="Options"
       color="primary"
       variant="solid"
-      className="flex w-full"
+      className="flex w-full justify-center"
       classNames={{
         tabList: 'bg-gray01',
         cursor: 'bg-white border-1',
-        tab: '!w-[171px] !h-[48px]',
+        tab: '!w-[524px] !h-[48px]',
         tabContent: `${FontVariantsClassName.body03} text-gray04 group-data-[selected=true]:text-gray06`,
       }}
     >
