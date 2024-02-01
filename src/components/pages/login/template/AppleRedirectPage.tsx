@@ -39,10 +39,9 @@ const AppleRedirectPage: ActivityComponentType = () => {
       postFcmToken(fcmToken)
         .then(() => {
           console.log('success');
-          alert('success');
         })
         .catch(error => {
-          alert('error' + error.message);
+          console.log('error' + error.message);
         });
     }
   }, [memberId, accessToken, refreshToken]);

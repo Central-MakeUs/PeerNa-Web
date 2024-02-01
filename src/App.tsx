@@ -1,4 +1,3 @@
-import { http } from '@apis/index';
 import BottomSheet from '@components/common/organism/BottomSheet';
 import LoginModal from '@components/pages/login/organism/LoginModal';
 import { Stack } from '@hooks/useStackFlow';
@@ -15,19 +14,6 @@ function App() {
       redirectURI: import.meta.env.VITE_APPLE_REDIRECT_URI,
       usePopup: false,
     });
-
-    http
-      .post('/test/fcm', {
-        fcmToken:
-          'eRj6MwMtVUzXgKZXuXug11:APA91bGxJLaJFoJgj404jryExJNkcv7QGx-tni3T7PBdNdUOx-5wYAxNc0xQ6lLPzyrKZ4BxUspeRIxwSgX_hxV4iYE-ZJnC1HKSXPtw8mGcFmK5RAbzv-zwAC0Njm3jyenf9u7xOzXi',
-      })
-      .then(() => {
-        console.log('success');
-        alert('success');
-      })
-      .catch(error => {
-        alert('error' + error.message);
-      });
   }, []);
 
   return (
