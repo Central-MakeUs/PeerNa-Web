@@ -1,30 +1,29 @@
 import { motion } from 'framer-motion';
 
 export default function SlideImage({ images }: { images: string[] }) {
-  const transition = {
-    repeat: Infinity,
-    repeatType: 'loop' as const,
-    duration: 30,
-    ease: 'linear',
-  };
-
-  const animate = {
-    x: [`0px`, `-${400 * images.length}px`],
-  };
+  const duration = 6;
+  const doubledImages = [...images, ...images];
 
   return (
-    <div style={{ overflow: 'hidden', width: '400px' }}>
+    <div style={{ overflow: 'hidden', whiteSpace: 'nowrap' }}>
       <motion.div
-        style={{ display: 'flex', width: `calc(400px * ${images.length})` }}
-        animate={animate}
-        transition={transition}
+        initial={{ x: 0 }}
+        animate={{ x: `-100%` }}
+        transition={{
+          x: {
+            type: 'linear',
+            ease: 'linear',
+            duration: duration,
+            repeat: Infinity,
+          },
+        }}
       >
-        {images.map((image, index) => (
+        {doubledImages.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Slide ${index}`}
-            style={{ width: '200px', height: 'auto' }}
+            style={{ width: '33%', height: 'auto', display: 'inline-block' }}
           />
         ))}
       </motion.div>
