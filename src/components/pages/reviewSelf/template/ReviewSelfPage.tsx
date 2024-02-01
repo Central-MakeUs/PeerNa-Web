@@ -1,6 +1,7 @@
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import InputName from '@components/pages/reviewSelf/organism/InputName';
+import ReviewGuide from '@components/pages/reviewSelf/organism/ReviewGuide';
 import SelectJob from '@components/pages/reviewSelf/organism/SelectJob';
 import SelectPosition from '@components/pages/reviewSelf/organism/SelectPosition';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
@@ -57,10 +58,11 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
         }}
         bodyProps={{
           isShow: true,
-          title: REVIEW_SELF_TITLE[curStep - 1],
+          title: REVIEW_SELF_TITLE[curStep],
           marginClass: 'mt-4',
         }}
       />
+      {curStep === 0 && <ReviewGuide />}
       {curStep === 1 && <InputName />}
       {curStep === 2 && <SelectJob />}
       {curStep === 3 && <SelectPosition />}
