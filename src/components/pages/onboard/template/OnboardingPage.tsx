@@ -22,7 +22,7 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
 
   const handleClickPush = () => {
     if (curStep === lastStep) {
-      push('ReviewSelfPage', { step: '1' });
+      push('ReviewSelfPage', { step: '0' });
       localStorage.setItem('OnBoard', 'true');
       return;
     }
@@ -33,7 +33,7 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   const isShowRightButton = curStep !== 4;
 
   const handleClickBackIcon = () => pop();
-  const handleClickStart = () => push('ReviewSelfPage', { step: '1' });
+  const handleClickStart = () => push('ReviewSelfPage', { step: '0' });
 
   const buttonText = curStep === lastStep ? '시작하기' : '다음';
   return (
