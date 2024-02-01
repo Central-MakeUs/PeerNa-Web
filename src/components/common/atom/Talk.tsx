@@ -1,10 +1,10 @@
+import Typography from '@components/common/atom/Typography';
+import { Palette } from '@constants/styles';
 import {
   ChipProps as ChipPropsWithNextui,
   Chip as ChipWithNextui,
 } from '@nextui-org/react';
-import Typography from '@components/common/atom/Typography';
 import { getRgbaColorWithOpacity } from '@utils/styles';
-import { Palette } from '@constants/styles';
 
 interface TalkProps extends ChipPropsWithNextui {
   type: string;
