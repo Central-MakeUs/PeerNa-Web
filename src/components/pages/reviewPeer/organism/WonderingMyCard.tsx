@@ -13,7 +13,7 @@ export default function WonderingMyCard() {
   const { handleClearReviews } = useReviewState();
   const handleClick = () => {
     handleClearReviews();
-    push('OnBoardPage', { step: '1' });
+    push('OnboardingPage', { step: '1' });
   };
   const handleClickRightButton = () => push('HomePage', {});
   const bgOpacity = getRgbaColorWithOpacity('#ffffff', 0.4);

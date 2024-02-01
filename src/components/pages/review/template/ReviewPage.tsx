@@ -54,7 +54,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
 
   const handleClickBackButton = () => {
     if (curStep === 1 && trackStep === 1) {
-      push('OnBoardPage', { step: '3' });
+      push('OnboardingPage', { step: '3' });
       return;
     }
     if (trackStep === 1) {

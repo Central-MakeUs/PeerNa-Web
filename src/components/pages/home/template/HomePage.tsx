@@ -18,7 +18,7 @@ const HomePage: ActivityComponentType = () => {
   useEffect(() => {
     if (MODE === 'production')
       if (localStorage.getItem('OnBoard') === null) {
-        push('OnBoardPage', { step: '1' });
+        push('OnboardingPage', { step: '1' });
       }
   }, []);
 
