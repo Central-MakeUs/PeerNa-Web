@@ -1,28 +1,22 @@
-import { ReviewImages } from '@constants/images';
-import { motion } from 'framer-motion';
+import { REVIEW_LOTTIES } from '@constants/images';
+import Lottie from 'lottie-react';
 
 interface ReviewCenterImageProps {
   curStep: number;
   trackStep: number;
-  answerStep: number;
 }
 
 export default function ReviewCenterImage({
   curStep,
-  answerStep,
+  trackStep,
 }: ReviewCenterImageProps) {
-  const imgSrc = ReviewImages[curStep - 1];
+  const LOTTIE = REVIEW_LOTTIES[curStep - 1];
+
   return (
-    <div className={`w-full flex justify-center py-12`}>
-      <motion.img
-        key={answerStep}
-        src={imgSrc}
-        alt="lottie image"
-        animate={{
-          scale: [1, 1.3, 1],
-        }}
-        transition={{ duration: 0.5 }}
-      />
+    <div className="w-full flex justify-center py-12">
+      <div className="w-[40%]">
+        <Lottie key={trackStep} animationData={LOTTIE} loop={false} />
+      </div>
     </div>
   );
 }

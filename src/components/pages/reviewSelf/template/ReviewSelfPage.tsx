@@ -28,7 +28,7 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
 
   const { push, pop } = useFlow();
   const handleClick = () => {
-    if (curStep === lastStep) {
+    if (curStep === lastStep - 1) {
       push('ReviewPage', { type: 'self', step: '1' });
       return;
     }
