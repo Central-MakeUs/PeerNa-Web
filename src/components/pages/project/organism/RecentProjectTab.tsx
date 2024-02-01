@@ -9,7 +9,6 @@ import { Fragment, useEffect, useRef } from 'react';
 export default function RecentProjectTab() {
   const { push } = useFlow();
   const { data, fetchNextPage, hasNextPage, status } = useGetProjectList();
-  console.log(data);
 
   const observer = useRef<IntersectionObserver | null>(null);
   const lastProjectRef = useRef<HTMLButtonElement>(null);

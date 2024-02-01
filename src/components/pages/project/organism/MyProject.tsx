@@ -1,14 +1,46 @@
 import Typography from '@components/common/atom/Typography';
 import AlarmListItem from '@components/common/molecule/AlarmListItem';
+import Project from '@components/common/molecule/Project';
 import EmptyProject from '@components/pages/project/molecule/EmptyProject';
+import { useGetMyProjectList } from '@hooks/api/project/useGetMyProjectList';
 import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/react';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 
 export default function MyProject() {
   const { push } = useFlow();
-
   const handlePushCreateProjectPage = () => push('ProjectCreatePage', {});
+
+  const { data, fetchNextPage, hasNextPage, status } = useGetMyProjectList();
+
+  const observer = useRef<IntersectionObserver | null>(null);
+  const lastProjectRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (status === 'pending' || !data) return;
+
+    const option = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasNextPage) {
+        fetchNextPage();
+      }
+    }, option);
+
+    if (lastProjectRef.current) {
+      observer.current.observe(lastProjectRef.current);
+    }
+
+    return () => {
+      if (lastProjectRef.current && observer.current) {
+        observer.current.unobserve(lastProjectRef.current);
+      }
+    };
+  }, [hasNextPage, fetchNextPage, status]);
 
   return (
     <Fragment>
@@ -24,17 +56,25 @@ export default function MyProject() {
       </Typography>
       <Spacer y={3} />
       <div className="h-full flex flex-col gap-3">
-        {/* {Array(10)
-          .fill({})
-          .map((_, i) => (
-            <Project
-              key={i}
-              title="프로젝트 제목"
-              subtitle="설명글입니다."
-              date="2023.12.20 ~ 2023.12.31"
-            />
-          ))} */}
-        {true && <EmptyProject />}
+        {!data && <EmptyProject />}
+        {data?.pages.map(group =>
+          group.result.map((project, index) => (
+            <button
+              key={project.projectId}
+              ref={group.result.length === index + 1 ? lastProjectRef : null}
+              className="w-full text-left"
+              onClick={() =>
+                push('ProjectDetailPage', { id: project.projectId })
+              }
+            >
+              <Project
+                title={project.projectName}
+                subtitle={project.introduce}
+                date={`${project.startDate} ~ ${project.endDate}`}
+              />
+            </button>
+          )),
+        )}
       </div>
     </Fragment>
   );
