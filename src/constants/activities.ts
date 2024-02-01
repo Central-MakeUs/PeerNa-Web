@@ -52,7 +52,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   MoreFeedbackPage: '/mypage/feedback',
   ProfileEditPage: '/mypage/profile/edit',
   SettingPage: '/mypage/setting',
-  OnboardingPage: '/onBoard',
+  OnboardingPage: '/onboarding',
   ReviewPage: '/review',
   ReviewSelfPage: '/review/self',
   ReviewPeerPage: '/review/peer',
