@@ -3,6 +3,7 @@ import TextArea from '@components/common/atom/TextArea';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import { usePostCreateProject } from '@hooks/api/project/usePostCreateProject';
 import { useFlow } from '@hooks/useStackFlow';
 import { Divider, cn } from '@nextui-org/react';
 import { Fragment, useState } from 'react';
@@ -10,8 +11,9 @@ import { Fragment, useState } from 'react';
 export default function ProjectForm() {
   const { push } = useFlow();
 
-  const [title, setTitle] = useState('');
-  const handleChangeTitle = (newTitle: string) => setTitle(newTitle);
+  const [projectName, setProjectName] = useState('');
+  const handleChangeProjectName = (newProjectName: string) =>
+    setProjectName(newProjectName);
 
   const [introduce, setIntroduce] = useState('');
   const handleChangeIntroduce = (newIntroduce: string) =>
@@ -26,24 +28,36 @@ export default function ProjectForm() {
   const handleChangeEndDate = (newDate: Date | undefined) =>
     setEndDate((newDate ?? new Date()).toISOString());
 
-  const [firstLink, setFirstLink] = useState('');
-  const handleChangeFirstLink = (newLink: string) => setFirstLink(newLink);
-  const [secondLink, setSecondLink] = useState('');
-  const handleChangeSecondLink = (newLink: string) => setSecondLink(newLink);
-  const [thirdLink, setThirdLink] = useState('');
-  const handleChangeThirdLink = (newLink: string) => setThirdLink(newLink);
+  const [openChattingLink, setOpenChattingLink] = useState('');
+  const handleChangeOpenChattingLink = (newLink: string) =>
+    setOpenChattingLink(newLink);
+  const [notionLink, setNotionLink] = useState('');
+  const handleChangeNotionLink = (newLink: string) => setNotionLink(newLink);
+  const [githubLink, setGithubLink] = useState('');
+  const handleChangeGithubLink = (newLink: string) => setGithubLink(newLink);
 
   const isValidForm = () => {
     return (
-      title !== '' &&
+      projectName !== '' &&
       introduce !== '' &&
       startDate !== '' &&
       endDate !== '' &&
-      firstLink !== ''
+      openChattingLink !== ''
     );
   };
 
-  const handlePushProjectPage = () => push('ProjectPage', {});
+  const { mutate } = usePostCreateProject(() => push('ProjectPage', {}));
+  const handleSubmit = () => {
+    mutate({
+      projectName: projectName,
+      introduce: introduce,
+      openChattingLink: openChattingLink,
+      notionLink: notionLink,
+      githubLink: githubLink,
+      startDate: startDate,
+      endDate: endDate,
+    });
+  };
 
   return (
     <Fragment>
@@ -51,8 +65,8 @@ export default function ProjectForm() {
         <div className="flex flex-col items-start gap-3">
           <Typography variant="header03">프로젝트 제목</Typography>
           <TextInput
-            text={title}
-            handleChangeText={handleChangeTitle}
+            text={projectName}
+            handleChangeText={handleChangeProjectName}
             placeholder="프로젝트 제목을 작성해주세요."
           />
         </div>
@@ -92,32 +106,29 @@ export default function ProjectForm() {
         <div className="flex flex-col items-start gap-3">
           <Typography variant="header03">링크1</Typography>
           <TextInput
-            text={firstLink}
-            handleChangeText={handleChangeFirstLink}
+            text={openChattingLink}
+            handleChangeText={handleChangeOpenChattingLink}
             placeholder="(필수) 연락 수단을 알려주세요. (ex. 오픈채팅 링크)"
           />
         </div>
         <div className="flex flex-col items-start gap-3">
           <Typography variant="header03">링크 2</Typography>
           <TextInput
-            text={secondLink}
-            handleChangeText={handleChangeSecondLink}
+            text={notionLink}
+            handleChangeText={handleChangeNotionLink}
             placeholder="(선택) 외부 링크 (ex. 서비스 소개 페이지 링크)"
           />
         </div>
         <div className="flex flex-col items-start gap-3">
           <Typography variant="header03">링크 3</Typography>
           <TextInput
-            text={thirdLink}
-            handleChangeText={handleChangeThirdLink}
+            text={githubLink}
+            handleChangeText={handleChangeGithubLink}
             placeholder="(선택) 외부 링크 (ex. 포트폴리오 링크)"
           />
         </div>
       </form>
-      <FixedBottomButton
-        handleClick={handlePushProjectPage}
-        isDisabled={!isValidForm()}
-      >
+      <FixedBottomButton handleClick={handleSubmit} isDisabled={!isValidForm()}>
         생성하기
       </FixedBottomButton>
     </Fragment>
