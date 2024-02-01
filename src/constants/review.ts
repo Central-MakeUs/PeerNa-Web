@@ -10,8 +10,7 @@ export type JobType =
   | 'WORKER'
   | 'ENTREPRENEUR'
   | 'FREELANCER'
-  | 'OTHER'
-  | '';
+  | 'OTHER';
 
 export const JOB_LIST: {
   title: string;
@@ -31,8 +30,7 @@ export type PartType =
   | 'FRONT_END'
   | 'BACK_END'
   | 'MARKETER'
-  | 'OTHER'
-  | '';
+  | 'OTHER';
 
 export const PART_LIST: {
   title: string;

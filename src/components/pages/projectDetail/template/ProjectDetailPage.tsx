@@ -3,9 +3,10 @@ import ProjectInformation from '@components/pages/projectDetail/organism/Project
 import ShareDrawer from '@components/pages/reviewResult/molecule/ShareDrawer';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import { useGetProjectById } from '@hooks/api/project/useGetProjectById';
 import { useFlow } from '@hooks/useStackFlow';
 import { Spacer } from '@nextui-org/react';
-import { ActivityComponentType } from '@stackflow/react';
+import { ActivityComponentType, useActivity } from '@stackflow/react';
 import { useState } from 'react';
 
 const ProjectDetailPage: ActivityComponentType = () => {
@@ -14,6 +15,8 @@ const ProjectDetailPage: ActivityComponentType = () => {
   const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
   const handleClickShare = () => setOpenBottomSheet(true);
 
+  const activity = useActivity();
+  const { data } = useGetProjectById(parseInt(activity.params?.id ?? '0'));
   return (
     <AppScreenContainer>
       <NavigationHeader
@@ -23,11 +26,19 @@ const ProjectDetailPage: ActivityComponentType = () => {
         }}
         bodyProps={{
           isShow: true,
-          title: '프로젝트 명',
+          title: data.projectName,
         }}
       />
       <Spacer y={8} />
-      <ProjectInformation />
+      <ProjectInformation
+        introduce={data.introduce}
+        startDate={data.startDate}
+        endDate={data.endDate}
+        openChattingLink={data.openChattingLink}
+        notionLink={data.notionLink}
+        githubLink={data.githubLink}
+        creatorSimpleProfileDto={data.creatorSimpleProfileDto}
+      />
       <FixedBottomButton handleClick={handleClickShare}>
         동료 초대하기
       </FixedBottomButton>
