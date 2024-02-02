@@ -51,7 +51,9 @@ const HomePage: ActivityComponentType = () => {
             <Tab key="FRONT_END" title="FE 개발자" />,
             <Tab key="BACK_END" title="BE 개발자" />,
           </UnderlineTabs>
-          <UserProfileList data={data} />
+          {data && (
+            <UserProfileList data={data.pages.flatMap(page => page.result)} />
+          )}
           <IntersectionBox ref={intersectionRef} />
 
           {isFetchingNextPage && <Spinner />}

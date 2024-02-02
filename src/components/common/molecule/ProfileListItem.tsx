@@ -2,16 +2,15 @@ import Typography from '@components/common/atom/Typography';
 import { cardItem, CardType } from '@constants/card';
 import { JOB_LIST, PART_LIST } from '@constants/member';
 import { getPartJobTitle } from '@utils/getTitleValue';
-import { JobType, PartType } from '@constants/member';
 import SvgIcon from '../atom/SvgIcon';
 
 interface ProfileListItemProps {
   isMyProfile: boolean;
   testType: CardType;
   username: string;
-  part: PartType;
+  part: string;
   score: number;
-  job: JobType;
+  job: string;
   introduce: string;
   children?: React.ReactNode;
 }
