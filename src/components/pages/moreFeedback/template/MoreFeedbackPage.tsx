@@ -6,21 +6,17 @@ import Spinner from '@components/common/atom/Spinner';
 import { useFlow } from '@hooks/useStackFlow';
 import useIntersection from '@hooks/useIntersection';
 import { ActivityComponentType } from '@stackflow/react';
+import IntersectionBox from '@components/common/atom/IntersectionBox';
 
 const MoreFeedbackPage: ActivityComponentType = () => {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useGetMoreFeedback();
+  const { data, fetchNextPage, isFetchingNextPage } = useGetMoreFeedback();
+
+  console.log(data);
 
   const { pop } = useFlow();
   const handleClick = () => pop();
 
-  const handleIntersection = (entry: IntersectionObserverEntry) => {
-    if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
-      fetchNextPage();
-    }
-  };
-
-  const intersectionRef = useIntersection(handleIntersection);
+  const intersectionRef = useIntersection(fetchNextPage);
 
   return (
     <AppScreenContainer>
@@ -34,7 +30,7 @@ const MoreFeedbackPage: ActivityComponentType = () => {
         ))}
       </ul>
 
-      <div ref={intersectionRef} style={{ height: '10px' }} />
+      <IntersectionBox ref={intersectionRef} />
 
       {isFetchingNextPage && <Spinner />}
     </AppScreenContainer>

@@ -15,28 +15,23 @@ import { PartType } from '@constants/member';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import useIntersection from '@hooks/useIntersection';
 import Spinner from '@components/common/atom/Spinner';
+import IntersectionBox from '@components/common/atom/IntersectionBox';
 
 const HomePage: ActivityComponentType = () => {
   const [currentTab, setCurrentTab] = useState('ALL');
 
-  const { data, refetch, hasNextPage, isFetchingNextPage, fetchNextPage } =
+  const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
 
   useEffect(() => {
     refetch();
   }, [currentTab]);
 
-  const handleIntersection = (entry: IntersectionObserverEntry) => {
-    if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
-      fetchNextPage();
-    }
-  };
-
-  const intersectionRef = useIntersection(handleIntersection);
+  const intersectionRef = useIntersection(fetchNextPage);
 
   return (
     <AppScreenContainer>
-      <div className="w-full !bg-gradient-to-r from-[#f7f7f7] via-[#F6F7F8] to-[#FF8766] via-[#FF92FC] to-[#FFC729] via-[#FFD7CC]">
+      <div className="w-full bg-peer-bg">
         <HomeHeader />
         <Layout>
           <HeaderContainer size="md">
@@ -57,7 +52,8 @@ const HomePage: ActivityComponentType = () => {
             <Tab key="BACK_END" title="BE 개발자" />,
           </UnderlineTabs>
           <UserProfileList data={data} />
-          <div ref={intersectionRef} style={{ height: '10px' }} />
+          <IntersectionBox ref={intersectionRef} />
+
           {isFetchingNextPage && <Spinner />}
         </Layout>
         <BottomNavigation />

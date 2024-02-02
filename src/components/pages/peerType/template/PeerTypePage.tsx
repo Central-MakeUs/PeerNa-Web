@@ -1,14 +1,14 @@
-import IconButton from '@components/common/atom/IconButton';
 import UserProfileList from '@components/pages/home/molecule/UserProfileList';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import { ActivityComponentType } from '@stackflow/react';
 import PeerItem from '../atom/PeerItem';
-import { getRgbaColorWithOpacity } from '@utils/styles';
+import TopHeader from '@components/common/organism/TopHeader';
 import { useFlow } from '@hooks/useStackFlow';
 import { CardType } from '@constants/card';
 import { useGetSearchPeerType } from '@hooks/api/useGetSearchPeerType';
 import useIntersection from '@hooks/useIntersection';
 import Spinner from '@components/common/atom/Spinner';
+import IntersectionBox from '@components/common/atom/IntersectionBox';
 
 type PeerTypePageParams = {
   type: CardType;
@@ -28,40 +28,26 @@ const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
     I: 'bg-primary100',
     S: 'bg-primary200',
     C: 'bg-secondary-purple bg-opacity-20',
-  }[peerType];
-
-  const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
-    useGetSearchPeerType(peerType);
-
-  const handleIntersection = (entry: IntersectionObserverEntry) => {
-    if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
-      fetchNextPage();
-    }
   };
 
-  const intersectionRef = useIntersection(handleIntersection);
+  const { data, isFetchingNextPage, fetchNextPage } =
+    useGetSearchPeerType(peerType);
+
+  const intersectionRef = useIntersection(fetchNextPage);
 
   return (
     <AppScreenContainer>
       <header
-        className={`${bgColor} w-full flex items-start pt-[69px] pb-[24px]`}
+        className={`${bgColor[peerType]} w-full flex flex-col items-start pt-[69px] pb-6`}
       >
-        <IconButton
-          iconProps={{
-            id: 'ArrowLeft',
-            color: 'gray07',
-            width: 10.5,
-            height: 20,
-          }}
-          onClick={handleBack}
-          className="ml-[20px]"
-        />
+        <TopHeader onClick={handleBack} />
+
         <PeerItem type={peerType} />
       </header>
 
       <UserProfileList data={data} />
 
-      <div ref={intersectionRef} style={{ height: '10px' }} />
+      <IntersectionBox ref={intersectionRef} />
       {isFetchingNextPage && <Spinner />}
     </AppScreenContainer>
   );
