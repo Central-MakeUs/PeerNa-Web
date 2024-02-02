@@ -44,8 +44,9 @@ const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
 
         <PeerItem type={peerType} />
       </header>
-
-      <UserProfileList data={data} />
+      {data && (
+        <UserProfileList data={data.pages.flatMap(page => page.result)} />
+      )}
 
       <IntersectionBox ref={intersectionRef} />
       {isFetchingNextPage && <Spinner />}
