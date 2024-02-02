@@ -8,18 +8,28 @@ interface TestCardListProps {
   className?: string;
 }
 
+const getCardList = (
+  type: 'self' | 'peer' | 'locked',
+  selfTestCardList?: string[],
+  peerCardList?: string[],
+) => {
+  const cardListMap = {
+    self: selfTestCardList || [],
+    peer: peerCardList || [],
+    locked: Array(4).fill('LOCKED'),
+  };
+
+  return cardListMap[type];
+};
+
 export default function TestCardList({
   selfTestCardList,
   peerCardList,
   type,
   className,
 }: TestCardListProps) {
-  const cardList =
-    type === 'self'
-      ? selfTestCardList || []
-      : type === 'peer'
-        ? peerCardList || []
-        : Array(4).fill('LOCKED');
+  const cardList = getCardList(type, selfTestCardList, peerCardList);
+
   return (
     <section className={`flex gap-2 justify-center ${className}`}>
       {cardList.map((cardType, index) => (

@@ -1,7 +1,9 @@
-import { ApiResponse, http } from '@apis/index';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { http, ApiResponse } from '@apis/index';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { PartType, JobType } from '@constants/member';
+import { AxiosError } from 'axios';
 
-interface MemberSimpleDTOPage {
+export interface MemberSimpleDTOPage {
   memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
   totalElements: number;
   currentPageElements: number;
@@ -10,11 +12,15 @@ interface MemberSimpleDTOPage {
   isLast: boolean;
 }
 
+interface PageResponse<T> extends ApiResponse<T> {
+  currentPage: number;
+}
+
 export interface MemberSimpleProfileDTO {
   memberId: number;
   name: 'string';
-  job: 'string';
-  part: 'string';
+  job: JobType;
+  part: PartType;
   peerTestType: 'D' | 'I' | 'S' | 'C';
   oneLiner: 'string';
   totalScore: number;
@@ -22,18 +28,25 @@ export interface MemberSimpleProfileDTO {
 
 export const getSearchPeerType = async (
   peerType: string,
-  page: number,
-): Promise<ApiResponse<MemberSimpleDTOPage>> => {
+  pageParam: number,
+): Promise<PageResponse<MemberSimpleDTOPage>> => {
   const response = await http.get(
-    `/home/search/peer-type?peerType=${peerType}&page=${page}`,
+    `/home/search/peer-type?peerType=${peerType}&page=${pageParam}`,
   );
-  return response.data;
+  return { ...response.data, pageParam };
 };
 
-export const useGetSearchPeerType = (peerType: string, page: number) => {
-  return useSuspenseQuery({
-    queryKey: ['getSearchPeerType', peerType, page],
-    queryFn: () => getSearchPeerType(peerType, page),
-    select: data => data.result,
+export const useGetSearchPeerType = (peerType: string) =>
+  useInfiniteQuery<PageResponse<MemberSimpleDTOPage>, AxiosError>({
+    queryKey: ['getSearchPeerType', peerType],
+    queryFn: ({ pageParam = 1 }) => getSearchPeerType(peerType, pageParam),
+    getNextPageParam: lastPage => {
+      const nextPage =
+        lastPage?.result?.isLast === false ? lastPage.pageParam + 1 : undefined;
+      return nextPage;
+    },
+    select: data =>
+      data?.pages.flatMap(
+        profile => profile?.result?.memberSimpleProfileDtoList ?? [],
+      ),
   });
-};

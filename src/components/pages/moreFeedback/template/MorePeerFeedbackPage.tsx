@@ -1,22 +1,32 @@
 import TopHeader from '@components/common/organism/TopHeader';
-import { useGetMoreFeedback } from '@hooks/api/useGetMoreFeedback';
+import { useGetMorePeerFeedback } from '@hooks/api/useGetMorePeerFeedback';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Talk from '@components/common/atom/Talk';
 import Spinner from '@components/common/atom/Spinner';
 import { useFlow } from '@hooks/useStackFlow';
 import useIntersection from '@hooks/useIntersection';
 import { ActivityComponentType } from '@stackflow/react';
-import IntersectionBox from '@components/common/atom/IntersectionBox';
 
-const MoreFeedbackPage: ActivityComponentType = () => {
-  const { data, fetchNextPage, isFetchingNextPage } = useGetMoreFeedback();
+type peerDetailPageParams = {
+  memberId: string;
+};
 
-  console.log(data);
+const MorePeerFeedbackPage: ActivityComponentType<peerDetailPageParams> = ({
+  params,
+}) => {
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useGetMorePeerFeedback(params.memberId);
 
   const { pop } = useFlow();
   const handleClick = () => pop();
 
-  const intersectionRef = useIntersection(fetchNextPage);
+  const handleIntersection = (entry: IntersectionObserverEntry) => {
+    if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  };
+
+  const intersectionRef = useIntersection(handleIntersection);
 
   return (
     <AppScreenContainer>
@@ -30,11 +40,11 @@ const MoreFeedbackPage: ActivityComponentType = () => {
         ))}
       </ul>
 
-      <IntersectionBox ref={intersectionRef} />
+      <div ref={intersectionRef} style={{ height: '10px' }} />
 
       {isFetchingNextPage && <Spinner />}
     </AppScreenContainer>
   );
 };
 
-export default MoreFeedbackPage;
+export default MorePeerFeedbackPage;

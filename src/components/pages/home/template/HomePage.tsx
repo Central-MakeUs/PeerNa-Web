@@ -1,65 +1,64 @@
-import AppleLogin from '@components/common/atom/AppleLogin';
-import Button from '@components/common/atom/Button';
-import BottomNavigation from '@components/common/molecule/BottomNavigation';
-import { MODE } from '@constants/index';
-import useModal from '@hooks/useModal';
-import { useFlow } from '@hooks/useStackFlow';
-import { AppScreen } from '@stackflow/plugin-basic-ui';
 import { ActivityComponentType } from '@stackflow/react';
-import { bottomSheetState } from '@store/bottomSheet';
-import { useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useEffect, useState } from 'react';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import HomeHeader from '@components/pages/notification/molecule/HomeHeader';
+import Layout from '@components/pages/mypage/organism/Layout';
+import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
+import Typography from '@components/common/atom/Typography';
+import ReviewButton from '../atom/ReviewButton';
+import PeerTypeAvatarList from '../molecule/PeerTypeAvatarList';
+import UserProfileList from '../molecule/UserProfileList';
+import BottomNavigation from '@components/common/molecule/BottomNavigation';
+import { Tab } from '@nextui-org/react';
+import { useGetSearchPeerPart } from '@hooks/api/useGetSearchPeerPart';
+import { PartType } from '@constants/member';
+import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
+import useIntersection from '@hooks/useIntersection';
+import Spinner from '@components/common/atom/Spinner';
+import IntersectionBox from '@components/common/atom/IntersectionBox';
 
 const HomePage: ActivityComponentType = () => {
-  const setOpen = useSetRecoilState(bottomSheetState);
+  const [currentTab, setCurrentTab] = useState('ALL');
 
-  const { push } = useFlow();
+  const { data, refetch, isFetchingNextPage, fetchNextPage } =
+    useGetSearchPeerPart(currentTab);
 
   useEffect(() => {
-    if (MODE === 'production')
-      if (localStorage.getItem('OnBoard') === null) {
-        push('OnBoardPage', { step: '1' });
-      }
-  }, []);
+    refetch();
+  }, [currentTab]);
 
-  const { openModal } = useModal();
+  const intersectionRef = useIntersection(fetchNextPage);
 
   return (
-    <AppScreen>
-      <AppleLogin />
-      <Button
-        onClick={() => {
-          localStorage.removeItem('OnBoard');
-        }}
-      >
-        리셋
-      </Button>
-      <Button
-        onClick={() => {
-          setOpen(() => ({
-            isOpen: true,
-            contents: [
-              { title: '대학생', onClick: undefined },
-              {
-                title: '직장인',
-                subtitle: '바쁘다 바빠 현대사회',
-                onClick: undefined,
-              },
-            ],
-          }));
-        }}
-      >
-        OpenDrawer
-      </Button>
-      <Button
-        onClick={() => push('ReviewResultPage', { type: 'self', step: '1' })}
-      >
-        go now
-      </Button>
-      <Button onClick={() => openModal('login')}>로그인</Button>
-      <div className="h-full">HomePage</div>
-      <BottomNavigation />
-    </AppScreen>
+    <AppScreenContainer>
+      <div className="w-full bg-peer-bg">
+        <HomeHeader />
+        <Layout>
+          <HeaderContainer size="md">
+            <Typography variant="header03">
+              원하는 유형의 동료를 찾아보세요
+            </Typography>
+          </HeaderContainer>
+          <PeerTypeAvatarList />
+          <ReviewButton />
+          <UnderlineTabs
+            selectedKey={currentTab}
+            onSelectionChange={key => setCurrentTab(key as PartType)}
+          >
+            <Tab key="ALL" title="전체" />,
+            <Tab key="PLANNER" title="기획자" />,
+            <Tab key="DESIGNER" title="디자이너" />,
+            <Tab key="FRONT_END" title="FE 개발자" />,
+            <Tab key="BACK_END" title="BE 개발자" />,
+          </UnderlineTabs>
+          <UserProfileList data={data} />
+          <IntersectionBox ref={intersectionRef} />
+
+          {isFetchingNextPage && <Spinner />}
+        </Layout>
+        <BottomNavigation />
+      </div>
+    </AppScreenContainer>
   );
 };
 

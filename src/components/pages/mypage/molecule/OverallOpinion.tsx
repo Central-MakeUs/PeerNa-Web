@@ -6,6 +6,7 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import { PeerGrade } from '@constants/peerTalk';
 import { IconKeyType } from '@constants/icons';
 import useShowMoreFeedback from '@hooks/useShowMoreFeedback';
+import { Fragment } from 'react';
 
 export interface OverallOpinionProps {
   totalEvaluation: {
@@ -26,14 +27,14 @@ export default function OverallOpinion({
   const evaluation = totalEvaluation.slice(0, visibleItems);
 
   return (
-    <>
+    <Fragment>
       <HeaderContainer size="md">
         <Typography variant="header03" fontColor="gray08">
           종합 평가
         </Typography>
       </HeaderContainer>
       <ul
-        className={`flex flex-col gap-2 px-5 ${showMoreButton ? 'mb-6' : 'mb-[98px]'}`}
+        className={`w-full flex flex-col px-5 ${showMoreButton ? 'mb-6' : 'mb-[98px]'}`}
       >
         {evaluation.map((item, index) => (
           <li key={index}>
@@ -61,6 +62,6 @@ export default function OverallOpinion({
           onClick={() => handleShowMore(3)}
         ></FullBleed>
       )}
-    </>
+    </Fragment>
   );
 }
