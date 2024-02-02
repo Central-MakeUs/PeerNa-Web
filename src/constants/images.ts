@@ -5,9 +5,11 @@ import character from '@assets/character.png';
 import communicate from '@assets/communicate.png';
 import kakaoShare from '@assets/kakao-talk.png';
 import person from '@assets/person.png';
+import peer_bg from '@assets/peerBg.png';
 
 export const ReviewImages = [character, bulb, communicate, brain, person];
 
 export const KakaoShareImage = kakaoShare;
 
 export const OverThreeCheckReview = overThreeCheckReview;
+export const peerBg = peer_bg;
