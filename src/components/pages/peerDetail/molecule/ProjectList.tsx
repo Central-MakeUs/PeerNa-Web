@@ -2,11 +2,11 @@ import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
 import Project from '@components/common/molecule/Project';
 import Typography from '@components/common/atom/Typography';
 import IconButton from '@components/common/atom/IconButton';
-import { ProjectItemType } from '@hooks/api/project/useGetProjectList';
+import { PeerProjectList } from '@hooks/api/useGetPeerDetail';
 import { Fragment } from 'react';
 
 interface ProjectListProps {
-  peerProjectDtoList: ProjectItemType[];
+  peerProjectDtoList: PeerProjectList[];
   handleClick: () => void;
 }
 
