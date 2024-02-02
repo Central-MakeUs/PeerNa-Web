@@ -2,7 +2,7 @@ import IconButton from '@components/common/atom/IconButton';
 import Typography from '@components/common/atom/Typography';
 
 interface TopHeaderProps {
-  title: string;
+  title?: string;
   onClick: () => void;
 }
 
