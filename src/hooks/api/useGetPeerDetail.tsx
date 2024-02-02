@@ -15,6 +15,7 @@ interface peerDetailDTO {
   peerFeedbackList: string[];
   peerAnswerIdList: number[];
   colorAnswerIdList: number[];
+  peerProjectDtoList: PeerProjectList[];
 }
 
 export interface ProfileCardInfo {
@@ -25,6 +26,14 @@ export interface ProfileCardInfo {
   peerTestType: CardType;
   oneLiner: string;
   totalScore: number;
+}
+
+export interface PeerProjectList {
+  projectId: number;
+  projectName: string;
+  introduce: string;
+  startDate: string;
+  endDate: string;
 }
 
 export const getPeerDetail = async (
