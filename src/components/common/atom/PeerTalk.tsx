@@ -16,10 +16,15 @@ export default function PeerTalk({
   children,
   ...props
 }: TalkProps) {
-  const talkStyle = 'rounded-xl pl-4 pr-2 py-2 box-content !w-full';
+  const talkStyle = 'rounded-xl pl-4 pr-2 py-2 box-content';
   return (
-    <div className="flex gap-3 items-center">
-      <Typography variant="body01" fontColor="primary">
+    <div className="flex w-full items-center">
+      <Typography
+        variant="body01"
+        fontColor="primary"
+        as="span"
+        className="mr-3"
+      >
         {count}
       </Typography>
       <ChipWithNextui
@@ -27,7 +32,8 @@ export default function PeerTalk({
         startContent={icon}
         className={talkStyle}
         classNames={{
-          base: `bg-primary100 !max-w-full`,
+          base: `bg-primary100`,
+          content: 'w-[316px]',
         }}
       >
         <Typography variant="body02">{children}</Typography>

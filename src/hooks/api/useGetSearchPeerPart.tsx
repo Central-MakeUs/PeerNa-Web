@@ -1,7 +1,7 @@
 import { http, ApiResponse } from '@apis/index';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-interface MemberSimpleDTOPage {
+export interface MemberSimpleDTOPage {
   memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
   totalElements: number;
   currentPageElements: number;
@@ -12,11 +12,11 @@ interface MemberSimpleDTOPage {
 
 export interface MemberSimpleProfileDTO {
   memberId: number;
-  name: 'string';
-  job: 'string';
-  part: 'string';
+  name: string;
+  job: string;
+  part: string;
   peerTestType: 'D' | 'I' | 'S' | 'C';
-  oneLiner: 'string';
+  oneLiner: string;
   totalScore: number;
 }
 
@@ -30,19 +30,14 @@ export const getSearchPeerPart = async (
   return response.data;
 };
 
-export const useGetSearchPeerPart = (peerPart: string, page: number) => {
-  const query = useQuery({
-    queryKey: ['getSearchPeerPart', peerPart, page],
-    queryFn: () => getSearchPeerPart(peerPart, page),
-    select: data => data.result,
+export const useGetSearchPeerPart = (peerPart: string) =>
+  useInfiniteQuery<ApiResponse<MemberSimpleDTOPage>>({
+    queryKey: ['getSearchPeerPart', peerPart],
+    queryFn: ({ pageParam = 1 }) =>
+      getSearchPeerPart(peerPart, pageParam as number),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage = allPages.length + 1;
+      return lastPage?.result?.isLast ? undefined : nextPage;
+    },
   });
-
-  const refetch = async () => {
-    await query.refetch();
-  };
-
-  return {
-    ...query,
-    refetch: refetch,
-  };
-};

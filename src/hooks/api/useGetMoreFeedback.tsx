@@ -1,7 +1,7 @@
 import { http, ApiResponse } from '@apis/index';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
-interface AllFeedbackDTO {
+interface AllFeedbackDTOPage {
   feedbackList: string[];
   totalElements: number;
   currentPageElements: number;
@@ -10,17 +10,20 @@ interface AllFeedbackDTO {
   isLast: boolean;
 }
 
-export const getMoreFeedback = async (
+const getMoreFeedback = async (
   page: number,
-): Promise<ApiResponse<AllFeedbackDTO>> => {
+): Promise<ApiResponse<AllFeedbackDTOPage>> => {
   const response = await http.get(`/member/mypage/feedback?page=${page}`);
   return response.data;
 };
 
-export const useGetMoreFeedback = (page: number) => {
-  return useSuspenseQuery({
-    queryKey: ['getMoreFeedback', page],
-    queryFn: () => getMoreFeedback(page),
-    select: data => data.result,
+export const useGetMoreFeedback = () =>
+  useInfiniteQuery({
+    queryKey: ['getMoreFeedback'],
+    queryFn: ({ pageParam = 1 }) => getMoreFeedback(pageParam),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage = allPages.length + 1;
+      return lastPage.result.isLast ? undefined : nextPage;
+    },
   });
-};

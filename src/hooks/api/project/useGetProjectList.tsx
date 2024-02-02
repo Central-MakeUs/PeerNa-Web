@@ -1,5 +1,5 @@
 import { http } from '@apis/index';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 type ProjectItemType = {
   projectId: number;
@@ -12,8 +12,8 @@ type ProjectItemType = {
 interface ProjectResponseDTO {
   code: number;
   message: string;
-  result: {
-    projectList: ProjectItemType[];
+  result: ProjectItemType[];
+  pageRequestDto: {
     totalElements: number;
     currentPageElements: number;
     totalPage: number;
@@ -21,18 +21,21 @@ interface ProjectResponseDTO {
     isLast: boolean;
   };
 }
-
-export const geProjectList = async (
+export const getProjectList = async (
   page: number,
 ): Promise<ProjectResponseDTO> => {
   const response = await http.get(`/project?page=${page}`);
   return response.data;
 };
 
-export const useGetProjectList = (page: number) => {
-  return useSuspenseQuery({
-    queryKey: ['geProjectList', page],
-    queryFn: () => geProjectList(page),
-    select: data => data.result,
+export const useGetProjectList = () => {
+  return useInfiniteQuery({
+    queryKey: ['getProjectList'],
+    queryFn: ({ pageParam = 1 }) => getProjectList(pageParam),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage = allPages.length + 1;
+      return lastPage.pageRequestDto.isLast ? undefined : nextPage;
+    },
   });
 };

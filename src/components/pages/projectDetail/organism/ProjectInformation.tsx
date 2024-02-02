@@ -1,9 +1,40 @@
+import GithubIcon from '@assets/link/github.png';
+import KakaoIcon from '@assets/link/kakao.png';
+import NotionIcon from '@assets/link/notion.png';
 import Typography from '@components/common/atom/Typography';
+import ProjectCreatorProfile from '@components/pages/projectDetail/molecule/ProjectCreatorProfile';
+import { JobType, PartType } from '@constants/review';
 import { Code } from '@nextui-org/react';
+import { ReviewResultType } from '@type/index';
 import { Fragment } from 'react';
 
-// TODO api 연동 후 각 컴포넌트 molecule로 쪼개서 props 넘기기
-export default function ProjectInformation() {
+interface ProjectInformationProps {
+  introduce: string;
+  startDate: string;
+  endDate: string;
+  openChattingLink: string;
+  notionLink: string;
+  githubLink: string;
+  creatorSimpleProfileDto: {
+    memberId: number;
+    name: string;
+    job: JobType;
+    part: PartType;
+    peerTestType: ReviewResultType;
+    oneLiner: string;
+    totalScore: number;
+  };
+}
+
+export default function ProjectInformation({
+  introduce,
+  startDate,
+  endDate,
+  openChattingLink,
+  notionLink,
+  githubLink,
+  creatorSimpleProfileDto,
+}: ProjectInformationProps) {
   return (
     <Fragment>
       <div className="w-full flex flex-col items-start gap-10">
@@ -12,12 +43,7 @@ export default function ProjectInformation() {
             프로젝트 소개
           </Typography>
           <Typography variant="body02" fontColor="gray06">
-            설명글입니다. 설명글 입니다. 설명글 입니다. 설명글입니다. 설명글
-            입니다. 설명글 입니다. 설명글입니다. 설명글 입니다. 설명글.
-            설명글입니다. 설명글 입니다. 설명글. 설명글입니다. 설명글 입니다.
-            설명글 입니다. 설명글입니다. 설명글 입니다. 설명글 입니다.
-            설명글입니다. 설명글 입니다. 설명글. 설명글입니다. 설명글 입니다.
-            설명글입니다. 설명글 입니다. 설명글 입니다.
+            {introduce}
           </Typography>
         </div>
         <div className="flex flex-col gap-3">
@@ -25,7 +51,7 @@ export default function ProjectInformation() {
             프로젝트 기간
           </Typography>
           <Typography variant="body02" fontColor="gray06">
-            2023.12.20 ~ 2023.12.31
+            {`${startDate} ~ ${endDate}`}
           </Typography>
         </div>
         <div className="flex flex-col gap-3">
@@ -33,22 +59,31 @@ export default function ProjectInformation() {
             소개 링크
           </Typography>
           <div className="flex flex-col gap-2">
-            <Code>
+            <Code className="flex gap-2 items-center px-4 py-2">
+              <img src={KakaoIcon} width={20} height={20} />
               <Typography variant="body02" fontColor="gray06">
-                https://kakao.com
+                {openChattingLink}
               </Typography>
             </Code>
-            <Code>
+            <Code className="flex gap-2 items-center px-4 py-2">
+              <img src={NotionIcon} width={20} height={20} />
               <Typography variant="body02" fontColor="gray06">
-                https://kakao.com
+                {notionLink}
               </Typography>
             </Code>
-            <Code>
+            <Code className="flex gap-2 items-center px-4 py-2">
+              <img src={GithubIcon} width={20} height={20} />
               <Typography variant="body02" fontColor="gray06">
-                https://kakao.com
+                {githubLink}
               </Typography>
             </Code>
           </div>
+        </div>
+        <div className="w-full flex flex-col gap-3">
+          <Typography variant="header03" fontColor="gray07">
+            프로젝트 생성자
+          </Typography>
+          <ProjectCreatorProfile {...creatorSimpleProfileDto} />
         </div>
       </div>
     </Fragment>

@@ -11,19 +11,16 @@ import { Fragment } from 'react';
 interface OverallTestResultProps {
   colorAnswerIdList: number[];
   selfTestAnswerIdList: number[];
+  peerCardList: CardType[];
+  type: 'self' | 'peer';
 }
 
 export default function OverallTestResult({
   colorAnswerIdList,
   selfTestAnswerIdList,
+  peerCardList,
+  type,
 }: OverallTestResultProps) {
-  const peerCardList: CardType[] = [
-    'DRIVING',
-    'ANALYTICAL',
-    'PRAGMATIC',
-    'CAUTIOUS',
-  ];
-
   const separateIdsByType = (idList: number[]) => {
     const result: { [key: string]: number[] } = { D: [], I: [], S: [], C: [] };
 
@@ -44,16 +41,32 @@ export default function OverallTestResult({
     return ids.map(id => TestKeywordData[type].keywords[id - 1]);
   };
 
+  const title =
+    type === 'self' ? '나도 알고 동료도 아는 내 모습' : '나와 동료의 공통점';
+
+  const toolTip =
+    type === 'self' ? (
+      <>
+        셀프 테스트, 피어 테스트 문항의
+        <br />
+        일치하는 선택지를 확인하세요
+      </>
+    ) : (
+      <>
+        나와 동료의 협업 유형 분석 결과
+        <br />
+        일치하는 선택지를 확인하세요
+      </>
+    );
+
   return (
     <Fragment>
       <HeaderContainer size="sm">
         <div className="flex items-center gap-[6px]">
           <Typography variant="header03" fontColor="gray08">
-            나도 알고 동료도 아는 내 모습
+            {title}
           </Typography>
-          <Tooltip
-            content={`셀프 테스트, 피어 테스트 문항의 \n 일치하는 선택지를 확인하세요`}
-          >
+          <Tooltip content={toolTip}>
             <Button className="bg-transparent !min-w-unit-0 !px-unit-0">
               <SvgIcon id="Help" color="gray04" width={16} height={16} />
             </Button>

@@ -6,6 +6,10 @@ html {
   font-family: 'Pretendard';
 }
 
+img {
+  height: fit-content;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

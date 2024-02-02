@@ -1,26 +1,41 @@
-export type Job = {
-  key: string;
-  text: string;
-};
+export type JobType =
+  | 'STUDENT'
+  | 'JOB_SEEKER'
+  | 'WORKER'
+  | 'ENTREPRENEUR'
+  | 'FREELANCER'
+  | 'OTHER'
+  | '';
 
-export type Part = {
-  key: string;
-  text: string;
-};
-
-export const JobList: Job[] = [
-  { key: 'STUDENT', text: '대학생' },
-  { key: 'JOB_SEEKER', text: '취준생' },
-  { key: 'WORKER', text: '직장인' },
-  { key: 'ENTREPRENEUR', text: '창업가' },
-  { key: 'FREELANCER', text: '프리랜서' },
-  { key: 'OTHER', text: '기타' },
+export const JOB_LIST: {
+  title: string;
+  job: JobType;
+}[] = [
+  { title: '대학생', job: 'STUDENT' },
+  { title: '취준생', job: 'JOB_SEEKER' },
+  { title: '직장인', job: 'WORKER' },
+  { title: '창업가', job: 'ENTREPRENEUR' },
+  { title: '프리랜서', job: 'FREELANCER' },
+  { title: '기타', job: 'OTHER' },
 ];
 
-export const PartList: Part[] = [
-  { key: 'PLANNER', text: '기획자' },
-  { key: 'DESIGNER', text: '디자이너' },
-  { key: 'FRONT_END', text: 'FE개발자' },
-  { key: 'BACK_END', text: 'BE개발자' },
-  { key: 'OTHER', text: '기타' },
+export type PartType =
+  | 'PLANNER'
+  | 'DESIGNER'
+  | 'FRONT_END'
+  | 'BACK_END'
+  | 'MARKETER'
+  | 'OTHER'
+  | 'ALL';
+
+export const PART_LIST: {
+  title: string;
+  part: PartType;
+}[] = [
+  { title: '전체', part: 'ALL' },
+  { title: '기획자', part: 'PLANNER' },
+  { title: '디자이너', part: 'DESIGNER' },
+  { title: 'FE개발자', part: 'FRONT_END' },
+  { title: 'BE개발자', part: 'BACK_END' },
+  { title: '기타', part: 'OTHER' },
 ];

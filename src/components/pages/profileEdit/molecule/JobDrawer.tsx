@@ -1,6 +1,6 @@
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
 import SelectListItem from './SelectListItem';
-import { JobList } from '@constants/member';
+import { JOB_LIST } from '@constants/member';
 import { profileSelfState } from '@store/profileSelfState';
 import { useRecoilState } from 'recoil';
 import Typography from '@components/common/atom/Typography';
@@ -32,12 +32,12 @@ export default function JobDrawer({
         >
           직업
         </Typography>
-        {Object.values(JobList).map(job => (
+        {Object.values(JOB_LIST).map(job => (
           <SelectListItem
-            key={job.key}
-            title={job.text}
-            isSelect={profileSelf.job === job.key}
-            onClick={() => handleChangeJob(job.text)}
+            key={job.title}
+            title={job.title}
+            isSelect={profileSelf.job === job.title}
+            onClick={() => handleChangeJob(job.job)}
           />
         ))}
       </DrawerContent>

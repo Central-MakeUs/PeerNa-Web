@@ -1,7 +1,8 @@
-import { ApiResponse, http } from '@apis/index';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { http, ApiResponse } from '@apis/index';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { PartType, JobType } from '@constants/member';
 
-interface MemberSimpleDTOPage {
+export interface MemberSimpleDTOPage {
   memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
   totalElements: number;
   currentPageElements: number;
@@ -13,14 +14,14 @@ interface MemberSimpleDTOPage {
 export interface MemberSimpleProfileDTO {
   memberId: number;
   name: 'string';
-  job: 'string';
-  part: 'string';
+  job: JobType;
+  part: PartType;
   peerTestType: 'D' | 'I' | 'S' | 'C';
   oneLiner: 'string';
   totalScore: number;
 }
 
-export const getSearchPeerType = async (
+const getSearchPeerType = async (
   peerType: string,
   page: number,
 ): Promise<ApiResponse<MemberSimpleDTOPage>> => {
@@ -30,10 +31,14 @@ export const getSearchPeerType = async (
   return response.data;
 };
 
-export const useGetSearchPeerType = (peerType: string, page: number) => {
-  return useSuspenseQuery({
-    queryKey: ['getSearchPeerType', peerType, page],
-    queryFn: () => getSearchPeerType(peerType, page),
-    select: data => data.result,
+export const useGetSearchPeerType = (peerType: string) =>
+  useInfiniteQuery<ApiResponse<MemberSimpleDTOPage>>({
+    queryKey: ['getSearchPeerType', peerType],
+    queryFn: ({ pageParam = 1 }) =>
+      getSearchPeerType(peerType, pageParam as number),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage = allPages.length + 1;
+      return lastPage?.result?.isLast ? undefined : nextPage;
+    },
   });
-};

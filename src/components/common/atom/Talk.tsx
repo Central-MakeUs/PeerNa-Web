@@ -1,10 +1,8 @@
+import Typography from '@components/common/atom/Typography';
 import {
   ChipProps as ChipPropsWithNextui,
   Chip as ChipWithNextui,
 } from '@nextui-org/react';
-import Typography from '@components/common/atom/Typography';
-import { getRgbaColorWithOpacity } from '@utils/styles';
-import { Palette } from '@constants/styles';
 
 interface TalkProps extends ChipPropsWithNextui {
   type: string;
@@ -12,15 +10,13 @@ interface TalkProps extends ChipPropsWithNextui {
 }
 
 export default function Talk({ type, children }: TalkProps) {
-  const bgOpacity = getRgbaColorWithOpacity(Palette.white, 0.4);
-
-  const bgStyle = `${type === 'dimed' ? `bg-[${Palette.gray01}]` : type === 'filled' ? `bg-[${bgOpacity}]` : ''}`;
+  const bgStyle = `${type === 'dimed' ? `bg-gray01` : type === 'filled' ? `bg-white bg-opacity-40` : ''}`;
 
   const textStyle = `"${children}"`;
 
   return (
     <ChipWithNextui
-      className="rounded-xl px-4 py-2 box-content"
+      className="rounded-xl px-2 py-1 box-content"
       classNames={{
         base: bgStyle,
       }}

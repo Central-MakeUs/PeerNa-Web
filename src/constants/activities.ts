@@ -3,10 +3,13 @@ import HomePage from '@components/pages/home/template/HomePage';
 import AppleRedirectPage from '@components/pages/login/template/AppleRedirectPage';
 import KakaoRedirectPage from '@components/pages/login/template/KakaoRedirectPage';
 import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
+import MorePeerFeedbackPage from '@components/pages/moreFeedback/template/MorePeerFeedbackPage';
 import MyPage from '@components/pages/mypage/template/MyPage';
 import NotificationPage from '@components/pages/notification/template/NotificationPage';
 import OnboardingPage from '@components/pages/onboard/template/OnboardingPage';
 import PeerPage from '@components/pages/peer/template/PeerPage';
+import PeerDetailPage from '@components/pages/peerDetail/template/PeerDetailPage';
+import PeerTypePage from '@components/pages/peerType/template/PeerTypePage';
 import ProfileEditPage from '@components/pages/profileEdit/template/ProfileEditPage';
 import ProjectPage from '@components/pages/project/template/ProjectPage';
 import ProjectCreatePage from '@components/pages/projectCreate/template/ProjectCreatePage';
@@ -27,6 +30,9 @@ interface PageMap {
 
 export const Pages: PageMap = {
   HomePage,
+  PeerTypePage,
+  PeerDetailPage,
+  MorePeerFeedbackPage,
   PeerPage,
   ProjectPage,
   NotificationPage,
@@ -54,6 +60,9 @@ export type ActivityTypes = keyof typeof Pages;
 
 export const PageRoutes: Record<keyof typeof Pages, string> = {
   HomePage: '/',
+  PeerTypePage: '/peer/type/:type',
+  PeerDetailPage: '/peer/:memberId',
+  MorePeerFeedbackPage: '/peer/:memberId/feedback',
   PeerPage: '/peer',
   ProjectPage: '/project',
   ProjectCreatePage: '/project/create',

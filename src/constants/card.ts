@@ -11,3 +11,16 @@ export const cardItem = {
 };
 
 export type CardType = keyof typeof cardItem;
+
+export const cardText = {
+  D: { title: '부바르디아', description: '적극적으로 성취하며 주도적인 동료' },
+  I: {
+    title: '데이지',
+    description: '긍정적으로 소통하며 사교적인 동료',
+  },
+  S: {
+    title: '바이올렛',
+    description: '화합을 도모하며 협조적인 동료',
+  },
+  C: { title: '미모사', description: '신중하게 설계하며 분석적인 동료' },
+};
