@@ -6,6 +6,12 @@ import {
 } from '@utils/token';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
+export type ApiResponse<T = object> = {
+  code: number;
+  message: string;
+  result: T;
+};
+
 export const http = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 10 * 1000,
@@ -25,12 +31,6 @@ http.interceptors.request.use(async config => {
   return config;
 });
 
-export type ApiResponse<T = object> = {
-  code: number;
-  message: string;
-  result: T;
-};
-
 const onFulfilled = (response: AxiosResponse) => {
   return response;
 };
@@ -41,10 +41,9 @@ const onRejected = async (error: AxiosError) => {
   const originalRequest = error.config;
   console.log(originalRequest?.url);
   if (!originalRequest) return Promise.reject(error);
-
   if (
     error.response?.status === 401 &&
-    originalRequest.url !== '/member/new-token'
+    !originalRequest.url?.includes('/member/new-token')
   ) {
     delete http.defaults.headers.common['Authorization'];
     removeAccessToken();
@@ -58,7 +57,6 @@ const onRejected = async (error: AxiosError) => {
       setAccessToken(newAccessToken);
 
       originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-
       return http(originalRequest);
     } catch (refreshError) {
       console.error(refreshError);
