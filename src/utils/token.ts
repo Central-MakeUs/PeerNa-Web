@@ -6,17 +6,17 @@ import {
 
 export const getAccessToken = () => localStorage.getItem(Access_Token);
 export const setAccessToken = (accessToken: string) =>
-  localStorage.setItem(Access_Token, JSON.stringify(accessToken));
+  localStorage.setItem(Access_Token, accessToken);
 export const removeAccessToken = () => {
   localStorage.removeItem(Access_Token);
 };
 
 export const getRefreshToken = () => localStorage.getItem(Refresh_Token);
 export const setRefreshToken = (refreshToken: string) =>
-  localStorage.setItem(Refresh_Token, JSON.stringify({ refreshToken }));
+  localStorage.setItem(Refresh_Token, refreshToken);
 export const removeRefreshToken = () => localStorage.removeItem(Refresh_Token);
 
 export const getFcmToken = () => localStorage.getItem(Fcm_Token);
 export const setFcmToken = (fcmToken: string) =>
-  localStorage.setItem(Fcm_Token, JSON.stringify({ fcmToken }));
+  localStorage.setItem(Fcm_Token, fcmToken);
 export const removeFcmToken = () => localStorage.removeItem(Fcm_Token);
