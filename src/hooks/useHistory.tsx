@@ -16,5 +16,11 @@ export default function useHistory() {
     }));
   };
 
-  return { history, handleChangeHistory };
+  const handleClearHistory = () =>
+    setHistory(() => ({
+      activity: 'HomePage',
+      params: {},
+    }));
+
+  return { history, handleChangeHistory, handleClearHistory };
 }
