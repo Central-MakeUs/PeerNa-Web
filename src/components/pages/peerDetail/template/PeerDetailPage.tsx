@@ -3,20 +3,21 @@ import { ActivityComponentType } from '@stackflow/react';
 import { useGetPeerDetail } from '@hooks/api/useGetPeerDetail';
 import { useFlow } from '@hooks/useStackFlow';
 import TopHeader from '@components/common/organism/TopHeader';
-import PeerProfileCard from '../atom/PeerProfileCard';
+import PeerProfileCard from 'components/pages/peerDetail/atom/PeerProfileCard';
 import Layout from '@components/pages/mypage/organism/Layout';
 import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
 import Typography from '@components/common/atom/Typography';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import { Tab } from '@nextui-org/react';
-import PeerTestResult from '../atom/PeerTestResult';
-import SelfTestResult from '../atom/SelfTestResult';
+import PeerTestResult from '@components/pages/peerDetail/atom/PeerTestResult';
+import SelfTestResult from '@components/pages/peerDetail/atom/SelfTestResult';
 import OverallOpinion from '@components/pages/mypage/molecule/OverallOpinion';
 import OverallScore from '@components/pages/mypage/molecule/OverallScore';
 import Feedback from '@components/pages/mypage/molecule/Feedback';
 import OverallTestResult from '@components/pages/mypage/molecule/OverallTestResult';
 import Button from '@components/common/atom/Button';
 import NoTestKeywordResult from '@components/pages/mypage/molecule/NoTestKeywordResult';
+import ProjectList from '@components/pages/peerDetail/molecule/ProjectList';
 
 type peerDetailPageParams = {
   memberId: string;
@@ -25,10 +26,10 @@ type peerDetailPageParams = {
 const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   params,
 }) => {
-  const memberId = parseInt(params.memberId);
+  const memberId = params.memberId;
   const { pop, push } = useFlow();
 
-  const { data: peerInfo } = useGetPeerDetail(memberId);
+  const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
 
   const {
     peerTestMoreThanThree,
@@ -40,10 +41,15 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
     peerFeedbackList,
     peerAnswerIdList,
     colorAnswerIdList,
+    peerProjectDtoList,
   } = peerInfo;
 
   const handleMoreFeedback = () => {
-    push('MorePeerFeedbackPage', { memberId: memberId.toString() });
+    push('MorePeerFeedbackPage', { memberId: memberId });
+  };
+
+  const handleMoreProject = () => {
+    push('MorePeerProjectPage', { memberId: memberId });
   };
 
   const username = memberSimpleProfileDto.name;
@@ -83,17 +89,24 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
                   handleClick={handleMoreFeedback}
                 />
               )}
+              {peerProjectDtoList && (
+                <ProjectList
+                  peerProjectDtoList={peerProjectDtoList}
+                  handleClick={handleMoreProject}
+                />
+              )}
             </Tab>
             <Tab key="peer" title="키워드 비교">
-              {colorAnswerIdList && peerAnswerIdList && peerCardList && (
+              {colorAnswerIdList ? (
                 <OverallTestResult
                   colorAnswerIdList={colorAnswerIdList}
                   selfTestAnswerIdList={peerAnswerIdList}
                   peerCardList={peerCardList}
                   type="peer"
                 />
+              ) : (
+                <NoTestKeywordResult />
               )}
-              {peerTestMoreThanThree === false && <NoTestKeywordResult />}
             </Tab>
           </RadioTabs>
           <Button className="mb-4">내 프로젝트에 초대하기</Button>
