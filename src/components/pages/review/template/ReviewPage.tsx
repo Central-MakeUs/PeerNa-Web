@@ -80,7 +80,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
         feedback: review.feedback,
         peerGrade: review.peerGrade,
       });
-      push('ReviewPeerPage', { step: '6' });
+      push('ReviewPeerPage', { step: '7' });
       return;
     }
     push('ReviewResultPage', { type: type, step: '1' });
