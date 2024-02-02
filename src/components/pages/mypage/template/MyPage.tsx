@@ -1,47 +1,31 @@
-import Button from '@components/common/atom/Button';
-import Spinner from '@components/common/atom/Spinner';
-import BottomNavigation from '@components/common/molecule/BottomNavigation';
-import RadioTabs from '@components/common/molecule/RadioTabs';
+import Header from '../organism/Header';
+import ProfileCard from '../molecule/ProfileCard';
+import Layout from '../organism/Layout';
+import CardTestResult from '../molecule/CardTestResult';
+import SelfTestResult from '../molecule/SelfTestResult';
+import PeerTestResult from '../molecule/PeerTestResult';
+import OverallTestResult from '../molecule/OverallTestResult';
+import OverallOpinion from '../molecule/OverallOpinion';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import RadioTabs from '@components/common/molecule/RadioTabs';
+import OverallScore from '../molecule/OverallScore';
+import Feedback from '../molecule/Feedback';
 import { useGetMyPageInfo } from '@hooks/api/useGetMypageInfo';
+import NoTestKeywordResult from '../molecule/NoTestKeywordResult';
+import NoPeerTestResult from '../molecule/NoPeerTestResult';
+import Button from '@components/common/atom/Button';
+import SaveImageButton from '../atom/SaveImageButton';
+import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import { Tab } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
-import SaveImageButton from '../atom/SaveImageButton';
-import CardTestResult from '../molecule/CardTestResult';
-import Feedback from '../molecule/Feedback';
-import NoPeerTestResult from '../molecule/NoPeerTestResult';
-import NoTestKeywordResult from '../molecule/NoTestKeywordResult';
-import OverallOpinion from '../molecule/OverallOpinion';
-import OverallScore from '../molecule/OverallScore';
-import OverallTestResult from '../molecule/OverallTestResult';
-import PeerTestResult from '../molecule/PeerTestResult';
-import ProfileCard from '../molecule/ProfileCard';
-import SelfTestResult from '../molecule/SelfTestResult';
-import Header from '../organism/Header';
-import Layout from '../organism/Layout';
+import { useFlow } from '@hooks/useStackFlow';
 
 const Mypage: ActivityComponentType = () => {
-  const { data: mypageInfo, isLoading, isError } = useGetMyPageInfo();
-
-  if (isLoading) {
-    return (
-      <AppScreenContainer>
-        <Spinner />
-      </AppScreenContainer>
-    );
-  }
-
-  if (isError || !mypageInfo) {
-    return (
-      <AppScreenContainer>
-        <div>에러 발생!</div>
-      </AppScreenContainer>
-    );
-  }
+  const { data } = useGetMyPageInfo();
 
   const {
     peerTestMoreThanTree,
-    memberSimpleInfoDto,
+    memberMyPageInfoDto,
     selfTestCardList,
     peerCardList,
     totalEvaluation,
@@ -49,16 +33,20 @@ const Mypage: ActivityComponentType = () => {
     colorAnswerIdList,
     selfTestAnswerIdList,
     peerFeedbackList,
-  } = mypageInfo;
+  } = data;
 
-  console.log(mypageInfo);
+  const { push } = useFlow();
+
+  const handleMoreFeedback = () => {
+    push('MoreFeedbackPage', {});
+  };
 
   return (
     <AppScreenContainer>
       <div className="w-full h-screen bg-gray07">
         <Header />
-        {memberSimpleInfoDto && (
-          <ProfileCard memberInfo={memberSimpleInfoDto} />
+        {memberMyPageInfoDto && (
+          <ProfileCard memberInfo={memberMyPageInfoDto} />
         )}
         <Layout>
           <CardTestResult />
@@ -72,12 +60,15 @@ const Mypage: ActivityComponentType = () => {
               ) : (
                 <NoPeerTestResult />
               )}
-              {Array.isArray(totalEvaluation) && (
+              {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
                 <OverallOpinion totalEvaluation={totalEvaluation} />
               )}
               {totalScore && <OverallScore totalScore={totalScore} />}
               {peerFeedbackList && (
-                <Feedback peerFeedbackList={peerFeedbackList} />
+                <Feedback
+                  peerFeedbackList={peerFeedbackList}
+                  handleClick={handleMoreFeedback}
+                />
               )}
             </Tab>
             <Tab key="peer" title="키워드 비교">
@@ -85,15 +76,20 @@ const Mypage: ActivityComponentType = () => {
                 <OverallTestResult
                   colorAnswerIdList={colorAnswerIdList}
                   selfTestAnswerIdList={selfTestAnswerIdList}
+                  peerCardList={peerCardList}
+                  type="self"
                 />
               )}
               {peerTestMoreThanTree === false && <NoTestKeywordResult />}
-              {Array.isArray(totalEvaluation) && (
+              {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
                 <OverallOpinion totalEvaluation={totalEvaluation} />
               )}
               {totalScore && <OverallScore totalScore={totalScore} />}
               {peerFeedbackList && (
-                <Feedback peerFeedbackList={peerFeedbackList} />
+                <Feedback
+                  peerFeedbackList={peerFeedbackList}
+                  handleClick={handleMoreFeedback}
+                />
               )}
             </Tab>
           </RadioTabs>
@@ -101,7 +97,6 @@ const Mypage: ActivityComponentType = () => {
             동료에서 물어보기
           </Button>
           <SaveImageButton />
-
           <BottomNavigation />
         </Layout>
       </div>

@@ -1,7 +1,8 @@
 import { http, ApiResponse } from '@apis/index';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 
-interface AllFeedbackDTOPage {
+interface AllFeedbackDTO {
   feedbackList: string[];
   totalElements: number;
   currentPageElements: number;
@@ -10,17 +11,20 @@ interface AllFeedbackDTOPage {
   isLast: boolean;
 }
 
-const getMoreFeedback = async (
+export const getMorePeerFeedback = async (
+  peerId: number,
   pageParam: number,
-): Promise<ApiResponse<AllFeedbackDTOPage>> => {
-  const response = await http.get(`/member/mypage/feedback?page=${pageParam}`);
+): Promise<ApiResponse<AllFeedbackDTO>> => {
+  const response = await http.get(
+    `/home/${peerId}/peer-feedback?page=${pageParam}`,
+  );
   return { ...response.data, pageParam };
 };
 
-export const useGetMoreFeedback = () =>
-  useInfiniteQuery({
-    queryKey: ['getMoreFeedback'],
-    queryFn: ({ pageParam = 1 }) => getMoreFeedback(pageParam),
+export const useGetMorePeerFeedback = (peerId: string) =>
+  useInfiniteQuery<ApiResponse<AllFeedbackDTO>, AxiosError>({
+    queryKey: ['getMorePeerFeedback', peerId],
+    queryFn: ({ pageParam = 1 }) => getMorePeerFeedback(peerId, pageParam),
     getNextPageParam: lastPage => {
       const nextPage =
         lastPage?.result?.isLast === false ? lastPage.pageParam + 1 : undefined;

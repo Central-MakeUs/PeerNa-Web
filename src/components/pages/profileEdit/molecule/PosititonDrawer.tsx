@@ -1,5 +1,5 @@
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
-import { PartList } from '@constants/member';
+import { PART_LIST } from '@constants/member';
 import { profileSelfState } from '@store/profileSelfState';
 import { useRecoilState } from 'recoil';
 import SelectListItem from './SelectListItem';
@@ -22,6 +22,7 @@ export default function PositionDrawer({
     }));
     setOpenPartBottomSheet(false);
   };
+
   return (
     <Drawer open={openPartBottomSheet} onOpenChange={setOpenPartBottomSheet}>
       <DrawerContent>
@@ -32,12 +33,12 @@ export default function PositionDrawer({
         >
           직무
         </Typography>
-        {Object.values(PartList).map(part => (
+        {Object.values(PART_LIST).map(title => (
           <SelectListItem
-            key={part.key}
-            title={part.text}
-            isSelect={profileSelf.part === part.key}
-            onClick={() => handleChangePart(part.text)}
+            key={title.part}
+            title={title.title}
+            isSelect={profileSelf.part === title.title}
+            onClick={() => handleChangePart(title.part)}
           />
         ))}
       </DrawerContent>

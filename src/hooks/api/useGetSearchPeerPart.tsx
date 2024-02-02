@@ -1,5 +1,6 @@
 import { http, ApiResponse } from '@apis/index';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 
 interface MemberSimpleDTOPage {
   memberSimpleProfileDtoList: MemberSimpleProfileDTO[];
@@ -10,39 +11,41 @@ interface MemberSimpleDTOPage {
   isLast: boolean;
 }
 
+interface PageResponse<T> extends ApiResponse<T> {
+  currentPage: number;
+}
+
 export interface MemberSimpleProfileDTO {
   memberId: number;
-  name: 'string';
-  job: 'string';
-  part: 'string';
+  name: string;
+  job: string;
+  part: string;
   peerTestType: 'D' | 'I' | 'S' | 'C';
-  oneLiner: 'string';
+  oneLiner: string;
   totalScore: number;
 }
 
 export const getSearchPeerPart = async (
   peerPart: string,
-  page: number,
-): Promise<ApiResponse<MemberSimpleDTOPage>> => {
+  pageParam: number,
+): Promise<PageResponse<MemberSimpleDTOPage>> => {
   const response = await http.get(
-    `/home/search/peer-part?part=${peerPart}&page=${page}`,
+    `/home/search/peer-part?part=${peerPart}&page=${pageParam}`,
   );
-  return response.data;
+  return { ...response.data, pageParam };
 };
 
-export const useGetSearchPeerPart = (peerPart: string, page: number) => {
-  const query = useQuery({
-    queryKey: ['getSearchPeerPart', peerPart, page],
-    queryFn: () => getSearchPeerPart(peerPart, page),
-    select: data => data.result,
+export const useGetSearchPeerPart = (peerPart: string) =>
+  useInfiniteQuery<PageResponse<MemberSimpleDTOPage>, AxiosError>({
+    queryKey: ['getSearchPeerPart', peerPart],
+    queryFn: ({ pageParam = 1 }) => getSearchPeerPart(peerPart, pageParam),
+    getNextPageParam: lastPage => {
+      const nextPage =
+        lastPage?.result?.isLast === false ? lastPage.pageParam + 1 : undefined;
+      return nextPage;
+    },
+    select: data =>
+      (data?.pages ?? []).flatMap(
+        part => part?.result?.memberSimpleProfileDtoList ?? [],
+      ),
   });
-
-  const refetch = async () => {
-    await query.refetch();
-  };
-
-  return {
-    ...query,
-    refetch: refetch,
-  };
-};

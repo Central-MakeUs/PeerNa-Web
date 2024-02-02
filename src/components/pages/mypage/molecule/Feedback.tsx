@@ -1,20 +1,20 @@
 import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
 import Talk from '@components/common/atom/Talk';
 import Typography from '@components/common/atom/Typography';
-import { useFlow } from '@hooks/useStackFlow';
 import IconButton from '@components/common/atom/IconButton';
+import { Fragment } from 'react';
+
+interface FeedbackProps {
+  peerFeedbackList: string[];
+  handleClick: () => void;
+}
 
 export default function Feedback({
   peerFeedbackList,
-}: {
-  peerFeedbackList: string[];
-}) {
-  const { push } = useFlow();
-  const handleMoreFeedback = () => {
-    push('MoreFeedbackPage', {});
-  };
+  handleClick,
+}: FeedbackProps) {
   return (
-    <>
+    <Fragment>
       <HeaderContainer size="md" arrow={true}>
         <Typography variant="header03" fontColor="gray08">
           한 줄 피드백
@@ -26,7 +26,7 @@ export default function Feedback({
             width: 10.5,
             height: 20,
           }}
-          onClick={handleMoreFeedback}
+          onClick={handleClick}
         />
       </HeaderContainer>
       <ul className="flex flex-col gap-3 mb-6">
@@ -36,6 +36,6 @@ export default function Feedback({
           </li>
         ))}
       </ul>
-    </>
+    </Fragment>
   );
 }
