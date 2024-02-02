@@ -6,6 +6,7 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import { useFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
 
+import gradient from '@assets/gradient.png';
 type ReviewResultPageParams = {
   type: string;
   step: string;
@@ -26,13 +27,11 @@ const ReviewResultPage: ActivityComponentType<ReviewResultPageParams> = ({
     push('ReviewResultPage', { type: params.type, step: nextStep });
   };
 
-  const bgColor =
-    curStep > 2
-      ? `bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300`
-      : 'bg-transparent';
-
   return (
-    <AppScreenContainer className={bgColor}>
+    <AppScreenContainer
+      className={'bg-transparent bg-cover'}
+      style={{ backgroundImage: `url(${gradient})` }}
+    >
       {curStep === 1 && <LoadingResult />}
       {curStep === 2 && <ResultGuide />}
       {curStep === 3 && <AnalyzePeerCard handleClick={handleClick} />}

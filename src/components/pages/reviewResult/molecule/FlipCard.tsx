@@ -1,8 +1,8 @@
+import whatsMyTypeCard from '@assets/whatsMyTypeCard.png';
 import Typography from '@components/common/atom/Typography';
 import { PeerTypeCard } from '@constants/PeerTypeCard';
 import { Card } from '@nextui-org/react';
 import { ReviewResultType } from '@type/index';
-import { getRgbaColorWithOpacity } from '@utils/styles';
 import { motion } from 'framer-motion';
 import {
   CSSProperties,
@@ -20,8 +20,6 @@ interface FlipCardProps {
 const FlipCard = forwardRef<HTMLDivElement, FlipCardProps>(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ testType, ...props }, ref) => {
-    const bgOpacity = getRgbaColorWithOpacity('#ffffff', 0.4);
-
     const [type, setType] = useState<boolean>(true);
     useEffect(() => {
       const flipInterval = setInterval(() => {
@@ -69,20 +67,10 @@ const FlipCard = forwardRef<HTMLDivElement, FlipCardProps>(
             </div>
           </Card>
           <Card
-            className="w-[294px] h-[408px] pt-[68px] pb-[32px] px-[58px] items-center gap-5 after:backdrop-blur-3xl bg-transparent"
+            className="w-[294px] h-[408px] items-center gap-5 bg-transparent"
             style={cardStyle(!type)}
           >
-            <div
-              className="w-[178px] h-[178px] rounded-full text-center"
-              style={bgOpacity}
-            >
-              <p className="px-13 py-7 text-[80px] font-semibold">?</p>
-            </div>
-            <div className="text-center">
-              <Typography variant="body03" fontColor="gray08">
-                동료가 생각하는 나는 어떤 동료일까요?
-              </Typography>
-            </div>
+            <img src={whatsMyTypeCard} className="w-full h-full" />
           </Card>
         </motion.div>
       </Fragment>
