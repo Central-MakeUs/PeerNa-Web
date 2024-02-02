@@ -25,7 +25,7 @@ export default function Typography({
         tracking-default
         break-all
         whitespace-pre-line
-        ${props.className}`}
+        ${props.className ?? ''}`}
     >
       {children}
     </Typo>
