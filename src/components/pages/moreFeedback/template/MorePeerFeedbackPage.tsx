@@ -6,41 +6,40 @@ import Spinner from '@components/common/atom/Spinner';
 import { useFlow } from '@hooks/useStackFlow';
 import useIntersection from '@hooks/useIntersection';
 import { ActivityComponentType } from '@stackflow/react';
+import IntersectionBox from '@components/common/atom/IntersectionBox';
 
-type peerDetailPageParams = {
+type MorePeerFeedbackPageParams = {
   memberId: string;
 };
 
-const MorePeerFeedbackPage: ActivityComponentType<peerDetailPageParams> = ({
-  params,
-}) => {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useGetMorePeerFeedback(params.memberId);
+const MorePeerFeedbackPage: ActivityComponentType<
+  MorePeerFeedbackPageParams
+> = ({ params }) => {
+  const memberId = params.memberId;
+
+  const { data, fetchNextPage, isFetchingNextPage } = useGetMorePeerFeedback(
+    parseInt(memberId),
+  );
 
   const { pop } = useFlow();
   const handleClick = () => pop();
 
-  const handleIntersection = (entry: IntersectionObserverEntry) => {
-    if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
-      fetchNextPage();
-    }
-  };
-
-  const intersectionRef = useIntersection(handleIntersection);
+  const intersectionRef = useIntersection(fetchNextPage);
 
   return (
     <AppScreenContainer>
       <TopHeader title="동료들의 한 줄 피드백" onClick={handleClick} />
 
       <ul className="w-full flex flex-col gap-3 px-[24px] py-[20px]">
-        {data?.map(item => (
-          <li>
-            <Talk type="dimed">{item}</Talk>
-          </li>
-        ))}
+        {data?.pages.map(item =>
+          item.result.feedbackList.map(feedback => (
+            <li>
+              <Talk type="dimed">{feedback}</Talk>
+            </li>
+          )),
+        )}
       </ul>
-
-      <div ref={intersectionRef} style={{ height: '10px' }} />
+      <IntersectionBox ref={intersectionRef} />
 
       {isFetchingNextPage && <Spinner />}
     </AppScreenContainer>
