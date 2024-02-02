@@ -32,7 +32,7 @@ export default function ProfileListItem({
     >
       <div className="flex gap-3 items-center">
         <div
-          className={`!w-[64px] !h-[64px] bg-white flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
+          className={`!w-[64px] !h-[64px] !bg-gray01 flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
         >
           {testType ? (
             <img
@@ -41,7 +41,7 @@ export default function ProfileListItem({
               className="w-[32px] h-[32px]"
             />
           ) : (
-            <SvgIcon id="Person" width={32} height={32} />
+            <SvgIcon id="Person" width={32} height={32} color="gray04" />
           )}
         </div>
         <div className="flex flex-col">
