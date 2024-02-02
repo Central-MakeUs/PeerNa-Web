@@ -11,21 +11,19 @@ interface AllFeedbackDTOPage {
 }
 
 const getMoreFeedback = async (
-  pageParam: number,
+  page: number,
 ): Promise<ApiResponse<AllFeedbackDTOPage>> => {
-  const response = await http.get(`/member/mypage/feedback?page=${pageParam}`);
-  return { ...response.data, pageParam };
+  const response = await http.get(`/member/mypage/feedback?page=${page}`);
+  return response.data;
 };
 
 export const useGetMoreFeedback = () =>
   useInfiniteQuery({
     queryKey: ['getMoreFeedback'],
     queryFn: ({ pageParam = 1 }) => getMoreFeedback(pageParam),
-    getNextPageParam: lastPage => {
-      const nextPage =
-        lastPage?.result?.isLast === false ? lastPage.pageParam + 1 : undefined;
-      return nextPage;
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage = allPages.length + 1;
+      return lastPage.result.isLast ? undefined : nextPage;
     },
-    select: data =>
-      data.pages?.flatMap(feedback => feedback?.result?.feedbackList),
   });

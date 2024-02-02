@@ -11,8 +11,6 @@ import IntersectionBox from '@components/common/atom/IntersectionBox';
 const MoreFeedbackPage: ActivityComponentType = () => {
   const { data, fetchNextPage, isFetchingNextPage } = useGetMoreFeedback();
 
-  console.log(data);
-
   const { pop } = useFlow();
   const handleClick = () => pop();
 
@@ -23,11 +21,13 @@ const MoreFeedbackPage: ActivityComponentType = () => {
       <TopHeader title="동료들의 한 줄 피드백" onClick={handleClick} />
 
       <ul className="w-full flex flex-col gap-3 px-[24px] py-[20px]">
-        {data?.map(item => (
-          <li>
-            <Talk type="dimed">{item}</Talk>
-          </li>
-        ))}
+        {data?.pages.map(item =>
+          item.result.feedbackList.map(feedback => (
+            <li>
+              <Talk type="dimed">{feedback}</Talk>
+            </li>
+          )),
+        )}
       </ul>
 
       <IntersectionBox ref={intersectionRef} />
