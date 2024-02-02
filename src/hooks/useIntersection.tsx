@@ -1,31 +1,30 @@
 import { useCallback, useEffect, useRef } from 'react';
 
 const useIntersection = (
-  onIntersect: (
-    entry: IntersectionObserverEntry,
-    observer: IntersectionObserver,
-  ) => void,
+  fetchNextPage: () => void,
   options?: IntersectionObserverInit,
 ) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const callback = useCallback(
-    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+  const handleIntersection: IntersectionObserverCallback = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) onIntersect(entry, observer);
+        if (entry.isIntersecting) {
+          fetchNextPage();
+        }
       });
     },
-    [onIntersect],
+    [fetchNextPage],
   );
 
   useEffect(() => {
     if (!ref.current) return;
 
-    const observer = new IntersectionObserver(callback, options);
+    const observer = new IntersectionObserver(handleIntersection, options);
     observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, [ref, options, callback]);
+  }, [ref, options, handleIntersection]);
 
   return ref;
 };
