@@ -18,12 +18,14 @@ type ReviewStateTypes = {
   peerName?: string;
 };
 
+export const REVIEW_INITIAL_STATE: ReviewStateTypes = {
+  answers: [],
+  peerGrade: 'AVERAGE',
+  feedback: '',
+};
+
 export const reviewState = atom<ReviewStateTypes>({
   key: 'reviewState',
-  default: {
-    answers: [],
-    peerGrade: 'AVERAGE',
-    feedback: '',
-  },
+  default: REVIEW_INITIAL_STATE,
   effects_UNSTABLE: [persistAtom],
 });

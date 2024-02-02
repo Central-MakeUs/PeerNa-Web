@@ -1,4 +1,8 @@
-import { PeerGradeTypes, reviewState } from '@store/reviewState';
+import {
+  PeerGradeTypes,
+  REVIEW_INITIAL_STATE,
+  reviewState,
+} from '@store/reviewState';
 import { useRecoilState } from 'recoil';
 
 export default function useReviewState() {
@@ -46,13 +50,7 @@ export default function useReviewState() {
     }));
   };
 
-  const handleClearReviews = () => {
-    setReview({
-      answers: [],
-      feedback: '',
-      peerGrade: 'GOOD',
-    });
-  };
+  const handleClearReviews = () => setReview(REVIEW_INITIAL_STATE);
 
   return {
     review,

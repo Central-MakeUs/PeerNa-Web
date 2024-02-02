@@ -5,8 +5,11 @@ import OnboardingCard from '@components/pages/onboard/organism/OnboardingCard';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { ON_BOARDING_HEADER_TEXT } from '@constants/onboard';
+import useReviewSelfState from '@hooks/useReviewSelfState';
+import useReviewState from '@hooks/useReviewState';
 import { useFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
+import { useEffect } from 'react';
 
 type OnboardingPageParams = {
   step: string;
@@ -15,6 +18,13 @@ type OnboardingPageParams = {
 const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   params,
 }) => {
+  const { handleClear } = useReviewSelfState();
+  const { handleClearReviews } = useReviewState();
+  useEffect(() => {
+    handleClear();
+    handleClearReviews();
+  });
+
   const { push, pop } = useFlow();
   const curStep = parseInt(params.step ?? 1);
   const nextStep = String(curStep + 1);

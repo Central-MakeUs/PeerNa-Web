@@ -1,5 +1,9 @@
 import { JobType, PartType } from '@constants/review';
-import { nameSizeValidator, reviewSelfState } from '@store/reviewSelfState';
+import {
+  REVIEW_SELF_INITIAL_STATE,
+  nameSizeValidator,
+  reviewSelfState,
+} from '@store/reviewSelfState';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 export default function useReviewSelfState() {
@@ -27,11 +31,14 @@ export default function useReviewSelfState() {
     }));
   };
 
+  const handleClear = () => setReviewSelf(REVIEW_SELF_INITIAL_STATE);
+
   return {
     reviewSelf,
     isValidName,
     handleChangeName,
     handleChangeJob,
     handleChangePart,
+    handleClear,
   };
 }
