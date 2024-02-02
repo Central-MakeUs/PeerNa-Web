@@ -14,7 +14,7 @@ export interface ProgressTrackProps extends ProgressPropsWithNextui {
 type ProgressBarSizeType = keyof typeof ProgressBarSize;
 
 const ProgressBarSize = {
-  short: '!w-[54.5px] !h-[4px]',
+  short: 'max-w-[133px] min-w-[54.5px] !h-[4px]',
   long: '!w-[390px] !h-[4px]',
 };
 
