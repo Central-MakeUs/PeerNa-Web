@@ -3,6 +3,7 @@ import {
   getRefreshToken,
   removeAccessToken,
   setAccessToken,
+  setRefreshToken,
 } from '@utils/token';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
@@ -56,6 +57,9 @@ const onRejected = async (error: AxiosError) => {
 
       const newAccessToken = response.data.result.accessToken;
       setAccessToken(newAccessToken);
+
+      const newRefreshToken = response.data.result.refreshToken;
+      setRefreshToken(newRefreshToken);
 
       originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
 

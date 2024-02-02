@@ -4,8 +4,8 @@ import { atom, selector } from 'recoil';
 
 type ReviewSelfStateType = {
   name: string;
-  job: JobType;
-  part: PartType;
+  job: JobType | '';
+  part: PartType | '';
 };
 
 export const reviewSelfState = atom<ReviewSelfStateType>({

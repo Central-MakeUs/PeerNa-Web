@@ -21,17 +21,17 @@ interface ProjectResponseDTO {
     isLast: boolean;
   };
 }
-export const getProjectList = async (
+export const getMyProjectList = async (
   page: number,
 ): Promise<ProjectResponseDTO> => {
-  const response = await http.get(`/project?page=${page}`);
+  const response = await http.get(`/project/my?page=${page}`);
   return response.data;
 };
 
-export const useGetProjectList = () => {
+export const useGetMyProjectList = () => {
   return useInfiniteQuery({
-    queryKey: ['getProjectList'],
-    queryFn: ({ pageParam = 1 }) => getProjectList(pageParam),
+    queryKey: ['getMyProejctList'],
+    queryFn: ({ pageParam = 1 }) => getMyProjectList(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
       const nextPage = allPages.length + 1;
