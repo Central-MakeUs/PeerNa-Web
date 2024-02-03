@@ -16,7 +16,7 @@ interface AuthData {
 
 const AppleRedirectPage: ActivityComponentType = () => {
   const { push } = useFlow();
-  const { history } = useHistory();
+  const { history, handleClearHistory } = useHistory();
   const { updateToken } = useToken();
 
   const url = window.location.search;
@@ -32,17 +32,19 @@ const AppleRedirectPage: ActivityComponentType = () => {
     if (memberId && accessToken && refreshToken) {
       localStorage.setItem(Member_Id, memberId);
       updateToken(accessToken, refreshToken);
-      push(history.activity, history.params);
+
+      const { activity, params } = history;
+      handleClearHistory();
+      push(String(activity), params);
     }
     const fcmToken = getFcmToken();
     if (fcmToken) {
       postFcmToken(fcmToken)
         .then(() => {
           console.log('success');
-          alert('success');
         })
         .catch(error => {
-          alert('error' + error.message);
+          console.log('error' + error.message);
         });
     }
   }, [memberId, accessToken, refreshToken]);

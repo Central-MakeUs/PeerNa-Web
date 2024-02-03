@@ -1,5 +1,4 @@
 import Typography from '@components/common/atom/Typography';
-import { Palette } from '@constants/styles';
 import {
   ChipProps as ChipPropsWithNextui,
   Chip as ChipWithNextui,

@@ -1,3 +1,4 @@
+import DeveloperPage from '@components/pages/developer/DeveloperPage';
 import HomePage from '@components/pages/home/template/HomePage';
 import AppleRedirectPage from '@components/pages/login/template/AppleRedirectPage';
 import KakaoRedirectPage from '@components/pages/login/template/KakaoRedirectPage';
@@ -10,9 +11,11 @@ import SettingPage from '@components/pages/setting/template/SettingPage';
 import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
 import PeerProjectDetailPage from '@components/pages/moreProject/template/PeerProjectDetailPage';
 import NotificationPage from '@components/pages/notification/template/NotificationPage';
-import ProfileEditPage from '@components/pages/profileEdit/template/ProfileEditPage';
-import OnBoardPage from '@components/pages/onBoard/template/OnBoardPage';
+import OnboardingPage from '@components/pages/onboard/template/OnboardingPage';
 import PeerPage from '@components/pages/peer/template/PeerPage';
+import PeerDetailPage from '@components/pages/peerDetail/template/PeerDetailPage';
+import PeerTypePage from '@components/pages/peerType/template/PeerTypePage';
+import ProfileEditPage from '@components/pages/profileEdit/template/ProfileEditPage';
 import ProjectPage from '@components/pages/project/template/ProjectPage';
 import ProjectCreatePage from '@components/pages/projectCreate/template/ProjectCreatePage';
 import ProjectDetailPage from '@components/pages/projectDetail/template/ProjectDetailPage';
@@ -21,8 +24,16 @@ import ReviewPage from '@components/pages/review/template/ReviewPage';
 import ReviewPeerPage from '@components/pages/reviewPeer/template/ReviewPeerPage';
 import ReviewResultPage from '@components/pages/reviewResult/template/ReviewResultPage';
 import ReviewSelfPage from '@components/pages/reviewSelf/template/ReviewSelfPage';
+import SettingPage from '@components/pages/setting/template/SettingPage';
+import { MODE } from '@constants/index';
+import { ActivityComponentType } from '@stackflow/react';
 
-export const Pages = {
+interface PageMap {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: ActivityComponentType<any>;
+}
+
+export const Pages: PageMap = {
   HomePage,
   PeerTypePage,
   PeerDetailPage,
@@ -36,7 +47,7 @@ export const Pages = {
   MoreFeedbackPage,
   PeerProjectDetailPage,
   ProfileEditPage,
-  OnBoardPage,
+  OnboardingPage,
   ReviewPage,
   ReviewSelfPage,
   ReviewPeerPage,
@@ -47,6 +58,10 @@ export const Pages = {
   ProjectDetailPage,
   ProjectProposePage,
 };
+
+if (MODE === 'development') {
+  Pages['DeveloperPage'] = DeveloperPage;
+}
 
 export type ActivityTypes = keyof typeof Pages;
 
@@ -67,7 +82,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   MoreFeedbackPage: '/mypage/feedback',
   ProfileEditPage: '/mypage/profile/edit',
   SettingPage: '/mypage/setting',
-  OnBoardPage: '/onBoard',
+  OnboardingPage: '/onboarding',
   ReviewPage: '/review',
   ReviewSelfPage: '/review/self',
   ReviewPeerPage: '/review/peer',
@@ -75,6 +90,10 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   KakaoRedirectPage: '/login/kakao',
   AppleRedirectPage: '/login/apple',
 };
+
+if (MODE === 'development') {
+  PageRoutes['DeveloperPage'] = '/developer';
+}
 
 export const TabItem = {
   HomePage,

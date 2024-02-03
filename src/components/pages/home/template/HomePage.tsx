@@ -1,21 +1,21 @@
+import IntersectionBox from '@components/common/atom/IntersectionBox';
+import Spinner from '@components/common/atom/Spinner';
+import Typography from '@components/common/atom/Typography';
+import BottomNavigation from '@components/common/molecule/BottomNavigation';
+import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
+import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
+import Layout from '@components/pages/mypage/organism/Layout';
+import HomeHeader from '@components/pages/notification/molecule/HomeHeader';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import { PartType } from '@constants/member';
+import { useGetSearchPeerPart } from '@hooks/api/useGetSearchPeerPart';
+import useIntersection from '@hooks/useIntersection';
+import { Tab } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
 import { useEffect, useState } from 'react';
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import HomeHeader from '@components/pages/notification/molecule/HomeHeader';
-import Layout from '@components/pages/mypage/organism/Layout';
-import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
-import Typography from '@components/common/atom/Typography';
 import ReviewButton from '../atom/ReviewButton';
 import PeerTypeAvatarList from '../molecule/PeerTypeAvatarList';
 import UserProfileList from '../molecule/UserProfileList';
-import BottomNavigation from '@components/common/molecule/BottomNavigation';
-import { Tab } from '@nextui-org/react';
-import { useGetSearchPeerPart } from '@hooks/api/useGetSearchPeerPart';
-import { PartType } from '@constants/member';
-import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
-import useIntersection from '@hooks/useIntersection';
-import Spinner from '@components/common/atom/Spinner';
-import IntersectionBox from '@components/common/atom/IntersectionBox';
 
 const HomePage: ActivityComponentType = () => {
   const [currentTab, setCurrentTab] = useState('ALL');

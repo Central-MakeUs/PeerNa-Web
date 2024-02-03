@@ -1,4 +1,6 @@
+import gradient from '@assets/gradient.png';
 import Spinner from '@components/common/atom/Spinner';
+import GuessWhoResponse from '@components/pages/reviewPeer/organism/GuessWhoResponse';
 import InputProjectDate from '@components/pages/reviewPeer/organism/InputProjectDate';
 import IntroPeerReview from '@components/pages/reviewPeer/organism/IntroPeerReview';
 import IsOffendedResponse from '@components/pages/reviewPeer/organism/IsOffendedResponse';
@@ -8,7 +10,7 @@ import ThanksReview from '@components/pages/reviewPeer/organism/ThanksReview';
 import WonderingMyCard from '@components/pages/reviewPeer/organism/WonderingMyCard';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import { ActivityComponentType } from '@stackflow/react';
-import { Suspense, useState } from 'react';
+import { CSSProperties, Suspense, useState } from 'react';
 
 type ReviewPeerPageParams = {
   step: string;
@@ -26,13 +28,16 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
   const handleChangeEndDate = (newDate: Date | undefined) =>
     setEndDate((newDate ?? new Date()).toISOString());
 
-  const bgColor =
-    curStep > 6
-      ? `bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300`
-      : 'bg-transparent';
+  const bgStyle: CSSProperties =
+    curStep === 8
+      ? {
+          backgroundImage: `url(${gradient})`,
+          backgroundSize: 'cover',
+        }
+      : {};
 
   return (
-    <AppScreenContainer className={bgColor}>
+    <AppScreenContainer className={'bg-transparent'} style={bgStyle}>
       {curStep === 1 && (
         <Suspense fallback={<Spinner />}>
           <RequestInit uuid={curStep === 1 ? params.uuid! : ''} />
@@ -46,11 +51,12 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
           handleChangeEndDate={handleChangeEndDate}
         />
       )}
-      {curStep === 3 && <IntroPeerReview />}
-      {curStep === 4 && <OverDate />}
+      {curStep === 3 && <OverDate />}
+      {curStep === 4 && <IntroPeerReview />}
       {curStep === 5 && <IsOffendedResponse />}
-      {curStep === 6 && <ThanksReview />}
-      {curStep === 7 && <WonderingMyCard />}
+      {curStep === 6 && <GuessWhoResponse />}
+      {curStep === 7 && <ThanksReview />}
+      {curStep === 8 && <WonderingMyCard />}
     </AppScreenContainer>
   );
 };

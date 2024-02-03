@@ -8,13 +8,15 @@ type ReviewSelfStateType = {
   part: PartType | '';
 };
 
+export const REVIEW_SELF_INITIAL_STATE: ReviewSelfStateType = {
+  name: '',
+  job: '',
+  part: '',
+};
+
 export const reviewSelfState = atom<ReviewSelfStateType>({
-  key: 'selfTest',
-  default: {
-    name: '',
-    job: '',
-    part: '',
-  },
+  key: 'REVIEW_SELF',
+  default: REVIEW_SELF_INITIAL_STATE,
   effects_UNSTABLE: [persistAtom],
 });
 
