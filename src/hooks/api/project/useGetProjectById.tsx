@@ -3,7 +3,7 @@ import { JobType, PartType } from '@constants/review';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ReviewResultType } from '@type/index';
 
-interface ProjectResponseDTO {
+export interface ProjectResponseDTO {
   projectId: number;
   projectName: string;
   introduce: string;

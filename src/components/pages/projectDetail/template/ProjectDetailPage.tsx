@@ -16,7 +16,9 @@ const ProjectDetailPage: ActivityComponentType = () => {
   const handleClickShare = () => setOpenBottomSheet(true);
 
   const activity = useActivity();
-  const { data } = useGetProjectById(parseInt(activity.params?.id ?? '0'));
+  const { data: projectInformation } = useGetProjectById(
+    parseInt(activity.params?.id ?? '0'),
+  );
   return (
     <AppScreenContainer>
       <NavigationHeader
@@ -26,19 +28,11 @@ const ProjectDetailPage: ActivityComponentType = () => {
         }}
         bodyProps={{
           isShow: true,
-          title: data.projectName,
+          title: projectInformation.projectName,
         }}
       />
       <Spacer y={8} />
-      <ProjectInformation
-        introduce={data.introduce}
-        startDate={data.startDate}
-        endDate={data.endDate}
-        openChattingLink={data.openChattingLink}
-        notionLink={data.notionLink}
-        githubLink={data.githubLink}
-        creatorSimpleProfileDto={data.creatorSimpleProfileDto}
-      />
+      <ProjectInformation projectInformation={projectInformation} />
       <FixedBottomButton handleClick={handleClickShare}>
         동료 초대하기
       </FixedBottomButton>

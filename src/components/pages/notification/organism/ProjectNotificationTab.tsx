@@ -1,67 +1,48 @@
+import EmptyNotification from '@components/pages/notification/molecule/EmptyNotification';
 import Project from '@components/pages/notification/molecule/Project';
 import {
   ProjectProposeResult,
   ProjectRecruitPropose,
 } from '@components/pages/notification/molecule/ProjectType';
+import { NoticeType } from '@constants/noticeType';
+import { useGetProjectNotification } from '@hooks/api/home/notice/useGetProjectNotification';
+import { getTimeDifference } from '@utils/date';
+import { Fragment } from 'react';
 
 export default function ProjectNotificationTab() {
-  const mocks: {
-    type: 'recruit' | 'accept' | 'reject';
-    params: Record<string, string>;
-    title: string;
-    subtitle: string;
-  }[] = [
-    {
-      type: 'recruit',
-      params: { id: '1' },
-      title: '시간 관리 어플 개발 참여 제안이 있어요.',
-      subtitle: '1분 전',
-    },
-    {
-      type: 'accept',
-      params: {},
-      title: '이관희 님이 길찾기 어플 개발 참여 제안을 수락했어요',
-      subtitle: '1 분전',
-    },
-    {
-      type: 'reject',
-      params: {},
-      title: '이관희 님이 길찾기 어플 개발 참여 제안을 거절했어요',
-      subtitle: '1 분전',
-    },
-  ];
+  const { data } = useGetProjectNotification();
 
   const createAlarmInstance = (
-    type: 'recruit' | 'accept' | 'reject',
+    type: NoticeType,
     params: Record<string, string>,
     title: string,
     subtitle: string,
   ) => {
     switch (type) {
-      case 'recruit':
+      case NoticeType.INVITE_TO_PROJECT:
         return new ProjectRecruitPropose(params, title, subtitle);
-      case 'accept':
-      case 'reject':
-        if (type === 'accept' || type === 'reject')
-          return new ProjectProposeResult(type, title, subtitle);
-        return null;
+      case NoticeType.ACCEPT_PROJECT_JOIN_REQUEST:
+        return new ProjectProposeResult(type, title, subtitle);
       default:
         return null;
     }
   };
+
   return (
-    <div>
-      {mocks.map((v, index) => {
-        const ProjectInstance = createAlarmInstance(
-          v.type,
-          v.params,
-          v.title,
-          v.subtitle,
-        );
-        return ProjectInstance ? (
-          <Project key={index} project={ProjectInstance} />
-        ) : null;
-      })}
-    </div>
+    <Fragment>
+      {!data?.pages && <EmptyNotification />}
+      {data?.pages.map(group =>
+        group.result.map((notification, index) => {
+          const NotificationInstance = createAlarmInstance(
+            notification.noticeType,
+            { id: String(notification.targetId) },
+            notification.contents,
+            getTimeDifference(notification.createdTime),
+          );
+
+          return <Project key={index} project={NotificationInstance} />;
+        }),
+      )}
+    </Fragment>
   );
 }

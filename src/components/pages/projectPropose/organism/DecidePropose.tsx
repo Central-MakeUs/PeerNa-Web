@@ -3,48 +3,61 @@ import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import Modal from '@components/common/molecule/Modal';
 import ProjectInformation from '@components/pages/projectDetail/organism/ProjectInformation';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import {
+  RespondType,
+  usePostProjectRespondInvitation,
+} from '@hooks/api/project/[project-id]/usePostProjectRespondInvitation';
+import { useGetProjectById } from '@hooks/api/project/useGetProjectById';
 import useModal from '@hooks/useModal';
 import { useFlow } from '@hooks/useStackFlow';
 import { Fragment, useState } from 'react';
 
-export default function DecidePropose() {
+interface DecideProposeProps {
+  projectId: string;
+}
+
+export default function DecidePropose({ projectId }: DecideProposeProps) {
+  const { data: projectInformation } = useGetProjectById(Number(projectId));
+  const { mutate } = usePostProjectRespondInvitation();
+
   const { replace } = useFlow();
   const { openModal, closeModal } = useModal();
-  const [modalType, setModalType] = useState<'accept' | 'reject' | ''>('');
-  const handleClickOpenAcceptModal = () => {
+
+  const [modalType, setModalType] = useState<RespondType>(RespondType.ACCEPT);
+
+  const handleClickOpenModal = (modalType: RespondType) => {
     openModal('default');
-    setModalType('accept');
-  };
-  const handleClickOpenRejectModal = () => {
-    openModal('default');
-    setModalType('reject');
+    setModalType(modalType);
   };
 
   const handleClickProposeAccept = () => {
-    if (modalType === 'accept') null;
-    else null;
+    if (modalType === RespondType.ACCEPT)
+      mutate({ projectId: parseInt(projectId), type: RespondType.ACCEPT });
+
+    if (modalType === RespondType.DECLINE)
+      mutate({ projectId: parseInt(projectId), type: RespondType.DECLINE });
 
     replace('ProjectPage', {});
     closeModal();
   };
 
-  const handleClickProposeReject = () => {
-    if (modalType === 'accept') null;
-    else null;
-    replace('ProjectPage', {});
-    closeModal();
-  };
+  const handleClickProposeDecline = () => closeModal();
 
   return (
     <Fragment>
-      <ProjectInformation />
+      <ProjectInformation projectInformation={projectInformation} />
       <FixedButtonContainer direction="row">
-        <Button buttonVariant="tertiary" onClick={handleClickOpenRejectModal}>
+        <Button
+          buttonVariant="tertiary"
+          onClick={() => handleClickOpenModal(RespondType.DECLINE)}
+        >
           거절
         </Button>
-        <Button onClick={handleClickOpenAcceptModal}>수락</Button>
+        <Button onClick={() => handleClickOpenModal(RespondType.ACCEPT)}>
+          수락
+        </Button>
       </FixedButtonContainer>
-      {modalType === 'accept' ? (
+      {modalType === RespondType.ACCEPT ? (
         <Modal
           modalHeader="프로젝트 제안을 수락할까요?"
           modalBody="수락하면 해당 프로젝트의 팀원으로 참여할 수 있어요"
@@ -52,7 +65,7 @@ export default function DecidePropose() {
             <ButtonContainer direction="row">
               <Button
                 buttonVariant="tertiary"
-                onClick={handleClickProposeReject}
+                onClick={handleClickProposeDecline}
               >
                 아니오
               </Button>
@@ -62,13 +75,13 @@ export default function DecidePropose() {
         />
       ) : (
         <Modal
-          modalHeader="프로젝트 제안을 수락할까요?"
-          modalBody="수락하면 해당 프로젝트의 팀원으로 참여할 수 있어요"
+          modalHeader="프로젝트 제안을 거절할까요?"
+          modalBody="거절하면 해당 프로젝트의 팀원으로 참여할 수 없어요"
           footer={
             <ButtonContainer direction="row">
               <Button
                 buttonVariant="tertiary"
-                onClick={handleClickProposeReject}
+                onClick={handleClickProposeDecline}
               >
                 아니오
               </Button>

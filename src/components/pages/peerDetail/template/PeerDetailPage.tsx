@@ -1,23 +1,23 @@
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import { ActivityComponentType } from '@stackflow/react';
-import { useGetPeerDetail } from '@hooks/api/useGetPeerDetail';
-import { useFlow } from '@hooks/useStackFlow';
-import TopHeader from '@components/common/organism/TopHeader';
-import PeerProfileCard from 'components/pages/peerDetail/atom/PeerProfileCard';
-import Layout from '@components/pages/mypage/organism/Layout';
-import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
+import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import RadioTabs from '@components/common/molecule/RadioTabs';
-import { Tab } from '@nextui-org/react';
-import PeerTestResult from '@components/pages/peerDetail/atom/PeerTestResult';
-import SelfTestResult from '@components/pages/peerDetail/atom/SelfTestResult';
+import TopHeader from '@components/common/organism/TopHeader';
+import Feedback from '@components/pages/mypage/molecule/Feedback';
+import HeaderContainer from '@components/pages/mypage/molecule/HeaderContainer';
+import NoTestKeywordResult from '@components/pages/mypage/molecule/NoTestKeywordResult';
 import OverallOpinion from '@components/pages/mypage/molecule/OverallOpinion';
 import OverallScore from '@components/pages/mypage/molecule/OverallScore';
-import Feedback from '@components/pages/mypage/molecule/Feedback';
 import OverallTestResult from '@components/pages/mypage/molecule/OverallTestResult';
-import Button from '@components/common/atom/Button';
-import NoTestKeywordResult from '@components/pages/mypage/molecule/NoTestKeywordResult';
+import Layout from '@components/pages/mypage/organism/Layout';
+import PeerProfileCard from '@components/pages/peerDetail/atom/PeerProfileCard';
+import PeerTestResult from '@components/pages/peerDetail/atom/PeerTestResult';
+import SelfTestResult from '@components/pages/peerDetail/atom/SelfTestResult';
 import ProjectList from '@components/pages/peerDetail/molecule/ProjectList';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import { useGetPeerDetail } from '@hooks/api/useGetPeerDetail';
+import { useFlow } from '@hooks/useStackFlow';
+import { Tab } from '@nextui-org/react';
+import { ActivityComponentType } from '@stackflow/react';
 
 type peerDetailPageParams = {
   memberId: string;

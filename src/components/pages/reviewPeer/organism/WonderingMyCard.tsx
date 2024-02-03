@@ -34,9 +34,9 @@ export default function WonderingMyCard() {
       <div className="py-6 flex flex-col gap-3">
         <motion.div
           className="card"
-          animate={{ rotateY: 360, rotateZ: [0, 10, 0, -10, 0] }}
+          animate={{ rotateY: 360, rotateZ: [0, 5, 0, -5, 0] }}
           transition={{
-            duration: 4.5,
+            duration: 4,
             ease: 'linear',
             repeat: Infinity,
             repeatType: 'loop',

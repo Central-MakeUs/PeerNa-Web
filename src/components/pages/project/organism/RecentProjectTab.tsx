@@ -47,7 +47,7 @@ export default function RecentProjectTab() {
       </Typography>
       <Spacer y={3} />
       <div className="flex flex-col gap-3">
-        {data?.pages.length === 0 && <EmptyProject />}
+        {!data?.pages && <EmptyProject />}
         {data?.pages.map(group =>
           group.result.map((project, index) => (
             <button

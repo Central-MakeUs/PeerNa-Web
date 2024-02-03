@@ -1,6 +1,5 @@
 import overThreeCheckReview from '@assets/OverThreeCheckReview.png';
 import kakaoShare from '@assets/kakao-talk.png';
-import person from '@assets/person.png';
 import peer_bg from '@assets/peerBg.png';
 import lottie1 from '@assets/review/01성향.json';
 import lottie2 from '@assets/review/02사고방식.json';

@@ -1,15 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import DeveloperPage from '@components/pages/developer/DeveloperPage';
 import HomePage from '@components/pages/home/template/HomePage';
 import AppleRedirectPage from '@components/pages/login/template/AppleRedirectPage';
 import KakaoRedirectPage from '@components/pages/login/template/KakaoRedirectPage';
-import MyPage from '@components/pages/mypage/template/MyPage';
-import PeerTypePage from '@components/pages/peerType/template/PeerTypePage';
-import PeerDetailPage from '@components/pages/peerDetail/template/PeerDetailPage';
+import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
 import MorePeerFeedbackPage from '@components/pages/moreFeedback/template/MorePeerFeedbackPage';
 import MorePeerProjectPage from '@components/pages/moreProject/template/MorePeerProjectPage';
-import SettingPage from '@components/pages/setting/template/SettingPage';
-import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
 import PeerProjectDetailPage from '@components/pages/moreProject/template/PeerProjectDetailPage';
+import MyPage from '@components/pages/mypage/template/MyPage';
 import NotificationPage from '@components/pages/notification/template/NotificationPage';
 import OnboardingPage from '@components/pages/onboard/template/OnboardingPage';
 import PeerPage from '@components/pages/peer/template/PeerPage';
@@ -28,10 +26,7 @@ import SettingPage from '@components/pages/setting/template/SettingPage';
 import { MODE } from '@constants/index';
 import { ActivityComponentType } from '@stackflow/react';
 
-interface PageMap {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: ActivityComponentType<any>;
-}
+interface PageMap extends Record<string, ActivityComponentType<any>> {}
 
 export const Pages: PageMap = {
   HomePage,
