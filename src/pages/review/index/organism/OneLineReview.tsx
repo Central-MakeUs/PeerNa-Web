@@ -2,7 +2,7 @@ import ShakeBox from '@components/animate/ShakeBox';
 import SlideBox from '@components/animate/SlideBox';
 import TextArea from '@components/common/atom/TextArea';
 import Typography from '@components/common/atom/Typography';
-import useReviewState from '@hooks/useReviewState';
+import useReviewState from '@hooks/store/useReviewState';
 
 interface OneLineReviewProps {
   answerStep: number;

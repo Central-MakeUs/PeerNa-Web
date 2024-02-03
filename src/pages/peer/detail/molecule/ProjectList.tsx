@@ -1,7 +1,7 @@
 import IconButton from '@components/common/atom/IconButton';
 import Typography from '@components/common/atom/Typography';
 import Project from '@components/common/molecule/Project';
-import { PeerProjectList } from '@hooks/api/useGetPeerDetail';
+import { PeerProjectList } from '@hooks/api/home/[peer-id]/useGetPeerDetail';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import { Fragment } from 'react';
 

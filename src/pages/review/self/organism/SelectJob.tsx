@@ -1,6 +1,6 @@
 import SelectListItem from '@components/common/atom/SelectListItem';
 import { JOB_LIST } from '@constants/review';
-import useReviewSelfState from '@hooks/useReviewSelfState';
+import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import { useEffect } from 'react';
 
 export default function SelectJob() {

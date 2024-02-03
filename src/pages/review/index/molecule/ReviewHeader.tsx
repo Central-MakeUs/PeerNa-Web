@@ -1,7 +1,7 @@
 import Typography from '@components/common/atom/Typography';
 import ProgressBar from '@components/common/molecule/ProgressBar';
 import { REVIEW_PICKER, REVIEW_TITLE } from '@constants/review';
-import useReviewState from '@hooks/useReviewState';
+import useReviewState from '@hooks/store/useReviewState';
 
 interface TestTitleProps {
   type: string;

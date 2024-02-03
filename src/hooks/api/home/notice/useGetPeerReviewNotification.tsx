@@ -1,35 +1,17 @@
-import { NoticeType } from '@constants/noticeType';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { http } from 'api';
+import { NotificationItemType } from '@type/index';
+import { InfiniteApiResponse, http } from 'API';
 
-type PeerReviewNotificationType = {
-  targetId: number;
-  noticeType: NoticeType;
-  contents: string;
-  createdTime: string;
-};
+interface PeerReviewNotificationResponseDTO extends NotificationItemType {}
 
-interface ProjectResponseDTO {
-  code: number;
-  message: string;
-  result: PeerReviewNotificationType[];
-  pageRequestDto: {
-    totalElements: number;
-    currentPageElements: number;
-    totalPage: number;
-    isFirst: boolean;
-    isLast: boolean;
-  };
-}
-
-export const getPeerReviewNotification = async (
+const getPeerReviewNotification = async (
   page: number,
-): Promise<ProjectResponseDTO> => {
+): Promise<InfiniteApiResponse<PeerReviewNotificationResponseDTO>> => {
   const response = await http.get(`/home/notice/peer-test?page=${page}`);
   return response.data;
 };
 
-export const useGetPeerReviewNotification = () => {
+export default function useGetPeerReviewNotification() {
   return useInfiniteQuery({
     queryKey: ['getPeerReviewNotification'],
     queryFn: ({ pageParam = 1 }) => getPeerReviewNotification(pageParam),
@@ -39,4 +21,4 @@ export const useGetPeerReviewNotification = () => {
       return lastPage.pageRequestDto.isLast ? undefined : nextPage;
     },
   });
-};
+}

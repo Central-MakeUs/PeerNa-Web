@@ -1,5 +1,5 @@
 import BottomSheet from '@components/common/organism/BottomSheet';
-import { Stack } from '@hooks/useStackFlow';
+import { Stack } from '@hooks/common/useStackFlow';
 import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import { WebviewBridge } from '@utils/webview';
 import { useEffect } from 'react';

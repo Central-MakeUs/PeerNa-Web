@@ -4,7 +4,7 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { IconKeyType } from '@constants/icons';
 import { PeerGrade } from '@constants/peerTalk';
-import useShowMoreFeedback from '@hooks/useShowMoreFeedback';
+import useShowMoreFeedback from '@hooks/store/useShowMoreFeedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import { Fragment } from 'react';
 

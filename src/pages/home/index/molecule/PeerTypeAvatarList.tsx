@@ -1,5 +1,5 @@
-import { useFlow } from '@hooks/useStackFlow';
 import AvatarButton from '@components/common/atom/AvatarButton';
+import { useFlow } from '@hooks/common/useStackFlow';
 
 export default function PeerTypeAvatarList() {
   const { push } = useFlow();

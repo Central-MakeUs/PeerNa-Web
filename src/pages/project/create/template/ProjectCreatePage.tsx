@@ -1,6 +1,6 @@
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import ProjectForm from '@pages/project/create/organism/ProjectForm';
 import { ActivityComponentType } from '@stackflow/react';

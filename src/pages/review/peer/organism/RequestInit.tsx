@@ -4,9 +4,9 @@ import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import FixedCenter from '@components/wrapper/FixedCenter';
-import { useGetUserName } from '@hooks/api/useGetUserName';
-import useReviewState from '@hooks/useReviewState';
-import { useFlow } from '@hooks/useStackFlow';
+import useGetUserName from '@hooks/api/member/index/useGetUserName';
+import { useFlow } from '@hooks/common/useStackFlow';
+import useReviewState from '@hooks/store/useReviewState';
 import { Fragment, useEffect } from 'react';
 
 interface RequestInitProps {

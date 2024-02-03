@@ -2,7 +2,7 @@ import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
 import SettingMenu from '../molecule/SettingMenu';
 

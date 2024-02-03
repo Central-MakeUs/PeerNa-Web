@@ -1,7 +1,7 @@
 import SlideBox from '@components/animate/SlideBox';
 import Picker from '@components/common/atom/Picker';
 import { REVIEW_PICKER } from '@constants/review';
-import useReviewState from '@hooks/useReviewState';
+import useReviewState from '@hooks/store/useReviewState';
 import { useCallback, useState } from 'react';
 
 interface TwoWayPicker {

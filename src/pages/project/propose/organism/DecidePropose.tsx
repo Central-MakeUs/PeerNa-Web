@@ -2,14 +2,12 @@ import Button from '@components/common/atom/Button';
 import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import Modal from '@components/common/molecule/Modal';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import {
-  RespondType,
-  usePostProjectRespondInvitation,
-} from '@hooks/api/project/[project-id]/usePostProjectRespondInvitation';
-import { useGetProjectById } from '@hooks/api/project/useGetProjectById';
-import useModal from '@hooks/useModal';
-import { useFlow } from '@hooks/useStackFlow';
+import { useGetProjectById } from '@hooks/api/project/[project-id]/useGetProjectById';
+import { usePostProjectRespondInvitation } from '@hooks/api/project/[project-id]/usePostProjectRespondInvitation';
+import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
 import ProjectInformation from '@pages/project/[id]/organism/ProjectInformation';
+import { RespondType } from '@type/enums';
 import { Fragment, useState } from 'react';
 
 interface DecideProposeProps {

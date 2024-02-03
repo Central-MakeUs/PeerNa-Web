@@ -1,35 +1,17 @@
-import { NoticeType } from '@constants/noticeType';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { http } from 'api';
+import { NotificationItemType } from '@type/index';
+import { InfiniteApiResponse, http } from 'API';
 
-type ProjectNotifiacitonType = {
-  targetId: number;
-  noticeType: NoticeType;
-  contents: string;
-  createdTime: string;
-};
+interface ProjectNotificationResponseDTO extends NotificationItemType {}
 
-interface ProjectResponseDTO {
-  code: number;
-  message: string;
-  result: ProjectNotifiacitonType[];
-  pageRequestDto: {
-    totalElements: number;
-    currentPageElements: number;
-    totalPage: number;
-    isFirst: boolean;
-    isLast: boolean;
-  };
-}
-
-export const getProjectNotification = async (
+const getProjectNotification = async (
   page: number,
-): Promise<ProjectResponseDTO> => {
+): Promise<InfiniteApiResponse<ProjectNotificationResponseDTO>> => {
   const response = await http.get(`/home/notice/project?page=${page}`);
   return response.data;
 };
 
-export const useGetProjectNotification = () => {
+export default function useGetProjectNotification() {
   return useInfiniteQuery({
     queryKey: ['getProjectNotification'],
     queryFn: ({ pageParam = 1 }) => getProjectNotification(pageParam),
@@ -39,4 +21,4 @@ export const useGetProjectNotification = () => {
       return lastPage.pageRequestDto.isLast ? undefined : nextPage;
     },
   });
-};
+}

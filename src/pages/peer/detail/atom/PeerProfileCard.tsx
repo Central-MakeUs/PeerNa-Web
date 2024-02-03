@@ -1,10 +1,10 @@
-import { Fragment } from 'react';
 import peerCard from '@assets/peerCard.png';
-import Typography from '@components/common/atom/Typography';
-import { getPartJobTitle } from '@utils/getTitleValue';
-import { ProfileCardInfo } from '@hooks/api/useGetPeerDetail';
-import { JOB_LIST, PART_LIST } from '@constants/member';
 import Talk from '@components/common/atom/Talk';
+import Typography from '@components/common/atom/Typography';
+import { JOB_LIST, PART_LIST } from '@constants/member';
+import { ProfileCardInfo } from '@hooks/api/home/[peer-id]/useGetPeerDetail';
+import { getPartJobTitle } from '@utils/getTitleValue';
+import { Fragment } from 'react';
 
 export default function PeerProfileCard({
   memberInfo,

@@ -3,8 +3,8 @@ import TextArea from '@components/common/atom/TextArea';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { usePostCreateProject } from '@hooks/api/project/usePostCreateProject';
-import { useFlow } from '@hooks/useStackFlow';
+import { usePostCreateProject } from '@hooks/api/project/index/usePostCreateProject';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { Divider, cn } from '@nextui-org/react';
 import { Fragment, useState } from 'react';
 

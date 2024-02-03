@@ -2,18 +2,7 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import { JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
-import { JobType, PartType } from '@constants/review';
-import { ReviewResultType } from '@type/index';
-
-interface ProfileListItemProps {
-  memberId: number;
-  name: string;
-  job: JobType;
-  part: PartType;
-  peerTestType: ReviewResultType;
-  oneLiner: string;
-  totalScore: number;
-}
+import { CreatorSimpleProfileType } from '@type/index';
 
 export default function ProjectCreatorProfile({
   memberId,
@@ -23,7 +12,7 @@ export default function ProjectCreatorProfile({
   peerTestType,
   oneLiner,
   totalScore,
-}: ProfileListItemProps) {
+}: CreatorSimpleProfileType) {
   return (
     <div className="w-full flex justify-between items-center px-5 py-4">
       <div className="flex gap-3">

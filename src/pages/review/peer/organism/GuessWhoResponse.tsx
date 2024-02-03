@@ -2,7 +2,7 @@ import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { PEER_REVIEW_IMAGE_LIST } from '@constants/onboard';
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { Fragment } from 'react';
 
 export default function GuessWhoResponse() {

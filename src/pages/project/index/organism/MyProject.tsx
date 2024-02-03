@@ -1,8 +1,8 @@
 import Typography from '@components/common/atom/Typography';
 import AlarmListItem from '@components/common/molecule/AlarmListItem';
 import Project from '@components/common/molecule/Project';
-import { useGetMyProjectList } from '@hooks/api/project/useGetMyProjectList';
-import { useFlow } from '@hooks/useStackFlow';
+import { useGetMyProjectList } from '@hooks/api/project/index/useGetMyProjectList';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import EmptyProject from '@pages/project/index/molecule/EmptyProject';
 import { Fragment, useEffect, useRef } from 'react';

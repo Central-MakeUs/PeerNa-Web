@@ -1,12 +1,12 @@
-import TopHeader from '@components/common/organism/TopHeader';
-import { useGetMorePeerFeedback } from '@hooks/api/useGetMorePeerFeedback';
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import Talk from '@components/common/atom/Talk';
-import Spinner from '@components/common/atom/Spinner';
-import { useFlow } from '@hooks/useStackFlow';
-import useIntersection from '@hooks/useIntersection';
-import { ActivityComponentType } from '@stackflow/react';
 import IntersectionBox from '@components/common/atom/IntersectionBox';
+import Spinner from '@components/common/atom/Spinner';
+import Talk from '@components/common/atom/Talk';
+import TopHeader from '@components/common/organism/TopHeader';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import { useGetMorePeerFeedback } from '@hooks/api/home/[peer-id]/useGetMorePeerFeedback';
+import useIntersection from '@hooks/common/useIntersection';
+import { useFlow } from '@hooks/common/useStackFlow';
+import { ActivityComponentType } from '@stackflow/react';
 
 type MorePeerFeedbackPageParams = {
   memberId: string;

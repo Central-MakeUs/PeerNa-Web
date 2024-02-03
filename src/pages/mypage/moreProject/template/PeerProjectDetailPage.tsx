@@ -2,9 +2,10 @@ import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import { useGetPeerProjectInfo } from '@hooks/api/useGetPeerProjectInfo';
-import { usePostPeerInviteProject } from '@hooks/api/usePostPeerInviteProject';
-import { useFlow } from '@hooks/useStackFlow';
+
+import usePostPeerInviteProject from '@hooks/api/project/[project-id]/usePostPeerInviteProject';
+import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
 import PeerProjectInfo from '../molecule/PeerProjectInfo';
 
@@ -19,7 +20,7 @@ const PeerProjectDetailPage: ActivityComponentType<
   const projectId = parseInt(params.projectId);
   const memberId = parseInt(params.memberId);
 
-  const { data: projectInfo } = useGetPeerProjectInfo(projectId);
+  const { data: projectInfo } = useGetProjectById(projectId);
 
   const mutation = usePostPeerInviteProject();
 

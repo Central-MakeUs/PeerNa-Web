@@ -1,7 +1,7 @@
 import ShakeBox from '@components/animate/ShakeBox';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
-import useReviewSelfState from '@hooks/useReviewSelfState';
+import useReviewSelfState from '@hooks/store/useReviewSelfState';
 
 export default function InputName() {
   const { reviewSelf, isValidName, handleChangeName } = useReviewSelfState();

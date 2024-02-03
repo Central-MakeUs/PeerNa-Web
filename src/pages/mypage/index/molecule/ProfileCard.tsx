@@ -1,9 +1,9 @@
-import { useFlow } from '@hooks/useStackFlow';
-import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
-import { JobType, PartType } from '@constants/member';
+import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { CardType } from '@constants/card';
+import { JobType, PartType } from '@constants/member';
+import { useFlow } from '@hooks/common/useStackFlow';
 
 export interface ProfileCardInfo {
   name: string;

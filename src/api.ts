@@ -13,6 +13,19 @@ export type ApiResponse<T = object> = {
   result: T;
 };
 
+export type InfiniteApiResponse<T = object> = {
+  code: number;
+  message: string;
+  result: T[];
+  pageRequestDto: {
+    totalElements: number;
+    currentPageElements: number;
+    totalPage: number;
+    isFirst: boolean;
+    isLast: boolean;
+  };
+};
+
 export const http = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 10 * 1000,

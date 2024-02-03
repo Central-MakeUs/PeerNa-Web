@@ -1,10 +1,11 @@
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
-import { usePostMemberInfo } from '@hooks/api/usePostMemberInfo';
-import { usePostReviewSelf } from '@hooks/api/usePostReviewSelf';
-import useReviewSelfState from '@hooks/useReviewSelfState';
-import useReviewState from '@hooks/useReviewState';
-import { useFlow } from '@hooks/useStackFlow';
+import { usePostMemberInformation } from '@hooks/api/member/index/usePostMemberInfo';
+import usePostReviewSelf from '@hooks/api/member/index/usePostReviewSelf';
+
+import { useFlow } from '@hooks/common/useStackFlow';
+import useReviewSelfState from '@hooks/store/useReviewSelfState';
+import useReviewState from '@hooks/store/useReviewState';
 import { getAccessToken } from '@utils/token';
 import { Fragment, useEffect } from 'react';
 
@@ -15,11 +16,11 @@ export default function LoadingResult() {
   const { peerGrade, feedback } = review;
   const { name, job, part } = reviewSelf;
 
-  const postMemberMutation = usePostMemberInfo();
+  const postMemberMutation = usePostMemberInformation();
   const postReviewSelfMutation = usePostReviewSelf();
 
   useEffect(() => {
-    if (getAccessToken()) {
+    if (getAccessToken() && job !== '' && part !== '') {
       postMemberMutation.mutate({
         name,
         job,

@@ -3,9 +3,9 @@ import Card from '@pages/review/result/molecule/Card';
 
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { PeerCardType } from '@constants/image';
-import useHistory from '@hooks/useHistory';
-import useModal from '@hooks/useModal';
-import useToken from '@hooks/useToken';
+import useHistory from '@hooks/common/useHistory';
+import useToken from '@hooks/common/useToken';
+import useModal from '@hooks/store/useModal';
 import { motion } from 'framer-motion';
 import { Fragment, useEffect } from 'react';
 

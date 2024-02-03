@@ -2,7 +2,7 @@ import Dropdown from '@components/common/atom/Dropdown';
 import TextArea from '@components/common/atom/TextArea';
 import Typography from '@components/common/atom/Typography';
 import { JOB_LIST, PART_LIST } from '@constants/member';
-import { MemberMeDTO } from '@hooks/api/useGetMe';
+import { MemberMeDTO } from '@hooks/api/member/index/useGetMe';
 import HeaderContainer from '@pages/mypage/profileEdit/molecule/HeaderContainer';
 import { ProfileSelfStateType } from '@store/profileSelfState';
 import { getPartJobTitle } from '@utils/getTitleValue';

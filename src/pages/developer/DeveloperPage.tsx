@@ -1,5 +1,5 @@
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import useModal from '@hooks/useModal';
+import useModal from '@hooks/store/useModal';
 import { Button } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
 

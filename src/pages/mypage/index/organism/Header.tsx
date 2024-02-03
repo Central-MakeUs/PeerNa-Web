@@ -1,6 +1,6 @@
-import Typography from '@components/common/atom/Typography';
 import IconButton from '@components/common/atom/IconButton';
-import { useFlow } from '@hooks/useStackFlow';
+import Typography from '@components/common/atom/Typography';
+import { useFlow } from '@hooks/common/useStackFlow';
 
 export default function Header() {
   const { push } = useFlow();

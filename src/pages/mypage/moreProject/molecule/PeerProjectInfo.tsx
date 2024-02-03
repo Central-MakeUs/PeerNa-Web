@@ -1,6 +1,6 @@
 import Talk from '@components/common/atom/Talk';
 import Typography from '@components/common/atom/Typography';
-import { PeerProjectInfoDTO } from '@hooks/api/useGetPeerProjectInfo';
+import { PeerProjectInfoDTO } from '@hooks/api/project/index/useGetProjectById';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import { Fragment } from 'react';
 

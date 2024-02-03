@@ -1,8 +1,8 @@
 import Spinner from '@components/common/atom/Spinner';
 import { Member_Id } from '@constants/localStorage';
-import useHistory from '@hooks/useHistory';
-import { useFlow } from '@hooks/useStackFlow';
-import useToken from '@hooks/useToken';
+import useHistory from '@hooks/common/useHistory';
+import { useFlow } from '@hooks/common/useStackFlow';
+import useToken from '@hooks/common/useToken';
 import { ActivityComponentType } from '@stackflow/react';
 import { getFcmToken } from '@utils/token';
 import { useEffect } from 'react';

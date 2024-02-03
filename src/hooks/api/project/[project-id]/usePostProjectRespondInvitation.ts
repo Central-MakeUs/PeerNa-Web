@@ -1,24 +1,18 @@
 import { useMutation } from '@tanstack/react-query';
-import { http } from 'api';
-import { ApiResponse } from 'models';
-
-export const enum RespondType {
-  ACCEPT = 'accept',
-  DECLINE = 'decline',
-}
+import { RespondType } from '@type/enums';
+import { ProjectInviteSuccessType } from '@type/index';
+import { ApiResponse, http } from 'API';
 
 interface ProjectRespondInvitationRequestDTO {
   projectId: number;
   type: RespondType;
 }
 
-interface ProjectRespondInvitationResponseDTO {
-  memberId: 0;
-  status: 'string';
-  calledAt: '2024-02-03T16:29:00.098Z';
-}
+// TODO ProjectInviteSuccessType가 반환되지 않는 경우가 있던데 어떻게 처리할지..
+interface ProjectRespondInvitationResponseDTO
+  extends ProjectInviteSuccessType {}
 
-export const postProjectRespondInvitation = async ({
+const postProjectRespondInvitation = async ({
   projectId,
   type,
 }: ProjectRespondInvitationRequestDTO): Promise<
@@ -28,13 +22,13 @@ export const postProjectRespondInvitation = async ({
   return response.data;
 };
 
-export const usePostProjectRespondInvitation = (
+export default function usePostProjectRespondInvitation(
   successCallback?: () => void,
   errorCallback?: (error: Error) => void,
-) => {
+) {
   return useMutation({
     mutationFn: postProjectRespondInvitation,
     onSuccess: successCallback,
     onError: errorCallback,
   });
-};
+}

@@ -1,17 +1,17 @@
-import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import TopHeader from '@components/common/organism/TopHeader';
-import { useGetMe } from '@hooks/api/useGetMe';
-import { usePatchMyProfile } from '@hooks/api/usePatchMyProfile';
-import { useRecoilState } from 'recoil';
-import { profileSelfState } from '@store/profileSelfState';
-import PositionDrawer from '../molecule/PosititonDrawer';
-import JobDrawer from '../molecule/JobDrawer';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { useFlow } from '@hooks/useStackFlow';
-import ProfileEditList from '../organism/ProfileEditList';
-import { useEffect, useState } from 'react';
+import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import useGetMe from '@hooks/api/member/index/useGetMe';
+import usePatchMyProfile from '@hooks/api/member/mypage/usePatchMyProfile';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
+import { profileSelfState } from '@store/profileSelfState';
+import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import JobDrawer from '../molecule/JobDrawer';
+import PositionDrawer from '../molecule/PosititonDrawer';
+import ProfileEditList from '../organism/ProfileEditList';
 
 const ProfileEditPage: ActivityComponentType = () => {
   const { pop, replace } = useFlow();

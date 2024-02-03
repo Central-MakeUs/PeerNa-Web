@@ -1,5 +1,5 @@
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
-import { Stack } from '@hooks/useStackFlow';
+import { Stack } from '@hooks/common/useStackFlow';
 import { Meta, StoryObj } from '@storybook/react';
 
 const Wrapper = () => (

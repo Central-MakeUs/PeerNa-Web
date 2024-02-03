@@ -1,8 +1,8 @@
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { useGetProjectById } from '@hooks/api/project/useGetProjectById';
-import { useFlow } from '@hooks/useStackFlow';
+import { useGetProjectById } from '@hooks/api/project/[project-id]/useGetProjectById';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import ProjectInformation from '@pages/project/[id]/organism/ProjectInformation';
 import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';

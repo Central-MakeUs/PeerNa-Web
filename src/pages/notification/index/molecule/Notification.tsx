@@ -1,4 +1,4 @@
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { NotificationBase } from '@pages/notification/index/molecule/NotificationType';
 import { Fragment } from 'react';
 

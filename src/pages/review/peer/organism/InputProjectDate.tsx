@@ -1,7 +1,7 @@
 import DatePicker from '@components/common/atom/DatePicker';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { Divider, Spacer } from '@nextui-org/react';
 import { differenceInDays } from 'date-fns';
 import { Fragment } from 'react';

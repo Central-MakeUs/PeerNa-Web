@@ -1,5 +1,5 @@
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 import AnalyzePeerCard from '@pages/review/result/organism/AnalyzePeerCard';
 import LoadingResult from '@pages/review/result/organism/LoadingResult';
 import ResultGuide from '@pages/review/result/organism/ResultGuide';

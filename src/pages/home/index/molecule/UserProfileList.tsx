@@ -1,7 +1,6 @@
 import Button from '@components/common/atom/Button';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
-import { useFlow } from '@hooks/useStackFlow';
-import { MemberSimpleDTOPage } from '@hooks/api/useGetSearchPeerPart';
+import { useFlow } from '@hooks/common/useStackFlow';
 
 export default function UserProfileList({
   data,
