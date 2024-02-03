@@ -1,12 +1,12 @@
 import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import { useGetPeerProjectInfo } from '@hooks/api/useGetPeerProjectInfo';
 import { usePostPeerInviteProject } from '@hooks/api/usePostPeerInviteProject';
-import PeerProjectInfo from '../molecule/PeerProjectInfo';
 import { useFlow } from '@hooks/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import PeerProjectInfo from '../molecule/PeerProjectInfo';
 
 type PeerProjectDetailPageParams = {
   projectId: string;

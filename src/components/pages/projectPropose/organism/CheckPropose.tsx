@@ -6,12 +6,13 @@ import { Fragment } from 'react';
 
 interface CheckPropose {
   nextStep: string;
+  projectId: string;
 }
 
-export default function CheckPropose({ nextStep }: CheckPropose) {
+export default function CheckPropose({ nextStep, projectId }: CheckPropose) {
   const { push } = useFlow();
   const handleClickNextStep = () =>
-    push('ProjectProposePage', { step: nextStep });
+    push('ProjectProposePage', { step: nextStep, projectId });
   return (
     <Fragment>
       <FixedCenter>

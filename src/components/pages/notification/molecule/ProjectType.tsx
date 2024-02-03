@@ -3,15 +3,23 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import ListItemContainer from '@components/wrapper/ListItemContainer';
 import { ActivityTypes } from '@constants/activities';
+import { NoticeType } from '@constants/noticeType';
 import { Palette } from '@constants/styles';
 
-type PushFunction = (
-  activity: ActivityTypes,
+export type PushFunction<K extends string> = (
+  activityName: K,
   params: Record<string, string>,
-) => void;
+  options?:
+    | {
+        animate?: boolean | undefined;
+      }
+    | undefined,
+) => {
+  activityId: string;
+};
 
 export interface ProjectBase {
-  display(push?: PushFunction): JSX.Element;
+  display(push?: PushFunction<string>): JSX.Element;
 }
 
 export class ProjectRecruitPropose implements ProjectBase {
@@ -27,7 +35,7 @@ export class ProjectRecruitPropose implements ProjectBase {
     this.subtitle = subtitle;
   }
 
-  display(push: PushFunction) {
+  display(push: PushFunction<string>) {
     return (
       <ListItemContainer>
         <div className="flex gap-3">
@@ -50,7 +58,7 @@ export class ProjectRecruitPropose implements ProjectBase {
           <Button
             buttonVariant="tertiary"
             buttonSize="sm"
-            onClick={() => push(this.activity, this.params)}
+            onClick={() => push(this.activity as string, this.params)}
           >
             자세히
           </Button>
@@ -61,11 +69,11 @@ export class ProjectRecruitPropose implements ProjectBase {
 }
 
 export class ProjectProposeResult implements ProjectBase {
-  private readonly type: 'accept' | 'reject';
+  private readonly type: NoticeType;
   private readonly title: string;
   private readonly subtitle: string;
 
-  constructor(type: 'accept' | 'reject', title: string, subtitle: string) {
+  constructor(type: NoticeType, title: string, subtitle: string) {
     this.type = type;
     this.title = title;
     this.subtitle = subtitle;
@@ -79,7 +87,11 @@ export class ProjectProposeResult implements ProjectBase {
             className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary200`}
           >
             <SvgIcon
-              id={this.type === 'accept' ? 'Person' : 'AlertFill'}
+              id={
+                this.type === 'ACCEPT_PROJECT_INVITATION'
+                  ? 'Person'
+                  : 'AlertFill'
+              }
               color="primary400"
             />
           </div>

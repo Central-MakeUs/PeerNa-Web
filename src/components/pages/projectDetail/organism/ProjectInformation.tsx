@@ -3,38 +3,27 @@ import KakaoIcon from '@assets/link/kakao.png';
 import NotionIcon from '@assets/link/notion.png';
 import Typography from '@components/common/atom/Typography';
 import ProjectCreatorProfile from '@components/pages/projectDetail/molecule/ProjectCreatorProfile';
-import { JobType, PartType } from '@constants/review';
+import { ProjectResponseDTO } from '@hooks/api/project/useGetProjectById';
 import { Code } from '@nextui-org/react';
-import { ReviewResultType } from '@type/index';
 import { Fragment } from 'react';
 
 interface ProjectInformationProps {
-  introduce: string;
-  startDate: string;
-  endDate: string;
-  openChattingLink: string;
-  notionLink: string;
-  githubLink: string;
-  creatorSimpleProfileDto: {
-    memberId: number;
-    name: string;
-    job: JobType;
-    part: PartType;
-    peerTestType: ReviewResultType;
-    oneLiner: string;
-    totalScore: number;
-  };
+  projectInformation: ProjectResponseDTO;
 }
 
 export default function ProjectInformation({
-  introduce,
-  startDate,
-  endDate,
-  openChattingLink,
-  notionLink,
-  githubLink,
-  creatorSimpleProfileDto,
+  projectInformation,
 }: ProjectInformationProps) {
+  console.log(projectInformation);
+  const {
+    introduce,
+    startDate,
+    endDate,
+    openChattingLink,
+    notionLink,
+    githubLink,
+    creatorSimpleProfileDto,
+  } = projectInformation;
   return (
     <Fragment>
       <div className="w-full flex flex-col items-start gap-10">

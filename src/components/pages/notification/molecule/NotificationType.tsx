@@ -1,21 +1,16 @@
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
+import { PushFunction } from '@components/pages/notification/molecule/ProjectType';
 import ListItemContainer from '@components/wrapper/ListItemContainer';
-import { ActivityTypes } from '@constants/activities';
 import { Palette } from '@constants/styles';
 
-type PushFunction = (
-  activity: ActivityTypes,
-  params: Record<string, string>,
-) => void;
-
 export interface NotificationBase {
-  display(push: PushFunction): JSX.Element;
+  display(push: PushFunction<string>): JSX.Element;
 }
 
 export class ReviewRequestNotification implements NotificationBase {
-  private readonly activity: ActivityTypes;
+  private readonly activity: string;
   private readonly params: Record<string, string>;
   private readonly title: string;
   private readonly subtitle: string;
@@ -27,7 +22,7 @@ export class ReviewRequestNotification implements NotificationBase {
     this.subtitle = subtitle;
   }
 
-  display(push: PushFunction) {
+  display(push: PushFunction<string>) {
     return (
       <ListItemContainer>
         <div className="flex gap-3">
@@ -61,7 +56,7 @@ export class ReviewRequestNotification implements NotificationBase {
 }
 
 export class ReviewUpdateNotification implements NotificationBase {
-  private readonly activity: ActivityTypes;
+  private readonly activity: string;
   private readonly params: Record<string, string>;
   private readonly title: string;
   private readonly subtitle: string;
@@ -73,7 +68,7 @@ export class ReviewUpdateNotification implements NotificationBase {
     this.subtitle = subtitle;
   }
 
-  display(push: PushFunction) {
+  display(push: PushFunction<string>) {
     return (
       <ListItemContainer>
         <div className="flex gap-3">

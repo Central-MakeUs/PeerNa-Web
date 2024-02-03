@@ -3,10 +3,11 @@ import { useFlow } from '@hooks/useStackFlow';
 import { Fragment } from 'react';
 
 interface ProjectProps {
-  project: ProjectBase;
+  project: ProjectBase | null;
 }
 
 export default function Project({ project }: ProjectProps) {
   const { push } = useFlow();
+  if (!project) return null;
   return <Fragment>{project.display(push)}</Fragment>;
 }
