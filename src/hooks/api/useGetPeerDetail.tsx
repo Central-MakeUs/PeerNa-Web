@@ -1,7 +1,7 @@
-import { http, ApiResponse } from '@apis/index';
-import { OverallOpinionProps } from '@components/pages/mypage/molecule/OverallOpinion';
+import { ApiResponse, http } from '@apis/index';
 import { CardType } from '@constants/image';
-import { PartType, JobType } from '@constants/member';
+import { JobType, PartType } from '@constants/member';
+import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 interface peerDetailDTO {

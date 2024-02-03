@@ -1,7 +1,7 @@
-import { http, ApiResponse } from '@apis/index';
-import { OverallOpinionProps } from '@components/pages/mypage/molecule/OverallOpinion';
-import { ProfileCardInfo } from '@components/pages/mypage/molecule/ProfileCard';
+import { ApiResponse, http } from '@apis/index';
 import { CardType } from '@constants/image';
+import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
+import { ProfileCardInfo } from '@pages/mypage/index/molecule/ProfileCard';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 interface MyPageDTO {

@@ -30,6 +30,7 @@
       "@store/*": ["store/*"],
       "@apis/*": ["apis/*"],
       "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
     },
   },
   "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],
