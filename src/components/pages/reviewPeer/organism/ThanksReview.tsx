@@ -10,7 +10,7 @@ import { Fragment } from 'react';
 export default function ThanksReview() {
   const { review } = useReviewState();
   const { push } = useFlow();
-  const handleClick = () => push('ReviewPeerPage', { step: '7' });
+  const handleClick = () => push('ReviewPeerPage', { step: '8' });
   return (
     <Fragment>
       <NavigationHeader

@@ -24,12 +24,13 @@ export default function InputProjectDate({
     return diffDays >= 30;
   }
 
-  // 30일보다 크면 3번(진행), 작으면 4번(에러)
+  // 30일보다 크면 4번(진행), 작으면 3번(에러)
   const isValidDate = isLessThan30Days(new Date(startDate), new Date(endDate));
 
   const { push } = useFlow();
   const handleClick = () =>
-    push('ReviewPeerPage', { step: isValidDate ? '3' : '4' });
+    push('ReviewPeerPage', { step: isValidDate ? '4' : '3' });
+
   return (
     <Fragment>
       <NavigationHeader

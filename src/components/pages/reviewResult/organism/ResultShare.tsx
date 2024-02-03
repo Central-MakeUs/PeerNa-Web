@@ -1,3 +1,4 @@
+import gradient from '@assets/gradient.png';
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
@@ -5,6 +6,7 @@ import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FlipCard from '@components/pages/reviewResult/molecule/FlipCard';
 import ShareDrawer from '@components/pages/reviewResult/molecule/ShareDrawer';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import { cardText } from '@constants/card';
 import { useGetMe } from '@hooks/api/useGetMe';
 import { useGetReviewResult } from '@hooks/api/useGetReviewResult';
 import { useFlow } from '@hooks/useStackFlow';
@@ -62,7 +64,10 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div
+      className="w-full h-full flex flex-col items-center"
+      style={{ backgroundImage: gradient }}
+    >
       <NavigationHeader
         backIconProps={{
           isShow: true,
@@ -75,7 +80,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         }}
         bodyProps={{
           isShow: true,
-          title: `${data.memberName} 님의 피어 유형은 성취하는 행동 대장이에요`,
+          title: `${data.memberName} 님의 피어 유형은\n ${cardText[data.testType].title}에요`,
           textAlign: 'center',
         }}
       />

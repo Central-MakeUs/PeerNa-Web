@@ -44,6 +44,7 @@
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
     "framer-motion": "^10.17.4",
+    "lottie-react": "^2.4.0",
     "mkcert": "^3.2.0",
     "react": "^18.2.0",
     "react-day-picker": "^8.10.0",

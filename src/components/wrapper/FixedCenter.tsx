@@ -6,8 +6,6 @@ interface FixedCenter {
 
 export default function FixedCenter({ children }: FixedCenter) {
   return (
-    <div className="fixed left-2/4 translate-x-[-50%] top-2/4 translate-y-[-50%]">
-      {children}
-    </div>
+    <div className="w-full flex justify-center items-center">{children}</div>
   );
 }

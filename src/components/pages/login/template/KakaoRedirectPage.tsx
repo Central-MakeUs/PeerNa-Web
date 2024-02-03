@@ -16,7 +16,7 @@ interface AuthData {
 
 const KakaoRedirectpage: ActivityComponentType = () => {
   const { push } = useFlow();
-  const { history } = useHistory();
+  const { history, handleClearHistory } = useHistory();
   const { updateToken } = useToken();
 
   const url = window.location.search;
@@ -32,7 +32,9 @@ const KakaoRedirectpage: ActivityComponentType = () => {
     if (memberId && accessToken && refreshToken) {
       localStorage.setItem(Member_Id, memberId);
       updateToken(accessToken, refreshToken);
-      push(history.activity, history.params);
+      const { activity, params } = history;
+      handleClearHistory();
+      push(String(activity), params);
     }
 
     const fcmToken = getFcmToken();

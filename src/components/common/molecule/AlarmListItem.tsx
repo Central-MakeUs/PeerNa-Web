@@ -1,4 +1,5 @@
 import IconButton from '@components/common/atom/IconButton';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
 import { useFlow } from '@hooks/useStackFlow';
@@ -17,7 +18,9 @@ export default function AlarmListItem({ title, subtitle }: AlarmListItemProps) {
       <div className="flex gap-3">
         <div
           className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary200`}
-        />
+        >
+          <SvgIcon id="AddCircle" color="primary" />
+        </div>
         <div className="flex flex-col gap-1">
           <Typography variant="body01">{title}</Typography>
           <Typography

@@ -84,4 +84,5 @@ export const Icon = {
   Apple: 'apple',
   DocumentSplitHint: 'document_split_hint',
   Shape: 'shape',
+  DocumentTableSearch: 'document_table_search',
 };

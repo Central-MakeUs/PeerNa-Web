@@ -30,17 +30,16 @@ export default function LoadingResult() {
       postReviewSelfMutation.mutate(review.answers);
     } else {
       setTimeout(() => {
+        push('ReviewResultPage', { type: 'self', step: '2' });
+      }, 1000);
+    }
+
+    if (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) {
+      setTimeout(() => {
         push('ReviewResultPage', { type: 'self', step: '3' });
       }, 1000);
     }
   }, []);
-
-  if (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) {
-    setTimeout(() => {
-      push('ReviewResultPage', { type: 'self', step: '2' });
-    }, 1000);
-    return;
-  }
 
   return (
     <Fragment>
