@@ -6,17 +6,30 @@ interface ProjectProps {
   title: string;
   subtitle: string;
   date: string;
+  handleClick?: () => void;
 }
 
-export default function Project({ title, subtitle, date }: ProjectProps) {
+export default function Project({
+  title,
+  subtitle,
+  date,
+  handleClick,
+}: ProjectProps) {
   const { isFocused, handleFocus } = useFocusTimeout();
+
+  const onClick = () => {
+    handleFocus();
+    if (handleClick) {
+      handleClick();
+    }
+  };
 
   return (
     <div
       className={`w-full p-5 bg-gray01 flex gap-3 cursor-pointer rounded-xl border-1 transition-colors ${
         isFocused ? 'bg-primary100 border-primary500' : null
       }`}
-      onClick={handleFocus}
+      onClick={onClick}
     >
       {/* <div>
         <SvgIcon id="GroupPerson" color="white" width={52} height={52} />

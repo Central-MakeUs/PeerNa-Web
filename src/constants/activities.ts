@@ -2,9 +2,14 @@ import DeveloperPage from '@components/pages/developer/DeveloperPage';
 import HomePage from '@components/pages/home/template/HomePage';
 import AppleRedirectPage from '@components/pages/login/template/AppleRedirectPage';
 import KakaoRedirectPage from '@components/pages/login/template/KakaoRedirectPage';
-import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
-import MorePeerFeedbackPage from '@components/pages/moreFeedback/template/MorePeerFeedbackPage';
 import MyPage from '@components/pages/mypage/template/MyPage';
+import PeerTypePage from '@components/pages/peerType/template/PeerTypePage';
+import PeerDetailPage from '@components/pages/peerDetail/template/PeerDetailPage';
+import MorePeerFeedbackPage from '@components/pages/moreFeedback/template/MorePeerFeedbackPage';
+import MorePeerProjectPage from '@components/pages/moreProject/template/MorePeerProjectPage';
+import SettingPage from '@components/pages/setting/template/SettingPage';
+import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
+import PeerProjectDetailPage from '@components/pages/moreProject/template/PeerProjectDetailPage';
 import NotificationPage from '@components/pages/notification/template/NotificationPage';
 import OnboardingPage from '@components/pages/onboard/template/OnboardingPage';
 import PeerPage from '@components/pages/peer/template/PeerPage';
@@ -32,6 +37,7 @@ export const Pages: PageMap = {
   HomePage,
   PeerTypePage,
   PeerDetailPage,
+  MorePeerProjectPage,
   MorePeerFeedbackPage,
   PeerPage,
   ProjectPage,
@@ -39,6 +45,7 @@ export const Pages: PageMap = {
   MyPage,
   SettingPage,
   MoreFeedbackPage,
+  PeerProjectDetailPage,
   ProfileEditPage,
   OnboardingPage,
   ReviewPage,
@@ -62,6 +69,8 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   HomePage: '/',
   PeerTypePage: '/peer/type/:type',
   PeerDetailPage: '/peer/:memberId',
+  MorePeerProjectPage: '/peer/:memberId/project',
+  PeerProjectDetailPage: '/peer/:memberId/project/:projectId',
   MorePeerFeedbackPage: '/peer/:memberId/feedback',
   PeerPage: '/peer',
   ProjectPage: '/project',

@@ -67,7 +67,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        default: '0 0 0 2px #E3E6E8',
+        default: '0 0 0 2.94px #E3E6E8',
       },
       keyframes: {
         'accordion-down': {
@@ -82,6 +82,9 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      backgroundImage: {
+        'peer-bg': 'url("@assets/peerBg.png")',
       },
     },
   },
