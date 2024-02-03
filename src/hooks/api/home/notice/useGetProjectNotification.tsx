@@ -1,6 +1,6 @@
-import { http } from '@apis/index';
 import { NoticeType } from '@constants/noticeType';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { http } from 'api';
 
 type ProjectNotifiacitonType = {
   targetId: number;

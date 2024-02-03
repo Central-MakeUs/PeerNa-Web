@@ -1,5 +1,5 @@
-import { ApiResponse, http } from '@apis/index';
 import { useMutation } from '@tanstack/react-query';
+import { ApiResponse, http } from 'api';
 
 interface ProjectCreateRequestDTO {
   projectName: string;

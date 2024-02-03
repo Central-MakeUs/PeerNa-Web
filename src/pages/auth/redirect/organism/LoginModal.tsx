@@ -1,7 +1,7 @@
-import { AUTH_URL } from '@apis/auth';
 import Button from '@components/common/atom/Button';
 import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import Modal from '@components/common/molecule/Modal';
+import { AUTH_URL } from '@constants/auth';
 import useModal from '@hooks/useModal';
 
 export default function LoginModal() {

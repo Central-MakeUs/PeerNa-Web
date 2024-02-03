@@ -1,5 +1,5 @@
-import { http } from '@apis/index';
 import { useMutation } from '@tanstack/react-query';
+import { http } from 'api';
 import { ApiResponse } from 'models';
 
 export const enum RespondType {

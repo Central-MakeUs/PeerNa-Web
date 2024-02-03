@@ -1,6 +1,6 @@
-import { http, ApiResponse } from '@apis/index';
 import { PeerCardType } from '@constants/image';
 import { useMutation } from '@tanstack/react-query';
+import { ApiResponse, http } from 'api';
 
 type ReviewResultType = 'C' | 'I' | 'D' | 'S';
 

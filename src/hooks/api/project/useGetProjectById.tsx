@@ -1,7 +1,7 @@
-import { ApiResponse, http } from '@apis/index';
 import { JobType, PartType } from '@constants/review';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ReviewResultType } from '@type/index';
+import { ApiResponse, http } from 'api';
 
 export interface ProjectResponseDTO {
   projectId: number;

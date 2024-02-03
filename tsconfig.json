@@ -28,7 +28,6 @@
       "@type/*": ["type/*"],
       "@utils/*": ["utils/*"],
       "@store/*": ["store/*"],
-      "@apis/*": ["apis/*"],
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
     },

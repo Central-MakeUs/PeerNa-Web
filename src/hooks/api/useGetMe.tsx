@@ -1,6 +1,6 @@
-import { ApiResponse, http } from '@apis/index';
 import { JobType, PartType } from '@constants/review';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { ApiResponse, http } from 'api';
 
 export interface MemberMeDTO {
   name: string;

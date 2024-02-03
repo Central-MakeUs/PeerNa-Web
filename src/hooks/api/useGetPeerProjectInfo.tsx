@@ -1,5 +1,5 @@
-import { http, ApiResponse } from '@apis/index';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { ApiResponse, http } from 'api';
 
 export interface PeerProjectInfoDTO {
   projectId: number;

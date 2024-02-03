@@ -1,8 +1,8 @@
-import { ApiResponse, http } from '@apis/index';
 import { CardType } from '@constants/image';
 import { JobType, PartType } from '@constants/member';
 import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { ApiResponse, http } from 'api';
 
 interface peerDetailDTO {
   peerTestMoreThanThree: boolean;

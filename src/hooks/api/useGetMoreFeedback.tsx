@@ -1,5 +1,5 @@
-import { ApiResponse, http } from '@apis/index';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { ApiResponse, http } from 'api';
 
 interface AllFeedbackDTOPage {
   feedbackList: string[];

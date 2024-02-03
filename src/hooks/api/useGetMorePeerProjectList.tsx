@@ -1,5 +1,5 @@
-import { http, ApiResponse } from '@apis/index';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { ApiResponse, http } from 'api';
 
 interface ProjectDetailDTOPage {
   projectList: ProjectListDTO[];

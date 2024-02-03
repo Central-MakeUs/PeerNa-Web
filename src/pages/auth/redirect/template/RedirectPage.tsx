@@ -1,4 +1,3 @@
-import { postFcmToken } from '@apis/common';
 import Spinner from '@components/common/atom/Spinner';
 import { Member_Id } from '@constants/localStorage';
 import useHistory from '@hooks/useHistory';
@@ -38,14 +37,9 @@ const RedirectPage: ActivityComponentType = () => {
       push(String(activity), params);
     }
     const fcmToken = getFcmToken();
+    // TODO: FCM API 등록
     if (fcmToken) {
-      postFcmToken(fcmToken)
-        .then(() => {
-          console.log('success');
-        })
-        .catch(error => {
-          console.log('error' + error.message);
-        });
+      return;
     }
   }, [memberId, accessToken, refreshToken]);
 

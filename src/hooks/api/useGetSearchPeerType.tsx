@@ -1,6 +1,6 @@
-import { http, ApiResponse } from '@apis/index';
+import { JobType, PartType } from '@constants/member';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { PartType, JobType } from '@constants/member';
+import { ApiResponse, http } from 'api';
 
 export interface MemberSimpleDTOPage {
   memberSimpleProfileDtoList: MemberSimpleProfileDTO[];

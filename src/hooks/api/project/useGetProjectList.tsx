@@ -1,5 +1,5 @@
-import { http } from '@apis/index';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { http } from 'api';
 
 type ProjectItemType = {
   projectId: number;
