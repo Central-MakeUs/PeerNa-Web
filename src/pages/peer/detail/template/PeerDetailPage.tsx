@@ -1,9 +1,9 @@
-import { useGetPeerDetail } from '@/hooks/api/home/peerId/useGetPeerDetail';
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Tab } from '@nextui-org/react';
 import Feedback from '@pages/mypage/index/molecule/Feedback';

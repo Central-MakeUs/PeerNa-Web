@@ -3,8 +3,8 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 
-import usePostPeerInviteProject from '@/hooks/api/project/projectId/usePostPeerInviteProject';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
+import usePostPeerInviteProject from '@hooks/api/project/projectId/usePostPeerInviteProject';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';
 import PeerProjectInfo from '../molecule/PeerProjectInfo';

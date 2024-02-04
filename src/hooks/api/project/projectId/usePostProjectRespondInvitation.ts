@@ -1,7 +1,7 @@
-import { ApiResponse, http } from '@/API';
 import { useMutation } from '@tanstack/react-query';
 import { RespondType } from '@type/enums';
 import { ProjectInviteSuccessType } from '@type/index';
+import { ApiResponse, http } from '@utils/API';
 
 interface ProjectRespondInvitationRequestDTO {
   projectId: number;

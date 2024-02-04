@@ -1,6 +1,6 @@
-import { InfiniteApiResponse, http } from '@/API';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { MemberDefaultInformationTypeWithUuid } from '@type/index';
+import { InfiniteApiResponse, http } from '@utils/API';
 
 interface SearchPeerPartResponseDTO
   extends MemberDefaultInformationTypeWithUuid {}

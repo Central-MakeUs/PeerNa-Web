@@ -1,6 +1,6 @@
 import Typography from '@components/common/atom/Typography';
 import Project from '@components/common/molecule/Project';
-import { useGetProjectList } from '@hooks/api/project/index/useGetProjectList';
+import useGetProjectList from '@hooks/api/project/index/useGetProjectList';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import EmptyProject from '@pages/project/index/molecule/EmptyProject';

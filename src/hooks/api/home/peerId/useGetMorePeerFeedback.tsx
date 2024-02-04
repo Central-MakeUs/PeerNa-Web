@@ -1,5 +1,5 @@
-import { InfiniteApiResponse, http } from '@/API';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { InfiniteApiResponse, http } from '@utils/API';
 
 const getMorePeerFeedback = async (
   peerId: number,

@@ -1,8 +1,8 @@
-import { ApiResponse, http } from '@/API';
 import { CardType } from '@constants/image';
 import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
 import { ProfileCardInfo } from '@pages/mypage/index/molecule/ProfileCard';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { ApiResponse, http } from '@utils/API';
 
 // Sarah) interface 상속을 통해 중복되는 부분은 따로 선언하고 다른 부분만 따로 정의하기
 interface MyPageResponseDTO {

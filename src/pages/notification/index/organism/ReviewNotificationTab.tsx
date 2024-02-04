@@ -1,5 +1,5 @@
 import { NoticeType } from '@constants/noticeType';
-import { useGetPeerReviewNotification } from '@hooks/api/home/notice/useGetPeerReviewNotification';
+import useGetPeerReviewNotification from '@hooks/api/home/notice/useGetPeerReviewNotification';
 import EmptyNotification from '@pages/notification/index/molecule/EmptyNotification';
 import Notification from '@pages/notification/index/molecule/Notification';
 import {

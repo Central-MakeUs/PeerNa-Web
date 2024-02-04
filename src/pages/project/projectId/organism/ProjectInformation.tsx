@@ -2,19 +2,18 @@ import GithubIcon from '@assets/link/github.png';
 import KakaoIcon from '@assets/link/kakao.png';
 import NotionIcon from '@assets/link/notion.png';
 import Typography from '@components/common/atom/Typography';
-import { ProjectResponseDTO } from '@hooks/api/project/[project-id]/useGetProjectById';
 import { Code } from '@nextui-org/react';
-import ProjectCreatorProfile from '@pages/project/[id]/molecule/ProjectCreatorProfile';
+import ProjectCreatorProfile from '@pages/project/projectId/molecule/ProjectCreatorProfile';
+import { ProjectInformationWithCreatorType } from '@type';
 import { Fragment } from 'react';
 
 interface ProjectInformationProps {
-  projectInformation: ProjectResponseDTO;
+  projectInformation: ProjectInformationWithCreatorType;
 }
 
 export default function ProjectInformation({
   projectInformation,
 }: ProjectInformationProps) {
-  console.log(projectInformation);
   const {
     introduce,
     startDate,

@@ -21,7 +21,7 @@ export interface NotificationItemType {
 }
 
 export interface ProjectInformationType {
-  projectId: number;
+  projectId?: number;
   projectName: string;
   introduce: string;
   startDate: string;

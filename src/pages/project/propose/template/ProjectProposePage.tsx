@@ -1,8 +1,8 @@
-import useGetProjectById from '@/hooks/api/project/index/useGetProjectById';
-import CheckPropose from '@/pages/project/propose/organism/CheckPropose';
-import DecidePropose from '@/pages/project/propose/organism/DecidePropose';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
+import CheckPropose from '@pages/project/propose/organism/CheckPropose';
+import DecidePropose from '@pages/project/propose/organism/DecidePropose';
 import { ActivityComponentType } from '@stackflow/react';
 
 interface ProjectProposePageParams {

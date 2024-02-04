@@ -1,12 +1,12 @@
-import { usePostProjectRespondInvitation } from '@/hooks/api/project/projectId/usePostProjectRespondInvitation';
 import Button from '@components/common/atom/Button';
 import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import Modal from '@components/common/molecule/Modal';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import { useGetProjectById } from '@hooks/api/project/[project-id]/useGetProjectById';
+import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
+import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
-import ProjectInformation from '@pages/project/[id]/organism/ProjectInformation';
+import ProjectInformation from '@pages/project/projectId/organism/ProjectInformation';
 import { RespondType } from '@type/enums';
 import { Fragment, useState } from 'react';
 

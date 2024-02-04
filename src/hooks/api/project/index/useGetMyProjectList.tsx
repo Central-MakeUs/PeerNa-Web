@@ -1,6 +1,6 @@
-import { InfiniteApiResponse, http } from '@/API';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ProjectItemType } from '@type/index';
+import { InfiniteApiResponse, http } from '@utils/API';
 
 interface ProjectItemResponseDTO extends ProjectItemType {}
 

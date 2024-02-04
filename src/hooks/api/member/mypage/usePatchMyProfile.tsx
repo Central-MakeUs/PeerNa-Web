@@ -1,6 +1,6 @@
-import { ApiResponse, http } from '@/API';
 import { useMutation } from '@tanstack/react-query';
 import { MemberDefaultInformationType } from '@type/index';
+import { ApiResponse, http } from '@utils/API';
 
 type PickMemberDefaultInformationmationType = Pick<
   MemberDefaultInformationType,

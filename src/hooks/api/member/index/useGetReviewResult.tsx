@@ -1,6 +1,6 @@
-import { ApiResponse, http } from '@/API';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { MemberReviewResultType } from '@type/index';
+import { ApiResponse, http } from '@utils/API';
 
 interface ReviewResultResponseDTO extends MemberReviewResultType {}
 
