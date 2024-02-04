@@ -1,6 +1,6 @@
 import { ApiResponse, http } from '@/API';
+import { OverallOpinionProps } from '@/pages/mypage/index/molecule/OverallOpinion';
 import { CardType } from '@constants/image';
-import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { CreatorSimpleProfileType, ProjectItemType } from '@type/index';
 
