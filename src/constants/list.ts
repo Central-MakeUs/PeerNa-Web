@@ -58,61 +58,61 @@ export const KEYWORD_CARD_INFO: Record<
   ResultKeyword, PeerKeywordCard
 > = {
   DRIVING: {
-    image: 'DRIVING',
+    image: ResultKeyword.DRIVING,
     caption: '가치관',
     title: '추진하는',
     content: '팀을 이끄는 배의 선장 같은 동료에요',
   },
   COOPERATIVE: {
-    image: 'COOPERATIVE',
+    image: ResultKeyword.COOPERATIVE,
     caption: '가치관',
     title: '협조하는',
     content: '팀을 든든히 받쳐주는 버팀목 같은 동료에요',
   },
   ANALYTICAL: {
-    image: 'ANALYTICAL',
+    image: ResultKeyword.ANALYTICAL,
     caption: '사고 방식',
     title: '분석적인',
     content: '목표 실현 가능성을 높이는 동료에요',
   },
   COMPREHENSIVE: {
-    image: 'COMPREHENSIVE',
+    image: ResultKeyword.COMPREHENSIVE,
     caption: '사고 방식',
     title: '종합적인',
     content: '현실과 이상을 두루 고려하는 동료에요',
   },
   FUTURE_ORIENTED: {
-    image: 'FUTURE_ORIENTED',
+    image: ResultKeyword.FUTURE_ORIENTED,
     caption: '사고 방식',
     title: '미래지향적인',
     content: '넓은 시야로 큰 그림을 그리는 동료에요',
   },
   PRAGMATIC: {
-    image: 'PRAGMATIC',
+    image: ResultKeyword.PRAGMATIC,
     caption: '소통 방식',
     title: '냉철한',
     content: '솔직한 대화를 이끌어 내는 동료에요',
   },
-  MULTIDIMENSIONAL: {
-    image: 'MULTI_DIMENSIONAL',
+  MULTI_DIMENSIONAL: {
+    image: ResultKeyword.MULTI_DIMENSIONAL,
     caption: '소통 방식',
     title: '입체적인',
     content: '안정적이고 견고한 외유내강의 동료에요',
   },
   WARMHEARTED: {
-    image: 'WARMHEARTED',
+    image: ResultKeyword.WARMHEARTED,
     caption: '소통 방식',
     title: '따듯한',
     content: '힘과 용기를 불어넣는 동료에요',
   },
   CAUTIOUS: {
-    image: 'CAUTIOUS',
+    image: ResultKeyword.CAUTIOUS,
     caption: '결정 방식',
     title: '신중한',
     content: '위험성과 변수를 줄여 줄 동료에요',
   },
   CHALLENGING: {
-    image: 'CHALLENGING',
+    image: ResultKeyword.CHALLENGING,
     caption: '결정 방식',
     title: '신중한',
     content: '팀에게 새로운 길을 열어 줄 동료에요',
