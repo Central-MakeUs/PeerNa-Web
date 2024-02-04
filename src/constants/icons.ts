@@ -82,6 +82,7 @@ export const Icon = {
   Save: 'save',
   Help: 'help',
   Apple: 'apple',
+  Kakao: 'kakao',
   DocumentSplitHint: 'document_split_hint',
   Shape: 'shape',
   DocumentTableSearch: 'document_table_search',

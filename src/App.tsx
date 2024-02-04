@@ -1,7 +1,7 @@
 import ErrorFallback from '@components/common/molecule/ErrorFallback';
+import Modals from '@components/common/molecule/Modal';
 import BottomSheet from '@components/common/organism/BottomSheet';
 import { Stack } from '@hooks/common/useStackFlow';
-import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import { WebviewBridge } from '@utils/webview';
 import { useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -35,7 +35,7 @@ function App() {
             },
           }}
         />
-        <LoginModal />
+        <Modals />
       </ErrorBoundary>
     </div>
   );

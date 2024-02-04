@@ -1,6 +1,6 @@
 import Button from '@components/common/atom/Button';
 import ButtonContainer from '@components/common/molecule/ButtonContainer';
-import Modal from '@components/common/molecule/Modal';
+import Modal from '@components/common/molecule/LegacyModal';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Modal> = {
