@@ -7,11 +7,13 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import { PartType } from '@constants/member';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
 import useIntersection from '@hooks/common/useIntersection';
+import { useFlow } from '@hooks/common/useStackFlow';
 import { Tab } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import Layout from '@pages/mypage/index/organism/Layout';
 import HomeHeader from '@pages/notification/index/molecule/HomeHeader';
 import { ActivityComponentType } from '@stackflow/react';
+import { getAccessToken, getRefreshToken } from '@utils/token';
 import { useEffect, useState } from 'react';
 import ReviewButton from '../atom/ReviewButton';
 import PeerTypeAvatarList from '../molecule/PeerTypeAvatarList';
@@ -26,6 +28,13 @@ const HomePage: ActivityComponentType = () => {
   useEffect(() => {
     refetch();
   }, [currentTab]);
+
+  const { push } = useFlow();
+  useEffect(() => {
+    if (!getAccessToken() || !getRefreshToken()) {
+      push('OnboardingPage', { step: '1' });
+    }
+  }, []);
 
   const intersectionRef = useIntersection(fetchNextPage);
 

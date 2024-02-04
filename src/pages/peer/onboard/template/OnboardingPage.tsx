@@ -9,6 +9,7 @@ import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import useReviewState from '@hooks/store/useReviewState';
 import OnboardingCard from '@pages/peer/onboard/organism/OnboardingCard';
 import { ActivityComponentType } from '@stackflow/react';
+import { getAccessToken, getRefreshToken } from '@utils/token';
 import { useEffect } from 'react';
 
 type OnboardingPageParams = {
@@ -23,7 +24,10 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   useEffect(() => {
     handleClear();
     handleClearReviews();
-  });
+    if (getAccessToken() || getRefreshToken()) {
+      push('HomePage', {});
+    }
+  }, []);
 
   const { push, pop } = useFlow();
   const curStep = parseInt(params.step ?? 1);
