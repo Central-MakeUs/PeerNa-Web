@@ -80,7 +80,7 @@ export const Icon = {
   Save: 'save',
   Help: 'help',
   Apple: 'apple',
-  DocumentSplitHint: 'document_split_hint',
   Shape: 'shape',
+  DocumentSplitHint: 'document_split_hint',
   DocumentTableSearch: 'document_table_search',
 };
