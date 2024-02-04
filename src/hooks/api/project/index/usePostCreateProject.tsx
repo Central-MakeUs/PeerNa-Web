@@ -1,6 +1,6 @@
+import { ApiResponse, http } from '@/API';
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInformationType, ProjectInviteSuccessType } from '@type/index';
-import { ApiResponse, http } from 'API';
 
 interface ProjectCreateRequestDTO extends ProjectInformationType {}
 

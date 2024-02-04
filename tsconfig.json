@@ -21,15 +21,15 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["@/*"],
+      "@/*": ["./*"],
       "@constants/*": ["constants/*"],
       "@components/*": ["components/*"],
       "@assets/*": ["assets/*"],
       "@type/*": ["type/*"],
       "@utils/*": ["utils/*"],
       "@store/*": ["store/*"],
+      "@apis/*": ["apis/*"],
       "@hooks/*": ["hooks/*"],
-      "@pages/*": ["pages/*"],
     },
   },
   "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],

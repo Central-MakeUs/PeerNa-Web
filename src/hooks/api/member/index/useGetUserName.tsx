@@ -1,5 +1,5 @@
+import { ApiResponse, http } from '@/API';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ApiResponse, http } from 'API';
 
 interface MemberUserNameDTO {
   name: string;

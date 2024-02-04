@@ -1,6 +1,6 @@
+import { ApiResponse, http } from '@/API';
 import { PeerGradeTypes } from '@store/reviewState';
 import { useMutation } from '@tanstack/react-query';
-import { ApiResponse, http } from 'API';
 
 interface ReviewPeerRequestDTO {
   targetUuid: string;
