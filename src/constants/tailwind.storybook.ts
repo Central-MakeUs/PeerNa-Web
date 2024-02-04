@@ -67,4 +67,16 @@ export const TRASH_CLASSES = `
   text-[#000000]
   text-[#FF7474]
   text-[#A64141]
+
+  bottom-0
+  bottom-1
+  bottom-2
+  bottom-3
+  bottom-4
+  bottom-5
+  bottom-6
+  bottom-7
+  bottom-8
+  bottom-9
+  bottom-10
 `;
