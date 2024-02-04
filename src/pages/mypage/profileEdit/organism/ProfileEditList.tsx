@@ -1,15 +1,14 @@
 import Dropdown from '@components/common/atom/Dropdown';
 import TextArea from '@components/common/atom/TextArea';
 import Typography from '@components/common/atom/Typography';
-import { JOB_LIST, PART_LIST } from '@constants/member';
-import { MemberMeDTO } from '@hooks/api/member/index/useGetMe';
+import { JOB_MAPPER, PART_MAPPER } from "@constants/mapper";
 import HeaderContainer from '@pages/mypage/profileEdit/molecule/HeaderContainer';
 import { ProfileSelfStateType } from '@store/profileSelfState';
-import { getPartJobTitle } from '@utils/getTitleValue';
-
+import { JobType, PartType } from "@type/enums";
+import { ProfileCardInfo } from "@type/index";
 interface ProfileEditProps {
   profileSelf: ProfileSelfStateType;
-  myProfileInfo: MemberMeDTO;
+  myProfileInfo: ProfileCardInfo;
   handleClickJob: () => void;
   handleClickPart: () => void;
   handleChangeOneLiner: (newLiner: string) => void;
@@ -30,7 +29,7 @@ export default function ProfileEditList({
           <Typography variant="header03">직업</Typography>
         </HeaderContainer>
         <Dropdown
-          value={getPartJobTitle(profileSelf?.job, JOB_LIST)}
+          value={JOB_MAPPER[profileSelf.job as JobType]}
           handleClick={handleClickJob}
         ></Dropdown>
       </li>
@@ -39,7 +38,7 @@ export default function ProfileEditList({
           <Typography variant="header03">직무</Typography>
         </HeaderContainer>
         <Dropdown
-          value={getPartJobTitle(profileSelf?.part, PART_LIST)}
+          value={PART_MAPPER[profileSelf.part as PartType]}
           handleClick={handleClickPart}
         ></Dropdown>
       </li>

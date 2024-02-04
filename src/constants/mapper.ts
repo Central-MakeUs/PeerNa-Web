@@ -1,4 +1,5 @@
-import { JobType, NoticeType, PartType, TestType } from "@type/enums";
+import { JobType, NoticeType, PartType } from "@type/enums";
+import { KeywordType } from "@type/index";
 import { KeywordResultList } from "@type/value";
 
 export const PART_MAPPER: Record<PartType, string> = {
@@ -28,7 +29,7 @@ export const NOTICE_MAPPER: Record<NoticeType, string> = {
   DECLINE_PROJECT_JOIN_REQUEST: '프로젝트 참여 요청 거절',
 };
 
-export const KEYWORD_MAPPER: Record<TestType, KeywordResultList> = {
+export const KEYWORD_MAPPER: Record<KeywordType, KeywordResultList> = {
   D: {
     keywords: [
       '좋은 리더',
@@ -125,4 +126,5 @@ export const KEYWORD_MAPPER: Record<TestType, KeywordResultList> = {
       'Open',
     ],
   },
+  isDisabled: { keywords: [], icons: [] },
 }

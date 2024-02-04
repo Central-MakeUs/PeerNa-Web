@@ -1,20 +1,20 @@
-import { Access_Token, Refresh_Token } from '@constants/localStorage';
+import { StorageKey } from "@constants/localStorage";
 import { WebviewBridge } from '@utils/webview';
 import { useState } from 'react';
 
 export default function useToken() {
   const [accessToken, setAccessToken] = useState(
-    () => localStorage.getItem(Access_Token) || '',
+    () => localStorage.getItem(StorageKey.AccessToken) || '',
   );
   const [refreshToken, setRefreshToken] = useState(
-    () => localStorage.getItem(Refresh_Token) || '',
+    () => localStorage.getItem(StorageKey.RefreshToken) || '',
   );
 
   const updateToken = (newAccessToken: string, newRefreshToken: string) => {
     setAccessToken(newAccessToken);
     setRefreshToken(newRefreshToken);
-    localStorage.setItem(Access_Token, newAccessToken);
-    localStorage.setItem(Refresh_Token, newRefreshToken);
+    localStorage.setItem(StorageKey.AccessToken, newAccessToken);
+    localStorage.setItem(StorageKey.RefreshToken, newRefreshToken);
     WebviewBridge.postMessage({
       type: 'login',
       data: {
@@ -27,8 +27,8 @@ export default function useToken() {
   const resetToken = () => {
     setAccessToken('');
     setRefreshToken('');
-    localStorage.removeItem(Access_Token);
-    localStorage.removeItem(Refresh_Token);
+    localStorage.removeItem(StorageKey.AccessToken);
+    localStorage.removeItem(StorageKey.RefreshToken);
   };
 
   return { accessToken, refreshToken, updateToken, resetToken };

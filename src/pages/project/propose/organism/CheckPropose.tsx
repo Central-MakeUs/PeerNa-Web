@@ -17,6 +17,7 @@ export default function CheckPropose({ nextStep, projectId }: CheckPropose) {
     <Fragment>
       <FixedCenter>
         <div className="w-[124px] h-[124px] bg-primary100 rounded-full flex justify-center items-center">
+          // TODO) id 상수명 변경
           <SvgIcon id="Shape" color="primary" width={64} height={64} />
         </div>
       </FixedCenter>

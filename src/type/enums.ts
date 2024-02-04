@@ -58,4 +58,5 @@ export enum ResultKeyword {
   WARMHEARTED = 'WARMHEARTED',
   CAUTIOUS = 'CAUTIOUS',
   CHALLENGING = 'CHALLENGING',
+  LOCKED = 'LOCKED',
 }

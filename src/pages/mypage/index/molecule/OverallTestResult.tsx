@@ -2,16 +2,17 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Tooltip from '@components/common/atom/Tooltip';
 import Typography from '@components/common/atom/Typography';
 import KeywordCard from '@components/common/molecule/KeywordCard';
-import { CardType, TestResultCardDescription } from '@constants/image';
-import { TestKeywordData, TestKeywordType } from '@constants/keyword';
+import { KEYWORD_CARD_INFO } from "@constants/list";
+import { KEYWORD_MAPPER } from "@constants/mapper";
 import { Button } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { ResultKeyword, TestType } from "@type/enums";
 import { Fragment } from 'react';
 
 interface OverallTestResultProps {
   colorAnswerIdList: number[];
   selfTestAnswerIdList: number[];
-  peerCardList: CardType[];
+  peerCardList: ResultKeyword[];
   type: 'self' | 'peer';
 }
 
@@ -37,8 +38,8 @@ export default function OverallTestResult({
   const selfIdList = separateIdsByType(selfTestAnswerIdList);
   const colorIdList = separateIdsByType(colorAnswerIdList);
 
-  const getKeywordsByIdList = (type: TestKeywordType, ids: number[]) => {
-    return ids.map(id => TestKeywordData[type].keywords[id - 1]);
+  const getKeywordsByIdList = (type: TestType, ids: number[]) => {
+    return ids.map(id => KEYWORD_MAPPER[type].keywords[id - 1]);
   };
 
   const title =
@@ -76,33 +77,33 @@ export default function OverallTestResult({
       <section className="flex flex-col gap-3 items-center">
         <KeywordCard
           title="가치관"
-          subtitle={TestResultCardDescription[peerCardList[0]]}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[0]].content}
           type="D"
-          keywords={getKeywordsByIdList('D', selfIdList.D)}
+          keywords={getKeywordsByIdList(TestType.D, selfIdList.D)}
           colorAnswerIdList={colorIdList.D}
           selfTestIdList={selfIdList.D}
         />
         <KeywordCard
           title="소통 방식"
-          subtitle={TestResultCardDescription[peerCardList[1]]}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[1]].content}
           type="I"
-          keywords={getKeywordsByIdList('I', selfIdList.I)}
+          keywords={getKeywordsByIdList(TestType.I, selfIdList.I)}
           colorAnswerIdList={colorIdList.I}
           selfTestIdList={selfIdList.I}
         />
         <KeywordCard
           title="사고 방식"
-          subtitle={TestResultCardDescription[peerCardList[2]]}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[2]].content}
           type="S"
-          keywords={getKeywordsByIdList('S', selfIdList.S)}
+          keywords={getKeywordsByIdList(TestType.S, selfIdList.S)}
           colorAnswerIdList={colorIdList.S}
           selfTestIdList={selfIdList.S}
         />
         <KeywordCard
           title="결정 방식"
-          subtitle={TestResultCardDescription[peerCardList[3]]}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[3]].content}
           type="C"
-          keywords={getKeywordsByIdList('C', selfIdList.C)}
+          keywords={getKeywordsByIdList(TestType.C, selfIdList.C)}
           colorAnswerIdList={colorIdList.C}
           selfTestIdList={selfIdList.C}
         />

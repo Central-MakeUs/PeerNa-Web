@@ -1,13 +1,13 @@
 import Badge from '@components/common/atom/Badge';
 import Typography from '@components/common/atom/Typography';
-import { CardType } from '@constants/image';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { ResultKeyword } from "@type/enums";
 import TestCardList from './TestCardList';
 
 export default function PeerTestResult({
   peerCardList,
 }: {
-  peerCardList: CardType[];
+  peerCardList: ResultKeyword[];
 }) {
   return (
     <>

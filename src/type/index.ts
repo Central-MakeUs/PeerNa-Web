@@ -1,7 +1,9 @@
 import { PeerGradeTypes } from '@store/reviewState';
-import { JobType, NoticeType, PartType, ResultKeyword } from '@type/enums';
+import { JobType, NoticeType, PartType, ResultKeyword, TestType } from '@type/enums';
 
 export type ReviewResultType = 'D' | 'I' | 'S' | 'C';
+
+export type KeywordType = 'D' | 'I' | 'S' | 'C' | 'isDisabled';
 
 export interface ProjectItemType {
   projectId: number;
@@ -38,7 +40,7 @@ export interface CreatorSimpleProfileType {
   name: string;
   job: JobType;
   part: PartType;
-  peerTestType: ReviewResultType;
+  peerTestType: TestType;
   totalScore: number;
   oneLiner: string;
 };

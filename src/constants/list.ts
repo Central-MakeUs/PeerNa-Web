@@ -1,6 +1,6 @@
 
-import { PeerGrade, ResultKeyword, TestType } from "@type/enums";
-import { PeerGradeTest, PeerKeywordCard, PeerTestText } from "@type/value";
+import { JobType, PartType, PeerGrade, ResultKeyword, TestType } from "@type/enums";
+import { JobList, PartList, PeerGradeTest, PeerKeywordCard, PeerTestText } from "@type/value";
 
 export const TEST_TYPE_INFO: Record<TestType, PeerTestText> = {
   D: {
@@ -117,4 +117,25 @@ export const KEYWORD_CARD_INFO: Record<
     title: '신중한',
     content: '팀에게 새로운 길을 열어 줄 동료에요',
   },
+  LOCKED: {
+    image: ResultKeyword.LOCKED,
+  }
 };
+
+
+export const JOB_LIST: JobList[] = [
+  { key: JobType.STUDENT, text: '대학생' },
+  { key: JobType.JOB_SEEKER, text: '취준생' },
+  { key: JobType.WORKER, text: '직장인' },
+  { key: JobType.ENTREPRENEUR, text: '창업가' },
+  { key: JobType.FREELANCER, text: '프리랜서' },
+  { key: JobType.OTHER, text: '기타' },
+];
+
+export const PART_LIST: PartList[] = [
+  { key: PartType.PLANNER, text: '기획자' },
+  { key: PartType.DESIGNER, text: '디자이너' },
+  { key: PartType.FRONT_END, text: 'FE개발자' },
+  { key: PartType.BACK_END, text: 'BE개발자' },
+  { key: PartType.OTHER, text: '기타' },
+];

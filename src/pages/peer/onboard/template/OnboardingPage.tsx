@@ -3,7 +3,7 @@ import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { ON_BOARDING_HEADER_TEXT } from '@constants/onboard';
+import { ON_BOARDING_HEADER_TEXT } from "@constants/onboard";
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import useReviewState from '@hooks/store/useReviewState';

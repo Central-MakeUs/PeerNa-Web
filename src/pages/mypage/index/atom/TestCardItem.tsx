@@ -1,28 +1,20 @@
 import Typography from '@components/common/atom/Typography';
-import { CardType, TestCardImage, TestCardKeyword } from '@constants/image';
+import { KEYWORD_CARD_INFO } from "@constants/list";
+import { ResultKeyword } from "@type/enums";
 
-interface TestCardItemProps {
-  cardType: CardType;
-}
+//TODO) FlipCard 컴포넌트 사용
 
-type TestCardImageType = {
-  [key in CardType]: string;
-};
 
-type TestCardKeywordType = {
-  [key in CardType]: string;
-};
-
-export default function TestCardItem({ cardType }: TestCardItemProps) {
+export default function TestCardItem({ cardType }: { cardType: ResultKeyword }) {
   return (
     <div className="flex flex-col items-center gap-2">
       <img
-        src={(TestCardImage as TestCardImageType)[cardType]}
+        src={KEYWORD_CARD_INFO[cardType].image}
         className="w-[82px]"
         alt={cardType}
       />
       <Typography variant="body04" fontColor="gray08">
-        {(TestCardKeyword as TestCardKeywordType)[cardType]}
+        {KEYWORD_CARD_INFO[cardType].caption}
       </Typography>
     </div>
   );

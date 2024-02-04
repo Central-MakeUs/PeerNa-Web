@@ -1,5 +1,5 @@
 import Spinner from '@components/common/atom/Spinner';
-import { Member_Id } from '@constants/localStorage';
+import { StorageKey } from "@constants/localStorage";
 import useHistory from '@hooks/common/useHistory';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useToken from '@hooks/common/useToken';
@@ -29,7 +29,7 @@ const RedirectPage: ActivityComponentType = () => {
 
   useEffect(() => {
     if (memberId && accessToken && refreshToken) {
-      localStorage.setItem(Member_Id, memberId);
+      localStorage.setItem(StorageKey.MemberId, memberId);
       updateToken(accessToken, refreshToken);
 
       const { activity, params } = history;

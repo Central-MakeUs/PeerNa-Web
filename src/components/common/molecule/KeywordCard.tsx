@@ -1,8 +1,7 @@
 import Chip from '@components/common/atom/Chip';
 import Typography from '@components/common/atom/Typography';
-import { Palette } from '@constants/styles';
+import { KEYWORD_MAPPER } from "@constants/mapper";
 import { Spacer } from '@nextui-org/react';
-import { TestKeywordData } from '@constants/keyword';
 
 interface KeywordCard {
   type: 'D' | 'I' | 'S' | 'C' | 'isDisabled';
@@ -25,7 +24,7 @@ export default function KeywordCard({
     <div className="w-full border-1 rounded-xl py-[24px] px-[20px]">
       <div className="flex flex-col gap-1">
         <Typography variant="header03">{title}</Typography>
-        <Typography variant="body05" className={`text-[${Palette.gray05}]`}>
+        <Typography variant="body05" fontColor="gray05">
           {subtitle}
         </Typography>
       </div>
@@ -39,7 +38,7 @@ export default function KeywordCard({
                 ? 'isDisabled'
                 : type
             }
-            icon={TestKeywordData[type].icons[selfTestIdList[index] - 1]}
+            icon={KEYWORD_MAPPER[type].icons[selfTestIdList[index] - 1]}
           >
             {keyword}
           </Chip>

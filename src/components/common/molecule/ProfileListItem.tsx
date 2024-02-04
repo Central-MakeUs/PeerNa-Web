@@ -1,28 +1,22 @@
+import Card from "@components/common/atom/Card";
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { cardItem, CardType } from '@constants/card';
-import { JOB_LIST, PART_LIST } from '@constants/member';
-import { getPartJobTitle } from '@utils/getTitleValue';
-import SvgIcon from '../atom/SvgIcon';
+import { JOB_MAPPER, PART_MAPPER } from "@constants/mapper";
+import { CreatorSimpleProfileType } from "@type/index";
 
-interface ProfileListItemProps {
+interface ProfileListItemProps extends CreatorSimpleProfileType {
   isMyProfile: boolean;
-  testType: CardType;
-  username: string;
-  part: string;
-  score: number;
-  job: string;
-  introduce: string;
   children?: React.ReactNode;
 }
 
 export default function ProfileListItem({
   isMyProfile,
-  testType,
-  username,
+  peerTestType,
+  name,
   part,
-  score,
+  totalScore,
   job,
-  introduce,
+  oneLiner,
   children,
 }: ProfileListItemProps) {
   return (
@@ -33,12 +27,8 @@ export default function ProfileListItem({
         <div
           className={`!w-[64px] !h-[64px] !bg-gray01 flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
         >
-          {testType ? (
-            <img
-              src={cardItem[testType]}
-              alt="테스트 결과 카드"
-              className="w-[32px] h-[32px]"
-            />
+          {peerTestType ? (
+            <Card testResult={peerTestType} size="M" type="peer"/>
           ) : (
             <SvgIcon id="Person" width={32} height={32} color="gray04" />
           )}
@@ -49,10 +39,10 @@ export default function ProfileListItem({
               variant="body01"
               fontColor={isMyProfile ? 'white' : 'gray08'}
             >
-              {username}
+              {name}
             </Typography>
             <Typography variant="caption01" fontColor="primary500">
-              {getPartJobTitle(part, PART_LIST)}
+              {JOB_MAPPER[job]}
             </Typography>
           </div>
           <div className="flex items-center">
@@ -61,7 +51,7 @@ export default function ProfileListItem({
               fontColor={isMyProfile ? 'gray04' : 'gray07'}
               className="mr-1"
             >
-              {getPartJobTitle(job, JOB_LIST)}
+              {PART_MAPPER[part]}
             </Typography>
             <span className={`text-${isMyProfile ? 'gray04' : 'gray07'}`}>
               |
@@ -71,11 +61,11 @@ export default function ProfileListItem({
               fontColor={isMyProfile ? 'gray04' : 'gray07'}
               className="ml-1"
             >
-              {score ? `종합점수 ${score}점` : '종합점수 분석중'}
+              {totalScore ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
             </Typography>
           </div>
           <Typography variant="body05" fontColor="gray05">
-            {introduce}
+            {oneLiner}
           </Typography>
         </div>
       </div>

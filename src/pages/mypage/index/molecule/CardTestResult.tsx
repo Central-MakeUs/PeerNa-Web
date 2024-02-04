@@ -1,6 +1,6 @@
 import Typography from '@components/common/atom/Typography';
-import { TestCardImage } from '@constants/image';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { ResultKeyword } from "@type/enums";
 
 export default function CardTestResult() {
   return (
@@ -15,8 +15,9 @@ export default function CardTestResult() {
           응답에 따라 분석 결과는 변경될 수 있어요.
         </Typography>
       </HeaderContainer>
+      //TODO_ FLIPCard 컴포넌트 사용
       <img
-        src={TestCardImage.RESULT}
+        src={ResultKeyword.ANALYTICAL}
         alt="테스트 결과 카드"
         className="mt-4 mb-8 mx-auto !w-[171px]"
       />

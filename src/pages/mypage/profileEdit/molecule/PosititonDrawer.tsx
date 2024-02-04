@@ -1,9 +1,9 @@
+import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
-import { PART_LIST } from '@constants/member';
+import { PART_LIST } from "@constants/list";
 import { profileSelfState } from '@store/profileSelfState';
 import { useRecoilState } from 'recoil';
 import SelectListItem from './SelectListItem';
-import Typography from '@components/common/atom/Typography';
 
 interface PartDrawerProps {
   openPartBottomSheet: boolean;
@@ -33,12 +33,12 @@ export default function PositionDrawer({
         >
           직무
         </Typography>
-        {Object.values(PART_LIST).map(title => (
+        {Object.values(PART_LIST).map(part => (
           <SelectListItem
-            key={title.part}
-            title={title.title}
-            isSelect={profileSelf.part === title.title}
-            onClick={() => handleChangePart(title.part)}
+            key={part.key}
+            title={part.text}
+            isSelect={profileSelf.part === part.key}
+            onClick={() => handleChangePart(part.text)}
           />
         ))}
       </DrawerContent>
