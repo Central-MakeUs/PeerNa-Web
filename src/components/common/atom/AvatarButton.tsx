@@ -1,5 +1,5 @@
-import useFocusTimeout from '@hooks/useFocusTimeout';
 import { CardType, cardItem } from '@constants/card';
+import useFocusTimeout from '@hooks/common/useFocusTimeout';
 
 type AvatarButtonProps = {
   type: CardType;

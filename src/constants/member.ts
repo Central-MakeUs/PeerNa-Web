@@ -20,11 +20,11 @@ export const JOB_LIST: {
 ];
 
 export type PartType =
-  | 'PLANNER'
-  | 'DESIGNER'
   | 'FRONT_END'
   | 'BACK_END'
+  | 'DESIGNER'
   | 'MARKETER'
+  | 'PLANNER'
   | 'OTHER'
   | 'ALL';
 

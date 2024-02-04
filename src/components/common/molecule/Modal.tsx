@@ -5,7 +5,7 @@ import {
   Modal as ModalWithNextui,
 } from '@nextui-org/react';
 
-import useModal from '@hooks/useModal';
+import useModal from '@hooks/store/useModal';
 import { ReactNode } from 'react';
 import Typography from '../atom/Typography';
 

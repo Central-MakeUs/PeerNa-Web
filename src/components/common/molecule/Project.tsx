@@ -1,6 +1,6 @@
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
-import useFocusTimeout from '@hooks/useFocusTimeout';
+import useFocusTimeout from '@hooks/common/useFocusTimeout';
 
 interface ProjectProps {
   title: string;

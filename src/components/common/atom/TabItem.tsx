@@ -2,7 +2,7 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { PageTypes, TabItemTypes } from '@constants/activities';
 import { IconKeyType } from '@constants/icons';
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 
 interface TabItemProps {
   icon: TabItemTypes;

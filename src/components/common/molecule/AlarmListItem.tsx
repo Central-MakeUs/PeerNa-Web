@@ -2,7 +2,7 @@ import IconButton from '@components/common/atom/IconButton';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { Palette } from '@constants/styles';
-import { useFlow } from '@hooks/useStackFlow';
+import { useFlow } from '@hooks/common/useStackFlow';
 interface AlarmListItemProps {
   title: string;
   subtitle: string;

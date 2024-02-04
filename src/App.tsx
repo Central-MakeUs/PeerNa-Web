@@ -1,6 +1,6 @@
 import BottomSheet from '@components/common/organism/BottomSheet';
-import LoginModal from '@components/pages/login/organism/LoginModal';
-import { Stack } from '@hooks/useStackFlow';
+import { Stack } from '@hooks/common/useStackFlow';
+import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import { WebviewBridge } from '@utils/webview';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';

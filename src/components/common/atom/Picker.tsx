@@ -1,5 +1,5 @@
 import { FontVariantsClassName, PickerSize } from '@constants/styles';
-import useFocusTimeout from '@hooks/useFocusTimeout';
+import useFocusTimeout from '@hooks/common/useFocusTimeout';
 import { Button, ButtonProps } from '@nextui-org/react';
 import { PickerSizeTypes } from '@type/styles';
 import { ReactNode } from 'react';

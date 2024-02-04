@@ -1,29 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import DeveloperPage from '@components/pages/developer/DeveloperPage';
-import HomePage from '@components/pages/home/template/HomePage';
-import AppleRedirectPage from '@components/pages/login/template/AppleRedirectPage';
-import KakaoRedirectPage from '@components/pages/login/template/KakaoRedirectPage';
-import MoreFeedbackPage from '@components/pages/moreFeedback/template/MoreFeedbackPage';
-import MorePeerFeedbackPage from '@components/pages/moreFeedback/template/MorePeerFeedbackPage';
-import MorePeerProjectPage from '@components/pages/moreProject/template/MorePeerProjectPage';
-import PeerProjectDetailPage from '@components/pages/moreProject/template/PeerProjectDetailPage';
-import MyPage from '@components/pages/mypage/template/MyPage';
-import NotificationPage from '@components/pages/notification/template/NotificationPage';
-import OnboardingPage from '@components/pages/onboard/template/OnboardingPage';
-import PeerPage from '@components/pages/peer/template/PeerPage';
-import PeerDetailPage from '@components/pages/peerDetail/template/PeerDetailPage';
-import PeerTypePage from '@components/pages/peerType/template/PeerTypePage';
-import ProfileEditPage from '@components/pages/profileEdit/template/ProfileEditPage';
-import ProjectPage from '@components/pages/project/template/ProjectPage';
-import ProjectCreatePage from '@components/pages/projectCreate/template/ProjectCreatePage';
-import ProjectDetailPage from '@components/pages/projectDetail/template/ProjectDetailPage';
-import ProjectProposePage from '@components/pages/projectPropose/template/ProjectProposePage';
-import ReviewPage from '@components/pages/review/template/ReviewPage';
-import ReviewPeerPage from '@components/pages/reviewPeer/template/ReviewPeerPage';
-import ReviewResultPage from '@components/pages/reviewResult/template/ReviewResultPage';
-import ReviewSelfPage from '@components/pages/reviewSelf/template/ReviewSelfPage';
-import SettingPage from '@components/pages/setting/template/SettingPage';
 import { MODE } from '@constants/index';
+import RedirectPage from '@pages/auth/redirect/template/RedirectPage';
+import DeveloperPage from '@pages/developer/DeveloperPage';
+import HomePage from '@pages/home/index/template/HomePage';
+import MyPage from '@pages/mypage/index/template/MyPage';
+import MoreFeedbackPage from '@pages/mypage/moreFeedback/template/MoreFeedbackPage';
+import MorePeerFeedbackPage from '@pages/mypage/moreFeedback/template/MorePeerFeedbackPage';
+import MorePeerProjectPage from '@pages/mypage/moreProject/template/MorePeerProjectPage';
+import PeerProjectDetailPage from '@pages/mypage/moreProject/template/PeerProjectDetailPage';
+import ProfileEditPage from '@pages/mypage/profileEdit/template/ProfileEditPage';
+import SettingPage from '@pages/mypage/setting/template/SettingPage';
+import NotificationPage from '@pages/notification/index/template/NotificationPage';
+import PeerDetailPage from '@pages/peer/detail/template/PeerDetailPage';
+import PeerPage from '@pages/peer/index/template/PeerPage';
+import OnboardingPage from '@pages/peer/onboard/template/OnboardingPage';
+import PeerTypePage from '@pages/peer/type/template/PeerTypePage';
+import ProjectDetailPage from '@pages/project/[id]/template/ProjectDetailPage';
+import ProjectCreatePage from '@pages/project/create/template/ProjectCreatePage';
+import ProjectPage from '@pages/project/index/template/ProjectPage';
+import ProjectProposePage from '@pages/project/propose/template/ProjectProposePage';
+import ReviewPage from '@pages/review/index/template/ReviewPage';
+import ReviewPeerPage from '@pages/review/peer/template/ReviewPeerPage';
+import ReviewResultPage from '@pages/review/result/template/ReviewResultPage';
+import ReviewSelfPage from '@pages/review/self/template/ReviewSelfPage';
 import { ActivityComponentType } from '@stackflow/react';
 
 interface PageMap extends Record<string, ActivityComponentType<any>> {}
@@ -47,8 +46,7 @@ export const Pages: PageMap = {
   ReviewSelfPage,
   ReviewPeerPage,
   ReviewResultPage,
-  KakaoRedirectPage,
-  AppleRedirectPage,
+  RedirectPage,
   ProjectCreatePage,
   ProjectDetailPage,
   ProjectProposePage,
@@ -62,28 +60,27 @@ export type ActivityTypes = keyof typeof Pages;
 
 export const PageRoutes: Record<keyof typeof Pages, string> = {
   HomePage: '/',
+  PeerPage: '/peer',
   PeerTypePage: '/peer/type/:type',
   PeerDetailPage: '/peer/:memberId',
   MorePeerProjectPage: '/peer/:memberId/project',
   PeerProjectDetailPage: '/peer/:memberId/project/:projectId',
   MorePeerFeedbackPage: '/peer/:memberId/feedback',
-  PeerPage: '/peer',
   ProjectPage: '/project',
+  ProjectDetailPage: '/project/:id',
   ProjectCreatePage: '/project/create',
   ProjectProposePage: '/project/propose',
-  ProjectDetailPage: '/project/:id',
   NotificationPage: '/notification',
   MyPage: '/mypage',
+  SettingPage: '/mypage/setting',
   MoreFeedbackPage: '/mypage/feedback',
   ProfileEditPage: '/mypage/profile/edit',
-  SettingPage: '/mypage/setting',
-  OnboardingPage: '/onboarding',
   ReviewPage: '/review',
+  OnboardingPage: '/review/onboarding',
   ReviewSelfPage: '/review/self',
   ReviewPeerPage: '/review/peer',
   ReviewResultPage: '/review/result',
-  KakaoRedirectPage: '/login/kakao',
-  AppleRedirectPage: '/login/apple',
+  RedirectPage: '/auth/redirect',
 };
 
 if (MODE === 'development') {
