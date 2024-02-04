@@ -1,7 +1,10 @@
+import LoadingFallback from '@components/common/molecule/LoadingFallback';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
+import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import Test from '@components/wrapper/Test';
 import useModal from '@hooks/store/useModal';
 import { Button } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
@@ -19,6 +22,10 @@ const DeveloperPage: ActivityComponentType = () => {
         </Header.Body>
       </Header>
       <Content>
+        <ErrorBoundaryWithSuspense onReset={() => console.log('reset')}>
+          <Test />
+        </ErrorBoundaryWithSuspense>
+        <LoadingFallback />
         <div className="min-h-screen">
           <Button onClick={() => openModal('login')}>로그인</Button>
         </div>
