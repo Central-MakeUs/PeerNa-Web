@@ -1,5 +1,3 @@
-export type IconKeyType = keyof typeof Icon;
-
 export const Icon = {
   Search: 'search',
   Straight: 'straight',

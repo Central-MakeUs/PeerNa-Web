@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ProjectItemType } from '@type/index';
 import { InfiniteApiResponse, http } from 'API';
@@ -14,7 +15,7 @@ const getMorePeerProject = async (
 
 export default function useGetMorePeerProject(peerId: string) {
   return useInfiniteQuery({
-    queryKey: ['getSearchPeerPart', peerId],
+    queryKey: [QUERY_KEY.MORE_PEER_PROJECT, peerId],
     queryFn: ({ pageParam = 1 }) => getMorePeerProject(peerId, pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

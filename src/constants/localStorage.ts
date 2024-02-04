@@ -1,4 +1,6 @@
-export const Member_Id = 'memberId';
-export const Access_Token = 'accessToken';
-export const Refresh_Token = 'refreshToken';
-export const Fcm_Token = 'fcmToken';
+export enum StorageKey {
+  MemberId = 'memberId',
+  AccessToken = 'accessToken',
+  RefreshToken = 'refreshToken',
+  FcmToken = 'fcmToken',
+}

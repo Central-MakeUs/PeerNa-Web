@@ -1,7 +1,5 @@
-import { PeerCardType } from '@constants/image';
-import { NoticeType } from '@constants/noticeType';
-import { JobType, PartType } from '@constants/review';
 import { PeerGradeTypes } from '@store/reviewState';
+import { JobType, NoticeType, PartType, ResultKeyword } from '@type/enums';
 
 export type ReviewResultType = 'D' | 'I' | 'S' | 'C';
 
@@ -36,15 +34,18 @@ export interface ProjectInformationWithCreatorType
   creatorSimpleProfileDto: CreatorSimpleProfileType;
 }
 
-export type CreatorSimpleProfileType = {
-  memberId: number;
+export interface CreatorSimpleProfileType {
   name: string;
   job: JobType;
   part: PartType;
   peerTestType: ReviewResultType;
-  oneLiner: string;
   totalScore: number;
+  oneLiner: string;
 };
+
+export interface PeerSimpleProfileType extends CreatorSimpleProfileType {
+  memberId: number;
+}
 
 export interface MemberDefaultInformationType {
   name: string;
@@ -72,8 +73,24 @@ export interface ProjectInviteSuccessType {
 export interface MemberReviewResultType {
   memberName: string;
   testType: ReviewResultType;
-  group1: PeerCardType;
-  group2: PeerCardType;
-  group3: PeerCardType;
-  group4: PeerCardType;
+  group1: ResultKeyword;
+  group2: ResultKeyword;
+  group3: ResultKeyword;
+  group4: ResultKeyword;
+}
+
+export interface OverallOpinionProps {
+  totalEvaluation: {
+    count: number;
+    peerGrade: string;
+  }[];
+}
+
+export interface ProfileCardInfo {
+  name: string;
+  testType: ResultKeyword;
+  part: PartType;
+  job: JobType;
+  totalScore: number;
+  oneLiner: string;
 }

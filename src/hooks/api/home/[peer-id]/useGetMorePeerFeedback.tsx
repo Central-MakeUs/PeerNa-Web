@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { InfiniteApiResponse, http } from 'API';
 
@@ -11,7 +12,7 @@ const getMorePeerFeedback = async (
 
 export default function useGetMorePeerFeedback(peerId: number) {
   return useInfiniteQuery({
-    queryKey: ['getMorePeerFeedback', peerId],
+    queryKey: [QUERY_KEY.MORE_PEER_FEEDBACK, peerId],
     queryFn: ({ pageParam = 1 }) =>
       getMorePeerFeedback(peerId, pageParam as number),
     initialPageParam: 1,
