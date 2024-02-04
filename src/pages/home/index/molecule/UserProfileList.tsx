@@ -1,11 +1,13 @@
 import Button from '@components/common/atom/Button';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
+import { ProfileResponseDTO } from "@hooks/api/member/index/useGetMypageInfo";
 import { useFlow } from '@hooks/common/useStackFlow';
+import { PeerSimpleProfileType } from "@type/index";
 
 export default function UserProfileList({
   data,
 }: {
-  data: MemberSimpleDTOPage[];
+  data: ProfileResponseDTO[];
 }) {
   const { push } = useFlow();
 
@@ -13,23 +15,24 @@ export default function UserProfileList({
     push('PeerDetailPage', { memberId });
   };
 
-  if (!data[0]) {
+  if (!data || data.length === 0 || !data[0]?.memberSimpleProfileDto) {
     return <h1>데이터가 없습니다</h1>;
   }
 
   return (
     <ul className="w-full flex flex-col">
-      {data?.map(item =>
-        item?.memberSimpleProfileDtoList?.map(user => (
+      {data.map((item) => {
+        const user: PeerSimpleProfileType = item.memberSimpleProfileDto;
+        return (
           <li key={user.memberId}>
             <ProfileListItem
               isMyProfile={false}
-              testType={user.peerTestType}
-              username={user.name}
+              peerTestType={user.peerTestType}
+              name={user.name}
               part={user.part}
-              score={user.totalScore}
+              totalScore={user.totalScore}
               job={user.job}
-              introduce={user.oneLiner}
+              oneLiner={user.oneLiner}
             >
               <Button
                 buttonSize="md"
@@ -40,8 +43,8 @@ export default function UserProfileList({
               </Button>
             </ProfileListItem>
           </li>
-        )),
-      )}
+        );
+      })}
     </ul>
   );
 }

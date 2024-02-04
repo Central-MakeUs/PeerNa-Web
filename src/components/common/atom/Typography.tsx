@@ -4,7 +4,7 @@ import { HTMLAttributes } from 'react';
 
 export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   variant: FontVariantsKeys;
-  children: string | undefined;
+  children?: string;
   fontColor?: ColorTypes;
   as?: keyof JSX.IntrinsicElements;
 }

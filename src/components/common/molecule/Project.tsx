@@ -1,5 +1,4 @@
 import Typography from '@components/common/atom/Typography';
-import { Palette } from '@constants/styles';
 import useFocusTimeout from '@hooks/common/useFocusTimeout';
 
 interface ProjectProps {
@@ -38,11 +37,12 @@ export default function Project({
         <Typography variant="header03">{title}</Typography>
         <Typography
           variant="body01"
-          className={`w-full text-[${Palette.gray06}] overflow-hidden text-ellipsis whitespace-nowrap`}
+          fontColor="gray06"
+          className={`w-full overflow-hidden text-ellipsis whitespace-nowrap`}
         >
           {subtitle}
         </Typography>
-        <Typography variant="body03" className={`text-[${Palette.gray04}]`}>
+        <Typography variant="body03" fontColor="gray04">
           {date}
         </Typography>
       </div>

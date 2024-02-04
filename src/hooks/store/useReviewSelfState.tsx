@@ -1,9 +1,9 @@
-import { JobType, PartType } from '@constants/review';
 import {
   REVIEW_SELF_INITIAL_STATE,
   nameSizeValidator,
   reviewSelfState,
 } from '@store/reviewSelfState';
+import { JobType, PartType } from "@type/enums";
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 export default function useReviewSelfState() {

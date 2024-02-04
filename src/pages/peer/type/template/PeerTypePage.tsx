@@ -2,16 +2,16 @@ import IntersectionBox from '@components/common/atom/IntersectionBox';
 import Spinner from '@components/common/atom/Spinner';
 import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import { CardType } from '@constants/card';
 import useGetSearchPeerType from '@hooks/api/home/search/useGetSearchPeerType';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import UserProfileList from '@pages/home/index/molecule/UserProfileList';
 import { ActivityComponentType } from '@stackflow/react';
+import { TestType } from "@type/enums";
 import PeerItem from '../atom/PeerItem';
 
 type PeerTypePageParams = {
-  type: CardType;
+  type: TestType;
 };
 
 const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
@@ -45,7 +45,7 @@ const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
         <PeerItem type={peerType} />
       </header>
       {data && (
-        <UserProfileList data={data.pages.flatMap(page => page.result)} />
+        <UserProfileList data={data.pages} />
       )}
 
       <IntersectionBox ref={intersectionRef} />

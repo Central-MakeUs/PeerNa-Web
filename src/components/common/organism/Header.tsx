@@ -1,5 +1,5 @@
-import IconButton from '../atom/IconButton';
-import Typography from '../atom/Typography';
+import IconButton from '@components/common/atom/IconButton';
+import Typography from '@components/common/atom/Typography';
 
 interface HeaderProps {
   showBackButton: boolean;

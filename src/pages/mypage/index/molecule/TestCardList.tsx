@@ -1,17 +1,17 @@
-import { CardType } from '@constants/image';
+import { ResultKeyword } from "@type/enums";
 import TestCardItem from '../atom/TestCardItem';
 
 interface TestCardListProps {
-  selfTestCardList?: string[];
-  peerCardList?: string[];
+  selfTestCardList?: ResultKeyword[];
+  peerCardList?: ResultKeyword[];
   type: 'self' | 'peer' | 'locked';
   className?: string;
 }
 
 const getCardList = (
   type: 'self' | 'peer' | 'locked',
-  selfTestCardList?: string[],
-  peerCardList?: string[],
+  selfTestCardList?: ResultKeyword[],
+  peerCardList?: ResultKeyword[],
 ) => {
   const cardListMap = {
     self: selfTestCardList || [],
@@ -32,8 +32,8 @@ export default function TestCardList({
 
   return (
     <section className={`flex gap-2 justify-center ${className}`}>
-      {cardList.map((cardType, index) => (
-        <TestCardItem key={index} cardType={cardType as CardType} />
+      {cardList.map((cardType: ResultKeyword, index) => (
+        <TestCardItem key={index} cardType={cardType} />
       ))}
     </section>
   );
