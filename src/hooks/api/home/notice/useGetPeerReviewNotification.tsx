@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { NotificationItemType } from '@type/index';
 import { InfiniteApiResponse, http } from 'API';
@@ -13,7 +14,7 @@ const getPeerReviewNotification = async (
 
 export default function useGetPeerReviewNotification() {
   return useInfiniteQuery({
-    queryKey: ['getPeerReviewNotification'],
+    queryKey: [QUERY_KEY.PEER_REVIEW_NOTIFICATION],
     queryFn: ({ pageParam = 1 }) => getPeerReviewNotification(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

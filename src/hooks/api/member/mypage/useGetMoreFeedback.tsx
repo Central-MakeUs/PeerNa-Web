@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { InfiniteApiResponse, http } from 'API';
 
@@ -10,7 +11,7 @@ const getMoreFeedback = async (
 
 export default function useGetMoreFeedback() {
   return useInfiniteQuery({
-    queryKey: ['getMoreFeedback'],
+    queryKey: [QUERY_KEY.MY_PROJECT],
     queryFn: ({ pageParam = 1 }) => getMoreFeedback(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

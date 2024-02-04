@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { MemberDefaultInformationTypeWithUuid } from '@type/index';
 import { InfiniteApiResponse, http } from 'API';
@@ -17,7 +18,7 @@ const getSearchPeerPart = async (
 
 export default function useGetSearchPeerPart(peerPart: string) {
   return useInfiniteQuery({
-    queryKey: ['getSearchPeerPart', peerPart],
+    queryKey: [QUERY_KEY.SEARCH_PEER_PART, peerPart],
     queryFn: ({ pageParam = 1 }) =>
       getSearchPeerPart(peerPart, pageParam as number),
     initialPageParam: 1,

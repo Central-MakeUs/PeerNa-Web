@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ProjectInformationWithCreatorType } from '@type/index';
 import { InfiniteApiResponse, http } from 'API';
@@ -16,7 +17,7 @@ const getSearchPeerType = async (
 
 export default function useGetSearchPeerType(peerType: string) {
   return useInfiniteQuery({
-    queryKey: ['getSearchPeerType', peerType],
+    queryKey: [QUERY_KEY.SEARCH_PEER_TYPE, peerType],
     queryFn: ({ pageParam = 1 }) =>
       getSearchPeerType(peerType, pageParam as number),
     initialPageParam: 1,
