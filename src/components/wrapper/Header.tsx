@@ -1,10 +1,20 @@
 import IconButton from '@components/common/atom/IconButton';
-import Typography from '@components/common/atom/Typography';
-import React from 'react';
+import Typography, {
+  TypographyProps,
+} from '@components/common/atom/Typography';
+import { PropsWithChildren } from 'react';
 
-function NavigationHeader({ children }: { children: React.ReactNode }) {
+function Header({ children }: PropsWithChildren) {
   return (
     <div className="w-full box-border flex flex-col bg-transparent">
+      {children}
+    </div>
+  );
+}
+
+function TopBar({ children }: PropsWithChildren) {
+  return (
+    <div className="w-full flex items-center justify-between h-[68px] px-2 py-[18px]">
       {children}
     </div>
   );
@@ -13,25 +23,24 @@ function NavigationHeader({ children }: { children: React.ReactNode }) {
 interface BackIconProps {
   handleClick: () => void;
 }
-function NavigationHeaderBackIcon({ handleClick }: BackIconProps) {
+
+function BackIcon({ handleClick }: BackIconProps) {
   return (
     <IconButton
-      iconProps={{
-        id: 'ArrowLeft',
-        color: 'black',
-      }}
+      iconProps={{ id: 'ArrowLeft', color: 'black' }}
       onClick={handleClick}
     />
   );
 }
 
-interface TitleProps {
-  title: string;
+interface TitleProps extends Omit<TypographyProps, 'variant' | 'fontColor'> {
+  children: string;
 }
-function NavigationHeaderTitle({ title }: TitleProps) {
+
+function Title({ children, ...typographyProps }: TitleProps) {
   return (
-    <Typography variant="header02" fontColor="gray08">
-      {title}
+    <Typography {...typographyProps} variant="header02" fontColor="gray08">
+      {children}
     </Typography>
   );
 }
@@ -40,7 +49,8 @@ interface RightButtonProps {
   text: string;
   handleClick: () => void;
 }
-function NavigationHeaderRightButton({ text, handleClick }: RightButtonProps) {
+
+function RightButton({ text, handleClick }: RightButtonProps) {
   return (
     <button onClick={handleClick}>
       <Typography variant="body03" fontColor="gray07">
@@ -51,30 +61,20 @@ function NavigationHeaderRightButton({ text, handleClick }: RightButtonProps) {
 }
 
 interface BodyProps {
-  title: string;
-  subtitle?: string;
   marginClass?: string;
   textAlign?: 'left' | 'center';
-  children?: React.ReactNode;
 }
-function NavigationHeaderBody({
-  title,
-  subtitle,
+
+function Body({
+  children,
   marginClass = '',
   textAlign = 'left',
-  children,
-}: BodyProps) {
+}: PropsWithChildren<BodyProps>) {
   return (
-    <div className={`w-full flex flex-col ${marginClass}`}>
-      <div
-        className={`w-full flex flex-col gap-2 justify-between py-4 ${textAlign === 'center' ? 'text-center' : 'text-left'}`}
-      >
-        <Typography variant="header01" fontColor="gray08">
-          {title}
-        </Typography>
-        {subtitle && <Typography variant="body03">{subtitle}</Typography>}
-        <div className="flex gap-2">{children}</div>
-      </div>
+    <div
+      className={`w-full flex flex-col ${marginClass} ${textAlign === 'center' ? 'text-center' : 'text-left'}`}
+    >
+      {children}
     </div>
   );
 }
@@ -82,15 +82,11 @@ function NavigationHeaderBody({
 interface AddPersonButtonProps {
   onClick: () => void;
 }
-function NavigationHeaderAddPersonButton({ onClick }: AddPersonButtonProps) {
+
+function AddPersonButton({ onClick }: AddPersonButtonProps) {
   return (
     <IconButton
-      iconProps={{
-        id: 'AddPerson',
-        width: 25,
-        height: 25,
-        color: 'gray07',
-      }}
+      iconProps={{ id: 'AddPerson', width: 25, height: 25, color: 'gray07' }}
       onClick={onClick}
     />
   );
@@ -99,25 +95,22 @@ function NavigationHeaderAddPersonButton({ onClick }: AddPersonButtonProps) {
 interface SearchButtonProps {
   onClick: () => void;
 }
-function NavigationHeaderSearchButton({ onClick }: SearchButtonProps) {
+
+function SearchButton({ onClick }: SearchButtonProps) {
   return (
     <IconButton
-      iconProps={{
-        id: 'Search',
-        width: 23,
-        height: 23,
-        color: 'gray07',
-      }}
+      iconProps={{ id: 'Search', width: 23, height: 23, color: 'gray07' }}
       onClick={onClick}
     />
   );
 }
 
-NavigationHeader.BackIcon = NavigationHeaderBackIcon;
-NavigationHeader.Title = NavigationHeaderTitle;
-NavigationHeader.RightButton = NavigationHeaderRightButton;
-NavigationHeader.Body = NavigationHeaderBody;
-NavigationHeader.AddPersonButton = NavigationHeaderAddPersonButton;
-NavigationHeader.SearchButton = NavigationHeaderSearchButton;
+Header.TopBar = TopBar;
+Header.BackIcon = BackIcon;
+Header.Title = Title;
+Header.RightButton = RightButton;
+Header.Body = Body;
+Header.AddPersonButton = AddPersonButton;
+Header.SearchButton = SearchButton;
 
-export default NavigationHeader;
+export default Header;
