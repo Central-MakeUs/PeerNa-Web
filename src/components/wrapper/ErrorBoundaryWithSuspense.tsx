@@ -4,7 +4,7 @@ import { PropsWithChildren, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 interface ErrorBoundaryWithSuspense {
-  onReset: () => void;
+  onReset?: () => void;
 }
 
 export default function ErrorBoundaryWithSuspense({
@@ -15,7 +15,7 @@ export default function ErrorBoundaryWithSuspense({
     <ErrorBoundary
       onReset={onReset}
       fallbackRender={({ resetErrorBoundary }) => (
-        <ErrorFallback handleClick={resetErrorBoundary} />
+        <ErrorFallback handleClick={onReset ? resetErrorBoundary : undefined} />
       )}
     >
       <Suspense fallback={<LoadingFallback />}>{children}</Suspense>

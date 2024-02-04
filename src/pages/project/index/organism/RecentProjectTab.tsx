@@ -1,4 +1,5 @@
 import Typography from '@components/common/atom/Typography';
+import ErrorFallback from '@components/common/molecule/ErrorFallback';
 import Project from '@components/common/molecule/Project';
 import useGetProjectList from '@hooks/api/project/index/useGetProjectList';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -8,14 +9,13 @@ import { Fragment, useEffect, useRef } from 'react';
 
 export default function RecentProjectTab() {
   const { push } = useFlow();
-  const { data, fetchNextPage, hasNextPage, status } = useGetProjectList();
+  const { data, fetchNextPage, hasNextPage, status, refetch } =
+    useGetProjectList();
 
   const observer = useRef<IntersectionObserver | null>(null);
   const lastProjectRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (status === 'pending') return;
-
     const option = {
       root: null,
       rootMargin: '0px',
@@ -47,7 +47,8 @@ export default function RecentProjectTab() {
       </Typography>
       <Spacer y={3} />
       <div className="flex flex-col gap-3">
-        {!data?.pages && <EmptyProject />}
+        {!data?.pages && status === 'success' && <EmptyProject />}
+        {status === 'error' && <ErrorFallback handleClick={() => refetch()} />}
         {data?.pages.map(group =>
           group.result.map((project, index) => (
             <button

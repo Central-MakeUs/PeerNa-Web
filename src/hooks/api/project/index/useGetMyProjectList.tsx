@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { ProjectItemType } from '@type/index';
 import { InfiniteApiResponse, http } from '@utils/API';
 
@@ -12,7 +12,7 @@ const getMyProjectList = async (
 };
 
 export default function useGetMyProjectList() {
-  return useInfiniteQuery({
+  return useSuspenseInfiniteQuery({
     queryKey: ['getMyProejctList'],
     queryFn: ({ pageParam = 1 }) => getMyProjectList(pageParam),
     initialPageParam: 1,

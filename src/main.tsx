@@ -8,6 +8,7 @@ import {
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ReactDOM from 'react-dom/client';
+import toast from 'react-hot-toast';
 import { RecoilRoot } from 'recoil';
 import App from './App.tsx';
 import './index.css';
@@ -21,12 +22,9 @@ const queryClient = new QueryClient({
   },
   // TODO: queries 에러에 대해서 핸들링 해야 합니다.
   queryCache: new QueryCache({
-    onError: (error: Error | undefined, query) => {
+    onError: (error: Error | undefined) => {
       console.log(error);
-      if (query.meta && query.meta.errorMessage) {
-        console.error('error message', query.meta.errorMessage);
-        // toast(() => query.meta.errorMessage);
-      }
+      toast.error('네트워크 에러가 발생했어요.');
     },
   }),
 });
