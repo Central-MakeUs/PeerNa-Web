@@ -16,6 +16,7 @@ function App() {
       redirectURI: import.meta.env.VITE_APPLE_REDIRECT_URI,
       usePopup: false,
     });
+    window.Kakao.init(import.meta.env.VITE_JAVASCRIPT_KEY);
   }, []);
 
   return (
