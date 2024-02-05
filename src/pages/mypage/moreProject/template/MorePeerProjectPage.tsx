@@ -3,7 +3,7 @@ import Spinner from '@components/common/atom/Spinner';
 import Project from '@components/common/molecule/Project';
 import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import useGetMorePeerProject from '@hooks/api/home/[peer-id]/useGetMorePeerProjectList';
+import useGetMorePeerProject from '@hooks/api/home/peerId/useGetMorePeerProjectList';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';

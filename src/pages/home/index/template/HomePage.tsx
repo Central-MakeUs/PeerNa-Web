@@ -27,6 +27,13 @@ const HomePage: ActivityComponentType = () => {
     refetch();
   }, [currentTab]);
 
+  // const { push } = useFlow();
+  // useEffect(() => {
+  //   if (!getAccessToken() || !getRefreshToken()) {
+  //     push('OnboardingPage', { step: '1' });
+  //   }
+  // }, []);
+
   const intersectionRef = useIntersection(fetchNextPage);
 
   return (

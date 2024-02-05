@@ -2,6 +2,7 @@ import {
   getAccessToken,
   getRefreshToken,
   removeAccessToken,
+  removeRefreshToken,
   setAccessToken,
   setRefreshToken,
 } from '@utils/token';
@@ -76,6 +77,7 @@ const onRejected = async (error: AxiosError) => {
       originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
       return http(originalRequest);
     } catch (refreshError) {
+      removeRefreshToken();
       console.error(refreshError);
     }
   }

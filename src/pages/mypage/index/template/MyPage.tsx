@@ -2,7 +2,7 @@ import Button from '@components/common/atom/Button';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import { useGetMyPageInfo } from '@hooks/api/member/index/useGetMypageInfo';
+import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Tab } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
@@ -20,7 +20,7 @@ import SelfTestResult from '../molecule/SelfTestResult';
 import Header from '../organism/Header';
 import Layout from '../organism/Layout';
 
-const Mypage: ActivityComponentType = () => {
+const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
 
   const {
@@ -104,4 +104,4 @@ const Mypage: ActivityComponentType = () => {
   );
 };
 
-export default Mypage;
+export default MyPage;

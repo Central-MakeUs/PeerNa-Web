@@ -1,64 +1,28 @@
-import {
-  ModalContent,
-  ModalFooter,
-  ModalProps as ModalPropsWithNextui,
-  Modal as ModalWithNextui,
-} from '@nextui-org/react';
-
-import useModal from '@hooks/store/useModal';
+import LoginModal from '@pages/auth/redirect/organism/LoginModal';
+import { ModalType, modalState } from '@store/modal';
 import { ReactNode } from 'react';
-import Typography from '../atom/Typography';
+import { useRecoilValue } from 'recoil';
 
-interface ModalProps extends Omit<ModalPropsWithNextui, 'children'> {
-  modalHeader: string;
-  modalBody: string;
-  footer: ReactNode;
+interface SwitchModals {
+  modals: Record<ModalType, ReactNode>;
 }
 
-export default function Modal({
-  modalHeader,
-  modalBody,
-  footer,
-  ...props
-}: ModalProps) {
-  const { isOpen, openModal, closeModal } = useModal();
-  const modalType: 'default' | 'login' | 'error' = 'default';
+const SwitchModals = ({ modals }: SwitchModals) => {
+  const modalKeys = useRecoilValue(modalState);
+  const openedModal = Object.keys(modalKeys).find(
+    key => modalKeys[key as ModalType] === true,
+  );
 
-  const handleOpenChange = (isOpen: boolean) => {
-    if (isOpen) {
-      openModal(modalType);
-    } else {
-      closeModal();
-    }
-  };
+  console.log(modalKeys, openedModal, modals[openedModal as ModalType]);
+  return modals[openedModal as ModalType];
+};
 
+export default function Modals() {
   return (
-    <>
-      {isOpen && (
-        <ModalWithNextui
-          {...props}
-          backdrop="opaque"
-          isOpen={isOpen}
-          onOpenChange={handleOpenChange}
-          hideCloseButton={true}
-          classNames={{
-            backdrop:
-              'bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20',
-          }}
-        >
-          <ModalContent className="w-[310px] m-auto">
-            <div className="pt-10 pb-4">
-              <Typography className="text-center mb-5" variant={'header03'}>
-                {modalHeader}
-              </Typography>
-              <Typography className="text-center" variant={'body04'}>
-                {modalBody}
-              </Typography>
-            </div>
-            <ModalFooter>{footer}</ModalFooter>
-          </ModalContent>
-        </ModalWithNextui>
-      )}
-    </>
+    <SwitchModals
+      modals={{
+        login: <LoginModal />,
+      }}
+    />
   );
 }

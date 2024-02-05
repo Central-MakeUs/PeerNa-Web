@@ -1,7 +1,7 @@
 import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ProjectInformationWithCreatorType } from '@type/index';
-import { InfiniteApiResponse, http } from 'API';
+import { InfiniteApiResponse, http } from '@utils/API';
 
 interface SearchPeerTypeResponseDTO extends ProjectInformationWithCreatorType {}
 

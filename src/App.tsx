@@ -1,8 +1,10 @@
+import ErrorFallback from '@components/common/molecule/ErrorFallback';
+import Modals from '@components/common/molecule/Modal';
 import BottomSheet from '@components/common/organism/BottomSheet';
 import { Stack } from '@hooks/common/useStackFlow';
-import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import { WebviewBridge } from '@utils/webview';
 import { useEffect } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -18,18 +20,23 @@ function App() {
 
   return (
     <div className="w-screen min-h-screen flex justify-center">
-      {/* Notice)Stack은 StackFlow의 진입점입니다. */}
-      {/*         react-router-dom의 createBrowseRouter */}
-      <Stack />
-      <BottomSheet />
-      <Toaster
-        toastOptions={{
-          style: {
-            borderRadius: '100px',
-          },
-        }}
-      />
-      <LoginModal />
+      <ErrorBoundary
+        onReset={() => window.location.reload()}
+        fallbackRender={({ resetErrorBoundary }) => (
+          <ErrorFallback handleClick={resetErrorBoundary} />
+        )}
+      >
+        <Stack />
+        <BottomSheet />
+        <Toaster
+          toastOptions={{
+            style: {
+              borderRadius: '100px',
+            },
+          }}
+        />
+        <Modals />
+      </ErrorBoundary>
     </div>
   );
 }

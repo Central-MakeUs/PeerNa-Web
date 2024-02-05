@@ -1,12 +1,12 @@
 import Button from '@components/common/atom/Button';
 import ButtonContainer from '@components/common/molecule/ButtonContainer';
-import Modal from '@components/common/molecule/Modal';
+import Modal from '@components/common/molecule/LegacyModal';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import usePostProjectRespondInvitation from "@hooks/api/project/[project-id]/usePostProjectRespondInvitation";
-import useGetProjectById from "@hooks/api/project/index/useGetProjectById";
+import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
+import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
-import ProjectInformation from '@pages/project/[id]/organism/ProjectInformation';
+import ProjectInformation from '@pages/project/projectId/organism/ProjectInformation';
 import { RespondType } from '@type/enums';
 import { Fragment, useState } from 'react';
 
@@ -19,12 +19,13 @@ export default function DecidePropose({ projectId }: DecideProposeProps) {
   const { mutate } = usePostProjectRespondInvitation();
 
   const { replace } = useFlow();
+  // TODO: 제안 모달 추가 필요
   const { openModal, closeModal } = useModal();
 
   const [modalType, setModalType] = useState<RespondType>(RespondType.ACCEPT);
 
   const handleClickOpenModal = (modalType: RespondType) => {
-    openModal('default');
+    openModal();
     setModalType(modalType);
   };
 

@@ -1,11 +1,11 @@
-import useGetPeerReviewNotification from "@hooks/api/home/notice/useGetPeerReviewNotification";
+import useGetPeerReviewNotification from '@hooks/api/home/notice/useGetPeerReviewNotification';
 import EmptyNotification from '@pages/notification/index/molecule/EmptyNotification';
 import Notification from '@pages/notification/index/molecule/Notification';
 import {
   ReviewRequestNotification,
   ReviewUpdateNotification,
 } from '@pages/notification/index/molecule/NotificationType';
-import { NoticeType } from "@type/enums";
+import { NoticeType } from '@type/enums';
 import { getTimeDifference } from '@utils/date';
 import { Fragment } from 'react';
 

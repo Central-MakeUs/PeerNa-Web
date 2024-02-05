@@ -1,9 +1,9 @@
 import peerCard from '@assets/peerCard.png';
 import Talk from '@components/common/atom/Talk';
 import Typography from '@components/common/atom/Typography';
-import { JOB_MAPPER, PART_MAPPER } from "@constants/mapper";
-import { JobType, PartType } from "@type/enums";
-import { ProfileCardInfo } from "@type/index";
+import { JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
+import { JobType, PartType } from '@type/enums';
+import { ProfileCardInfo } from '@type/index';
 import { Fragment } from 'react';
 
 export default function PeerProfileCard({

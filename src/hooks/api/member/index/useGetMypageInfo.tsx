@@ -1,9 +1,9 @@
-import { QUERY_KEY } from "@constants/queryKey";
+import { QUERY_KEY } from '@constants/queryKey';
 import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ResultKeyword } from "@type/enums";
-import { PeerSimpleProfileType } from "@type/index";
-import { ApiResponse, http } from 'API';
+import { ResultKeyword } from '@type/enums';
+import { PeerSimpleProfileType } from '@type/index';
+import { ApiResponse, http } from '@utils/API';
 
 export interface ProfileResponseDTO {
   peerTestMoreThanThree: boolean;

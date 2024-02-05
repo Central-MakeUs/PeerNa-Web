@@ -3,7 +3,7 @@ import Spinner from '@components/common/atom/Spinner';
 import Talk from '@components/common/atom/Talk';
 import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import useGetMorePeerFeedback from "@hooks/api/home/[peer-id]/useGetMorePeerFeedback";
+import useGetMorePeerFeedback from '@hooks/api/home/peerId/useGetMorePeerFeedback';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { ActivityComponentType } from '@stackflow/react';

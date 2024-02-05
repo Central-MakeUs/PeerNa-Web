@@ -1,11 +1,11 @@
-import useGetProjectNotification from "@hooks/api/home/notice/useGetProjectNotification";
+import useGetProjectNotification from '@hooks/api/home/notice/useGetProjectNotification';
 import EmptyNotification from '@pages/notification/index/molecule/EmptyNotification';
 import Project from '@pages/notification/index/molecule/Project';
 import {
   ProjectProposeResult,
   ProjectRecruitPropose,
 } from '@pages/notification/index/molecule/ProjectType';
-import { NoticeType } from "@type/enums";
+import { NoticeType } from '@type/enums';
 import { getTimeDifference } from '@utils/date';
 import { Fragment } from 'react';
 

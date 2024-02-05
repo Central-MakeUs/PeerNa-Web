@@ -3,7 +3,7 @@ import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { REVIEW_PICKER } from '@constants/review';
-import { usePostReviewPeer } from '@hooks/api/review/index/usePostReviewPeer';
+import usePostReviewPeer from '@hooks/api/review/index/usePostReviewPeer';
 import { useFlow, useStepFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
 import ReviewCenterImage from '@pages/review/index/atom/ReviewCenterImage';

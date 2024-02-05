@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { MODE } from '@constants/index';
 import RedirectPage from '@pages/auth/redirect/template/RedirectPage';
-import DeveloperPage from '@pages/developer/DeveloperPage';
 import HomePage from '@pages/home/index/template/HomePage';
 import MyPage from '@pages/mypage/index/template/MyPage';
 import MoreFeedbackPage from '@pages/mypage/moreFeedback/template/MoreFeedbackPage';
@@ -15,19 +12,16 @@ import PeerDetailPage from '@pages/peer/detail/template/PeerDetailPage';
 import PeerPage from '@pages/peer/index/template/PeerPage';
 import OnboardingPage from '@pages/peer/onboard/template/OnboardingPage';
 import PeerTypePage from '@pages/peer/type/template/PeerTypePage';
-import ProjectDetailPage from '@pages/project/[id]/template/ProjectDetailPage';
 import ProjectCreatePage from '@pages/project/create/template/ProjectCreatePage';
 import ProjectPage from '@pages/project/index/template/ProjectPage';
+import ProjectDetailPage from '@pages/project/projectId/template/ProjectDetailPage';
 import ProjectProposePage from '@pages/project/propose/template/ProjectProposePage';
 import ReviewPage from '@pages/review/index/template/ReviewPage';
 import ReviewPeerPage from '@pages/review/peer/template/ReviewPeerPage';
 import ReviewResultPage from '@pages/review/result/template/ReviewResultPage';
 import ReviewSelfPage from '@pages/review/self/template/ReviewSelfPage';
-import { ActivityComponentType } from '@stackflow/react';
 
-interface PageMap extends Record<string, ActivityComponentType<any>> {}
-
-export const Pages: PageMap = {
+export const Pages = {
   HomePage,
   PeerTypePage,
   PeerDetailPage,
@@ -52,9 +46,9 @@ export const Pages: PageMap = {
   ProjectProposePage,
 };
 
-if (MODE === 'development') {
-  Pages['DeveloperPage'] = DeveloperPage;
-}
+// if (MODE === 'development') {
+//   Pages['DeveloperPage'] = DeveloperPage;
+// }
 
 export type ActivityTypes = keyof typeof Pages;
 
@@ -83,9 +77,9 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   RedirectPage: '/auth/redirect',
 };
 
-if (MODE === 'development') {
-  PageRoutes['DeveloperPage'] = '/developer';
-}
+// if (MODE === 'development') {
+//   PageRoutes['DeveloperPage'] = '/developer';
+// }
 
 export const TabItem = {
   HomePage,

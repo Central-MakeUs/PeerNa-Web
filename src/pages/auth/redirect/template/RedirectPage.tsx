@@ -1,5 +1,6 @@
 import Spinner from '@components/common/atom/Spinner';
-import { StorageKey } from "@constants/localStorage";
+import { ActivityTypes } from '@constants/activities';
+import { StorageKey } from '@constants/localStorage';
 import useHistory from '@hooks/common/useHistory';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useToken from '@hooks/common/useToken';
@@ -34,7 +35,7 @@ const RedirectPage: ActivityComponentType = () => {
 
       const { activity, params } = history;
       handleClearHistory();
-      push(String(activity), params);
+      push(String(activity) as ActivityTypes, params);
     }
     const fcmToken = getFcmToken();
     // TODO: FCM API 등록

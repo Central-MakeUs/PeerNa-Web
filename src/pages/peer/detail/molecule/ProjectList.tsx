@@ -2,15 +2,16 @@ import IconButton from '@components/common/atom/IconButton';
 import Typography from '@components/common/atom/Typography';
 import Project from '@components/common/molecule/Project';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { ProjectItemType } from '@type';
 import { Fragment } from 'react';
 
 interface ProjectListProps {
-  peerProjectDtoList: string[];
+  projectList: ProjectItemType[];
   handleClick: () => void;
 }
 
 export default function ProjectList({
-  peerProjectDtoList,
+  projectList,
   handleClick,
 }: ProjectListProps) {
   return (
@@ -30,7 +31,7 @@ export default function ProjectList({
         />
       </HeaderContainer>
       <ul className="flex flex-col gap-3 mb-6">
-        {peerProjectDtoList.map((project, index) => (
+        {projectList.map((project, index) => (
           <li key={index}>
             <Project
               title={project.projectName}

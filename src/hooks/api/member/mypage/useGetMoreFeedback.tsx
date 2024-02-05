@@ -1,6 +1,6 @@
 import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { InfiniteApiResponse, http } from 'API';
+import { InfiniteApiResponse, http } from '@utils/API';
 
 const getMoreFeedback = async (
   page: number,

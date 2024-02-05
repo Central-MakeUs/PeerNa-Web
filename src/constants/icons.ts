@@ -80,6 +80,7 @@ export const Icon = {
   Save: 'save',
   Help: 'help',
   Apple: 'apple',
+  Kakao: 'kakao',
   Shape: 'shape',
   DocumentSplitHint: 'document_split_hint',
   DocumentTableSearch: 'document_table_search',

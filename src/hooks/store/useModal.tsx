@@ -1,27 +1,26 @@
-import { modalState, ModalStateType } from '@store/modal';
+import { modalState, ModalStateType, ModalType } from '@store/modal';
 import { useRecoilState } from 'recoil';
 
-export default function useModal() {
+export default function useModal(modalType: ModalType) {
   const [modal, setModal] = useRecoilState<ModalStateType>(modalState);
-
-  const openModal = (modalType: 'default' | 'error' | 'login') => {
+  const isOpen = modal[modalType];
+  const openModal = () => {
+    console.log(modal);
     setModal(prevModal => ({
       ...prevModal,
-      isOpen: true,
-      modalType,
+      [modalType]: true,
     }));
   };
 
   const closeModal = () => {
     setModal(prevModal => ({
       ...prevModal,
-      isOpen: false,
+      [modalType]: false,
     }));
   };
 
   return {
-    isOpen: modal.isOpen,
-    modalType: modal.modalType,
+    isOpen,
     openModal,
     closeModal,
   };

@@ -1,7 +1,7 @@
-import { QUERY_KEY } from "@constants/queryKey";
+import { QUERY_KEY } from '@constants/queryKey';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { ProjectItemType } from '@type/index';
-import { InfiniteApiResponse, http } from 'API';
+import { InfiniteApiResponse, http } from '@utils/API';
 
 interface ProjectItemResponseDTO extends ProjectItemType {}
 

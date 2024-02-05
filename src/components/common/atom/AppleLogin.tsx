@@ -21,7 +21,7 @@ const AppleLogin = () => {
       <SvgIcon id="Apple" color="white" />
       <Typography
         variant="body02"
-        className="!text-[15px] !pt-[11px] !pb-[10px] text-white"
+        className="!text-[15px] !pt-[11px] !pb-[10px] !font-700 text-white"
       >
         Apple 로그인
       </Typography>

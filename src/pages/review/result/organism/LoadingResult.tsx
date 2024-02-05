@@ -1,6 +1,6 @@
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
-import { usePostMemberInformation } from '@hooks/api/member/index/usePostMemberInfo';
+import usePostMemberInformation from '@hooks/api/member/index/usePostMemberInfo';
 import usePostReviewSelf from '@hooks/api/member/index/usePostReviewSelf';
 
 import { useFlow } from '@hooks/common/useStackFlow';

@@ -1,6 +1,6 @@
 import Typography from '@components/common/atom/Typography';
 import { PeerCardType } from '@constants/image';
-import { useGetReviewResult } from '@hooks/api/member/index/useGetReviewResult';
+import useGetReviewResult from '@hooks/api/member/index/useGetReviewResult';
 import Card from '@pages/review/result/molecule/Card';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';

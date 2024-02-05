@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { MemberDefaultInformationTypeWithSelfGrade } from '@type/index';
-import { ApiResponse, http } from 'API';
+import { ApiResponse, http } from '@utils/API';
 
 interface MemberInformationRequestDTO
   extends MemberDefaultInformationTypeWithSelfGrade {}
