@@ -48,15 +48,15 @@ export enum PeerGrade {
 }
 
 export enum ResultKeyword {
-  DRIVING = 'Driving',
-  COOPERATIVE = 'Cooperative',
-  ANALYTICAL = 'Analytical',
-  COMPREHENSIVE = 'Comprehensive',
-  FUTURE_ORIENTED = 'FutureOriented',
-  PRAGMATIC = 'Pragmatic',
-  MULTI_DIMENSIONAL = 'Multidimensional',
-  WARMHEARTED = 'Warmhearted',
-  CAUTIOUS = 'Cautious',
-  CHALLENGING = 'Challenging',
-  LOCKED = 'CardLocked',
+  DRIVING = 'DRIVING',
+  COOPERATIVE = 'COOPERATIVE',
+  ANALYTICAL = 'ANALYTICAL',
+  COMPREHENSIVE = 'COMPREHENSIVE',
+  FUTURE_ORIENTED = 'FUTURE_ORIENTED',
+  PRAGMATIC = 'PRAGMATIC',
+  MULTI_DIMENSIONAL = 'MULTI_DIMENSIONAL',
+  WARMHEARTED = 'WARMHEARTED',
+  CAUTIOUS = 'CAUTIOUS',
+  CHALLENGING = 'CHALLENGING',
+  LOCKED = 'LOCKED',
 }
