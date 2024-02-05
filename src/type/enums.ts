@@ -10,7 +10,7 @@ export enum TestType {
   C = 'C',
 }
 
-  export enum NoticeType {
+export enum NoticeType {
   INVITE_TO_PROJECT = 'INVITE_TO_PROJECT',
   REQUEST_JOIN_PROJECT = 'REQUEST_JOIN_PROJECT',
   ACCEPT_PROJECT_INVITATION = 'ACCEPT_PROJECT_INVITATION',
@@ -48,15 +48,15 @@ export enum PeerGrade {
 }
 
 export enum ResultKeyword {
-  DRIVING = 'DRIVING',
-  COOPERATIVE = 'COOPERATIVE',
-  ANALYTICAL = 'ANALYTICAL',
-  COMPREHENSIVE = 'COMPREHENSIVE',
-  FUTURE_ORIENTED = 'FUTURE_ORIENTED',
-  PRAGMATIC = 'PRAGMATIC',
-  MULTI_DIMENSIONAL = 'MULTI_DIMENSIONAL',
-  WARMHEARTED = 'WARMHEARTED',
-  CAUTIOUS = 'CAUTIOUS',
-  CHALLENGING = 'CHALLENGING',
-  LOCKED = 'LOCKED',
+  DRIVING = 'Driving',
+  COOPERATIVE = 'Cooperative',
+  ANALYTICAL = 'Analytical',
+  COMPREHENSIVE = 'Comprehensive',
+  FUTURE_ORIENTED = 'FutureOriented',
+  PRAGMATIC = 'Pragmatic',
+  MULTI_DIMENSIONAL = 'Multidimensional',
+  WARMHEARTED = 'Warmhearted',
+  CAUTIOUS = 'Cautious',
+  CHALLENGING = 'Challenging',
+  LOCKED = 'CardLocked',
 }

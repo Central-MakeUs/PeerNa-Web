@@ -7,7 +7,7 @@ import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import UserProfileList from '@pages/home/index/molecule/UserProfileList';
 import { ActivityComponentType } from '@stackflow/react';
-import { TestType } from "@type/enums";
+import { TestType } from '@type/enums';
 import PeerItem from '../atom/PeerItem';
 
 type PeerTypePageParams = {
@@ -41,11 +41,12 @@ const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
         className={`${bgColor[peerType]} w-full flex flex-col items-start pt-[69px] pb-6`}
       >
         <TopHeader onClick={handleBack} />
-
         <PeerItem type={peerType} />
       </header>
       {data && (
-        <UserProfileList data={data.pages} />
+        <UserProfileList
+          data={data?.pages.flatMap(profile => profile.result)}
+        />
       )}
 
       <IntersectionBox ref={intersectionRef} />

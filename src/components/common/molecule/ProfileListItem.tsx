@@ -1,8 +1,7 @@
-import Card from "@components/common/atom/Card";
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { JOB_MAPPER, PART_MAPPER } from "@constants/mapper";
-import { CreatorSimpleProfileType } from "@type/index";
+import { ICON_MAPPER, JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
+import { CreatorSimpleProfileType } from '@type/index';
 
 interface ProfileListItemProps extends CreatorSimpleProfileType {
   isMyProfile: boolean;
@@ -19,6 +18,7 @@ export default function ProfileListItem({
   oneLiner,
   children,
 }: ProfileListItemProps) {
+  const peerType = ICON_MAPPER[peerTestType];
   return (
     <div
       className={`flex flex-1 justify-between items-center ${isMyProfile ? 'w-full' : 'max-w-[524px]'} px-5 mx-auto pt-8 pb-4`}
@@ -27,9 +27,12 @@ export default function ProfileListItem({
         <div
           className={`!w-[64px] !h-[64px] !bg-gray01 flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
         >
-          {peerTestType ? (
-            <Card testResult={peerTestType} size="M" type="peer"/>
-          ) : (
+          {peerTestType && (
+            <div
+              className={`${peerType} w-8 h-8 bg-no-repeat bg-center bg-32`}
+            />
+          )}
+          {!peerTestType && (
             <SvgIcon id="Person" width={32} height={32} color="gray04" />
           )}
         </div>

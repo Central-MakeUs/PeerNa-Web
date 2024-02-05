@@ -6,12 +6,12 @@ import { ProjectItemType } from '@type';
 import { Fragment } from 'react';
 
 interface ProjectListProps {
-  projectList: ProjectItemType[];
+  peerProjectDtoList: ProjectItemType[];
   handleClick: () => void;
 }
 
 export default function ProjectList({
-  projectList,
+  peerProjectDtoList,
   handleClick,
 }: ProjectListProps) {
   return (
@@ -31,7 +31,7 @@ export default function ProjectList({
         />
       </HeaderContainer>
       <ul className="flex flex-col gap-3 mb-6">
-        {projectList.map((project, index) => (
+        {peerProjectDtoList.map((project, index) => (
           <li key={index}>
             <Project
               title={project.projectName}
