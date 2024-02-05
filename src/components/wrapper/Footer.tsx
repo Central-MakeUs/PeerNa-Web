@@ -9,7 +9,7 @@ export default function Footer({ bottom, children, ...props }: FooterProps) {
   return (
     <div
       {...props}
-      className={`absolute ${!bottom ? 'bottom-0' : `bottom-${bottom}`}`}
+      className={`absolute ${props.className} ${!bottom ? 'bottom-0' : `bottom-${bottom}`}`}
     >
       {children}
     </div>
