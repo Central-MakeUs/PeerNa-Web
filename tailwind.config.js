@@ -10,6 +10,10 @@ export default {
   ],
   prefix: '',
   theme: {
+    screens: {
+      tablet: '768px',
+      mobile: '390px',
+    },
     container: {
       center: true,
       padding: '2rem',
@@ -84,7 +88,19 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       backgroundImage: {
-        'peer-bg': 'url("@assets/peerBg.png")',
+        'peer-bg': 'url("@assets/common/bg_gradient.png")',
+        'home-icon': 'url("@assets/common/home_peer.png")',
+        D: 'url("@assets/common/icon_D.png")',
+        I: 'url("@assets/common/icon_I.png")',
+        S: 'url("@assets/common/icon_S.png")',
+        C: 'url("@assets/common/icon_C.png")',
+      },
+      backgroundSize: {
+        icon: '218px 180px',
+        32: '32px 32px',
+        44: '44px 44px',
+        68: '68px 68px',
+        100: '100px 100px',
       },
     },
   },
