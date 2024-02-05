@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { MemberReviewResultType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
@@ -13,7 +14,7 @@ const getReviewResult = async (): Promise<
 
 export default function useGetReviewResult() {
   return useSuspenseQuery({
-    queryKey: ['getReviewResult'],
+    queryKey: [QUERY_KEY.REVIEW_RESULT],
     queryFn: getReviewResult,
     select: data => data.result,
   });

@@ -2,16 +2,16 @@ import FullBleed from '@components/common/atom/FullBleed';
 import PeerTalk from '@components/common/atom/PeerTalk';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { IconKeyType } from '@constants/icons';
-import { PeerGrade } from '@constants/peerTalk';
+import { PEER_GRADE_INFO } from "@constants/list";
 import useShowMoreFeedback from '@hooks/store/useShowMoreFeedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { PeerGrade } from "@type/enums";
 import { Fragment } from 'react';
 
 export interface OverallOpinionProps {
   totalEvaluation: {
     count: number;
-    peerGrade: string;
+    peerGrade: PeerGrade;
   }[];
 }
 
@@ -43,15 +43,12 @@ export default function OverallOpinion({
               count={item.count}
               icon={
                 <SvgIcon
-                  id={
-                    PeerGrade[item.peerGrade as keyof typeof PeerGrade]
-                      .icon as IconKeyType
-                  }
+                  id={PEER_GRADE_INFO[item.peerGrade].icon}
                   color="primary"
                 />
               }
             >
-              {PeerGrade[item.peerGrade as keyof typeof PeerGrade].text}
+              {PEER_GRADE_INFO[item.peerGrade].text}
             </PeerTalk>
           </li>
         ))}

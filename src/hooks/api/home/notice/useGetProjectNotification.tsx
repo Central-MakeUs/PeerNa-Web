@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { NotificationItemType } from '@type/index';
 import { InfiniteApiResponse, http } from '@utils/API';
@@ -13,7 +14,7 @@ const getProjectNotification = async (
 
 export default function useGetProjectNotification() {
   return useInfiniteQuery({
-    queryKey: ['getProjectNotification'],
+    queryKey: [QUERY_KEY.PROJECT_NOTIFICATION],
     queryFn: ({ pageParam = 1 }) => getProjectNotification(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {

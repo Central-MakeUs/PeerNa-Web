@@ -1,34 +1,23 @@
-import { CardType } from '@constants/image';
-import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
+import { QUERY_KEY } from '@constants/queryKey';
+import { ProfileResponseDTO } from '@hooks/api/member/index/useGetMypageInfo';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { CreatorSimpleProfileType, ProjectItemType } from '@type/index';
+import { ProjectItemType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
-// Sarah) interface 상속을 통해 중복되는 부분은 따로 선언하고 다른 부분만 따로 정의하기
-interface PeerDetailResponseDTO {
-  peerTestMoreThanThree: boolean;
-  memberSimpleProfileDto: CreatorSimpleProfileType;
-  peerTestType: string;
-  myCardList: CardType[];
-  peerCardList: CardType[];
-  totalEvaluation: OverallOpinionProps;
-  totalScore: number;
-  peerFeedbackList: string[];
-  peerAnswerIdList: number[];
-  colorAnswerIdList: number[];
+interface PeerProfileResponseDTO extends ProfileResponseDTO {
   peerProjectDtoList: ProjectItemType[];
 }
 
 const getPeerDetail = async (
   peerId: number,
-): Promise<ApiResponse<PeerDetailResponseDTO>> => {
+): Promise<ApiResponse<PeerProfileResponseDTO>> => {
   const response = await http.get(`/home/${peerId}/peer-detail`);
   return response.data;
 };
 
 export default function useGetPeerDetail(peerId: number) {
   return useSuspenseQuery({
-    queryKey: ['useGetPeerDetail', peerId],
+    queryKey: [QUERY_KEY.MORE_PEER_PROJECT, peerId],
     queryFn: () => getPeerDetail(peerId),
     select: data => data.result,
   });

@@ -1,9 +1,7 @@
 import Typography from '@components/common/atom/Typography';
 import FixedCenter from '@components/wrapper/FixedCenter';
-import {
-  ON_BOARDING_HEADER_TEXT,
-  ON_BOARDING_IMAGE_LIST,
-} from '@constants/onboard';
+import { ON_BOARDING_IMAGE_LIST } from '@constants/images';
+import { ON_BOARDING_HEADER_TEXT } from '@constants/onBoard';
 import { Fragment } from 'react';
 
 interface OnboardingCarProps {

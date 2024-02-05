@@ -2,11 +2,12 @@ import Badge from '@components/common/atom/Badge';
 import Typography from '@components/common/atom/Typography';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import TestCardList from '@pages/mypage/index/molecule/TestCardList';
+import { ResultKeyword } from "@type/enums";
 import { Fragment } from 'react';
 
 interface PeerResultProps {
   user: string;
-  peerCardList: string[];
+  peerCardList: ResultKeyword[];
 }
 
 export default function PeerTestResult({

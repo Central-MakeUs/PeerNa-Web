@@ -1,31 +1,31 @@
-import { CardType } from '@constants/image';
+import { QUERY_KEY } from '@constants/queryKey';
 import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
-import { ProfileCardInfo } from '@pages/mypage/index/molecule/ProfileCard';
 import { useSuspenseQuery } from '@tanstack/react-query';
+import { ResultKeyword } from '@type/enums';
+import { PeerSimpleProfileType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
-// Sarah) interface 상속을 통해 중복되는 부분은 따로 선언하고 다른 부분만 따로 정의하기
-interface MyPageResponseDTO {
-  peerTestMoreThanTree: boolean;
-  memberMyPageInfoDto: ProfileCardInfo;
+export interface ProfileResponseDTO {
+  peerTestMoreThanThree: boolean;
+  memberSimpleProfileDto: PeerSimpleProfileType;
   peerTestType: string;
-  selfTestCardList: CardType[];
-  peerCardList: CardType[];
+  myCardList: ResultKeyword[];
+  peerCardList: ResultKeyword[];
   totalEvaluation: OverallOpinionProps;
   totalScore: number;
   peerFeedbackList: string[];
-  selfTestAnswerIdList: number[];
+  peerAnswerIdList: number[];
   colorAnswerIdList: number[];
 }
 
-const getMyPageInfo = async (): Promise<ApiResponse<MyPageResponseDTO>> => {
+const getMyPageInfo = async (): Promise<ApiResponse<ProfileResponseDTO>> => {
   const response = await http.get('/member/mypage');
   return response.data;
 };
 
 export default function useGetMyPageInfo() {
   return useSuspenseQuery({
-    queryKey: ['getMyPageInfo'],
+    queryKey: [QUERY_KEY.MYPAGE_INFO],
     queryFn: getMyPageInfo,
     select: data => data.result,
   });

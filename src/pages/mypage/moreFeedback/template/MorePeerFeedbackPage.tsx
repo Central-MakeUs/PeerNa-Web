@@ -32,7 +32,7 @@ const MorePeerFeedbackPage: ActivityComponentType<
 
       <ul className="w-full flex flex-col gap-3 px-[24px] py-[20px]">
         {data?.pages.map(item =>
-          item.result.feedbackList.map(feedback => (
+          item.result.map(feedback => (
             <li>
               <Talk type="dimed">{feedback}</Talk>
             </li>

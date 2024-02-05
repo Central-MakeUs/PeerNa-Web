@@ -1,23 +1,13 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
-import { CardType } from '@constants/card';
-import { JobType, PartType } from '@constants/member';
 import { useFlow } from '@hooks/common/useStackFlow';
-
-export interface ProfileCardInfo {
-  name: string;
-  testType: CardType;
-  part: PartType;
-  job: JobType;
-  totalScore: number;
-  oneLiner: string;
-}
+import { CreatorSimpleProfileType } from "@type/index";
 
 export default function ProfileCard({
   memberInfo,
 }: {
-  memberInfo: ProfileCardInfo;
+    memberInfo: CreatorSimpleProfileType;
 }) {
   const { push } = useFlow();
   const handleProfileEdit = () => {
@@ -28,12 +18,12 @@ export default function ProfileCard({
     <article className="pb-10">
       <ProfileListItem
         isMyProfile={true}
-        username={memberInfo.name}
+        name={memberInfo.name}
         part={memberInfo.part}
         job={memberInfo.job}
-        testType={memberInfo.testType}
-        score={memberInfo.totalScore}
-        introduce={memberInfo.oneLiner}
+        peerTestType={memberInfo.peerTestType}
+        totalScore={memberInfo.totalScore}
+        oneLiner={memberInfo.oneLiner}
       >
         <Button
           buttonVariant="tertiary"

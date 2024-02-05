@@ -1,3 +1,16 @@
-export const QueryKey = {
-  Mypage: 'mypage',
-};
+export const QUERY_KEY = {
+  MORE_PEER_FEEDBACK: 'getMorePeerFeedback',
+  MORE_PEER_PROJECT: 'getSearchPeerPart',
+  PEER_DETAIL: 'useGetPeerDetail',
+  PEER_REVIEW_NOTIFICATION: 'getPeerReviewNotification',
+  PROJECT_NOTIFICATION: 'getProjectNotification',
+  SEARCH_PEER_PART: 'getSearchPeerPart',
+  SEARCH_PEER_TYPE: 'getSearchPeerType',
+  MEMBER_ME: 'getMemberWithUUID',
+  MYPAGE_INFO: 'getMyPageInfo',
+  REVIEW_RESULT: 'getReviewResult',
+  USERNAME: 'getUserName',
+  MY_PROJECT: 'getMyProjectList',
+  PROJECT_ID: 'getProjectById',
+  PROJECT_LIST: 'getProjectList',
+} as const;

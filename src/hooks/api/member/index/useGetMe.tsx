@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { MemberDefaultInformationTypeWithUuid } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
@@ -11,7 +12,7 @@ const getMe = async (): Promise<ApiResponse<MemberMeResponseDTO>> => {
 
 export default function useGetMe() {
   return useSuspenseQuery({
-    queryKey: ['getMemberWithUUID'],
+    queryKey: [QUERY_KEY.MEMBER_ME],
     queryFn: getMe,
     select: data => data.result,
   });

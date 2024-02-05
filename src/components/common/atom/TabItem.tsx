@@ -1,8 +1,8 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { PageTypes, TabItemTypes } from '@constants/activities';
-import { IconKeyType } from '@constants/icons';
+import { TabItemTypes } from '@constants/activities';
 import { useFlow } from '@hooks/common/useStackFlow';
+import { IconKeyType } from "@type/key";
 
 interface TabItemProps {
   icon: TabItemTypes;
@@ -18,7 +18,7 @@ export default function TabItem({
   isDone,
 }: TabItemProps) {
   const { replace } = useFlow();
-  const handleClick = () => replace(icon as PageTypes, {}, { animate: false });
+  const handleClick = () => replace(icon, {}, { animate: false });
 
   const getIcon = () => {
     const iconMap: Record<TabItemTypes, string> = {

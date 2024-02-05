@@ -1,6 +1,7 @@
 import SpriteIcon from '@assets/SpriteIcon.svg';
-import { Icon, IconKeyType } from '@constants/icons';
+import { Icon } from '@constants/icons';
 import { Palette } from '@constants/styles';
+import { IconKeyType } from "@type/key";
 import { ColorTypes } from '@type/styles';
 
 export interface SvgIconProps {

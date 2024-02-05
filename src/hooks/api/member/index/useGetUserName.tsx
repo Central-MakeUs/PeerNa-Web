@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ApiResponse, http } from '@utils/API';
 
@@ -14,7 +15,7 @@ const getUserName = async (
 
 export default function useGetUserName(uuid: string) {
   return useSuspenseQuery({
-    queryKey: ['getUserName', uuid],
+    queryKey: [QUERY_KEY.USERNAME, uuid],
     queryFn: () => getUserName(uuid),
     select: data => data.result,
   });

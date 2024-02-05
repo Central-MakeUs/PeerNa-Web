@@ -1,9 +1,9 @@
 import peerCard from '@assets/peerCard.png';
 import Talk from '@components/common/atom/Talk';
 import Typography from '@components/common/atom/Typography';
-import { JOB_LIST, PART_LIST } from '@constants/member';
-import { ProfileCardInfo } from '@hooks/api/home/peerId/useGetPeerDetail';
-import { getPartJobTitle } from '@utils/getTitleValue';
+import { JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
+import { JobType, PartType } from '@type/enums';
+import { ProfileCardInfo } from '@type/index';
 import { Fragment } from 'react';
 
 export default function PeerProfileCard({
@@ -12,7 +12,7 @@ export default function PeerProfileCard({
   memberInfo: ProfileCardInfo;
 }) {
   const totalScore = memberInfo.totalScore;
-  const peerType = memberInfo.peerTestType;
+  const peerType = memberInfo.testType;
   console.log(peerType);
   return (
     <Fragment>
@@ -24,11 +24,11 @@ export default function PeerProfileCard({
         />
         <p className="flex justify-center mb-2">
           <Typography variant="body04" fontColor="gray06">
-            {getPartJobTitle(memberInfo.job, JOB_LIST)}
+            {JOB_MAPPER[memberInfo.job as JobType]}
           </Typography>
           <span className="text-gray04 mx-2">|</span>
           <Typography variant="body04" fontColor="gray06">
-            {getPartJobTitle(memberInfo.part, PART_LIST)}
+            {PART_MAPPER[memberInfo.part as PartType]}
           </Typography>
           <span className="text-gray04 mx-2">|</span>
           <Typography variant="body04" fontColor="gray06">

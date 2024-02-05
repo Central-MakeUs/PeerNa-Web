@@ -1,7 +1,7 @@
 import IconButton from '@components/common/atom/IconButton';
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
-import { KakaoShareImage } from '@constants/images';
+import { KAKAO_SHARE } from "@constants/images";
 
 interface ShareDrawerProps {
   openBottomSheet: boolean;
@@ -37,7 +37,7 @@ export default function ShareDrawer({
           </div>
           <div className="flex flex-col gap-2 items-center">
             <button className="h-[36px]">
-              <img src={KakaoShareImage} style={{ width: 36, height: 36 }} />
+              <img src={KAKAO_SHARE} style={{ width: 36, height: 36 }} />
             </button>
             <Typography variant="body03" className="text-center">
               카카오톡

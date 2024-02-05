@@ -1,5 +1,3 @@
-export type IconKeyType = keyof typeof Icon;
-
 export const Icon = {
   Search: 'search',
   Straight: 'straight',
@@ -83,7 +81,7 @@ export const Icon = {
   Help: 'help',
   Apple: 'apple',
   Kakao: 'kakao',
-  DocumentSplitHint: 'document_split_hint',
   Shape: 'shape',
+  DocumentSplitHint: 'document_split_hint',
   DocumentTableSearch: 'document_table_search',
 };

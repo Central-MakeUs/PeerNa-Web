@@ -1,8 +1,8 @@
-import { CardType, cardItem } from '@constants/card';
 import useFocusTimeout from '@hooks/common/useFocusTimeout';
+import { TestType } from "@type/enums";
 
 type AvatarButtonProps = {
-  type: CardType;
+  type: TestType;
   handleClick: () => void;
 };
 
@@ -14,18 +14,13 @@ export default function AvatarButton({ type, handleClick }: AvatarButtonProps) {
   return (
     <div className="flex justify-center items-center shadow-default w-[105.88px] h-[105.88px] rounded-full">
       <button
-        className={`${backgroundColor} w-[100px] h-[100px] flex justify-center items-center 
+        className={`${backgroundColor} bg-${type} w-[100px] h-[100px] flex justify-center items-center 
   rounded-full border-[1.47px] border-[#E3E6E8]`}
         onClick={() => {
           handleFocus();
           handleClick();
         }}
       >
-        <img
-          src={cardItem[type]}
-          alt="테스트 카드"
-          className="w-[64.71px] h-[64.71px]"
-        />
       </button>
     </div>
   );

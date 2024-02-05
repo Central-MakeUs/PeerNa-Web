@@ -1,3 +1,4 @@
+import { QUERY_KEY } from "@constants/queryKey";
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ProjectInformationWithCreatorType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
@@ -13,7 +14,7 @@ const getProjectById = async (
 
 export default function useGetProjectById(projectId: number) {
   return useSuspenseQuery({
-    queryKey: ['getProjectById', projectId],
+    queryKey: [QUERY_KEY.PROJECT_ID, projectId],
     queryFn: () => getProjectById(projectId),
     select: data => data.result,
   });

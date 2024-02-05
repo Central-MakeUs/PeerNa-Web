@@ -5,9 +5,9 @@ import {
   ChipProps as ChipPropsWithNextui,
   Chip as ChipWithNextui,
 } from '@nextui-org/react';
+import { IconKeyType } from "@type/key";
 import { ColorTypes } from '@type/styles';
 import { getRgbaColorWithOpacity } from '@utils/styles';
-import { IconKeyType } from '@constants/icons';
 
 interface ChipProps extends ChipPropsWithNextui {
   chipType: keyof typeof ChipTypeClassNames;

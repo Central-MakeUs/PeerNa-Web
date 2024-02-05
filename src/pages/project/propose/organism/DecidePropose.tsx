@@ -19,12 +19,13 @@ export default function DecidePropose({ projectId }: DecideProposeProps) {
   const { mutate } = usePostProjectRespondInvitation();
 
   const { replace } = useFlow();
+  // TODO: 제안 모달 추가 필요
   const { openModal, closeModal } = useModal();
 
   const [modalType, setModalType] = useState<RespondType>(RespondType.ACCEPT);
 
   const handleClickOpenModal = (modalType: RespondType) => {
-    openModal('default');
+    openModal();
     setModalType(modalType);
   };
 

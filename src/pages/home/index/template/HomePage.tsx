@@ -4,7 +4,6 @@ import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import { PartType } from '@constants/member';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
 import useIntersection from '@hooks/common/useIntersection';
 import { Tab } from '@nextui-org/react';
@@ -12,6 +11,7 @@ import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import Layout from '@pages/mypage/index/organism/Layout';
 import HomeHeader from '@pages/notification/index/molecule/HomeHeader';
 import { ActivityComponentType } from '@stackflow/react';
+import { PartType } from "@type/enums";
 import { useEffect, useState } from 'react';
 import ReviewButton from '../atom/ReviewButton';
 import PeerTypeAvatarList from '../molecule/PeerTypeAvatarList';
@@ -59,7 +59,7 @@ const HomePage: ActivityComponentType = () => {
             <Tab key="BACK_END" title="BE 개발자" />,
           </UnderlineTabs>
           {data && (
-            <UserProfileList data={data.pages.flatMap(page => page.result)} />
+            <UserProfileList data={data.pages} />
           )}
           <IntersectionBox ref={intersectionRef} />
 
