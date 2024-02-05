@@ -1,6 +1,5 @@
-import whatsMyTypeCard from '@assets/whatsMyTypeCard.png';
-import { Card } from '@nextui-org/react';
-import { ReviewResultType } from '@type/index';
+import PeerCard from '@components/common/atom/PeerCard';
+import { TestType } from '@type/enums';
 import { motion } from 'framer-motion';
 import {
   CSSProperties,
@@ -11,13 +10,12 @@ import {
 } from 'react';
 
 interface FlipCardProps {
-  testType: ReviewResultType;
+  selfTestType: TestType;
+  peerTestType: TestType;
 }
 
-// TODO Card 컴포넌트로 변경
 const FlipCard = forwardRef<HTMLDivElement, FlipCardProps>(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ testType, ...props }, ref) => {
+  ({ selfTestType, peerTestType, ...props }, ref) => {
     const [type, setType] = useState<boolean>(true);
     useEffect(() => {
       const flipInterval = setInterval(() => {
@@ -49,19 +47,12 @@ const FlipCard = forwardRef<HTMLDivElement, FlipCardProps>(
           style={{ perspective: 1000 }}
           className="w-full flex justify-center"
         >
-          <Card
-            id="card"
-            className="w-[294px] h-[408px] pt-[68px] pb-[32px] px-[58px] items-center gap-[76px]"
-            style={cardStyle(type)}
-          >
-           
-          </Card>
-          <Card
-            className="w-[294px] h-[408px] items-center gap-5 bg-transparent"
-            style={cardStyle(!type)}
-          >
-            <img src={whatsMyTypeCard} className="w-full h-full" />
-          </Card>
+          <div style={cardStyle(type)} {...props}>
+            <PeerCard type="self" size="M" testResult={selfTestType} />
+          </div>
+          <div style={cardStyle(!type)}>
+            <PeerCard type="peer" size="M" testResult={peerTestType} />
+          </div>
         </motion.div>
       </Fragment>
     );
