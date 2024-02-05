@@ -1,6 +1,6 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { AUTH_URL } from '@constants/auth';
+import { AUTH_URL } from '@constants';
 
 const KakaoLogin = () => {
   const kakaoLogin = () => {

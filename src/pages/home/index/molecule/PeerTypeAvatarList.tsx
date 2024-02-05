@@ -1,6 +1,6 @@
 import AvatarButton from '@components/common/atom/AvatarButton';
 import { useFlow } from '@hooks/common/useStackFlow';
-import { TestType } from "@type/enums";
+import { TestType } from '@type/enums';
 
 export default function PeerTypeAvatarList() {
   const { push } = useFlow();
@@ -12,16 +12,28 @@ export default function PeerTypeAvatarList() {
   return (
     <ul className="w-full px-5 flex gap-5 justify-center">
       <li>
-        <AvatarButton type={TestType.D} handleClick={() => handleAvatarClick(TestType.D)} />
+        <AvatarButton
+          type={TestType.D}
+          handleClick={() => handleAvatarClick(TestType.D)}
+        />
       </li>
       <li>
-        <AvatarButton type={TestType.I} handleClick={() => handleAvatarClick(TestType.I)} />
+        <AvatarButton
+          type={TestType.I}
+          handleClick={() => handleAvatarClick(TestType.I)}
+        />
       </li>
       <li>
-        <AvatarButton type={TestType.S} handleClick={() => handleAvatarClick(TestType.S)} />
+        <AvatarButton
+          type={TestType.S}
+          handleClick={() => handleAvatarClick(TestType.S)}
+        />
       </li>
       <li>
-        <AvatarButton type={TestType.C} handleClick={() => handleAvatarClick(TestType.C)} />
+        <AvatarButton
+          type={TestType.C}
+          handleClick={() => handleAvatarClick(TestType.C)}
+        />
       </li>
     </ul>
   );

@@ -1,4 +1,4 @@
-import whatsMyTypeCard from '@assets/whatsMyTypeCard.png';
+import whatsMyTypeCard from '@assets/common/whats_my_type_card.png';
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedBottomButton from '@components/wrapper/FixedBottomButton';
