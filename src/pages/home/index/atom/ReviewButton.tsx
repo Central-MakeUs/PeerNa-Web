@@ -4,14 +4,17 @@ import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 
 export default function ReviewButton() {
   const handleSendKakaoMessage = useSendKakaoMessage();
-  const title = '평판 요청';
-  const description = '평판을 작성하세요!';
+  const title = '저는 어떤 동료인가요?';
+  const description = '함께한 동료에 대해 알려주세요.';
+  const buttonText = '피어 테스트 응답하기';
 
   return (
     <div className="mt-8 mb-10 max-w-[524px] mx-auto">
       <button
         className="bg-primary100 rounded-xl w-full flex px-4 py-5 justify-between items-center"
-        onClick={() => handleSendKakaoMessage({ title, description })}
+        onClick={() =>
+          handleSendKakaoMessage({ title, description, buttonText })
+        }
       >
         <div>
           <Typography variant="header03" fontColor="gray08" className="mb-1">
@@ -21,7 +24,7 @@ export default function ReviewButton() {
             동료에게 피어 테스트 응답을 요청해보세요
           </Typography>
         </div>
-        <SvgIcon id="IOSChevronRight" color="gray07" />
+        <SvgIcon id="ShareLink" color="gray07" />
       </button>
     </div>
   );
