@@ -60,7 +60,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 
   return (
     <AppScreenContainer>
-      <div className="bg-peer-bg bg-contain w-full relative">
+      <div className="bg-peer-bg bg-cover bg-no-repeat w-full relative">
         <Header>
           <Header.TopBar>
             <Header.BackIcon handleClick={handleBack} />
@@ -98,7 +98,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
               )}
               {peerProjectDtoList && (
                 <ProjectList
-                  peerProjectDtoList={peerProjectDtoList}
+                  projectList={peerProjectDtoList}
                   handleClick={handleMoreProject}
                 />
               )}
@@ -115,11 +115,12 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
               {!colorAnswerIdList && <NoTestKeywordResult />}
             </Tab>
           </RadioTabs>
+
           <Footer
-            bottom={-5}
+            bottom={3}
             className="w-full flex gap-2 mt-4 flex-col justify-center"
           >
-            <Button>내 프로젝트에 초대하기</Button>
+            <Button className="bottom-10">내 프로젝트에 초대하기</Button>
             <Button buttonVariant="secondary" className="mb-6">
               내 피어 테스트 응답 요청하기
             </Button>
