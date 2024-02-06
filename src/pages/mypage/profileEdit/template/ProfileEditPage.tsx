@@ -1,7 +1,7 @@
+import Button from '@components/common/atom/Button';
 import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import Footer from '@components/wrapper/Footer';
 import useGetMe from '@hooks/api/member/index/useGetMe';
 import usePatchMyProfile from '@hooks/api/member/mypage/usePatchMyProfile';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -81,11 +81,11 @@ const ProfileEditPage: ActivityComponentType = () => {
           />
         )}
       </main>
-      <FixedButtonContainer direction="row">
-        <FixedBottomButton handleClick={handleProfile} isDisabled={!isModified}>
+      <Footer>
+        <Button onClick={handleProfile} isDisabled={!isModified}>
           저장
-        </FixedBottomButton>
-      </FixedButtonContainer>
+        </Button>
+      </Footer>
     </AppScreenContainer>
   );
 };

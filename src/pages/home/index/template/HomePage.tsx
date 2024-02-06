@@ -41,7 +41,7 @@ const HomePage: ActivityComponentType = () => {
     <AppScreenContainer>
       <div className="w-full bg-peer-bg bg-cover bg-no-repeat">
         <Header>
-          <Header.Body marginClass="pl-5 pt-10 pr-3 pb-4 mb-[163px] bg-home-icon bg-no-repeat bg-icon">
+          <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
             <Header.Title>PeerNa</Header.Title>
           </Header.Body>
         </Header>

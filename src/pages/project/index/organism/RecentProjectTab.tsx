@@ -1,43 +1,21 @@
+import IntersectionBox from '@components/common/atom/IntersectionBox';
+import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import ErrorFallback from '@components/common/molecule/ErrorFallback';
 import Project from '@components/common/molecule/Project';
 import useGetProjectList from '@hooks/api/project/index/useGetProjectList';
+import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import EmptyProject from '@pages/project/index/molecule/EmptyProject';
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment } from 'react';
 
 export default function RecentProjectTab() {
   const { push } = useFlow();
-  const { data, fetchNextPage, hasNextPage, status, refetch } =
+  const { data, fetchNextPage, isFetchingNextPage, status, refetch } =
     useGetProjectList();
 
-  const observer = useRef<IntersectionObserver | null>(null);
-  const lastProjectRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const option = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1.0,
-    };
-
-    observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasNextPage) {
-        fetchNextPage();
-      }
-    }, option);
-
-    if (lastProjectRef.current) {
-      observer.current.observe(lastProjectRef.current);
-    }
-
-    return () => {
-      if (lastProjectRef.current && observer.current) {
-        observer.current.unobserve(lastProjectRef.current);
-      }
-    };
-  }, [hasNextPage, fetchNextPage, status]);
+  const intersectionRef = useIntersection(fetchNextPage);
 
   return (
     <Fragment>
@@ -50,10 +28,9 @@ export default function RecentProjectTab() {
         {!data?.pages && status === 'success' && <EmptyProject />}
         {status === 'error' && <ErrorFallback handleClick={() => refetch()} />}
         {data?.pages.map(group =>
-          group.result.map((project, index) => (
+          group.result.map(project => (
             <button
               key={project.projectId}
-              ref={group.result.length === index + 1 ? lastProjectRef : null}
               className="w-full text-left"
               onClick={() =>
                 push('ProjectDetailPage', { id: project.projectId })
@@ -67,6 +44,10 @@ export default function RecentProjectTab() {
             </button>
           )),
         )}
+        <IntersectionBox ref={intersectionRef} />
+
+        {isFetchingNextPage && <Spinner />}
+        <Spacer y={6} />
       </div>
     </Fragment>
   );

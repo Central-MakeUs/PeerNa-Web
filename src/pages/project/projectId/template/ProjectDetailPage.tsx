@@ -1,6 +1,7 @@
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
+import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Footer from '@components/wrapper/Footer';
+import Header from '@components/wrapper/Header';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
@@ -21,21 +22,19 @@ const ProjectDetailPage: ActivityComponentType = () => {
   );
   return (
     <AppScreenContainer>
-      <NavigationHeader
-        backIconProps={{
-          isShow: true,
-          handleClick: handleClickBackIcon,
-        }}
-        bodyProps={{
-          isShow: true,
-          title: projectInformation.projectName,
-        }}
-      />
+      <Header>
+        <Header.TopBar>
+          <Header.BackIcon handleClick={handleClickBackIcon} />
+        </Header.TopBar>
+        <Header.Body>
+          <Header.Title>{projectInformation.projectName}</Header.Title>
+        </Header.Body>
+      </Header>
       <Spacer y={8} />
       <ProjectInformation projectInformation={projectInformation} />
-      <FixedBottomButton handleClick={handleClickShare}>
-        동료 초대하기
-      </FixedBottomButton>
+      <Footer bottom={3}>
+        <Button onClick={handleClickShare}>동료 초대하기</Button>
+      </Footer>
       <ShareDrawer
         openBottomSheet={openBottomSheet}
         setOpenBottomSheet={setOpenBottomSheet}
