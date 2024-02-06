@@ -12,6 +12,7 @@ import TypeI from '@assets/common/icon_I.png';
 import TypeS from '@assets/common/icon_S.png';
 import Multidimensional from '@assets/common/multidimensional.png';
 import Pragmatic from '@assets/common/pragmatic.png';
+import TypeUnknwon from '@assets/common/unknown.png';
 import Warmhearted from '@assets/common/warmhearted.png';
 import KakaoShare from '@assets/link/kakao.png';
 import Onboarding1 from '@assets/onboarding/onboarding1.png';
@@ -55,4 +56,5 @@ export const PEER_ICON_LIST = {
   I: TypeI,
   S: TypeS,
   C: TypeC,
+  UNKNOWN: TypeUnknwon,
 };

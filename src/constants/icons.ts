@@ -84,4 +84,5 @@ export const Icon = {
   Shape: 'shape',
   DocumentSplitHint: 'document_split_hint',
   DocumentTableSearch: 'document_table_search',
+  ShareLink: 'shareLink',
 };
