@@ -1,6 +1,18 @@
-
-import { JobType, PartType, PeerGrade, ResultKeyword, TestType } from "@type/enums";
-import { JobList, PartList, PeerGradeTest, PeerKeywordCard, PeerTestText } from "@type/value";
+import { KEYWORD_IMAGE_MAPPER } from '@constants/images';
+import {
+  JobType,
+  PartType,
+  PeerGrade,
+  ResultKeyword,
+  TestType,
+} from '@type/enums';
+import {
+  JobList,
+  PartList,
+  PeerGradeTest,
+  PeerKeywordCard,
+  PeerTestText,
+} from '@type/value';
 
 export const TEST_TYPE_INFO: Record<TestType, PeerTestText> = {
   D: {
@@ -15,12 +27,11 @@ export const TEST_TYPE_INFO: Record<TestType, PeerTestText> = {
     title: '바이올렛',
     description: '화합을 도모하며 \n 협조적인 동료',
   },
-  C: {  
+  C: {
     title: '미모사',
     description: '신중하게 설계하며 \n 분석적인 동료',
   },
-  
-}
+};
 
 export const PEER_GRADE_INFO: Record<PeerGrade, PeerGradeTest> = {
   OUTSTANDING: {
@@ -53,75 +64,71 @@ export const PEER_GRADE_INFO: Record<PeerGrade, PeerGradeTest> = {
   },
 };
 
-
-export const KEYWORD_CARD_INFO: Record<
-  ResultKeyword, PeerKeywordCard
-> = {
+export const KEYWORD_CARD_INFO: Record<ResultKeyword, PeerKeywordCard> = {
   DRIVING: {
-    image: ResultKeyword.DRIVING,
+    image: KEYWORD_IMAGE_MAPPER.DRIVING,
     caption: '가치관',
     title: '추진하는',
     content: '팀을 이끄는 배의 선장 같은 동료에요',
   },
   COOPERATIVE: {
-    image: ResultKeyword.COOPERATIVE,
+    image: KEYWORD_IMAGE_MAPPER.COOPERATIVE,
     caption: '가치관',
     title: '협조하는',
     content: '팀을 든든히 받쳐주는 버팀목 같은 동료에요',
   },
   ANALYTICAL: {
-    image: ResultKeyword.ANALYTICAL,
+    image: KEYWORD_IMAGE_MAPPER.ANALYTICAL,
     caption: '사고 방식',
     title: '분석적인',
     content: '목표 실현 가능성을 높이는 동료에요',
   },
   COMPREHENSIVE: {
-    image: ResultKeyword.COMPREHENSIVE,
+    image: KEYWORD_IMAGE_MAPPER.COMPREHENSIVE,
     caption: '사고 방식',
     title: '종합적인',
     content: '현실과 이상을 두루 고려하는 동료에요',
   },
   FUTURE_ORIENTED: {
-    image: ResultKeyword.FUTURE_ORIENTED,
+    image: KEYWORD_IMAGE_MAPPER.FUTURE_ORIENTED,
     caption: '사고 방식',
     title: '미래지향적인',
     content: '넓은 시야로 큰 그림을 그리는 동료에요',
   },
   PRAGMATIC: {
-    image: ResultKeyword.PRAGMATIC,
+    image: KEYWORD_IMAGE_MAPPER.PRAGMATIC,
     caption: '소통 방식',
     title: '냉철한',
     content: '솔직한 대화를 이끌어 내는 동료에요',
   },
-  MULTI_DIMENSIONAL: {
-    image: ResultKeyword.MULTI_DIMENSIONAL,
+  MULTIDIMENSIONAL: {
+    image: KEYWORD_IMAGE_MAPPER.MULTI_DIMENSIONAL,
     caption: '소통 방식',
     title: '입체적인',
     content: '안정적이고 견고한 외유내강의 동료에요',
   },
   WARMHEARTED: {
-    image: ResultKeyword.WARMHEARTED,
+    image: KEYWORD_IMAGE_MAPPER.WARMHEARTED,
     caption: '소통 방식',
     title: '따듯한',
     content: '힘과 용기를 불어넣는 동료에요',
   },
   CAUTIOUS: {
-    image: ResultKeyword.CAUTIOUS,
+    image: KEYWORD_IMAGE_MAPPER.CAUTIOUS,
     caption: '결정 방식',
     title: '신중한',
     content: '위험성과 변수를 줄여 줄 동료에요',
   },
   CHALLENGING: {
-    image: ResultKeyword.CHALLENGING,
+    image: KEYWORD_IMAGE_MAPPER.CHALLENGING,
     caption: '결정 방식',
     title: '신중한',
     content: '팀에게 새로운 길을 열어 줄 동료에요',
   },
   LOCKED: {
-    image: ResultKeyword.LOCKED,
-  }
+    image: KEYWORD_IMAGE_MAPPER.CARD_LOCKED,
+  },
 };
-
 
 export const JOB_LIST: JobList[] = [
   { key: JobType.STUDENT, text: '대학생' },

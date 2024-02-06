@@ -1,10 +1,10 @@
-import gradient from '@assets/gradient.png';
+import gradient from '@assets/common/bg_gradient.png';
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
-import { cardText } from '@constants/card';
+import { TEST_TYPE_INFO } from '@constants/list';
 import useGetMe from '@hooks/api/member/index/useGetMe';
 import useGetReviewResult from '@hooks/api/member/index/useGetReviewResult';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -80,7 +80,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         }}
         bodyProps={{
           isShow: true,
-          title: `${data.memberName} 님의 피어 유형은\n ${cardText[data.testType].title}에요`,
+          title: `${data.memberName} 님의 피어 유형은\n ${TEST_TYPE_INFO[data.testType].title}에요`,
           textAlign: 'center',
         }}
       />

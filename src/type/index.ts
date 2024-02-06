@@ -1,5 +1,11 @@
 import { PeerGradeTypes } from '@store/reviewState';
-import { JobType, NoticeType, PartType, ResultKeyword, TestType } from '@type/enums';
+import {
+  JobType,
+  NoticeType,
+  PartType,
+  ResultKeyword,
+  TestType,
+} from '@type/enums';
 
 export type ReviewResultType = 'D' | 'I' | 'S' | 'C';
 
@@ -43,7 +49,7 @@ export interface CreatorSimpleProfileType {
   peerTestType: TestType;
   totalScore: number;
   oneLiner: string;
-};
+}
 
 export interface PeerSimpleProfileType extends CreatorSimpleProfileType {
   memberId: number;

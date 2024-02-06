@@ -1,7 +1,8 @@
 import Badge from '@components/common/atom/Badge';
 import Typography from '@components/common/atom/Typography';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
-import { ResultKeyword } from "@type/enums";
+import { ResultKeyword } from '@type/enums';
+import { Fragment } from 'react';
 import TestCardList from './TestCardList';
 
 export default function SelfTestResult({
@@ -10,7 +11,7 @@ export default function SelfTestResult({
   selfTestCardList: ResultKeyword[];
 }) {
   return (
-    <>
+    <Fragment>
       <HeaderContainer size="sm">
         <div className="flex items-center gap-2">
           <Typography variant="header03" fontColor="gray08">
@@ -20,6 +21,6 @@ export default function SelfTestResult({
         </div>
       </HeaderContainer>
       <TestCardList selfTestCardList={selfTestCardList} type="self" />
-    </>
+    </Fragment>
   );
 }

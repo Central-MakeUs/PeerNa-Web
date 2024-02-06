@@ -5,7 +5,6 @@ export const REVIEW_SELF_TITLE = [
   '어떤 역할을 맡고 있나요?',
 ];
 
-
 export const REVIEW_TITLE = {
   self: [
     '업무 시 나의 성향은',
@@ -73,4 +72,3 @@ export const REVIEW_PICKER: { [key: number]: string[] } = {
     '개방적',
   ],
 };
-

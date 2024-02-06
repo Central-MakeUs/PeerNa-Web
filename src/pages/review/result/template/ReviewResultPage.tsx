@@ -6,7 +6,7 @@ import ResultGuide from '@pages/review/result/organism/ResultGuide';
 import ResultShare from '@pages/review/result/organism/ResultShare';
 import { ActivityComponentType } from '@stackflow/react';
 
-import gradient from '@assets/gradient.png';
+import gradient from '@assets/common/bg_gradient.png';
 type ReviewResultPageParams = {
   type: string;
   step: string;

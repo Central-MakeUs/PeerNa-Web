@@ -1,15 +1,12 @@
-import { QUERY_KEY } from "@constants/queryKey";
+import { QUERY_KEY } from '@constants/queryKey';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { MemberDefaultInformationTypeWithUuid } from '@type/index';
+import { PeerSimpleProfileType } from '@type/index';
 import { InfiniteApiResponse, http } from '@utils/API';
-
-interface SearchPeerPartResponseDTO
-  extends MemberDefaultInformationTypeWithUuid {}
 
 const getSearchPeerPart = async (
   peerPart: string,
   page: number,
-): Promise<InfiniteApiResponse<SearchPeerPartResponseDTO>> => {
+): Promise<InfiniteApiResponse<PeerSimpleProfileType>> => {
   const response = await http.get(
     `/home/search/peer-part?part=${peerPart}&page=${page}`,
   );

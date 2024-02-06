@@ -1,10 +1,19 @@
 import Typography from '@components/common/atom/Typography';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
-import { ResultKeyword } from "@type/enums";
+import FlipCard from '@pages/review/result/molecule/FlipCard';
+import { TestType } from '@type/enums';
+import { Fragment } from 'react';
 
-export default function CardTestResult() {
+interface CardTypeProps {
+  peerTestType: TestType;
+  selfTestType: TestType;
+}
+export default function CardTestResult({
+  peerTestType,
+  selfTestType,
+}: CardTypeProps) {
   return (
-    <>
+    <Fragment>
       <HeaderContainer size={'md'}>
         <Typography variant="header02" fontColor="gray08" className="mb-2">
           {
@@ -15,12 +24,9 @@ export default function CardTestResult() {
           응답에 따라 분석 결과는 변경될 수 있어요.
         </Typography>
       </HeaderContainer>
-      //TODO_ FLIPCard 컴포넌트 사용
-      <img
-        src={ResultKeyword.ANALYTICAL}
-        alt="테스트 결과 카드"
-        className="mt-4 mb-8 mx-auto !w-[171px]"
-      />
-    </>
+      <div className="h-[238px] mb-8">
+        <FlipCard peerTestType={peerTestType} selfTestType={selfTestType} />
+      </div>
+    </Fragment>
   );
 }

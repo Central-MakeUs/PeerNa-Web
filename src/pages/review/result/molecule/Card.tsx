@@ -1,12 +1,13 @@
 import Typography from '@components/common/atom/Typography';
-import { CardInformation, PeerCardType } from '@constants/image';
+import { KEYWORD_CARD_INFO } from '@constants/list';
+import { ResultKeyword } from '@type/enums';
 
 interface CardItemProps {
-  type: PeerCardType;
+  type: ResultKeyword;
 }
 
 export default function Card({ type }: CardItemProps) {
-  const { image, caption, title, content } = CardInformation[type];
+  const { image, caption, title, content } = KEYWORD_CARD_INFO[type];
   return (
     <section className="flex w-[350px] gap-3">
       <img src={image} width={82} height={144} alt={`${type} card`} />

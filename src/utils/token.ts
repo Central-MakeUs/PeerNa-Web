@@ -1,22 +1,22 @@
-import {
-  Access_Token,
-  Fcm_Token,
-  Refresh_Token,
-} from '@constants/localStorage';
+import { StorageKey } from '@constants/localStorage';
 
-export const getAccessToken = () => localStorage.getItem(Access_Token);
+export const getAccessToken = () =>
+  localStorage.getItem(StorageKey.AccessToken);
 export const setAccessToken = (accessToken: string) =>
-  localStorage.setItem(Access_Token, accessToken);
+  localStorage.setItem(StorageKey.AccessToken, accessToken);
 export const removeAccessToken = () => {
-  localStorage.removeItem(Access_Token);
+  localStorage.removeItem(StorageKey.AccessToken);
 };
 
-export const getRefreshToken = () => localStorage.getItem(Refresh_Token);
+export const getRefreshToken = () =>
+  localStorage.getItem(StorageKey.RefreshToken);
 export const setRefreshToken = (refreshToken: string) =>
-  localStorage.setItem(Refresh_Token, refreshToken);
-export const removeRefreshToken = () => localStorage.removeItem(Refresh_Token);
+  localStorage.setItem(StorageKey.RefreshToken, refreshToken);
+export const removeRefreshToken = () =>
+  localStorage.removeItem(StorageKey.RefreshToken);
 
-export const getFcmToken = () => localStorage.getItem(Fcm_Token);
+export const getFcmToken = () => localStorage.getItem(StorageKey.FcmToken);
 export const setFcmToken = (fcmToken: string) =>
-  localStorage.setItem(Fcm_Token, fcmToken);
-export const removeFcmToken = () => localStorage.removeItem(Fcm_Token);
+  localStorage.setItem(StorageKey.FcmToken, fcmToken);
+export const removeFcmToken = () =>
+  localStorage.removeItem(StorageKey.FcmToken);
