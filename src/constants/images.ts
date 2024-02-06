@@ -6,6 +6,10 @@ import Comprehensive from '@assets/common/comprehensive.png';
 import Cooperative from '@assets/common/cooperative.png';
 import Driving from '@assets/common/driving.png';
 import FutureOriented from '@assets/common/future_oriented.png';
+import TypeC from '@assets/common/icon_C.png';
+import TypeD from '@assets/common/icon_D.png';
+import TypeI from '@assets/common/icon_I.png';
+import TypeS from '@assets/common/icon_S.png';
 import Multidimensional from '@assets/common/multidimensional.png';
 import Pragmatic from '@assets/common/pragmatic.png';
 import Warmhearted from '@assets/common/warmhearted.png';
@@ -22,7 +26,6 @@ import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
 
-
 export const REVIEW_LOTTIES = [Lottie1, Lottie2, Lottie3, Lottie4];
 export const KAKAO_SHARE = KakaoShare;
 export const ON_BOARDING_IMAGE_LIST = [
@@ -32,6 +35,7 @@ export const ON_BOARDING_IMAGE_LIST = [
   Onboarding4,
 ];
 export const PEER_REVIEW_IMAGE_LIST = [Peer1, Peer2, Peer3];
+
 export const KEYWORD_IMAGE_MAPPER = {
   ANALYTICAL: Analytical,
   CAUTIOUS: Cautious,
@@ -43,5 +47,12 @@ export const KEYWORD_IMAGE_MAPPER = {
   MULTI_DIMENSIONAL: Multidimensional,
   PRAGMATIC: Pragmatic,
   WARMHEARTED: Warmhearted,
-  CARD_LOCKED: CardLocked
-}
+  CARD_LOCKED: CardLocked,
+};
+
+export const PEER_ICON_LIST = {
+  D: TypeD,
+  I: TypeI,
+  S: TypeS,
+  C: TypeC,
+};

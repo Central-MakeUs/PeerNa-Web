@@ -1,8 +1,8 @@
 import Badge from '@components/common/atom/Badge';
 import Typography from '@components/common/atom/Typography';
+import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import TestCardList from '@pages/mypage/index/molecule/TestCardList';
 import { ResultKeyword } from '@type/enums';
-import HeaderContainer from 'pages/mypage/index/molecule/HeaderContainer';
-import TestCardList from 'pages/mypage/index/molecule/TestCardList';
 import { Fragment } from 'react';
 
 interface SelfResultProps {

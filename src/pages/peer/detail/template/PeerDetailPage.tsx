@@ -1,8 +1,8 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import RadioTabs from '@components/common/molecule/RadioTabs';
-import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Header from '@components/wrapper/Header';
 import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Tab } from '@nextui-org/react';
@@ -30,6 +30,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   const { pop, push } = useFlow();
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
+  console.log(peerInfo);
 
   const {
     peerTestMoreThanThree,
@@ -58,8 +59,13 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 
   return (
     <AppScreenContainer>
-      <div className="bg-slate-300 w-full">
-        <TopHeader title={username} onClick={handleBack} />
+      <div className="bg-peer-bg bg-cover bg-no-repeat w-full relative">
+        <Header>
+          <Header.TopBar>
+            <Header.BackIcon handleClick={handleBack} />
+            <Header.Title className="mx-auto">{username}</Header.Title>
+          </Header.TopBar>
+        </Header>
         <PeerProfileCard memberInfo={memberSimpleProfileDto} />
         <Layout>
           <HeaderContainer size="md">
@@ -91,28 +97,29 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
               )}
               {peerProjectDtoList && (
                 <ProjectList
-                  peerProjectDtoList={peerProjectDtoList}
+                  projectList={peerProjectDtoList}
                   handleClick={handleMoreProject}
                 />
               )}
             </Tab>
             <Tab key="peer" title="키워드 비교">
-              {colorAnswerIdList ? (
+              {colorAnswerIdList && peerCardList && (
                 <OverallTestResult
                   colorAnswerIdList={colorAnswerIdList}
                   selfTestAnswerIdList={peerAnswerIdList}
                   peerCardList={peerCardList}
                   type="peer"
                 />
-              ) : (
-                <NoTestKeywordResult />
               )}
+              {!colorAnswerIdList || (!peerCardList && <NoTestKeywordResult />)}
             </Tab>
           </RadioTabs>
-          <Button className="mb-4">내 프로젝트에 초대하기</Button>
-          <Button buttonVariant="secondary">
-            내 피어 테스트 응답 요청하기
-          </Button>
+          <section className="flex flex-col gap-4 pt-7 pb-5">
+            <Button>내 프로젝트에 초대하기</Button>
+            <Button buttonVariant="secondary">
+              내 피어 테스트 응답 요청하기
+            </Button>
+          </section>
         </Layout>
       </div>
     </AppScreenContainer>

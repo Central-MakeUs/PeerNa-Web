@@ -7,7 +7,7 @@ export default function ReviewButton() {
     console.log('클릭');
   };
   return (
-    <div className="bg-primary100 rounded-xl mt-8 mb-10 w-[524px] mx-auto">
+    <div className="bg-primary100 rounded-xl mt-8 mb-10 max-w-[524px] mx-auto">
       <div className="w-full flex px-4 py-5 justify-between items-center">
         <div>
           <Typography variant="header03" fontColor="gray08" className="mb-1">

@@ -1,4 +1,4 @@
-import { ResultKeyword } from "@type/enums";
+import { ResultKeyword } from '@type/enums';
 import TestCardItem from '../atom/TestCardItem';
 
 interface TestCardListProps {

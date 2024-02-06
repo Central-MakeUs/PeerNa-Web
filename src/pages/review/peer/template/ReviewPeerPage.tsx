@@ -1,4 +1,4 @@
-import gradient from '@assets/gradient.png';
+import gradient from '@assets/common/bg_gradient.png';
 import Spinner from '@components/common/atom/Spinner';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import GuessWhoResponse from '@pages/review/peer/organism/GuessWhoResponse';

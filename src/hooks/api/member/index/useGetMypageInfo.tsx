@@ -1,24 +1,28 @@
 import { QUERY_KEY } from '@constants/queryKey';
 import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ResultKeyword } from '@type/enums';
+import { ResultKeyword, TestType } from '@type/enums';
 import { PeerSimpleProfileType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
 export interface ProfileResponseDTO {
   peerTestMoreThanThree: boolean;
-  memberSimpleProfileDto: PeerSimpleProfileType;
-  peerTestType: string;
-  myCardList: ResultKeyword[];
   peerCardList: ResultKeyword[];
+  peerFeedbackList: string[];
   totalEvaluation: OverallOpinionProps;
   totalScore: number;
-  peerFeedbackList: string[];
-  peerAnswerIdList: number[];
   colorAnswerIdList: number[];
 }
 
-const getMyPageInfo = async (): Promise<ApiResponse<ProfileResponseDTO>> => {
+export interface MyPageResponseDTO extends ProfileResponseDTO {
+  memberMyPageInfoDto: PeerSimpleProfileType;
+  peerTestType: TestType;
+  selfTestCardList: ResultKeyword[];
+  selfTestAnswerIdList: number[];
+  colorAnswerIdList: number[];
+}
+
+const getMyPageInfo = async (): Promise<ApiResponse<MyPageResponseDTO>> => {
   const response = await http.get('/member/mypage');
   return response.data;
 };

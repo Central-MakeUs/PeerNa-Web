@@ -3,7 +3,7 @@ import {
   nameSizeValidator,
   reviewSelfState,
 } from '@store/reviewSelfState';
-import { JobType, PartType } from "@type/enums";
+import { JobType, PartType } from '@type/enums';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 export default function useReviewSelfState() {

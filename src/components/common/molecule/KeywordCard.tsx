@@ -1,6 +1,6 @@
 import Chip from '@components/common/atom/Chip';
 import Typography from '@components/common/atom/Typography';
-import { KEYWORD_MAPPER } from "@constants/mapper";
+import { KEYWORD_MAPPER } from '@constants/mapper';
 import { Spacer } from '@nextui-org/react';
 
 interface KeywordCard {

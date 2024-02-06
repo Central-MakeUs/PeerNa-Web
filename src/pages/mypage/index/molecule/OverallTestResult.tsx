@@ -2,11 +2,11 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Tooltip from '@components/common/atom/Tooltip';
 import Typography from '@components/common/atom/Typography';
 import KeywordCard from '@components/common/molecule/KeywordCard';
-import { KEYWORD_CARD_INFO } from "@constants/list";
-import { KEYWORD_MAPPER } from "@constants/mapper";
+import { KEYWORD_CARD_INFO } from '@constants/list';
+import { KEYWORD_MAPPER } from '@constants/mapper';
 import { Button } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
-import { ResultKeyword, TestType } from "@type/enums";
+import { ResultKeyword, TestType } from '@type/enums';
 import { Fragment } from 'react';
 
 interface OverallTestResultProps {
@@ -77,7 +77,7 @@ export default function OverallTestResult({
       <section className="flex flex-col gap-3 items-center">
         <KeywordCard
           title="가치관"
-          subtitle={KEYWORD_CARD_INFO[peerCardList[0]].content}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[0]].content as string}
           type="D"
           keywords={getKeywordsByIdList(TestType.D, selfIdList.D)}
           colorAnswerIdList={colorIdList.D}
@@ -85,7 +85,7 @@ export default function OverallTestResult({
         />
         <KeywordCard
           title="소통 방식"
-          subtitle={KEYWORD_CARD_INFO[peerCardList[1]].content}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[1]].content as string}
           type="I"
           keywords={getKeywordsByIdList(TestType.I, selfIdList.I)}
           colorAnswerIdList={colorIdList.I}
@@ -93,7 +93,7 @@ export default function OverallTestResult({
         />
         <KeywordCard
           title="사고 방식"
-          subtitle={KEYWORD_CARD_INFO[peerCardList[2]].content}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[2]].content as string}
           type="S"
           keywords={getKeywordsByIdList(TestType.S, selfIdList.S)}
           colorAnswerIdList={colorIdList.S}
@@ -101,7 +101,7 @@ export default function OverallTestResult({
         />
         <KeywordCard
           title="결정 방식"
-          subtitle={KEYWORD_CARD_INFO[peerCardList[3]].content}
+          subtitle={KEYWORD_CARD_INFO[peerCardList[3]].content as string}
           type="C"
           keywords={getKeywordsByIdList(TestType.C, selfIdList.C)}
           colorAnswerIdList={colorIdList.C}

@@ -1,4 +1,4 @@
-import a from '@assets/card_C.png';
+import a from '@assets/common/bg_gradient.png';
 import SlideImage from '@components/animate/SlideImage';
 import FixedCenter from '@components/wrapper/FixedCenter';
 
