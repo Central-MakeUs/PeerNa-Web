@@ -25,7 +25,10 @@ export default function ProgressStep({
     <AvatarWithNextui
       name={icon ? '' : name}
       icon={icon}
-      className={`w-5 h-5 text-white text-sm ${
+      classNames={{
+        base: 'w-5 h-5',
+      }}
+      className={`text-white text-sm ${
         isDisabled ? 'bg-gray02' : 'bg-secondary-orange'
       }`}
       {...props}
