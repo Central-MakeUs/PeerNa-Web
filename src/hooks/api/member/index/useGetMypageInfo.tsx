@@ -6,19 +6,23 @@ import { PeerSimpleProfileType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
 export interface ProfileResponseDTO {
-  peerTestMoreThanTree: boolean;
+  peerTestMoreThanThree: boolean;
+  peerCardList: ResultKeyword[];
+  peerFeedbackList: string[];
+  totalEvaluation: OverallOpinionProps;
+  totalScore: number;
+  colorAnswerIdList: number[];
+}
+
+export interface MyPageResponseDTO extends ProfileResponseDTO {
   memberMyPageInfoDto: PeerSimpleProfileType;
   peerTestType: TestType;
   selfTestCardList: ResultKeyword[];
-  peerCardList: ResultKeyword[];
-  totalEvaluation: OverallOpinionProps;
-  totalScore: number;
-  peerFeedbackList: string[];
   selfTestAnswerIdList: number[];
   colorAnswerIdList: number[];
 }
 
-const getMyPageInfo = async (): Promise<ApiResponse<ProfileResponseDTO>> => {
+const getMyPageInfo = async (): Promise<ApiResponse<MyPageResponseDTO>> => {
   const response = await http.get('/member/mypage');
   return response.data;
 };

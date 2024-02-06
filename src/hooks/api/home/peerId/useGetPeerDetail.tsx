@@ -1,10 +1,14 @@
 import { QUERY_KEY } from '@constants/queryKey';
 import { ProfileResponseDTO } from '@hooks/api/member/index/useGetMypageInfo';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { ProjectItemType } from '@type/index';
+import { ResultKeyword } from '@type/enums';
+import { PeerSimpleProfileType, ProjectItemType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
 interface PeerProfileResponseDTO extends ProfileResponseDTO {
+  memberSimpleProfileDto: PeerSimpleProfileType;
+  myCardList: ResultKeyword[];
+  peerAnswerIdList: number[];
   peerProjectDtoList: ProjectItemType[];
 }
 
