@@ -27,7 +27,7 @@ const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
 
   const {
-    peerTestMoreThanTree,
+    peerTestMoreThanThree,
     memberMyPageInfoDto,
     selfTestCardList,
     peerTestType,
@@ -104,7 +104,7 @@ const MyPage: ActivityComponentType = () => {
                   type="self"
                 />
               )}
-              {peerTestMoreThanTree === false && <NoTestKeywordResult />}
+              {peerTestMoreThanThree === false && <NoTestKeywordResult />}
               {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
                 <OverallOpinion totalEvaluation={totalEvaluation} />
               )}
