@@ -2,6 +2,8 @@ export const DEVELOPMENT = 'development';
 export const PRODUCTION = 'production';
 export type ModeTypes = typeof DEVELOPMENT | typeof PRODUCTION;
 export const MODE: ModeTypes = import.meta.env.MODE as ModeTypes;
+export const HOST_DEV = import.meta.env.VITE_HOST_DEV;
+export const HOST_PROD = import.meta.env.VITE_HOST_PROD;
 
 const KAKAO_AUTH_URL = 'https://kauth.kakao.com';
 

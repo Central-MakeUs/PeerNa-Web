@@ -1,14 +1,18 @@
-import IconButton from '@components/common/atom/IconButton';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
+import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 
 export default function ReviewButton() {
-  /*TODO: 평판 확인 페이지 이동 */
-  const handleClick = () => {
-    console.log('클릭');
-  };
+  const handleSendKakaoMessage = useSendKakaoMessage();
+  const title = '평판 요청';
+  const description = '평판을 작성하세요!';
+
   return (
-    <div className="bg-primary100 rounded-xl mt-8 mb-10 max-w-[524px] mx-auto">
-      <div className="w-full flex px-4 py-5 justify-between items-center">
+    <div className="mt-8 mb-10 max-w-[524px] mx-auto">
+      <button
+        className="bg-primary100 rounded-xl w-full flex px-4 py-5 justify-between items-center"
+        onClick={() => handleSendKakaoMessage({ title, description })}
+      >
         <div>
           <Typography variant="header03" fontColor="gray08" className="mb-1">
             나는 어떤 동료일까 궁금하다면?
@@ -17,14 +21,8 @@ export default function ReviewButton() {
             동료에게 피어 테스트 응답을 요청해보세요
           </Typography>
         </div>
-        <IconButton
-          onClick={handleClick}
-          iconProps={{
-            id: 'IOSChevronRight',
-            color: 'gray07',
-          }}
-        />
-      </div>
+        <SvgIcon id="IOSChevronRight" color="gray07" />
+      </button>
     </div>
   );
 }
