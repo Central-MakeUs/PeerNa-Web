@@ -9,7 +9,7 @@ export type PeerGradeTest = {
 
 export type PeerTestText = {
   title: string;
-  description: string;
+  description?: string;
 };
 
 export type PeerKeywordCard = {

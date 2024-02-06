@@ -7,8 +7,6 @@ import {
   TestType,
 } from '@type/enums';
 
-export type ReviewResultType = 'D' | 'I' | 'S' | 'C';
-
 export type KeywordType = 'D' | 'I' | 'S' | 'C' | 'isDisabled';
 
 export interface ProjectItemType {
@@ -80,7 +78,7 @@ export interface ProjectInviteSuccessType {
 
 export interface MemberReviewResultType {
   memberName: string;
-  testType: ReviewResultType;
+  testType: TestType;
   group1: ResultKeyword;
   group2: ResultKeyword;
   group3: ResultKeyword;
