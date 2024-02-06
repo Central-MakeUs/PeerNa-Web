@@ -2,7 +2,6 @@ import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -104,7 +103,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
               )}
             </Tab>
             <Tab key="peer" title="키워드 비교">
-              {colorAnswerIdList && (
+              {colorAnswerIdList && peerCardList && (
                 <OverallTestResult
                   colorAnswerIdList={colorAnswerIdList}
                   selfTestAnswerIdList={peerAnswerIdList}
@@ -112,19 +111,15 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
                   type="peer"
                 />
               )}
-              {!colorAnswerIdList && <NoTestKeywordResult />}
+              {!colorAnswerIdList || (!peerCardList && <NoTestKeywordResult />)}
             </Tab>
           </RadioTabs>
-
-          <Footer
-            bottom={3}
-            className="w-full flex gap-2 mt-4 flex-col justify-center"
-          >
-            <Button className="bottom-10">내 프로젝트에 초대하기</Button>
-            <Button buttonVariant="secondary" className="mb-6">
+          <section className="flex flex-col gap-4 pt-7 pb-5">
+            <Button>내 프로젝트에 초대하기</Button>
+            <Button buttonVariant="secondary">
               내 피어 테스트 응답 요청하기
             </Button>
-          </Footer>
+          </section>
         </Layout>
       </div>
     </AppScreenContainer>
