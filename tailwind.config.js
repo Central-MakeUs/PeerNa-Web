@@ -89,11 +89,13 @@ export default {
       },
       backgroundImage: {
         'peer-bg': 'url("@assets/common/bg_gradient.png")',
+        unknown_bg: 'url("@assets/common/whats_my_type_bg.png")',
         'home-icon': 'url("@assets/common/home_peer.png")',
         D: 'url("@assets/common/icon_D.png")',
         I: 'url("@assets/common/icon_I.png")',
         S: 'url("@assets/common/icon_S.png")',
         C: 'url("@assets/common/icon_C.png")',
+        UNKNOWN: 'url("@assets/common/unknown.png")',
       },
       backgroundSize: {
         icon: '218px 180px',

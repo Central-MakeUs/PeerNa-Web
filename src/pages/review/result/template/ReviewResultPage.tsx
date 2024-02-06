@@ -6,7 +6,6 @@ import ResultGuide from '@pages/review/result/organism/ResultGuide';
 import ResultShare from '@pages/review/result/organism/ResultShare';
 import { ActivityComponentType } from '@stackflow/react';
 
-import gradient from '@assets/common/bg_gradient.png';
 type ReviewResultPageParams = {
   type: string;
   step: string;
@@ -28,10 +27,7 @@ const ReviewResultPage: ActivityComponentType<ReviewResultPageParams> = ({
   };
 
   return (
-    <AppScreenContainer
-      className={'bg-transparent bg-cover'}
-      style={{ backgroundImage: `url(${gradient})` }}
-    >
+    <AppScreenContainer className={'bg-transparent bg-cover bg-peer-bg'}>
       {curStep === 1 && <LoadingResult />}
       {curStep === 2 && <ResultGuide />}
       {curStep === 3 && <AnalyzePeerCard handleClick={handleClick} />}
