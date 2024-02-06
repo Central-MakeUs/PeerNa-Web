@@ -1,12 +1,15 @@
 import { useMutation } from '@tanstack/react-query';
-import { MemberDefaultInformationTypeWithSelfGrade } from '@type/index';
+import {
+  MemberDefaultInformationTypeWithSelfGrade,
+  MemberDefaultInformationTypeWithUuid,
+} from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
 interface MemberInformationRequestDTO
   extends MemberDefaultInformationTypeWithSelfGrade {}
 
 interface MemberbasicInformationResponseDTO
-  extends MemberDefaultInformationTypeWithSelfGrade {}
+  extends MemberDefaultInformationTypeWithUuid {}
 
 const postMemberInformation = async ({
   name,
@@ -17,7 +20,7 @@ const postMemberInformation = async ({
 }: MemberInformationRequestDTO): Promise<
   ApiResponse<MemberbasicInformationResponseDTO>
 > => {
-  return await http.post('/member/basic-Information', {
+  return await http.post('/member/basic-info', {
     name,
     job,
     part,

@@ -2,7 +2,7 @@ import { QUERY_KEY } from '@constants/queryKey';
 import { OverallOpinionProps } from '@pages/mypage/index/molecule/OverallOpinion';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { ResultKeyword, TestType } from '@type/enums';
-import { PeerSimpleProfileType } from '@type/index';
+import { ProfileCardInfo } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
 export interface ProfileResponseDTO {
@@ -15,7 +15,7 @@ export interface ProfileResponseDTO {
 }
 
 export interface MyPageResponseDTO extends ProfileResponseDTO {
-  memberMyPageInfoDto: PeerSimpleProfileType;
+  memberMyPageInfoDto: ProfileCardInfo;
   peerTestType: TestType;
   selfTestCardList: ResultKeyword[];
   selfTestAnswerIdList: number[];

@@ -3,10 +3,15 @@ import { HOST_DEV, HOST_PROD, MODE } from '@constants';
 type KakaoMessage = {
   title: string;
   description: string;
+  buttonText: string;
 };
 
 export default function useSendKakaoMessage() {
-  const handleSendKakaoMessage = ({ title, description }: KakaoMessage) => {
+  const handleSendKakaoMessage = ({
+    title,
+    description,
+    buttonText,
+  }: KakaoMessage) => {
     const url = MODE === 'development' ? HOST_DEV : HOST_PROD;
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
@@ -21,7 +26,7 @@ export default function useSendKakaoMessage() {
       },
       buttons: [
         {
-          title: title,
+          title: buttonText,
           link: {
             webUrl: `${url}`,
             mobileWebUrl: `${url}`,

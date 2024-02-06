@@ -6,6 +6,7 @@ import { KEYWORD_CARD_INFO } from '@constants/list';
 import { KEYWORD_MAPPER } from '@constants/mapper';
 import { Button } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { KeywordType } from '@type';
 import { ResultKeyword, TestType } from '@type/enums';
 import { Fragment } from 'react';
 
@@ -38,7 +39,7 @@ export default function OverallTestResult({
   const selfIdList = separateIdsByType(selfTestAnswerIdList);
   const colorIdList = separateIdsByType(colorAnswerIdList);
 
-  const getKeywordsByIdList = (type: TestType, ids: number[]) => {
+  const getKeywordsByIdList = (type: KeywordType, ids: number[]) => {
     return ids.map(id => KEYWORD_MAPPER[type].keywords[id - 1]);
   };
 

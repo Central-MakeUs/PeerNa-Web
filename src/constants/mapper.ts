@@ -34,6 +34,7 @@ export const ICON_MAPPER: Record<TestType, string> = {
   I: 'bg-I',
   S: 'bg-S',
   C: 'bg-C',
+  UNKNOWN: 'bg-unknown_bg',
 };
 
 export const KEYWORD_MAPPER: Record<KeywordType, KeywordResultList> = {

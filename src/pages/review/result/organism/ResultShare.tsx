@@ -1,9 +1,8 @@
 import gradient from '@assets/common/bg_gradient.png';
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
-import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import Footer from '@components/wrapper/Footer';
 import { TEST_TYPE_INFO } from '@constants/list';
 import useGetMe from '@hooks/api/member/index/useGetMe';
 import useGetReviewResult from '@hooks/api/member/index/useGetReviewResult';
@@ -11,6 +10,7 @@ import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import FlipCard from '@pages/review/result/molecule/FlipCard';
 import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
+import { TestType } from '@type/enums';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useRef, useState } from 'react';
@@ -84,21 +84,20 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           textAlign: 'center',
         }}
       />
-
       <Spacer y={10} />
-
-      <FlipCard testType={data.testType} ref={ref} />
-
-      <FixedButtonContainer direction="row">
+      <FlipCard
+        selfTestType={data.testType}
+        peerTestType={TestType.UNKNOWN}
+        size="L"
+        ref={ref}
+      />
+      <Footer bottom={3} className="flex">
         <Button buttonVariant="tertiary" onClick={handleClickDownload}>
-          <Typography variant="body01">카드 저장하기</Typography>
+          카드 저장하기
         </Button>
-        <Button onClick={handleClickShare}>
-          <Typography variant="body01" fontColor="white">
-            카드 공유하기
-          </Typography>
-        </Button>
-      </FixedButtonContainer>
+        <Button onClick={handleClickShare}>카드 공유하기</Button>
+      </Footer>
+
       <ShareDrawer
         openBottomSheet={openBottomSheet}
         setOpenBottomSheet={setOpenBottomSheet}

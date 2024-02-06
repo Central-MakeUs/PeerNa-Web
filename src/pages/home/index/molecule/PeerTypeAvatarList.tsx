@@ -5,7 +5,7 @@ import { TestType } from '@type/enums';
 export default function PeerTypeAvatarList() {
   const { push } = useFlow();
 
-  const handleAvatarClick = (type: TestType) => {
+  const handleAvatarClick = (type: Exclude<TestType, TestType.UNKNOWN>) => {
     push('PeerTypePage', { type });
   };
 

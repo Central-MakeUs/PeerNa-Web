@@ -5,9 +5,9 @@ import { ApiResponse, http } from '@utils/API';
 const postRequestPeerReview = async ({
   peerId,
 }: {
-  peerId: string;
+  peerId: number;
 }): Promise<ApiResponse<ProjectInviteSuccessType>> => {
-  return await http.post(`review/request?peer-id=${peerId}`, {
+  return await http.post(`review/request/${peerId}`, {
     peerId,
   });
 };
