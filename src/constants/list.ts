@@ -101,7 +101,7 @@ export const KEYWORD_CARD_INFO: Record<ResultKeyword, PeerKeywordCard> = {
     title: '냉철한',
     content: '솔직한 대화를 이끌어 내는 동료에요',
   },
-  MULTI_DIMENSIONAL: {
+  MULTIDIMENSIONAL: {
     image: KEYWORD_IMAGE_MAPPER.MULTI_DIMENSIONAL,
     caption: '소통 방식',
     title: '입체적인',
