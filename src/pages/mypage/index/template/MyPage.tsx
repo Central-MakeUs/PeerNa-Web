@@ -40,8 +40,7 @@ const MyPage: ActivityComponentType = () => {
   } = data;
 
   const { push } = useFlow();
-  console.log(data);
-  const selfTestType = memberMyPageInfoDto.peerTestType;
+  const selfTestType = memberMyPageInfoDto.testType;
 
   const handleMoreFeedback = () => {
     push('MoreFeedbackPage', {});
