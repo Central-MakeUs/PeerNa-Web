@@ -16,7 +16,7 @@ export type PeerKeywordCard = {
   image: (typeof KEYWORD_IMAGE_MAPPER)[KeywordImageType];
   caption?: string;
   title?: string;
-  content: string;
+  content?: string;
 };
 
 export type KeywordResultList = {

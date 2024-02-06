@@ -7,17 +7,15 @@ export default function TestCardItem({
 }: {
   cardType: ResultKeyword;
 }) {
-  console.log(cardType);
-
   return (
     <div className="flex flex-col items-center gap-2">
       <img
-        src={KEYWORD_CARD_INFO[cardType].image}
+        src={KEYWORD_CARD_INFO[cardType]?.image}
         className="w-[82px]"
         alt={cardType}
       />
       <Typography variant="body04" fontColor="gray08">
-        {KEYWORD_CARD_INFO[cardType].title}
+        {KEYWORD_CARD_INFO[cardType]?.title}
       </Typography>
     </div>
   );
