@@ -1,5 +1,5 @@
 import SelectListItem from '@components/common/atom/SelectListItem';
-import { PART_LIST } from "@constants/list";
+import { PART_LIST } from '@constants/list';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import { useEffect } from 'react';
 

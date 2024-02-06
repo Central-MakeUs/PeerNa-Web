@@ -1,7 +1,7 @@
 import IconButton from '@components/common/atom/IconButton';
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
-import { KAKAO_SHARE } from "@constants/images";
+import { KAKAO_SHARE } from '@constants/images';
 
 interface ShareDrawerProps {
   openBottomSheet: boolean;

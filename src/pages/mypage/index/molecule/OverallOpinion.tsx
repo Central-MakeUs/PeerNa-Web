@@ -2,10 +2,10 @@ import FullBleed from '@components/common/atom/FullBleed';
 import PeerTalk from '@components/common/atom/PeerTalk';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { PEER_GRADE_INFO } from "@constants/list";
+import { PEER_GRADE_INFO } from '@constants/list';
 import useShowMoreFeedback from '@hooks/store/useShowMoreFeedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
-import { PeerGrade } from "@type/enums";
+import { PeerGrade } from '@type/enums';
 import { Fragment } from 'react';
 
 export interface OverallOpinionProps {
