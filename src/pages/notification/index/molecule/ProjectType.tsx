@@ -4,7 +4,7 @@ import Typography from '@components/common/atom/Typography';
 import ListItemContainer from '@components/wrapper/ListItemContainer';
 import { ActivityTypes } from '@constants/activities';
 import { Palette } from '@constants/styles';
-import { NoticeType } from "@type/enums";
+import { NoticeType } from '@type/enums';
 
 export type PushFunction<K extends string> = (
   activityName: K,

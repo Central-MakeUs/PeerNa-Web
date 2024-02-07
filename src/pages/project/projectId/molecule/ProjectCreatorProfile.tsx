@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import { JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
-import { CreatorSimpleProfileType } from "@type/index";
+import { CreatorSimpleProfileType } from '@type/index';
 
 export default function ProjectCreatorProfile({
   name,

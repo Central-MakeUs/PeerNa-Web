@@ -1,4 +1,4 @@
-import { StorageKey } from "@constants/localStorage";
+import { StorageKey } from '@constants/localStorage';
 import { WebviewBridge } from '@utils/webview';
 import { useState } from 'react';
 
