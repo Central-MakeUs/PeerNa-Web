@@ -86,7 +86,6 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
 
 export const TabItem = {
   HomePage,
-  PeerPage,
   ProjectPage,
   NotificationPage,
   MyPage,
