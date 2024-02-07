@@ -54,7 +54,6 @@ export interface PeerSimpleProfileType extends CreatorSimpleProfileType {
 }
 
 export interface MemberDefaultInformationType {
-  name: string;
   job: JobType;
   part: PartType;
   oneLiner: string;
@@ -62,11 +61,13 @@ export interface MemberDefaultInformationType {
 
 export interface MemberDefaultInformationTypeWithUuid
   extends MemberDefaultInformationType {
+  name: string;
   uuid: string;
 }
 
 export interface MemberDefaultInformationTypeWithSelfGrade
   extends MemberDefaultInformationType {
+  name: string;
   selfPeerGrade: PeerGradeTypes;
 }
 
@@ -94,7 +95,7 @@ export interface OverallOpinionProps {
 
 export interface ProfileCardInfo {
   name: string;
-  testType: ResultKeyword;
+  testType: TestType;
   part: PartType;
   job: JobType;
   totalScore: number;
