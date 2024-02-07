@@ -1,7 +1,8 @@
 import whatsMyTypeCard from '@assets/common/whats_my_type_card.png';
+import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Footer from '@components/wrapper/Footer';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
 import { Card } from '@nextui-org/react';
@@ -52,11 +53,12 @@ export default function WonderingMyCard() {
           </Card>
         </motion.div>
       </div>
-      <FixedBottomButton handleClick={handleClick}>
+      <Footer>
+        <Button onClick={handleClick}>셀프 테스트 시작하기</Button>
         <Typography variant="body02" fontColor="white">
           셀프 테스트 시작하기
         </Typography>
-      </FixedBottomButton>
+      </Footer>
     </Fragment>
   );
 }

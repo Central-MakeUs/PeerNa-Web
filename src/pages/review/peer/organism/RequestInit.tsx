@@ -2,8 +2,8 @@ import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
 import FixedCenter from '@components/wrapper/FixedCenter';
+import Footer from '@components/wrapper/Footer';
 import useGetUserName from '@hooks/api/member/index/useGetUserName';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
@@ -42,7 +42,7 @@ export default function RequestInit({ uuid }: RequestInitProps) {
           <SvgIcon id="NotepadPerson" color="primary" width={64} height={64} />
         </div>
       </FixedCenter>
-      <FixedButtonContainer direction="col">
+      <Footer>
         <Typography
           variant="body02"
           fontColor="gray04"
@@ -51,7 +51,7 @@ export default function RequestInit({ uuid }: RequestInitProps) {
           함께 프로젝트를 한 경험이 있다면?
         </Typography>
         <Button onClick={handleClick}>피어 테스트 응답하기</Button>
-      </FixedButtonContainer>
+      </Footer>
     </Fragment>
   );
 }

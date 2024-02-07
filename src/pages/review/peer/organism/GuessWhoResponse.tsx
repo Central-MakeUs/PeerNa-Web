@@ -1,7 +1,7 @@
-import Typography from '@components/common/atom/Typography';
+import Button from '@components/common/atom/Button';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { PEER_REVIEW_IMAGE_LIST } from "@constants/images";
+import Footer from '@components/wrapper/Footer';
+import { PEER_REVIEW_IMAGE_LIST } from '@constants/images';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Fragment } from 'react';
 
@@ -24,12 +24,9 @@ export default function GuessWhoResponse() {
         className="max-w-md"
         alt="3개 이상 리뷰가 있어야 볼 수 있어요."
       />
-
-      <FixedBottomButton handleClick={handleClick}>
-        <Typography variant="body02" fontColor="white">
-          다음
-        </Typography>
-      </FixedBottomButton>
+      <Footer>
+        <Button onClick={handleClick}>다음</Button>
+      </Footer>
     </Fragment>
   );
 }
