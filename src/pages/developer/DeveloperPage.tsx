@@ -11,7 +11,7 @@ import { Button } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
 
 const DeveloperPage: ActivityComponentType = () => {
-  const { openModal } = useModal('login');
+  const { openModal } = useModal('push');
   return (
     <AppScreenContainer>
       <Header>

@@ -7,13 +7,17 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import { UtilityKeys } from '@constants/localStorage';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
 import useIntersection from '@hooks/common/useIntersection';
-import { Tab } from '@nextui-org/react';
+import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
+import { Spacer, Tab } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import Layout from '@pages/mypage/index/organism/Layout';
 import { ActivityComponentType } from '@stackflow/react';
 import { PartType } from '@type/enums';
+import { getAccessToken } from '@utils/token';
 import { useEffect, useState } from 'react';
 import ReviewButton from '../atom/ReviewButton';
 import PeerTypeAvatarList from '../molecule/PeerTypeAvatarList';
@@ -28,6 +32,23 @@ const HomePage: ActivityComponentType = () => {
   useEffect(() => {
     refetch();
   }, [currentTab]);
+
+  const { push } = useFlow();
+  const { openModal } = useModal('push');
+  useEffect(() => {
+    // 온보딩을 해본 유저인지 확인
+    const hasToken = getAccessToken();
+    const isOnboarding =
+      !localStorage.getItem(UtilityKeys.IS_ONBOARD) && hasToken;
+    const isPushAgree = !localStorage.getItem(UtilityKeys.IS_PUSH_AGREE);
+    if (isOnboarding) {
+      push('OnboardingPage', { step: '1' });
+    }
+    // 푸시 알림을 설정한 유저인지 확인(로그인 해야 나옴)
+    if (isPushAgree && isOnboarding) {
+      openModal();
+    }
+  }, []);
 
   const intersectionRef = useIntersection(fetchNextPage);
 
@@ -67,6 +88,7 @@ const HomePage: ActivityComponentType = () => {
             {isFetchingNextPage && <Spinner />}
           </Layout>
         </div>
+        <Spacer y={12} />
       </Content>
       <Footer bottom={0}>
         <BottomNavigation />

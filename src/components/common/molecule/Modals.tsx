@@ -1,3 +1,4 @@
+import PushModal from '@components/common/molecule/PushModal';
 import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import { ModalType, modalState } from '@store/modal';
 import { ReactNode } from 'react';
@@ -21,6 +22,7 @@ export default function Modals() {
     <SwitchModals
       modals={{
         login: <LoginModal />,
+        push: <PushModal />,
       }}
     />
   );
