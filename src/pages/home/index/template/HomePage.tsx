@@ -9,6 +9,7 @@ import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { UtilityKeys } from '@constants/localStorage';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
+import useHistory from '@hooks/common/useHistory';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
@@ -35,7 +36,9 @@ const HomePage: ActivityComponentType = () => {
 
   const { push } = useFlow();
   const { openModal } = useModal('push');
+  const { handleClearHistory } = useHistory();
   useEffect(() => {
+    handleClearHistory();
     // 온보딩을 해본 유저인지 확인
     const hasToken = getAccessToken();
     const isOnboarding =
