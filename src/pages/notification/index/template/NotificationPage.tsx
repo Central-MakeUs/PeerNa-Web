@@ -1,7 +1,7 @@
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Header from '@components/wrapper/Header';
 import { Tab } from '@nextui-org/react';
 import ProjectNotificationTab from '@pages/notification/index/organism/ProjectNotificationTab';
 import ReviewNotificationTab from '@pages/notification/index/organism/ReviewNotificationTab';
@@ -10,12 +10,12 @@ import { ActivityComponentType } from '@stackflow/react';
 const NotificationPage: ActivityComponentType = () => {
   return (
     <AppScreenContainer>
-      <NavigationHeader
-        bodyProps={{
-          isShow: true,
-          title: '알림',
-        }}
-      />
+      <Header>
+        <Header.TopBar />
+        <Header.Body>
+          <Header.Title>알림</Header.Title>
+        </Header.Body>
+      </Header>
       <UnderlineTabs>
         <Tab className="w-full" title="피어 테스트">
           <ReviewNotificationTab />
