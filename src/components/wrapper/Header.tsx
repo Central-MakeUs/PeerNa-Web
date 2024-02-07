@@ -6,7 +6,7 @@ import { PropsWithChildren } from 'react';
 
 function Header({ children }: PropsWithChildren) {
   return (
-    <div className="w-full box-border flex flex-col bg-transparent">
+    <div className="w-full box-border flex flex-col bg-transparent px-4">
       {children}
     </div>
   );

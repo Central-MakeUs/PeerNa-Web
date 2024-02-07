@@ -63,7 +63,7 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
       {curStep === 1 && <InputName />}
       {curStep === 2 && <SelectJob />}
       {curStep === 3 && <SelectPosition />}
-      <Footer bottom={3}>
+      <Footer bottom={3} className="px-4">
         <Button onClick={handleClick} isDisabled={isValidPush}>
           {curStep === lastStep ? '시작하기' : '다음'}
         </Button>
