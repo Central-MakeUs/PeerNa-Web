@@ -2,12 +2,13 @@ import ShakeBox from '@components/animate/ShakeBox';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
+import { Fragment } from 'react';
 
 export default function InputName() {
   const { reviewSelf, isValidName, handleChangeName } = useReviewSelfState();
 
   return (
-    <div className="w-full flex flex-col gap-2">
+    <Fragment>
       <ShakeBox trigger={!isValidName}>
         <TextInput
           text={reviewSelf.name}
@@ -23,6 +24,6 @@ export default function InputName() {
           {`${reviewSelf.name.length}/5`}
         </Typography>
       </div>
-    </div>
+    </Fragment>
   );
 }

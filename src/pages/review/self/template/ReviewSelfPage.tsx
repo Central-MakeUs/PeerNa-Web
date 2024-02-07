@@ -6,6 +6,7 @@ import { REVIEW_SELF_TITLE } from '@constants/review';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import useReviewState from '@hooks/store/useReviewState';
+import { Spacer } from '@nextui-org/react';
 import InputName from '@pages/review/self/organism/InputName';
 import ReviewGuide from '@pages/review/self/organism/ReviewGuide';
 import SelectJob from '@pages/review/self/organism/SelectJob';
@@ -55,14 +56,17 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
         <Header.TopBar>
           <Header.BackIcon handleClick={() => pop({ animate: true })} />
         </Header.TopBar>
-        <Header.Body className="mt-4">
+        <Header.Body className="mt-12">
           <Header.Title>{REVIEW_SELF_TITLE[curStep]}</Header.Title>
         </Header.Body>
       </Header>
-      {curStep === 0 && <ReviewGuide />}
-      {curStep === 1 && <InputName />}
-      {curStep === 2 && <SelectJob />}
-      {curStep === 3 && <SelectPosition />}
+      <Spacer y={4} />
+      <div className="w-full flex flex-col gap-4 px-4">
+        {curStep === 0 && <ReviewGuide />}
+        {curStep === 1 && <InputName />}
+        {curStep === 2 && <SelectJob />}
+        {curStep === 3 && <SelectPosition />}
+      </div>
       <Footer bottom={3} className="px-4">
         <Button onClick={handleClick} isDisabled={isValidPush}>
           {curStep === lastStep ? '시작하기' : '다음'}
