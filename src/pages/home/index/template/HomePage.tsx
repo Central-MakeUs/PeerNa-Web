@@ -4,6 +4,7 @@ import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
@@ -28,54 +29,48 @@ const HomePage: ActivityComponentType = () => {
     refetch();
   }, [currentTab]);
 
-  // const { push } = useFlow();
-  // useEffect(() => {
-  //   if (!getAccessToken() || !getRefreshToken()) {
-  //     push('OnboardingPage', { step: '1' });
-  //   }
-  // }, []);
-
   const intersectionRef = useIntersection(fetchNextPage);
 
   return (
     <AppScreenContainer>
-      <div className="w-full bg-peer-bg bg-cover bg-no-repeat">
-        <Header>
-          <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
-            <Header.Title>PeerNa</Header.Title>
-          </Header.Body>
-        </Header>
-        <Layout>
-          <HeaderContainer size="md">
-            <Typography variant="header03">
-              원하는 유형의 동료를 찾아보세요
-            </Typography>
-          </HeaderContainer>
-          <PeerTypeAvatarList />
-          <ReviewButton />
-          <UnderlineTabs
-            selectedKey={currentTab}
-            onSelectionChange={key => setCurrentTab(key as PartType)}
-          >
-            <Tab key="ALL" title="전체" />,
-            <Tab key="PLANNER" title="기획자" />,
-            <Tab key="DESIGNER" title="디자이너" />,
-            <Tab key="FRONT_END" title="FE 개발자" />,
-            <Tab key="BACK_END" title="BE 개발자" />,
-          </UnderlineTabs>
-          {data && (
-            <UserProfileList
-              data={data?.pages.flatMap(profile => profile.result)}
-            />
-          )}
-          <IntersectionBox ref={intersectionRef} />
-
-          {isFetchingNextPage && <Spinner />}
-        </Layout>
-        <Footer>
-          <BottomNavigation />
-        </Footer>
+      <div className="w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col">
+        <Content>
+          <Header>
+            <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
+              <Header.Title>PeerNa</Header.Title>
+            </Header.Body>
+          </Header>
+          <Layout>
+            <HeaderContainer size="md">
+              <Typography variant="header03">
+                원하는 유형의 동료를 찾아보세요
+              </Typography>
+            </HeaderContainer>
+            <PeerTypeAvatarList />
+            <ReviewButton />
+            <UnderlineTabs
+              selectedKey={currentTab}
+              onSelectionChange={key => setCurrentTab(key as PartType)}
+            >
+              <Tab key="ALL" title="전체" />,
+              <Tab key="PLANNER" title="기획자" />,
+              <Tab key="DESIGNER" title="디자이너" />,
+              <Tab key="FRONT_END" title="FE 개발자" />,
+              <Tab key="BACK_END" title="BE 개발자" />,
+            </UnderlineTabs>
+            {data && (
+              <UserProfileList
+                data={data?.pages.flatMap(profile => profile.result)}
+              />
+            )}
+            <IntersectionBox ref={intersectionRef} />
+            {isFetchingNextPage && <Spinner />}
+          </Layout>
+        </Content>
       </div>
+      <Footer bottom={0}>
+        <BottomNavigation />
+      </Footer>
     </AppScreenContainer>
   );
 };
