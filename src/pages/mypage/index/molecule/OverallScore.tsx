@@ -7,6 +7,7 @@ import HeaderContainer from './HeaderContainer';
 export default function OverallScore({ totalScore }: { totalScore: number }) {
   return (
     <div className="bg-gray01 mt-[36px]">
+      test
       <HeaderContainer size="md">
         <Typography variant="header02" fontColor="gray08" className="mb-2">
           종합점수

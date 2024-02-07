@@ -18,6 +18,7 @@ export default function useGetPeerReviewNotification() {
     queryFn: ({ pageParam = 1 }) => getPeerReviewNotification(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
+      console.log(lastPage, allPages);
       const nextPage = allPages.length + 1;
       return lastPage.pageRequestDto.isLast ? undefined : nextPage;
     },

@@ -40,6 +40,8 @@ const MyPage: ActivityComponentType = () => {
     peerFeedbackList,
   } = data;
 
+  console.log(!!totalScore);
+
   const { push } = useFlow();
   const selfTestType = memberMyPageInfoDto.testType;
 
@@ -122,7 +124,7 @@ const MyPage: ActivityComponentType = () => {
               </Tab>
             </RadioTabs>
             <Button buttonVariant="primary" className="my-[40px]">
-              동료에서 물어보기
+              동료에게 물어보기
             </Button>
             <SaveImageButton />
           </Layout>

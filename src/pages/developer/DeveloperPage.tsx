@@ -1,5 +1,5 @@
 import LoadingFallback from '@components/common/molecule/LoadingFallback';
-import Modals from '@components/common/molecule/Modal';
+import Modals from '@components/common/molecule/Modals';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';

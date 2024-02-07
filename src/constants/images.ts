@@ -40,6 +40,15 @@ export const ON_BOARDING_IMAGE_LIST = [
   Onboarding4,
 ];
 export const PEER_REVIEW_IMAGE_LIST = [Peer1, Peer2, Peer3];
+
+export const FLOWER_CARDS = {
+  D: bouvardia,
+  I: daisy,
+  S: mimosa,
+  C: violet,
+  UNKNOWN: '',
+};
+
 export const REVIEW_SELF_INTRODUCE_IMAGE_LIST = [
   bouvardia,
   daisy,

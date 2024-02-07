@@ -67,7 +67,7 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
       </Header>
       <Progress curStep={curStep} lastStep={4} />
       <OnboardingCard step={curStep} />
-      <Footer bottom={3}>
+      <Footer bottom={3} className="px-4">
         <Button className="px-2" onClick={handleClickPush}>
           {buttonText}
         </Button>

@@ -6,12 +6,10 @@ import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 
 export default function LoginModal() {
   const { isOpen, openModal, closeModal } = useModal('login');
+
   const handleOpenChange = (isOpen: boolean) => {
-    if (isOpen) {
-      openModal();
-    } else {
-      closeModal();
-    }
+    if (isOpen) openModal();
+    else closeModal();
   };
 
   return (

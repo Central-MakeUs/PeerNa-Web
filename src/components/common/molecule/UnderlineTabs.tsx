@@ -16,7 +16,7 @@ export default function UnderlineTabs({
       aria-label="Options"
       color="primary"
       variant="underlined"
-      className="flex w-full"
+      className="flex w-full px-4"
       classNames={{
         tabList:
           'gap-6 w-full relative rounded-none p-0 border-b border-divider',

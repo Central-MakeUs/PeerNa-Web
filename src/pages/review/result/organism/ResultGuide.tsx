@@ -54,10 +54,7 @@ export default function ResultGuide() {
               동의하는 것으로 간주되며 약관의 효력이 발생합니다.
             </Typography>
             <div
-              className={`${FontVariantsClassName.body05} text-gray04 leading-default 
-                            tracking-default
-                            break-all
-                            whitespace-pre-line`}
+              className={`${FontVariantsClassName.body05} text-gray04 leading-default tracking-default break-all whitespace-pre-line`}
             >
               <span className="text-primary">
                 이용약관, 개인정보 처리방침, 마케팅 정보 수신 동의 약관에
@@ -67,7 +64,7 @@ export default function ResultGuide() {
           </CardBody>
         </Card>
       </div>
-      <Footer>
+      <Footer bottom={3} className="px-4">
         <Button
           onClick={() => {
             removeAccessToken();

@@ -21,7 +21,7 @@ const SettingPage: ActivityComponentType = () => {
         </Header.TopBar>
       </Header>
       <SettingMenu />
-      <Footer bottom={3}>
+      <Footer bottom={3} className="px-4">
         <Button buttonVariant="naked" onClick={handleLogout}>
           로그아웃
         </Button>

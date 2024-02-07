@@ -3,6 +3,7 @@ import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import Footer from '@components/wrapper/Footer';
+import { FLOWER_CARDS } from '@constants/images';
 import { TEST_TYPE_INFO } from '@constants/list';
 import useGetMe from '@hooks/api/member/index/useGetMe';
 import useGetReviewResult from '@hooks/api/member/index/useGetReviewResult';
@@ -11,8 +12,6 @@ import { Spacer } from '@nextui-org/react';
 import FlipCard from '@pages/review/result/molecule/FlipCard';
 import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { TestType } from '@type/enums';
-import domtoimage from 'dom-to-image';
-import { saveAs } from 'file-saver';
 import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -33,20 +32,6 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
 
   const handleClickRightButton = () => push('HomePage', {});
 
-  // TODO 다운로드 할 때에는 애니메이션을 정상으로 돌려야 함.
-  const handleClickDownload = () => {
-    if (ref.current) {
-      domtoimage
-        .toBlob(ref.current)
-        .then(blob => {
-          saveAs(blob, 'card.png');
-        })
-        .catch(error => {
-          console.error('Error converting to image', error);
-        });
-    }
-  };
-
   const handleClickShare = () => setOpenBottomSheet(true);
 
   const { data: user } = useGetMe();
@@ -61,6 +46,24 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleDownload = () => {
+    fetch(FLOWER_CARDS[data.testType])
+      .then(response => response.blob())
+      .then(blob => {
+        const href = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = FLOWER_CARDS[data.testType];
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        toast.success('이미지가 저장됐어요!', {
+          icon: <SvgIcon id="Complete" color="gray08" />,
+        });
+      })
+      .catch(error => console.error('Error downloading file:', error));
   };
 
   return (
@@ -92,7 +95,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         ref={ref}
       />
       <Footer bottom={3} className="flex">
-        <Button buttonVariant="tertiary" onClick={handleClickDownload}>
+        <Button buttonVariant="tertiary" onClick={handleDownload}>
           카드 저장하기
         </Button>
         <Button onClick={handleClickShare}>카드 공유하기</Button>

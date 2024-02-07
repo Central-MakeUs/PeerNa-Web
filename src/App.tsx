@@ -1,5 +1,5 @@
 import ErrorFallback from '@components/common/molecule/ErrorFallback';
-import Modals from '@components/common/molecule/Modal';
+import Modals from '@components/common/molecule/Modals';
 import BottomSheet from '@components/common/organism/BottomSheet';
 import { Stack } from '@hooks/common/useStackFlow';
 import { WebviewBridge } from '@utils/webview';

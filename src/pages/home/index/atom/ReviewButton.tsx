@@ -9,7 +9,7 @@ export default function ReviewButton() {
   const buttonText = '피어 테스트 응답하기';
 
   return (
-    <div className="mt-8 mb-10 w-full mx-auto">
+    <div className="mt-8 mb-10 px-4 w-full mx-auto">
       <button
         className="bg-primary100 rounded-xl w-full flex px-4 py-5 justify-between items-center"
         onClick={() =>

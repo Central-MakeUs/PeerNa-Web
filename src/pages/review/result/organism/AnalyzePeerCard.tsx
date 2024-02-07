@@ -14,7 +14,7 @@ export default function AnalyzePeerCard({ handleClick }: AnalyzePeerCardProps) {
       <Suspense fallback={<Spinner />}>
         <AnayzePeerCardFetcher />
       </Suspense>
-      <Footer bottom={3}>
+      <Footer bottom={3} className="px-4">
         <Button onClick={handleClick}>내 피어 유형 확인하기</Button>
       </Footer>
     </Fragment>

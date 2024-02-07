@@ -1,5 +1,6 @@
 import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
@@ -30,9 +31,12 @@ const ProjectDetailPage: ActivityComponentType = () => {
           <Header.Title>{projectInformation.projectName}</Header.Title>
         </Header.Body>
       </Header>
-      <Spacer y={8} />
-      <ProjectInformation projectInformation={projectInformation} />
-      <Footer bottom={3}>
+      <Content>
+        <Spacer y={8} />
+        <ProjectInformation projectInformation={projectInformation} />
+        <Spacer y={16} />
+      </Content>
+      <Footer bottom={3} className="px-4">
         <Button onClick={handleClickShare}>동료 초대하기</Button>
       </Footer>
       <ShareDrawer

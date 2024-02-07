@@ -27,7 +27,7 @@ const ReviewResultPage: ActivityComponentType<ReviewResultPageParams> = ({
   };
 
   return (
-    <AppScreenContainer className={'bg-transparent bg-cover bg-peer-bg'}>
+    <AppScreenContainer className="bg-transparent bg-cover bg-peer-bg px-4">
       {curStep === 1 && <LoadingResult />}
       {curStep === 2 && <ResultGuide />}
       {curStep === 3 && <AnalyzePeerCard handleClick={handleClick} />}

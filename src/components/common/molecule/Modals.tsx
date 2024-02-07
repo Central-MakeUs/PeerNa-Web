@@ -13,7 +13,6 @@ const SwitchModals = ({ modals }: SwitchModals) => {
     key => modalKeys[key as ModalType] === true,
   );
 
-  console.log(modalKeys, openedModal, modals[openedModal as ModalType]);
   return modals[openedModal as ModalType];
 };
 

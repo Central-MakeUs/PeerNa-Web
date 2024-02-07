@@ -10,6 +10,7 @@ import PositionDrawer from '@pages/mypage/profileEdit/molecule/PosititonDrawer';
 import ProfileEditList from '@pages/mypage/profileEdit/organism/ProfileEditList';
 import { ActivityComponentType } from '@stackflow/react';
 import { profileSelfState } from '@store/profileSelfState';
+import { JobType, PartType } from '@type/enums';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
@@ -53,7 +54,11 @@ const ProfileEditPage: ActivityComponentType = () => {
   };
 
   const handleProfile = () => {
-    mutate(profileSelf);
+    mutate({
+      job: profileSelf.job as JobType,
+      part: profileSelf.part as PartType,
+      oneLiner: profileSelf.oneLiner,
+    });
     replace('MyPage', {});
   };
 
@@ -93,7 +98,7 @@ const ProfileEditPage: ActivityComponentType = () => {
           />
         )}
       </main>
-      <Footer bottom={3}>
+      <Footer bottom={3} className="px-4">
         <Button onClick={handleProfile} isDisabled={!isModified}>
           저장
         </Button>

@@ -25,7 +25,7 @@ export default function ProjectInformation({
   } = projectInformation;
   return (
     <Fragment>
-      <div className="w-full flex flex-col items-start gap-10">
+      <div className="w-full flex flex-col items-start gap-10 px-4">
         <div className="flex flex-col gap-3">
           <Typography variant="header03" fontColor="gray07">
             프로젝트 소개
