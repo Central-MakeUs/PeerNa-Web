@@ -7,6 +7,7 @@ export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   children?: string;
   fontColor?: ColorTypes;
   as?: keyof JSX.IntrinsicElements;
+  href?: string;
 }
 
 export default function Typography({
@@ -14,6 +15,7 @@ export default function Typography({
   variant = 'body01',
   fontColor = 'gray07',
   children,
+  href,
   ...props
 }: TypographyProps) {
   return (
@@ -26,6 +28,8 @@ export default function Typography({
         break-all
         whitespace-pre-line
         ${props.className ?? ''}`}
+      href={href}
+      target={href ? '_blank' : ''}
     >
       {children}
     </Typo>

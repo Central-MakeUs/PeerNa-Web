@@ -49,19 +49,34 @@ export default function ProjectInformation({
           <div className="flex flex-col gap-2">
             <Code className="flex gap-2 items-center px-4 py-2">
               <img src={KakaoIcon} width={20} height={20} />
-              <Typography variant="body02" fontColor="gray06">
+              <Typography
+                variant="body02"
+                fontColor="gray06"
+                as="a"
+                href={openChattingLink}
+              >
                 {openChattingLink}
               </Typography>
             </Code>
             <Code className="flex gap-2 items-center px-4 py-2">
               <img src={NotionIcon} width={20} height={20} />
-              <Typography variant="body02" fontColor="gray06">
+              <Typography
+                variant="body02"
+                fontColor="gray06"
+                as="a"
+                href={notionLink}
+              >
                 {notionLink}
               </Typography>
             </Code>
             <Code className="flex gap-2 items-center px-4 py-2">
               <img src={GithubIcon} width={20} height={20} />
-              <Typography variant="body02" fontColor="gray06">
+              <Typography
+                variant="body02"
+                fontColor="gray06"
+                as="a"
+                href={githubLink}
+              >
                 {githubLink}
               </Typography>
             </Code>
