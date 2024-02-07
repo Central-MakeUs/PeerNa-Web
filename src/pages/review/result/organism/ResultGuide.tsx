@@ -60,7 +60,7 @@ export default function ResultGuide() {
                             whitespace-pre-line`}
             >
               <span className="text-primary">
-                이용약관, 개인정보 처리방침, 마케팅 정보 활용 동의 약관에
+                이용약관, 개인정보 처리방침, 마케팅 정보 수신 동의 약관에
               </span>
               동의하시면 간편 로그인 후 결과 확인하기 버튼을 눌러주세요.
             </div>
