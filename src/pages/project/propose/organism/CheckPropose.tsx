@@ -1,6 +1,7 @@
+import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import FixedCenter from '@components/wrapper/FixedCenter';
+import Footer from '@components/wrapper/Footer';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Fragment } from 'react';
 
@@ -21,9 +22,9 @@ export default function CheckPropose({ nextStep, projectId }: CheckPropose) {
           <SvgIcon id="Shape" color="primary" width={64} height={64} />
         </div>
       </FixedCenter>
-      <FixedBottomButton handleClick={handleClickNextStep}>
-        자세히 알아보기
-      </FixedBottomButton>
+      <Footer>
+        <Button onClick={handleClickNextStep}>자세히 알아보기</Button>
+      </Footer>
     </Fragment>
   );
 }

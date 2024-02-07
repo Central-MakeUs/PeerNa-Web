@@ -1,8 +1,9 @@
+import Button from '@components/common/atom/Button';
 import DatePicker from '@components/common/atom/DatePicker';
 import TextArea from '@components/common/atom/TextArea';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Footer from '@components/wrapper/Footer';
 import usePostCreateProject from '@hooks/api/project/index/usePostCreateProject';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Divider, cn } from '@nextui-org/react';
@@ -128,9 +129,11 @@ export default function ProjectForm() {
           />
         </div>
       </form>
-      <FixedBottomButton handleClick={handleSubmit} isDisabled={!isValidForm()}>
-        생성하기
-      </FixedBottomButton>
+      <Footer>
+        <Button onClick={handleSubmit} isDisabled={!isValidForm()}>
+          생성하기
+        </Button>
+      </Footer>
     </Fragment>
   );
 }

@@ -1,7 +1,7 @@
 import Button from '@components/common/atom/Button';
 import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import Modal from '@components/common/molecule/LegacyModal';
-import FixedButtonContainer from '@components/wrapper/FixedButtonContainer';
+import Footer from '@components/wrapper/Footer';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
 import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -20,7 +20,7 @@ export default function DecidePropose({ projectId }: DecideProposeProps) {
 
   const { replace } = useFlow();
   // TODO: 제안 모달 추가 필요
-  const { openModal, closeModal } = useModal();
+  const { openModal, closeModal } = useModal('login');
 
   const [modalType, setModalType] = useState<RespondType>(RespondType.ACCEPT);
 
@@ -45,7 +45,7 @@ export default function DecidePropose({ projectId }: DecideProposeProps) {
   return (
     <Fragment>
       <ProjectInformation projectInformation={projectInformation} />
-      <FixedButtonContainer direction="row">
+      <Footer>
         <Button
           buttonVariant="tertiary"
           onClick={() => handleClickOpenModal(RespondType.DECLINE)}
@@ -55,7 +55,7 @@ export default function DecidePropose({ projectId }: DecideProposeProps) {
         <Button onClick={() => handleClickOpenModal(RespondType.ACCEPT)}>
           수락
         </Button>
-      </FixedButtonContainer>
+      </Footer>
       {modalType === RespondType.ACCEPT ? (
         <Modal
           modalHeader="프로젝트 제안을 수락할까요?"
