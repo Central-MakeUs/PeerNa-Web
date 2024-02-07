@@ -33,8 +33,8 @@ const HomePage: ActivityComponentType = () => {
 
   return (
     <AppScreenContainer>
-      <div className="w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col">
-        <Content>
+      <Content>
+        <div className="w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col">
           <Header>
             <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
               <Header.Title>PeerNa</Header.Title>
@@ -66,8 +66,8 @@ const HomePage: ActivityComponentType = () => {
             <IntersectionBox ref={intersectionRef} />
             {isFetchingNextPage && <Spinner />}
           </Layout>
-        </Content>
-      </div>
+        </div>
+      </Content>
       <Footer bottom={0}>
         <BottomNavigation />
       </Footer>
