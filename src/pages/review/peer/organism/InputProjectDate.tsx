@@ -1,6 +1,8 @@
+import Button from '@components/common/atom/Button';
 import DatePicker from '@components/common/atom/DatePicker';
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Typography from '@components/common/atom/Typography';
+import Footer from '@components/wrapper/Footer';
+import Header from '@components/wrapper/Header';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Divider, Spacer } from '@nextui-org/react';
 import { differenceInDays } from 'date-fns';
@@ -33,13 +35,18 @@ export default function InputProjectDate({
 
   return (
     <Fragment>
-      <NavigationHeader
-        bodyProps={{
-          isShow: true,
-          title: '함께 프로젝트 한 기간을 알려주세요',
-          subtitle: '정확하지 않아도 괜찮아요',
-        }}
-      />
+      <Header>
+        <Header.TopBar />
+        <Header.Body>
+          <Typography variant="body01" fontColor="gray08">
+            함께 프로젝트 한 기간을 알려주세요
+          </Typography>
+          <Typography variant="body01" fontColor="gray08">
+            정확하지 않아도 괜찮아요
+          </Typography>
+        </Header.Body>
+      </Header>
+
       <Spacer y={5} />
       <div className="w-full flex items-center gap-2">
         <DatePicker
@@ -54,12 +61,14 @@ export default function InputProjectDate({
           placeholder="종료일"
         />
       </div>
-      <FixedBottomButton
-        isDisabled={startDate === '' || endDate === ''}
-        handleClick={handleClick}
-      >
-        다음
-      </FixedBottomButton>
+      <Footer>
+        <Button
+          isDisabled={startDate === '' || endDate === ''}
+          onClick={handleClick}
+        >
+          다음
+        </Button>
+      </Footer>
     </Fragment>
   );
 }

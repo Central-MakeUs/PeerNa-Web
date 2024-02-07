@@ -1,7 +1,7 @@
-import Typography from '@components/common/atom/Typography';
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
+import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Footer from '@components/wrapper/Footer';
+import Header from '@components/wrapper/Header';
 import { REVIEW_SELF_TITLE } from '@constants/review';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
@@ -51,27 +51,23 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
 
   return (
     <AppScreenContainer>
-      <NavigationHeader
-        backIconProps={{
-          isShow: true,
-          handleClick: () => pop({ animate: true }),
-        }}
-        bodyProps={{
-          isShow: true,
-          title: REVIEW_SELF_TITLE[curStep],
-          marginClass: 'mt-4',
-        }}
-      />
+      <Header>
+        <Header.TopBar>
+          <Header.BackIcon handleClick={() => pop({ animate: true })} />
+        </Header.TopBar>
+        <Header.Body className="mt-4">
+          <Header.Title>{REVIEW_SELF_TITLE[curStep]}</Header.Title>
+        </Header.Body>
+      </Header>
       {curStep === 0 && <ReviewGuide />}
       {curStep === 1 && <InputName />}
       {curStep === 2 && <SelectJob />}
       {curStep === 3 && <SelectPosition />}
-
-      <FixedBottomButton handleClick={handleClick} isDisabled={isValidPush}>
-        <Typography variant="body02" fontColor="white">
+      <Footer bottom={3}>
+        <Button onClick={handleClick} isDisabled={isValidPush}>
           {curStep === lastStep ? '시작하기' : '다음'}
-        </Typography>
-      </FixedBottomButton>
+        </Button>
+      </Footer>
     </AppScreenContainer>
   );
 };

@@ -1,21 +1,19 @@
 import TabItem from '@components/common/atom/TabItem';
 import { TabItemTypes } from '@constants/activities';
 import { useActivity } from '@stackflow/react';
-import SingleChildPortal from '@utils/SingleChildPortal';
 
 export default function BottomNavigation() {
   const activity = useActivity();
   const activities = [
     { icon: 'HomePage', name: '홈' },
-    { icon: 'PeerPage', name: '동료' },
     { icon: 'ProjectPage', name: '프로젝트' },
     { icon: 'NotificationPage', name: '알림' },
     { icon: 'MyPage', name: '마이페이지' },
   ];
 
   return (
-    <SingleChildPortal>
-      <div className="fixed left-2/4 translate-x-[-50%] bottom-0 z-50 flex flex-row items-center max-w-screen-md w-full h-[64px] border-t-1 border-x-1 rounded-t-xl bg-white">
+    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-screen-md h-16 bg-white border-t border-gray-300">
+      <div className="flex justify-around items-center h-full">
         {activities.map(({ icon, name }) => (
           <TabItem
             key={icon}
@@ -29,6 +27,6 @@ export default function BottomNavigation() {
           />
         ))}
       </div>
-    </SingleChildPortal>
+    </div>
   );
 }

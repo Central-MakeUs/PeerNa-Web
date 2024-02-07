@@ -17,7 +17,7 @@ export default function NoKeywordCard({ title, subtitle }: NoKeywordCardProps) {
           </Typography>
         </div>
         <div
-          className="w-[310px] h-[80px] bg-gray01 py-[14px] px-[58px] flex flex-col gap-1 mx-auto
+          className="min-w-[310px] h-[80px] bg-gray01 py-[14px] px-[58px] flex flex-col gap-1 mx-auto
          items-center rounded-xl"
         >
           <SvgIcon id="LockClosed" width={28} height={28} color="gray04" />

@@ -4,6 +4,7 @@ import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
@@ -40,8 +41,7 @@ const MyPage: ActivityComponentType = () => {
   } = data;
 
   const { push } = useFlow();
-  console.log(data);
-  const selfTestType = memberMyPageInfoDto.peerTestType;
+  const selfTestType = memberMyPageInfoDto.testType;
 
   const handleMoreFeedback = () => {
     push('MoreFeedbackPage', {});
@@ -50,81 +50,86 @@ const MyPage: ActivityComponentType = () => {
   const handleSetting = () => {
     push('SettingPage', {});
   };
-  //TODO) Header background color
+
+  console.log(data);
 
   return (
     <AppScreenContainer>
       <div className="w-full h-screen bg-gray07">
-        <Header>
-          <Header.TopBar>
-            <Typography variant="header01" as="h1" fontColor="white">
-              마이페이지
-            </Typography>
-            <IconButton
-              onClick={handleSetting}
-              iconProps={{
-                id: 'Menu',
-                color: 'white',
-              }}
-            ></IconButton>
-          </Header.TopBar>
-        </Header>
-        {memberMyPageInfoDto && (
-          <ProfileCard memberInfo={memberMyPageInfoDto} />
-        )}
-        <Layout>
-          <CardTestResult
-            peerTestType={peerTestType}
-            selfTestType={selfTestType}
-          />
-          <RadioTabs>
-            <Tab key="me" title="카드 비교">
-              {selfTestCardList && (
-                <SelfTestResult selfTestCardList={selfTestCardList} />
-              )}
-              {peerCardList && <PeerTestResult peerCardList={peerCardList} />}
-              {!peerCardList && <NoPeerTestResult />}
-              {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
-                <OverallOpinion totalEvaluation={totalEvaluation} />
-              )}
-              {totalScore && <OverallScore totalScore={totalScore} />}
-              {peerFeedbackList && (
-                <Feedback
-                  peerFeedbackList={peerFeedbackList}
-                  handleClick={handleMoreFeedback}
-                />
-              )}
-            </Tab>
-            <Tab key="peer" title="키워드 비교">
-              {colorAnswerIdList && selfTestAnswerIdList && (
-                <OverallTestResult
-                  colorAnswerIdList={colorAnswerIdList}
-                  selfTestAnswerIdList={selfTestAnswerIdList}
-                  peerCardList={peerCardList}
-                  type="self"
-                />
-              )}
-              {peerTestMoreThanThree === false && <NoTestKeywordResult />}
-              {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
-                <OverallOpinion totalEvaluation={totalEvaluation} />
-              )}
-              {totalScore && <OverallScore totalScore={totalScore} />}
-              {peerFeedbackList && (
-                <Feedback
-                  peerFeedbackList={peerFeedbackList}
-                  handleClick={handleMoreFeedback}
-                />
-              )}
-            </Tab>
-          </RadioTabs>
-          <Button buttonVariant="primary" className="my-[40px]">
-            동료에서 물어보기
-          </Button>
-          <SaveImageButton />
-          <Footer>
-            <BottomNavigation />
-          </Footer>
-        </Layout>
+        <Content>
+          <Header>
+            <Header.TopBar>
+              <Typography variant="header01" as="h1" fontColor="white">
+                마이페이지
+              </Typography>
+              <IconButton
+                onClick={handleSetting}
+                iconProps={{
+                  id: 'Menu',
+                  color: 'white',
+                }}
+              ></IconButton>
+            </Header.TopBar>
+          </Header>
+          {memberMyPageInfoDto && (
+            <ProfileCard memberInfo={memberMyPageInfoDto} />
+          )}
+          <Layout>
+            <CardTestResult
+              peerTestType={peerTestType}
+              selfTestType={selfTestType}
+            />
+            <RadioTabs>
+              <Tab key="me" title="카드 비교">
+                {selfTestCardList && (
+                  <SelfTestResult selfTestCardList={selfTestCardList} />
+                )}
+                {peerCardList && <PeerTestResult peerCardList={peerCardList} />}
+                {!peerCardList && <NoPeerTestResult />}
+                {Array.isArray(totalEvaluation) &&
+                  totalEvaluation.length > 0 && (
+                    <OverallOpinion totalEvaluation={totalEvaluation} />
+                  )}
+                {totalScore && <OverallScore totalScore={totalScore} />}
+                {peerFeedbackList && (
+                  <Feedback
+                    peerFeedbackList={peerFeedbackList}
+                    handleClick={handleMoreFeedback}
+                  />
+                )}
+              </Tab>
+              <Tab key="peer" title="키워드 비교">
+                {colorAnswerIdList && selfTestAnswerIdList && (
+                  <OverallTestResult
+                    colorAnswerIdList={colorAnswerIdList}
+                    selfTestAnswerIdList={selfTestAnswerIdList}
+                    peerCardList={peerCardList}
+                    type="self"
+                  />
+                )}
+                {peerTestMoreThanThree === false && <NoTestKeywordResult />}
+                {Array.isArray(totalEvaluation) &&
+                  totalEvaluation.length > 0 && (
+                    <OverallOpinion totalEvaluation={totalEvaluation} />
+                  )}
+                {totalScore && <OverallScore totalScore={totalScore} />}
+                {peerFeedbackList && (
+                  <Feedback
+                    peerFeedbackList={peerFeedbackList}
+                    handleClick={handleMoreFeedback}
+                  />
+                )}
+              </Tab>
+            </RadioTabs>
+            <Button buttonVariant="primary" className="my-[40px]">
+              동료에서 물어보기
+            </Button>
+            <SaveImageButton />
+          </Layout>
+        </Content>
+        <Footer>
+          <BottomNavigation />
+        </Footer>
       </div>
     </AppScreenContainer>
   );

@@ -2,12 +2,12 @@ import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { useFlow } from '@hooks/common/useStackFlow';
-import { CreatorSimpleProfileType } from '@type/index';
+import { ProfileCardInfo } from '@type/index';
 
 export default function ProfileCard({
   memberInfo,
 }: {
-  memberInfo: CreatorSimpleProfileType;
+  memberInfo: ProfileCardInfo;
 }) {
   const { push } = useFlow();
   const handleProfileEdit = () => {
@@ -21,7 +21,7 @@ export default function ProfileCard({
         name={memberInfo.name}
         part={memberInfo.part}
         job={memberInfo.job}
-        peerTestType={memberInfo.peerTestType}
+        peerTestType={memberInfo.testType}
         totalScore={memberInfo.totalScore}
         oneLiner={memberInfo.oneLiner}
       >

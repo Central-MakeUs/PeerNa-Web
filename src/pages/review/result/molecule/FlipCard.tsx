@@ -12,10 +12,11 @@ import {
 interface FlipCardProps {
   selfTestType: TestType;
   peerTestType: TestType;
+  size: 'M' | 'L';
 }
 
 const FlipCard = forwardRef<HTMLDivElement, FlipCardProps>(
-  ({ selfTestType, peerTestType, ...props }, ref) => {
+  ({ selfTestType, peerTestType, size, ...props }, ref) => {
     const [type, setType] = useState<boolean>(true);
     useEffect(() => {
       const flipInterval = setInterval(() => {
@@ -48,10 +49,10 @@ const FlipCard = forwardRef<HTMLDivElement, FlipCardProps>(
           className="w-full flex justify-center"
         >
           <div style={cardStyle(type)} {...props}>
-            <PeerCard type="self" size="M" testResult={selfTestType} />
+            <PeerCard type="self" size={size} testResult={selfTestType} />
           </div>
           <div style={cardStyle(!type)}>
-            <PeerCard type="peer" size="M" testResult={peerTestType} />
+            <PeerCard type="peer" size={size} testResult={peerTestType} />
           </div>
         </motion.div>
       </Fragment>

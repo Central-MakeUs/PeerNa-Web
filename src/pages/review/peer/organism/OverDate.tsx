@@ -1,8 +1,8 @@
+import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
-import Typography from '@components/common/atom/Typography';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import FixedCenter from '@components/wrapper/FixedCenter';
+import Footer from '@components/wrapper/Footer';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Fragment } from 'react';
 
@@ -22,11 +22,9 @@ export default function OverDate() {
           <SvgIcon id="CalendarError" color="primary" width={64} height={64} />
         </div>
       </FixedCenter>
-      <FixedBottomButton handleClick={handleClick}>
-        <Typography variant="body02" fontColor="white">
-          다음에 다시 올게요
-        </Typography>
-      </FixedBottomButton>
+      <Footer>
+        <Button onClick={handleClick}>다음에 다시 올게요</Button>
+      </Footer>
     </Fragment>
   );
 }

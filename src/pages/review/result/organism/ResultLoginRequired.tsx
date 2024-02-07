@@ -1,11 +1,12 @@
 import Typography from '@components/common/atom/Typography';
 import Card from '@pages/review/result/molecule/Card';
 
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
-import { PeerCardType } from '@constants/image';
+import Button from '@components/common/atom/Button';
+import Footer from '@components/wrapper/Footer';
 import useHistory from '@hooks/common/useHistory';
 import useToken from '@hooks/common/useToken';
 import useModal from '@hooks/store/useModal';
+import { ResultKeyword } from '@type/enums';
 import { motion } from 'framer-motion';
 import { Fragment, useEffect } from 'react';
 
@@ -18,7 +19,7 @@ interface ResultLoginRequiredProps {
 export default function ResultLoginRequired({
   handleClick,
 }: ResultLoginRequiredProps) {
-  const { openModal } = useModal();
+  const { openModal } = useModal('login');
   const { accessToken } = useToken();
   const { history, handleChangeHistory } = useHistory();
 
@@ -27,15 +28,15 @@ export default function ResultLoginRequired({
       handleChangeHistory('ReviewResultPage', { type: 'self', step: '1' });
     }
     if (!accessToken) {
-      openModal('login');
+      openModal();
     }
   }, [history]);
 
-  const cardTypes: PeerCardType[] = [
-    'ANALYTICAL',
-    'COMPREHENSIVE',
-    'FUTURE_ORIENTED',
-    'WARMHEARTED',
+  const cardTypes: ResultKeyword[] = [
+    ResultKeyword.ANALYTICAL,
+    ResultKeyword.COMPREHENSIVE,
+    ResultKeyword.FUTURE_ORIENTED,
+    ResultKeyword.WARMHEARTED,
   ];
 
   const cardVariants = {
@@ -69,11 +70,9 @@ export default function ResultLoginRequired({
           </motion.div>
         ))}
       </div>
-      <FixedBottomButton handleClick={handleClick}>
-        <Typography variant="body02" fontColor="white">
-          내 피어 유형 확인하기
-        </Typography>
-      </FixedBottomButton>
+      <Footer>
+        <Button onClick={handleClick}>내 피어 유형 확인하기</Button>
+      </Footer>
     </Fragment>
   );
 }

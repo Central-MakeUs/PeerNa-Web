@@ -25,7 +25,11 @@ export default function CardTestResult({
         </Typography>
       </HeaderContainer>
       <div className="h-[238px] mb-8">
-        <FlipCard peerTestType={peerTestType} selfTestType={selfTestType} />
+        <FlipCard
+          size="M"
+          peerTestType={peerTestType}
+          selfTestType={selfTestType}
+        />
       </div>
     </Fragment>
   );

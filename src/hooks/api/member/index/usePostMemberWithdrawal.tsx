@@ -2,22 +2,20 @@ import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
 
-const postRequestPeerReview = async ({
-  peerId,
-}: {
-  peerId: number;
-}): Promise<ApiResponse<ProjectInviteSuccessType>> => {
-  return await http.post(`review/request/${peerId}`, {
-    peerId,
-  });
+interface MemberWithdrawalResponseDTO extends ProjectInviteSuccessType {}
+
+const postMemberWithdrawal = async (): Promise<
+  ApiResponse<MemberWithdrawalResponseDTO>
+> => {
+  return await http.post('/member/withdrawal');
 };
 
-export default function usePostRequestPeerTest(
+export default function usePostMemberWithdrawal(
   successCallback?: () => void,
   errorCallback?: (error: Error) => void,
 ) {
   return useMutation({
-    mutationFn: postRequestPeerReview,
+    mutationFn: postMemberWithdrawal,
     onSuccess: successCallback,
     onError: errorCallback,
   });

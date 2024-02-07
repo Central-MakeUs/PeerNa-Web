@@ -1,5 +1,5 @@
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Header from '@components/wrapper/Header';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
 import CheckPropose from '@pages/project/propose/organism/CheckPropose';
 import DecidePropose from '@pages/project/propose/organism/DecidePropose';
@@ -19,12 +19,15 @@ const ProjectProposePage: ActivityComponentType<ProjectProposePageParams> = ({
 
   return (
     <AppScreenContainer>
-      <NavigationHeader
-        bodyProps={{
-          isShow: true,
-          title: `${projectInformation.creatorSimpleProfileDto.name}님이\n 프로젝트 참여를 제안했어요`,
-        }}
-      />
+      <Header>
+        <Header.TopBar></Header.TopBar>
+        <Header.Body>
+          <Header.Title>
+            {`${projectInformation.creatorSimpleProfileDto.name}님이\n 프로젝트 참여를 제안했어요`}
+          </Header.Title>
+        </Header.Body>
+      </Header>
+
       {curStep === 1 && (
         <CheckPropose nextStep={nextStep} projectId={projectId} />
       )}

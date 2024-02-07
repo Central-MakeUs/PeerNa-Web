@@ -2,7 +2,7 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { TabItemTypes } from '@constants/activities';
 import { useFlow } from '@hooks/common/useStackFlow';
-import { IconKeyType } from "@type/key";
+import { IconKeyType } from '@type/key';
 
 interface TabItemProps {
   icon: TabItemTypes;
@@ -23,7 +23,6 @@ export default function TabItem({
   const getIcon = () => {
     const iconMap: Record<TabItemTypes, string> = {
       HomePage: isDone && pathname === 'HomePage' ? 'HomeFill' : 'Home',
-      PeerPage: isDone && pathname === 'PeerPage' ? 'PeopleFill' : 'People',
       ProjectPage:
         isDone && pathname === 'ProjectPage' ? 'ProjectFill' : 'Project',
       NotificationPage:

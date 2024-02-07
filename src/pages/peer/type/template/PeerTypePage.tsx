@@ -11,7 +11,7 @@ import { TestType } from '@type/enums';
 import PeerItem from '../atom/PeerItem';
 
 type PeerTypePageParams = {
-  type: TestType;
+  type: Exclude<TestType, TestType.UNKNOWN>;
 };
 
 const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({

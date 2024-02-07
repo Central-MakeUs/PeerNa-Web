@@ -17,23 +17,32 @@ export default function ProgressBar({
      * 마지막 5는 ProgressTrack에는 4개의 track이 필요하기 때문에 조건부 처리
      */
 
-    <div className="flex items-center gap-1">
+    <div className="flex justify-center items-center gap-1">
       {[1, 2, 3, 4, 5].map(order => (
         <React.Fragment key={order}>
           {order !== 5 ? (
-            <ProgressStep
-              name={String(order)}
-              step={step}
-              complete={step === 4 && trackStep === 7}
-            />
+            <div>
+              <ProgressStep
+                name={String(order)}
+                step={step}
+                complete={step === 4 && trackStep === 7}
+              />
+            </div>
           ) : (
-            <ProgressStep
-              step={step}
-              icon={
-                <SvgIcon id="Check" color="white" width={11.75} height={8.5} />
-              }
-              complete={step === 4 && trackStep === 7}
-            />
+            <div>
+              <ProgressStep
+                step={step}
+                icon={
+                  <SvgIcon
+                    id="Check"
+                    color="white"
+                    width={11.75}
+                    height={8.5}
+                  />
+                }
+                complete={step === 4 && trackStep === 7}
+              />
+            </div>
           )}
           {order !== 5 && (
             <ProgressTrack

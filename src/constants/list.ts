@@ -31,6 +31,9 @@ export const TEST_TYPE_INFO: Record<TestType, PeerTestText> = {
     title: '미모사',
     description: '신중하게 설계하며 \n 분석적인 동료',
   },
+  UNKNOWN: {
+    title: '피어가 생각하는 \n 나의 유형은?',
+  },
 };
 
 export const PEER_GRADE_INFO: Record<PeerGrade, PeerGradeTest> = {

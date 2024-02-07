@@ -17,14 +17,14 @@ export default function useReviewSelfState() {
     }));
   };
 
-  const handleChangeJob = (newJob: JobType) => {
+  const handleChangeJob = (newJob: JobType | '') => {
     setReviewSelf(prev => ({
       ...prev,
       job: newJob,
     }));
   };
 
-  const handleChangePart = (newPart: PartType) => {
+  const handleChangePart = (newPart: PartType | '') => {
     setReviewSelf(prev => ({
       ...prev,
       part: newPart,

@@ -1,8 +1,7 @@
+import Button from '@components/common/atom/Button';
 import Spinner from '@components/common/atom/Spinner';
-import Typography from '@components/common/atom/Typography';
+import Footer from '@components/wrapper/Footer';
 import AnayzePeerCardFetcher from '@pages/review/result/organism/AnimationCards';
-
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import { Fragment, Suspense } from 'react';
 
 interface AnalyzePeerCardProps {
@@ -15,11 +14,9 @@ export default function AnalyzePeerCard({ handleClick }: AnalyzePeerCardProps) {
       <Suspense fallback={<Spinner />}>
         <AnayzePeerCardFetcher />
       </Suspense>
-      <FixedBottomButton handleClick={handleClick}>
-        <Typography variant="body02" fontColor="white">
-          내 피어 유형 확인하기
-        </Typography>
-      </FixedBottomButton>
+      <Footer bottom={3}>
+        <Button onClick={handleClick}>내 피어 유형 확인하기</Button>
+      </Footer>
     </Fragment>
   );
 }

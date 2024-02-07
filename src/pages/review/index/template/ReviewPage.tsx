@@ -1,7 +1,7 @@
-import Typography from '@components/common/atom/Typography';
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
+import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Footer from '@components/wrapper/Footer';
+import Header from '@components/wrapper/Header';
 import { REVIEW_PICKER } from '@constants/review';
 import usePostReviewPeer from '@hooks/api/review/index/usePostReviewPeer';
 import { useFlow, useStepFlow } from '@hooks/common/useStackFlow';
@@ -106,13 +106,12 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
 
   return (
     <AppScreenContainer>
-      <NavigationHeader
-        backIconProps={{
-          isShow: true,
-          handleClick: handleClickBackButton,
-        }}
-      />
-      <div className="flex flex-col items-center mt-6 gap-4">
+      <Header>
+        <Header.TopBar>
+          <Header.BackIcon handleClick={handleClickBackButton} />
+        </Header.TopBar>
+      </Header>
+      <div className="flex flex-col w-full items-center mt-6 gap-4">
         <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
         {(curStep !== 4 || trackStep !== 7) &&
           (curStep !== 4 || trackStep !== 6) && (
@@ -136,11 +135,14 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
         )}
       </div>
       {curStep === 4 && trackStep === 7 && (
-        <FixedBottomButton handleClick={handleClickLastButton}>
-          <Typography variant="body02" fontColor="white">
+        <Footer bottom={3}>
+          <Button
+            onClick={handleClickLastButton}
+            isDisabled={review.feedback === ''}
+          >
             시작하기
-          </Typography>
-        </FixedBottomButton>
+          </Button>
+        </Footer>
       )}
     </AppScreenContainer>
   );

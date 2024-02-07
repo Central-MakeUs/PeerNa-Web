@@ -1,5 +1,5 @@
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Header from '@components/wrapper/Header';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import ProjectForm from '@pages/project/create/organism/ProjectForm';
@@ -10,16 +10,12 @@ const ProjectCreatePage: ActivityComponentType = () => {
   const handleClickBackIcon = () => pop();
   return (
     <AppScreenContainer>
-      <NavigationHeader
-        backIconProps={{
-          isShow: true,
-          handleClick: handleClickBackIcon,
-        }}
-        headProps={{
-          isShow: true,
-          title: '프로젝트 생성',
-        }}
-      />
+      <Header>
+        <Header.TopBar>
+          <Header.BackIcon handleClick={handleClickBackIcon} />
+          <Header.Title className="mx-auto">프로젝트 생성</Header.Title>
+        </Header.TopBar>
+      </Header>
       <Spacer y={12} />
       <ProjectForm />
     </AppScreenContainer>

@@ -1,8 +1,8 @@
+import Button from '@components/common/atom/Button';
 import Progress from '@components/common/atom/Progress';
-import Typography from '@components/common/atom/Typography';
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Footer from '@components/wrapper/Footer';
+import Header from '@components/wrapper/Header';
 import { ON_BOARDING_HEADER_TEXT } from '@constants/onBoard';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
@@ -52,25 +52,26 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   const buttonText = curStep === lastStep ? '시작하기' : '다음';
   return (
     <AppScreenContainer>
-      <NavigationHeader
-        backIconProps={{
-          isShow: isShowBackIcon,
-          handleClick: handleClickBackIcon,
-        }}
-        rightButtonProps={{
-          isShow: isShowRightButton,
-          text: '바로시작하기',
-          handleClick: handleClickStart,
-        }}
-      />
+      <Header>
+        <Header.TopBar>
+          {isShowBackIcon && (
+            <Header.BackIcon handleClick={handleClickBackIcon} />
+          )}
+          {isShowRightButton && (
+            <Header.RightButton
+              text="바로시작하기"
+              handleClick={handleClickStart}
+            />
+          )}
+        </Header.TopBar>
+      </Header>
       <Progress curStep={curStep} lastStep={4} />
       <OnboardingCard step={curStep} />
-
-      <FixedBottomButton handleClick={handleClickPush}>
-        <Typography variant="body02" fontColor="white">
+      <Footer bottom={3}>
+        <Button className="px-2" onClick={handleClickPush}>
           {buttonText}
-        </Typography>
-      </FixedBottomButton>
+        </Button>
+      </Footer>
     </AppScreenContainer>
   );
 };

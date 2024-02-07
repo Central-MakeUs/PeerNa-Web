@@ -1,8 +1,8 @@
-import Typography from '@components/common/atom/Typography';
+import Button from '@components/common/atom/Button';
 import NavigationHeader from '@components/common/molecule/NavigationHeader';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
 import FixedCenter from '@components/wrapper/FixedCenter';
-import { PEER_REVIEW_IMAGE_LIST } from "@constants/images";
+import Footer from '@components/wrapper/Footer';
+import { PEER_REVIEW_IMAGE_LIST } from '@constants/images';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Fragment } from 'react';
 
@@ -27,11 +27,9 @@ export default function IsOffendedResponse() {
           문항들로 구성되어 있어요."
         />
       </FixedCenter>
-      <FixedBottomButton handleClick={handleClick}>
-        <Typography variant="body02" fontColor="white">
-          다음
-        </Typography>
-      </FixedBottomButton>
+      <Footer>
+        <Button onClick={handleClick}>다음</Button>
+      </Footer>
     </Fragment>
   );
 }

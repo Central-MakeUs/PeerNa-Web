@@ -52,7 +52,7 @@ interface RightButtonProps {
 
 function RightButton({ text, handleClick }: RightButtonProps) {
   return (
-    <button onClick={handleClick}>
+    <button onClick={handleClick} className="ml-auto">
       <Typography variant="body03" fontColor="gray07">
         {text}
       </Typography>
@@ -61,18 +61,18 @@ function RightButton({ text, handleClick }: RightButtonProps) {
 }
 
 interface BodyProps {
-  marginClass?: string;
+  className?: string;
   textAlign?: 'left' | 'center';
 }
 
 function Body({
   children,
-  marginClass = '',
+  className,
   textAlign = 'left',
 }: PropsWithChildren<BodyProps>) {
   return (
     <div
-      className={`w-full flex flex-col ${marginClass} ${textAlign === 'center' ? 'text-center' : 'text-left'}`}
+      className={`w-full flex flex-col ${className} ${textAlign === 'center' ? 'text-center' : 'text-left'}`}
     >
       {children}
     </div>
