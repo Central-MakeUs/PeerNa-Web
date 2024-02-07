@@ -1,5 +1,5 @@
 import { persistAtom } from '@store/recoilPersist';
-import { JobType, PartType } from "@type/enums";
+import { JobType, PartType } from '@type/enums';
 import { atom, selector } from 'recoil';
 
 type ReviewSelfStateType = {

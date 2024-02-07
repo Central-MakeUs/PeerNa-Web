@@ -1,7 +1,8 @@
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
-import { PART_LIST } from "@constants/list";
+import { PART_LIST } from '@constants/list';
 import { profileSelfState } from '@store/profileSelfState';
+import { PartType } from '@type/enums';
 import { useRecoilState } from 'recoil';
 import SelectListItem from './SelectListItem';
 
@@ -15,7 +16,7 @@ export default function PositionDrawer({
   setOpenPartBottomSheet,
 }: PartDrawerProps) {
   const [profileSelf, setProfileSelf] = useRecoilState(profileSelfState);
-  const handleChangePart = (newPart: string) => {
+  const handleChangePart = (newPart: PartType) => {
     setProfileSelf(prev => ({
       ...prev,
       part: newPart,
@@ -38,7 +39,7 @@ export default function PositionDrawer({
             key={part.key}
             title={part.text}
             isSelect={profileSelf.part === part.key}
-            onClick={() => handleChangePart(part.text)}
+            onClick={() => handleChangePart(part.key)}
           />
         ))}
       </DrawerContent>

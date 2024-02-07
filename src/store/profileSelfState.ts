@@ -1,8 +1,9 @@
+import { JobType, PartType } from '@type/enums';
 import { atom } from 'recoil';
 
 export type ProfileSelfStateType = {
-  job: string;
-  part: string;
+  job: JobType | '';
+  part: PartType | '';
   oneLiner: string;
 };
 

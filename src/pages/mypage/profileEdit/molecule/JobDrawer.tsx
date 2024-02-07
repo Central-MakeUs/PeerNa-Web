@@ -1,7 +1,8 @@
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
-import { JOB_LIST } from "@constants/list";
+import { JOB_LIST } from '@constants/list';
 import { profileSelfState } from '@store/profileSelfState';
+import { JobType } from '@type/enums';
 import { useRecoilState } from 'recoil';
 import SelectListItem from './SelectListItem';
 
@@ -15,7 +16,7 @@ export default function JobDrawer({
   setOpenJobBottomSheet,
 }: JobDrawerProps) {
   const [profileSelf, setProfileSelf] = useRecoilState(profileSelfState);
-  const handleChangeJob = (newJob: string) => {
+  const handleChangeJob = (newJob: JobType) => {
     setProfileSelf(prev => ({
       ...prev,
       job: newJob,
@@ -34,9 +35,10 @@ export default function JobDrawer({
         </Typography>
         {Object.values(JOB_LIST).map(job => (
           <SelectListItem
+            key={job.key}
             title={job.text}
             isSelect={profileSelf.job === job.key}
-            onClick={() => handleChangeJob(job.text)}
+            onClick={() => handleChangeJob(job.key)}
           />
         ))}
       </DrawerContent>
