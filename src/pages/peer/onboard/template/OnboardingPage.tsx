@@ -61,14 +61,16 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
             <Header.RightButton
               text="바로시작하기"
               handleClick={handleClickStart}
-            ></Header.RightButton>
+            />
           )}
         </Header.TopBar>
       </Header>
       <Progress curStep={curStep} lastStep={4} />
       <OnboardingCard step={curStep} />
       <Footer bottom={3}>
-        <Button onClick={handleClickPush}>{buttonText}</Button>
+        <Button className="px-2" onClick={handleClickPush}>
+          {buttonText}
+        </Button>
       </Footer>
     </AppScreenContainer>
   );

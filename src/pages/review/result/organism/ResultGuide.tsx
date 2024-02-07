@@ -1,6 +1,7 @@
+import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import FixedBottomButton from '@components/wrapper/FixedBottomButton';
+import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { FontVariantsClassName } from '@constants/styles';
 import useHistory from '@hooks/common/useHistory';
@@ -66,14 +67,16 @@ export default function ResultGuide() {
           </CardBody>
         </Card>
       </div>
-      <FixedBottomButton
-        handleClick={() => {
-          removeAccessToken();
-          openModal();
-        }}
-      >
-        동의 후 결과 확인하기
-      </FixedBottomButton>
+      <Footer>
+        <Button
+          onClick={() => {
+            removeAccessToken();
+            openModal();
+          }}
+        >
+          동의 후 결과 확인하기
+        </Button>
+      </Footer>
     </div>
   );
 }
