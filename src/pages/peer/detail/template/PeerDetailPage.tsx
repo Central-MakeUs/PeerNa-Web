@@ -33,8 +33,6 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
   const { mutate } = usePostRequestPeerTest();
 
-  console.log(peerInfo);
-
   const {
     peerTestMoreThanThree,
     memberSimpleProfileDto,
@@ -125,7 +123,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
                   type="peer"
                 />
               )}
-              {!peerTestMoreThanThree && <NoTestKeywordResult />}
+              {!peerTestMoreThanThree && <NoTestKeywordResult type="peer" />}
             </Tab>
           </RadioTabs>
           <section className="flex flex-col gap-4 pt-7 pb-5">
