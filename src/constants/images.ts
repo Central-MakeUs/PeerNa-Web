@@ -12,6 +12,8 @@ import TypeI from '@assets/common/icon_I.png';
 import TypeS from '@assets/common/icon_S.png';
 import Multidimensional from '@assets/common/multidimensional.png';
 import Pragmatic from '@assets/common/pragmatic.png';
+import ProjectRequest from '@assets/common/projectRequest.png';
+import ReviewRequest from '@assets/common/reviewRequest.png';
 import TypeUnknwon from '@assets/common/unknown.png';
 import Warmhearted from '@assets/common/warmhearted.png';
 import KakaoShare from '@assets/link/kakao.png';
@@ -26,6 +28,9 @@ import Lottie4 from '@assets/review/04결정방식.json';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
+
+export const PROJECT_REQUEST = ProjectRequest;
+export const REVIEW_REQUEST = ReviewRequest;
 
 export const REVIEW_LOTTIES = [Lottie1, Lottie2, Lottie3, Lottie4];
 export const KAKAO_SHARE = KakaoShare;
