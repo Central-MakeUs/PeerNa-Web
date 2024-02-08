@@ -33,14 +33,11 @@ const ProfileEditPage: ActivityComponentType = () => {
     }
   }, [myProfileInfo]);
 
-  function handleProfileChange() {
-    return (
-      myProfileInfo &&
-      (myProfileInfo.job !== profileSelf.job ||
-        myProfileInfo.part !== profileSelf.part ||
-        myProfileInfo.oneLiner !== profileSelf.oneLiner)
-    );
-  }
+  const isValidProfileChange =
+    myProfileInfo &&
+    (myProfileInfo.job !== profileSelf.job ||
+      myProfileInfo.part !== profileSelf.part ||
+      myProfileInfo.oneLiner !== profileSelf.oneLiner);
 
   const { mutate } = usePatchMyProfile();
 
@@ -97,7 +94,7 @@ const ProfileEditPage: ActivityComponentType = () => {
         </ErrorBoundaryWithSuspense>
       </Content>
       <Footer bottom={3} className="px-3">
-        <Button onClick={handleProfile} isDisabled={!handleProfileChange()}>
+        <Button onClick={handleProfile} isDisabled={!isValidProfileChange}>
           저장
         </Button>
       </Footer>
