@@ -10,6 +10,7 @@ interface PeerProfileResponseDTO extends ProfileResponseDTO {
   myCardList: ResultKeyword[];
   peerAnswerIdList: number[];
   peerProjectDtoList: ProjectItemType[];
+  myName: string;
 }
 
 const getPeerDetail = async (
