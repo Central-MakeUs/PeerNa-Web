@@ -21,14 +21,15 @@ export default function useErrorHandler() {
         case 4007:
         case 4008:
         case 4009:
-        case 4010:
         case 4011:
-        case 5000:
           toast.error(errorMessage);
           setModalState((prevState: ModalStateType) => ({
             ...prevState,
             login: true,
           }));
+          break;
+        case 5000:
+          toast.error(errorMessage);
           break;
         default:
           toast.error('알 수 없는 에러가 발생했습니다');
