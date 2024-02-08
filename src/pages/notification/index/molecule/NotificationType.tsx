@@ -14,12 +14,19 @@ export class ReviewRequestNotification implements NotificationBase {
   private readonly params: Record<string, string>;
   private readonly title: string;
   private readonly subtitle: string;
+  private readonly readFlag: boolean;
 
-  constructor(params: Record<string, string>, title: string, subtitle: string) {
+  constructor(
+    params: Record<string, string>,
+    title: string,
+    subtitle: string,
+    readFlag: boolean,
+  ) {
     this.activity = 'ReviewPeerPage';
     this.params = params;
     this.title = title;
     this.subtitle = subtitle;
+    this.readFlag = readFlag;
   }
 
   display(push: PushFunction<string>) {
@@ -33,12 +40,20 @@ export class ReviewRequestNotification implements NotificationBase {
           </div>
           <div className="flex flex-col gap-1">
             <Typography variant="body01">{this.title}</Typography>
-            <Typography
-              variant="body05"
-              className={`text-[${Palette.gray05}] text-left`}
-            >
-              {this.subtitle}
-            </Typography>
+            <div className="flex flex-row gap-1">
+              <Typography
+                variant="body05"
+                className={`text-[${Palette.gray05}] text-left`}
+              >
+                {this.subtitle}
+              </Typography>
+              <Typography
+                variant="body05"
+                className={`text-[${Palette.gray05}] text-left`}
+              >
+                {this.readFlag ? '읽음' : '읽지않음'}
+              </Typography>
+            </div>
           </div>
         </div>
         <div>
@@ -60,12 +75,19 @@ export class ReviewUpdateNotification implements NotificationBase {
   private readonly params: Record<string, string>;
   private readonly title: string;
   private readonly subtitle: string;
+  private readonly readFlag: boolean;
 
-  constructor(params: Record<string, string>, title: string, subtitle: string) {
+  constructor(
+    params: Record<string, string>,
+    title: string,
+    subtitle: string,
+    readFlag: boolean,
+  ) {
     this.activity = 'MyPage';
     this.params = params;
     this.title = title;
     this.subtitle = subtitle;
+    this.readFlag = readFlag;
   }
 
   display(push: PushFunction<string>) {
@@ -79,12 +101,20 @@ export class ReviewUpdateNotification implements NotificationBase {
           </div>
           <div className="flex flex-col gap-1">
             <Typography variant="body01">{this.title}</Typography>
-            <Typography
-              variant="body05"
-              className={`text-[${Palette.gray05}] text-left`}
-            >
-              {this.subtitle}
-            </Typography>
+            <div className="flex flex-row gap-1">
+              <Typography
+                variant="body05"
+                className={`text-[${Palette.gray05}] text-left`}
+              >
+                {this.subtitle}
+              </Typography>
+              <Typography
+                variant="body05"
+                className={`text-[${Palette.gray05}] text-left`}
+              >
+                {this.readFlag ? '읽음' : '읽지않음'}
+              </Typography>
+            </div>
           </div>
         </div>
         <div>

@@ -17,12 +17,13 @@ export default function ProjectNotificationTab() {
     params: Record<string, string>,
     title: string,
     subtitle: string,
+    readFlag: boolean,
   ) => {
     switch (type) {
       case NoticeType.INVITE_TO_PROJECT:
-        return new ProjectRecruitPropose(params, title, subtitle);
+        return new ProjectRecruitPropose(params, title, subtitle, readFlag);
       case NoticeType.ACCEPT_PROJECT_JOIN_REQUEST:
-        return new ProjectProposeResult(type, title, subtitle);
+        return new ProjectProposeResult(type, title, subtitle, readFlag);
       default:
         return null;
     }
@@ -38,6 +39,7 @@ export default function ProjectNotificationTab() {
             { id: String(notification.targetId) },
             notification.contents,
             getTimeDifference(notification.createdTime),
+            notification.readFlag,
           );
 
           return <Project key={index} project={NotificationInstance} />;

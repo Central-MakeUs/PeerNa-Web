@@ -22,6 +22,7 @@ export interface NotificationItemType {
   noticeType: NoticeType;
   contents: string;
   createdTime: string;
+  readFlag: boolean;
 }
 
 export interface ProjectInformationType {
