@@ -128,7 +128,9 @@ const MyPage: ActivityComponentType = () => {
                     />
                   )}
                 </ErrorBoundaryWithSuspense>
-                {peerTestMoreThanThree === false && <NoTestKeywordResult />}
+                {peerTestMoreThanThree === false && (
+                  <NoTestKeywordResult type="self" />
+                )}
                 <ErrorBoundaryWithSuspense>
                   {Array.isArray(totalEvaluation) &&
                     totalEvaluation.length > 0 && (
