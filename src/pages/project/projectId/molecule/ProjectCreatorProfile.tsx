@@ -1,22 +1,30 @@
 import Button from '@components/common/atom/Button';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
+import { ICON_MAPPER, JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
 import { CreatorSimpleProfileType } from '@type/index';
 
 export default function ProjectCreatorProfile({
+  peerTestType,
   name,
   job,
   part,
   oneLiner,
   totalScore,
 }: CreatorSimpleProfileType) {
+  const peerType = ICON_MAPPER[peerTestType];
   return (
     <div className="w-full flex justify-between items-center px-5 py-4">
       <div className="flex gap-3">
-        <div
-          className={`w-[24px] h-[24px] p-3 box-content rounded-full ${'bg-gray01'}`}
-        >
-          {/* <img src={cardItem[testType]} alt="테스트 결과 카드" /> */}
+        <div className="w-[24px] h-[24px] p-3 flex items-center justify-center box-content rounded-full bg-gray01">
+          {peerTestType && (
+            <div
+              className={`${peerType} w-8 h-8 bg-no-repeat bg-center bg-32`}
+            />
+          )}
+          {!peerTestType && (
+            <SvgIcon id="Person" width={32} height={32} color="gray04" />
+          )}
         </div>
         <div className="flex flex-col">
           <div className="flex items-center gap-1">
