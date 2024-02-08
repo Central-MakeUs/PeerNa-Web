@@ -113,7 +113,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
           <Header.BackIcon handleClick={handleClickBackButton} />
         </Header.TopBar>
       </Header>
-      <div className="flex flex-col w-full items-center mt-6  gap-4">
+      <div className="flex flex-col w-full items-center px-4 mt-6 gap-4">
         <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
         {(curStep !== 4 || trackStep !== 7) &&
           (curStep !== 4 || trackStep !== 6) && (
