@@ -4,6 +4,7 @@ import {
   MemberDefaultInformationTypeWithUuid,
 } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
+import toast from 'react-hot-toast';
 
 interface MemberInformationRequestDTO
   extends MemberDefaultInformationTypeWithSelfGrade {}
@@ -30,12 +31,13 @@ const postMemberInformation = async ({
 };
 
 export default function usePostMemberInformation(
-  successCallback?: () => void,
   errorCallback?: (error: Error) => void,
 ) {
   return useMutation({
     mutationFn: postMemberInformation,
-    onSuccess: successCallback,
+    onSuccess: data => {
+      toast.success(data.message);
+    },
     onError: errorCallback,
   });
 }

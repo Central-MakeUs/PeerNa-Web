@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
+import toast from 'react-hot-toast';
 
 interface MemberLogoutRequestDto {
   refreshToken: string;
@@ -19,13 +20,12 @@ const postLogout = async ({
   });
 };
 
-export default function usePostLogout(
-  successCallback?: () => void,
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePostLogout(errorCallback?: (error: Error) => void) {
   return useMutation({
     mutationFn: postLogout,
-    onSuccess: successCallback,
+    onSuccess: () => {
+      toast.success('로그아웃 되었습니다');
+    },
     onError: errorCallback,
   });
 }

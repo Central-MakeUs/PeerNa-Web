@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
+import toast from 'react-hot-toast';
 
 interface MemberProjectRequestDTO {
   projectId: number;
@@ -20,12 +21,13 @@ const postPeerInviteProject = async ({
 };
 
 export default function usePostPeerInviteProject(
-  successCallback?: () => void,
   errorCallback?: (error: Error) => void,
 ) {
   return useMutation({
     mutationFn: postPeerInviteProject,
-    onSuccess: successCallback,
+    onSuccess: () => {
+      toast.success('프로젝트 초대가 완료되었습니다.');
+    },
     onError: errorCallback,
   });
 }

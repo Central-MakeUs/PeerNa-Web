@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
+import toast from 'react-hot-toast';
 
 const postRequestPeerReview = async ({
   peerId,
@@ -13,12 +14,13 @@ const postRequestPeerReview = async ({
 };
 
 export default function usePostRequestPeerTest(
-  successCallback?: () => void,
   errorCallback?: (error: Error) => void,
 ) {
   return useMutation({
     mutationFn: postRequestPeerReview,
-    onSuccess: successCallback,
+    onSuccess: () => {
+      toast.success('응답 요청이 완료되었습니다.');
+    },
     onError: errorCallback,
   });
 }
