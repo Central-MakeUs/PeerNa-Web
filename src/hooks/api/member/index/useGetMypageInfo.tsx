@@ -16,6 +16,7 @@ export interface ProfileResponseDTO {
 
 export interface MyPageResponseDTO extends ProfileResponseDTO {
   memberMyPageInfoDto: ProfileCardInfo;
+  peerTestCount: number;
   peerTestType: TestType;
   selfTestCardList: ResultKeyword[];
   selfTestAnswerIdList: number[];
