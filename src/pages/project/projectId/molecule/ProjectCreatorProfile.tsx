@@ -2,17 +2,24 @@ import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { ICON_MAPPER, JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
-import { CreatorSimpleProfileType } from '@type/index';
+import { useFlow } from '@hooks/common/useStackFlow';
+import { PeerSimpleProfileType } from '@type';
 
 export default function ProjectCreatorProfile({
+  memberId,
   peerTestType,
   name,
   job,
   part,
   oneLiner,
   totalScore,
-}: CreatorSimpleProfileType) {
+}: PeerSimpleProfileType) {
+  const { push } = useFlow();
+  const handleClickDetail = () =>
+    push('PeerDetailPage', { memberId: String(memberId) });
+
   const peerType = ICON_MAPPER[peerTestType];
+
   return (
     <div className="w-full flex justify-between items-center px-5 py-4">
       <div className="flex gap-3">
@@ -50,7 +57,11 @@ export default function ProjectCreatorProfile({
         </div>
       </div>
       <div className="h-full flex items-center">
-        <Button buttonVariant="tertiary" buttonSize="sm">
+        <Button
+          buttonVariant="tertiary"
+          buttonSize="sm"
+          onClick={handleClickDetail}
+        >
           자세히
         </Button>
       </div>

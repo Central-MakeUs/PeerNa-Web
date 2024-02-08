@@ -38,7 +38,7 @@ export interface ProjectInformationType {
 
 export interface ProjectInformationWithCreatorType
   extends ProjectInformationType {
-  creatorSimpleProfileDto: CreatorSimpleProfileType;
+  creatorSimpleProfileDto: PeerSimpleProfileType;
 }
 
 export interface CreatorSimpleProfileType {
