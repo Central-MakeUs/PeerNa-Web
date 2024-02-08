@@ -5,6 +5,7 @@ import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
+import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
@@ -25,6 +26,8 @@ const HomePage: ActivityComponentType = () => {
   const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
 
+  console.log(data);
+
   useEffect(() => {
     refetch();
   }, [currentTab]);
@@ -34,12 +37,12 @@ const HomePage: ActivityComponentType = () => {
   return (
     <AppScreenContainer>
       <div className="w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col">
+        <Header>
+          <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
+            <Header.Title>PeerNa</Header.Title>
+          </Header.Body>
+        </Header>
         <Content>
-          <Header>
-            <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
-              <Header.Title>PeerNa</Header.Title>
-            </Header.Body>
-          </Header>
           <Layout>
             <HeaderContainer size="md">
               <Typography variant="header03">
@@ -58,19 +61,19 @@ const HomePage: ActivityComponentType = () => {
               <Tab key="FRONT_END" title="FE 개발자" />,
               <Tab key="BACK_END" title="BE 개발자" />,
             </UnderlineTabs>
-            {data && (
+            <ErrorBoundaryWithSuspense>
               <UserProfileList
                 data={data?.pages.flatMap(profile => profile.result)}
               />
-            )}
+            </ErrorBoundaryWithSuspense>
             <IntersectionBox ref={intersectionRef} />
             {isFetchingNextPage && <Spinner />}
           </Layout>
         </Content>
+        <Footer bottom={0}>
+          <BottomNavigation />
+        </Footer>
       </div>
-      <Footer bottom={0}>
-        <BottomNavigation />
-      </Footer>
     </AppScreenContainer>
   );
 };

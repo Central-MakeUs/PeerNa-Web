@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
+import toast from 'react-hot-toast';
 
 interface MemberPushAgreeResponseDTO extends ProjectInviteSuccessType {}
 
@@ -13,12 +14,13 @@ const postPushAgree = async ({
 };
 
 export default function usePostPushAgree(
-  successCallback?: () => void,
   errorCallback?: (error: Error) => void,
 ) {
   return useMutation({
     mutationFn: postPushAgree,
-    onSuccess: successCallback,
+    onSuccess: () => {
+      toast.success('알림설정이 완료되었습니다');
+    },
     onError: errorCallback,
   });
 }

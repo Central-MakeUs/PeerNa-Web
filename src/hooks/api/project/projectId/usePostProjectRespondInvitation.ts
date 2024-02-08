@@ -1,6 +1,9 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
+import { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
 
 interface ProjectRespondInvitationRequestDTO {
   projectId: number;
@@ -21,13 +24,16 @@ const postProjectRespondInvitation = async ({
   return response.data;
 };
 
-export default function usePostProjectRespondInvitation(
-  successCallback?: () => void,
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePostProjectRespondInvitation() {
+  const { handleError } = useErrorHandler();
+
   return useMutation({
     mutationFn: postProjectRespondInvitation,
-    onSuccess: successCallback,
-    onError: errorCallback,
+    onSuccess: () => {
+      toast.success('프로젝트 수락이 완료되었습니다.');
+    },
+    onError: (error: AxiosError) => {
+      handleError(error);
+    },
   });
 }

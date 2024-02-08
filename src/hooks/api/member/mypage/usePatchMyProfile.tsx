@@ -1,6 +1,8 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { useMutation } from '@tanstack/react-query';
 import { MemberDefaultInformationType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
+import { AxiosError } from 'axios';
 
 type PickMemberDefaultInformationmationType = Pick<
   MemberDefaultInformationType,
@@ -20,20 +22,21 @@ const editProfileInformation = async ({
 }: EditProfileInformationRequestDTO): Promise<
   ApiResponse<EditProfileInformationResponseDTO>
 > => {
-  return await http.patch('/member/mypage/profile', {
+  const response = await http.patch('/member/mypage/profile', {
     job,
     part,
     oneLiner,
   });
+  return response.data;
 };
 
-export default function usePatchMyProfile(
-  successCallback?: () => void,
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePatchMyProfile(successCallback?: () => void) {
+  const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: editProfileInformation,
     onSuccess: successCallback,
-    onError: errorCallback,
+    onError: (error: AxiosError) => {
+      handleError(error);
+    },
   });
 }

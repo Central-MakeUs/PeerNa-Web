@@ -5,6 +5,7 @@ import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
+import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
@@ -31,6 +32,7 @@ const MyPage: ActivityComponentType = () => {
     peerTestMoreThanThree,
     memberMyPageInfoDto,
     selfTestCardList,
+    peerTestCount,
     peerTestType,
     peerCardList,
     totalEvaluation,
@@ -51,8 +53,6 @@ const MyPage: ActivityComponentType = () => {
     push('SettingPage', {});
   };
 
-  console.log(data);
-
   return (
     <AppScreenContainer>
       <div className="w-full h-screen bg-gray07">
@@ -71,47 +71,72 @@ const MyPage: ActivityComponentType = () => {
               ></IconButton>
             </Header.TopBar>
           </Header>
-          {memberMyPageInfoDto && (
-            <ProfileCard memberInfo={memberMyPageInfoDto} />
-          )}
+          <ErrorBoundaryWithSuspense>
+            {memberMyPageInfoDto && (
+              <ProfileCard memberInfo={memberMyPageInfoDto} />
+            )}
+          </ErrorBoundaryWithSuspense>
           <Layout>
-            <CardTestResult
-              peerTestType={peerTestType}
-              selfTestType={selfTestType}
-            />
+            <ErrorBoundaryWithSuspense>
+              <CardTestResult
+                peerTestCount={peerTestCount}
+                peerTestType={peerTestType}
+                selfTestType={selfTestType}
+              />
+            </ErrorBoundaryWithSuspense>
             <RadioTabs>
               <Tab key="me" title="카드 비교">
-                {selfTestCardList && (
-                  <SelfTestResult selfTestCardList={selfTestCardList} />
-                )}
-                {peerCardList && <PeerTestResult peerCardList={peerCardList} />}
-                {!peerCardList && <NoPeerTestResult />}
-                {Array.isArray(totalEvaluation) &&
-                  totalEvaluation.length > 0 && (
-                    <OverallOpinion totalEvaluation={totalEvaluation} />
+                <ErrorBoundaryWithSuspense>
+                  {selfTestCardList && (
+                    <SelfTestResult selfTestCardList={selfTestCardList} />
                   )}
-                {totalScore && <OverallScore totalScore={totalScore} />}
-                {peerFeedbackList && (
-                  <Feedback
-                    peerFeedbackList={peerFeedbackList}
-                    handleClick={handleMoreFeedback}
-                  />
-                )}
+                </ErrorBoundaryWithSuspense>
+                <ErrorBoundaryWithSuspense>
+                  {peerCardList && (
+                    <PeerTestResult peerCardList={peerCardList} />
+                  )}
+                </ErrorBoundaryWithSuspense>
+                {!peerCardList && <NoPeerTestResult />}
+                <ErrorBoundaryWithSuspense>
+                  {Array.isArray(totalEvaluation) &&
+                    totalEvaluation.length > 0 && (
+                      <OverallOpinion totalEvaluation={totalEvaluation} />
+                    )}
+                </ErrorBoundaryWithSuspense>
+                <ErrorBoundaryWithSuspense>
+                  {totalScore && totalScore !== 0 && (
+                    <OverallScore totalScore={totalScore} />
+                  )}
+                </ErrorBoundaryWithSuspense>
+                <ErrorBoundaryWithSuspense>
+                  {peerFeedbackList && (
+                    <Feedback
+                      peerFeedbackList={peerFeedbackList}
+                      handleClick={handleMoreFeedback}
+                    />
+                  )}
+                </ErrorBoundaryWithSuspense>
               </Tab>
               <Tab key="peer" title="키워드 비교">
-                {colorAnswerIdList && selfTestAnswerIdList && (
-                  <OverallTestResult
-                    colorAnswerIdList={colorAnswerIdList}
-                    selfTestAnswerIdList={selfTestAnswerIdList}
-                    peerCardList={peerCardList}
-                    type="self"
-                  />
-                )}
-                {peerTestMoreThanThree === false && <NoTestKeywordResult />}
-                {Array.isArray(totalEvaluation) &&
-                  totalEvaluation.length > 0 && (
-                    <OverallOpinion totalEvaluation={totalEvaluation} />
+                <ErrorBoundaryWithSuspense>
+                  {colorAnswerIdList && selfTestAnswerIdList && (
+                    <OverallTestResult
+                      colorAnswerIdList={colorAnswerIdList}
+                      selfTestAnswerIdList={selfTestAnswerIdList}
+                      peerCardList={peerCardList}
+                      type="self"
+                    />
                   )}
+                </ErrorBoundaryWithSuspense>
+                {peerTestMoreThanThree === false && (
+                  <NoTestKeywordResult type="self" />
+                )}
+                <ErrorBoundaryWithSuspense>
+                  {Array.isArray(totalEvaluation) &&
+                    totalEvaluation.length > 0 && (
+                      <OverallOpinion totalEvaluation={totalEvaluation} />
+                    )}
+                </ErrorBoundaryWithSuspense>
                 {totalScore && <OverallScore totalScore={totalScore} />}
                 {peerFeedbackList && (
                   <Feedback

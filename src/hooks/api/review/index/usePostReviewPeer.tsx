@@ -1,6 +1,9 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { PeerGradeTypes } from '@store/reviewState';
 import { useMutation } from '@tanstack/react-query';
 import { ApiResponse, http } from '@utils/API';
+import { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
 
 interface ReviewPeerRequestDTO {
   targetUuid: string;
@@ -29,13 +32,15 @@ const postReviewPeer = async ({
   });
 };
 
-export default function usePostReviewPeer(
-  successCallback?: () => void,
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePostReviewPeer() {
+  const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postReviewPeer,
-    onSuccess: successCallback,
-    onError: errorCallback,
+    onSuccess: () => {
+      toast.success('리뷰가 완료되었습니다.');
+    },
+    onError: (error: AxiosError) => {
+      handleError(error);
+    },
   });
 }

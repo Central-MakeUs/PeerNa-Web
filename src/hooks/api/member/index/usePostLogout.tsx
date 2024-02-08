@@ -1,6 +1,8 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
+import { AxiosError } from 'axios';
 
 interface MemberLogoutRequestDto {
   refreshToken: string;
@@ -19,13 +21,12 @@ const postLogout = async ({
   });
 };
 
-export default function usePostLogout(
-  successCallback?: () => void,
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePostLogout() {
+  const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postLogout,
-    onSuccess: successCallback,
-    onError: errorCallback,
+    onError: (error: AxiosError) => {
+      handleError(error);
+    },
   });
 }

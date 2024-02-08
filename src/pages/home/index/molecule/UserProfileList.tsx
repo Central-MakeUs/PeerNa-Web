@@ -1,12 +1,13 @@
 import Button from '@components/common/atom/Button';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { useFlow } from '@hooks/common/useStackFlow';
+import EmptyData from '@pages/home/index/atom/EmptyData';
 import { PeerSimpleProfileType } from '@type/index';
 
 export default function UserProfileList({
-  data,
+  data = [],
 }: {
-  data: PeerSimpleProfileType[];
+  data?: PeerSimpleProfileType[];
 }) {
   const { push } = useFlow();
 
@@ -14,8 +15,8 @@ export default function UserProfileList({
     push('PeerDetailPage', { memberId });
   };
 
-  if (!data || data.length === 0 || !data[0]) {
-    return <h1>데이터가 없습니다</h1>;
+  if (data.length === 0) {
+    return <EmptyData />;
   }
 
   return (
