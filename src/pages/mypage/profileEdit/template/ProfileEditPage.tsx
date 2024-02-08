@@ -1,5 +1,6 @@
 import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
@@ -74,7 +75,7 @@ const ProfileEditPage: ActivityComponentType = () => {
           <Header.Title className="mx-auto">프로필 수정</Header.Title>
         </Header.TopBar>
       </Header>
-      <main>
+      <Content>
         <PositionDrawer
           openPartBottomSheet={openPartBottomSheet}
           setOpenPartBottomSheet={setOpenPartBottomSheet}
@@ -94,8 +95,8 @@ const ProfileEditPage: ActivityComponentType = () => {
             />
           )}
         </ErrorBoundaryWithSuspense>
-      </main>
-      <Footer bottom={3}>
+      </Content>
+      <Footer bottom={3} className="px-3">
         <Button onClick={handleProfile} isDisabled={!handleProfileChange()}>
           저장
         </Button>
