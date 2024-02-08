@@ -2,6 +2,7 @@ import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import { UtilityKeys } from '@constants/localStorage';
 import { REVIEW_PICKER } from '@constants/review';
 import usePostReviewPeer from '@hooks/api/review/index/usePostReviewPeer';
 import { useFlow, useStepFlow } from '@hooks/common/useStackFlow';
@@ -72,6 +73,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
   const mutation = usePostReviewPeer();
   const { review } = useReviewState();
   const handleClickLastButton = () => {
+    localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
     if (type === 'peer') {
       mutation.mutate({
         targetUuid: review.uuid!,

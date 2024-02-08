@@ -42,7 +42,6 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   const handleClickPush = () => {
     if (curStep === lastStep) {
       push('ReviewSelfPage', { step: '0' });
-      localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
       return;
     }
     push('OnboardingPage', { step: nextStep });
