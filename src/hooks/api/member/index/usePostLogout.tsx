@@ -1,7 +1,8 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
-import toast from 'react-hot-toast';
+import { AxiosError } from 'axios';
 
 interface MemberLogoutRequestDto {
   refreshToken: string;
@@ -20,12 +21,12 @@ const postLogout = async ({
   });
 };
 
-export default function usePostLogout(errorCallback?: (error: Error) => void) {
+export default function usePostLogout() {
+  const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postLogout,
-    onSuccess: () => {
-      toast.success('로그아웃 되었습니다');
+    onError: (error: AxiosError) => {
+      handleError(error);
     },
-    onError: errorCallback,
   });
 }

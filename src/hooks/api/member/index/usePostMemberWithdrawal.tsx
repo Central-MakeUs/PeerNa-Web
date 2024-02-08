@@ -1,7 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
-import toast from 'react-hot-toast';
 
 interface MemberWithdrawalResponseDTO extends ProjectInviteSuccessType {}
 
@@ -16,9 +15,7 @@ export default function usePostMemberWithdrawal(
 ) {
   return useMutation({
     mutationFn: postMemberWithdrawal,
-    onSuccess: () => {
-      toast.success('회원탈퇴 되었습니다.');
-    },
+
     onError: errorCallback,
   });
 }

@@ -1,10 +1,11 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { useMutation } from '@tanstack/react-query';
 import {
   MemberDefaultInformationTypeWithSelfGrade,
   MemberDefaultInformationTypeWithUuid,
 } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
-import toast from 'react-hot-toast';
+import { AxiosError } from 'axios';
 
 interface MemberInformationRequestDTO
   extends MemberDefaultInformationTypeWithSelfGrade {}
@@ -30,14 +31,12 @@ const postMemberInformation = async ({
   });
 };
 
-export default function usePostMemberInformation(
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePostMemberInformation() {
+  const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postMemberInformation,
-    onSuccess: data => {
-      toast.success(data.message);
+    onError: (error: AxiosError) => {
+      handleError(error);
     },
-    onError: errorCallback,
   });
 }

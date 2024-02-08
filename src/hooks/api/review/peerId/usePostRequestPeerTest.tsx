@@ -1,6 +1,8 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
+import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 
 const postRequestPeerReview = async ({
@@ -13,14 +15,16 @@ const postRequestPeerReview = async ({
   });
 };
 
-export default function usePostRequestPeerTest(
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePostRequestPeerTest() {
+  const { handleError } = useErrorHandler();
+
   return useMutation({
     mutationFn: postRequestPeerReview,
     onSuccess: () => {
       toast.success('응답 요청이 완료되었습니다.');
     },
-    onError: errorCallback,
+    onError: (error: AxiosError) => {
+      handleError(error);
+    },
   });
 }
