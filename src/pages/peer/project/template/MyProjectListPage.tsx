@@ -46,7 +46,7 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
           <Header.Title className="mx-auto">내 프로젝트</Header.Title>
         </Header.TopBar>
       </Header>
-      <div className="flex flex-col gap-3 items-start">
+      <div className="w-full flex flex-col justify-start">
         <Typography
           variant="caption01"
           fontColor="gray04"
