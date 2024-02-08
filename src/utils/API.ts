@@ -1,3 +1,4 @@
+import { ModalStateType } from '@store/modal';
 import {
   getAccessToken,
   getRefreshToken,
@@ -38,7 +39,6 @@ export const http = axios.create({
 });
 
 http.interceptors.request.use(async config => {
-  // TODO: authorization logic
   const accessToken = getAccessToken();
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
@@ -51,8 +51,6 @@ const onFulfilled = (response: AxiosResponse) => {
 };
 
 const onRejected = async (error: AxiosError) => {
-  // TODO: error handle logic
-  console.error(error);
   const originalRequest = error.config;
   console.log(originalRequest?.url);
   if (!originalRequest) return Promise.reject(error);
@@ -78,7 +76,14 @@ const onRejected = async (error: AxiosError) => {
       return http(originalRequest);
     } catch (refreshError) {
       removeRefreshToken();
-      console.error(refreshError);
+      if (localStorage.getItem(UtilityKeys.IS_ONBOARD)) {
+        setModalState((prevState: ModalStateType) => ({
+          ...prevState,
+          login: true,
+        }));
+      } else {
+        replace('OnboardingPage', { step: '1' });
+      }
     }
   }
 
