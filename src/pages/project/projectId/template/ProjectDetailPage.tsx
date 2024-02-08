@@ -4,6 +4,7 @@ import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
+import usePostProjectRequestJoin from '@hooks/api/project/projectId/usePostProjectRequestJoin';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import ProjectInformation from '@pages/project/projectId/organism/ProjectInformation';
@@ -11,10 +12,21 @@ import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { ActivityComponentType, useActivity } from '@stackflow/react';
 import { useState } from 'react';
 
-const ProjectDetailPage: ActivityComponentType = () => {
+type ProjectDetailPageParams = {
+  id: string;
+  type: string;
+};
+
+const ProjectDetailPage: ActivityComponentType<ProjectDetailPageParams> = ({
+  params,
+}) => {
+  const { id, type } = params;
   const { pop } = useFlow();
   const handleClickBackIcon = () => pop({ animate: true });
   const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
+
+  const { mutate } = usePostProjectRequestJoin();
+  const handleClickJoinProject = () => mutate(id);
   const handleClickShare = () => setOpenBottomSheet(true);
 
   const activity = useActivity();
@@ -37,7 +49,12 @@ const ProjectDetailPage: ActivityComponentType = () => {
         <Spacer y={16} />
       </Content>
       <Footer bottom={3} className="px-4">
-        <Button onClick={handleClickShare}>동료 초대하기</Button>
+        {type === 'other' && (
+          <Button onClick={handleClickJoinProject}>참가 신청하기</Button>
+        )}
+        {type === 'my' && (
+          <Button onClick={handleClickShare}>동료 초대하기</Button>
+        )}
       </Footer>
       <ShareDrawer
         openBottomSheet={openBottomSheet}
