@@ -4,14 +4,18 @@ import { atom } from 'recoil';
 export interface ModalStateType {
   login: boolean;
   push: boolean;
+  projectAccept: boolean;
+  projectDecline: boolean;
 }
 
-export type ModalType = 'login' | 'push';
+export type ModalType = 'login' | 'push' | 'projectAccept' | 'projectDecline';
 
 export const modalState = atom<ModalStateType>({
   key: 'modalState',
   default: {
     login: false,
     push: false,
+    projectAccept: false,
+    projectDecline: false,
   },
 });

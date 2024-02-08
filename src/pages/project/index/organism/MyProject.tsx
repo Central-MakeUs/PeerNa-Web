@@ -39,7 +39,10 @@ export default function MyProject() {
               key={project.projectId}
               className="w-full text-left"
               onClick={() =>
-                push('ProjectDetailPage', { id: project.projectId })
+                push('ProjectDetailPage', {
+                  id: String(project.projectId),
+                  type: 'my',
+                })
               }
             >
               <Project

@@ -29,7 +29,7 @@ export class ProjectRecruitPropose implements ProjectBase {
   private readonly subtitle: string;
 
   constructor(params: Record<string, string>, title: string, subtitle: string) {
-    this.activity = 'ProjectDetailPage';
+    this.activity = 'ProjectProposePage';
     this.params = params;
     this.title = title;
     this.subtitle = subtitle;
@@ -60,7 +60,9 @@ export class ProjectRecruitPropose implements ProjectBase {
             buttonSize="sm"
             onClick={() => push(this.activity as string, this.params)}
           >
-            자세히
+            <Typography variant="body03" fontColor="gray08">
+              자세히
+            </Typography>
           </Button>
         </div>
       </ListItemContainer>

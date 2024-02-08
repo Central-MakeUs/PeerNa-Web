@@ -1,3 +1,5 @@
+import ProjectAcceptModal from '@components/common/molecule/ProjectAcceptModal';
+import ProjectDeclineModal from '@components/common/molecule/ProjectDeclineModal';
 import PushModal from '@components/common/molecule/PushModal';
 import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import { ModalType, modalState } from '@store/modal';
@@ -23,6 +25,8 @@ export default function Modals() {
       modals={{
         login: <LoginModal />,
         push: <PushModal />,
+        projectAccept: <ProjectAcceptModal />,
+        projectDecline: <ProjectDeclineModal />,
       }}
     />
   );

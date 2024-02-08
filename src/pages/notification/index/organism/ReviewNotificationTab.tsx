@@ -19,9 +19,9 @@ export default function ReviewNotificationTab() {
     subtitle: string,
   ) => {
     switch (type) {
-      case NoticeType.ACCEPT_PROJECT_INVITATION:
+      case NoticeType.PEER_TEST_REQUEST:
         return new ReviewRequestNotification(params, title, subtitle);
-      case NoticeType.ACCEPT_PROJECT_JOIN_REQUEST:
+      case NoticeType.PEER_TEST_RESULT_UPDATE:
         return new ReviewUpdateNotification(params, title, subtitle);
       default:
         return null;

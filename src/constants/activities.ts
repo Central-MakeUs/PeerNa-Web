@@ -64,7 +64,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ProjectPage: '/project',
   ProjectDetailPage: '/project/:id',
   ProjectCreatePage: '/project/create',
-  ProjectProposePage: '/project/propose',
+  ProjectProposePage: '/project/:id/propose',
   NotificationPage: '/notification',
   MyPage: '/mypage',
   SettingPage: '/mypage/setting',

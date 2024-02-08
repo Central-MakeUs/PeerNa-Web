@@ -2,6 +2,7 @@ import IntersectionBox from '@components/common/atom/IntersectionBox';
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
+import Modals from '@components/common/molecule/Modals';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
@@ -96,6 +97,7 @@ const HomePage: ActivityComponentType = () => {
       <Footer bottom={0}>
         <BottomNavigation />
       </Footer>
+      <Modals />
     </AppScreenContainer>
   );
 };
