@@ -25,8 +25,6 @@ export default function ProfileEditList({
     ?.text as string;
   const partText = PART_LIST.find(part => part.key === profileSelf.part)
     ?.text as string;
-  console.log(jobText);
-  console.log(partText);
 
   return (
     <ul>
