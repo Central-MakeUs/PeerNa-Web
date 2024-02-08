@@ -7,9 +7,9 @@ import useGetSearchPeerType from '@hooks/api/home/search/useGetSearchPeerType';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import UserProfileList from '@pages/home/index/molecule/UserProfileList';
+import PeerItem from '@pages/peer/type/atom/PeerItem';
 import { ActivityComponentType } from '@stackflow/react';
 import { TestType } from '@type/enums';
-import PeerItem from '../atom/PeerItem';
 
 type PeerTypePageParams = {
   type: Exclude<TestType, TestType.UNKNOWN>;
