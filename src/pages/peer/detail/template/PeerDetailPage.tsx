@@ -33,11 +33,14 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
   const { mutate } = usePostRequestPeerTest();
 
+  console.log(peerInfo);
+
   const {
     peerTestMoreThanThree,
     memberSimpleProfileDto,
     peerCardList,
     myCardList,
+    myName,
     totalEvaluation,
     totalScore,
     peerFeedbackList,
@@ -92,7 +95,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
           <RadioTabs>
             <Tab key="me" title="카드비교">
               <PeerTestResult user={username} peerCardList={peerCardList} />
-              <SelfTestResult myCardList={myCardList} />
+              <SelfTestResult myName={myName} myCardList={myCardList} />
               {Array.isArray(totalEvaluation) &&
                 peerTestMoreThanThree === true && (
                   <OverallOpinion totalEvaluation={totalEvaluation} />
