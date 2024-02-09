@@ -20,6 +20,11 @@ export default function ResultGuide() {
     }
   }, [history]);
 
+  const handleClick = () => {
+    removeAccessToken();
+    openModal();
+  };
+
   return (
     <div className="w-full h-full flex flex-col items-center">
       <Header>
@@ -65,13 +70,10 @@ export default function ResultGuide() {
         </Card>
       </div>
       <Footer bottom={3} className="px-4">
-        <Button
-          onClick={() => {
-            removeAccessToken();
-            openModal();
-          }}
-        >
-          동의 후 결과 확인하기
+        <Button onClick={handleClick}>
+          <Typography variant="body01" fontColor="white">
+            동의 후 결과 확인하기
+          </Typography>
         </Button>
       </Footer>
     </div>

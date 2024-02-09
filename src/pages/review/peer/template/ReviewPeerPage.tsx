@@ -15,6 +15,7 @@ import { CSSProperties, Suspense, useState } from 'react';
 type ReviewPeerPageParams = {
   step: string;
   uuid?: string;
+  memberId?: string;
 };
 
 const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({

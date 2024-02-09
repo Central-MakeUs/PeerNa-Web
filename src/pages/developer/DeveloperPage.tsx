@@ -8,9 +8,10 @@ import Test from '@components/wrapper/Test';
 import useModal from '@hooks/store/useModal';
 import { Button } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
+import { removeAccessToken, removeRefreshToken } from '@utils/token';
 
 const DeveloperPage: ActivityComponentType = () => {
-  const { openModal } = useModal('push');
+  const { openModal } = useModal('login');
   return (
     <AppScreenContainer>
       <Header>
@@ -30,7 +31,14 @@ const DeveloperPage: ActivityComponentType = () => {
           <Button onClick={() => openModal()}>로그인</Button>
         </div>
         <div className="min-h-screen">
-          <Button onClick={() => openModal()}>로그인</Button>
+          <Button
+            onClick={() => {
+              removeAccessToken();
+              removeRefreshToken();
+            }}
+          >
+            로그인
+          </Button>
         </div>
         <div>hello</div>
       </Content>
