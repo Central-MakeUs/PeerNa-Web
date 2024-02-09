@@ -17,11 +17,11 @@ export default function PushModal() {
 
   const handleClickAgree = () => {
     mutate(true);
-    localStorage.setItem(UtilityKeys.IS_PUSH_AGREE, 'false');
+    localStorage.setItem(UtilityKeys.IS_PUSH_AGREE, 'true');
   };
   const handleClickDisagree = () => {
     mutate(false);
-    localStorage.setItem(UtilityKeys.IS_PUSH_AGREE, 'true');
+    localStorage.setItem(UtilityKeys.IS_PUSH_AGREE, 'false');
   };
 
   useEffect(() => {
