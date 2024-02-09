@@ -47,17 +47,22 @@ export default function ProjectForm() {
     );
   };
 
-  const { mutate } = usePostCreateProject(() => push('ProjectPage', {}));
+  const { mutate } = usePostCreateProject();
   const handleSubmit = () => {
-    mutate({
-      projectName: projectName,
-      introduce: introduce,
-      openChattingLink: openChattingLink,
-      notionLink: notionLink,
-      githubLink: githubLink,
-      startDate: startDate,
-      endDate: endDate,
-    });
+    mutate(
+      {
+        projectName: projectName,
+        introduce: introduce,
+        openChattingLink: openChattingLink,
+        notionLink: notionLink,
+        githubLink: githubLink,
+        startDate: startDate,
+        endDate: endDate,
+      },
+      {
+        onSuccess: () => push('ProjectPage', {}),
+      },
+    );
   };
 
   return (
