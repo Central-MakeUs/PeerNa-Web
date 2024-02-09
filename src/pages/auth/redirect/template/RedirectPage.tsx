@@ -37,7 +37,9 @@ const RedirectPage: ActivityComponentType = () => {
 
       const uuid = localStorage.getItem(UtilityKeys.UUID);
       if (uuid) {
-        mutate(uuid);
+        mutate(uuid, {
+          onSuccess: () => localStorage.removeItem(UtilityKeys.UUID),
+        });
       }
 
       const { activity, params } = history;
