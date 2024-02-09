@@ -39,6 +39,7 @@ const SettingPage: ActivityComponentType = () => {
         <Header.TopBar>
           <Header.BackIcon handleClick={handleClick} />
           <Header.Title className="mx-auto">설정</Header.Title>
+          <Header.RightButton text="" handleClick={() => null} />
         </Header.TopBar>
       </Header>
       <SettingMenu handleDelete={handleDelete} />

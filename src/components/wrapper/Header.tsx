@@ -60,7 +60,7 @@ interface RightButtonProps {
 
 function RightButton({ text, handleClick }: RightButtonProps) {
   return (
-    <button onClick={handleClick} className="ml-auto">
+    <button onClick={handleClick} className="min-w-[24px] h-full">
       <Typography variant="body03" fontColor="gray07">
         {text}
       </Typography>
