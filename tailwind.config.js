@@ -71,7 +71,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        default: '0 0 0 2.94px #E3E6E8',
+        default: '0 0 0 2px #E3E6E8',
       },
       keyframes: {
         'accordion-down': {
@@ -88,7 +88,9 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       backgroundImage: {
+        home_bg: 'url("@assets/common/home_bg.png")',
         'peer-bg': 'url("@assets/common/bg_gradient.png")',
+        peer_detail_bg: 'url("@assets/common/peer_detail_bg.png")',
         unknown_bg: 'url("@assets/common/whats_my_type_bg.png")',
         'home-icon': 'url("@assets/common/home_peer.png")',
         D: 'url("@assets/common/icon_D.png")',
