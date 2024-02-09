@@ -23,7 +23,7 @@ const postUserSigninUser = async ({
 > => {
   return await http.post(`/review/peer-test/${targetId}`, {
     answerIdList,
-    uuid: null,
+    uuid: '',
     feedback,
     peerGrade,
   });
