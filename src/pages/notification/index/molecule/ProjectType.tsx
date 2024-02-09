@@ -3,7 +3,6 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import ListItemContainer from '@components/wrapper/ListItemContainer';
 import { ActivityTypes } from '@constants/activities';
-import { Palette } from '@constants/styles';
 import { NoticeType } from '@type/enums';
 
 export type PushFunction<K extends string> = (
@@ -56,13 +55,15 @@ export class ProjectRecruitPropose implements ProjectBase {
             <div className="flex flex-row gap-1">
               <Typography
                 variant="body05"
-                className={`text-[${Palette.gray05}] text-left`}
+                fontColor="gray05"
+                className="text-left"
               >
                 {this.subtitle}
               </Typography>
               <Typography
                 variant="body05"
-                className={`text-[${Palette.gray05}] text-left`}
+                fontColor="gray05"
+                className="text-left"
               >
                 {this.readFlag ? '읽음' : '읽지않음'}
               </Typography>
@@ -124,13 +125,15 @@ export class ProjectProposeResult implements ProjectBase {
             <div className="flex flex-row gap-1">
               <Typography
                 variant="body05"
-                className={`text-[${Palette.gray05}] text-left`}
+                fontColor="gray05"
+                className="text-left"
               >
                 {this.subtitle}
               </Typography>
               <Typography
                 variant="body05"
-                className={`text-[${Palette.gray05}] text-left`}
+                fontColor="gray05"
+                className="text-left"
               >
                 {this.readFlag ? '읽음' : '읽지않음'}
               </Typography>
