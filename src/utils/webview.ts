@@ -7,6 +7,7 @@ import {
   setFcmToken,
   setRefreshToken,
 } from '@utils/token';
+import toast from 'react-hot-toast';
 
 export class WebviewBridge {
   static postMessage({ type, data }: WebviewPostMessageRequestType) {
@@ -42,6 +43,9 @@ export class WebviewBridge {
             setFcmToken(fcmToken);
             // 로그인된 유저만 fcmInit
             if (getAccessToken()) fcmInit();
+            break;
+          case 'alarm':
+            toast.success('새로운 알림이 있어요');
             break;
           default:
             break;
