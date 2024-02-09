@@ -38,9 +38,9 @@ export class WebviewBridge {
           case 'init':
             // eslint-disable-next-line no-case-declarations
             const { accessToken, refreshToken, fcmToken } = message.data;
-            setAccessToken(accessToken);
-            setRefreshToken(refreshToken);
-            setFcmToken(fcmToken);
+            setAccessToken(JSON.parse(accessToken ?? ''));
+            setRefreshToken(JSON.parse(refreshToken ?? ''));
+            setFcmToken(JSON.parse(fcmToken ?? ''));
             // 로그인된 유저만 fcmInit
             if (getAccessToken()) fcmInit();
             break;
