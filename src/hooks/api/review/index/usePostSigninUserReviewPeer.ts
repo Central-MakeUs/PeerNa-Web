@@ -21,7 +21,7 @@ const postUserSigninUser = async ({
 }: SigninUserReviewPeerRequestDTO): Promise<
   ApiResponse<SigninUserReviewPeerResponseDTO>
 > => {
-  return await http.post(`/review/peer-test?${targetId}`, {
+  return await http.post(`/review/peer-test/${targetId}`, {
     answerIdList,
     uuid: null,
     feedback,

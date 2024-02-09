@@ -21,12 +21,15 @@ const postUnknownUserReviewPeer = async ({
   feedback,
   peerGrade,
 }: ReviewPeerRequestDTO): Promise<ApiResponse<ReviewPeerResponseDTO>> => {
-  return await http.post(`/review/peer-test?target-uuid=${targetUuid}`, {
-    answerIdList,
-    uuid,
-    feedback,
-    peerGrade,
-  });
+  return await http.post(
+    `/review/non-member/peer-test?target-uuid=${targetUuid}`,
+    {
+      answerIdList,
+      uuid,
+      feedback,
+      peerGrade,
+    },
+  );
 };
 
 export default function usePostUnknownUserReviewPeer(
