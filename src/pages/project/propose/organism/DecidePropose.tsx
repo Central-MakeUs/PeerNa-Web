@@ -1,5 +1,4 @@
-import ProjectAcceptModal from '@components/common/molecule/ProjectAcceptModal';
-import ProjectDeclineModal from '@components/common/molecule/ProjectDeclineModal';
+import { StackModals } from '@components/common/molecule/Modals';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
@@ -34,8 +33,7 @@ export default function DecidePropose({ projectId }: DecideProposeProps) {
           <AcceptButton />
         </div>
       </Footer>
-      <ProjectAcceptModal />
-      <ProjectDeclineModal />
+      <StackModals />
     </Fragment>
   );
 }

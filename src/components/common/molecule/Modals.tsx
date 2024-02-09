@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import { useRecoilValue } from 'recoil';
 
 interface SwitchModals {
-  modals: Record<ModalType, ReactNode>;
+  modals: Partial<Record<ModalType, ReactNode>>;
 }
 
 const SwitchModals = ({ modals }: SwitchModals) => {
@@ -19,12 +19,21 @@ const SwitchModals = ({ modals }: SwitchModals) => {
   return modals[openedModal as ModalType];
 };
 
-export default function Modals() {
+export function Modals() {
   return (
     <SwitchModals
       modals={{
         login: <LoginModal />,
         push: <PushModal />,
+      }}
+    />
+  );
+}
+
+export function StackModals() {
+  return (
+    <SwitchModals
+      modals={{
         projectAccept: <ProjectAcceptModal />,
         projectDecline: <ProjectDeclineModal />,
       }}
