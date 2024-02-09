@@ -1,11 +1,14 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
+import ButtonContainer from '@components/common/molecule/ButtonContainer';
+import Modal from '@components/common/molecule/LegacyModal';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Header from '@components/wrapper/Header';
 import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
 import usePostRequestPeerTest from '@hooks/api/review/peerId/usePostRequestPeerTest';
 import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
 import { Tab } from '@nextui-org/react';
 import Feedback from '@pages/mypage/index/molecule/Feedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
@@ -19,6 +22,7 @@ import PeerTestResult from '@pages/peer/detail/atom/PeerTestResult';
 import SelfTestResult from '@pages/peer/detail/atom/SelfTestResult';
 import ProjectList from '@pages/peer/detail/molecule/ProjectList';
 import { ActivityComponentType } from '@stackflow/react';
+import toast from 'react-hot-toast';
 
 type peerDetailPageParams = {
   memberId: string;
@@ -32,6 +36,11 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
   const { mutate } = usePostRequestPeerTest();
+
+  const { openModal: peerRequestOpen, closeModal: peerRequestClose } =
+    useModal('peerRequest');
+  const { openModal: requestCompleteOpen, closeModal: requestCompleteClose } =
+    useModal('requestComplete');
 
   const {
     peerTestMoreThanThree,
@@ -56,9 +65,24 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   };
 
   const handleRequestPeerTest = () => {
+    peerRequestOpen();
+  };
+
+  const handleClickAlaramDecline = () => {
+    peerRequestClose();
+    toast.error(`함께 한 경험이 있는 동료만 \n 피어테스트 요청이 가능합니다`);
+  };
+
+  const handleClickAlarmAccept = () => {
     mutate({
       peerId: parseInt(memberId),
     });
+    requestCompleteOpen();
+  };
+
+  const handleRequestComplete = () => {
+    requestCompleteClose();
+    peerRequestClose();
   };
 
   const handleMyProjectList = () => {
@@ -133,6 +157,31 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
             <Button buttonVariant="secondary" onClick={handleRequestPeerTest}>
               내 피어 테스트 응답 요청하기
             </Button>
+            <Modal
+              type="peerRequest"
+              modalHeader="함께 한 경험이 있는 동료인가요?"
+              footer={
+                <ButtonContainer direction="row">
+                  <Button
+                    buttonVariant="tertiary"
+                    onClick={handleClickAlaramDecline}
+                  >
+                    아니요
+                  </Button>
+                  <Button onClick={handleClickAlarmAccept}>네</Button>
+                </ButtonContainer>
+              }
+            />
+            <Modal
+              type="requestComplete"
+              modalHeader="응답 요청 완료"
+              modalBody={`응답에 따라 마이페이지 분석 결과가 \n 업데이트 돼요.`}
+              footer={
+                <ButtonContainer direction="row">
+                  <Button onClick={handleRequestComplete}>확인</Button>
+                </ButtonContainer>
+              }
+            />
           </section>
         </Layout>
       </div>
