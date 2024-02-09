@@ -4,6 +4,7 @@ import Project from '@pages/notification/index/molecule/Project';
 import {
   ProjectProposeResult,
   ProjectRecruitPropose,
+  ProjectRequestJoin,
 } from '@pages/notification/index/molecule/ProjectType';
 import { NoticeType } from '@type/enums';
 import { getTimeDifference } from '@utils/date';
@@ -20,8 +21,9 @@ export default function ProjectNotificationTab() {
     readFlag: boolean,
   ) => {
     switch (type) {
-      case NoticeType.INVITE_TO_PROJECT:
       case NoticeType.REQUEST_JOIN_PROJECT:
+        return new ProjectRequestJoin(params, title, subtitle, readFlag);
+      case NoticeType.INVITE_TO_PROJECT:
         return new ProjectRecruitPropose(params, title, subtitle, readFlag);
       case NoticeType.ACCEPT_PROJECT_JOIN_REQUEST:
       case NoticeType.DECLINE_PROJECT_JOIN_REQUEST:

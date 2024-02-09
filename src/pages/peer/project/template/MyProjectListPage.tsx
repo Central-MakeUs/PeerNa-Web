@@ -7,7 +7,7 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetMyProjectList from '@hooks/api/project/index/useGetMyProjectList';
-import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
+import usePostPeerInviteProject from '@hooks/api/project/projectId/usePostPeerInviteProject';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
@@ -28,7 +28,7 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
   const { data, fetchNextPage, isFetchingNextPage } = useGetMyProjectList();
 
   const intersectionRef = useIntersection(fetchNextPage);
-  const { mutate } = usePostProjectRespondInvitation();
+  const { mutate } = usePostPeerInviteProject();
 
   const handleInvite = () => {
     if (selectedProjectId) {
@@ -44,9 +44,10 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
         <Header.TopBar>
           <Header.BackIcon handleClick={handleBack} />
           <Header.Title className="mx-auto">내 프로젝트</Header.Title>
+          <Header.RightButton text="" handleClick={() => null} />
         </Header.TopBar>
       </Header>
-      <div className="w-full flex flex-col justify-start">
+      <div className="w-full flex flex-col justify-start px-4">
         <Typography
           variant="caption01"
           fontColor="gray04"
