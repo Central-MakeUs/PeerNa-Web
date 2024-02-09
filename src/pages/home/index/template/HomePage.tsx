@@ -5,6 +5,7 @@ import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
+import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { UtilityKeys } from '@constants/localStorage';
@@ -30,6 +31,8 @@ const HomePage: ActivityComponentType = () => {
 
   const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
+
+  console.log(data);
 
   useEffect(() => {
     refetch();
@@ -94,11 +97,11 @@ const HomePage: ActivityComponentType = () => {
               <Tab key="FRONT_END" title="FE 개발자" />,
               <Tab key="BACK_END" title="BE 개발자" />,
             </UnderlineTabs>
-            {data && (
+            <ErrorBoundaryWithSuspense>
               <UserProfileList
                 data={data?.pages.flatMap(profile => profile.result)}
               />
-            )}
+            </ErrorBoundaryWithSuspense>
             <IntersectionBox ref={intersectionRef} />
             {isFetchingNextPage && <Spinner />}
           </Layout>

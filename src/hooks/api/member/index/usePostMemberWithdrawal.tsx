@@ -11,12 +11,11 @@ const postMemberWithdrawal = async (): Promise<
 };
 
 export default function usePostMemberWithdrawal(
-  successCallback?: () => void,
   errorCallback?: (error: Error) => void,
 ) {
   return useMutation({
     mutationFn: postMemberWithdrawal,
-    onSuccess: successCallback,
+
     onError: errorCallback,
   });
 }

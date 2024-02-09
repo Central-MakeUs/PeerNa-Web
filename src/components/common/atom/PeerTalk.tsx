@@ -33,10 +33,11 @@ export default function PeerTalk({
         className={talkStyle}
         classNames={{
           base: `bg-primary100`,
-          content: 'w-[316px]',
         }}
       >
-        <Typography variant="body02">{children}</Typography>
+        <Typography variant="body02" className="!whitespace-nowrap">
+          {children}
+        </Typography>
       </ChipWithNextui>
     </div>
   );

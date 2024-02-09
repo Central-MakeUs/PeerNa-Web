@@ -1,5 +1,7 @@
 import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
+import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetMe from '@hooks/api/member/index/useGetMe';
@@ -21,7 +23,6 @@ const ProfileEditPage: ActivityComponentType = () => {
   const [openJobBottomSheet, setOpenJobBottomSheet] = useState<boolean>(false);
   const [openPartBottomSheet, setOpenPartBottomSheet] =
     useState<boolean>(false);
-  const [isModified, setIsModified] = useState<boolean>(false);
 
   useEffect(() => {
     if (myProfileInfo) {
@@ -32,16 +33,12 @@ const ProfileEditPage: ActivityComponentType = () => {
       });
     }
   }, [myProfileInfo]);
-  console.log(myProfileInfo);
 
-  function handleProfileChange() {
-    return JSON.stringify(myProfileInfo) !== JSON.stringify(profileSelf);
-  }
-
-  useEffect(() => {
-    const isProfileModified = handleProfileChange();
-    setIsModified(isProfileModified);
-  }, [profileSelf, myProfileInfo]);
+  const isValidProfileChange =
+    myProfileInfo &&
+    (myProfileInfo.job !== profileSelf.job ||
+      myProfileInfo.part !== profileSelf.part ||
+      myProfileInfo.oneLiner !== profileSelf.oneLiner);
 
   const { mutate } = usePatchMyProfile();
 
@@ -79,7 +76,7 @@ const ProfileEditPage: ActivityComponentType = () => {
           <Header.Title className="mx-auto">프로필 수정</Header.Title>
         </Header.TopBar>
       </Header>
-      <main>
+      <Content>
         <PositionDrawer
           openPartBottomSheet={openPartBottomSheet}
           setOpenPartBottomSheet={setOpenPartBottomSheet}
@@ -88,18 +85,20 @@ const ProfileEditPage: ActivityComponentType = () => {
           openJobBottomSheet={openJobBottomSheet}
           setOpenJobBottomSheet={setOpenJobBottomSheet}
         />
-        {myProfileInfo && (
-          <ProfileEditList
-            profileSelf={profileSelf}
-            myProfileInfo={myProfileInfo}
-            handleClickJob={handleClickJob}
-            handleClickPart={handleClickPart}
-            handleChangeOneLiner={handleChangeOneLiner}
-          />
-        )}
-      </main>
+        <ErrorBoundaryWithSuspense>
+          {myProfileInfo && (
+            <ProfileEditList
+              profileSelf={profileSelf}
+              myProfileInfo={myProfileInfo}
+              handleClickJob={handleClickJob}
+              handleClickPart={handleClickPart}
+              handleChangeOneLiner={handleChangeOneLiner}
+            />
+          )}
+        </ErrorBoundaryWithSuspense>
+      </Content>
       <Footer bottom={3} className="px-4">
-        <Button onClick={handleProfile} isDisabled={!isModified}>
+        <Button onClick={handleProfile} isDisabled={!isValidProfileChange}>
           저장
         </Button>
       </Footer>

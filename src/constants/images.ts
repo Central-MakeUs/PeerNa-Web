@@ -12,6 +12,8 @@ import TypeI from '@assets/common/icon_I.png';
 import TypeS from '@assets/common/icon_S.png';
 import Multidimensional from '@assets/common/multidimensional.png';
 import Pragmatic from '@assets/common/pragmatic.png';
+import ProjectRequest from '@assets/common/projectRequest.png';
+import ReviewRequest from '@assets/common/reviewRequest.png';
 import TypeUnknwon from '@assets/common/unknown.png';
 import Warmhearted from '@assets/common/warmhearted.png';
 import KakaoShare from '@assets/link/kakao.png';
@@ -30,6 +32,9 @@ import bouvardia from '@assets/review/self/bouvardia.png';
 import daisy from '@assets/review/self/daisy.png';
 import mimosa from '@assets/review/self/mimosa.png';
 import violet from '@assets/review/self/violet.png';
+
+export const PROJECT_REQUEST = ProjectRequest;
+export const REVIEW_REQUEST = ReviewRequest;
 
 export const REVIEW_LOTTIES = [Lottie1, Lottie2, Lottie3, Lottie4];
 export const KAKAO_SHARE = KakaoShare;

@@ -15,12 +15,10 @@ import './index.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    // TODO: mutation 에러에 대해서 핸들링 해야 합니다. toast를 띄우는 것을 고려하고 있습니다.
-    mutations: {
-      onError: undefined,
+    queries: {
+      retry: false,
     },
   },
-  // TODO: queries 에러에 대해서 핸들링 해야 합니다.
   queryCache: new QueryCache({
     onError: (error: Error | undefined) => {
       console.log(error);

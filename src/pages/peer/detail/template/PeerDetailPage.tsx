@@ -38,6 +38,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
     memberSimpleProfileDto,
     peerCardList,
     myCardList,
+    myName,
     totalEvaluation,
     totalScore,
     peerFeedbackList,
@@ -92,7 +93,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
           <RadioTabs>
             <Tab key="me" title="카드비교">
               <PeerTestResult user={username} peerCardList={peerCardList} />
-              <SelfTestResult myCardList={myCardList} />
+              <SelfTestResult myName={myName} myCardList={myCardList} />
               {Array.isArray(totalEvaluation) &&
                 peerTestMoreThanThree === true && (
                   <OverallOpinion totalEvaluation={totalEvaluation} />
@@ -122,7 +123,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
                   type="peer"
                 />
               )}
-              {!peerTestMoreThanThree && <NoTestKeywordResult />}
+              {!peerTestMoreThanThree && <NoTestKeywordResult type="peer" />}
             </Tab>
           </RadioTabs>
           <section className="flex flex-col gap-4 pt-7 pb-5">

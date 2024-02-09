@@ -21,11 +21,11 @@ export default function ProfileListItem({
   const peerType = ICON_MAPPER[peerTestType];
   return (
     <div
-      className={`flex flex-1 justify-between items-center ${isMyProfile ? 'w-full' : 'max-w-[524px]'} px-5 mx-auto pt-8 pb-4`}
+      className={`flex flex-1 gap-2 justify-between items-center ${isMyProfile ? 'w-full' : 'max-w-[524px]'} px-5 mx-auto pt-8 pb-4`}
     >
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-2 items-center w-[239px]">
         <div
-          className={`!w-[64px] !h-[64px] !bg-gray01 flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
+          className={`max-w-[64px] min-w-12 max-h-[64px] min-h-12 !bg-gray01 flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
         >
           {peerTestType && (
             <div
@@ -44,7 +44,11 @@ export default function ProfileListItem({
             >
               {name}
             </Typography>
-            <Typography variant="caption01" fontColor="primary500">
+            <Typography
+              variant="caption01"
+              fontColor="primary500"
+              className="!whitespace-nowrap"
+            >
               {JOB_MAPPER[job]}
             </Typography>
           </div>
@@ -52,7 +56,7 @@ export default function ProfileListItem({
             <Typography
               variant="body04"
               fontColor={isMyProfile ? 'gray04' : 'gray07'}
-              className="mr-1"
+              className="mr-1 !whitespace-nowrap"
             >
               {PART_MAPPER[part]}
             </Typography>
@@ -62,7 +66,7 @@ export default function ProfileListItem({
             <Typography
               variant="body04"
               fontColor={isMyProfile ? 'gray04' : 'gray07'}
-              className="ml-1"
+              className="ml-1 !whitespace-nowrap"
             >
               {totalScore ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
             </Typography>
