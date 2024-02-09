@@ -1,11 +1,11 @@
 import Spinner from '@components/common/atom/Spinner';
 import { ActivityTypes } from '@constants/activities';
-import { StorageKey } from '@constants/localStorage';
+import { StorageKey, UtilityKeys } from '@constants/localStorage';
+import usePostReviewUpdateMemberId from '@hooks/api/review/index/usePostUpdateMemberId';
 import useHistory from '@hooks/common/useHistory';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useToken from '@hooks/common/useToken';
 import { ActivityComponentType } from '@stackflow/react';
-import { getFcmToken } from '@utils/token';
 import { useEffect } from 'react';
 
 interface AuthData {
@@ -28,19 +28,21 @@ const RedirectPage: ActivityComponentType = () => {
     refreshToken: params.get('refreshToken') || '',
   };
 
+  const { mutate } = usePostReviewUpdateMemberId();
+
   useEffect(() => {
     if (memberId && accessToken && refreshToken) {
       localStorage.setItem(StorageKey.MemberId, memberId);
       updateToken(accessToken, refreshToken);
 
+      const uuid = localStorage.getItem(UtilityKeys.UUID);
+      if (uuid) {
+        mutate(uuid);
+      }
+
       const { activity, params } = history;
       handleClearHistory();
       push(String(activity) as ActivityTypes, params);
-    }
-    const fcmToken = getFcmToken();
-    // TODO: FCM API 등록
-    if (fcmToken) {
-      return;
     }
   }, [memberId, accessToken, refreshToken]);
 
