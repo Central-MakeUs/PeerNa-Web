@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { setAccessToken, setFcmToken, setRefreshToken } from '@utils/token';
+import { fcmInit } from '@utils/fcm';
+import {
+  getAccessToken,
+  setAccessToken,
+  setFcmToken,
+  setRefreshToken,
+} from '@utils/token';
 
 export class WebviewBridge {
   static postMessage({ type, data }: WebviewPostMessageRequestType) {
@@ -34,6 +40,8 @@ export class WebviewBridge {
             setAccessToken(accessToken);
             setRefreshToken(refreshToken);
             setFcmToken(fcmToken);
+            // 로그인된 유저만 fcmInit
+            if (getAccessToken()) fcmInit();
             break;
           default:
             break;
