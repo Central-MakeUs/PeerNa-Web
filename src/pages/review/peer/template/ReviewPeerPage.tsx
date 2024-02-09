@@ -15,6 +15,7 @@ import { CSSProperties, Suspense, useState } from 'react';
 type ReviewPeerPageParams = {
   step: string;
   uuid?: string;
+  memberId?: string;
 };
 
 const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
@@ -40,7 +41,7 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
     <AppScreenContainer className={'bg-transparent'} style={bgStyle}>
       {curStep === 1 && (
         <Suspense fallback={<Spinner />}>
-          <RequestInit uuid={curStep === 1 ? params.uuid! : ''} />
+          <RequestInit uuid={params.uuid} memberId={params.memberId} />
         </Suspense>
       )}
       {curStep === 2 && (

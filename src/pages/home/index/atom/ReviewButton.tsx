@@ -11,7 +11,7 @@ export default function ReviewButton() {
   const imagePath = REVIEW_REQUEST;
 
   return (
-    <div className="mt-8 mb-10 w-full px-5 mx-auto">
+    <div className="mt-8 mb-10 px-4 w-full mx-auto">
       <button
         className="bg-primary100 rounded-xl w-full flex px-4 py-5 justify-between items-center"
         onClick={() =>

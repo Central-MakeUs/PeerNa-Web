@@ -1,4 +1,5 @@
 import RedirectPage from '@pages/auth/redirect/template/RedirectPage';
+import DeveloperPage from '@pages/developer/DeveloperPage';
 import HomePage from '@pages/home/index/template/HomePage';
 import MyPage from '@pages/mypage/index/template/MyPage';
 import MoreFeedbackPage from '@pages/mypage/moreFeedback/template/MoreFeedbackPage';
@@ -46,11 +47,8 @@ export const Pages = {
   ProjectCreatePage,
   ProjectDetailPage,
   ProjectProposePage,
+  DeveloperPage: DeveloperPage,
 };
-
-// if (MODE === 'development') {
-//   Pages['DeveloperPage'] = DeveloperPage;
-// }
 
 export type ActivityTypes = keyof typeof Pages;
 
@@ -66,7 +64,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ProjectPage: '/project',
   ProjectDetailPage: '/project/:id',
   ProjectCreatePage: '/project/create',
-  ProjectProposePage: '/project/propose',
+  ProjectProposePage: '/project/:id/propose',
   NotificationPage: '/notification',
   MyPage: '/mypage',
   SettingPage: '/mypage/setting',
@@ -78,11 +76,8 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ReviewPeerPage: '/review/peer',
   ReviewResultPage: '/review/result',
   RedirectPage: '/auth/redirect',
+  DeveloperPage: '/developer',
 };
-
-// if (MODE === 'development') {
-//   PageRoutes['DeveloperPage'] = '/developer';
-// }
 
 export const TabItem = {
   HomePage,

@@ -17,25 +17,28 @@ interface ReviewPeerResponseDTO {
   peerTestId: number;
 }
 
-const postReviewPeer = async ({
+const postUnknownUserReviewPeer = async ({
   targetUuid,
   answerIdList,
   uuid,
   feedback,
   peerGrade,
 }: ReviewPeerRequestDTO): Promise<ApiResponse<ReviewPeerResponseDTO>> => {
-  return await http.post(`/review/peer-test?target-uuid=${targetUuid}`, {
-    answerIdList,
-    uuid,
-    feedback,
-    peerGrade,
-  });
+  return await http.post(
+    `/review/non-member/peer-test?target-uuid=${targetUuid}`,
+    {
+      answerIdList,
+      uuid,
+      feedback,
+      peerGrade,
+    },
+  );
 };
 
 export default function usePostReviewPeer() {
   const { handleError } = useErrorHandler();
   return useMutation({
-    mutationFn: postReviewPeer,
+    mutationFn: postUnknownUserReviewPeer,
     onSuccess: () => {
       toast.success('리뷰가 완료되었습니다.');
     },

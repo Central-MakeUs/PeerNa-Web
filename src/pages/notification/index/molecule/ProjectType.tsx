@@ -3,8 +3,7 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import ListItemContainer from '@components/wrapper/ListItemContainer';
 import { ActivityTypes } from '@constants/activities';
-import { Palette } from '@constants/styles';
-import { NoticeType } from "@type/enums";
+import { NoticeType } from '@type/enums';
 
 export type PushFunction<K extends string> = (
   activityName: K,
@@ -27,12 +26,19 @@ export class ProjectRecruitPropose implements ProjectBase {
   private readonly params: Record<string, string>;
   private readonly title: string;
   private readonly subtitle: string;
+  private readonly readFlag: boolean;
 
-  constructor(params: Record<string, string>, title: string, subtitle: string) {
-    this.activity = 'ProjectDetailPage';
+  constructor(
+    params: Record<string, string>,
+    title: string,
+    subtitle: string,
+    readFlag: boolean,
+  ) {
+    this.activity = 'ProjectProposePage';
     this.params = params;
     this.title = title;
     this.subtitle = subtitle;
+    this.readFlag = readFlag;
   }
 
   display(push: PushFunction<string>) {
@@ -46,12 +52,22 @@ export class ProjectRecruitPropose implements ProjectBase {
           </div>
           <div className="flex flex-col gap-1">
             <Typography variant="body01">{this.title}</Typography>
-            <Typography
-              variant="body05"
-              className={`text-[${Palette.gray05}] text-left`}
-            >
-              {this.subtitle}
-            </Typography>
+            <div className="flex flex-row gap-1">
+              <Typography
+                variant="body05"
+                fontColor="gray05"
+                className="text-left"
+              >
+                {this.subtitle}
+              </Typography>
+              <Typography
+                variant="body05"
+                fontColor="gray05"
+                className="text-left"
+              >
+                {this.readFlag ? '읽음' : '읽지않음'}
+              </Typography>
+            </div>
           </div>
         </div>
         <div>
@@ -60,7 +76,9 @@ export class ProjectRecruitPropose implements ProjectBase {
             buttonSize="sm"
             onClick={() => push(this.activity as string, this.params)}
           >
-            자세히
+            <Typography variant="body03" fontColor="gray08">
+              자세히
+            </Typography>
           </Button>
         </div>
       </ListItemContainer>
@@ -72,11 +90,18 @@ export class ProjectProposeResult implements ProjectBase {
   private readonly type: NoticeType;
   private readonly title: string;
   private readonly subtitle: string;
+  private readonly readFlag: boolean;
 
-  constructor(type: NoticeType, title: string, subtitle: string) {
+  constructor(
+    type: NoticeType,
+    title: string,
+    subtitle: string,
+    readFlag: boolean,
+  ) {
     this.type = type;
     this.title = title;
     this.subtitle = subtitle;
+    this.readFlag = readFlag;
   }
 
   display() {
@@ -97,12 +122,22 @@ export class ProjectProposeResult implements ProjectBase {
           </div>
           <div className="flex flex-col gap-1">
             <Typography variant="body01">{this.title}</Typography>
-            <Typography
-              variant="body05"
-              className={`text-[${Palette.gray05}] text-left`}
-            >
-              {this.subtitle}
-            </Typography>
+            <div className="flex flex-row gap-1">
+              <Typography
+                variant="body05"
+                fontColor="gray05"
+                className="text-left"
+              >
+                {this.subtitle}
+              </Typography>
+              <Typography
+                variant="body05"
+                fontColor="gray05"
+                className="text-left"
+              >
+                {this.readFlag ? '읽음' : '읽지않음'}
+              </Typography>
+            </div>
           </div>
         </div>
       </ListItemContainer>

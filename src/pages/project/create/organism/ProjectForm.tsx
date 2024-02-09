@@ -62,7 +62,7 @@ export default function ProjectForm() {
 
   return (
     <Fragment>
-      <form className="w-full flex flex-col gap-8 mb-10">
+      <form className="w-full flex flex-col gap-8 mb-10 px-4">
         <div className="flex flex-col items-start gap-3">
           <Typography variant="header03">프로젝트 제목</Typography>
           <TextInput
@@ -129,7 +129,7 @@ export default function ProjectForm() {
           />
         </div>
       </form>
-      <Footer>
+      <Footer bottom={3} className="px-4">
         <Button onClick={handleSubmit} isDisabled={!isValidForm()}>
           생성하기
         </Button>

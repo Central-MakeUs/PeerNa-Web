@@ -4,8 +4,8 @@ import { useRecoilState } from 'recoil';
 export default function useModal(modalType: ModalType) {
   const [modal, setModal] = useRecoilState<ModalStateType>(modalState);
   const isOpen = modal[modalType];
+
   const openModal = () => {
-    console.log(modal);
     setModal(prevModal => ({
       ...prevModal,
       [modalType]: true,

@@ -20,12 +20,12 @@ const ProjectPage: ActivityComponentType = () => {
       </Header>
       <Content>
         <UnderlineTabs>
-          <Tab className="w-full" title="최신순">
+          <Tab className="w-full px-4" title="최신순">
             <ErrorBoundaryWithSuspense>
               <RecentProjectTab />
             </ErrorBoundaryWithSuspense>
           </Tab>
-          <Tab className="w-full" title="내 프로젝트">
+          <Tab className="w-full px-4" title="내 프로젝트">
             <ErrorBoundaryWithSuspense>
               <MyProject />
             </ErrorBoundaryWithSuspense>

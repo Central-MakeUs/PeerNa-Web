@@ -28,6 +28,10 @@ import Lottie4 from '@assets/review/04결정방식.json';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
+import bouvardia from '@assets/review/self/bouvardia.png';
+import daisy from '@assets/review/self/daisy.png';
+import mimosa from '@assets/review/self/mimosa.png';
+import violet from '@assets/review/self/violet.png';
 
 export const PROJECT_REQUEST = ProjectRequest;
 export const REVIEW_REQUEST = ReviewRequest;
@@ -41,6 +45,21 @@ export const ON_BOARDING_IMAGE_LIST = [
   Onboarding4,
 ];
 export const PEER_REVIEW_IMAGE_LIST = [Peer1, Peer2, Peer3];
+
+export const FLOWER_CARDS = {
+  D: bouvardia,
+  I: daisy,
+  S: mimosa,
+  C: violet,
+  UNKNOWN: '',
+};
+
+export const REVIEW_SELF_INTRODUCE_IMAGE_LIST = [
+  bouvardia,
+  daisy,
+  mimosa,
+  violet,
+];
 
 export const KEYWORD_IMAGE_MAPPER = {
   ANALYTICAL: Analytical,

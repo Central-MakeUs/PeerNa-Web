@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { setAccessToken, setFcmToken, setRefreshToken } from '@utils/token';
+import { fcmInit } from '@utils/fcm';
+import {
+  getAccessToken,
+  setAccessToken,
+  setFcmToken,
+  setRefreshToken,
+} from '@utils/token';
+import toast from 'react-hot-toast';
 
 export class WebviewBridge {
   static postMessage({ type, data }: WebviewPostMessageRequestType) {
@@ -31,9 +38,14 @@ export class WebviewBridge {
           case 'init':
             // eslint-disable-next-line no-case-declarations
             const { accessToken, refreshToken, fcmToken } = message.data;
-            setAccessToken(accessToken);
-            setRefreshToken(refreshToken);
-            setFcmToken(fcmToken);
+            setAccessToken(JSON.parse(accessToken ?? ''));
+            setRefreshToken(JSON.parse(refreshToken ?? ''));
+            setFcmToken(JSON.parse(fcmToken ?? ''));
+            // 로그인된 유저만 fcmInit
+            if (getAccessToken()) fcmInit();
+            break;
+          case 'alarm':
+            toast.success('새로운 알림이 있어요');
             break;
           default:
             break;

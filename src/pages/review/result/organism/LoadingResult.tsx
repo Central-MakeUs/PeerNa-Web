@@ -20,15 +20,20 @@ export default function LoadingResult() {
   const postReviewSelfMutation = usePostReviewSelf();
 
   useEffect(() => {
+    // 토큰 없으면 그냥 스텝 2로 옮김
     if (getAccessToken() && job !== '' && part !== '') {
-      postMemberMutation.mutate({
-        name,
-        job,
-        part,
-        selfPeerGrade: peerGrade,
-        oneLiner: feedback,
-      });
-      postReviewSelfMutation.mutate(review.answers);
+      postMemberMutation.mutate(
+        {
+          name,
+          job,
+          part,
+          selfPeerGrade: peerGrade,
+          oneLiner: feedback,
+        },
+        {
+          onSuccess: () => postReviewSelfMutation.mutate(review.answers),
+        },
+      );
     } else {
       setTimeout(() => {
         push('ReviewResultPage', { type: 'self', step: '2' });
@@ -39,7 +44,7 @@ export default function LoadingResult() {
   if (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) {
     setTimeout(() => {
       push('ReviewResultPage', { type: 'self', step: '3' });
-    }, 1000);
+    }, 2500);
   }
 
   return (

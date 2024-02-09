@@ -1,4 +1,5 @@
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
 import Header from '@components/wrapper/Header';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
@@ -16,8 +17,11 @@ const ProjectCreatePage: ActivityComponentType = () => {
           <Header.Title className="mx-auto">프로젝트 생성</Header.Title>
         </Header.TopBar>
       </Header>
-      <Spacer y={12} />
-      <ProjectForm />
+      <Content>
+        <Spacer y={12} />
+        <ProjectForm />
+        <Spacer y={12} />
+      </Content>
     </AppScreenContainer>
   );
 };
