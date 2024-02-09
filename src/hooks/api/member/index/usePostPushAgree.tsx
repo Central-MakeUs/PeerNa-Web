@@ -1,7 +1,8 @@
+import useErrorHandler from '@hooks/common/useErrorHandler';
 import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
-import toast from 'react-hot-toast';
+import { AxiosError } from 'axios';
 
 interface MemberPushAgreeResponseDTO extends ProjectInviteSuccessType {}
 
@@ -13,14 +14,12 @@ const postPushAgree = async ({
   return await http.post('/member/push-agree', { pushAgree });
 };
 
-export default function usePostPushAgree(
-  errorCallback?: (error: Error) => void,
-) {
+export default function usePostPushAgree() {
+  const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postPushAgree,
-    onSuccess: () => {
-      toast.success('알림설정이 완료되었습니다');
+    onError: (error: AxiosError) => {
+      handleError(error);
     },
-    onError: errorCallback,
   });
 }

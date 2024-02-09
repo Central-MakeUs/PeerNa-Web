@@ -1,4 +1,4 @@
-import { ModalStateType, modalState } from '@store/modal';
+import { modalState } from '@store/modal';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useSetRecoilState } from 'recoil';
@@ -9,7 +9,7 @@ interface ErrorStatus {
 }
 
 export default function useErrorHandler() {
-  const setModalState = useSetRecoilState(modalState);
+  const setModal = useSetRecoilState(modalState);
 
   const handleError = (error: Error) => {
     if (axios.isAxiosError(error)) {
@@ -17,14 +17,15 @@ export default function useErrorHandler() {
       const errorCode = status.code;
       const errorMessage = status.message;
 
+      console.log(errorCode);
       switch (errorCode) {
         case 4007:
         case 4008:
         case 4009:
         case 4011:
           toast.error(errorMessage);
-          setModalState((prevState: ModalStateType) => ({
-            ...prevState,
+          setModal(prevModal => ({
+            ...prevModal,
             login: true,
           }));
           break;

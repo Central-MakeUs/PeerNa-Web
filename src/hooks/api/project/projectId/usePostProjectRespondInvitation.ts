@@ -30,7 +30,7 @@ export default function usePostProjectRespondInvitation() {
   return useMutation({
     mutationFn: postProjectRespondInvitation,
     onSuccess: () => {
-      toast.success('프로젝트 수락이 완료되었습니다.');
+      toast.success('프로젝트 초대가 완료되었습니다.');
     },
     onError: (error: AxiosError) => {
       handleError(error);
