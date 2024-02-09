@@ -75,7 +75,8 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
   const singinMutation = usePostSigninUserReviewPeer();
   const { review } = useReviewState();
   const handleClickLastButton = () => {
-    const uuid = uuidv4();
+    const hasUuid = localStorage.getItem(UtilityKeys.UUID);
+    const uuid = hasUuid ? hasUuid : uuidv4();
     localStorage.setItem(UtilityKeys.UUID, uuid);
     localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
 
