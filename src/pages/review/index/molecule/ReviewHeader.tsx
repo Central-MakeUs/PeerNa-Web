@@ -16,10 +16,6 @@ export default function TestHeader({
 }: TestTitleProps) {
   const { review } = useReviewState();
   const getTitle = () => {
-    if (curStep === 4 && trackStep === 6)
-      return REVIEW_TITLE.peerReviewPrompt();
-    if (curStep === 4 && trackStep === 7)
-      return REVIEW_TITLE.oneLineReviewPrompt();
     if (type === 'self') return REVIEW_TITLE.self[curStep - 1];
     else {
       return REVIEW_TITLE.peer(review.peerName as string)[curStep - 1];
@@ -34,7 +30,7 @@ export default function TestHeader({
   return (
     <div className="w-full">
       <ProgressBar step={curStep} maxStep={maxStep} trackStep={trackStep} />
-      <div className="p-4">
+      <div className="py-4">
         <Typography variant="header01">{title}</Typography>
       </div>
     </div>

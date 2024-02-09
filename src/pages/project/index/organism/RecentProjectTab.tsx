@@ -17,6 +17,10 @@ export default function RecentProjectTab() {
 
   const intersectionRef = useIntersection(fetchNextPage);
 
+  const handleClickProjectDetail = (id: string) => {
+    push('ProjectDetailPage', { id, type: 'other' });
+  };
+
   return (
     <Fragment>
       <Spacer y={5} />
@@ -33,7 +37,7 @@ export default function RecentProjectTab() {
               key={project.projectId}
               className="w-full text-left"
               onClick={() =>
-                push('ProjectDetailPage', { id: project.projectId })
+                handleClickProjectDetail(String(project.projectId))
               }
             >
               <Project

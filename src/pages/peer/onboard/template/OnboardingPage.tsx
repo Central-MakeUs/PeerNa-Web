@@ -3,6 +3,7 @@ import Progress from '@components/common/atom/Progress';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import { UtilityKeys } from '@constants/localStorage';
 import { ON_BOARDING_HEADER_TEXT } from '@constants/onBoard';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
@@ -24,7 +25,11 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   useEffect(() => {
     handleClear();
     handleClearReviews();
-    if (getAccessToken() || getRefreshToken()) {
+    // 이미 온보딩을 완료한 유저거나 토큰이 있으면 로그인한 유저임.
+    if (
+      localStorage.getItem(UtilityKeys.IS_ONBOARD) &&
+      (getAccessToken() || getRefreshToken())
+    ) {
       push('HomePage', {});
     }
   }, []);
@@ -37,7 +42,6 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   const handleClickPush = () => {
     if (curStep === lastStep) {
       push('ReviewSelfPage', { step: '0' });
-      localStorage.setItem('OnBoard', 'true');
       return;
     }
     push('OnboardingPage', { step: nextStep });
@@ -47,7 +51,10 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   const isShowRightButton = curStep !== 4;
 
   const handleClickBackIcon = () => pop();
-  const handleClickStart = () => push('ReviewSelfPage', { step: '0' });
+  const handleClickStart = () => {
+    localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
+    push('HomePage', {});
+  };
 
   const buttonText = curStep === lastStep ? '시작하기' : '다음';
   return (
@@ -67,7 +74,7 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
       </Header>
       <Progress curStep={curStep} lastStep={4} />
       <OnboardingCard step={curStep} />
-      <Footer bottom={3}>
+      <Footer bottom={3} className="px-4">
         <Button className="px-2" onClick={handleClickPush}>
           {buttonText}
         </Button>

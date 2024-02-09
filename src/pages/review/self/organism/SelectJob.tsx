@@ -1,7 +1,7 @@
 import SelectListItem from '@components/common/atom/SelectListItem';
 import { JOB_LIST } from '@constants/list';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 
 export default function SelectJob() {
   const { reviewSelf, handleChangeJob } = useReviewSelfState();
@@ -11,7 +11,7 @@ export default function SelectJob() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col gap-4">
+    <Fragment>
       {JOB_LIST.map(({ key, text }, index) => (
         <SelectListItem
           key={key + index}
@@ -20,6 +20,6 @@ export default function SelectJob() {
           onClick={() => handleChangeJob(key)}
         />
       ))}
-    </div>
+    </Fragment>
   );
 }

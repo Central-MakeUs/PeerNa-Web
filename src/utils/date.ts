@@ -1,4 +1,5 @@
 import { formatDistance, parseISO } from 'date-fns';
+import { ko } from 'date-fns/locale';
 
 /**
  * 주어진 ISO 날짜 문자열이 현재로부터 얼마나 지났는지 알려줍니다.
@@ -11,7 +12,7 @@ export function getTimeDifference(createdTime: string): string {
   const date = parseISO(createdTime);
 
   const now = new Date();
-  const distance = formatDistance(date, now, { addSuffix: true });
+  const distance = formatDistance(date, now, { addSuffix: true, locale: ko });
 
   return distance;
 }

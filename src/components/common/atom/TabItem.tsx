@@ -35,6 +35,8 @@ export default function TabItem({
       return (
         <SvgIcon
           id={iconId as IconKeyType}
+          width={20}
+          height={22}
           color={isDone ? 'gray07' : undefined}
         />
       );
@@ -44,7 +46,7 @@ export default function TabItem({
 
   return (
     <div
-      className="flex-1 flex flex-col items-center cursor-pointer"
+      className="flex-1 flex flex-col items-center cursor-pointer p-2"
       onClick={handleClick}
     >
       {getIcon()}

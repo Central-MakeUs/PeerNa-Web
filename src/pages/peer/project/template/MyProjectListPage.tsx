@@ -76,7 +76,7 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
           {isFetchingNextPage && <Spinner />}
         </div>
       </div>
-      <Footer bottom={3} className="px-3">
+      <Footer bottom={3} className="px-4">
         <Button onClick={handleInvite} isDisabled={!selectedProjectId}>
           초대하기
         </Button>

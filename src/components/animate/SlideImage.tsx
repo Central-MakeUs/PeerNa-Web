@@ -23,7 +23,7 @@ export default function SlideImage({ images }: { images: string[] }) {
             key={index}
             src={image}
             alt={`Slide ${index}`}
-            style={{ width: '33%', height: 'auto', display: 'inline-block' }}
+            className="w-[33%] h-auto inline-block mr-4"
           />
         ))}
       </motion.div>

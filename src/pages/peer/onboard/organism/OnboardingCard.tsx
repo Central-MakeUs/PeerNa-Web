@@ -19,7 +19,9 @@ export default function OnboardingCard({ step }: OnboardingCarProps) {
         </Typography>
       </div>
       <FixedCenter>
-        <img src={ON_BOARDING_IMAGE_LIST[index]} className="max-w-[400px]" />
+        <div className="w-full flex justify-center max-w-screen-md">
+          <img src={ON_BOARDING_IMAGE_LIST[index]} className="w-3/4 h-3/4" />
+        </div>
       </FixedCenter>
     </Fragment>
   );

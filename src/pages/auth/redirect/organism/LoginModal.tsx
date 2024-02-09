@@ -6,12 +6,10 @@ import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 
 export default function LoginModal() {
   const { isOpen, openModal, closeModal } = useModal('login');
+
   const handleOpenChange = (isOpen: boolean) => {
-    if (isOpen) {
-      openModal();
-    } else {
-      closeModal();
-    }
+    if (isOpen) openModal();
+    else closeModal();
   };
 
   return (
@@ -21,18 +19,19 @@ export default function LoginModal() {
       onOpenChange={handleOpenChange}
       hideCloseButton={true}
       classNames={{
+        wrapper: 'z-[100]',
         backdrop:
-          'bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20',
+          'z-[99] bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20',
       }}
     >
       <ModalContent className="w-[310px] m-auto">
         <div className="pt-10 pb-4">
           <Typography className="text-center mb-5" variant="header03">
-            회원가입
+            로그인
           </Typography>
           <Typography className="text-center" variant="body04">
             {
-              '회원가입 후 단계 별 결과 분석을 통해 \n 구성한 피어 카드를 확인하세요'
+              '로그인 후 단계 별 결과 분석을 통해 \n 구성한 피어 카드를 확인하세요'
             }
           </Typography>
         </div>

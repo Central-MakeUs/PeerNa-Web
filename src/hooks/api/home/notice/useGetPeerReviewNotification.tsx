@@ -1,4 +1,4 @@
-import { QUERY_KEY } from "@constants/queryKey";
+import { QUERY_KEY } from '@constants/queryKey';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { NotificationItemType } from '@type/index';
 import { InfiniteApiResponse, http } from '@utils/API';
@@ -18,6 +18,7 @@ export default function useGetPeerReviewNotification() {
     queryFn: ({ pageParam = 1 }) => getPeerReviewNotification(pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
+      console.log(lastPage, allPages);
       const nextPage = allPages.length + 1;
       return lastPage.pageRequestDto.isLast ? undefined : nextPage;
     },

@@ -2,10 +2,12 @@ import Typography from '@components/common/atom/Typography';
 import Card from '@pages/review/result/molecule/Card';
 
 import Button from '@components/common/atom/Button';
+import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import useHistory from '@hooks/common/useHistory';
 import useToken from '@hooks/common/useToken';
 import useModal from '@hooks/store/useModal';
+import { Spacer } from '@nextui-org/react';
 import { ResultKeyword } from '@type/enums';
 import { motion } from 'framer-motion';
 import { Fragment, useEffect } from 'react';
@@ -57,19 +59,22 @@ export default function ResultLoginRequired({
           {'회원님의 셀프 테스트 결과를 \n 분석한 피어 카드에요'}
         </Typography>
       </div>
-      <div className="py-6 flex flex-col gap-3">
-        {cardTypes.map((card, index) => (
-          <motion.div
-            key={card}
-            custom={index}
-            initial="hidden"
-            animate="visible"
-            variants={cardVariants}
-          >
-            <Card type={card} />
-          </motion.div>
-        ))}
-      </div>
+      <Content>
+        <div className="py-6 flex flex-col gap-3">
+          {cardTypes.map((card, index) => (
+            <motion.div
+              key={card}
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              variants={cardVariants}
+            >
+              <Card type={card} />
+            </motion.div>
+          ))}
+        </div>
+        <Spacer y={8} />
+      </Content>
       <Footer>
         <Button onClick={handleClick}>내 피어 유형 확인하기</Button>
       </Footer>

@@ -1,5 +1,5 @@
 import Badge from '@components/common/atom/Badge';
-import { TEST_TYPE_INFO } from "@constants/list";
+import { TEST_TYPE_INFO } from '@constants/list';
 import { motion } from 'framer-motion';
 import Typography from './Typography';
 

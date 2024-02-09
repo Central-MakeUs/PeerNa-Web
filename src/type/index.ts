@@ -22,6 +22,7 @@ export interface NotificationItemType {
   noticeType: NoticeType;
   contents: string;
   createdTime: string;
+  readFlag: boolean;
 }
 
 export interface ProjectInformationType {
@@ -37,7 +38,7 @@ export interface ProjectInformationType {
 
 export interface ProjectInformationWithCreatorType
   extends ProjectInformationType {
-  creatorSimpleProfileDto: CreatorSimpleProfileType;
+  creatorSimpleProfileDto: PeerSimpleProfileType;
 }
 
 export interface CreatorSimpleProfileType {

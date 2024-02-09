@@ -17,12 +17,13 @@ export default function ReviewNotificationTab() {
     params: Record<string, string>,
     title: string,
     subtitle: string,
+    readFlag: boolean,
   ) => {
     switch (type) {
-      case NoticeType.ACCEPT_PROJECT_INVITATION:
-        return new ReviewRequestNotification(params, title, subtitle);
-      case NoticeType.ACCEPT_PROJECT_JOIN_REQUEST:
-        return new ReviewUpdateNotification(params, title, subtitle);
+      case NoticeType.PEER_TEST_REQUEST:
+        return new ReviewRequestNotification(params, title, subtitle, readFlag);
+      case NoticeType.PEER_TEST_RESULT_UPDATE:
+        return new ReviewUpdateNotification(params, title, subtitle, readFlag);
       default:
         return null;
     }
@@ -30,19 +31,23 @@ export default function ReviewNotificationTab() {
 
   return (
     <Fragment>
-      {!data?.pages && <EmptyNotification />}
-      {data?.pages.map(group =>
-        group.result.map((notification, index) => {
-          const NotificationInstance = createAlarmInstance(
-            notification.noticeType,
-            { id: String(notification.targetId) },
-            notification.contents,
-            getTimeDifference(notification.createdTime),
-          );
-          return NotificationInstance ? (
-            <Notification key={index} notification={NotificationInstance} />
-          ) : null;
-        }),
+      {data?.pages.every(group => group.result.length === 0) ? (
+        <EmptyNotification />
+      ) : (
+        data?.pages.map(group =>
+          group.result.map((notification, index) => {
+            const NotificationInstance = createAlarmInstance(
+              notification.noticeType,
+              { memberId: String(notification.targetId) },
+              notification.contents,
+              getTimeDifference(notification.createdTime),
+              notification.readFlag,
+            );
+            return NotificationInstance ? (
+              <Notification key={index} notification={NotificationInstance} />
+            ) : null;
+          }),
+        )
       )}
     </Fragment>
   );

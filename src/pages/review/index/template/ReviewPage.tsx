@@ -2,8 +2,10 @@ import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import { UtilityKeys } from '@constants/localStorage';
 import { REVIEW_PICKER } from '@constants/review';
-import usePostReviewPeer from '@hooks/api/review/index/usePostReviewPeer';
+import usePostSigninUserReviewPeer from '@hooks/api/review/index/usePostSigninUserReviewPeer';
+import usePostUnknownUserReviewPeer from '@hooks/api/review/index/usePostUnknownUserReviewPeer';
 import { useFlow, useStepFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
 import ReviewCenterImage from '@pages/review/index/atom/ReviewCenterImage';
@@ -69,17 +71,29 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
     }
   };
 
-  const mutation = usePostReviewPeer();
+  const unknownMutation = usePostUnknownUserReviewPeer();
+  const singinMutation = usePostSigninUserReviewPeer();
   const { review } = useReviewState();
   const handleClickLastButton = () => {
+    localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
     if (type === 'peer') {
-      mutation.mutate({
-        targetUuid: review.uuid!,
-        uuid: uuidv4(),
-        answerIdList: review.answers,
-        feedback: review.feedback,
-        peerGrade: review.peerGrade,
-      });
+      if (review.uuid) {
+        unknownMutation.mutate({
+          targetUuid: review.uuid,
+          uuid: uuidv4(),
+          answerIdList: review.answers,
+          feedback: review.feedback,
+          peerGrade: review.peerGrade,
+        });
+      }
+      if (review.targetId) {
+        singinMutation.mutate({
+          targetId: review.targetId,
+          answerIdList: review.answers,
+          feedback: review.feedback,
+          peerGrade: review.peerGrade,
+        });
+      }
       push('ReviewPeerPage', { step: '7' });
       return;
     }
@@ -111,7 +125,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
           <Header.BackIcon handleClick={handleClickBackButton} />
         </Header.TopBar>
       </Header>
-      <div className="flex flex-col w-full items-center mt-6 gap-4">
+      <div className="flex flex-col w-full items-center px-4 mt-6 gap-4">
         <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
         {(curStep !== 4 || trackStep !== 7) &&
           (curStep !== 4 || trackStep !== 6) && (
@@ -135,7 +149,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
         )}
       </div>
       {curStep === 4 && trackStep === 7 && (
-        <Footer bottom={3}>
+        <Footer bottom={3} className="px-4">
           <Button
             onClick={handleClickLastButton}
             isDisabled={review.feedback === ''}

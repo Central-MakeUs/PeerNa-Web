@@ -6,7 +6,7 @@ import { PropsWithChildren } from 'react';
 
 function Header({ children }: PropsWithChildren) {
   return (
-    <div className="w-full box-border flex flex-col bg-transparent">
+    <div className="w-full box-border flex flex-col bg-transparent px-4">
       {children}
     </div>
   );
@@ -43,6 +43,14 @@ function Title({ children, ...typographyProps }: TitleProps) {
       {children}
     </Typography>
   );
+}
+
+interface SubTitleProps {
+  children: string;
+}
+
+function SubTitle({ children }: SubTitleProps) {
+  return <Typography variant="body03">{children}</Typography>;
 }
 
 interface RightButtonProps {
@@ -108,6 +116,7 @@ function SearchButton({ onClick }: SearchButtonProps) {
 Header.TopBar = TopBar;
 Header.BackIcon = BackIcon;
 Header.Title = Title;
+Header.Subtitle = SubTitle;
 Header.RightButton = RightButton;
 Header.Body = Body;
 Header.AddPersonButton = AddPersonButton;

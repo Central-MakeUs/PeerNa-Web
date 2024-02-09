@@ -6,11 +6,9 @@ import { AxiosError } from 'axios';
 
 interface MemberPushAgreeResponseDTO extends ProjectInviteSuccessType {}
 
-const postPushAgree = async ({
-  pushAgree,
-}: {
-  pushAgree: boolean;
-}): Promise<ApiResponse<MemberPushAgreeResponseDTO>> => {
+const postPushAgree = async (
+  pushAgree: boolean,
+): Promise<ApiResponse<MemberPushAgreeResponseDTO>> => {
   return await http.post('/member/push-agree', { pushAgree });
 };
 
