@@ -37,7 +37,7 @@ export default function PushModal() {
       classNames={{
         wrapper: 'z-[100]',
         backdrop:
-          'bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20',
+          'z-[99] bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20',
       }}
     >
       <ModalContent className="w-[310px] m-auto">

@@ -21,6 +21,8 @@ type ReviewPeerPageParams = {
 const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
   params,
 }) => {
+  // uuid 혹은 member 아이디를 받음
+
   const curStep = parseInt(params.step ?? 1);
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
