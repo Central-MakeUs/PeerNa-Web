@@ -38,8 +38,8 @@ export default function ProjectDeclineModal() {
       backdrop="opaque"
       onOpenChange={handleOpenChange}
       hideCloseButton={true}
-      className="z-[100]"
       classNames={{
+        wrapper: 'z-[100]',
         backdrop:
           'bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20',
       }}
