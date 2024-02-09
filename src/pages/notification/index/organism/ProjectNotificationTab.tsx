@@ -31,19 +31,22 @@ export default function ProjectNotificationTab() {
 
   return (
     <Fragment>
-      {!data?.pages && <EmptyNotification />}
-      {data?.pages.map(group =>
-        group.result.map((notification, index) => {
-          const NotificationInstance = createAlarmInstance(
-            notification.noticeType,
-            { id: String(notification.targetId) },
-            notification.contents,
-            getTimeDifference(notification.createdTime),
-            notification.readFlag,
-          );
+      {data?.pages.every(group => group.result.length === 0) ? (
+        <EmptyNotification />
+      ) : (
+        data?.pages.map(group =>
+          group.result.map((notification, index) => {
+            const NotificationInstance = createAlarmInstance(
+              notification.noticeType,
+              { id: String(notification.targetId) },
+              notification.contents,
+              getTimeDifference(notification.createdTime),
+              notification.readFlag,
+            );
 
-          return <Project key={index} project={NotificationInstance} />;
-        }),
+            return <Project key={index} project={NotificationInstance} />;
+          }),
+        )
       )}
     </Fragment>
   );

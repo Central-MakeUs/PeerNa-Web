@@ -7,7 +7,7 @@ import useGetMyProjectList from '@hooks/api/project/index/useGetMyProjectList';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
-import EmptyProject from '@pages/project/index/molecule/EmptyProject';
+import EmptyNotification from '@pages/notification/index/molecule/EmptyNotification';
 import { Fragment } from 'react';
 
 export default function MyProject() {
@@ -17,7 +17,7 @@ export default function MyProject() {
   const { data, fetchNextPage, isFetchingNextPage } = useGetMyProjectList();
 
   const intersectionRef = useIntersection(fetchNextPage);
-
+  console.log(data);
   return (
     <Fragment>
       <div className="w-full" onClick={handlePushCreateProjectPage}>
@@ -32,27 +32,31 @@ export default function MyProject() {
       </Typography>
       <Spacer y={3} />
       <div className="h-full flex flex-col gap-3">
-        {!data && <EmptyProject />}
-        {data?.pages.map(group =>
-          group.result.map(project => (
-            <button
-              key={project.projectId}
-              className="w-full text-left"
-              onClick={() =>
-                push('ProjectDetailPage', {
-                  id: String(project.projectId),
-                  type: 'my',
-                })
-              }
-            >
-              <Project
-                title={project.projectName}
-                subtitle={project.introduce}
-                date={`${project.startDate} ~ ${project.endDate}`}
-              />
-            </button>
-          )),
+        {data?.pages.every(group => group.result.length === 0) ? (
+          <EmptyNotification />
+        ) : (
+          data?.pages.map(group =>
+            group.result.map(project => (
+              <button
+                key={project.projectId}
+                className="w-full text-left"
+                onClick={() =>
+                  push('ProjectDetailPage', {
+                    id: String(project.projectId),
+                    type: 'my',
+                  })
+                }
+              >
+                <Project
+                  title={project.projectName}
+                  subtitle={project.introduce}
+                  date={`${project.startDate} ~ ${project.endDate}`}
+                />
+              </button>
+            )),
+          )
         )}
+
         <IntersectionBox ref={intersectionRef} />
 
         {isFetchingNextPage && <Spinner />}
