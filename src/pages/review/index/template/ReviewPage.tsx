@@ -75,12 +75,15 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
   const singinMutation = usePostSigninUserReviewPeer();
   const { review } = useReviewState();
   const handleClickLastButton = () => {
+    const uuid = uuidv4();
+    localStorage.setItem(UtilityKeys.UUID, uuid);
     localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
+
     if (type === 'peer') {
       if (review.uuid) {
         unknownMutation.mutate({
           targetUuid: review.uuid,
-          uuid: uuidv4(),
+          uuid: uuid,
           answerIdList: review.answers,
           feedback: review.feedback,
           peerGrade: review.peerGrade,
