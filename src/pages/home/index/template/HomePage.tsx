@@ -1,10 +1,9 @@
-import Button from '@components/common/atom/Button';
+import peerImage from '@assets/common/home_peer.png';
 import IntersectionBox from '@components/common/atom/IntersectionBox';
 import Spinner from '@components/common/atom/Spinner';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
-import ButtonContainer from '@components/common/molecule/ButtonContainer';
-import Modal from '@components/common/molecule/LegacyModal';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
@@ -13,17 +12,18 @@ import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { UtilityKeys } from '@constants/localStorage';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
+import useHistory from '@hooks/common/useHistory';
 import useIntersection from '@hooks/common/useIntersection';
-import { Tab } from '@nextui-org/react';
+import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
+import useReviewState from '@hooks/store/useReviewState';
+import { Spacer, Tab } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import Layout from '@pages/mypage/index/organism/Layout';
 import { ActivityComponentType } from '@stackflow/react';
-import { ModalStateType, modalState } from '@store/modal';
 import { PartType } from '@type/enums';
 import { getAccessToken } from '@utils/token';
 import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import { useRecoilState } from 'recoil';
 import ReviewButton from '../atom/ReviewButton';
 import PeerTypeAvatarList from '../molecule/PeerTypeAvatarList';
 import UserProfileList from '../molecule/UserProfileList';
@@ -34,20 +34,7 @@ const HomePage: ActivityComponentType = () => {
   const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
 
-  const [modal, setModal] = useRecoilState<ModalStateType>(modalState);
-  const { openModal, closeModal } = useModal('alarm');
-
-  useEffect(() => {
-    if (!modal['alarm']) {
-      openModal();
-      setModal(prevModal => ({
-        ...prevModal,
-        alaram: true,
-      }));
-    }
-  }, []);
-
-  const { mutate } = usePostPushAgree();
+  console.log(data);
 
   useEffect(() => {
     refetch();
@@ -87,11 +74,21 @@ const HomePage: ActivityComponentType = () => {
 
   return (
     <AppScreenContainer>
-      <Content>
-        <div className="w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col">
+      <div className="w-full h-screen bg-peer-bg bg-no-repeat bg-cover flex flex-col">
+        <Content>
           <Header>
-            <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
-              <Header.Title>PeerNa</Header.Title>
+            <Header.Body className="relative w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col pt-10 mb-[160px]">
+              <SvgIcon
+                id="PeerNaLogo"
+                color="gray08"
+                width={80}
+                height={18}
+                className="absolute top-20 left-3"
+              />
+              <img
+                src={peerImage}
+                className="max-w-[218px] max-h-[180px] absolute top-6 right-6"
+              />
             </Header.Body>
           </Header>
           <Layout>
@@ -102,22 +99,6 @@ const HomePage: ActivityComponentType = () => {
             </HeaderContainer>
             <PeerTypeAvatarList />
             <ReviewButton />
-            <Modal
-              type="alarm"
-              modalHeader={`PeerNa에서 \n 알림을 보내고자 합니다`}
-              modalBody={`해당 기기로 피어 테스트 응답 요청 및 \n 프로젝트 제안 등 서비스 이용에 필요한 \n 안내 사항을 푸시 알림으로 알려드릴게요 \n \n 앱 푸시에 수신 동의하시겠습니까?`}
-              footer={
-                <ButtonContainer direction="row">
-                  <Button
-                    buttonVariant="tertiary"
-                    onClick={handleClickAlaramDecline}
-                  >
-                    허용 안함
-                  </Button>
-                  <Button onClick={handleClickAlarmAccept}>허용</Button>
-                </ButtonContainer>
-              }
-            />
             <UnderlineTabs
               selectedKey={currentTab}
               onSelectionChange={key => setCurrentTab(key as PartType)}
@@ -135,13 +116,13 @@ const HomePage: ActivityComponentType = () => {
             </ErrorBoundaryWithSuspense>
             <IntersectionBox ref={intersectionRef} />
             {isFetchingNextPage && <Spinner />}
+            <Spacer y={12} />
           </Layout>
-        </div>
-        <Spacer y={12} />
-      </Content>
-      <Footer bottom={0}>
-        <BottomNavigation />
-      </Footer>
+        </Content>
+        <Footer>
+          <BottomNavigation />
+        </Footer>
+      </div>
     </AppScreenContainer>
   );
 };
