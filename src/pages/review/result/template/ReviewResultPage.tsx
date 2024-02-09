@@ -1,4 +1,5 @@
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import { useFlow } from '@hooks/common/useStackFlow';
 import AnalyzePeerCard from '@pages/review/result/organism/AnalyzePeerCard';
 import LoadingResult from '@pages/review/result/organism/LoadingResult';
@@ -28,10 +29,26 @@ const ReviewResultPage: ActivityComponentType<ReviewResultPageParams> = ({
 
   return (
     <AppScreenContainer className="bg-transparent bg-cover bg-peer-bg px-4">
-      {curStep === 1 && <LoadingResult />}
-      {curStep === 2 && <ResultGuide />}
-      {curStep === 3 && <AnalyzePeerCard handleClick={handleClick} />}
-      {curStep === 4 && <ResultShare type={params.type} curStep={curStep} />}
+      {curStep === 1 && (
+        <ErrorBoundaryWithSuspense>
+          <LoadingResult />
+        </ErrorBoundaryWithSuspense>
+      )}
+      {curStep === 2 && (
+        <ErrorBoundaryWithSuspense>
+          <ResultGuide />
+        </ErrorBoundaryWithSuspense>
+      )}
+      {curStep === 3 && (
+        <ErrorBoundaryWithSuspense>
+          <AnalyzePeerCard handleClick={handleClick} />
+        </ErrorBoundaryWithSuspense>
+      )}
+      {curStep === 4 && (
+        <ErrorBoundaryWithSuspense>
+          <ResultShare type={params.type} curStep={curStep} />
+        </ErrorBoundaryWithSuspense>
+      )}
     </AppScreenContainer>
   );
 };
