@@ -6,9 +6,17 @@ export interface ModalStateType {
   push: boolean;
   projectAccept: boolean;
   projectDecline: boolean;
+  peerVerify: boolean;
+  peerRequestComplete: boolean;
 }
 
-export type ModalType = 'login' | 'push' | 'projectAccept' | 'projectDecline';
+export type ModalType =
+  | 'login'
+  | 'push'
+  | 'projectAccept'
+  | 'projectDecline'
+  | 'peerVerify'
+  | 'peerRequestComplete';
 
 export const modalState = atom<ModalStateType>({
   key: 'modalState',
@@ -17,5 +25,7 @@ export const modalState = atom<ModalStateType>({
     push: false,
     projectAccept: false,
     projectDecline: false,
+    peerVerify: false,
+    peerRequestComplete: false,
   },
 });

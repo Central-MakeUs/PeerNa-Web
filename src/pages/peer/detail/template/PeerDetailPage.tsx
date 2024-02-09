@@ -1,15 +1,14 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
-import ButtonContainer from '@components/common/molecule/ButtonContainer';
-import Modal from '@components/common/molecule/LegacyModal';
+import PeerVerifyModal from '@components/common/molecule/PeerVerifiyModal';
 import RadioTabs from '@components/common/molecule/RadioTabs';
+import PeerRequestCompleteModal from '@components/common/molecule/peerRequestCompleteModal';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Header from '@components/wrapper/Header';
 import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
-import usePostRequestPeerTest from '@hooks/api/review/peerId/usePostRequestPeerTest';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
-import { Tab } from '@nextui-org/react';
+import { Spacer, Tab } from '@nextui-org/react';
 import Feedback from '@pages/mypage/index/molecule/Feedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import NoTestKeywordResult from '@pages/mypage/index/molecule/NoTestKeywordResult';
@@ -22,7 +21,6 @@ import PeerTestResult from '@pages/peer/detail/atom/PeerTestResult';
 import SelfTestResult from '@pages/peer/detail/atom/SelfTestResult';
 import ProjectList from '@pages/peer/detail/molecule/ProjectList';
 import { ActivityComponentType } from '@stackflow/react';
-import toast from 'react-hot-toast';
 
 type peerDetailPageParams = {
   memberId: string;
@@ -35,12 +33,8 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   const { pop, push } = useFlow();
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
-  const { mutate } = usePostRequestPeerTest();
 
-  const { openModal: peerRequestOpen, closeModal: peerRequestClose } =
-    useModal('peerRequest');
-  const { openModal: requestCompleteOpen, closeModal: requestCompleteClose } =
-    useModal('requestComplete');
+  const { openModal: peerRequestOpen } = useModal('peerVerify');
 
   const {
     peerTestMoreThanThree,
@@ -68,23 +62,6 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
     peerRequestOpen();
   };
 
-  const handleClickAlaramDecline = () => {
-    peerRequestClose();
-    toast.error(`함께 한 경험이 있는 동료만 \n 피어테스트 요청이 가능합니다`);
-  };
-
-  const handleClickAlarmAccept = () => {
-    mutate({
-      peerId: parseInt(memberId),
-    });
-    requestCompleteOpen();
-  };
-
-  const handleRequestComplete = () => {
-    requestCompleteClose();
-    peerRequestClose();
-  };
-
   const handleMyProjectList = () => {
     push('MyProjectListPage', { memberId: memberId });
   };
@@ -95,7 +72,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 
   return (
     <AppScreenContainer>
-      <div className="bg-peer-bg bg-cover bg-no-repeat w-full relative">
+      <div className="bg-peer_detail_bg bg-contain bg-right-top bg-no-repeat w-full relative">
         <Header>
           <Header.TopBar>
             <Header.BackIcon handleClick={handleBack} />
@@ -118,6 +95,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
             <Tab key="me" title="카드비교">
               <PeerTestResult user={username} peerCardList={peerCardList} />
               <SelfTestResult myName={myName} myCardList={myCardList} />
+              <Spacer y={8} />
               {Array.isArray(totalEvaluation) &&
                 peerTestMoreThanThree === true && (
                   <OverallOpinion totalEvaluation={totalEvaluation} />
@@ -150,38 +128,16 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
               {!peerTestMoreThanThree && <NoTestKeywordResult type="peer" />}
             </Tab>
           </RadioTabs>
-          <section className="flex flex-col gap-4 pt-7 pb-5">
+          <Spacer y={6} />
+          <section className="flex flex-col gap-4 py-7 px-4">
             <Button onClick={handleMyProjectList}>
               내 프로젝트에 초대하기
             </Button>
             <Button buttonVariant="secondary" onClick={handleRequestPeerTest}>
               내 피어 테스트 응답 요청하기
             </Button>
-            <Modal
-              type="peerRequest"
-              modalHeader="함께 한 경험이 있는 동료인가요?"
-              footer={
-                <ButtonContainer direction="row">
-                  <Button
-                    buttonVariant="tertiary"
-                    onClick={handleClickAlaramDecline}
-                  >
-                    아니요
-                  </Button>
-                  <Button onClick={handleClickAlarmAccept}>네</Button>
-                </ButtonContainer>
-              }
-            />
-            <Modal
-              type="requestComplete"
-              modalHeader="응답 요청 완료"
-              modalBody={`응답에 따라 마이페이지 분석 결과가 \n 업데이트 돼요.`}
-              footer={
-                <ButtonContainer direction="row">
-                  <Button onClick={handleRequestComplete}>확인</Button>
-                </ButtonContainer>
-              }
-            />
+            <PeerVerifyModal memberId={parseInt(memberId)} />
+            <PeerRequestCompleteModal />
           </section>
         </Layout>
       </div>
