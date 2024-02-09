@@ -4,7 +4,8 @@ import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { UtilityKeys } from '@constants/localStorage';
 import { REVIEW_PICKER } from '@constants/review';
-import usePostReviewPeer from '@hooks/api/review/index/usePostReviewPeer';
+import usePostSigninUserReviewPeer from '@hooks/api/review/index/usePostSigninUserReviewPeer';
+import usePostUnknownUserReviewPeer from '@hooks/api/review/index/usePostUnknownUserReviewPeer';
 import { useFlow, useStepFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
 import ReviewCenterImage from '@pages/review/index/atom/ReviewCenterImage';
@@ -70,18 +71,29 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
     }
   };
 
-  const mutation = usePostReviewPeer();
+  const unknownMutation = usePostUnknownUserReviewPeer();
+  const singinMutation = usePostSigninUserReviewPeer();
   const { review } = useReviewState();
   const handleClickLastButton = () => {
     localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
     if (type === 'peer') {
-      mutation.mutate({
-        targetUuid: review.uuid!,
-        uuid: uuidv4(),
-        answerIdList: review.answers,
-        feedback: review.feedback,
-        peerGrade: review.peerGrade,
-      });
+      if (review.uuid) {
+        unknownMutation.mutate({
+          targetUuid: review.uuid,
+          uuid: uuidv4(),
+          answerIdList: review.answers,
+          feedback: review.feedback,
+          peerGrade: review.peerGrade,
+        });
+      }
+      if (review.targetId) {
+        singinMutation.mutate({
+          targetId: review.targetId,
+          answerIdList: review.answers,
+          feedback: review.feedback,
+          peerGrade: review.peerGrade,
+        });
+      }
       push('ReviewPeerPage', { step: '7' });
       return;
     }

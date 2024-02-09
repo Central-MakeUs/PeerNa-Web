@@ -1,8 +1,8 @@
 import gradient from '@assets/common/bg_gradient.png';
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
-import NavigationHeader from '@components/common/molecule/NavigationHeader';
 import Footer from '@components/wrapper/Footer';
+import Header from '@components/wrapper/Header';
 import { FLOWER_CARDS } from '@constants/images';
 import { TEST_TYPE_INFO } from '@constants/list';
 import useGetMe from '@hooks/api/member/index/useGetMe';
@@ -71,22 +71,18 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       className="w-full h-full flex flex-col items-center"
       style={{ backgroundImage: gradient }}
     >
-      <NavigationHeader
-        backIconProps={{
-          isShow: true,
-          handleClick: handleClickBackIcon,
-        }}
-        rightButtonProps={{
-          isShow: true,
-          text: '홈으로 가기',
-          handleClick: handleClickRightButton,
-        }}
-        bodyProps={{
-          isShow: true,
-          title: `${data.memberName} 님의 피어 유형은\n ${TEST_TYPE_INFO[data.testType].title}에요`,
-          textAlign: 'center',
-        }}
-      />
+      <Header>
+        <Header.TopBar>
+          <Header.BackIcon handleClick={handleClickBackIcon} />
+          <Header.RightButton
+            text="홈으로 가기"
+            handleClick={handleClickRightButton}
+          />
+        </Header.TopBar>
+        <Header.Body textAlign="center">
+          <Header.Title>{`${data.memberName} 님의 피어 유형은\n ${TEST_TYPE_INFO[data.testType].title}에요`}</Header.Title>
+        </Header.Body>
+      </Header>
       <Spacer y={10} />
       <FlipCard
         selfTestType={data.testType}

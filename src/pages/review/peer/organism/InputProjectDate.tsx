@@ -48,7 +48,7 @@ export default function InputProjectDate({
       </Header>
 
       <Spacer y={5} />
-      <div className="w-full flex items-center gap-2">
+      <div className="w-full flex items-center gap-2 px-4">
         <DatePicker
           date={startDate === '' ? undefined : new Date(startDate)}
           handleDate={handleChangeStartDate}
@@ -61,7 +61,8 @@ export default function InputProjectDate({
           placeholder="종료일"
         />
       </div>
-      <Footer>
+
+      <Footer bottom={3} className="p-4">
         <Button
           isDisabled={startDate === '' || endDate === ''}
           onClick={handleClick}

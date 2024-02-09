@@ -5,14 +5,12 @@ import Header from '@components/wrapper/Header';
 import { REVIEW_SELF_TITLE } from '@constants/review';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
-import useReviewState from '@hooks/store/useReviewState';
 import { Spacer } from '@nextui-org/react';
 import InputName from '@pages/review/self/organism/InputName';
 import ReviewGuide from '@pages/review/self/organism/ReviewGuide';
 import SelectJob from '@pages/review/self/organism/SelectJob';
 import SelectPosition from '@pages/review/self/organism/SelectPosition';
 import { ActivityComponentType } from '@stackflow/react';
-import { useEffect } from 'react';
 
 type ReviewSelfParams = {
   step: string;
@@ -44,11 +42,6 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
   };
 
   const isValidPush = stepValidation();
-
-  const { handleClearReviews } = useReviewState();
-  useEffect(() => {
-    if (curStep === 1) handleClearReviews();
-  }, []);
 
   return (
     <AppScreenContainer>

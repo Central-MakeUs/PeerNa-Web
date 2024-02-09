@@ -27,11 +27,11 @@ export default function LoginModal() {
       <ModalContent className="w-[310px] m-auto">
         <div className="pt-10 pb-4">
           <Typography className="text-center mb-5" variant="header03">
-            회원가입
+            로그인
           </Typography>
           <Typography className="text-center" variant="body04">
             {
-              '회원가입 후 단계 별 결과 분석을 통해 \n 구성한 피어 카드를 확인하세요'
+              '로그인 후 단계 별 결과 분석을 통해 \n 구성한 피어 카드를 확인하세요'
             }
           </Typography>
         </div>

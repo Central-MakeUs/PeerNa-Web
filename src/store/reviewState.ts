@@ -15,6 +15,7 @@ type ReviewStateTypes = {
   peerGrade: PeerGradeTypes;
   feedback: string;
   uuid?: string;
+  targetId?: string;
   peerName?: string;
 };
 

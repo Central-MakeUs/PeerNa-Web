@@ -38,7 +38,7 @@ export default function ReviewNotificationTab() {
           group.result.map((notification, index) => {
             const NotificationInstance = createAlarmInstance(
               notification.noticeType,
-              { id: String(notification.targetId) },
+              { memberId: String(notification.targetId) },
               notification.contents,
               getTimeDifference(notification.createdTime),
               notification.readFlag,

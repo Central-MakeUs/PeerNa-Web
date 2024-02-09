@@ -51,7 +51,10 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   const isShowRightButton = curStep !== 4;
 
   const handleClickBackIcon = () => pop();
-  const handleClickStart = () => push('ReviewSelfPage', { step: '0' });
+  const handleClickStart = () => {
+    localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
+    push('HomePage', {});
+  };
 
   const buttonText = curStep === lastStep ? '시작하기' : '다음';
   return (

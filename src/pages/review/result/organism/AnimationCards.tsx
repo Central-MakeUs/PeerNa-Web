@@ -1,5 +1,7 @@
-import Typography from '@components/common/atom/Typography';
+import Content from '@components/wrapper/Content';
+import Header from '@components/wrapper/Header';
 import useGetReviewResult from '@hooks/api/member/index/useGetReviewResult';
+import { Spacer } from '@nextui-org/react';
 import Card from '@pages/review/result/molecule/Card';
 import { motion } from 'framer-motion';
 import { Fragment } from 'react';
@@ -21,24 +23,30 @@ export default function AnayzePeerCardFetcher() {
 
   return (
     <Fragment>
-      <div className="box-content w-full h-[68px] py-[18px] mt-6 flex items-center justify-between bg-transparent px-5">
-        <Typography variant="header01" fontColor="gray07">
-          {`${data.memberName}님의 셀프 테스트 결과를 \n 분석한 피어 카드에요`}
-        </Typography>
-      </div>
-      <div className="py-6 flex flex-col gap-3">
-        {cards.map((card, index) => (
-          <motion.div
-            key={card}
-            custom={index}
-            initial="hidden"
-            animate="visible"
-            variants={cardVariants}
-          >
-            <Card type={card} />
-          </motion.div>
-        ))}
-      </div>
+      <Header>
+        <Header.TopBar />
+        <Header.Body>
+          <Header.Title>
+            {`${data.memberName}님의 셀프 테스트 결과를 \n 분석한 피어 카드에요`}
+          </Header.Title>
+        </Header.Body>
+      </Header>
+      <Content>
+        <div className="py-6 flex flex-col gap-3">
+          {cards.map((card, index) => (
+            <motion.div
+              key={card}
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              variants={cardVariants}
+            >
+              <Card type={card} />
+            </motion.div>
+          ))}
+        </div>
+        <Spacer y={16} />
+      </Content>
     </Fragment>
   );
 }

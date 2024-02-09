@@ -43,6 +43,13 @@ export default function useReviewState() {
     }));
   };
 
+  const handleChangeTargetId = (targetId: string) => {
+    setReview(prev => ({
+      ...prev,
+      targetId,
+    }));
+  };
+
   const handleChangePeerName = (peerName: string) => {
     setReview(prev => ({
       ...prev,
@@ -60,6 +67,7 @@ export default function useReviewState() {
     handleChangeFeedback,
     handleClearReviews,
     handleChangeUuid,
+    handleChangeTargetId,
     handleChangePeerName,
   };
 }

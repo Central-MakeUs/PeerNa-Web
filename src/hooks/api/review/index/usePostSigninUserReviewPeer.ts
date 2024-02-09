@@ -2,39 +2,39 @@ import { PeerGradeTypes } from '@store/reviewState';
 import { useMutation } from '@tanstack/react-query';
 import { ApiResponse, http } from '@utils/API';
 
-interface ReviewPeerRequestDTO {
-  targetUuid: string;
+interface SigninUserReviewPeerRequestDTO {
+  targetId: string;
   answerIdList: number[];
   peerGrade: PeerGradeTypes;
   feedback: string;
-  uuid: string;
 }
 
-interface ReviewPeerResponseDTO {
+interface SigninUserReviewPeerResponseDTO {
   peerTestId: number;
 }
 
-const postReviewPeer = async ({
-  targetUuid,
+const postUserSigninUser = async ({
+  targetId,
   answerIdList,
-  uuid,
   feedback,
   peerGrade,
-}: ReviewPeerRequestDTO): Promise<ApiResponse<ReviewPeerResponseDTO>> => {
-  return await http.post(`/review/peer-test?target-uuid=${targetUuid}`, {
+}: SigninUserReviewPeerRequestDTO): Promise<
+  ApiResponse<SigninUserReviewPeerResponseDTO>
+> => {
+  return await http.post(`/review/peer-test?${targetId}`, {
     answerIdList,
-    uuid,
+    uuid: null,
     feedback,
     peerGrade,
   });
 };
 
-export default function usePostReviewPeer(
+export default function usePostSigninUserReviewPeer(
   successCallback?: () => void,
   errorCallback?: (error: Error) => void,
 ) {
   return useMutation({
-    mutationFn: postReviewPeer,
+    mutationFn: postUserSigninUser,
     onSuccess: successCallback,
     onError: errorCallback,
   });

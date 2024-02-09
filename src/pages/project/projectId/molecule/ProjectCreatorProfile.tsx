@@ -23,7 +23,7 @@ export default function ProjectCreatorProfile({
   return (
     <div className="w-full flex justify-between items-center px-5 py-4">
       <div className="flex gap-3">
-        <div className="w-[24px] h-[24px] p-3 flex items-center justify-center box-content rounded-full bg-gray01">
+        <div className="w-[30px] h-[30px] p-3 flex items-center justify-center box-content rounded-full bg-gray01">
           {peerTestType && (
             <div
               className={`${peerType} w-8 h-8 bg-no-repeat bg-center bg-32`}

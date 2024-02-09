@@ -13,6 +13,7 @@ import useHistory from '@hooks/common/useHistory';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
+import useReviewState from '@hooks/store/useReviewState';
 import { Spacer, Tab } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import Layout from '@pages/mypage/index/organism/Layout';
@@ -39,8 +40,10 @@ const HomePage: ActivityComponentType = () => {
   const { openModal: openModalLogin } = useModal('login');
   const { openModal: openModalPush } = useModal('push');
   const { handleClearHistory } = useHistory();
+  const { handleClearReviews } = useReviewState();
   useEffect(() => {
     handleClearHistory();
+    handleClearReviews();
     // 온보딩을 해본 유저인지 확인
     const hasToken = getAccessToken();
     const isOnboarding = localStorage.getItem(UtilityKeys.IS_ONBOARD);

@@ -45,6 +45,14 @@ function Title({ children, ...typographyProps }: TitleProps) {
   );
 }
 
+interface SubTitleProps {
+  children: string;
+}
+
+function SubTitle({ children }: SubTitleProps) {
+  return <Typography variant="body03">{children}</Typography>;
+}
+
 interface RightButtonProps {
   text: string;
   handleClick: () => void;
@@ -108,6 +116,7 @@ function SearchButton({ onClick }: SearchButtonProps) {
 Header.TopBar = TopBar;
 Header.BackIcon = BackIcon;
 Header.Title = Title;
+Header.Subtitle = SubTitle;
 Header.RightButton = RightButton;
 Header.Body = Body;
 Header.AddPersonButton = AddPersonButton;

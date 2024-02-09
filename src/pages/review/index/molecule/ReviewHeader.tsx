@@ -16,10 +16,6 @@ export default function TestHeader({
 }: TestTitleProps) {
   const { review } = useReviewState();
   const getTitle = () => {
-    if (curStep === 4 && trackStep === 6)
-      return REVIEW_TITLE.peerReviewPrompt();
-    if (curStep === 4 && trackStep === 7)
-      return REVIEW_TITLE.oneLineReviewPrompt();
     if (type === 'self') return REVIEW_TITLE.self[curStep - 1];
     else {
       return REVIEW_TITLE.peer(review.peerName as string)[curStep - 1];
