@@ -1,6 +1,5 @@
 import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
@@ -72,27 +71,25 @@ const ProfileEditPage: ActivityComponentType = () => {
           <Header.Title className="mx-auto">프로필 수정</Header.Title>
         </Header.TopBar>
       </Header>
-      <Content>
-        <PositionDrawer
-          openPartBottomSheet={openPartBottomSheet}
-          setOpenPartBottomSheet={setOpenPartBottomSheet}
-        />
-        <JobDrawer
-          openJobBottomSheet={openJobBottomSheet}
-          setOpenJobBottomSheet={setOpenJobBottomSheet}
-        />
-        <ErrorBoundaryWithSuspense>
-          {myProfileInfo && (
-            <ProfileEditList
-              profileSelf={profileSelf}
-              myProfileInfo={myProfileInfo}
-              handleClickJob={handleClickJob}
-              handleClickPart={handleClickPart}
-              handleChangeOneLiner={handleChangeOneLiner}
-            />
-          )}
-        </ErrorBoundaryWithSuspense>
-      </Content>
+      <PositionDrawer
+        openPartBottomSheet={openPartBottomSheet}
+        setOpenPartBottomSheet={setOpenPartBottomSheet}
+      />
+      <JobDrawer
+        openJobBottomSheet={openJobBottomSheet}
+        setOpenJobBottomSheet={setOpenJobBottomSheet}
+      />
+      <ErrorBoundaryWithSuspense>
+        {myProfileInfo && (
+          <ProfileEditList
+            profileSelf={profileSelf}
+            myProfileInfo={myProfileInfo}
+            handleClickJob={handleClickJob}
+            handleClickPart={handleClickPart}
+            handleChangeOneLiner={handleChangeOneLiner}
+          />
+        )}
+      </ErrorBoundaryWithSuspense>
       <Footer bottom={3} className="px-3">
         <Button onClick={handleProfile} isDisabled={!isValidProfileChange}>
           저장
