@@ -27,6 +27,8 @@ export const NOTICE_MAPPER: Record<NoticeType, string> = {
   DECLINE_PROJECT_INVITATION: '프로젝트 초대 거절',
   ACCEPT_PROJECT_JOIN_REQUEST: '프로젝트 참여 요청 수락',
   DECLINE_PROJECT_JOIN_REQUEST: '프로젝트 참여 요청 거절',
+  PEER_TEST_REQUEST: '동료 리뷰 요청',
+  PEER_TEST_RESULT_UPDATE: '리뷰 결과 업데이트',
 };
 
 export const ICON_MAPPER: Record<TestType, string> = {

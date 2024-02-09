@@ -21,9 +21,12 @@ export default function ProjectNotificationTab() {
   ) => {
     switch (type) {
       case NoticeType.INVITE_TO_PROJECT:
+      case NoticeType.REQUEST_JOIN_PROJECT:
         return new ProjectRecruitPropose(params, title, subtitle, readFlag);
-      case NoticeType.ACCEPT_PROJECT_INVITATION:
       case NoticeType.ACCEPT_PROJECT_JOIN_REQUEST:
+      case NoticeType.DECLINE_PROJECT_JOIN_REQUEST:
+      case NoticeType.ACCEPT_PROJECT_INVITATION:
+      case NoticeType.DECLINE_PROJECT_INVITATION:
         return new ProjectProposeResult(type, title, subtitle, readFlag);
       default:
         return null;
