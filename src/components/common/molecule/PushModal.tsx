@@ -15,14 +15,17 @@ export default function PushModal() {
     else closeModal();
   };
 
-  const handleClickAgree = () => mutate(true);
-  const handleClickDisagree = () => mutate(false);
+  const handleClickAgree = () => {
+    mutate(true);
+    localStorage.setItem(UtilityKeys.IS_PUSH_AGREE, 'false');
+  };
+  const handleClickDisagree = () => {
+    mutate(false);
+    localStorage.setItem(UtilityKeys.IS_PUSH_AGREE, 'true');
+  };
 
   useEffect(() => {
-    if (isSuccess) {
-      closeModal();
-      localStorage.setItem(UtilityKeys.IS_PUSH_AGREE, 'true');
-    }
+    if (isSuccess) closeModal();
   }, [isSuccess]);
 
   return (

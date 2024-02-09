@@ -2,7 +2,6 @@ import IntersectionBox from '@components/common/atom/IntersectionBox';
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
-import Modals from '@components/common/molecule/Modals';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
@@ -36,21 +35,30 @@ const HomePage: ActivityComponentType = () => {
   }, [currentTab]);
 
   const { push } = useFlow();
-  const { openModal } = useModal('push');
+
+  const { openModal: openModalLogin } = useModal('login');
+  const { openModal: openModalPush } = useModal('push');
   const { handleClearHistory } = useHistory();
   useEffect(() => {
     handleClearHistory();
     // 온보딩을 해본 유저인지 확인
     const hasToken = getAccessToken();
-    const isOnboarding =
-      !localStorage.getItem(UtilityKeys.IS_ONBOARD) && hasToken;
-    const isPushAgree = !localStorage.getItem(UtilityKeys.IS_PUSH_AGREE);
-    if (isOnboarding) {
+    const isOnboarding = localStorage.getItem(UtilityKeys.IS_ONBOARD);
+    const rawIsPushAgree = localStorage.getItem(UtilityKeys.IS_PUSH_AGREE);
+    const isPushAgree = rawIsPushAgree === 'true';
+
+    // 온보딩을 안했고, 로그인이 되지 않았다면
+    if (!isOnboarding && !hasToken) {
       push('OnboardingPage', { step: '1' });
     }
-    // 푸시 알림을 설정한 유저인지 확인(로그인 해야 나옴)
-    if (isPushAgree && isOnboarding) {
-      openModal();
+
+    // 온보딩을 했고, 로그인이 되어 있는 상태에서 푸시 알림 허용을 안했으면
+    if (isOnboarding && hasToken && !isPushAgree) {
+      openModalPush();
+    }
+    // 온보딩을 했고, 로그인이 되어있지 않는다면
+    if (isOnboarding && !hasToken) {
+      openModalLogin();
     }
   }, []);
 
@@ -97,7 +105,6 @@ const HomePage: ActivityComponentType = () => {
       <Footer bottom={0}>
         <BottomNavigation />
       </Footer>
-      <Modals />
     </AppScreenContainer>
   );
 };
