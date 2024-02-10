@@ -5,7 +5,8 @@ type KakaoMessage = {
   title: string;
   description: string;
   buttonText: string;
-  imagePath: string;
+  imagePath?: string;
+  path?: string;
 };
 
 export default function useSendKakaoMessage() {
@@ -14,8 +15,10 @@ export default function useSendKakaoMessage() {
     description,
     buttonText,
     imagePath,
+    path,
   }: KakaoMessage) => {
-    const url = MODE === 'development' ? HOST_DEV : HOST_PROD;
+    const baseUrl = MODE === 'development' ? HOST_DEV : HOST_PROD;
+    const url = baseUrl + path;
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
@@ -24,15 +27,15 @@ export default function useSendKakaoMessage() {
         imageUrl: PROJECT_REQUEST,
         link: {
           webUrl: imagePath,
-          mobileWebUrl: `${url}`,
+          mobileWebUrl: url,
         },
       },
       buttons: [
         {
           title: buttonText,
           link: {
-            webUrl: `${url}`,
-            mobileWebUrl: `${url}`,
+            webUrl: url,
+            mobileWebUrl: url,
           },
         },
       ],
