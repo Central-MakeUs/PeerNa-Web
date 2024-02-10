@@ -29,6 +29,7 @@ import Layout from '../organism/Layout';
 
 const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
+  console.log(data);
 
   const {
     peerTestMoreThanThree,
@@ -46,14 +47,9 @@ const MyPage: ActivityComponentType = () => {
 
   console.log(!!totalScore);
 
-  const handleSendKakaoMessage = useSendKakaoMessage();
-  const title = '저는 어떤 동료인가요?';
-  const description = '함께한 동료에 대해 알려주세요.';
-  const buttonText = '피어 테스트 응답하기';
-  const imagePath = REVIEW_REQUEST;
-
   const { push } = useFlow();
   const selfTestType = memberMyPageInfoDto.testType;
+  const uuid = memberMyPageInfoDto.uuid;
 
   const handleMoreFeedback = () => {
     push('MoreFeedbackPage', {});
@@ -62,6 +58,13 @@ const MyPage: ActivityComponentType = () => {
   const handleSetting = () => {
     push('SettingPage', {});
   };
+
+  const handleSendKakaoMessage = useSendKakaoMessage();
+  const title = '저는 어떤 동료인가요?';
+  const description = '함께한 동료에 대해 알려주세요.';
+  const buttonText = '피어 테스트 응답하기';
+  const imagePath = REVIEW_REQUEST;
+  const path = `review/peer/?uuid=${uuid}`;
 
   return (
     <AppScreenContainer>
@@ -165,6 +168,7 @@ const MyPage: ActivityComponentType = () => {
                     description,
                     buttonText,
                     imagePath,
+                    path,
                   })
                 }
               >
