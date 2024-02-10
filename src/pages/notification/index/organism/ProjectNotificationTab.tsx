@@ -44,7 +44,10 @@ export default function ProjectNotificationTab() {
           group.result.map((notification, index) => {
             const NotificationInstance = createAlarmInstance(
               notification.noticeType,
-              { id: String(notification.targetId) },
+              {
+                id: String(notification.targetId),
+                subTargetId: String(notification.subTargetId),
+              },
               notification.contents,
               getTimeDifference(notification.createdTime),
               notification.readFlag,

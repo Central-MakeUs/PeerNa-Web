@@ -170,6 +170,7 @@ export class ProjectRequestJoin implements ProjectBase {
   }
 
   display(push: PushFunction<string>) {
+    console.log(this.params);
     return (
       <ListItemContainer>
         <div className="flex gap-3">

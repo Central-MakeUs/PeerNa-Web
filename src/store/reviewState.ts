@@ -16,6 +16,7 @@ type ReviewStateTypes = {
   feedback: string;
   uuid?: string;
   targetId?: string;
+  subTargetId?: string;
   peerName?: string;
 };
 
