@@ -11,7 +11,7 @@ export default function HeaderContainer({
   arrow,
   className,
 }: HeaderContainerProps) {
-  const containerClassName = `pl-5 ${arrow ? 'flex justify-between' : ''} ${size === 'sm' ? 'pt-8 pb-3' : 'pt-10 pb-8'} ${className}`;
+  const containerClassName = `pl-5 pr-3 ${arrow ? 'flex justify-between' : ''} ${size === 'sm' ? 'pt-8 pb-3' : 'pt-10 pb-8'} ${className}`;
 
   return <section className={containerClassName}>{children}</section>;
 }

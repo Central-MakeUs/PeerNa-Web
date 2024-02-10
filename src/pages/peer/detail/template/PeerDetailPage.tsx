@@ -1,12 +1,14 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
+import PeerRequestCompleteModal from '@components/common/molecule/PeerRequestCompleteModal';
+import PeerVerifyModal from '@components/common/molecule/PeerVerifiyModal';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Header from '@components/wrapper/Header';
 import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
-import usePostRequestPeerTest from '@hooks/api/review/peerId/usePostRequestPeerTest';
 import { useFlow } from '@hooks/common/useStackFlow';
-import { Tab } from '@nextui-org/react';
+import useModal from '@hooks/store/useModal';
+import { Spacer, Tab } from '@nextui-org/react';
 import Feedback from '@pages/mypage/index/molecule/Feedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import NoTestKeywordResult from '@pages/mypage/index/molecule/NoTestKeywordResult';
@@ -31,7 +33,8 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   const { pop, push } = useFlow();
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
-  const { mutate } = usePostRequestPeerTest();
+
+  const { openModal: peerRequestOpen } = useModal('peerVerify');
 
   const {
     peerTestMoreThanThree,
@@ -56,9 +59,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   };
 
   const handleRequestPeerTest = () => {
-    mutate({
-      peerId: parseInt(memberId),
-    });
+    peerRequestOpen();
   };
 
   const handleMyProjectList = () => {
@@ -71,7 +72,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 
   return (
     <AppScreenContainer>
-      <div className="bg-peer-bg bg-cover bg-no-repeat w-full relative">
+      <div className="bg-peer_detail_bg bg-contain bg-right-top bg-no-repeat w-full relative">
         <Header>
           <Header.TopBar>
             <Header.BackIcon handleClick={handleBack} />
@@ -95,6 +96,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
             <Tab key="me" title="카드비교">
               <PeerTestResult user={username} peerCardList={peerCardList} />
               <SelfTestResult myName={myName} myCardList={myCardList} />
+              <Spacer y={8} />
               {Array.isArray(totalEvaluation) &&
                 peerTestMoreThanThree === true && (
                   <OverallOpinion totalEvaluation={totalEvaluation} />
@@ -127,13 +129,16 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
               {!peerTestMoreThanThree && <NoTestKeywordResult type="peer" />}
             </Tab>
           </RadioTabs>
-          <section className="flex flex-col gap-4 pt-7 pb-5">
+          <Spacer y={6} />
+          <section className="flex flex-col gap-4 py-7 px-4">
             <Button onClick={handleMyProjectList}>
               내 프로젝트에 초대하기
             </Button>
             <Button buttonVariant="secondary" onClick={handleRequestPeerTest}>
               내 피어 테스트 응답 요청하기
             </Button>
+            <PeerVerifyModal memberId={parseInt(memberId)} />
+            <PeerRequestCompleteModal />
           </section>
         </Layout>
       </div>

@@ -4,6 +4,7 @@ import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import Project from '@components/common/molecule/Project';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetMyProjectList from '@hooks/api/project/index/useGetMyProjectList';
@@ -47,36 +48,38 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
           <Header.RightButton text="" handleClick={() => null} />
         </Header.TopBar>
       </Header>
-      <div className="w-full flex flex-col justify-start px-4">
-        <Typography
-          variant="caption01"
-          fontColor="gray04"
-          className="text-left"
-        >
-          최신순
-        </Typography>
-        <Spacer y={3} />
-        <div className="flex flex-col gap-3">
-          {data?.pages.map(group =>
-            group.result.map(project => (
-              <button
-                key={project.projectId}
-                onClick={() => setSelectedProjectId(project.projectId)}
-                className="w-full text-left"
-              >
-                <Project
-                  title={project.projectName}
-                  subtitle={project.introduce}
-                  date={`${project.startDate} ~ ${project.endDate}`}
-                />
-              </button>
-            )),
-          )}
-          <IntersectionBox ref={intersectionRef} />
+      <Content>
+        <div className="w-full flex flex-col justify-start px-4">
+          <Typography
+            variant="caption01"
+            fontColor="gray04"
+            className="text-left"
+          >
+            최신순
+          </Typography>
+          <Spacer y={3} />
+          <div className="flex flex-col gap-3">
+            {data?.pages.map(group =>
+              group.result.map(project => (
+                <button
+                  key={project.projectId}
+                  onClick={() => setSelectedProjectId(project.projectId)}
+                  className="w-full text-left"
+                >
+                  <Project
+                    title={project.projectName}
+                    subtitle={project.introduce}
+                    date={`${project.startDate} ~ ${project.endDate}`}
+                  />
+                </button>
+              )),
+            )}
+            <IntersectionBox ref={intersectionRef} />
 
-          {isFetchingNextPage && <Spinner />}
+            {isFetchingNextPage && <Spinner />}
+          </div>
         </div>
-      </div>
+      </Content>
       <Footer bottom={3} className="px-4">
         <Button onClick={handleInvite} isDisabled={!selectedProjectId}>
           초대하기

@@ -1,5 +1,7 @@
+import peerImage from '@assets/common/home_peer.png';
 import IntersectionBox from '@components/common/atom/IntersectionBox';
 import Spinner from '@components/common/atom/Spinner';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
@@ -72,11 +74,21 @@ const HomePage: ActivityComponentType = () => {
 
   return (
     <AppScreenContainer>
-      <Content>
-        <div className="w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col">
+      <div className="w-full h-screen bg-peer-bg bg-no-repeat bg-cover flex flex-col">
+        <Content>
           <Header>
-            <Header.Body className="flex pl-5 pt-10 pr-3 pb-4 mb-[163px] relative">
-              <Header.Title>PeerNa</Header.Title>
+            <Header.Body className="relative w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col pt-10 mb-[160px]">
+              <SvgIcon
+                id="PeerNaLogo"
+                color="gray08"
+                width={80}
+                height={18}
+                className="absolute top-20 left-3"
+              />
+              <img
+                src={peerImage}
+                className="max-w-[218px] max-h-[180px] absolute top-6 right-6"
+              />
             </Header.Body>
           </Header>
           <Layout>
@@ -104,13 +116,13 @@ const HomePage: ActivityComponentType = () => {
             </ErrorBoundaryWithSuspense>
             <IntersectionBox ref={intersectionRef} />
             {isFetchingNextPage && <Spinner />}
+            <Spacer y={12} />
           </Layout>
-        </div>
-        <Spacer y={12} />
-      </Content>
-      <Footer bottom={0}>
-        <BottomNavigation />
-      </Footer>
+        </Content>
+        <Footer>
+          <BottomNavigation />
+        </Footer>
+      </div>
     </AppScreenContainer>
   );
 };

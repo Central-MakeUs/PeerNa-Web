@@ -102,4 +102,5 @@ export interface ProfileCardInfo {
   job: JobType;
   totalScore: number;
   oneLiner: string;
+  uuid: string;
 }

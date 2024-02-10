@@ -1,4 +1,5 @@
 import Typography from '@components/common/atom/Typography';
+import useModal from '@hooks/store/useModal';
 
 interface SettingProps {
   handleDelete: () => void;
@@ -15,10 +16,16 @@ export default function SettingMenu({ handleDelete }: SettingProps) {
     window.location.href = url;
   };
 
-  const containerStyle = 'pt-[33px] pl-[28px] pb-[17px]';
+  const { openModal } = useModal('push');
+
+  const handlePushAlarm = () => {
+    openModal();
+  };
+
+  const containerStyle = 'pt-[33px] pl-[28px] pb-[17px] cursor-pointer';
   return (
     <ul className="w-full">
-      <li className={containerStyle}>
+      <li className={containerStyle} onClick={handlePushAlarm}>
         <Typography variant="body01" fontColor="gray08">
           알림 허용
         </Typography>
