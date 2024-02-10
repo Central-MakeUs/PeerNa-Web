@@ -1,13 +1,5 @@
-import { ModalStateType } from '@store/modal';
-import {
-  getAccessToken,
-  getRefreshToken,
-  removeAccessToken,
-  removeRefreshToken,
-  setAccessToken,
-  setRefreshToken,
-} from '@utils/token';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { getAccessToken } from '@utils/token';
+import axios from 'axios';
 
 export type ApiResponse<T = object> = {
   code: number;
@@ -45,49 +37,3 @@ http.interceptors.request.use(async config => {
   }
   return config;
 });
-
-const onFulfilled = (response: AxiosResponse) => {
-  return response;
-};
-
-const onRejected = async (error: AxiosError) => {
-  const originalRequest = error.config;
-  console.log(originalRequest?.url);
-  if (!originalRequest) return Promise.reject(error);
-  if (
-    error.response?.status === 401 &&
-    !originalRequest.url?.includes('/member/new-token')
-  ) {
-    delete http.defaults.headers.common['Authorization'];
-    removeAccessToken();
-
-    try {
-      const response = await http.post('/member/new-token', {
-        refreshToken: getRefreshToken(),
-      });
-
-      const newAccessToken = response.data.result.accessToken;
-      setAccessToken(newAccessToken);
-
-      const newRefreshToken = response.data.result.refreshToken;
-      setRefreshToken(newRefreshToken);
-
-      originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-      return http(originalRequest);
-    } catch (refreshError) {
-      removeRefreshToken();
-      if (localStorage.getItem(UtilityKeys.IS_ONBOARD)) {
-        setModalState((prevState: ModalStateType) => ({
-          ...prevState,
-          login: true,
-        }));
-      } else {
-        replace('OnboardingPage', { step: '1' });
-      }
-    }
-  }
-
-  return Promise.reject(error);
-};
-
-http.interceptors.response.use(onFulfilled, onRejected);

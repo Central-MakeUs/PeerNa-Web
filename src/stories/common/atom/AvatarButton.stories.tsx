@@ -1,5 +1,6 @@
 import AvatarButton from '@components/common/atom/AvatarButton';
 import { Meta, StoryObj } from '@storybook/react';
+import { TestType } from '@type/enums';
 
 const meta: Meta<typeof AvatarButton> = {
   title: 'AvatarButton',
@@ -11,12 +12,12 @@ type Story = StoryObj<typeof AvatarButton>;
 
 export const Default: Story = {
   args: {
-    type: 'default',
+    type: TestType.D,
   },
 };
 
 export const Orange: Story = {
   args: {
-    type: 'orange',
+    type: TestType.C,
   },
 };

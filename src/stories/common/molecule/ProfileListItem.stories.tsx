@@ -1,5 +1,6 @@
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { Meta, StoryObj } from '@storybook/react';
+import { JobType, PartType } from '@type/enums';
 
 const meta: Meta<typeof ProfileListItem> = {
   title: 'ProfileListItem',
@@ -11,11 +12,10 @@ type Story = StoryObj<typeof ProfileListItem>;
 
 export const Default: Story = {
   args: {
-    bezeled: 'Person',
-    isGrayIcon: true,
-    username: '홍서현',
-    position: 'FE 개발자',
-    information: '직장인 | 업무 적극성 57%',
-    introduce: '한 줄 소개',
+    isMyProfile: true,
+    name: '홍서현',
+    part: PartType.FRONT_END,
+    job: JobType.ENTREPRENEUR,
+    oneLiner: '한 줄 소개',
   },
 };

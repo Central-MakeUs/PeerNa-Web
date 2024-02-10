@@ -1,6 +1,6 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { IconKeyType } from '@constants/icons';
+import { IconKeyType } from '@type/key';
 import { ReactNode } from 'react';
 
 interface RequestListItemProps {
