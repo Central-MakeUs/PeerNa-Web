@@ -74,6 +74,7 @@ const ProfileEditPage: ActivityComponentType = () => {
         <Header.TopBar>
           <Header.BackIcon handleClick={handleBack} />
           <Header.Title className="mx-auto">프로필 수정</Header.Title>
+          <Header.RightButton text="" handleClick={() => null} />
         </Header.TopBar>
       </Header>
       <Content>

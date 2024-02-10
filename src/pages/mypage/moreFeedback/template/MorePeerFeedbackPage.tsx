@@ -33,6 +33,7 @@ const MorePeerFeedbackPage: ActivityComponentType<
         <Header.TopBar>
           <Header.BackIcon handleClick={handleBack} />
           <Header.Title className="mx-auto">동료들의 한 줄 피드백</Header.Title>
+          <Header.RightButton text="" handleClick={() => null} />
         </Header.TopBar>
       </Header>
       <Content>

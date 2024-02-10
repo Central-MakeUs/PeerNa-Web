@@ -11,7 +11,7 @@ import useReviewState from '@hooks/store/useReviewState';
 import OnboardingCard from '@pages/peer/onboard/organism/OnboardingCard';
 import { ActivityComponentType } from '@stackflow/react';
 import { getAccessToken, getRefreshToken } from '@utils/token';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 
 type OnboardingPageParams = {
   step: string;
@@ -65,10 +65,13 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
             <Header.BackIcon handleClick={handleClickBackIcon} />
           )}
           {isShowRightButton && (
-            <Header.RightButton
-              text="바로시작하기"
-              handleClick={handleClickStart}
-            />
+            <Fragment>
+              <div className="w-[24]" />
+              <Header.RightButton
+                text="바로시작하기"
+                handleClick={handleClickStart}
+              />
+            </Fragment>
           )}
         </Header.TopBar>
       </Header>

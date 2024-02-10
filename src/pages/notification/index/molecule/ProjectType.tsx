@@ -76,7 +76,11 @@ export class ProjectRecruitPropose implements ProjectBase {
             buttonSize="sm"
             onClick={() => push(this.activity as string, this.params)}
           >
-            <Typography variant="body03" fontColor="gray08">
+            <Typography
+              variant="body03"
+              fontColor="gray08"
+              className="!whitespace-nowrap"
+            >
               자세히
             </Typography>
           </Button>
@@ -139,6 +143,76 @@ export class ProjectProposeResult implements ProjectBase {
               </Typography>
             </div>
           </div>
+        </div>
+      </ListItemContainer>
+    );
+  }
+}
+
+export class ProjectRequestJoin implements ProjectBase {
+  private readonly activity: ActivityTypes;
+  private readonly params: Record<string, string>;
+  private readonly title: string;
+  private readonly subtitle: string;
+  private readonly readFlag: boolean;
+
+  constructor(
+    params: Record<string, string>,
+    title: string,
+    subtitle: string,
+    readFlag: boolean,
+  ) {
+    this.activity = 'ProjectJoinPage';
+    this.params = params;
+    this.title = title;
+    this.subtitle = subtitle;
+    this.readFlag = readFlag;
+  }
+
+  display(push: PushFunction<string>) {
+    console.log(this.params);
+    return (
+      <ListItemContainer>
+        <div className="flex gap-3">
+          <div
+            className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary200`}
+          >
+            <SvgIcon id="DocumentText" color="primary400" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <Typography variant="body01">{this.title}</Typography>
+            <div className="flex flex-row gap-1">
+              <Typography
+                variant="body05"
+                fontColor="gray05"
+                className="text-left"
+              >
+                {this.subtitle}
+              </Typography>
+              <Typography
+                variant="body05"
+                fontColor="gray05"
+                className="text-left"
+              >
+                {this.readFlag ? '읽음' : '읽지않음'}
+              </Typography>
+            </div>
+          </div>
+        </div>
+        <div>
+          <Button
+            buttonVariant="tertiary"
+            buttonSize="sm"
+            onClick={() => push(this.activity as string, this.params)}
+          >
+            <Typography
+              variant="body03"
+              fontColor="gray08"
+              className="!whitespace-nowrap"
+            >
+              자세히
+            </Typography>
+          </Button>
         </div>
       </ListItemContainer>
     );

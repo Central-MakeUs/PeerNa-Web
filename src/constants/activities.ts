@@ -16,6 +16,7 @@ import MyProjectListPage from '@pages/peer/project/template/MyProjectListPage';
 import PeerTypePage from '@pages/peer/type/template/PeerTypePage';
 import ProjectCreatePage from '@pages/project/create/template/ProjectCreatePage';
 import ProjectPage from '@pages/project/index/template/ProjectPage';
+import ProjectJoinPage from '@pages/project/join/template/ProjectJoinPage';
 import ProjectDetailPage from '@pages/project/projectId/template/ProjectDetailPage';
 import ProjectProposePage from '@pages/project/propose/template/ProjectProposePage';
 import ReviewPage from '@pages/review/index/template/ReviewPage';
@@ -47,6 +48,7 @@ export const Pages = {
   ProjectCreatePage,
   ProjectDetailPage,
   ProjectProposePage,
+  ProjectJoinPage,
   DeveloperPage: DeveloperPage,
 };
 
@@ -65,6 +67,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ProjectDetailPage: '/project/:id',
   ProjectCreatePage: '/project/create',
   ProjectProposePage: '/project/:id/propose',
+  ProjectJoinPage: 'project/:id/peer/:subTargetId',
   NotificationPage: '/notification',
   MyPage: '/mypage',
   SettingPage: '/mypage/setting',
