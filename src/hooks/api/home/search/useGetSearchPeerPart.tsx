@@ -1,3 +1,4 @@
+import { UtilityKeys } from '@constants/localStorage';
 import { QUERY_KEY } from '@constants/queryKey';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { PeerSimpleProfileType } from '@type/index';
@@ -7,6 +8,21 @@ const getSearchPeerPart = async (
   peerPart: string,
   page: number,
 ): Promise<InfiniteApiResponse<PeerSimpleProfileType>> => {
+  const isOnboarding = localStorage.getItem(UtilityKeys.IS_ONBOARD);
+  if (!isOnboarding) {
+    return {
+      code: 0,
+      message: '',
+      result: [],
+      pageRequestDto: {
+        totalElements: 0,
+        currentPageElements: 0,
+        totalPage: 0,
+        isFirst: true,
+        isLast: true,
+      },
+    };
+  }
   const response = await http.get(
     `/home/search/peer-part?part=${peerPart}&page=${page}`,
   );
