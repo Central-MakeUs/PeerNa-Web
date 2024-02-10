@@ -29,7 +29,6 @@ import Layout from '../organism/Layout';
 
 const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
-  console.log(data);
 
   const {
     peerTestMoreThanThree,
@@ -44,8 +43,6 @@ const MyPage: ActivityComponentType = () => {
     selfTestAnswerIdList,
     peerFeedbackList,
   } = data;
-
-  console.log(!!totalScore);
 
   const { push } = useFlow();
   const selfTestType = memberMyPageInfoDto.testType;
