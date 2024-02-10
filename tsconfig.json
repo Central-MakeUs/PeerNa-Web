@@ -5,7 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -22,10 +21,16 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["@/*"],
-      "@constants/*": ["constants/*"]
-    }
+      "@*": ["./*"],
+      "@constants/*": ["constants/*"],
+      "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
+      "@type/*": ["type/*"],
+      "@utils/*": ["utils/*"],
+      "@store/*": ["store/*"],
+      "@hooks/*": ["hooks/*"],
+    },
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "**/*.ts", "**.*.tsx", "src/svg.d.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
 }

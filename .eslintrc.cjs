@@ -17,5 +17,12 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+    'react-hooks/exhaustive-deps': 'off',
   },
 };

@@ -25,3 +25,13 @@ dist-ssr
 
 .eslintcache
 
+.env*
+*.pem
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
