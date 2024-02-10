@@ -1,6 +1,6 @@
-import Card from '@components/pages/testResult/molecule/Card';
-import { Description, Keyword, Value } from '@constants/image';
+import Card from '@pages/review/result/molecule/Card';
 import { Meta, StoryObj } from '@storybook/react';
+import { ResultKeyword } from '@type/enums';
 
 const meta: Meta<typeof Card> = {
   title: 'Card',
@@ -12,36 +12,24 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
   args: {
-    type: 'CardPurple',
-    value: Value.CardPurple,
-    keyword: Keyword.CardPurple,
-    description: Description.CardPurple,
+    type: ResultKeyword.ANALYTICAL,
   },
 };
 
 export const Orange: Story = {
   args: {
-    type: 'CardOrange',
-    value: Value.CardOrange,
-    keyword: Keyword.CardOrange,
-    description: Description.CardOrange,
+    type: ResultKeyword.CAUTIOUS,
   },
 };
 
 export const Pink: Story = {
   args: {
-    type: 'CardPink',
-    value: Value.CardPink,
-    keyword: Keyword.CardPink,
-    description: Description.CardPink,
+    type: ResultKeyword.CHALLENGING,
   },
 };
 
 export const Yellow: Story = {
   args: {
-    type: 'CardYellow',
-    value: Value.CardYellow,
-    keyword: Keyword.CardYellow,
-    description: Description.CardYellow,
+    type: ResultKeyword.COMPREHENSIVE,
   },
 };

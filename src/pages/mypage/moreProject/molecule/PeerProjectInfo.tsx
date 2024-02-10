@@ -1,13 +1,13 @@
 import Talk from '@components/common/atom/Talk';
 import Typography from '@components/common/atom/Typography';
-import { PeerProjectInfoDTO } from '@hooks/api/project/index/useGetProjectById';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { ProjectInformationType } from '@type';
 import { Fragment } from 'react';
 
 export default function PeerProjectInfo({
   projectInfo,
 }: {
-  projectInfo: PeerProjectInfoDTO;
+  projectInfo: ProjectInformationType;
 }) {
   return (
     <Fragment>
