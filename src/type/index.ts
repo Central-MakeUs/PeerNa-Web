@@ -19,6 +19,7 @@ export interface ProjectItemType {
 
 export interface NotificationItemType {
   targetId: number;
+  subTargetId: number;
   noticeType: NoticeType;
   contents: string;
   createdTime: string;

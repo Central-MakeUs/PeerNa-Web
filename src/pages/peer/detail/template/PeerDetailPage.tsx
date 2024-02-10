@@ -76,6 +76,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
           <Header.TopBar>
             <Header.BackIcon handleClick={handleBack} />
             <Header.Title className="mx-auto">{username}</Header.Title>
+            <Header.RightButton text="" handleClick={() => null} />
           </Header.TopBar>
         </Header>
         <PeerProfileCard memberInfo={memberSimpleProfileDto} />

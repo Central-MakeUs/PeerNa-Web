@@ -29,6 +29,7 @@ export default function RequestInit({ uuid, memberId }: RequestInitProps) {
     if (username) {
       handleChangeUuid(uuid!);
       handleChangeTargetId(memberId!);
+
       handleChangePeerName(username);
     }
   }, []);

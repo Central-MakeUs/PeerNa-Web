@@ -15,6 +15,7 @@ const ProjectCreatePage: ActivityComponentType = () => {
         <Header.TopBar>
           <Header.BackIcon handleClick={handleClickBackIcon} />
           <Header.Title className="mx-auto">프로젝트 생성</Header.Title>
+          <Header.RightButton text="" handleClick={() => null} />
         </Header.TopBar>
       </Header>
       <Content>

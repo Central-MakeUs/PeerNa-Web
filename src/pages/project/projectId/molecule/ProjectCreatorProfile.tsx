@@ -62,7 +62,13 @@ export default function ProjectCreatorProfile({
           buttonSize="sm"
           onClick={handleClickDetail}
         >
-          자세히
+          <Typography
+            variant="body03"
+            fontColor="gray08"
+            className="!whitespace-nowrap"
+          >
+            자세히
+          </Typography>
         </Button>
       </div>
     </div>
