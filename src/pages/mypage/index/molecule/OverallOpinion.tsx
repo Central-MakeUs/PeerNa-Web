@@ -4,6 +4,7 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { PEER_GRADE_INFO } from '@constants/list';
 import useShowMoreFeedback from '@hooks/store/useShowMoreFeedback';
+import { Spacer } from '@nextui-org/react';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import { PeerGrade } from '@type/enums';
 import { Fragment } from 'react';
@@ -33,9 +34,7 @@ export default function OverallOpinion({
           종합 평가
         </Typography>
       </HeaderContainer>
-      <ul
-        className={`w-full flex flex-col px-5 ${showMoreButton ? 'mb-6' : 'mb-[98px]'}`}
-      >
+      <ul className="w-full flex flex-col px-5">
         {evaluation.map((item, index) => (
           <li key={index}>
             <PeerTalk
@@ -59,6 +58,7 @@ export default function OverallOpinion({
           onClick={() => handleShowMore(3)}
         ></FullBleed>
       )}
+      <Spacer y={6} />
     </Fragment>
   );
 }
