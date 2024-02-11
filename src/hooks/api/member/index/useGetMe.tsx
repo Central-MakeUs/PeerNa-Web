@@ -21,6 +21,6 @@ export default function useGetMe() {
     queryKey: [QUERY_KEY.MEMBER_ME],
     queryFn: getMe,
     select: data => data.result,
-    enabled: !isOnboarding && !!hasToken,
+    enabled: !isOnboarding || !!hasToken,
   });
 }
