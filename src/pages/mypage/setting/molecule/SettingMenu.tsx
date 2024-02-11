@@ -12,10 +12,6 @@ export default function SettingMenu({ handleDelete }: SettingProps) {
     'https://peerna.notion.site/86e39990275648db952aeaf5197cbeba',
   ];
 
-  const handleClick = (url: string) => {
-    window.location.href = url;
-  };
-
   const { openModal } = useModal('push');
 
   const handlePushAlarm = () => {
@@ -31,18 +27,18 @@ export default function SettingMenu({ handleDelete }: SettingProps) {
         </Typography>
       </li>
 
-      <li className={containerStyle} onClick={() => handleClick(link[0])}>
-        <Typography variant="body01" fontColor="gray08">
+      <li className={containerStyle}>
+        <Typography variant="body01" fontColor="gray08" href={link[0]}>
           서비스 이용약관
         </Typography>
       </li>
-      <li className={containerStyle} onClick={() => handleClick(link[1])}>
-        <Typography variant="body01" fontColor="gray08">
+      <li className={containerStyle}>
+        <Typography variant="body01" fontColor="gray08" href={link[1]}>
           개인정보 처리방침
         </Typography>
       </li>
-      <li className={containerStyle} onClick={() => handleClick(link[2])}>
-        <Typography variant="body01" fontColor="gray08">
+      <li className={containerStyle}>
+        <Typography variant="body01" fontColor="gray08" href={link[2]}>
           마케팅 정보 수신 동의
         </Typography>
       </li>

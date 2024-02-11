@@ -62,9 +62,25 @@ export default function ResultGuide() {
               <div
                 className={`${FontVariantsClassName.body05} text-gray04 leading-default tracking-default break-all whitespace-pre-line`}
               >
-                <span className="text-primary">
-                  이용약관, 개인정보 처리방침, 마케팅 정보 수신 동의 약관에
-                </span>
+                <a
+                  className="text-primary underline"
+                  href="https://peerna.notion.site/89daac4cb26342d5a4b6e3d660b22b5c"
+                >
+                  이용약관,{' '}
+                </a>
+                <a
+                  className="text-primary underline"
+                  href="https://peerna.notion.site/89daac4cb26342d5a4b6e3d660b22b5c"
+                >
+                  개인정보 처리방침,{' '}
+                </a>
+                <a
+                  className="text-primary underline"
+                  href="https://peerna.notion.site/86e39990275648db952aeaf5197cbeba"
+                >
+                  마케팅 정보 수신 동의
+                </a>
+                <p className="text-primary"> 약관에 </p>
                 동의하시면 간편 로그인 후 결과 확인하기 버튼을 눌러주세요.
               </div>
             </CardBody>
