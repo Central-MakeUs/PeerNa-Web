@@ -5,6 +5,7 @@ import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 
 export default function ReviewButton() {
   const { data } = useGetMe();
+  
   const uuid = data ? data.uuid : '';
 
   const handleSendKakaoMessage = useSendKakaoMessage();
