@@ -14,7 +14,6 @@ import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer, Tab } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
-import SaveImageButton from '../atom/SaveImageButton';
 import CardTestResult from '../molecule/CardTestResult';
 import Feedback from '../molecule/Feedback';
 import NoPeerTestResult from '../molecule/NoPeerTestResult';
@@ -65,8 +64,8 @@ const MyPage: ActivityComponentType = () => {
 
   return (
     <AppScreenContainer>
-      <div className="w-full h-screen bg-gray07">
-        <Content>
+      <Content>
+        <div className="w-full bg-gray07">
           <Header>
             <Header.TopBar>
               <Typography variant="header01" as="h1" fontColor="white">
@@ -156,7 +155,7 @@ const MyPage: ActivityComponentType = () => {
                 )}
               </Tab>
             </RadioTabs>
-            <section className="flex flex-col gap-7 p-4">
+            <section className="px-4">
               <Button
                 buttonVariant="primary"
                 onClick={() =>
@@ -171,15 +170,14 @@ const MyPage: ActivityComponentType = () => {
               >
                 동료에게 물어보기
               </Button>
-              <SaveImageButton />
             </section>
-            <Spacer y={20} />
           </Layout>
-        </Content>
-        <Footer>
-          <BottomNavigation />
-        </Footer>
-      </div>
+        </div>
+        <Spacer y={24} />
+      </Content>
+      <Footer>
+        <BottomNavigation />
+      </Footer>
     </AppScreenContainer>
   );
 };
