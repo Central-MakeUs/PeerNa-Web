@@ -1,4 +1,7 @@
+import IntersectionBox from '@components/common/atom/IntersectionBox';
+import Spinner from '@components/common/atom/Spinner';
 import useGetPeerReviewNotification from '@hooks/api/home/notice/useGetPeerReviewNotification';
+import useIntersection from '@hooks/common/useIntersection';
 import EmptyNotification from '@pages/notification/index/molecule/EmptyNotification';
 import Notification from '@pages/notification/index/molecule/Notification';
 import {
@@ -10,7 +13,9 @@ import { getTimeDifference } from '@utils/date';
 import { Fragment } from 'react';
 
 export default function ReviewNotificationTab() {
-  const { data } = useGetPeerReviewNotification();
+  const { data, fetchNextPage, isFetchingNextPage } =
+    useGetPeerReviewNotification();
+  const intersectionRef = useIntersection(fetchNextPage);
 
   const createAlarmInstance = (
     type: NoticeType,
@@ -49,6 +54,8 @@ export default function ReviewNotificationTab() {
           }),
         )
       )}
+      <IntersectionBox ref={intersectionRef} />
+      {isFetchingNextPage && <Spinner />}
     </Fragment>
   );
 }

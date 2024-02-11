@@ -31,7 +31,7 @@ export default function MyProject() {
         최신순
       </Typography>
       <Spacer y={3} />
-      <div className="h-full flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         {data?.pages.every(group => group.result.length === 0) ? (
           <EmptyNotification />
         ) : (
@@ -56,9 +56,7 @@ export default function MyProject() {
             )),
           )
         )}
-
         <IntersectionBox ref={intersectionRef} />
-
         {isFetchingNextPage && <Spinner />}
       </div>
     </Fragment>
