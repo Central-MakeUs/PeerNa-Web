@@ -1,4 +1,5 @@
 import Button from '@components/common/atom/Button';
+import Typography from '@components/common/atom/Typography';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { useFlow } from '@hooks/common/useStackFlow';
 import EmptyData from '@pages/home/index/atom/EmptyData';
@@ -38,7 +39,13 @@ export default function UserProfileList({
                 buttonVariant="tertiary"
                 onClick={() => handlePeerDetail(user.memberId.toString())}
               >
-                자세히
+                <Typography
+                  variant="body03"
+                  fontColor="gray08"
+                  className="!whitespace-nowrap"
+                >
+                  자세히
+                </Typography>
               </Button>
             </ProfileListItem>
           </li>

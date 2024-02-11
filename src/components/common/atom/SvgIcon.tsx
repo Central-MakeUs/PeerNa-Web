@@ -17,9 +17,14 @@ export default function SvgIcon({
   width = 24,
   height = 24,
   color = 'gray02',
+  className,
 }: SvgIconProps) {
   return (
-    <svg width={width} height={height} className={`text-[${Palette[color]}]`}>
+    <svg
+      width={width}
+      height={height}
+      className={`text-[${Palette[color]}] ${className ?? ''}`}
+    >
       <use href={`${SpriteIcon}#${Icon[id]}`} />
     </svg>
   );

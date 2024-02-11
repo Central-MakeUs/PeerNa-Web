@@ -2,7 +2,9 @@ import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { useFlow } from '@hooks/common/useStackFlow';
+import { Spacer } from '@nextui-org/react';
 import { ProfileCardInfo } from '@type/index';
+import { Fragment } from 'react';
 
 export default function ProfileCard({
   memberInfo,
@@ -15,7 +17,7 @@ export default function ProfileCard({
   };
 
   return (
-    <article className="pb-10">
+    <Fragment>
       <ProfileListItem
         isMyProfile={true}
         name={memberInfo.name}
@@ -35,6 +37,7 @@ export default function ProfileCard({
           </Typography>
         </Button>
       </ProfileListItem>
-    </article>
+      <Spacer y={8} />
+    </Fragment>
   );
 }

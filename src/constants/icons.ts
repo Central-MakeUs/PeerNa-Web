@@ -85,4 +85,5 @@ export const Icon = {
   DocumentSplitHint: 'document_split_hint',
   DocumentTableSearch: 'document_table_search',
   ShareLink: 'shareLink',
+  PeerNaLogo: 'home_peerNa',
 };

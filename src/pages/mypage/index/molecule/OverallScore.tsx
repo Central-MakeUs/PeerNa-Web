@@ -7,7 +7,6 @@ import HeaderContainer from './HeaderContainer';
 export default function OverallScore({ totalScore }: { totalScore: number }) {
   return (
     <div className="bg-gray01 mt-[36px]">
-      test
       <HeaderContainer size="md">
         <Typography variant="header02" fontColor="gray08" className="mb-2">
           종합점수
@@ -17,7 +16,7 @@ export default function OverallScore({ totalScore }: { totalScore: number }) {
             '종합 점수는 동료들이 피어 테스트에서 응답한\n 평가와 활동 횟수를 종합하여 만든 지표예요.'
           }
         </Typography>
-        <div className="pt-[63px] pb-[66px] flex justify-center">
+        <div className="py-16 flex justify-center">
           <Tooltip content={`${totalScore}점`}>
             <Button className="bg-transparent w-[488px]">
               <ProgressTrack totalScore={totalScore} />

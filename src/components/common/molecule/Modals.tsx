@@ -1,3 +1,4 @@
+import ErrorModal from '@components/common/molecule/ErrorModal';
 import ProjectAcceptModal from '@components/common/molecule/ProjectAcceptModal';
 import ProjectDeclineModal from '@components/common/molecule/ProjectDeclineModal';
 import PushModal from '@components/common/molecule/PushModal';
@@ -25,6 +26,7 @@ export function Modals() {
       modals={{
         login: <LoginModal />,
         push: <PushModal />,
+        error: <ErrorModal />,
       }}
     />
   );
