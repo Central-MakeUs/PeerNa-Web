@@ -58,7 +58,11 @@ export default function PushModal() {
         <ModalFooter>
           <div className="w-full h-full box-content flex gap-2">
             <Button buttonVariant="tertiary" onClick={handleClickDisagree}>
-              <Typography variant="body01" fontColor="gray08">
+              <Typography
+                variant="body01"
+                fontColor="gray08"
+                className="!whitespace-nowrap"
+              >
                 허용 안함
               </Typography>
             </Button>
