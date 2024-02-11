@@ -4,7 +4,7 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
-import { Tab } from '@nextui-org/react';
+import { Spacer, Tab } from '@nextui-org/react';
 import ProjectNotificationTab from '@pages/notification/index/organism/ProjectNotificationTab';
 import ReviewNotificationTab from '@pages/notification/index/organism/ReviewNotificationTab';
 import { ActivityComponentType } from '@stackflow/react';
@@ -27,6 +27,7 @@ const NotificationPage: ActivityComponentType = () => {
             <ProjectNotificationTab />
           </Tab>
         </UnderlineTabs>
+        <Spacer y={8} />
       </Content>
       <Footer>
         <BottomNavigation />
