@@ -8,7 +8,6 @@ import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
-import { REVIEW_REQUEST } from '@constants/images';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
 import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -60,7 +59,7 @@ const MyPage: ActivityComponentType = () => {
   const title = '저는 어떤 동료인가요?';
   const description = '함께한 동료에 대해 알려주세요.';
   const buttonText = '피어 테스트 응답하기';
-  const imagePath = REVIEW_REQUEST;
+  const imagePath = 'https://ibb.co/bmrTLZb';
   const path = `review/peer/?uuid=${uuid}`;
 
   return (

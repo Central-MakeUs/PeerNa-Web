@@ -1,18 +1,17 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { REVIEW_REQUEST } from '@constants/images';
 import useGetMe from '@hooks/api/member/index/useGetMe';
 import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 
 export default function ReviewButton() {
   const { data } = useGetMe();
-  const uuid = data?.uuid ?? '';
+  const uuid = data ? data.uuid : '';
 
   const handleSendKakaoMessage = useSendKakaoMessage();
   const title = '저는 어떤 동료인가요?';
   const description = '함께한 동료에 대해 알려주세요.';
   const buttonText = '피어 테스트 응답하기';
-  const imagePath = REVIEW_REQUEST;
+  const imagePath = 'https://ibb.co/8xJgsLt';
   const path = `review/peer/?uuid=${uuid}`;
 
   return (
