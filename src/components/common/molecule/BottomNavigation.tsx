@@ -12,8 +12,8 @@ export default function BottomNavigation() {
   ];
 
   return (
-    <div className="z-50 w-full max-w-screen-md h-16 bg-white border-t border-x rounded border-gray-300">
-      <div className="flex justify-around items-center h-full">
+    <div className="z-50 w-full max-w-screen-md bg-white border-t border-x rounded border-gray-300">
+      <div className="flex justify-around items-center h-16">
         {activities.map(({ icon, name }) => (
           <TabItem
             key={icon}

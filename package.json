@@ -90,7 +90,8 @@
     "storybook": "^7.6.6",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.12"
+    "vite": "^5.0.12",
+    "vite-plugin-checker": "^0.6.4"
   },
   "eslintConfig": {
     "extends": "react-app"
