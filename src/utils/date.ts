@@ -16,3 +16,12 @@ export function getTimeDifference(createdTime: string): string {
 
   return distance;
 }
+
+export function isValidDateRange(
+  startDateString: string,
+  endDateString: string,
+): boolean {
+  const startDate = new Date(startDateString);
+  const endDate = new Date(endDateString);
+  return startDate <= endDate;
+}

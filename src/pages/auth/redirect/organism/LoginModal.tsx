@@ -5,18 +5,12 @@ import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 
 export default function LoginModal() {
-  const { isOpen, openModal, closeModal } = useModal('login');
-
-  const handleOpenChange = (isOpen: boolean) => {
-    if (isOpen) openModal();
-    else closeModal();
-  };
+  const { isOpen } = useModal('login');
 
   return (
     <Modal
       isOpen={isOpen}
       backdrop="opaque"
-      onOpenChange={handleOpenChange}
       hideCloseButton={true}
       classNames={{
         wrapper: 'z-[100]',
