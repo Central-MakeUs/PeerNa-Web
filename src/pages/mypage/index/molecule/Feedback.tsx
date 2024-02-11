@@ -29,7 +29,7 @@ export default function Feedback({
           onClick={handleClick}
         />
       </HeaderContainer>
-      <ul className="flex flex-col gap-3 mb-6">
+      <ul className="flex flex-col gap-3 mb-6 px-4">
         {peerFeedbackList.map((item, index) => (
           <li key={index}>
             <Talk type="dimed">{item}</Talk>

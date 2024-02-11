@@ -37,11 +37,6 @@ const HomePage: ActivityComponentType = () => {
   const { handleClearReviews } = useReviewState();
   const hasToken = getAccessToken();
 
-  const isOnboarding = localStorage.getItem(UtilityKeys.IS_ONBOARD);
-  if (!isOnboarding && !hasToken) {
-    push('OnboardingPage', { step: '1' });
-  }
-
   useEffect(() => {
     handleClearHistory();
     handleClearReviews();
@@ -49,6 +44,8 @@ const HomePage: ActivityComponentType = () => {
     const isOnboarding = localStorage.getItem(UtilityKeys.IS_ONBOARD);
     const rawIsPushAgree = localStorage.getItem(UtilityKeys.IS_PUSH_AGREE);
     const isPushAgree = rawIsPushAgree === 'true';
+
+    if (!isOnboarding && !hasToken) push('OnboardingPage', { step: '1' });
 
     // 온보딩을 했고, 로그인이 되어 있는 상태에서 푸시 알림 허용을 안했으면
     if (isOnboarding && hasToken && !isPushAgree) {
