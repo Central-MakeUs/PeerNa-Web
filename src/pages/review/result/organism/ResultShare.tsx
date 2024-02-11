@@ -38,7 +38,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   const handleClickShareLink = async () => {
     try {
       await navigator.clipboard.writeText(
-        `${window.location.origin}/review/peer/?uuid=${user.uuid}&step=1`,
+        `${window.location.origin}/review/peer/?uuid=${user?.uuid}&step=1`,
       );
       toast.success('링크 복사 완료!', {
         icon: <SvgIcon id="Complete" color="gray08" />,
