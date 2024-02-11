@@ -1,5 +1,4 @@
 import { HOST_DEV, HOST_PROD, MODE } from '@constants';
-import { PROJECT_REQUEST } from '@constants/images';
 
 type KakaoMessage = {
   title: string;
@@ -24,7 +23,7 @@ export default function useSendKakaoMessage() {
       content: {
         title: title,
         description: description,
-        imageUrl: PROJECT_REQUEST,
+        imageUrl: imagePath,
         link: {
           webUrl: imagePath,
           mobileWebUrl: url,
