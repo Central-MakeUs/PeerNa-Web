@@ -49,9 +49,7 @@ export default function RecentProjectTab() {
           )),
         )}
         <IntersectionBox ref={intersectionRef} />
-
         {isFetchingNextPage && <Spinner />}
-        <Spacer y={6} />
       </div>
     </Fragment>
   );
