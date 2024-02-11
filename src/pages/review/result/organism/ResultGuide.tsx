@@ -81,7 +81,7 @@ export default function ResultGuide() {
                   마케팅 정보 수신 동의
                 </a>
                 <p className="text-primary"> 약관에 </p>
-                동의하시면 간편 로그인 후 결과 확인하기 버튼을 눌러주세요.
+                동의하시면 동의 후 결과 확인하기 버튼을 눌러주세요.
               </div>
             </CardBody>
           </Card>
