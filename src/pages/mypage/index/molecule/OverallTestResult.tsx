@@ -75,7 +75,7 @@ export default function OverallTestResult({
           </Tooltip>
         </div>
       </HeaderContainer>
-      <section className="flex flex-col gap-3 items-center">
+      <section className="flex flex-col gap-3 items-center px-4">
         <KeywordCard
           title="가치관"
           subtitle={KEYWORD_CARD_INFO[peerCardList[0]].content as string}
