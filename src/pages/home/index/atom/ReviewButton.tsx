@@ -12,7 +12,8 @@ export default function ReviewButton() {
   const title = '저는 어떤 동료인가요?';
   const description = '함께한 동료에 대해 알려주세요.';
   const buttonText = '피어 테스트 응답하기';
-  const imagePath = 'https://ibb.co/8xJgsLt';
+  const imagePath =
+    'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTMvDA1jejdkIRTg7jKQg9KDNB1yXAZ-zW7EOaTqlAjOsqxJlsG8PH9cSk5UOENxqdZzxVUdhTq8lOfccEjqeXKveLD=w1920-h868';
   const path = `review/peer/?uuid=${uuid}`;
 
   return (
