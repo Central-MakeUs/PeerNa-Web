@@ -10,7 +10,9 @@ import RequestInit from '@pages/review/peer/organism/RequestInit';
 import ThanksReview from '@pages/review/peer/organism/ThanksReview';
 import WonderingMyCard from '@pages/review/peer/organism/WonderingMyCard';
 import { ActivityComponentType } from '@stackflow/react';
+import { isValidDateRange } from '@utils/date';
 import { CSSProperties, Suspense, useState } from 'react';
+import toast from 'react-hot-toast';
 
 type ReviewPeerPageParams = {
   step: string;
@@ -26,8 +28,13 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
   const [endDate, setEndDate] = useState<string>('');
   const handleChangeStartDate = (newDate: Date | undefined) =>
     setStartDate((newDate ?? new Date()).toISOString());
-  const handleChangeEndDate = (newDate: Date | undefined) =>
-    setEndDate((newDate ?? new Date()).toISOString());
+  const handleChangeEndDate = (newDate: Date | undefined) => {
+    if (!isValidDateRange(startDate, endDate)) {
+      toast.error('시작일은 종료일보다 큰 값일 수 없습니다');
+    } else {
+      setEndDate((newDate ?? new Date()).toISOString());
+    }
+  };
 
   const bgStyle: CSSProperties =
     curStep === 8
