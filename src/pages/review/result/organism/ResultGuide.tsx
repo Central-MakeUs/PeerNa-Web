@@ -9,20 +9,14 @@ import useHistory from '@hooks/common/useHistory';
 import useModal from '@hooks/store/useModal';
 import { Card, CardBody, Spacer } from '@nextui-org/react';
 import { removeAccessToken } from '@utils/token';
-import { useEffect } from 'react';
 
 export default function ResultGuide() {
   const { openModal } = useModal('login');
-  const { history, handleChangeHistory } = useHistory();
-
-  useEffect(() => {
-    if (history.activity !== 'ReviewResultPage') {
-      handleChangeHistory('ReviewResultPage', { type: 'self', step: '3' });
-    }
-  }, [history]);
+  const { handleChangeHistory } = useHistory();
 
   const handleClick = () => {
     removeAccessToken();
+    handleChangeHistory('ReviewResultPage', { type: 'self', step: '3' });
     openModal();
   };
 
@@ -80,7 +74,7 @@ export default function ResultGuide() {
                 >
                   마케팅 정보 수신 동의
                 </a>
-                <p className="text-primary"> 약관에 </p>
+                <span className="text-primary"> 약관에 </span>
                 동의하시면 동의 후 결과 확인하기 버튼을 눌러주세요.
               </div>
             </CardBody>
