@@ -16,7 +16,7 @@ interface AuthData {
 
 const RedirectPage: ActivityComponentType = () => {
   const { push } = useFlow();
-  const { history, handleClearHistory } = useHistory();
+  const { history } = useHistory();
   const { updateToken } = useToken();
 
   const url = window.location.search;
@@ -43,7 +43,6 @@ const RedirectPage: ActivityComponentType = () => {
       }
 
       const { activity, params } = history;
-      handleClearHistory();
       push(String(activity) as ActivityTypes, params);
     }
   }, [memberId, accessToken, refreshToken]);
