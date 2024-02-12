@@ -21,7 +21,11 @@ export default function PeerType({ answerStep, handleClick }: PeerTypeProps) {
           return (
             <div key={index} className="w-[350px]">
               <Picker size="sm" onClick={() => handleClick(peerGradeType)}>
-                <SvgIcon id={peerGradeInfo.icon} color="primary" />
+                <SvgIcon
+                  id={peerGradeInfo.icon}
+                  color="primary"
+                  className="mr-1.5"
+                />
                 <Typography variant="body02">{peerGradeInfo.text}</Typography>
               </Picker>
             </div>
