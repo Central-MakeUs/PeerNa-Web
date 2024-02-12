@@ -41,6 +41,10 @@ function CustomTextInput(
       isClearable
       id={inputId}
       value={text}
+      classNames={{
+        clearButton: '!h-[24px] box-content',
+        innerWrapper: '!pb-0',
+      }}
       endContent={
         <IconButton
           iconProps={{

@@ -50,13 +50,13 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   };
 
   const handleDownload = () => {
-    fetch(FLOWER_CARDS[data.testType])
+    fetch(FLOWER_CARDS[data.testType], { cache: 'no-cache' })
       .then(response => response.blob())
       .then(blob => {
         const href = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = href;
-        link.download = FLOWER_CARDS[data.testType];
+        link.download = `card-${FLOWER_CARDS[data.testType]}`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

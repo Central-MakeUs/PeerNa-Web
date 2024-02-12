@@ -27,8 +27,12 @@ const ReviewResultPage: ActivityComponentType<ReviewResultPageParams> = ({
     push('ReviewResultPage', { type: params.type, step: nextStep });
   };
 
+  const bgGradient = curStep > 2 ? 'bg-peer-bg' : '';
+
   return (
-    <AppScreenContainer className="bg-transparent bg-cover bg-peer-bg px-4">
+    <AppScreenContainer
+      className={`bg-transparent bg-cover ${bgGradient} px-4`}
+    >
       {curStep === 1 && (
         <ErrorBoundaryWithSuspense>
           <LoadingResult />
