@@ -7,7 +7,9 @@ import Footer from '@components/wrapper/Footer';
 import usePostCreateProject from '@hooks/api/project/index/usePostCreateProject';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Divider, cn } from '@nextui-org/react';
+import { isValidDateRange } from '@utils/date';
 import { Fragment, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function ProjectForm() {
   const { push } = useFlow();
@@ -49,20 +51,24 @@ export default function ProjectForm() {
 
   const { mutate } = usePostCreateProject();
   const handleSubmit = () => {
-    mutate(
-      {
-        projectName: projectName,
-        introduce: introduce,
-        openChattingLink: openChattingLink,
-        notionLink: notionLink,
-        githubLink: githubLink,
-        startDate: startDate,
-        endDate: endDate,
-      },
-      {
-        onSuccess: () => push('ProjectPage', {}),
-      },
-    );
+    if (!isValidDateRange(startDate, endDate)) {
+      toast.error('시작일은 종료일보다 큰 값일 수 없습니다');
+    } else {
+      mutate(
+        {
+          projectName: projectName,
+          introduce: introduce,
+          openChattingLink: openChattingLink,
+          notionLink: notionLink,
+          githubLink: githubLink,
+          startDate: startDate,
+          endDate: endDate,
+        },
+        {
+          onSuccess: () => push('ProjectPage', {}),
+        },
+      );
+    }
   };
 
   return (

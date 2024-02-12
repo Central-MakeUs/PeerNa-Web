@@ -20,6 +20,16 @@ export default function LoadingResult() {
   const postReviewSelfMutation = usePostReviewSelf();
 
   useEffect(() => {
+    // 이미 로그인된 유저가 뒤로가기 시도한 경우
+    if (
+      (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) ||
+      getAccessToken()
+    ) {
+      setTimeout(() => {
+        push('ReviewResultPage', { type: 'self', step: '3' });
+      }, 2500);
+      return;
+    }
     // 토큰 없으면 그냥 스텝 2로 옮김
     if (getAccessToken() && job !== '' && part !== '') {
       postMemberMutation.mutate(
@@ -34,18 +44,13 @@ export default function LoadingResult() {
           onSuccess: () => postReviewSelfMutation.mutate(review.answers),
         },
       );
+      return;
     } else {
       setTimeout(() => {
         push('ReviewResultPage', { type: 'self', step: '2' });
       }, 1000);
     }
-  }, []);
-
-  if (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) {
-    setTimeout(() => {
-      push('ReviewResultPage', { type: 'self', step: '3' });
-    }, 2500);
-  }
+  }, [postMemberMutation.isSuccess, postReviewSelfMutation.isSuccess]);
 
   return (
     <Fragment>

@@ -36,9 +36,10 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
 
   const { data: user } = useGetMe();
   const handleClickShareLink = async () => {
+    const uuid = user?.uuid ?? '';
     try {
       await navigator.clipboard.writeText(
-        `${window.location.origin}/review/peer/?uuid=${user.uuid}&step=1`,
+        `${window.location.origin}/review/peer/?uuid=${uuid}&step=1`,
       );
       toast.success('링크 복사 완료!', {
         icon: <SvgIcon id="Complete" color="gray08" />,
@@ -49,13 +50,13 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   };
 
   const handleDownload = () => {
-    fetch(FLOWER_CARDS[data.testType])
+    fetch(FLOWER_CARDS[data.testType], { cache: 'no-cache' })
       .then(response => response.blob())
       .then(blob => {
         const href = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = href;
-        link.download = FLOWER_CARDS[data.testType];
+        link.download = `card-${FLOWER_CARDS[data.testType]}`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -90,7 +91,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         size="L"
         ref={ref}
       />
-      <Footer bottom={3} className="flex">
+      <Footer bottom={3} className="flex gap-4">
         <Button buttonVariant="tertiary" onClick={handleDownload}>
           카드 저장하기
         </Button>

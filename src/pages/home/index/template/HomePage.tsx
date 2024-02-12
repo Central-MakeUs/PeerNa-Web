@@ -62,7 +62,6 @@ const HomePage: ActivityComponentType = () => {
   const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
 
-  console.log(data);
 
   useEffect(() => {
     refetch();

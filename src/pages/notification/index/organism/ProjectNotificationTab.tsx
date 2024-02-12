@@ -1,4 +1,7 @@
+import IntersectionBox from '@components/common/atom/IntersectionBox';
 import useGetProjectNotification from '@hooks/api/home/notice/useGetProjectNotification';
+import useIntersection from '@hooks/common/useIntersection';
+import { Spinner } from '@nextui-org/react';
 import EmptyNotification from '@pages/notification/index/molecule/EmptyNotification';
 import Project from '@pages/notification/index/molecule/Project';
 import {
@@ -11,7 +14,9 @@ import { getTimeDifference } from '@utils/date';
 import { Fragment } from 'react';
 
 export default function ProjectNotificationTab() {
-  const { data } = useGetProjectNotification();
+  const { data, fetchNextPage, isFetchingNextPage } =
+    useGetProjectNotification();
+  const intersectionRef = useIntersection(fetchNextPage);
 
   const createAlarmInstance = (
     type: NoticeType,
@@ -57,6 +62,8 @@ export default function ProjectNotificationTab() {
           }),
         )
       )}
+      <IntersectionBox ref={intersectionRef} />
+      {isFetchingNextPage && <Spinner />}
     </Fragment>
   );
 }

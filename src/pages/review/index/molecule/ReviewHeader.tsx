@@ -16,8 +16,18 @@ export default function TestHeader({
 }: TestTitleProps) {
   const { review } = useReviewState();
   const getTitle = () => {
-    if (type === 'self') return REVIEW_TITLE.self[curStep - 1];
-    else {
+    if (type === 'self') {
+      if (curStep === 4 && trackStep === 6)
+        return REVIEW_TITLE.peerReviewPrompt();
+      if (curStep === 4 && trackStep === 7)
+        return REVIEW_TITLE.oneLineReviewPrompt();
+      return REVIEW_TITLE.self[curStep - 1];
+    }
+    if (type === 'peer') {
+      if (curStep === 4 && trackStep === 6)
+        return REVIEW_TITLE.peerReviewPrompt(review.peerName as string);
+      if (curStep === 4 && trackStep === 7)
+        return REVIEW_TITLE.oneLineReviewPrompt(review.peerName as string);
       return REVIEW_TITLE.peer(review.peerName as string)[curStep - 1];
     }
   };

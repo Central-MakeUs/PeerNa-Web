@@ -25,7 +25,7 @@ export default function PeerTalk({
         as="span"
         className="mr-3"
       >
-        {count}
+        {count.toString()}
       </Typography>
       <ChipWithNextui
         {...props}

@@ -8,13 +8,11 @@ import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
-import { REVIEW_REQUEST } from '@constants/images';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
 import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer, Tab } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
-import SaveImageButton from '../atom/SaveImageButton';
 import CardTestResult from '../molecule/CardTestResult';
 import Feedback from '../molecule/Feedback';
 import NoPeerTestResult from '../molecule/NoPeerTestResult';
@@ -29,7 +27,6 @@ import Layout from '../organism/Layout';
 
 const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
-  console.log(data);
 
   const {
     peerTestMoreThanThree,
@@ -44,8 +41,6 @@ const MyPage: ActivityComponentType = () => {
     selfTestAnswerIdList,
     peerFeedbackList,
   } = data;
-
-  console.log(!!totalScore);
 
   const { push } = useFlow();
   const selfTestType = memberMyPageInfoDto.testType;
@@ -63,13 +58,14 @@ const MyPage: ActivityComponentType = () => {
   const title = '저는 어떤 동료인가요?';
   const description = '함께한 동료에 대해 알려주세요.';
   const buttonText = '피어 테스트 응답하기';
-  const imagePath = REVIEW_REQUEST;
+  const imagePath =
+    'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTMvDA1jejdkIRTg7jKQg9KDNB1yXAZ-zW7EOaTqlAjOsqxJlsG8PH9cSk5UOENxqdZzxVUdhTq8lOfccEjqeXKveLD=w1920-h868';
   const path = `review/peer/?uuid=${uuid}`;
 
   return (
     <AppScreenContainer>
-      <div className="w-full h-screen bg-gray07">
-        <Content>
+      <Content>
+        <div className="w-full bg-gray07">
           <Header>
             <Header.TopBar>
               <Typography variant="header01" as="h1" fontColor="white">
@@ -159,7 +155,7 @@ const MyPage: ActivityComponentType = () => {
                 )}
               </Tab>
             </RadioTabs>
-            <section className="flex flex-col gap-7 p-4">
+            <section className="px-4">
               <Button
                 buttonVariant="primary"
                 onClick={() =>
@@ -174,15 +170,14 @@ const MyPage: ActivityComponentType = () => {
               >
                 동료에게 물어보기
               </Button>
-              <SaveImageButton />
             </section>
-            <Spacer y={20} />
           </Layout>
-        </Content>
-        <Footer>
-          <BottomNavigation />
-        </Footer>
-      </div>
+        </div>
+        <Spacer y={24} />
+      </Content>
+      <Footer>
+        <BottomNavigation />
+      </Footer>
     </AppScreenContainer>
   );
 };

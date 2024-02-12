@@ -1,6 +1,3 @@
-import GithubIcon from '@assets/link/github.png';
-import KakaoIcon from '@assets/link/kakao.png';
-import NotionIcon from '@assets/link/notion.png';
 import Typography from '@components/common/atom/Typography';
 import { Code } from '@nextui-org/react';
 import ProjectCreatorProfile from '@pages/project/projectId/molecule/ProjectCreatorProfile';
@@ -48,7 +45,6 @@ export default function ProjectInformation({
           </Typography>
           <div className="flex flex-col gap-2">
             <Code className="flex gap-2 items-center px-4 py-2">
-              <img src={KakaoIcon} width={20} height={20} />
               <Typography
                 variant="body02"
                 fontColor="gray06"
@@ -59,7 +55,6 @@ export default function ProjectInformation({
               </Typography>
             </Code>
             <Code className="flex gap-2 items-center px-4 py-2">
-              <img src={NotionIcon} width={20} height={20} />
               <Typography
                 variant="body02"
                 fontColor="gray06"
@@ -70,7 +65,6 @@ export default function ProjectInformation({
               </Typography>
             </Code>
             <Code className="flex gap-2 items-center px-4 py-2">
-              <img src={GithubIcon} width={20} height={20} />
               <Typography
                 variant="body02"
                 fontColor="gray06"

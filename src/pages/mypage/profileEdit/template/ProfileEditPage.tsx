@@ -1,6 +1,6 @@
 import Button from '@components/common/atom/Button';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
-import Content from "@components/wrapper/Content";
+import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
@@ -73,7 +73,9 @@ const ProfileEditPage: ActivityComponentType = () => {
       <Header>
         <Header.TopBar>
           <Header.BackIcon handleClick={handleBack} />
-          <Header.Title className="mx-auto">프로필 수정</Header.Title>
+          <Header.Title className="mx-auto !whitespace-nowrap">
+            프로필 수정
+          </Header.Title>
           <Header.RightButton text="" handleClick={() => null} />
         </Header.TopBar>
       </Header>
