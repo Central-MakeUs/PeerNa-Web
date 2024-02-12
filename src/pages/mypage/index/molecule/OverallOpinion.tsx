@@ -34,7 +34,7 @@ export default function OverallOpinion({
           종합 평가
         </Typography>
       </HeaderContainer>
-      <ul className="w-full flex flex-col px-5">
+      <ul className="w-full gap-3 flex flex-col px-5">
         {evaluation.map((item, index) => (
           <li key={index}>
             <PeerTalk
