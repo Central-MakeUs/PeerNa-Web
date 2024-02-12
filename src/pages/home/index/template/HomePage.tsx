@@ -10,6 +10,7 @@ import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import { PART_LIST } from '@constants/list';
 import { UtilityKeys } from '@constants/localStorage';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
 import useHistory from '@hooks/common/useHistory';
@@ -18,6 +19,7 @@ import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import useReviewState from '@hooks/store/useReviewState';
 import { Spacer, Tab } from '@nextui-org/react';
+import HomeBackground from '@pages/home/index/organism/HomeBackground';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import Layout from '@pages/mypage/index/organism/Layout';
 import { ActivityComponentType } from '@stackflow/react';
@@ -62,6 +64,7 @@ const HomePage: ActivityComponentType = () => {
   const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
 
+  console.log(data);
 
   useEffect(() => {
     refetch();
@@ -69,12 +72,14 @@ const HomePage: ActivityComponentType = () => {
 
   const intersectionRef = useIntersection(fetchNextPage);
 
+  const HOME_PART_LIST = [{ key: 'ALL', text: '전체' }, ...PART_LIST];
+
   return (
     <AppScreenContainer>
       <Content>
-        <div className="w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col">
+        <HomeBackground>
           <Header>
-            <Header.Body className="relative w-full bg-peer-bg bg-no-repeat bg-cover flex flex-col pt-10 mb-[160px]">
+            <Header.Body className="relative h-[200px]">
               <SvgIcon
                 id="PeerNaLogo"
                 color="gray08"
@@ -85,6 +90,7 @@ const HomePage: ActivityComponentType = () => {
               <img
                 src={peerImage}
                 className="max-w-[218px] max-h-[180px] absolute top-6 right-6"
+                alt="피어나 이미지"
               />
             </Header.Body>
           </Header>
@@ -102,22 +108,24 @@ const HomePage: ActivityComponentType = () => {
               selectedKey={currentTab}
               onSelectionChange={key => setCurrentTab(key as PartType)}
             >
-              <Tab key="ALL" title="전체" />,
-              <Tab key="PLANNER" title="기획자" />,
-              <Tab key="DESIGNER" title="디자이너" />,
-              <Tab key="FRONT_END" title="FE 개발자" />,
-              <Tab key="BACK_END" title="BE 개발자" />,
+              {HOME_PART_LIST.map(part => (
+                <Tab key={part.key} title={part.text} />
+              ))}
             </UnderlineTabs>
             <ErrorBoundaryWithSuspense>
               <UserProfileList
-                data={data?.pages.flatMap(profile => profile.result)}
+                data={data?.pages.flatMap(profile =>
+                  profile.result.filter(
+                    profile => !profile.job.includes('WITHDRAWAL'),
+                  ),
+                )}
               />
             </ErrorBoundaryWithSuspense>
             <IntersectionBox ref={intersectionRef} />
             {isFetchingNextPage && <Spinner />}
             <Spacer y={12} />
           </Layout>
-        </div>
+        </HomeBackground>
       </Content>
       <Footer>
         <BottomNavigation />
