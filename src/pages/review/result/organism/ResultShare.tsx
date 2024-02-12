@@ -12,6 +12,7 @@ import { Spacer } from '@nextui-org/react';
 import FlipCard from '@pages/review/result/molecule/FlipCard';
 import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { TestType } from '@type/enums';
+import { WebviewBridge } from '@utils/webview';
 import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -54,12 +55,29 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       .then(response => response.blob())
       .then(blob => {
         const href = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = href;
-        link.download = `card-${FLOWER_CARDS[data.testType]}`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        console.log(navigator.userAgent);
+        if (
+          navigator.userAgent.includes('iPhone') ||
+          navigator.userAgent.includes('Android')
+        ) {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            WebviewBridge.postMessage({
+              type: 'card-image',
+              data: reader.result,
+            });
+          };
+          reader.readAsDataURL(blob);
+        } else {
+          console.log('else call');
+          const link = document.createElement('a');
+          link.href = href;
+          link.download = FLOWER_CARDS[data.testType];
+          console.log(link);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
         toast.success('이미지가 저장됐어요!', {
           icon: <SvgIcon id="Complete" color="gray08" />,
         });
