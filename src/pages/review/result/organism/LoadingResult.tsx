@@ -20,6 +20,7 @@ export default function LoadingResult() {
   const postReviewSelfMutation = usePostReviewSelf();
 
   useEffect(() => {
+    // 이미 로그인된 유저가 뒤로가기 시도한 경우
     if (
       (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) ||
       getAccessToken()
