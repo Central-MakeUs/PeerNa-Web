@@ -18,7 +18,6 @@ export class WebviewBridge {
       const webview = window.ReactNativeWebView;
       if (webview) {
         const message = JSON.stringify({ type, data });
-        console.log(message);
         webview.postMessage(message);
       }
     } else {

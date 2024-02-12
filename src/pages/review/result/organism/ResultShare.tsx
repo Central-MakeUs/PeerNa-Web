@@ -82,7 +82,15 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           icon: <SvgIcon id="Complete" color="gray08" />,
         });
       })
-      .catch(error => console.error('Error downloading file:', error));
+      .catch(error => {
+        console.error('Error downloading file:', error);
+        if (
+          navigator.userAgent.includes('iPhone') ||
+          navigator.userAgent.includes('Android')
+        ) {
+          toast.error('이미지 저장엔 권한이 필요해요');
+        } else toast.error('이미지를 저장하지 못했어요');
+      });
   };
 
   return (
