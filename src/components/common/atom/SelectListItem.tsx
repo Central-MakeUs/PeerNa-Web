@@ -14,7 +14,7 @@ export default function SelectListItem({
 }: SelectListItemProps) {
   return (
     <div
-      className={`w-full h-[40px] flex flex-col justify-center p-2 box-content cursor-pointer`}
+      className={`w-full h-[40px] flex flex-col justify-center p-2 cursor-pointer`}
       onClick={onClick}
     >
       <div className="w-full flex justify-between">
