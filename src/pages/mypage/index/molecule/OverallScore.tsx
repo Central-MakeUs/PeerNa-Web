@@ -1,7 +1,6 @@
-import Tooltip from '@components/common/atom/Tooltip';
 import Typography from '@components/common/atom/Typography';
-import { Button } from '@nextui-org/react';
 import ProgressTrack from '@pages/mypage/index/atom/ProgressTrack';
+import TotalScoreToolTip from '@pages/mypage/index/atom/TotalScoreToolTip';
 import HeaderContainer from './HeaderContainer';
 
 export default function OverallScore({ totalScore }: { totalScore: number }) {
@@ -17,11 +16,9 @@ export default function OverallScore({ totalScore }: { totalScore: number }) {
           }
         </Typography>
         <div className="py-16 flex justify-center">
-          <Tooltip content={`${totalScore}점`}>
-            <Button className="bg-transparent w-[488px]">
-              <ProgressTrack totalScore={totalScore} />
-            </Button>
-          </Tooltip>
+          <TotalScoreToolTip totalScore={totalScore}>
+            <ProgressTrack totalScore={totalScore} />
+          </TotalScoreToolTip>
         </div>
       </HeaderContainer>
     </div>

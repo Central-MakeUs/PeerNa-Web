@@ -3,7 +3,6 @@ import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
-import toast from 'react-hot-toast';
 
 interface PostReviewUpdateMemberId extends ProjectInviteSuccessType {}
 
@@ -19,9 +18,7 @@ export default function usePostReviewUpdateMemberId() {
   const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postReviewUpdateMemberId,
-    onSuccess: () => {
-      toast.success('리뷰가 완료되었습니다.');
-    },
+    onSuccess: () => {},
     onError: (error: AxiosError) => {
       handleError(error);
     },

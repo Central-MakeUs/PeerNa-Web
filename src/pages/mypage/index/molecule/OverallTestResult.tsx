@@ -1,10 +1,8 @@
-import SvgIcon from '@components/common/atom/SvgIcon';
-import Tooltip from '@components/common/atom/Tooltip';
 import Typography from '@components/common/atom/Typography';
 import KeywordCard from '@components/common/molecule/KeywordCard';
 import { KEYWORD_CARD_INFO } from '@constants/list';
 import { KEYWORD_MAPPER } from '@constants/mapper';
-import { Button } from '@nextui-org/react';
+import PeerToolTip from '@pages/mypage/index/atom/PeerToolTip';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import { KeywordType } from '@type';
 import { ResultKeyword, TestType } from '@type/enums';
@@ -46,21 +44,6 @@ export default function OverallTestResult({
   const title =
     type === 'self' ? '나도 알고 동료도 아는 내 모습' : '나와 동료의 공통점';
 
-  const toolTip =
-    type === 'self' ? (
-      <>
-        셀프 테스트, 피어 테스트 문항의
-        <br />
-        일치하는 선택지를 확인하세요
-      </>
-    ) : (
-      <>
-        나와 동료의 협업 유형 분석 결과
-        <br />
-        일치하는 선택지를 확인하세요
-      </>
-    );
-
   return (
     <Fragment>
       <HeaderContainer size="sm">
@@ -68,11 +51,7 @@ export default function OverallTestResult({
           <Typography variant="header03" fontColor="gray08">
             {title}
           </Typography>
-          <Tooltip content={toolTip}>
-            <Button className="bg-transparent !min-w-unit-0 !px-unit-0">
-              <SvgIcon id="Help" color="gray04" width={16} height={16} />
-            </Button>
-          </Tooltip>
+          <PeerToolTip type={type} />
         </div>
       </HeaderContainer>
       <section className="flex flex-col gap-3 items-center px-4">

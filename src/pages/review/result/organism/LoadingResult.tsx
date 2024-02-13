@@ -1,5 +1,6 @@
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
+import { UtilityKeys } from '@constants/localStorage';
 import usePostMemberInformation from '@hooks/api/member/index/usePostMemberInfo';
 import usePostReviewSelf from '@hooks/api/member/index/usePostReviewSelf';
 
@@ -7,10 +8,10 @@ import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import useReviewState from '@hooks/store/useReviewState';
 import { getAccessToken } from '@utils/token';
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 export default function LoadingResult() {
-  const { push } = useFlow();
+  const { push, replace } = useFlow();
   const { review } = useReviewState();
   const { reviewSelf } = useReviewSelfState();
   const { peerGrade, feedback } = review;
@@ -19,38 +20,39 @@ export default function LoadingResult() {
   const postMemberMutation = usePostMemberInformation();
   const postReviewSelfMutation = usePostReviewSelf();
 
+  const [mounted, setMounted] = useState<boolean>(false);
+
   useEffect(() => {
-    // 이미 로그인된 유저가 뒤로가기 시도한 경우
-    if (
-      (postMemberMutation.isSuccess && postReviewSelfMutation.isSuccess) ||
-      getAccessToken()
-    ) {
-      setTimeout(() => {
-        push('ReviewResultPage', { type: 'self', step: '3' });
-      }, 2500);
-      return;
+    setMounted(() => true);
+    if (mounted) {
+      if (getAccessToken() && job !== '' && part !== '') {
+        postMemberMutation.mutate(
+          {
+            name,
+            job,
+            part,
+            selfPeerGrade: peerGrade,
+            oneLiner: feedback,
+          },
+          {
+            onSuccess: () =>
+              postReviewSelfMutation.mutate(review.answers, {
+                onSuccess: () => {
+                  localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
+                  replace('ReviewResultPage', { type: 'self', step: '3' });
+                },
+              }),
+          },
+        );
+        return;
+      } else {
+        setTimeout(() => {
+          push('ReviewResultPage', { type: 'self', step: '2' });
+        }, 1000);
+      }
     }
-    // 토큰 없으면 그냥 스텝 2로 옮김
-    if (getAccessToken() && job !== '' && part !== '') {
-      postMemberMutation.mutate(
-        {
-          name,
-          job,
-          part,
-          selfPeerGrade: peerGrade,
-          oneLiner: feedback,
-        },
-        {
-          onSuccess: () => postReviewSelfMutation.mutate(review.answers),
-        },
-      );
-      return;
-    } else {
-      setTimeout(() => {
-        push('ReviewResultPage', { type: 'self', step: '2' });
-      }, 1000);
-    }
-  }, [postMemberMutation.isSuccess, postReviewSelfMutation.isSuccess]);
+    return () => setMounted(() => false);
+  }, [mounted]);
 
   return (
     <Fragment>

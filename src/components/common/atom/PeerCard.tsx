@@ -35,7 +35,7 @@ export default function PeerCard({ size, type, testResult }: CardProps) {
         </Badge>
       )}
       <img src={PEER_ICON_LIST[peerType]} className={`${iconSize}`} />
-      <p className="mt-auto">
+      <div className="mt-auto">
         <Typography
           variant="header03"
           fontColor="gray08"
@@ -50,7 +50,7 @@ export default function PeerCard({ size, type, testResult }: CardProps) {
         >
           {TEST_TYPE_INFO[peerType]?.description}
         </Typography>
-      </p>
+      </div>
     </div>
   );
 }

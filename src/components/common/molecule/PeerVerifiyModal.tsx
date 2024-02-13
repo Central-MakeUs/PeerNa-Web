@@ -55,6 +55,11 @@ export default function PeerVerifyModal({ memberId }: { memberId: number }) {
           <Typography className="text-center mb-5" variant="header03">
             함께 한 경험이 있는 동료인가요?
           </Typography>
+          <Typography className="text-center" variant="body02">
+            {
+              '신뢰도 높은 분석 결과를 위해 \n 함께 한 동료에게만 응답을 요청해주세요.'
+            }
+          </Typography>
         </div>
         <ModalFooter>
           <div className="w-full h-full box-content flex gap-2">

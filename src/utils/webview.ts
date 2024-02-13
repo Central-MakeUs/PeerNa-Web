@@ -18,7 +18,6 @@ export class WebviewBridge {
       const webview = window.ReactNativeWebView;
       if (webview) {
         const message = JSON.stringify({ type, data });
-        console.log(message);
         webview.postMessage(message);
       }
     } else {
@@ -46,6 +45,9 @@ export class WebviewBridge {
             break;
           case 'alarm':
             toast.success('새로운 알림이 있어요');
+            break;
+          case 'save-card':
+            toast.success('이미지가 저장됐어요!');
             break;
           default:
             break;
