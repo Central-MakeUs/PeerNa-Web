@@ -78,7 +78,6 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
     const hasUuid = localStorage.getItem(UtilityKeys.UUID);
     const uuid = hasUuid ? hasUuid : uuidv4();
     localStorage.setItem(UtilityKeys.UUID, uuid);
-    localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
 
     if (type === 'peer') {
       if (review.uuid) {

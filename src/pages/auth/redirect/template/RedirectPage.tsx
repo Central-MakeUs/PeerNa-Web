@@ -6,6 +6,7 @@ import useHistory from '@hooks/common/useHistory';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useToken from '@hooks/common/useToken';
 import { ActivityComponentType } from '@stackflow/react';
+import { getAccessToken } from '@utils/token';
 import { useEffect } from 'react';
 
 interface AuthData {
@@ -29,6 +30,7 @@ const RedirectPage: ActivityComponentType = () => {
   };
 
   const { mutate } = usePostReviewUpdateMemberId();
+  const { activity, params: historyParams } = history;
 
   useEffect(() => {
     if (memberId && accessToken && refreshToken) {
@@ -42,10 +44,13 @@ const RedirectPage: ActivityComponentType = () => {
         });
       }
 
-      const { activity, params } = history;
       push(String(activity) as ActivityTypes, params);
     }
   }, [memberId, accessToken, refreshToken]);
+
+  if (getAccessToken()) {
+    push(String(activity) as ActivityTypes, historyParams);
+  }
 
   return <Spinner />;
 };
