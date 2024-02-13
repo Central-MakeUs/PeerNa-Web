@@ -60,9 +60,11 @@ export default function ProfileListItem({
             >
               {PART_MAPPER[part]}
             </Typography>
-            <span className={`text-${isMyProfile ? 'gray04' : 'gray07'}`}>
-              |
-            </span>
+            {name && (
+              <span className={`text-${isMyProfile ? 'gray04' : 'gray07'}`}>
+                |
+              </span>
+            )}
             <Typography
               variant="body04"
               fontColor={isMyProfile ? 'gray04' : 'gray07'}

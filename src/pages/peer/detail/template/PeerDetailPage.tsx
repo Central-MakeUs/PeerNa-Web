@@ -34,6 +34,8 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
 
+  console.log(peerInfo);
+
   const { openModal: peerRequestOpen } = useModal('peerVerify');
 
   const {
@@ -118,7 +120,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
               )}
             </Tab>
             <Tab key="peer" title="키워드 비교">
-              {peerTestMoreThanThree && (
+              {peerAnswerIdList && colorAnswerIdList.length > 0 && (
                 <OverallTestResult
                   colorAnswerIdList={colorAnswerIdList}
                   selfTestAnswerIdList={peerAnswerIdList}
@@ -126,7 +128,9 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
                   type="peer"
                 />
               )}
-              {!peerTestMoreThanThree && <NoTestKeywordResult type="peer" />}
+              {colorAnswerIdList.length === 0 && (
+                <NoTestKeywordResult type="peer" />
+              )}
             </Tab>
           </RadioTabs>
           <Spacer y={6} />

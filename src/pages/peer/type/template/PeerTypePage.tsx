@@ -46,7 +46,11 @@ const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
       </header>
       <ErrorBoundaryWithSuspense>
         <UserProfileList
-          data={data?.pages.flatMap(profile => profile.result)}
+          data={data?.pages.flatMap(profile =>
+            profile.result.filter(
+              profile => !profile.job.includes('WITHDRAWAL'),
+            ),
+          )}
         />
       </ErrorBoundaryWithSuspense>
       <IntersectionBox ref={intersectionRef} />

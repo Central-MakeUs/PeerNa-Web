@@ -26,7 +26,7 @@ export default function SelfTestResult({
       </HeaderContainer>
       <TestCardList
         selfTestCardList={myCardList}
-        type={myCardList ? 'self' : 'locked'}
+        type={myCardList.length > 0 ? 'self' : 'locked'}
       />
     </Fragment>
   );
