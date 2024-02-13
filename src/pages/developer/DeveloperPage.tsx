@@ -33,9 +33,6 @@ const DeveloperPage: ActivityComponentType = () => {
             });
           };
           reader.readAsDataURL(blob);
-          toast.success('이미지가 저장됐어요!', {
-            icon: <SvgIcon id="Complete" color="gray08" />,
-          });
         } else {
           console.log(href);
           const link = document.createElement('a');

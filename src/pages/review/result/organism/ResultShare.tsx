@@ -69,7 +69,6 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           };
           reader.readAsDataURL(blob);
         } else {
-          console.log('else call');
           const link = document.createElement('a');
           link.href = href;
           link.download = FLOWER_CARDS[data.testType];
@@ -77,10 +76,10 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
+          toast.success('이미지가 저장됐어요!', {
+            icon: <SvgIcon id="Complete" color="gray08" />,
+          });
         }
-        toast.success('이미지가 저장됐어요!', {
-          icon: <SvgIcon id="Complete" color="gray08" />,
-        });
       })
       .catch(error => {
         console.error('Error downloading file:', error);
