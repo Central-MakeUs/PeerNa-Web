@@ -33,7 +33,7 @@ export default function PeerRequestCompleteModal() {
             응답 요청 완료
           </Typography>
           <Typography className="text-center" variant="body02">
-            {'응답에 따라 마이페이지 분석 결과가 \n 업데이트 돼요.'}
+            {'동료의 응답에 따라 \n 마이페이지 분석 결과가 업데이트 돼요.'}
           </Typography>
         </div>
         <ModalFooter>

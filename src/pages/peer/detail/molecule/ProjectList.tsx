@@ -30,7 +30,7 @@ export default function ProjectList({
           onClick={handleClick}
         />
       </HeaderContainer>
-      <ul className="flex flex-col gap-3 mb-6">
+      <ul className="flex flex-col gap-3 mb-6 px-5">
         {projectList.map((project, index) => (
           <li key={index}>
             <Project
