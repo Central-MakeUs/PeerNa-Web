@@ -2,6 +2,7 @@ import Button from '@components/common/atom/Button';
 import IconButton from '@components/common/atom/IconButton';
 import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
+import ButtonContainer from '@components/common/molecule/ButtonContainer';
 import RadioTabs from '@components/common/molecule/RadioTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
@@ -11,36 +12,25 @@ import Header from '@components/wrapper/Header';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
 import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
 import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
 import { Spacer, Tab } from '@nextui-org/react';
+import ProfileCard from '@pages/mypage/index/molecule/ProfileCard';
+import SelfTestModal from '@pages/mypage/index/molecule/SelfTestModal';
+import CardContent from '@pages/mypage/index/organism/CardContent';
+import KeywordContent from '@pages/mypage/index/organism/KeywordContent';
+import Layout from '@pages/mypage/index/organism/Layout';
 import { ActivityComponentType } from '@stackflow/react';
+import { useEffect } from 'react';
 import CardTestResult from '../molecule/CardTestResult';
-import Feedback from '../molecule/Feedback';
-import NoPeerTestResult from '../molecule/NoPeerTestResult';
-import NoTestKeywordResult from '../molecule/NoTestKeywordResult';
-import OverallOpinion from '../molecule/OverallOpinion';
-import OverallScore from '../molecule/OverallScore';
-import OverallTestResult from '../molecule/OverallTestResult';
-import PeerTestResult from '../molecule/PeerTestResult';
-import ProfileCard from '../molecule/ProfileCard';
-import SelfTestResult from '../molecule/SelfTestResult';
-import Layout from '../organism/Layout';
 
 const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
 
-  const {
-    peerTestMoreThanThree,
-    memberMyPageInfoDto,
-    selfTestCardList,
-    peerTestCount,
-    peerTestType,
-    peerCardList,
-    totalEvaluation,
-    totalScore,
-    colorAnswerIdList,
-    selfTestAnswerIdList,
-    peerFeedbackList,
-  } = data;
+  console.log(data);
+
+  const { memberMyPageInfoDto, peerTestCount, peerTestType } = data;
+
+  const { openModal } = useModal('selfTest');
 
   const { push } = useFlow();
   const selfTestType = memberMyPageInfoDto.testType;
@@ -54,13 +44,19 @@ const MyPage: ActivityComponentType = () => {
     push('SettingPage', {});
   };
 
+  useEffect(() => {
+    if (!selfTestType) {
+      openModal();
+    }
+  }, []);
+
   const handleSendKakaoMessage = useSendKakaoMessage();
   const title = '저는 어떤 동료인가요?';
   const description = '함께한 동료에 대해 알려주세요.';
   const buttonText = '피어 테스트 응답하기';
   const imagePath =
     'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTMvDA1jejdkIRTg7jKQg9KDNB1yXAZ-zW7EOaTqlAjOsqxJlsG8PH9cSk5UOENxqdZzxVUdhTq8lOfccEjqeXKveLD=w1920-h868';
-  const path = `review/peer/?uuid=${uuid}`;
+  const path = `/review/peer/?uuid=${uuid}`;
 
   return (
     <AppScreenContainer>
@@ -95,69 +91,17 @@ const MyPage: ActivityComponentType = () => {
             </ErrorBoundaryWithSuspense>
             <RadioTabs>
               <Tab key="me" title="카드 비교">
-                <ErrorBoundaryWithSuspense>
-                  {selfTestCardList && (
-                    <SelfTestResult selfTestCardList={selfTestCardList} />
-                  )}
-                </ErrorBoundaryWithSuspense>
-                <ErrorBoundaryWithSuspense>
-                  {peerCardList && (
-                    <PeerTestResult peerCardList={peerCardList} />
-                  )}
-                </ErrorBoundaryWithSuspense>
-                {!peerCardList && <NoPeerTestResult />}
-                <ErrorBoundaryWithSuspense>
-                  {Array.isArray(totalEvaluation) &&
-                    totalEvaluation.length > 0 && (
-                      <OverallOpinion totalEvaluation={totalEvaluation} />
-                    )}
-                </ErrorBoundaryWithSuspense>
-                <ErrorBoundaryWithSuspense>
-                  {totalScore && totalScore !== 0 && (
-                    <OverallScore totalScore={totalScore} />
-                  )}
-                </ErrorBoundaryWithSuspense>
-                <ErrorBoundaryWithSuspense>
-                  {peerFeedbackList && (
-                    <Feedback
-                      peerFeedbackList={peerFeedbackList}
-                      handleClick={handleMoreFeedback}
-                    />
-                  )}
-                </ErrorBoundaryWithSuspense>
+                <CardContent data={data} handleClick={handleMoreFeedback} />
               </Tab>
               <Tab key="peer" title="키워드 비교">
-                <ErrorBoundaryWithSuspense>
-                  {colorAnswerIdList && selfTestAnswerIdList && (
-                    <OverallTestResult
-                      colorAnswerIdList={colorAnswerIdList}
-                      selfTestAnswerIdList={selfTestAnswerIdList}
-                      peerCardList={peerCardList}
-                      type="self"
-                    />
-                  )}
-                </ErrorBoundaryWithSuspense>
-                {peerTestMoreThanThree === false && (
-                  <NoTestKeywordResult type="self" />
-                )}
-                <ErrorBoundaryWithSuspense>
-                  {Array.isArray(totalEvaluation) &&
-                    totalEvaluation.length > 0 && (
-                      <OverallOpinion totalEvaluation={totalEvaluation} />
-                    )}
-                </ErrorBoundaryWithSuspense>
-                {totalScore && <OverallScore totalScore={totalScore} />}
-                {peerFeedbackList && (
-                  <Feedback
-                    peerFeedbackList={peerFeedbackList}
-                    handleClick={handleMoreFeedback}
-                  />
-                )}
+                <KeywordContent data={data} handleClick={handleMoreFeedback} />
               </Tab>
             </RadioTabs>
-            <section className="px-4">
+            <Spacer y={6} />
+            <ButtonContainer direction="row">
               <Button
                 buttonVariant="primary"
+                className="px-4"
                 onClick={() =>
                   handleSendKakaoMessage({
                     title,
@@ -170,7 +114,8 @@ const MyPage: ActivityComponentType = () => {
               >
                 동료에게 물어보기
               </Button>
-            </section>
+            </ButtonContainer>
+            <SelfTestModal />
           </Layout>
         </div>
         <Spacer y={24} />
