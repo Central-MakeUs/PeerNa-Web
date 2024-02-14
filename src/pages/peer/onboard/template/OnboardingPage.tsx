@@ -1,5 +1,6 @@
 import Button from '@components/common/atom/Button';
 import Progress from '@components/common/atom/Progress';
+import Typography from '@components/common/atom/Typography';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
@@ -11,7 +12,7 @@ import useReviewState from '@hooks/store/useReviewState';
 import OnboardingCard from '@pages/peer/onboard/organism/OnboardingCard';
 import { ActivityComponentType } from '@stackflow/react';
 import { getAccessToken, getRefreshToken } from '@utils/token';
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 
 type OnboardingPageParams = {
   step: string;
@@ -48,7 +49,6 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
   };
 
   const isShowBackIcon = curStep !== 1;
-  const isShowRightButton = curStep !== 4;
 
   const handleClickBackIcon = () => pop();
   const handleClickStart = () => {
@@ -64,20 +64,25 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
           {isShowBackIcon && (
             <Header.BackIcon handleClick={handleClickBackIcon} />
           )}
-          {isShowRightButton && (
-            <Fragment>
-              <div className="w-[24]" />
-              <Header.RightButton
-                text="바로시작하기"
-                handleClick={handleClickStart}
-              />
-            </Fragment>
-          )}
         </Header.TopBar>
       </Header>
       <Progress curStep={curStep} lastStep={4} />
       <OnboardingCard step={curStep} />
       <Footer bottom={3} className="px-4">
+        <div className="w-full flex flex-row justify-center gap-1 mb-4">
+          <Typography variant="body04" fontColor="gray04">
+            이미 계정이 있으신가요?
+          </Typography>
+          <button onClick={handleClickStart}>
+            <Typography
+              variant="body04"
+              fontColor="primary"
+              className="underline underline-offset-2 decoration-[1.5px]"
+            >
+              로그인
+            </Typography>
+          </button>
+        </div>
         <Button className="px-2" onClick={handleClickPush}>
           {buttonText}
         </Button>
