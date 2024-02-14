@@ -26,7 +26,7 @@ export default function PeerTestResult({
       </HeaderContainer>
       <TestCardList
         peerCardList={peerCardList}
-        type={peerCardList ? 'peer' : 'locked'}
+        type={peerCardList.length > 0 ? 'peer' : 'locked'}
       />
     </Fragment>
   );

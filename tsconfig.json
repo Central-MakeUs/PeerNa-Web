@@ -22,6 +22,7 @@
     "baseUrl": "./src",
     "paths": {
       "@*": ["./*"],
+      "@pages/*": ["pages/*"],
       "@constants/*": ["constants/*"],
       "@components/*": ["components/*"],
       "@assets/*": ["assets/*"],

@@ -12606,6 +12606,7 @@ __metadata:
     react-day-picker: "npm:^8.10.0"
     react-dom: "npm:^18.2.0"
     react-error-boundary: "npm:^4.0.12"
+    react-freeze: "npm:^1.0.3"
     react-hot-toast: "npm:^2.4.1"
     recoil: "npm:^0.7.7"
     recoil-persist: "npm:^5.1.0"
@@ -13133,6 +13134,15 @@ __metadata:
   version: 3.2.2
   resolution: "react-fast-compare@npm:3.2.2"
   checksum: 0bbd2f3eb41ab2ff7380daaa55105db698d965c396df73e6874831dbafec8c4b5b08ba36ff09df01526caa3c61595247e3269558c284e37646241cba2b90a367
+  languageName: node
+  linkType: hard
+
+"react-freeze@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "react-freeze@npm:1.0.3"
+  peerDependencies:
+    react: ">=17.0.0"
+  checksum: d42cb9c0efbb4a9c38d3c9a5ee060febb273bf0acee2ccacba8d70abda1a47dfe678979bc7d421d9674fa9cb23085e95eeaae7b24dac29ab059f60c29c3eee71
   languageName: node
   linkType: hard
 

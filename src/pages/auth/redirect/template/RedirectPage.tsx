@@ -33,6 +33,10 @@ const RedirectPage: ActivityComponentType = () => {
   const { activity, params: historyParams } = history;
 
   useEffect(() => {
+    if (getAccessToken()) {
+      push(String(activity) as ActivityTypes, historyParams);
+    }
+
     if (memberId && accessToken && refreshToken) {
       localStorage.setItem(StorageKey.MemberId, memberId);
       updateToken(accessToken, refreshToken);
@@ -47,10 +51,6 @@ const RedirectPage: ActivityComponentType = () => {
       push(String(activity) as ActivityTypes, params);
     }
   }, [memberId, accessToken, refreshToken]);
-
-  if (getAccessToken()) {
-    push(String(activity) as ActivityTypes, historyParams);
-  }
 
   return <Spinner />;
 };

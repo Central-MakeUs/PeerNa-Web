@@ -17,7 +17,7 @@ export default function PeerProfileCard({
     <Fragment>
       <article className="flex flex-col items-center mb-8">
         <PeerCard size="M" testResult={peerType} />
-        <p className="flex justify-center mb-2">
+        <div className="flex justify-center mb-2">
           <Typography variant="body04" fontColor="gray06">
             {JOB_MAPPER[memberInfo.job as JobType]}
           </Typography>
@@ -29,7 +29,7 @@ export default function PeerProfileCard({
           <Typography variant="body04" fontColor="gray06">
             {totalScore ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
           </Typography>
-        </p>
+        </div>
         <Talk type="filled">{memberInfo.oneLiner}</Talk>
       </article>
     </Fragment>
