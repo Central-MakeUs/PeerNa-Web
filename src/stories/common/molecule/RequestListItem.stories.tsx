@@ -13,7 +13,7 @@ type Story = StoryObj<typeof RequestListItem>;
 
 export const Default: Story = {
   args: {
-    bezeled: 'AlertFill',
+    bezeled: 'AddCircle',
     title: '000님이 평판 작성을 요청했어요.',
     subtitle: '1분 전',
     button: (
