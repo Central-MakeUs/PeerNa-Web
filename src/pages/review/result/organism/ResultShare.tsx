@@ -26,13 +26,13 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   const { push } = useFlow();
   const { data } = useGetReviewResult();
   const ref = useRef<HTMLDivElement>(null);
-  const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
 
   const handleClickBackIcon = () =>
     push('ReviewResultPage', { type: type, step: String(curStep - 1) });
 
   const handleClickRightButton = () => push('HomePage', {});
 
+  const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
   const handleClickShare = () => setOpenBottomSheet(true);
 
   const { data: user } = useGetMe();
@@ -120,7 +120,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         <Button buttonVariant="tertiary" onClick={handleDownload}>
           카드 저장하기
         </Button>
-        <Button onClick={handleClickShare}>카드 공유하기</Button>
+        <Button onClick={handleClickShare}>동료에게 물어보기</Button>
       </Footer>
 
       <ShareDrawer
