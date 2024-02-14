@@ -1,9 +1,11 @@
+import { queryClient } from '@/main';
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import usePostMemberWithdrawal from '@hooks/api/member/index/usePostMemberWithdrawal';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
+import { http } from '@utils/API';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
@@ -26,10 +28,15 @@ export default function WithdrawalModal() {
   };
 
   const handleClickDelete = () => {
-    mutate();
-    toast.success('회원탈퇴 되었습니다');
-    replace('OnboardingPage', { step: '1' });
-    localStorage.clear();
+    mutate(undefined, {
+      onSuccess: () => {
+        toast.success('회원탈퇴 되었습니다');
+        delete http.defaults.headers.common.Authorization;
+        localStorage.clear();
+        queryClient.clear();
+        replace('OnboardingPage', { step: '1' });
+      },
+    });
   };
 
   const handleClickCancel = () => {
