@@ -1,9 +1,10 @@
+import { queryClient } from '@/main';
 import Button from '@components/common/atom/Button';
 import DatePicker from '@components/common/atom/DatePicker';
 import TextArea from '@components/common/atom/TextArea';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
-import Footer from '@components/wrapper/Footer';
+import { QUERY_KEY } from '@constants/queryKey';
 import usePostCreateProject from '@hooks/api/project/index/usePostCreateProject';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Divider, cn } from '@nextui-org/react';
@@ -65,7 +66,10 @@ export default function ProjectForm() {
           endDate: endDate,
         },
         {
-          onSuccess: () => push('ProjectPage', {}),
+          onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEY.MY_PROJECT] });
+            push('ProjectPage', {});
+          },
         },
       );
     }
@@ -140,11 +144,11 @@ export default function ProjectForm() {
           />
         </div>
       </form>
-      <Footer bottom={3} className="px-4">
+      <div className="px-4 my-4">
         <Button onClick={handleSubmit} isDisabled={!isValidForm()}>
           생성하기
         </Button>
-      </Footer>
+      </div>
     </Fragment>
   );
 }
