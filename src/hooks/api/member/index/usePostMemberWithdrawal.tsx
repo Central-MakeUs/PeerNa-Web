@@ -1,4 +1,5 @@
-import { useMutation } from '@tanstack/react-query';
+import { QUERY_KEY } from '@constants/queryKey';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type';
 import { ApiResponse, http } from '@utils/API';
 
@@ -13,9 +14,13 @@ const postMemberWithdrawal = async (): Promise<
 export default function usePostMemberWithdrawal(
   errorCallback?: (error: Error) => void,
 ) {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: postMemberWithdrawal,
-
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.MYPAGE_INFO] });
+    },
     onError: errorCallback,
   });
 }
