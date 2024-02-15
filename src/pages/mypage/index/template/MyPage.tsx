@@ -9,26 +9,34 @@ import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import { PEER_TEST_REQUEST } from '@constants/share';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
-import useSendKakaoMessage from '@hooks/common/useSendKakoMessage';
+import useSendKakaoMessage, {
+  PEER_TEST_URL,
+} from '@hooks/common/useSendKakoMessage';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Spacer, Tab } from '@nextui-org/react';
+import CardTestResult from '@pages/mypage/index/molecule/CardTestResult';
 import ProfileCard from '@pages/mypage/index/molecule/ProfileCard';
 import SelfTestModal from '@pages/mypage/index/molecule/SelfTestModal';
 import CardContent from '@pages/mypage/index/organism/CardContent';
 import KeywordContent from '@pages/mypage/index/organism/KeywordContent';
 import Layout from '@pages/mypage/index/organism/Layout';
+import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { ActivityComponentType } from '@stackflow/react';
-import { useEffect } from 'react';
-import CardTestResult from '../molecule/CardTestResult';
+import { useEffect, useState } from 'react';
 
 const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
 
   console.log(data);
+  const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
 
   const { memberMyPageInfoDto, peerTestCount, peerTestType } = data;
+
+  const { handleClickShareLink, handleSendKakaoMessage } =
+    useSendKakaoMessage();
 
   const { openModal } = useModal('selfTest');
 
@@ -44,20 +52,27 @@ const MyPage: ActivityComponentType = () => {
     push('SettingPage', {});
   };
 
+  const handleKakaoShare = () => {
+    handleSendKakaoMessage({
+      ...PEER_TEST_REQUEST,
+      url: PEER_TEST_URL(uuid),
+    });
+  };
+
+  const handleCopyLink = () => {
+    handleClickShareLink({
+      type: 'peerTest',
+      uuid: uuid,
+    });
+  };
+
   useEffect(() => {
     if (!selfTestType) {
       openModal();
     }
   }, []);
 
-  const handleSendKakaoMessage = useSendKakaoMessage();
-  const title = '저는 어떤 동료인가요?';
-  const description = '함께한 동료에 대해 알려주세요.';
-  const buttonText = '피어 테스트 응답하기';
-  const imagePath =
-    'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTMvDA1jejdkIRTg7jKQg9KDNB1yXAZ-zW7EOaTqlAjOsqxJlsG8PH9cSk5UOENxqdZzxVUdhTq8lOfccEjqeXKveLD=w1920-h868';
-  const path = `/review/peer/?uuid=${uuid}`;
-
+  const handleClickShare = () => setOpenBottomSheet(true);
   return (
     <AppScreenContainer>
       <Content>
@@ -102,18 +117,16 @@ const MyPage: ActivityComponentType = () => {
               <Button
                 buttonVariant="primary"
                 className="px-4"
-                onClick={() =>
-                  handleSendKakaoMessage({
-                    title,
-                    description,
-                    buttonText,
-                    imagePath,
-                    path,
-                  })
-                }
+                onClick={handleClickShare}
               >
                 동료에게 물어보기
               </Button>
+              <ShareDrawer
+                openBottomSheet={openBottomSheet}
+                setOpenBottomSheet={setOpenBottomSheet}
+                handleClickShareLink={handleCopyLink}
+                handleClickKakaoShare={handleKakaoShare}
+              />
             </ButtonContainer>
             <SelfTestModal />
           </Layout>
