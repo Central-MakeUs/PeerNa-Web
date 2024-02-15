@@ -26,8 +26,6 @@ import CardTestResult from '../molecule/CardTestResult';
 const MyPage: ActivityComponentType = () => {
   const { data } = useGetMyPageInfo();
 
-  console.log(data);
-
   const { memberMyPageInfoDto, peerTestCount, peerTestType } = data;
 
   const { openModal } = useModal('selfTest');

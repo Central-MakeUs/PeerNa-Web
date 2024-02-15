@@ -1,12 +1,14 @@
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import { UtilityKeys } from '@constants/localStorage';
+import { QUERY_KEY } from '@constants/queryKey';
 import usePostMemberInformation from '@hooks/api/member/index/usePostMemberInfo';
 import usePostReviewSelf from '@hooks/api/member/index/usePostReviewSelf';
 
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import useReviewState from '@hooks/store/useReviewState';
+import { queryClient } from '@main';
 import { getAccessToken } from '@utils/token';
 import { Fragment, useEffect, useState } from 'react';
 
@@ -39,6 +41,9 @@ export default function LoadingResult() {
               postReviewSelfMutation.mutate(review.answers, {
                 onSuccess: () => {
                   localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
+                  queryClient.invalidateQueries({
+                    queryKey: [QUERY_KEY.MYPAGE_INFO],
+                  });
                   replace('ReviewResultPage', { type: 'self', step: '3' });
                 },
               }),
@@ -46,8 +51,15 @@ export default function LoadingResult() {
         );
         return;
       } else {
+        if (getAccessToken()) {
+          setTimeout(() => {
+            push('ReviewResultPage', { type: 'self', step: '3' });
+          }, 1000);
+          return;
+        }
+
         setTimeout(() => {
-          push('ReviewResultPage', { type: 'self', step: '2' });
+          push('ReviewResultPage', { type: 'self', step: '3' });
         }, 1000);
       }
     }
