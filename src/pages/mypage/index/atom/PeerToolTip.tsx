@@ -21,7 +21,7 @@ export default function PeerToolTip({ type }: PeerToolTipProps) {
       className="bg-gray07 text-white !whitespace-pre-line"
     >
       <Button
-        className="bg-transparent !min-w-unit-0 !px-unit-0"
+        className="bg-transparent !min-w-unit-0 !px-unit-0 !hover:bg-transparent"
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         onPress={() => setIsOpen(!isOpen)}

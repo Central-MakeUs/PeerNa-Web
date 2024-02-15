@@ -2,9 +2,7 @@ import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import { PEER_TEST_REQUEST } from '@constants/share';
 import useGetMe from '@hooks/api/member/index/useGetMe';
-import useSendKakaoMessage, {
-  PEER_TEST_URL,
-} from '@hooks/common/useSendKakoMessage';
+import useShareLink, { PEER_TEST_URL } from '@hooks/common/useShareLink';
 
 export default function ReviewButton() {
   const { data } = useGetMe();
@@ -12,7 +10,7 @@ export default function ReviewButton() {
   const uuid = data ? data.uuid : '';
   const shareUrl = PEER_TEST_URL(uuid);
 
-  const { handleSendKakaoMessage } = useSendKakaoMessage();
+  const { handleSendKakaoMessage } = useShareLink();
 
   const handleKakaoShare = () => {
     handleSendKakaoMessage({ ...PEER_TEST_REQUEST, url: shareUrl });

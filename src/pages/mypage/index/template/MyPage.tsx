@@ -11,9 +11,7 @@ import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { PEER_TEST_REQUEST } from '@constants/share';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
-import useSendKakaoMessage, {
-  PEER_TEST_URL,
-} from '@hooks/common/useSendKakoMessage';
+import useShareLink, { PEER_TEST_URL } from '@hooks/common/useShareLink';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Spacer, Tab } from '@nextui-org/react';
@@ -28,21 +26,16 @@ import { ActivityComponentType } from '@stackflow/react';
 import { useEffect, useState } from 'react';
 
 const MyPage: ActivityComponentType = () => {
-  const { data } = useGetMyPageInfo();
-
-  console.log(data);
   const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
 
+  const { data } = useGetMyPageInfo();
   const { memberMyPageInfoDto, peerTestCount, peerTestType } = data;
-
-  const { handleClickShareLink, handleSendKakaoMessage } =
-    useSendKakaoMessage();
-
-  const { openModal } = useModal('selfTest');
-
-  const { push } = useFlow();
   const selfTestType = memberMyPageInfoDto.testType;
   const uuid = memberMyPageInfoDto.uuid;
+
+  const { handleShareLink, handleSendKakaoMessage } = useShareLink();
+  const { openModal } = useModal('selfTest');
+  const { push } = useFlow();
 
   const handleMoreFeedback = () => {
     push('MoreFeedbackPage', {});
@@ -60,7 +53,7 @@ const MyPage: ActivityComponentType = () => {
   };
 
   const handleCopyLink = () => {
-    handleClickShareLink({
+    handleShareLink({
       type: 'peerTest',
       uuid: uuid,
     });
