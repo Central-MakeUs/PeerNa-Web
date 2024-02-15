@@ -5,10 +5,10 @@ import { QUERY_KEY } from '@constants/queryKey';
 import usePostMemberInformation from '@hooks/api/member/index/usePostMemberInfo';
 import usePostReviewSelf from '@hooks/api/member/index/usePostReviewSelf';
 
+import { queryClient } from '@/main';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import useReviewState from '@hooks/store/useReviewState';
-import { queryClient } from '@main';
 import { getAccessToken } from '@utils/token';
 import { Fragment, useEffect, useState } from 'react';
 
