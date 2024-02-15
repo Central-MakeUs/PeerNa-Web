@@ -7,12 +7,14 @@ interface ShareDrawerProps {
   openBottomSheet: boolean;
   setOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
   handleClickShareLink: () => void;
+  handleClickKakaoShare?: () => void;
 }
 
 export default function ShareDrawer({
   openBottomSheet,
   setOpenBottomSheet,
   handleClickShareLink,
+  handleClickKakaoShare,
 }: ShareDrawerProps) {
   return (
     <Drawer
@@ -36,7 +38,7 @@ export default function ShareDrawer({
             </Typography>
           </div>
           <div className="flex flex-col gap-2 items-center">
-            <button className="h-[36px]">
+            <button className="h-[36px]" onClick={handleClickKakaoShare}>
               <img src={KAKAO_SHARE} style={{ width: 36, height: 36 }} />
             </button>
             <Typography variant="body03" className="text-center">
