@@ -11,7 +11,7 @@ const getSearchPeerPart = async (
 ): Promise<InfiniteApiResponse<PeerSimpleProfileType>> => {
   const isOnboarding = localStorage.getItem(UtilityKeys.IS_ONBOARD);
   const hasToken = getAccessToken();
-  if (!isOnboarding && !hasToken) {
+  if (!isOnboarding || !hasToken) {
     return {
       code: 0,
       message: '',
