@@ -13,6 +13,7 @@ import Header from '@components/wrapper/Header';
 import { PART_LIST } from '@constants/list';
 import { UtilityKeys } from '@constants/localStorage';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
+import useGetMe from '@hooks/api/member/index/useGetMe';
 import useHistory from '@hooks/common/useHistory';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -21,6 +22,7 @@ import useReviewState from '@hooks/store/useReviewState';
 import { Spacer, Tab } from '@nextui-org/react';
 import HomeBackground from '@pages/home/index/organism/HomeBackground';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import SelfTestModal from '@pages/mypage/index/molecule/SelfTestModal';
 import Layout from '@pages/mypage/index/organism/Layout';
 import { ActivityComponentType } from '@stackflow/react';
 import { PartType } from '@type/enums';
@@ -63,6 +65,13 @@ const HomePage: ActivityComponentType = () => {
 
   const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
+
+  const { data: me } = useGetMe();
+  const { openModal } = useModal('selfTest');
+  useEffect(() => {
+    if (!me?.name) openModal();
+    else localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
+  }, []);
 
   useEffect(() => {
     refetch();
@@ -128,6 +137,7 @@ const HomePage: ActivityComponentType = () => {
       <Footer>
         <BottomNavigation />
       </Footer>
+      <SelfTestModal />
     </AppScreenContainer>
   );
 };

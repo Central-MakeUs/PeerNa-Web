@@ -50,7 +50,7 @@ const RedirectPage: ActivityComponentType = () => {
 
       push(String(activity) as ActivityTypes, params);
     }
-  }, [memberId, accessToken, refreshToken]);
+  }, []);
 
   return <Spinner />;
 };

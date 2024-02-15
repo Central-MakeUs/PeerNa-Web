@@ -20,10 +20,6 @@ const ReviewResultPage: ActivityComponentType<ReviewResultPageParams> = ({
   const nextStep = String(curStep + 1);
 
   const handleClick = () => {
-    if (curStep === 2) {
-      push('ReviewResultPage', { type: params.type, step: '4' });
-      return;
-    }
     push('ReviewResultPage', { type: params.type, step: nextStep });
   };
 

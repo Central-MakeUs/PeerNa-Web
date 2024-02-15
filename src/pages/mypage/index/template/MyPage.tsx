@@ -29,6 +29,7 @@ const MyPage: ActivityComponentType = () => {
   const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
 
   const { data } = useGetMyPageInfo();
+
   const { memberMyPageInfoDto, peerTestCount, peerTestType } = data;
   const selfTestType = memberMyPageInfoDto.testType;
   const uuid = memberMyPageInfoDto.uuid;
