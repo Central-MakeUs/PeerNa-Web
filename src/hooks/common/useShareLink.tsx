@@ -1,5 +1,5 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
-import { HOST_DEV, HOST_PROD, MODE } from '@constants';
+import { baseUrl } from '@constants/share';
 import toast from 'react-hot-toast';
 
 type KakaoMessage = {
@@ -16,14 +16,12 @@ type ShareLink = {
   uuid?: string;
 };
 
-const baseUrl = MODE === 'development' ? HOST_DEV : HOST_PROD;
-
 export const PEER_TEST_URL = (uuid: string) =>
   baseUrl + `/review/peer/?uuid=${uuid}`;
 
 export const PROJECT_URL = (id: number) => baseUrl + `/project/${id}/propose`;
 
-export default function useSendKakaoMessage() {
+export default function useShareLink() {
   const handleSendKakaoMessage = ({
     title,
     description,
@@ -54,12 +52,10 @@ export default function useSendKakaoMessage() {
     });
   };
 
-  const handleClickShareLink = async ({ type, id, uuid }: ShareLink) => {
+  const handleShareLink = async ({ type, id, uuid }: ShareLink) => {
     try {
       let copyLink = '';
-      if (type === 'peerTest' && uuid) {
-        copyLink = PEER_TEST_URL(uuid);
-      }
+      if (type === 'peerTest' && uuid) copyLink = PEER_TEST_URL(uuid);
       if (type === 'project' && id) copyLink = PROJECT_URL(id);
       await navigator.clipboard.writeText(copyLink);
       toast.success('링크 복사 완료!', {
@@ -70,5 +66,5 @@ export default function useSendKakaoMessage() {
     }
   };
 
-  return { handleSendKakaoMessage, handleClickShareLink };
+  return { handleSendKakaoMessage, handleShareLink };
 }
