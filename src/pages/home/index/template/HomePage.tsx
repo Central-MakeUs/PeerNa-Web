@@ -40,7 +40,8 @@ const HomePage: ActivityComponentType = () => {
   const { handleClearHistory } = useHistory();
   const { handleClearReviews } = useReviewState();
   const hasToken = getAccessToken();
-
+  const { data: me } = useGetMe();
+  const { openModal } = useModal('selfTest');
   useEffect(() => {
     handleClearHistory();
     handleClearReviews();
@@ -49,29 +50,32 @@ const HomePage: ActivityComponentType = () => {
     const rawIsPushAgree = localStorage.getItem(UtilityKeys.IS_PUSH_AGREE);
     const isPushAgree = rawIsPushAgree === 'true';
 
-    if (!isOnboarding && !hasToken) push('OnboardingPage', { step: '1' });
+    if (!isOnboarding && !hasToken) {
+      push('OnboardingPage', { step: '1' });
+      return;
+    }
 
     // 온보딩을 했고, 로그인이 되어 있는 상태에서 푸시 알림 허용을 안했으면
     if (isOnboarding && hasToken && !isPushAgree) {
       openModalPush();
+      return;
     }
     // 온보딩을 했고, 로그인이 되어있지 않는다면
     if (isOnboarding && !hasToken) {
       openModalLogin();
+      return;
     }
+
+    //로그인은 됐는데, 온보딩을 하지 않았을 경우
+    if (!isOnboarding && !me?.name) openModal();
+    // 로그인도 하고, 온보딩도 한 경우
+    else localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
   }, []);
 
   const [currentTab, setCurrentTab] = useState('ALL');
 
   const { data, refetch, isFetchingNextPage, fetchNextPage } =
     useGetSearchPeerPart(currentTab);
-
-  const { data: me } = useGetMe();
-  const { openModal } = useModal('selfTest');
-  useEffect(() => {
-    if (!me?.name) openModal();
-    else localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
-  }, []);
 
   useEffect(() => {
     refetch();
