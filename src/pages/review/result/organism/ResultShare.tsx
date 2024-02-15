@@ -117,9 +117,11 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         ref={ref}
       />
       <Footer bottom={3} className="flex gap-4">
-        <Button buttonVariant="tertiary" onClick={handleDownload}>
-          카드 저장하기
-        </Button>
+        {!navigator.userAgent.includes('Android') && (
+          <Button buttonVariant="tertiary" onClick={handleDownload}>
+            카드 저장하기
+          </Button>
+        )}
         <Button onClick={handleClickShare}>동료에게 물어보기</Button>
       </Footer>
 
