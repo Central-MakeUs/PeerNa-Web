@@ -23,6 +23,10 @@ import Lottie1 from '@assets/review/01성향.json';
 import Lottie2 from '@assets/review/02사고방식.json';
 import Lottie3 from '@assets/review/03소통방식.json';
 import Lottie4 from '@assets/review/04결정방식.json';
+import self_bouvardia from '@assets/review/card/self_bouvardia.png';
+import self_daisy from '@assets/review/card/self_daisy.png';
+import self_mimosa from '@assets/review/card/self_mimosa.png';
+import self_violet from '@assets/review/card/self_violet.png';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
@@ -50,10 +54,10 @@ export const FLOWER_CARDS = {
 };
 
 export const REVIEW_SELF_INTRODUCE_IMAGE_LIST = [
-  bouvardia,
-  daisy,
-  mimosa,
-  violet,
+  self_bouvardia,
+  self_daisy,
+  self_mimosa,
+  self_violet,
 ];
 
 export const KEYWORD_IMAGE_MAPPER = {
