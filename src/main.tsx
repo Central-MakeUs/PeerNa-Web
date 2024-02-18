@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { AxiosError } from 'axios';
 import ReactDOM from 'react-dom/client';
 import toast from 'react-hot-toast';
 import { RecoilRoot } from 'recoil';
@@ -21,8 +22,11 @@ export const queryClient = new QueryClient({
   },
   queryCache: new QueryCache({
     onError: (error: Error | undefined) => {
-      console.log(error);
-      toast.error('네트워크 에러가 발생했어요.');
+      if (error instanceof AxiosError) {
+        if (error.config?.url?.includes('new-token')) {
+          toast.error('다시 로그인 시도를 해주세요');
+        }
+      }
     },
   }),
 });
