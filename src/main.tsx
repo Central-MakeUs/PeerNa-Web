@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { removeAccessToken, removeRefreshToken } from '@utils/token.ts';
 import { AxiosError } from 'axios';
 import ReactDOM from 'react-dom/client';
 import toast from 'react-hot-toast';
@@ -24,6 +25,8 @@ export const queryClient = new QueryClient({
     onError: (error: Error | undefined) => {
       if (error instanceof AxiosError) {
         if (error.config?.url?.includes('new-token')) {
+          removeAccessToken();
+          removeRefreshToken();
           toast.error('다시 로그인 시도를 해주세요');
         }
       }
