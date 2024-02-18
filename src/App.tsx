@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="w-screen min-h-screen flex justify-center">
       <ErrorBoundary
-        onReset={() => window.location.reload()}
+        onReset={() => (window.location.href = '/')}
         fallbackRender={({ resetErrorBoundary }) => (
           <ErrorFallback handleClick={resetErrorBoundary} />
         )}

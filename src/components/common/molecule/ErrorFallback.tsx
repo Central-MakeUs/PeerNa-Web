@@ -15,7 +15,7 @@ export default function ErrorFallback({ handleClick }: ErrorFallbackProps) {
       {handleClick && (
         <div className="w-[200px]">
           <Button buttonSize="md" onClick={handleClick}>
-            다시 시도하기
+            새로고침
           </Button>
         </div>
       )}

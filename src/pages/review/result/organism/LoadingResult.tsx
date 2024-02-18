@@ -59,7 +59,7 @@ export default function LoadingResult() {
         }
 
         setTimeout(() => {
-          push('ReviewResultPage', { type: 'self', step: '3' });
+          push('ReviewResultPage', { type: 'self', step: '2' });
         }, 1000);
       }
     }

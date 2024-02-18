@@ -56,7 +56,11 @@ const HomePage: ActivityComponentType = () => {
     }
 
     // 온보딩을 했고, 로그인이 되어 있는 상태에서 푸시 알림 허용을 안했으면
-    if (isOnboarding && hasToken && !isPushAgree) {
+    const isMobile =
+      navigator.userAgent.includes('iPhone') ||
+      navigator.userAgent.includes('Android');
+
+    if (isOnboarding && hasToken && !isPushAgree && isMobile) {
       openModalPush();
       return;
     }

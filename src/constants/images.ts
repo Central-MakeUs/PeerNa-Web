@@ -23,6 +23,12 @@ import Lottie1 from '@assets/review/01성향.json';
 import Lottie2 from '@assets/review/02사고방식.json';
 import Lottie3 from '@assets/review/03소통방식.json';
 import Lottie4 from '@assets/review/04결정방식.json';
+import self_bouvardia from '@assets/review/card/self_bouvardia.png';
+import self_daisy from '@assets/review/card/self_daisy.png';
+import self_mimosa from '@assets/review/card/self_mimosa.png';
+import self_violet from '@assets/review/card/self_violet.png';
+import confetti from '@assets/review/confetti_effect.json';
+import onboardingCarousel from '@assets/review/onboarding_carousel.json';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
@@ -32,6 +38,8 @@ import mimosa from '@assets/review/self/mimosa.png';
 import violet from '@assets/review/self/violet.png';
 
 export const REVIEW_LOTTIES = [Lottie1, Lottie2, Lottie3, Lottie4];
+export const CONFETTI = confetti;
+
 export const KAKAO_SHARE = KakaoShare;
 export const ON_BOARDING_IMAGE_LIST = [
   Onboarding1,
@@ -50,11 +58,13 @@ export const FLOWER_CARDS = {
 };
 
 export const REVIEW_SELF_INTRODUCE_IMAGE_LIST = [
-  bouvardia,
-  daisy,
-  mimosa,
-  violet,
+  self_bouvardia,
+  self_daisy,
+  self_mimosa,
+  self_violet,
 ];
+
+export const ONBOARDING_CAROUSEL = onboardingCarousel;
 
 export const KEYWORD_IMAGE_MAPPER = {
   ANALYTICAL: Analytical,

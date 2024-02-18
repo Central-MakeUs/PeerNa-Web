@@ -29,7 +29,7 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
   const handleChangeStartDate = (newDate: Date | undefined) =>
     setStartDate((newDate ?? new Date()).toISOString());
   const handleChangeEndDate = (newDate: Date | undefined) => {
-    if (!isValidDateRange(startDate, endDate)) {
+    if (!isValidDateRange(startDate, newDate!.toISOString())) {
       toast.error('시작일은 종료일보다 큰 값일 수 없습니다');
     } else {
       setEndDate((newDate ?? new Date()).toISOString());
