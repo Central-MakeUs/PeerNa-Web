@@ -3,7 +3,7 @@ import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
-import { FLOWER_CARDS } from '@constants/images';
+import { CONFETTI, FLOWER_CARDS } from '@constants/images';
 import { TEST_TYPE_INFO } from '@constants/list';
 import useGetMe from '@hooks/api/member/index/useGetMe';
 import useGetReviewResult from '@hooks/api/member/index/useGetReviewResult';
@@ -13,6 +13,7 @@ import FlipCard from '@pages/review/result/molecule/FlipCard';
 import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { TestType } from '@type/enums';
 import { WebviewBridge } from '@utils/webview';
+import Lottie from 'lottie-react';
 import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -110,6 +111,12 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         </Header.Body>
       </Header>
       <Spacer y={10} />
+      <Lottie
+        animationData={CONFETTI}
+        autoPlay
+        loop={false}
+        className="z-50 absolute"
+      />
       <FlipCard
         selfTestType={data.testType}
         peerTestType={TestType.UNKNOWN}
