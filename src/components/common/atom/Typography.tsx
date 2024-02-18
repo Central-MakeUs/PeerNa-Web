@@ -18,8 +18,9 @@ export default function Typography({
   href,
   ...props
 }: TypographyProps) {
+  const Typography = href ? 'a' : Typo;
   return (
-    <Typo
+    <Typography
       className={`
         ${FontVariantsClassName[variant]}
         text-[${Palette[fontColor]}]
@@ -32,6 +33,6 @@ export default function Typography({
       target={href ? '_blank' : ''}
     >
       {children}
-    </Typo>
+    </Typography>
   );
 }

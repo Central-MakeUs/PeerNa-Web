@@ -1,11 +1,12 @@
 import Badge from '@components/common/atom/Badge';
 import Typography from '@components/common/atom/Typography';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
+import { Fragment } from 'react';
 import TestCardList from './TestCardList';
 
 export default function NoPeerTestResult() {
   return (
-    <>
+    <Fragment>
       <HeaderContainer size="sm">
         <div className="flex items-center gap-2">
           <Typography variant="header03" fontColor="gray08">
@@ -15,6 +16,6 @@ export default function NoPeerTestResult() {
         </div>
       </HeaderContainer>
       <TestCardList type="locked" className="mb-12" />
-    </>
+    </Fragment>
   );
 }

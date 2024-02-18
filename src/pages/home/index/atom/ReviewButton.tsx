@@ -1,19 +1,27 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { PEER_TEST_REQUEST } from '@constants/share';
+import {
+  PEER_TEST_REQUEST,
+  PEER_TEST_TITLE,
+  PEER_TEST_URL,
+} from '@constants/share';
 import useGetMe from '@hooks/api/member/index/useGetMe';
-import useShareLink, { PEER_TEST_URL } from '@hooks/common/useShareLink';
+import useShareLink from '@hooks/common/useShareLink';
 
 export default function ReviewButton() {
   const { data } = useGetMe();
 
   const uuid = data ? data.uuid : '';
-  const shareUrl = PEER_TEST_URL(uuid);
+  const username = data ? data.name : '';
 
   const { handleSendKakaoMessage } = useShareLink();
 
   const handleKakaoShare = () => {
-    handleSendKakaoMessage({ ...PEER_TEST_REQUEST, url: shareUrl });
+    handleSendKakaoMessage({
+      ...PEER_TEST_REQUEST,
+      title: PEER_TEST_TITLE(username),
+      url: PEER_TEST_URL(uuid),
+    });
   };
 
   return (
