@@ -7,7 +7,7 @@ interface ShareDrawerProps {
   openBottomSheet: boolean;
   setOpenBottomSheet: React.Dispatch<React.SetStateAction<boolean>>;
   handleClickShareLink: () => void;
-  handleClickKakaoShare?: () => void;
+  handleClickKakaoShare: () => void;
 }
 
 export default function ShareDrawer({
