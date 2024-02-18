@@ -27,6 +27,7 @@ import self_bouvardia from '@assets/review/card/self_bouvardia.png';
 import self_daisy from '@assets/review/card/self_daisy.png';
 import self_mimosa from '@assets/review/card/self_mimosa.png';
 import self_violet from '@assets/review/card/self_violet.png';
+import onboardingCarousel from '@assets/review/onboarding_carousel.json';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
@@ -59,6 +60,8 @@ export const REVIEW_SELF_INTRODUCE_IMAGE_LIST = [
   self_mimosa,
   self_violet,
 ];
+
+export const ONBOARDING_CAROUSEL = onboardingCarousel;
 
 export const KEYWORD_IMAGE_MAPPER = {
   ANALYTICAL: Analytical,
