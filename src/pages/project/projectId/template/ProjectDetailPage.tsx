@@ -3,10 +3,11 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
-import { PROJECT_REQUEST } from '@constants/share';
+import { PROJECT_REQUEST, PROJECT_TITLE, PROJECT_URL } from '@constants/share';
+import useGetMe from '@hooks/api/member/index/useGetMe';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
 import usePostProjectRequestJoin from '@hooks/api/project/projectId/usePostProjectRequestJoin';
-import useShareLink, { PROJECT_URL } from '@hooks/common/useShareLink';
+import useShareLink from '@hooks/common/useShareLink';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import ProjectInformation from '@pages/project/projectId/organism/ProjectInformation';
@@ -26,7 +27,8 @@ const ProjectDetailPage: ActivityComponentType<ProjectDetailPageParams> = ({
   const { pop } = useFlow();
   const handleClickBackIcon = () => pop({ animate: true });
   const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
-
+  const { data: user } = useGetMe();
+  const username = user?.name ?? '';
   const { mutate } = usePostProjectRequestJoin();
   const handleClickJoinProject = () => mutate(id);
   const handleClickShare = () => setOpenBottomSheet(true);
@@ -40,6 +42,7 @@ const ProjectDetailPage: ActivityComponentType<ProjectDetailPageParams> = ({
   const handleKakaoShare = () => {
     handleSendKakaoMessage({
       ...PROJECT_REQUEST,
+      title: PROJECT_TITLE(username),
       url: PROJECT_URL(parseInt(params.id)),
     });
   };

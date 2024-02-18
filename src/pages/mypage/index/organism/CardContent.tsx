@@ -34,7 +34,7 @@ export default function CardContent({ data, handleClick }: CardContentProps) {
           <PeerTestResult peerCardList={peerCardList} />
         )}
       </ErrorBoundaryWithSuspense>
-      {!peerCardList && <NoPeerTestResult />}
+      {peerCardList.length === 0 && <NoPeerTestResult />}
       <ErrorBoundaryWithSuspense>
         {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
           <OverallOpinion totalEvaluation={totalEvaluation} />

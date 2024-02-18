@@ -1,5 +1,5 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
-import { baseUrl } from '@constants/share';
+import { PEER_TEST_URL, PROJECT_URL } from '@constants/share';
 import toast from 'react-hot-toast';
 
 type KakaoMessage = {
@@ -16,11 +16,6 @@ type ShareLink = {
   uuid?: string;
 };
 
-export const PEER_TEST_URL = (uuid: string) =>
-  baseUrl + `/review/peer/?uuid=${uuid}`;
-
-export const PROJECT_URL = (id: number) => baseUrl + `/project/${id}/propose`;
-
 export default function useShareLink() {
   const handleSendKakaoMessage = ({
     title,
@@ -28,7 +23,7 @@ export default function useShareLink() {
     buttonText,
     imagePath,
     url,
-  }: KakaoMessage) => {
+  }: KakaoMessage): void => {
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {

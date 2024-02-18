@@ -9,9 +9,13 @@ import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
-import { PEER_TEST_REQUEST } from '@constants/share';
+import {
+  PEER_TEST_REQUEST,
+  PEER_TEST_TITLE,
+  PEER_TEST_URL,
+} from '@constants/share';
 import useGetMyPageInfo from '@hooks/api/member/index/useGetMypageInfo';
-import useShareLink, { PEER_TEST_URL } from '@hooks/common/useShareLink';
+import useShareLink from '@hooks/common/useShareLink';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Spacer, Tab } from '@nextui-org/react';
@@ -33,6 +37,7 @@ const MyPage: ActivityComponentType = () => {
   const { memberMyPageInfoDto, peerTestCount, peerTestType } = data;
   const selfTestType = memberMyPageInfoDto.testType;
   const uuid = memberMyPageInfoDto.uuid;
+  const username = memberMyPageInfoDto.name;
 
   const { handleShareLink, handleSendKakaoMessage } = useShareLink();
   const { openModal } = useModal('selfTest');
@@ -49,6 +54,7 @@ const MyPage: ActivityComponentType = () => {
   const handleKakaoShare = () => {
     handleSendKakaoMessage({
       ...PEER_TEST_REQUEST,
+      title: PEER_TEST_TITLE(username),
       url: PEER_TEST_URL(uuid),
     });
   };
@@ -64,7 +70,7 @@ const MyPage: ActivityComponentType = () => {
     if (!selfTestType) {
       openModal();
     }
-  }, []);
+  }, [selfTestType]);
 
   const handleClickShare = () => setOpenBottomSheet(true);
   return (

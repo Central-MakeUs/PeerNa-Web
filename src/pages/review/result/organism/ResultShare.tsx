@@ -5,8 +5,14 @@ import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { CONFETTI, FLOWER_CARDS } from '@constants/images';
 import { TEST_TYPE_INFO } from '@constants/list';
+import {
+  PEER_TEST_REQUEST,
+  PEER_TEST_TITLE,
+  PEER_TEST_URL,
+} from '@constants/share';
 import useGetMe from '@hooks/api/member/index/useGetMe';
 import useGetReviewResult from '@hooks/api/member/index/useGetReviewResult';
+import useShareLink from '@hooks/common/useShareLink';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import FlipCard from '@pages/review/result/molecule/FlipCard';
@@ -28,6 +34,8 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   const { data } = useGetReviewResult();
   const ref = useRef<HTMLDivElement>(null);
 
+  const { handleSendKakaoMessage, handleShareLink } = useShareLink();
+
   const handleClickBackIcon = () =>
     push('ReviewResultPage', { type: type, step: String(curStep - 1) });
 
@@ -37,18 +45,23 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
   const handleClickShare = () => setOpenBottomSheet(true);
 
   const { data: user } = useGetMe();
-  const handleClickShareLink = async () => {
-    const uuid = user?.uuid ?? '';
-    try {
-      await navigator.clipboard.writeText(
-        `${window.location.origin}/review/peer/?uuid=${uuid}&step=1`,
-      );
-      toast.success('링크 복사 완료!', {
-        icon: <SvgIcon id="Complete" color="gray08" />,
-      });
-    } catch (err) {
-      console.log(err);
-    }
+
+  const username = user?.name ?? '';
+  const uuid = user?.uuid ?? '';
+
+  const handleKakaoShare = () => {
+    handleSendKakaoMessage({
+      ...PEER_TEST_REQUEST,
+      title: PEER_TEST_TITLE(username),
+      url: PEER_TEST_URL(uuid),
+    });
+  };
+
+  const handleCopyLink = () => {
+    handleShareLink({
+      type: 'peerTest',
+      uuid: uuid,
+    });
   };
 
   const handleDownload = () => {
@@ -133,7 +146,8 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       <ShareDrawer
         openBottomSheet={openBottomSheet}
         setOpenBottomSheet={setOpenBottomSheet}
-        handleClickShareLink={handleClickShareLink}
+        handleClickShareLink={handleCopyLink}
+        handleClickKakaoShare={handleKakaoShare}
       />
     </div>
   );
