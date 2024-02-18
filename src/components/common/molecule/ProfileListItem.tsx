@@ -56,21 +56,16 @@ export default function ProfileListItem({
             <Typography
               variant="body04"
               fontColor={isMyProfile ? 'gray04' : 'gray07'}
-              className="mr-1 !whitespace-nowrap"
+              className="!whitespace-nowrap after:content-['|'] after:ml-1"
             >
               {PART_MAPPER[part]}
             </Typography>
-            {name && (
-              <span className={`text-${isMyProfile ? 'gray04' : 'gray07'}`}>
-                |
-              </span>
-            )}
             <Typography
               variant="body04"
               fontColor={isMyProfile ? 'gray04' : 'gray07'}
-              className="ml-1 !whitespace-nowrap"
+              className="!whitespace-nowrap before:mr-1"
             >
-              {totalScore > 0 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
+              {totalScore > 1 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
             </Typography>
           </div>
           <Typography variant="body05" fontColor="gray05">
