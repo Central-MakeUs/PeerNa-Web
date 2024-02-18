@@ -27,6 +27,7 @@ import self_bouvardia from '@assets/review/card/self_bouvardia.png';
 import self_daisy from '@assets/review/card/self_daisy.png';
 import self_mimosa from '@assets/review/card/self_mimosa.png';
 import self_violet from '@assets/review/card/self_violet.png';
+import confetti from '@assets/review/confetti_effect.json';
 import onboardingCarousel from '@assets/review/onboarding_carousel.json';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
@@ -37,6 +38,8 @@ import mimosa from '@assets/review/self/mimosa.png';
 import violet from '@assets/review/self/violet.png';
 
 export const REVIEW_LOTTIES = [Lottie1, Lottie2, Lottie3, Lottie4];
+export const CONFETTI = confetti;
+
 export const KAKAO_SHARE = KakaoShare;
 export const ON_BOARDING_IMAGE_LIST = [
   Onboarding1,
