@@ -1,6 +1,7 @@
 import Typography from '@components/common/atom/Typography';
 import { StackModals } from '@components/common/molecule/Modals';
 import useModal from '@hooks/store/useModal';
+import toast from 'react-hot-toast';
 
 export default function SettingMenu() {
   const link = [
@@ -13,7 +14,11 @@ export default function SettingMenu() {
   const { openModal: withdrawalOpen } = useModal('withdrawal');
 
   const handlePushAlarm = () => {
-    pushAlarmOpen();
+    const isMobile =
+      navigator.userAgent.includes('iPhone') ||
+      navigator.userAgent.includes('Android');
+    if (isMobile) pushAlarmOpen();
+    else toast.error('알림 설정은 앱에서만 가능합니다');
   };
 
   const handleWithdrawal = () => {
