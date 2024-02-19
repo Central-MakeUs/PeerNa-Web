@@ -23,7 +23,7 @@ const ReviewResultPage: ActivityComponentType<ReviewResultPageParams> = ({
     push('ReviewResultPage', { type: params.type, step: nextStep });
   };
 
-  const bgGradient = curStep > 2 ? 'bg-peer-bg' : '';
+  const bgGradient = curStep === 4 ? 'bg-peer-bg' : '';
 
   return (
     <AppScreenContainer

@@ -20,7 +20,7 @@ import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { TestType } from '@type/enums';
 import { WebviewBridge } from '@utils/webview';
 import Lottie from 'lottie-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
 interface ResultShareProps {
@@ -106,6 +106,16 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       });
   };
 
+  const [showLottie, setShowLottie] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLottie(() => true);
+    }, 1000);
+
+    return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 정리
+  }, []);
+
   return (
     <div
       className="w-full h-full flex flex-col items-center"
@@ -124,24 +134,24 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         </Header.Body>
       </Header>
       <Spacer y={10} />
-      <Lottie
-        animationData={CONFETTI}
-        autoPlay
-        loop={false}
-        className="z-50 absolute"
-      />
+      {showLottie && (
+        <Lottie
+          animationData={CONFETTI}
+          autoPlay={false}
+          loop={false}
+          className="z-10 absolute"
+        />
+      )}
       <FlipCard
         selfTestType={data.testType}
         peerTestType={TestType.UNKNOWN}
         size="L"
         ref={ref}
       />
-      <Footer bottom={3} className="flex gap-4">
-        {!navigator.userAgent.includes('Android') && (
-          <Button buttonVariant="tertiary" onClick={handleDownload}>
-            카드 저장하기
-          </Button>
-        )}
+      <Footer bottom={3} className="flex gap-4 z-50">
+        <Button buttonVariant="tertiary" onClick={handleDownload}>
+          카드 저장하기
+        </Button>
         <Button onClick={handleClickShare}>동료에게 물어보기</Button>
       </Footer>
 
