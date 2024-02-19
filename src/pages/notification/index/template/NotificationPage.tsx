@@ -20,10 +20,10 @@ const NotificationPage: ActivityComponentType = () => {
       </Header>
       <Content>
         <UnderlineTabs>
-          <Tab className="w-full" title="피어 테스트">
+          <Tab className="w-full h-full" title="피어 테스트">
             <ReviewNotificationTab />
           </Tab>
-          <Tab className="w-full" title="프로젝트">
+          <Tab className="w-full h-full" title="프로젝트">
             <ProjectNotificationTab />
           </Tab>
         </UnderlineTabs>

@@ -26,7 +26,7 @@ function CustomTextArea(
       classNames={{
         base: 'border-1 border-[#E3E6E8] rounded-xl',
         input: '!text-lg',
-        inputWrapper: '!h-full',
+        inputWrapper: '!h-full border-gray02 border-1',
       }}
       type="text"
       isClearable

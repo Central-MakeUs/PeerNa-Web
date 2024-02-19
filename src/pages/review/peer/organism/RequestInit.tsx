@@ -52,7 +52,7 @@ export default function RequestInit({ uuid, memberId }: RequestInitProps) {
           <SvgIcon id="NotepadPerson" color="primary" width={64} height={64} />
         </div>
       </FixedCenter>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Typography
           variant="body02"
           fontColor="gray04"

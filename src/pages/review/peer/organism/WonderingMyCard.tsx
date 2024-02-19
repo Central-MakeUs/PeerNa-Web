@@ -55,7 +55,7 @@ export default function WonderingMyCard() {
           </motion.div>
         </div>
       </Content>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleClick}>
           <Typography variant="body02" fontColor="white">
             셀프 테스트 시작하기
