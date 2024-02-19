@@ -21,7 +21,7 @@ export default function UnderlineTabs({
         tabList:
           'w-full relative rounded-none p-0 border-b border-divider overflow-visible',
         cursor: 'w-full bg-[#67737E] -bottom-[1.4px]',
-        tab: 'px-4 h-12',
+        tab: 'px-4 !h-12',
         tabContent: `${FontVariantsClassName.body01} text-gray04 group-data-[selected=true]:text-gray08`,
       }}
     >
