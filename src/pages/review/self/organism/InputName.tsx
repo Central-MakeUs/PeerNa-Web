@@ -2,6 +2,7 @@ import ShakeBox from '@components/animate/ShakeBox';
 import TextInput from '@components/common/atom/TextInput';
 import Typography from '@components/common/atom/Typography';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
+import { Spacer } from '@nextui-org/react';
 import { Fragment } from 'react';
 
 export default function InputName() {
@@ -16,6 +17,7 @@ export default function InputName() {
           placeholder="본명을 입력해주세요"
         />
       </ShakeBox>
+      <Spacer y={2} />
       <div className="flex justify-end">
         <Typography
           variant="body02"

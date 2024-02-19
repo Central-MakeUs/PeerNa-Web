@@ -12,7 +12,7 @@ import useReviewState from '@hooks/store/useReviewState';
 import OnboardingCard from '@pages/peer/onboard/organism/OnboardingCard';
 import { ActivityComponentType } from '@stackflow/react';
 import { getAccessToken, getRefreshToken } from '@utils/token';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 
 type OnboardingPageParams = {
   step: string;
@@ -70,18 +70,22 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
       <OnboardingCard step={curStep} />
       <Footer bottom={5} className="px-4">
         <div className="w-full flex flex-row justify-center gap-1 mb-4">
-          <Typography variant="body04" fontColor="gray04">
-            이미 계정이 있으신가요?
-          </Typography>
-          <button onClick={handleClickStart}>
-            <Typography
-              variant="body04"
-              fontColor="primary"
-              className="underline underline-offset-2 decoration-[1.5px]"
-            >
-              로그인
-            </Typography>
-          </button>
+          {curStep === 1 && (
+            <Fragment>
+              <Typography variant="body04" fontColor="gray04">
+                이미 계정이 있으신가요?
+              </Typography>
+              <button onClick={handleClickStart}>
+                <Typography
+                  variant="body04"
+                  fontColor="primary"
+                  className="underline underline-offset-2 decoration-[1.5px]"
+                >
+                  로그인
+                </Typography>
+              </button>
+            </Fragment>
+          )}
         </div>
         <Button className="px-2" onClick={handleClickPush}>
           {buttonText}

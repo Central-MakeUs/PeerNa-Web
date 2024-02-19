@@ -1,4 +1,5 @@
 import Button from '@components/common/atom/Button';
+import Typography from '@components/common/atom/Typography';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
@@ -49,12 +50,15 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
         <Header.TopBar>
           <Header.BackIcon handleClick={() => pop({ animate: true })} />
         </Header.TopBar>
-        <Header.Body className="mt-12">
-          <Header.Title>{REVIEW_SELF_TITLE[curStep]}</Header.Title>
-        </Header.Body>
       </Header>
+      <Spacer y={12} />
+      <div className="w-full px-4">
+        <Typography variant="header01" fontColor="gray08" className="text-left">
+          {REVIEW_SELF_TITLE[curStep]}
+        </Typography>
+      </div>
       <Spacer y={4} />
-      <div className="w-full flex flex-col gap-4 px-4">
+      <div className="w-full flex flex-col px-4">
         {curStep === 0 && <ReviewGuide />}
         {curStep === 1 && <InputName />}
         {curStep === 2 && <SelectJob />}
