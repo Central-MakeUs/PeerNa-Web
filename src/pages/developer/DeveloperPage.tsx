@@ -61,6 +61,9 @@ const DeveloperPage: ActivityComponentType = () => {
       </Header>
       <Content>
         <div className="min-h-screen">
+          {!navigator.userAgent.includes('Android') && (
+            <Button onClick={handleDownload}>카드 저장하기</Button>
+          )}
           <Button onClick={handleDownload}>다운로드</Button>
         </div>
         <ErrorBoundaryWithSuspense onReset={() => console.log('reset')}>
