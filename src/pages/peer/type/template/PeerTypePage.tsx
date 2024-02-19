@@ -31,7 +31,7 @@ const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
     C: 'bg-secondary-purple bg-opacity-20',
   };
 
-  const { data, isFetchingNextPage, fetchNextPage } =
+  const { data, isFetchingNextPage, fetchNextPage, isLoading } =
     useGetSearchPeerType(peerType);
 
   const intersectionRef = useIntersection(fetchNextPage);
@@ -51,6 +51,7 @@ const PeerTypePage: ActivityComponentType<PeerTypePageParams> = ({
               profile => !profile.job.includes('WITHDRAWAL'),
             ),
           )}
+          isLoading={isLoading}
         />
       </ErrorBoundaryWithSuspense>
       <IntersectionBox ref={intersectionRef} />

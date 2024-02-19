@@ -17,11 +17,15 @@ export default function PeerToolTip({ type }: PeerToolTipProps) {
   return (
     <Tooltip
       content={toolTip}
+      showArrow
       isOpen={isOpen}
-      className="bg-gray07 text-white !whitespace-pre-line"
+      className="bg-gray07 text-white !whitespace-pre-line mt-9"
+      classNames={{
+        base: ['before:bg-gray07'],
+      }}
     >
       <Button
-        className="bg-transparent !min-w-unit-0 !px-unit-0 !hover:bg-transparent"
+        className="bg-transparent !min-w-unit-sm !w-4 !h-4 !px-unit-0 !hover:bg-transparent"
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         onPress={() => setIsOpen(!isOpen)}

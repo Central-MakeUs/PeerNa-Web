@@ -78,7 +78,7 @@ const HomePage: ActivityComponentType = () => {
 
   const [currentTab, setCurrentTab] = useState('ALL');
 
-  const { data, refetch, isFetchingNextPage, fetchNextPage } =
+  const { data, refetch, isFetchingNextPage, fetchNextPage, isLoading } =
     useGetSearchPeerPart(currentTab);
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const HomePage: ActivityComponentType = () => {
             </Header.Body>
           </Header>
           <Layout>
-            <HeaderContainer size="md">
+            <HeaderContainer size="sm">
               <Typography variant="header03">
                 원하는 유형의 동료를 찾아보세요
               </Typography>
@@ -134,6 +134,7 @@ const HomePage: ActivityComponentType = () => {
                     profile => !profile.job.includes('WITHDRAWAL'),
                   ),
                 )}
+                isLoading={isLoading}
               />
             </ErrorBoundaryWithSuspense>
             <IntersectionBox ref={intersectionRef} />

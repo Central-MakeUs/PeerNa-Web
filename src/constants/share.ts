@@ -18,7 +18,7 @@ export const PEER_TEST_REQUEST = {
   description: `저는 어떤 동료인가요? \n피어테스트를 통해 솔직하게 알려주세요`,
   buttonText: '피어테스트 응답하기',
   imagePath:
-    'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTMvDA1jejdkIRTg7jKQg9KDNB1yXAZ-zW7EOaTqlAjOsqxJlsG8PH9cSk5UOENxqdZzxVUdhTq8lOfccEjqeXKveLD=w1920-h868',
+    'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSZ6v5XcEHtBLPg5K85rHsv6_s9UW5N1uynvNC8N7nBp1FY7fNHjadGZmtwV9GFaIL70cV4h9Z8ZT1wylnXgBst_K5J=w1920-h868',
   url: PEER_TEST_URL,
 };
 
