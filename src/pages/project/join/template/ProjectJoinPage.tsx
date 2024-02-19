@@ -156,7 +156,7 @@ const ProjectJoinPage: ActivityComponentType<ProjectJoinPageParams> = ({
         </div>
         <Spacer y={16} />
       </Content>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <div className="flex flex-row gap-4">
           <Button buttonVariant="tertiary" onClick={handleMyProjectList}>
             <Typography variant="body01">거절</Typography>

@@ -69,7 +69,7 @@ const ProjectDetailPage: ActivityComponentType<ProjectDetailPageParams> = ({
         <ProjectInformation projectInformation={projectInformation} />
         <Spacer y={16} />
       </Content>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         {type === 'other' && (
           <Button onClick={handleClickJoinProject}>참가 신청하기</Button>
         )}

@@ -81,7 +81,7 @@ export default function ResultGuide() {
           </Card>
         </div>
       </Content>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleClick}>
           <Typography variant="body01" fontColor="white">
             동의 후 결과 확인하기

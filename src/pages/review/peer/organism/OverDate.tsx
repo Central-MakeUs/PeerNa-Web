@@ -24,7 +24,7 @@ export default function OverDate() {
           <SvgIcon id="CalendarError" color="primary" width={64} height={64} />
         </div>
       </FixedCenter>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleClick}>다음에 다시 올게요</Button>
       </Footer>
     </Fragment>

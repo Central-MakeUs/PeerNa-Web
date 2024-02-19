@@ -14,7 +14,7 @@ function Header({ children }: PropsWithChildren) {
 
 function TopBar({ children }: PropsWithChildren) {
   return (
-    <div className="w-full flex items-center justify-between h-[68px] px-2 py-[18px]">
+    <div className="w-full flex items-center justify-between h-[68px] py-[18px]">
       {children}
     </div>
   );
@@ -27,7 +27,7 @@ interface BackIconProps {
 function BackIcon({ handleClick }: BackIconProps) {
   return (
     <IconButton
-      iconProps={{ id: 'ArrowLeft', color: 'black' }}
+      iconProps={{ id: 'ArrowLeft', color: 'gray07', width: 20, height: 20 }}
       onClick={handleClick}
     />
   );

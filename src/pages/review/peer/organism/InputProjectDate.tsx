@@ -62,7 +62,7 @@ export default function InputProjectDate({
         />
       </div>
 
-      <Footer bottom={3} className="p-4">
+      <Footer bottom={5} className="p-4">
         <Button
           isDisabled={startDate === '' || endDate === ''}
           onClick={handleClick}

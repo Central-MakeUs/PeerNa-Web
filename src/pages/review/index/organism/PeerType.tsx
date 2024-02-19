@@ -14,7 +14,7 @@ interface PeerTypeProps {
 export default function PeerType({ answerStep, handleClick }: PeerTypeProps) {
   return (
     <SlideBox trigger={answerStep}>
-      <div className="flex flex-col justify-center items-center gap-3 mt-[52px]">
+      <div className="flex flex-col justify-center gap-3">
         {Object.keys(PEER_GRADE_INFO).map((type, index) => {
           const peerGradeType: PeerGrade = type as PeerGrade;
           const peerGradeInfo = PEER_GRADE_INFO[peerGradeType];

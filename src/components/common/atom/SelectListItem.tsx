@@ -24,7 +24,9 @@ export default function SelectListItem({
         >
           {title}
         </Typography>
-        {isSelect && <SvgIcon id="Check" color="primary500" />}
+        {isSelect && (
+          <SvgIcon id="Check" color="primary500" width={18} height={13} />
+        )}
       </div>
     </div>
   );
