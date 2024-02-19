@@ -24,7 +24,7 @@ export default function Picker({
     flex-1
     text-gray07
     bg-gray01 
-    border-2 
+    border-1
     border-gray02
     focus:bg-opacity-20
     ${focusStyles}

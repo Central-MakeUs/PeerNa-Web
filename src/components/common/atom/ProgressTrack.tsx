@@ -14,7 +14,7 @@ export interface ProgressTrackProps extends ProgressPropsWithNextui {
 type ProgressBarSizeType = keyof typeof ProgressBarSize;
 
 const ProgressBarSize = {
-  short: 'max-w-[133px] min-w-[54.5px] !h-[4px]',
+  short: 'max-w-[133px] !h-[4px]',
   long: '!w-[390px] !h-[4px]',
 };
 
@@ -52,7 +52,7 @@ export default function ProgressTrack({
       classNames={{
         base: ProgressBarSize[barSize],
         track: nextStep ? 'bg-gray02' : 'bg-secondary-orange/20',
-        indicator: 'bg-secondary-orange',
+        indicator: 'bg-primary400',
       }}
     />
   );

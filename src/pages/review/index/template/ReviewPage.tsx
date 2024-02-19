@@ -8,6 +8,7 @@ import usePostSigninUserReviewPeer from '@hooks/api/review/index/usePostSigninUs
 import usePostUnknownUserReviewPeer from '@hooks/api/review/index/usePostUnknownUserReviewPeer';
 import { useFlow, useStepFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
+import { Spacer } from '@nextui-org/react';
 import ReviewCenterImage from '@pages/review/index/atom/ReviewCenterImage';
 import TestHeader from '@pages/review/index/molecule/ReviewHeader';
 import OneLineReview from '@pages/review/index/organism/OneLineReview';
@@ -15,7 +16,7 @@ import PeerType from '@pages/review/index/organism/PeerType';
 import TwoWayPicker from '@pages/review/index/organism/TwoWayPicker';
 import { ActivityComponentType } from '@stackflow/react';
 import { PeerGradeTypes } from '@store/reviewState';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 type ReviewPageParams = {
@@ -128,7 +129,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
           <Header.BackIcon handleClick={handleClickBackButton} />
         </Header.TopBar>
       </Header>
-      <div className="flex flex-col w-full items-center px-4 mt-6 gap-4">
+      <div className="flex flex-col w-full items-center px-4 gap-4">
         <TestHeader type={type} curStep={curStep} trackStep={trackStep} />
         {(curStep !== 4 || trackStep !== 7) &&
           (curStep !== 4 || trackStep !== 6) && (
@@ -142,10 +143,13 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
           />
         )}
         {curStep === 4 && trackStep === 6 && (
-          <PeerType
-            answerStep={answerStep}
-            handleClick={handleClickPeerTypeButton}
-          />
+          <Fragment>
+            <Spacer y={10} />
+            <PeerType
+              answerStep={answerStep}
+              handleClick={handleClickPeerTypeButton}
+            />
+          </Fragment>
         )}
         {curStep === 4 && trackStep === 7 && (
           <OneLineReview answerStep={answerStep} />

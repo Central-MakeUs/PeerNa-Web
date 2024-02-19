@@ -40,7 +40,7 @@ export default function TestHeader({
   return (
     <div className="w-full">
       <ProgressBar step={curStep} maxStep={maxStep} trackStep={trackStep} />
-      <div className="py-4">
+      <div className="py-6">
         <Typography variant="header01">{title}</Typography>
       </div>
     </div>

@@ -29,7 +29,7 @@ export default function ProgressStep({
         base: 'w-5 h-5',
       }}
       className={`text-white text-sm ${
-        isDisabled ? 'bg-gray02' : 'bg-secondary-orange'
+        isDisabled ? 'bg-gray02' : 'bg-primary400'
       }`}
       {...props}
     />
