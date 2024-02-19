@@ -7,7 +7,7 @@ import useGetMyProjectList from '@hooks/api/project/index/useGetMyProjectList';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
-import EmptyNotification from '@pages/notification/index/molecule/EmptyNotification';
+import EmptyProject from '@pages/project/index/molecule/EmptyProject';
 import { Fragment } from 'react';
 
 export default function MyProject() {
@@ -21,19 +21,24 @@ export default function MyProject() {
   return (
     <Fragment>
       <div className="w-full" onClick={handlePushCreateProjectPage}>
+        <Spacer y={5} />
         <AlarmListItem
           title="내 프로젝트를 만들어보세요"
           subtitle="원하는 동료들과 함께해요"
         />
       </div>
-      <Spacer y={5} />
+      <Spacer y={8} />
       <Typography variant="caption01" fontColor="gray04" className="text-left">
         최신순
       </Typography>
       <Spacer y={3} />
       <div className="flex flex-col gap-3">
         {data?.pages.every(group => group.result.length === 0) ? (
-          <EmptyNotification />
+          <div>
+            <Spacer y={20} />
+            <Spacer y={2} />
+            <EmptyProject />
+          </div>
         ) : (
           data?.pages.map(group =>
             group.result.map(project => (
