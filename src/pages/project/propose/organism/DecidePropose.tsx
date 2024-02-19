@@ -27,7 +27,7 @@ export default function DecidePropose({ projectId }: DecideProposeProps) {
         </Header.TopBar>
       </Header>
       <ProjectInformation projectInformation={projectInformation} />
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <div className="w-full flex flex-row gap-4">
           <DeclineButton />
           <AcceptButton />

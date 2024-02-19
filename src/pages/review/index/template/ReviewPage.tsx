@@ -152,7 +152,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
         )}
       </div>
       {curStep === 4 && trackStep === 7 && (
-        <Footer bottom={3} className="px-4">
+        <Footer bottom={5} className="px-4">
           <Button
             onClick={handleClickLastButton}
             isDisabled={review.feedback === ''}

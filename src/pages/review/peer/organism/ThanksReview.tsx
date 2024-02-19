@@ -38,7 +38,7 @@ export default function ThanksReview() {
           <SvgIcon id="CheckboxPerson" color="primary" width={64} height={64} />
         </div>
       </FixedCenter>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleClick}>확인</Button>
       </Footer>
     </Fragment>

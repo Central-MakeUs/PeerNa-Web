@@ -144,7 +144,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
         size="L"
         ref={ref}
       />
-      <Footer bottom={3} className="flex gap-4 z-50">
+      <Footer bottom={5} className="flex gap-4 z-50">
         <Button buttonVariant="tertiary" onClick={handleDownload}>
           카드 저장하기
         </Button>

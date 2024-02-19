@@ -100,7 +100,7 @@ const ProfileEditPage: ActivityComponentType = () => {
           )}
         </ErrorBoundaryWithSuspense>
       </Content>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleProfile} isDisabled={!isValidProfileChange}>
           저장
         </Button>

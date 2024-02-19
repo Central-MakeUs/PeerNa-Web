@@ -36,7 +36,7 @@ const PeerProjectDetailPage: ActivityComponentType<
       <TopHeader onClick={handleBack} />
       <div className="w-full">
         {projectInfo && <PeerProjectInfo projectInfo={projectInfo} />}
-        <Footer bottom={3} className="px-4">
+        <Footer bottom={5} className="px-4">
           <Button onClick={handleInvitePeer}>동료 초대하기</Button>
         </Footer>
       </div>

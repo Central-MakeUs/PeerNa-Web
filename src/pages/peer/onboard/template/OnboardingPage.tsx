@@ -68,7 +68,7 @@ const OnboardingPage: ActivityComponentType<OnboardingPageParams> = ({
       </Header>
       <Progress curStep={curStep} lastStep={4} />
       <OnboardingCard step={curStep} />
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <div className="w-full flex flex-row justify-center gap-1 mb-4">
           <Typography variant="body04" fontColor="gray04">
             이미 계정이 있으신가요?

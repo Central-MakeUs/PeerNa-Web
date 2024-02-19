@@ -28,7 +28,7 @@ export default function IsOffendedResponse() {
           문항들로 구성되어 있어요."
         />
       </FixedCenter>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleClick}>다음</Button>
       </Footer>
     </Fragment>
