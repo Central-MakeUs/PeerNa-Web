@@ -15,11 +15,15 @@ export default function TotalScoreToolTip({
   return (
     <Tooltip
       content={`${totalScore}점`}
+      showArrow
       isOpen={isOpen}
       className="bg-gray07 text-white"
+      classNames={{
+        base: ['before:bg-gray07'],
+      }}
     >
       <Button
-        className="bg-transparent !min-w-unit-0 !px-unit-0"
+        className="bg-transparent !min-w-unit-0 !px-unit-0 !hover:bg-transparent !focus:bg-transparent"
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         onPress={() => setIsOpen(!isOpen)}
