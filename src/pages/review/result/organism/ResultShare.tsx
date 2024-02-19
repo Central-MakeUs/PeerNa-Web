@@ -93,7 +93,6 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       });
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [showLottie, setShowLottie] = useState<boolean>(false);
 
   useEffect(() => {
