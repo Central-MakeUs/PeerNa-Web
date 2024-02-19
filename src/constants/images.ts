@@ -32,10 +32,6 @@ import onboardingCarousel from '@assets/review/onboarding_carousel.json';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
-import bouvardia from '@assets/review/self/bouvardia.png';
-import daisy from '@assets/review/self/daisy.png';
-import mimosa from '@assets/review/self/mimosa.png';
-import violet from '@assets/review/self/violet.png';
 
 export const REVIEW_LOTTIES = [Lottie1, Lottie2, Lottie3, Lottie4];
 export const CONFETTI = confetti;
@@ -50,10 +46,10 @@ export const ON_BOARDING_IMAGE_LIST = [
 export const PEER_REVIEW_IMAGE_LIST = [Peer1, Peer2, Peer3];
 
 export const FLOWER_CARDS = {
-  D: bouvardia,
-  I: daisy,
-  S: violet,
-  C: mimosa,
+  D: self_bouvardia,
+  I: self_daisy,
+  S: self_mimosa,
+  C: self_violet,
   UNKNOWN: '',
 };
 
