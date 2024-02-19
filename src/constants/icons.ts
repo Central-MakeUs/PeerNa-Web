@@ -86,4 +86,5 @@ export const Icon = {
   DocumentTableSearch: 'document_table_search',
   ShareLink: 'shareLink',
   PeerNaLogo: 'home_peerNa',
+  Line: 'line',
 };
