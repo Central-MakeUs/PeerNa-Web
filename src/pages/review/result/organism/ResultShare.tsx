@@ -117,7 +117,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       className="w-full h-full flex flex-col items-center"
       style={{ backgroundImage: gradient }}
     >
-      <Header>
+      <Header className="z-10">
         <Header.TopBar>
           <Header.BackIcon handleClick={handleClickBackIcon} />
           <Header.RightButton
@@ -135,7 +135,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           animationData={CONFETTI}
           autoPlay={false}
           loop={false}
-          className="z-10 absolute"
+          className="z-[5] absolute"
         />
       )}
       <FlipCard

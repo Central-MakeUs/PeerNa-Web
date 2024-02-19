@@ -2,11 +2,17 @@ import IconButton from '@components/common/atom/IconButton';
 import Typography, {
   TypographyProps,
 } from '@components/common/atom/Typography';
-import { PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
 
-function Header({ children }: PropsWithChildren) {
+function Header({
+  children,
+  ...props
+}: PropsWithChildren<ComponentProps<'div'>>) {
   return (
-    <div className="w-full box-border flex flex-col bg-transparent px-4">
+    <div
+      {...props}
+      className={`w-full box-border flex flex-col bg-transparent px-4 ${props.className}`}
+    >
       {children}
     </div>
   );
