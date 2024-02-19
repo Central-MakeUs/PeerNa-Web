@@ -1,20 +1,27 @@
 import Button from '@components/common/atom/Button';
+import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import ProfileListItem from '@components/common/molecule/ProfileListItem';
 import { useFlow } from '@hooks/common/useStackFlow';
 import EmptyData from '@pages/home/index/atom/EmptyData';
 import { PeerSimpleProfileType } from '@type/index';
 
+type UserProfileListProps = {
+  data?: PeerSimpleProfileType[];
+  isLoading: boolean;
+};
+
 export default function UserProfileList({
   data = [],
-}: {
-  data?: PeerSimpleProfileType[];
-}) {
+  isLoading,
+}: UserProfileListProps) {
   const { push } = useFlow();
 
   const handlePeerDetail = (memberId: string) => {
     push('PeerDetailPage', { memberId });
   };
+
+  if (isLoading) return <Spinner />;
 
   if (data.length === 0) {
     return <EmptyData />;
