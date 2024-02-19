@@ -18,6 +18,7 @@ import { Spacer } from '@nextui-org/react';
 import FlipCard from '@pages/review/result/molecule/FlipCard';
 import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { TestType } from '@type/enums';
+import { getIsApp } from '@utils';
 import { WebviewBridge } from '@utils/webview';
 import Lottie from 'lottie-react';
 import { useEffect, useRef, useState } from 'react';
@@ -69,11 +70,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
       .then(response => response.blob())
       .then(blob => {
         const href = window.URL.createObjectURL(blob);
-        console.log(navigator.userAgent);
-        if (
-          navigator.userAgent.includes('iPhone') ||
-          navigator.userAgent.includes('Android')
-        ) {
+        if (getIsApp()) {
           const reader = new FileReader();
           reader.onloadend = () => {
             WebviewBridge.postMessage({
@@ -86,7 +83,6 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           const link = document.createElement('a');
           link.href = href;
           link.download = FLOWER_CARDS[data.testType];
-          console.log(link);
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
