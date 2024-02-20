@@ -51,7 +51,7 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
           <Header.BackIcon handleClick={() => pop({ animate: true })} />
         </Header.TopBar>
       </Header>
-      <Spacer y={12} />
+      <Spacer y={10} />
       <div className="w-full px-4">
         <Typography variant="header01" fontColor="gray08" className="text-left">
           {REVIEW_SELF_TITLE[curStep]}
