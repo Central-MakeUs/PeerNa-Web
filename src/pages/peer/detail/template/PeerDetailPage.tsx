@@ -9,17 +9,11 @@ import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Spacer, Tab } from '@nextui-org/react';
-import Feedback from '@pages/mypage/index/molecule/Feedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
-import NoTestKeywordResult from '@pages/mypage/index/molecule/NoTestKeywordResult';
-import OverallOpinion from '@pages/mypage/index/molecule/OverallOpinion';
-import OverallScore from '@pages/mypage/index/molecule/OverallScore';
-import OverallTestResult from '@pages/mypage/index/molecule/OverallTestResult';
 import Layout from '@pages/mypage/index/organism/Layout';
 import PeerProfileCard from '@pages/peer/detail/atom/PeerProfileCard';
-import PeerTestResult from '@pages/peer/detail/atom/PeerTestResult';
-import SelfTestResult from '@pages/peer/detail/atom/SelfTestResult';
-import ProjectList from '@pages/peer/detail/molecule/ProjectList';
+import PeerCardContent from '@pages/peer/detail/organism/PeerCardContent';
+import PeerKeywordContent from '@pages/peer/detail/organism/PeerKeywordContent';
 import { ActivityComponentType } from '@stackflow/react';
 
 type peerDetailPageParams = {
@@ -34,23 +28,11 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
 
-  console.log(peerInfo);
-
   const { openModal: peerRequestOpen } = useModal('peerVerify');
 
-  const {
-    peerTestMoreThanThree,
-    memberSimpleProfileDto,
-    peerCardList,
-    myCardList,
-    myName,
-    totalEvaluation,
-    totalScore,
-    peerFeedbackList,
-    peerAnswerIdList,
-    colorAnswerIdList,
-    peerProjectDtoList,
-  } = peerInfo;
+  const { memberSimpleProfileDto } = peerInfo;
+
+  console.log(peerInfo);
 
   const handleMoreFeedback = () => {
     push('MorePeerFeedbackPage', { memberId: memberId });
@@ -96,41 +78,18 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
           </HeaderContainer>
           <RadioTabs>
             <Tab key="me" title="카드비교">
-              <PeerTestResult user={username} peerCardList={peerCardList} />
-              <SelfTestResult myName={myName} myCardList={myCardList} />
-              <Spacer y={8} />
-              {Array.isArray(totalEvaluation) &&
-                peerTestMoreThanThree === true && (
-                  <OverallOpinion totalEvaluation={totalEvaluation} />
-                )}
-              {peerTestMoreThanThree && totalScore && (
-                <OverallScore totalScore={totalScore} />
-              )}
-              {peerTestMoreThanThree && peerFeedbackList && (
-                <Feedback
-                  peerFeedbackList={peerFeedbackList}
-                  handleClick={handleMoreFeedback}
-                />
-              )}
-              {peerProjectDtoList && (
-                <ProjectList
-                  projectList={peerProjectDtoList}
-                  handleClick={handleMoreProject}
-                />
-              )}
+              <PeerCardContent
+                data={peerInfo}
+                handleMoreFeedback={handleMoreFeedback}
+                handleMoreProject={handleMoreProject}
+              />
             </Tab>
             <Tab key="peer" title="키워드 비교">
-              {peerAnswerIdList && colorAnswerIdList.length > 0 && (
-                <OverallTestResult
-                  colorAnswerIdList={colorAnswerIdList}
-                  selfTestAnswerIdList={peerAnswerIdList}
-                  peerCardList={peerCardList}
-                  type="peer"
-                />
-              )}
-              {colorAnswerIdList.length === 0 && (
-                <NoTestKeywordResult type="peer" />
-              )}
+              <PeerKeywordContent
+                data={peerInfo}
+                handleMoreFeedback={handleMoreFeedback}
+                handleMoreProject={handleMoreProject}
+              />
             </Tab>
           </RadioTabs>
           <Spacer y={6} />
