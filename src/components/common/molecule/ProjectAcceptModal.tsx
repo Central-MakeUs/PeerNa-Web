@@ -7,6 +7,7 @@ import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
 import { RespondType } from '@type/enums';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 export default function ProjectAcceptModal() {
   const { isOpen, openModal, closeModal } = useModal('projectAccept');
@@ -22,8 +23,12 @@ export default function ProjectAcceptModal() {
 
   const handleClickAgree = () => {
     mutate({ projectId: params.id!, type: RespondType.ACCEPT });
+    toast.success('수락 완료!');
   };
-  const handleClickDisagree = () => closeModal();
+  const handleClickDisagree = () => {
+    closeModal();
+    toast.success('거절 완료!');
+  };
 
   useEffect(() => {
     if (isSuccess) {
@@ -50,7 +55,7 @@ export default function ProjectAcceptModal() {
             프로젝트 제안을 수락할까요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            수락하면 프로젝트의 팀원으로 함께 해요
+            {`수락한 프로젝트는\n 내 프로젝트 목록에서 확인할 수 있어요`}
           </Typography>
         </div>
         <ModalFooter>

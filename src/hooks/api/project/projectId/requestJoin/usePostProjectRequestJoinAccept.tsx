@@ -32,7 +32,7 @@ export default function usePostProjectRequestJoinAccept() {
   return useMutation({
     mutationFn: postProjectRequestJoinAccept,
     onSuccess: () => {
-      toast.success('프로젝트 참여 신청이 허용되었습니다');
+      toast.success('수락 완료!');
     },
     onError: (error: AxiosError) => {
       handleError(error);

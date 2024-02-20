@@ -32,7 +32,7 @@ export default function usePostProjectRequestJoinDecline() {
   return useMutation({
     mutationFn: postProjectRequestJoinDecline,
     onSuccess: () => {
-      toast.success('프로젝트 참여 신청이 거절되었습니다');
+      toast.success('거절 완료!');
     },
     onError: (error: AxiosError) => {
       handleError(error);
