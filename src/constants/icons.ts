@@ -87,4 +87,5 @@ export const Icon = {
   ShareLink: 'shareLink',
   PeerNaLogo: 'home_peerNa',
   Line: 'line',
+  EmptyProject: 'empty_project',
 };
