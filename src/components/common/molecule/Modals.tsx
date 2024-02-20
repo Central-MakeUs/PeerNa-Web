@@ -7,6 +7,7 @@ import PushModal from '@components/common/molecule/PushModal';
 import WithdrawalModal from '@components/common/molecule/WithdrawalModal';
 import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import SelfTestModal from '@pages/mypage/index/molecule/SelfTestModal';
+import ProjectJoinRequestButton from '@pages/project/projectId/molecule/ProjectJoinRequestButton';
 import { ModalType, modalState } from '@store/modal';
 import { ReactNode } from 'react';
 import { useRecoilValue } from 'recoil';
@@ -46,6 +47,7 @@ export function StackModals() {
         withdrawal: <WithdrawalModal />,
         projectJoinAccept: <ProjectJoinAcceptModal />,
         projectJoinDecline: <ProjectJoinDeclineModal />,
+        projectJoinRequest: <ProjectJoinRequestButton />,
       }}
     />
   );
