@@ -5,7 +5,7 @@ import { ResultKeyword } from '@type/enums';
 import { PeerSimpleProfileType, ProjectItemType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 
-interface PeerProfileResponseDTO extends ProfileResponseDTO {
+export interface PeerProfileResponseDTO extends ProfileResponseDTO {
   memberSimpleProfileDto: PeerSimpleProfileType;
   myCardList: ResultKeyword[];
   peerAnswerIdList: number[];
