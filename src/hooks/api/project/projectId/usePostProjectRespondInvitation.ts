@@ -4,7 +4,6 @@ import { RespondType } from '@type/enums';
 import { ProjectInviteSuccessType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
-import toast from 'react-hot-toast';
 
 interface ProjectRespondInvitationRequestDTO {
   projectId: string;
@@ -30,9 +29,6 @@ export default function usePostProjectRespondInvitation() {
 
   return useMutation({
     mutationFn: postProjectRespondInvitation,
-    onSuccess: () => {
-      toast.success('프로젝트 초대가 완료되었습니다.');
-    },
     onError: (error: AxiosError) => {
       handleError(error);
     },
