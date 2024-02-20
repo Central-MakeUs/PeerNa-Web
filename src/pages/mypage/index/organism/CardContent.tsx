@@ -15,6 +15,7 @@ type CardContentProps = {
 
 export default function CardContent({ data, handleClick }: CardContentProps) {
   const {
+    peerTestMoreThanThree,
     selfTestCardList,
     peerCardList,
     totalEvaluation,
@@ -41,12 +42,10 @@ export default function CardContent({ data, handleClick }: CardContentProps) {
         )}
       </ErrorBoundaryWithSuspense>
       <ErrorBoundaryWithSuspense>
-        {totalScore && totalScore !== 0 && (
-          <OverallScore totalScore={totalScore} />
-        )}
+        {peerTestMoreThanThree && <OverallScore totalScore={totalScore} />}
       </ErrorBoundaryWithSuspense>
       <ErrorBoundaryWithSuspense>
-        {peerFeedbackList.length > 0 && (
+        {peerTestMoreThanThree && (
           <Feedback
             peerFeedbackList={peerFeedbackList}
             handleClick={handleClick}

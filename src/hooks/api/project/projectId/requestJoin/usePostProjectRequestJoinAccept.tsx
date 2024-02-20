@@ -3,20 +3,19 @@ import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
-import toast from 'react-hot-toast';
 
 interface ProjectRequestJoinAcceptDTO {
-  projectId: number;
-  peerId: number;
+  projectId: string;
+  peerId: string;
 }
 
-interface ProjectRequestJoinDeclineDTO extends ProjectInviteSuccessType {}
+interface ProjectResponseJoinDeclineDTO extends ProjectInviteSuccessType {}
 
 const postProjectRequestJoinAccept = async ({
   projectId,
   peerId,
 }: ProjectRequestJoinAcceptDTO): Promise<
-  ApiResponse<ProjectRequestJoinDeclineDTO>
+  ApiResponse<ProjectResponseJoinDeclineDTO>
 > => {
   return await http.post(
     `/project/${projectId}/request-join/${peerId}/accept`,
@@ -31,9 +30,6 @@ export default function usePostProjectRequestJoinAccept() {
   const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postProjectRequestJoinAccept,
-    onSuccess: () => {
-      toast.success('프로젝트 참여 신청이 허용되었습니다');
-    },
     onError: (error: AxiosError) => {
       handleError(error);
     },

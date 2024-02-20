@@ -36,17 +36,16 @@ export default function InputProjectDate({
   return (
     <Fragment>
       <Header>
-        <Header.TopBar />
-        <Header.Body>
-          <Typography variant="body01" fontColor="gray08">
+        <Spacer y={10} />
+        <Header.Body className="gap-1">
+          <Typography variant="header01" fontColor="gray08">
             함께 프로젝트 한 기간을 알려주세요
           </Typography>
-          <Typography variant="body01" fontColor="gray08">
+          <Typography variant="body03" fontColor="gray06">
             정확하지 않아도 괜찮아요
           </Typography>
         </Header.Body>
       </Header>
-
       <Spacer y={5} />
       <div className="w-full flex items-center gap-2 px-4">
         <DatePicker
