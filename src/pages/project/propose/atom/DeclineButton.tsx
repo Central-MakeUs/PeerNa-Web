@@ -16,8 +16,8 @@ export default function DeclineButton() {
         id: params.id!,
         step: '2',
       });
+      openModalLogin();
     }
-    openModalLogin();
     openModalProjectDecline();
   };
 
