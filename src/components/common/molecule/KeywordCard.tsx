@@ -4,7 +4,7 @@ import { KEYWORD_MAPPER } from '@constants/mapper';
 import { Spacer } from '@nextui-org/react';
 
 interface KeywordCard {
-  type: 'D' | 'I' | 'S' | 'C' | 'isDisabled';
+  testType: 'D' | 'I' | 'S' | 'C' | 'isDisabled';
   keywords: string[];
   title: string;
   subtitle: string;
@@ -13,7 +13,7 @@ interface KeywordCard {
 }
 
 export default function KeywordCard({
-  type,
+  testType,
   keywords,
   title,
   subtitle,
@@ -36,9 +36,9 @@ export default function KeywordCard({
             chipType={
               !colorAnswerIdList.includes(selfTestIdList[index])
                 ? 'isDisabled'
-                : type
+                : testType
             }
-            icon={KEYWORD_MAPPER[type].icons[selfTestIdList[index] - 1]}
+            icon={KEYWORD_MAPPER[testType].icons[selfTestIdList[index] - 1]}
           >
             {keyword}
           </Chip>
