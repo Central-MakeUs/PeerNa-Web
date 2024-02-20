@@ -30,15 +30,15 @@ export default function ReviewButton() {
         className="bg-primary100 rounded-xl w-full flex px-4 py-5 justify-between items-center"
         onClick={handleKakaoShare}
       >
-        <div>
-          <Typography variant="header03" fontColor="gray08" className="mb-1">
+        <div className="text-left">
+          <Typography variant="body01" fontColor="gray08" className="mb-1">
             나는 어떤 동료일까 궁금하다면?
           </Typography>
-          <Typography variant="body03" fontColor="gray05" className="text-left">
+          <Typography variant="body05" fontColor="gray05">
             동료에게 피어 테스트 응답을 요청해보세요
           </Typography>
         </div>
-        <SvgIcon id="ShareLink" color="gray07" />
+        <SvgIcon id="ShareLink" color="gray07" width={16} height={20} />
       </button>
     </div>
   );
