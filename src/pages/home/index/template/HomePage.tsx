@@ -26,6 +26,7 @@ import SelfTestModal from '@pages/mypage/index/molecule/SelfTestModal';
 import Layout from '@pages/mypage/index/organism/Layout';
 import { ActivityComponentType } from '@stackflow/react';
 import { PartType } from '@type/enums';
+import { getIsApp } from '@utils';
 import { getAccessToken } from '@utils/token';
 import { useEffect, useState } from 'react';
 import ReviewButton from '../atom/ReviewButton';
@@ -56,11 +57,7 @@ const HomePage: ActivityComponentType = () => {
     }
 
     // 온보딩을 했고, 로그인이 되어 있는 상태에서 푸시 알림 허용을 안했으면
-    const isMobile =
-      navigator.userAgent.includes('iPhone') ||
-      navigator.userAgent.includes('Android');
-
-    if (isOnboarding && hasToken && !isPushAgree && isMobile) {
+    if (isOnboarding && hasToken && !isPushAgree && getIsApp()) {
       openModalPush();
       return;
     }

@@ -1,17 +1,16 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
-import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
+import usePostProjectRequestJoinDecline from '@hooks/api/project/projectId/requestJoin/usePostProjectRequestJoinDecline';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
-import { RespondType } from '@type/enums';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-export default function ProjectDeclineModal() {
-  const { isOpen, openModal, closeModal } = useModal('projectDecline');
-  const { mutate, isSuccess } = usePostProjectRespondInvitation();
+export default function ProjectJoinDeclineModal() {
+  const { isOpen, openModal, closeModal } = useModal('projectJoinDecline');
+  const { mutate, isSuccess } = usePostProjectRequestJoinDecline();
 
   const { params } = useActivity();
   const { replace } = useFlow();
@@ -23,7 +22,7 @@ export default function ProjectDeclineModal() {
 
   const handleClickAgree = () => {
     mutate(
-      { projectId: params.id!, type: RespondType.DECLINE },
+      { projectId: params.id!, peerId: params.subTargetId! },
       {
         onSuccess: () => toast.success('거절 완료!'),
       },
@@ -34,7 +33,7 @@ export default function ProjectDeclineModal() {
   useEffect(() => {
     if (isSuccess) {
       closeModal();
-      replace('ProjectPage', {});
+      replace('NotificationPage', {});
     }
   }, [isSuccess]);
 
@@ -53,10 +52,10 @@ export default function ProjectDeclineModal() {
       <ModalContent className="w-[310px] m-auto">
         <div className="pt-10 pb-4 px-4">
           <Typography className="text-center mb-5" variant="header03">
-            프로젝트 제안을 거절할까요?
+            프로젝트 참여 신청을 거절할까요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            거절한 프로젝트는 다시 참여할 수 없어요
+            신청을 거절하면 해당 동료와 프로젝트를 함께 할 수 없어요
           </Typography>
         </div>
         <ModalFooter>

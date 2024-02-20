@@ -1,17 +1,16 @@
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
-import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
+import usePostProjectRequestJoin from '@hooks/api/project/projectId/usePostProjectRequestJoin';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
-import { RespondType } from '@type/enums';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-export default function ProjectDeclineModal() {
-  const { isOpen, openModal, closeModal } = useModal('projectDecline');
-  const { mutate, isSuccess } = usePostProjectRespondInvitation();
+export default function ProjectJoinDeclineModal() {
+  const { isOpen, openModal, closeModal } = useModal('projectJoinDecline');
+  const { mutate, isSuccess } = usePostProjectRequestJoin();
 
   const { params } = useActivity();
   const { replace } = useFlow();
@@ -22,12 +21,9 @@ export default function ProjectDeclineModal() {
   };
 
   const handleClickAgree = () => {
-    mutate(
-      { projectId: params.id!, type: RespondType.DECLINE },
-      {
-        onSuccess: () => toast.success('거절 완료!'),
-      },
-    );
+    mutate(params.id!, {
+      onSuccess: () => toast.success('참여 신청 완료!'),
+    });
   };
   const handleClickDisagree = () => closeModal();
 
@@ -53,10 +49,12 @@ export default function ProjectDeclineModal() {
       <ModalContent className="w-[310px] m-auto">
         <div className="pt-10 pb-4 px-4">
           <Typography className="text-center mb-5" variant="header03">
-            프로젝트 제안을 거절할까요?
+            프로젝트 참가를 원하시나요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            거절한 프로젝트는 다시 참여할 수 없어요
+            {
+              '프로젝트 생성자에게 참여 신청을 보낼게요\n 수락 여부는 알림 탭에서 확인할 수 있어요'
+            }
           </Typography>
         </div>
         <ModalFooter>

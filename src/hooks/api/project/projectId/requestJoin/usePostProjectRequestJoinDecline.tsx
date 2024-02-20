@@ -3,20 +3,19 @@ import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
-import toast from 'react-hot-toast';
 
 interface ProjectRequestJoinDeclineDTO {
-  projectId: number;
-  peerId: number;
+  projectId: string;
+  peerId: string;
 }
 
-interface ProjectRequestJoinDeclineDTO extends ProjectInviteSuccessType {}
+interface ProjectResponseJoinDeclineDTO extends ProjectInviteSuccessType {}
 
 const postProjectRequestJoinDecline = async ({
   projectId,
   peerId,
 }: ProjectRequestJoinDeclineDTO): Promise<
-  ApiResponse<ProjectRequestJoinDeclineDTO>
+  ApiResponse<ProjectResponseJoinDeclineDTO>
 > => {
   return await http.post(
     `/project/${projectId}/request-join/${peerId}/decline`,
@@ -31,9 +30,6 @@ export default function usePostProjectRequestJoinDecline() {
   const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postProjectRequestJoinDecline,
-    onSuccess: () => {
-      toast.success('프로젝트 참여 신청이 거절되었습니다');
-    },
     onError: (error: AxiosError) => {
       handleError(error);
     },
