@@ -1,6 +1,8 @@
 import ErrorModal from '@components/common/molecule/ErrorModal';
 import ProjectAcceptModal from '@components/common/molecule/ProjectAcceptModal';
 import ProjectDeclineModal from '@components/common/molecule/ProjectDeclineModal';
+import ProjectJoinAcceptModal from '@components/common/molecule/ProjectJoinAcceptModal';
+import ProjectJoinDeclineModal from '@components/common/molecule/ProjectJoinDeclineModal';
 import PushModal from '@components/common/molecule/PushModal';
 import WithdrawalModal from '@components/common/molecule/WithdrawalModal';
 import LoginModal from '@pages/auth/redirect/organism/LoginModal';
@@ -42,6 +44,8 @@ export function StackModals() {
         projectDecline: <ProjectDeclineModal />,
         selfTest: <SelfTestModal />,
         withdrawal: <WithdrawalModal />,
+        projectJoinAccept: <ProjectJoinAcceptModal />,
+        projectJoinDecline: <ProjectJoinDeclineModal />,
       }}
     />
   );
