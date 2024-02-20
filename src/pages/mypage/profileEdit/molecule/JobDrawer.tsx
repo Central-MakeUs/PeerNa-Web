@@ -1,10 +1,10 @@
+import SelectListItem from '@components/common/atom/SelectListItem';
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
 import { JOB_LIST } from '@constants/list';
 import { profileSelfState } from '@store/profileSelfState';
 import { JobType } from '@type/enums';
 import { useRecoilState } from 'recoil';
-import SelectListItem from './SelectListItem';
 
 interface JobDrawerProps {
   openJobBottomSheet: boolean;
@@ -21,7 +21,6 @@ export default function JobDrawer({
       ...prev,
       job: newJob,
     }));
-    setOpenJobBottomSheet(false);
   };
   return (
     <Drawer open={openJobBottomSheet} onOpenChange={setOpenJobBottomSheet}>
