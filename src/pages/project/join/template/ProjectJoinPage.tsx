@@ -6,8 +6,8 @@ import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetPeerDetail from '@hooks/api/home/peerId/useGetPeerDetail';
-import usePostProjectRequestJoinAccept from '@hooks/api/project/projectId/requestJoin/usePostProjectRequestJoinAccept';
 import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
 import { Spacer, Tab } from '@nextui-org/react';
 import Feedback from '@pages/mypage/index/molecule/Feedback';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
@@ -20,6 +20,8 @@ import PeerProfileCard from '@pages/peer/detail/atom/PeerProfileCard';
 import PeerTestResult from '@pages/peer/detail/atom/PeerTestResult';
 import SelfTestResult from '@pages/peer/detail/atom/SelfTestResult';
 import ProjectList from '@pages/peer/detail/molecule/ProjectList';
+import ProjectJoinAcceptModal from '@pages/project/join/molecule/ProjectJoinAcceptModal';
+import ProjectJoinDeclineModal from '@pages/project/join/molecule/ProjectJoinDeclineModal';
 import { ActivityComponentType } from '@stackflow/react';
 
 interface ProjectJoinPageParams {
@@ -30,9 +32,10 @@ interface ProjectJoinPageParams {
 const ProjectJoinPage: ActivityComponentType<ProjectJoinPageParams> = ({
   params,
 }) => {
-  const projectId = params.id;
   const memberId = params.subTargetId;
   const { pop, push } = useFlow();
+  const { openModal: acceptModal } = useModal('projectJoinAccept');
+  const { openModal: declineModal } = useModal('projectJoinDecline');
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
   console.log(peerInfo);
@@ -59,31 +62,12 @@ const ProjectJoinPage: ActivityComponentType<ProjectJoinPageParams> = ({
     push('MorePeerProjectPage', { memberId: memberId });
   };
 
-  const acceptMutation = usePostProjectRequestJoinAccept();
-  const declineMutation = usePostProjectRequestJoinAccept();
-
   const handleClickAccept = () => {
-    acceptMutation.mutate(
-      {
-        peerId: parseInt(memberId),
-        projectId: parseInt(projectId),
-      },
-      {
-        onSuccess: () => push('NotificationPage', {}),
-      },
-    );
+    acceptModal();
   };
 
   const handleMyProjectList = () => {
-    declineMutation.mutate(
-      {
-        peerId: parseInt(memberId),
-        projectId: parseInt(projectId),
-      },
-      {
-        onSuccess: () => push('NotificationPage', {}),
-      },
-    );
+    declineModal();
   };
 
   const username = memberSimpleProfileDto.name;
@@ -161,11 +145,13 @@ const ProjectJoinPage: ActivityComponentType<ProjectJoinPageParams> = ({
           <Button buttonVariant="tertiary" onClick={handleMyProjectList}>
             <Typography variant="body01">거절</Typography>
           </Button>
+          <ProjectJoinAcceptModal />
           <Button onClick={handleClickAccept}>
             <Typography variant="body01" fontColor="white">
               수락
             </Typography>
           </Button>
+          <ProjectJoinDeclineModal />
         </div>
       </Footer>
     </AppScreenContainer>
