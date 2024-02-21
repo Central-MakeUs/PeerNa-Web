@@ -27,7 +27,6 @@ export default function ProjectAcceptModal() {
   };
   const handleClickDisagree = () => {
     closeModal();
-    toast.success('거절 완료!');
   };
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
 import { RespondType } from '@type/enums';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 export default function ProjectDeclineModal() {
   const { isOpen, openModal, closeModal } = useModal('projectDecline');
@@ -22,6 +23,7 @@ export default function ProjectDeclineModal() {
 
   const handleClickAgree = () => {
     mutate({ projectId: params.id!, type: RespondType.DECLINE });
+    toast.success('거절 완료!');
   };
   const handleClickDisagree = () => closeModal();
 
@@ -50,7 +52,7 @@ export default function ProjectDeclineModal() {
             프로젝트 제안을 거절할까요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            거절하면 프로젝트에 참여할 수 없어요
+            {'거절한 프로젝트는 \n 다시 참여할 수 없어요'}
           </Typography>
         </div>
         <ModalFooter>

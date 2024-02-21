@@ -31,7 +31,7 @@ export default function SelfTestModal() {
           </Typography>
           <Typography className="text-center" variant="body02">
             {
-              '회원가입하고 동료들에게 링크를 공유하면 \n 나의 피어 카드와 유형을 확인할 수 있어요'
+              '업무 성향을 자세히 분석하여 \n 꼭 맞는 동료를 만날 수 있도록 도와드릴게요'
             }
           </Typography>
         </div>
@@ -39,7 +39,7 @@ export default function SelfTestModal() {
           <div className="w-full h-full box-content flex gap-2">
             <Button onClick={handleClickSelfTest}>
               <Typography variant="body01" fontColor="white">
-                셀프 테스트하러 가기
+                내 피어 유형 확인하러 가기
               </Typography>
             </Button>
           </div>
