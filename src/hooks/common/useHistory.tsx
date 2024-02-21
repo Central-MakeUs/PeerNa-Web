@@ -4,15 +4,16 @@ import { useRecoilState } from 'recoil';
 
 export default function useHistory() {
   const [history, setHistory] = useRecoilState(historyState);
+  console.log('set history', history);
 
   const handleChangeHistory = (
     activity: PageTypes,
-    parmas: Record<string, string>,
+    params: Record<string, string>,
   ) => {
     setHistory(prev => ({
       ...prev,
       activity,
-      parmas,
+      params,
     }));
   };
 

@@ -20,7 +20,7 @@ export default function UnderlineTabs({
       classNames={{
         tabList:
           'w-full relative rounded-none p-0 border-b border-divider overflow-y-hidden',
-        cursor: 'w-full bg-[#67737E] -bottom-[1.4px]',
+        cursor: 'w-[80%] bg-[#67737E] h-[2px]',
         tab: 'px-4 !h-12',
         tabContent: `${FontVariantsClassName.body01} text-gray04 group-data-[selected=true]:text-gray08`,
       }}

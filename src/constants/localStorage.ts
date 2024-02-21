@@ -10,4 +10,5 @@ export enum UtilityKeys {
   IS_PUSH_AGREE = 'IS_PUSH_AGREE',
   UUID = 'UUID',
   IS_APP = 'IS_APP',
+  PADDING = 'PADDING',
 }

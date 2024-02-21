@@ -41,7 +41,9 @@ const HomePage: ActivityComponentType = () => {
   const { handleClearHistory } = useHistory();
   const { handleClearReviews } = useReviewState();
   const hasToken = getAccessToken();
+
   const { data: me } = useGetMe();
+  const history = useHistory();
   const { openModal } = useModal('selfTest');
   useEffect(() => {
     handleClearHistory();
@@ -68,7 +70,10 @@ const HomePage: ActivityComponentType = () => {
     }
 
     //로그인은 됐는데, 온보딩을 하지 않았을 경우
-    if (!isOnboarding && !me?.name) openModal();
+    if (!isOnboarding && !me?.name) {
+      history.handleChangeHistory('HomePage', {});
+      openModal();
+    }
     // 로그인도 하고, 온보딩도 한 경우
     else localStorage.setItem(UtilityKeys.IS_ONBOARD, 'true');
   }, []);

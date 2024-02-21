@@ -4,6 +4,7 @@ import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { REVIEW_SELF_TITLE } from '@constants/review';
+import useHistory from '@hooks/common/useHistory';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import { Spacer } from '@nextui-org/react';
@@ -44,11 +45,25 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
 
   const isValidPush = stepValidation();
 
+  const history = useHistory();
+
   return (
     <AppScreenContainer>
       <Header>
         <Header.TopBar>
-          <Header.BackIcon handleClick={() => pop({ animate: true })} />
+          <Header.BackIcon
+            handleClick={() => {
+              const { activity, params } = history.history;
+
+              if (activity === 'HomePage') {
+                push('HomePage', { ...params });
+                return;
+              } else {
+                pop();
+                return;
+              }
+            }}
+          />
         </Header.TopBar>
       </Header>
       <Spacer y={10} />
