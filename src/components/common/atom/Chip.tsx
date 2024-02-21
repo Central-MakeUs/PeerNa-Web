@@ -53,8 +53,8 @@ export default function Chip({ chipType, children, icon }: ChipProps) {
         </Typography>
         <SvgIcon
           id={icon as unknown as IconKeyType}
-          width={20}
-          height={20}
+          width={16}
+          height={16}
           color={chipColor}
         />
       </div>
