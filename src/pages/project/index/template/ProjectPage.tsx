@@ -1,3 +1,4 @@
+import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
@@ -14,14 +15,17 @@ const ProjectPage: ActivityComponentType = () => {
   return (
     <AppScreenContainer>
       <Header>
-        <Header.TopBar />
+        <Spacer y={10} />
         <Header.Body>
-          <Header.Title>프로젝트</Header.Title>
+          <Typography variant="header01" fontColor="gray08">
+            프로젝트
+          </Typography>
         </Header.Body>
       </Header>
+      <Spacer y={4} />
       <Content>
         <UnderlineTabs>
-          <Tab className="w-full px-4" title="최신순">
+          <Tab className="w-full h-full px-4" title="최신순">
             <ErrorBoundaryWithSuspense>
               <RecentProjectTab />
             </ErrorBoundaryWithSuspense>

@@ -24,7 +24,7 @@ export default function AnayzePeerCardFetcher() {
   return (
     <Fragment>
       <Header>
-        <Header.TopBar />
+        <Spacer y={10} />
         <Header.Body>
           <Header.Title>
             {`${data.memberName}님의 셀프 테스트 결과를 \n 분석한 피어 카드에요`}
