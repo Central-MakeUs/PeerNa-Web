@@ -100,7 +100,7 @@ const HomePage: ActivityComponentType = () => {
                 color="gray08"
                 width={80}
                 height={18}
-                className="absolute top-20 left-3"
+                className="absolute top-16 left-3"
               />
               <img
                 src={peerImage}
