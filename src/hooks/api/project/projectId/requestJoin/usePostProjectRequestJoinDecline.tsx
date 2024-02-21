@@ -3,7 +3,6 @@ import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
-import toast from 'react-hot-toast';
 
 interface ProjectRequestJoinDeclineDTO {
   projectId: number;
@@ -31,9 +30,6 @@ export default function usePostProjectRequestJoinDecline() {
   const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postProjectRequestJoinDecline,
-    onSuccess: () => {
-      toast.success('거절 완료!');
-    },
     onError: (error: AxiosError) => {
       handleError(error);
     },
