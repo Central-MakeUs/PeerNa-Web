@@ -34,7 +34,7 @@ export default function NoTestKeywordResult({ type }: KeywordProps) {
     <>
       <HeaderContainer size="sm">
         <div className="flex items-center gap-[6px]">
-          <Typography variant="header03" fontColor="gray08">
+          <Typography variant="header02" fontColor="gray08">
             {title}
           </Typography>
           <PeerToolTip type={type} />
