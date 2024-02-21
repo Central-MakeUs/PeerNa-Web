@@ -1,4 +1,5 @@
 import Button from '@components/common/atom/Button';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -23,7 +24,9 @@ export default function ProjectAcceptModal() {
 
   const handleClickAgree = () => {
     mutate({ projectId: params.id!, type: RespondType.ACCEPT });
-    toast.success('수락 완료!');
+    toast.success('수락 완료!', {
+      icon: <SvgIcon id="Complete" color="gray08" />,
+    });
   };
   const handleClickDisagree = () => {
     closeModal();
@@ -32,7 +35,7 @@ export default function ProjectAcceptModal() {
   useEffect(() => {
     if (isSuccess) {
       closeModal();
-      replace('ProjectPage', {});
+      replace('NotificationPage', {});
     }
   }, [isSuccess]);
 

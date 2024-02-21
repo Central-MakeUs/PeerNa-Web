@@ -3,17 +3,19 @@ import IntersectionBox from '@components/common/atom/IntersectionBox';
 import Spinner from '@components/common/atom/Spinner';
 import Typography from '@components/common/atom/Typography';
 import Project from '@components/common/molecule/Project';
+import ProjectInviteModal from '@components/common/molecule/ProjectInviteModal';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetMyProjectList from '@hooks/api/project/index/useGetMyProjectList';
-import usePostPeerInviteProject from '@hooks/api/project/projectId/usePostPeerInviteProject';
 import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
 import { Spacer } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
-import { useState } from 'react';
+import { ProjectIdStateType, projectIdState } from '@store/projectId';
+import { useRecoilState } from 'recoil';
 
 type MyProjectListPageParams = {
   memberId: string;
@@ -25,19 +27,19 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
   const { pop } = useFlow();
   const handleBack = () => pop();
   const memberId = parseInt(params.memberId);
+  console.log(memberId);
+  const { openModal } = useModal('projectInvite');
 
   const { data, fetchNextPage, isFetchingNextPage } = useGetMyProjectList();
 
   const intersectionRef = useIntersection(fetchNextPage);
-  const { mutate } = usePostPeerInviteProject();
 
   const handleInvite = () => {
-    if (selectedProjectId) {
-      mutate({ projectId: selectedProjectId, peerId: memberId });
-    }
+    openModal();
   };
 
-  const [selectedProjectId, setSelectedProjectId] = useState<number>();
+  const [selectedProjectId, setSelectedProjectId] =
+    useRecoilState<ProjectIdStateType>(projectIdState);
 
   return (
     <AppScreenContainer>
@@ -63,7 +65,12 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
               group.result.map(project => (
                 <button
                   key={project.projectId}
-                  onClick={() => setSelectedProjectId(project.projectId)}
+                  onClick={() =>
+                    setSelectedProjectId(prevState => ({
+                      ...prevState,
+                      projectId: project.projectId,
+                    }))
+                  }
                   className="w-full text-left"
                 >
                   <Project
@@ -75,7 +82,6 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
               )),
             )}
             <IntersectionBox ref={intersectionRef} />
-
             {isFetchingNextPage && <Spinner />}
           </div>
         </div>
@@ -84,6 +90,7 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
         <Button onClick={handleInvite} isDisabled={!selectedProjectId}>
           초대하기
         </Button>
+        {selectedProjectId && <ProjectInviteModal />}
       </Footer>
     </AppScreenContainer>
   );
