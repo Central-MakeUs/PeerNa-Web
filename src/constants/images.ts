@@ -48,8 +48,8 @@ export const PEER_REVIEW_IMAGE_LIST = [Peer1, Peer2, Peer3];
 export const FLOWER_CARDS = {
   D: self_bouvardia,
   I: self_daisy,
-  S: self_mimosa,
-  C: self_violet,
+  S: self_violet,
+  C: self_mimosa,
   UNKNOWN: '',
 };
 
