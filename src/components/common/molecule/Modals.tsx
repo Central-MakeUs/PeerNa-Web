@@ -1,3 +1,4 @@
+import AlreadyReviewModal from '@components/common/molecule/AlreadyReviewModal';
 import ErrorModal from '@components/common/molecule/ErrorModal';
 import ProjectAcceptModal from '@components/common/molecule/ProjectAcceptModal';
 import ProjectDeclineModal from '@components/common/molecule/ProjectDeclineModal';
@@ -50,6 +51,7 @@ export function StackModals() {
         selfTest: <SelfTestModal />,
         withdrawal: <WithdrawalModal />,
         projectJoinRequest: <ProjectJoinRequestModal />,
+        alreadyReview: <AlreadyReviewModal />,
       }}
     />
   );
