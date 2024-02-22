@@ -1,39 +1,41 @@
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
-import { useFlow } from '@hooks/common/useStackFlow';
+import usePostProjectRequestJoin from '@hooks/api/project/projectId/usePostProjectRequestJoin';
 import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
-import { RespondType } from '@type/enums';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-export default function ProjectDeclineModal() {
-  const { isOpen, openModal, closeModal } = useModal('projectDecline');
-  const { mutate, isSuccess } = usePostProjectRespondInvitation();
-
-  const { params } = useActivity();
-  const { replace } = useFlow();
+export default function ProjectJoinModal() {
+  const { isOpen, openModal, closeModal } = useModal('projectJoin');
+  const { mutate, isSuccess } = usePostProjectRequestJoin();
 
   const handleOpenChange = (isOpen: boolean) => {
     if (isOpen) openModal();
     else closeModal();
   };
 
+  const { params } = useActivity();
+
+  const projectId = params.id ?? '';
+
   const handleClickAgree = () => {
-    mutate({ projectId: params.id!, type: RespondType.DECLINE });
-    toast.success('거절 완료!', {
+    mutate(projectId);
+    toast.success('참여 신청 완료!', {
       icon: <SvgIcon id="Complete" color="gray08" />,
     });
   };
-  const handleClickDisagree = () => closeModal();
+
+  const handleClickDisagree = () => {
+    closeModal();
+    toast.error(`함께 한 경험이 있는 동료만 \n 피어테스트 요청이 가능합니다`);
+  };
 
   useEffect(() => {
     if (isSuccess) {
       closeModal();
-      replace('ProjectPage', {});
     }
   }, [isSuccess]);
 
@@ -52,10 +54,12 @@ export default function ProjectDeclineModal() {
       <ModalContent className="w-[310px] m-auto">
         <div className="pt-10 pb-4 px-4">
           <Typography className="text-center mb-5" variant="header03">
-            프로젝트 제안을 거절할까요?
+            프로젝트 참가를 원하시나요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            {'거절한 프로젝트는 \n 다시 참여할 수 없어요'}
+            {
+              '프로젝트 생성자에게 참가 신청을 보낼게요 \n 수락 여부는 알림 탭에서 확인할 수 있어요'
+            }
           </Typography>
         </div>
         <ModalFooter>

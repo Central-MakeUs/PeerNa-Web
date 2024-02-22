@@ -102,7 +102,7 @@ const HomePage: ActivityComponentType = () => {
                 color="gray08"
                 width={80}
                 height={18}
-                className="absolute top-20 left-3"
+                className="absolute top-16 left-3"
               />
               <img
                 src={peerImage}
@@ -130,6 +130,7 @@ const HomePage: ActivityComponentType = () => {
               ))}
             </UnderlineTabs>
             <ErrorBoundaryWithSuspense>
+              {isFetchingNextPage && <Spinner />}
               <UserProfileList
                 data={data?.pages.flatMap(profile =>
                   profile.result.filter(
@@ -138,9 +139,8 @@ const HomePage: ActivityComponentType = () => {
                 )}
                 isLoading={isLoading}
               />
+              <IntersectionBox ref={intersectionRef} />
             </ErrorBoundaryWithSuspense>
-            <IntersectionBox ref={intersectionRef} />
-            {isFetchingNextPage && <Spinner />}
             <Spacer y={12} />
           </Layout>
         </HomeBackground>

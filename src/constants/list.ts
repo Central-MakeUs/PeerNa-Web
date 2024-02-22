@@ -125,7 +125,7 @@ export const KEYWORD_CARD_INFO: Record<ResultKeyword, PeerKeywordCard> = {
   CHALLENGING: {
     image: KEYWORD_IMAGE_MAPPER.CHALLENGING,
     caption: '결정 방식',
-    title: '신중한',
+    title: '도전적인',
     content: '팀에게 새로운 길을 열어 줄 동료에요',
   },
   LOCKED: {

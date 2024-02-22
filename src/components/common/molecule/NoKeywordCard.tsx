@@ -22,7 +22,7 @@ export default function NoKeywordCard({ title, subtitle }: NoKeywordCardProps) {
         >
           <SvgIcon id="LockClosed" width={28} height={28} color="gray04" />
           <Typography variant="body04" fontColor="gray04">
-            평판이 3개 이상이어야 볼 수 있어요.
+            응답이 3개 이상이어야 볼 수 있어요
           </Typography>
         </div>
       </div>

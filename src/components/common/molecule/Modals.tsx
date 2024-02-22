@@ -1,6 +1,7 @@
 import ErrorModal from '@components/common/molecule/ErrorModal';
 import ProjectAcceptModal from '@components/common/molecule/ProjectAcceptModal';
 import ProjectDeclineModal from '@components/common/molecule/ProjectDeclineModal';
+import ProjectInviteModal from '@components/common/molecule/ProjectInviteModal';
 import ProjectJoinAcceptModal from '@components/common/molecule/ProjectJoinAcceptModal';
 import ProjectJoinDeclineModal from '@components/common/molecule/ProjectJoinDeclineModal';
 import ProjectJoinRequestModal from '@components/common/molecule/ProjectJoinRequestModal';
@@ -43,10 +44,11 @@ export function StackModals() {
       modals={{
         projectAccept: <ProjectAcceptModal />,
         projectDecline: <ProjectDeclineModal />,
-        selfTest: <SelfTestModal />,
-        withdrawal: <WithdrawalModal />,
         projectJoinAccept: <ProjectJoinAcceptModal />,
         projectJoinDecline: <ProjectJoinDeclineModal />,
+        projectInvite: <ProjectInviteModal />,
+        selfTest: <SelfTestModal />,
+        withdrawal: <WithdrawalModal />,
         projectJoinRequest: <ProjectJoinRequestModal />,
       }}
     />

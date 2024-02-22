@@ -14,10 +14,13 @@ export default function PeerProfileCard({
 }) {
   const totalScore = memberInfo.totalScore;
   const peerType = memberInfo.peerTestType;
+  const type = peerType === null ? 'analyze' : undefined;
+
+  console.log(peerType);
   return (
     <Fragment>
       <article className="flex flex-col items-center mb-8">
-        <PeerCard size="M" testResult={peerType} />
+        <PeerCard size="M" testResult={peerType} type={type} />
         <div className="flex justify-center items-center mb-2 gap-2">
           <Typography variant="body04" fontColor="gray06">
             {JOB_MAPPER[memberInfo.job as JobType]}

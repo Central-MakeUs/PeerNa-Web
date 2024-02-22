@@ -1,20 +1,24 @@
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
+import usePostPeerInviteProject from '@hooks/api/project/projectId/usePostPeerInviteProject';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
-import { RespondType } from '@type/enums';
+import { projectIdState } from '@store/projectId';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { useRecoilValue } from 'recoil';
 
-export default function ProjectDeclineModal() {
-  const { isOpen, openModal, closeModal } = useModal('projectDecline');
-  const { mutate, isSuccess } = usePostProjectRespondInvitation();
+export default function ProjectInviteModal() {
+  const { isOpen, openModal, closeModal } = useModal('projectInvite');
+  const { projectId } = useRecoilValue(projectIdState);
 
+  const { mutate, isSuccess } = usePostPeerInviteProject();
   const { params } = useActivity();
+  const memberId = parseInt(params?.memberId || '');
+
   const { replace } = useFlow();
 
   const handleOpenChange = (isOpen: boolean) => {
@@ -23,12 +27,16 @@ export default function ProjectDeclineModal() {
   };
 
   const handleClickAgree = () => {
-    mutate({ projectId: params.id!, type: RespondType.DECLINE });
-    toast.success('거절 완료!', {
-      icon: <SvgIcon id="Complete" color="gray08" />,
-    });
+    if (projectId) {
+      mutate({ projectId: projectId, peerId: memberId });
+      toast.success('초대 완료!', {
+        icon: <SvgIcon id="Complete" color="gray08" />,
+      });
+    }
   };
-  const handleClickDisagree = () => closeModal();
+  const handleClickDisagree = () => {
+    closeModal();
+  };
 
   useEffect(() => {
     if (isSuccess) {
@@ -52,10 +60,10 @@ export default function ProjectDeclineModal() {
       <ModalContent className="w-[310px] m-auto">
         <div className="pt-10 pb-4 px-4">
           <Typography className="text-center mb-5" variant="header03">
-            프로젝트 제안을 거절할까요?
+            내 프로젝트에 초대할까요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            {'거절한 프로젝트는 \n 다시 참여할 수 없어요'}
+            {`초대한 동료에게 프로젝트를 제안할게요\n 수락 여부는 알림 탭에서 확인할 수 있어요`}
           </Typography>
         </div>
         <ModalFooter>

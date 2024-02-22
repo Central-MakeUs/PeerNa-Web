@@ -1,4 +1,5 @@
 import Button from '@components/common/atom/Button';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
 import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
 import { useFlow } from '@hooks/common/useStackFlow';
@@ -22,19 +23,19 @@ export default function ProjectAcceptModal() {
   };
 
   const handleClickAgree = () => {
-    mutate(
-      { projectId: params.id!, type: RespondType.ACCEPT },
-      {
-        onSuccess: () => toast.success('수락 완료!'),
-      },
-    );
+    mutate({ projectId: params.id!, type: RespondType.ACCEPT });
+    toast.success('수락 완료!', {
+      icon: <SvgIcon id="Complete" color="gray08" />,
+    });
   };
-  const handleClickDisagree = () => closeModal();
+  const handleClickDisagree = () => {
+    closeModal();
+  };
 
   useEffect(() => {
     if (isSuccess) {
       closeModal();
-      replace('ProjectPage', {});
+      replace('NotificationPage', {});
     }
   }, [isSuccess]);
 
@@ -56,7 +57,7 @@ export default function ProjectAcceptModal() {
             프로젝트 제안을 수락할까요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            수락한 프로젝트는 내 프로젝트 목록에서 확인할 수 있어요
+            {`수락한 프로젝트는\n 내 프로젝트 목록에서 확인할 수 있어요`}
           </Typography>
         </div>
         <ModalFooter>
