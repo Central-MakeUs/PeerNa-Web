@@ -25,14 +25,11 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
 }) => {
   const memberId = params.memberId;
   const { pop, push } = useFlow();
-
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
-
   const { openModal: peerRequestOpen } = useModal('peerVerify');
-
-  const { memberSimpleProfileDto } = peerInfo;
-
-  console.log(peerInfo);
+  const { memberSimpleProfileDto, peerProjectDtoList } = peerInfo;
+  const projectId = peerProjectDtoList.map(project => project.projectId);
+  const username = memberSimpleProfileDto.name;
 
   const handleMoreFeedback = () => {
     push('MorePeerFeedbackPage', { memberId: memberId });
@@ -42,6 +39,13 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
     push('MorePeerProjectPage', { memberId: memberId });
   };
 
+  const handlePeerProject = () => {
+    push('PeerProjectDetailPage', {
+      memberId: memberId,
+      projectId: projectId.toString(),
+    });
+  };
+
   const handleRequestPeerTest = () => {
     peerRequestOpen();
   };
@@ -49,8 +53,6 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   const handleMyProjectList = () => {
     push('MyProjectListPage', { memberId: memberId });
   };
-
-  const username = memberSimpleProfileDto.name;
 
   const handleBack = () => pop();
 
@@ -82,6 +84,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
                 data={peerInfo}
                 handleMoreFeedback={handleMoreFeedback}
                 handleMoreProject={handleMoreProject}
+                handlePeerProject={handlePeerProject}
               />
             </Tab>
             <Tab key="peer" title="키워드 비교">
@@ -89,6 +92,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
                 data={peerInfo}
                 handleMoreFeedback={handleMoreFeedback}
                 handleMoreProject={handleMoreProject}
+                handlePeerProject={handlePeerProject}
               />
             </Tab>
           </RadioTabs>

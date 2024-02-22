@@ -12,12 +12,14 @@ type KeywordProps = {
   data: PeerProfileResponseDTO;
   handleMoreFeedback: () => void;
   handleMoreProject: () => void;
+  handlePeerProject: () => void;
 };
 
 export default function PeerKeywordContent({
   data,
   handleMoreFeedback,
   handleMoreProject,
+  handlePeerProject,
 }: KeywordProps) {
   const {
     colorAnswerIdList,
@@ -59,6 +61,7 @@ export default function PeerKeywordContent({
           <ProjectList
             projectList={peerProjectDtoList}
             handleClick={handleMoreProject}
+            handlePeerProject={handlePeerProject}
           />
         )}
       </ErrorBoundaryWithSuspense>

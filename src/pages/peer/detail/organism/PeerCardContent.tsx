@@ -13,12 +13,14 @@ type PeerCardContentProps = {
   data: PeerProfileResponseDTO;
   handleMoreFeedback: () => void;
   handleMoreProject: () => void;
+  handlePeerProject: () => void;
 };
 
 export default function PeerCardContent({
   data,
   handleMoreFeedback,
   handleMoreProject,
+  handlePeerProject,
 }: PeerCardContentProps) {
   const {
     peerCardList,
@@ -63,6 +65,7 @@ export default function PeerCardContent({
           <ProjectList
             projectList={peerProjectDtoList}
             handleClick={handleMoreProject}
+            handlePeerProject={handlePeerProject}
           />
         )}
       </ErrorBoundaryWithSuspense>
