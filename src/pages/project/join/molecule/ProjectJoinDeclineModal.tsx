@@ -15,8 +15,8 @@ export default function ProjectJoinDeclineModal() {
 
   const { params } = useActivity();
 
-  const projectId = parseInt(params.id ?? '');
-  const memberId = parseInt(params.subTargetId ?? '');
+  const projectId = params.id ?? '';
+  const memberId = params.subTargetId ?? '';
 
   const handleOpenChange = (isOpen: boolean) => {
     if (isOpen) openModal();

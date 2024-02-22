@@ -6,8 +6,6 @@ export interface ModalStateType {
   push: boolean;
   projectAccept: boolean;
   projectDecline: boolean;
-  projectJoinAccept: boolean;
-  projectJoinDecline: boolean;
   projectInvite: boolean;
   projectJoin: boolean;
   peerVerify: boolean;
@@ -54,8 +52,6 @@ export const modalState = atom<ModalStateType>({
     error: false,
     selfTest: false,
     withdrawal: false,
-    projectJoinAccept: false,
-    projectJoinDecline: false,
     projectJoinRequest: false,
   },
 });
