@@ -55,7 +55,11 @@ export default function OverallTestResult({
     <Fragment>
       <HeaderContainer size="sm">
         <div className="flex items-center gap-[6px]">
-          <Typography variant="header03" fontColor="gray08">
+          <Typography
+            variant="header03"
+            fontColor="gray08"
+            className="!font-semibold"
+          >
             {title}
           </Typography>
           <PeerToolTip type={type} />

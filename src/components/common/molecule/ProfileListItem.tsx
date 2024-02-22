@@ -68,7 +68,11 @@ export default function ProfileListItem({
               {totalScore > 1 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
             </Typography>
           </div>
-          <Typography variant="body05" fontColor="gray05">
+          <Typography
+            variant="body05"
+            fontColor="gray05"
+            className="line-clamp-1"
+          >
             {oneLiner}
           </Typography>
         </div>
