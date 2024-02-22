@@ -13,6 +13,7 @@ import useIntersection from '@hooks/common/useIntersection';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Spacer } from '@nextui-org/react';
+import EmptyProject from '@pages/project/index/molecule/EmptyProject';
 import { ActivityComponentType } from '@stackflow/react';
 import { ProjectIdStateType, projectIdState } from '@store/projectId';
 import { useRecoilState } from 'recoil';
@@ -61,25 +62,31 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
           </Typography>
           <Spacer y={3} />
           <div className="flex flex-col gap-3">
-            {data?.pages.map(group =>
-              group.result.map(project => (
-                <button
-                  key={project.projectId}
-                  onClick={() =>
-                    setSelectedProjectId(prevState => ({
-                      ...prevState,
-                      projectId: project.projectId,
-                    }))
-                  }
-                  className="w-full text-left"
-                >
-                  <Project
-                    title={project.projectName}
-                    subtitle={project.introduce}
-                    date={`${project.startDate} ~ ${project.endDate}`}
-                  />
-                </button>
-              )),
+            {data?.pages.every(group => group.result.length === 0) ? (
+              <div className="w-full h-[calc(100%-200px)] flex items-center justify-center">
+                <EmptyProject />
+              </div>
+            ) : (
+              data?.pages.map(group =>
+                group.result.map(project => (
+                  <button
+                    key={project.projectId}
+                    onClick={() =>
+                      setSelectedProjectId(prevState => ({
+                        ...prevState,
+                        projectId: project.projectId,
+                      }))
+                    }
+                    className="w-full text-left"
+                  >
+                    <Project
+                      title={project.projectName}
+                      subtitle={project.introduce}
+                      date={`${project.startDate} ~ ${project.endDate}`}
+                    />
+                  </button>
+                )),
+              )
             )}
             <IntersectionBox ref={intersectionRef} />
             {isFetchingNextPage && <Spinner />}
