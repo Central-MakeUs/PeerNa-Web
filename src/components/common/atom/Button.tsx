@@ -6,10 +6,10 @@ import {
 import { ReactNode } from 'react';
 
 const ButtonVariant = {
-  primary: 'bg-primary500 text-white',
-  secondary: 'bg-gray07 text-white',
-  tertiary: 'bg-gray01 text-black',
-  naked: 'text-primary500',
+  primary: 'bg-primary500 text-white focus:bg-primary600',
+  secondary: 'bg-gray07 text-white focus:bg-gray07 focus:text-gray04',
+  tertiary: 'bg-gray01 text-gray08 focus:bg-gray01 focus:text-gray04',
+  naked: 'text-primary500 focus:text-primary600',
   error: 'bg-danger01 text-white',
 };
 
@@ -51,6 +51,7 @@ export default function Button({
       {...props}
       className={buttonClassNames}
       disabled={isDisabled}
+      disableAnimation={true}
       variant={buttonVariant === 'naked' ? 'light' : 'solid'}
     >
       {children}
