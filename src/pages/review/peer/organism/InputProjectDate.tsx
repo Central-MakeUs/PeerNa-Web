@@ -3,8 +3,12 @@ import DatePicker from '@components/common/atom/DatePicker';
 import Typography from '@components/common/atom/Typography';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import usePostPeerReviewReject from '@hooks/api/review/index/usePostPeerReviewReject';
 import { useFlow } from '@hooks/common/useStackFlow';
+import useReviewHistory from '@hooks/store/useReviewHistory';
+import useReviewState from '@hooks/store/useReviewState';
 import { Divider, Spacer } from '@nextui-org/react';
+import { useActivity } from '@stackflow/react';
 import { differenceInDays } from 'date-fns';
 import { Fragment } from 'react';
 
@@ -21,6 +25,9 @@ export default function InputProjectDate({
   handleChangeStartDate,
   handleChangeEndDate,
 }: InputProjectDateProps) {
+  const { params } = useActivity();
+  const { mutate } = usePostPeerReviewReject();
+
   function isLessThan30Days(startDate: Date, endDate: Date) {
     const diffDays = differenceInDays(endDate, startDate);
     return diffDays >= 30;
@@ -28,10 +35,15 @@ export default function InputProjectDate({
 
   // 30일보다 크면 4번(진행), 작으면 3번(에러)
   const isValidDate = isLessThan30Days(new Date(startDate), new Date(endDate));
-
+  const { handleAddUuid } = useReviewHistory();
   const { push } = useFlow();
-  const handleClick = () =>
+  const { review } = useReviewState();
+  const handleClick = () => {
+    if (params.memberId) mutate(params.memberId);
+    if (!isValidDate && review.uuid) handleAddUuid(review.uuid);
+
     push('ReviewPeerPage', { step: isValidDate ? '4' : '3' });
+  };
 
   return (
     <Fragment>

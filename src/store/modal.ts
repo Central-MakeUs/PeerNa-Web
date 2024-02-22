@@ -16,6 +16,7 @@ export interface ModalStateType {
   projectJoinAccept: boolean;
   projectJoinDecline: boolean;
   projectJoinRequest: boolean;
+  alreadyReview: boolean;
 }
 
 export type ModalType =
@@ -34,7 +35,8 @@ export type ModalType =
   | 'withdrawal'
   | 'projectJoinAccept'
   | 'projectJoinDecline'
-  | 'projectJoinRequest';
+  | 'projectJoinRequest'
+  | 'alreadyReview';
 
 export const modalState = atom<ModalStateType>({
   key: 'modalState',
@@ -53,5 +55,6 @@ export const modalState = atom<ModalStateType>({
     selfTest: false,
     withdrawal: false,
     projectJoinRequest: false,
+    alreadyReview: false,
   },
 });

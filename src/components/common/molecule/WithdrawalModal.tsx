@@ -6,6 +6,7 @@ import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { http } from '@utils/API';
+import { getRefreshToken } from '@utils/token';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
@@ -28,7 +29,7 @@ export default function WithdrawalModal() {
   };
 
   const handleClickDelete = () => {
-    mutate(undefined, {
+    mutate(getRefreshToken() ?? '', {
       onSuccess: () => {
         toast.success('회원탈퇴 되었습니다');
         delete http.defaults.headers.common.Authorization;

@@ -5,10 +5,10 @@ import { ApiResponse, http } from '@utils/API';
 
 interface MemberWithdrawalResponseDTO extends ProjectInviteSuccessType {}
 
-const postMemberWithdrawal = async (): Promise<
-  ApiResponse<MemberWithdrawalResponseDTO>
-> => {
-  return await http.post('/member/withdrawal');
+const postMemberWithdrawal = async (
+  refreshToken: string,
+): Promise<ApiResponse<MemberWithdrawalResponseDTO>> => {
+  return await http.post('/member/withdrawal', { refreshToken });
 };
 
 export default function usePostMemberWithdrawal(
