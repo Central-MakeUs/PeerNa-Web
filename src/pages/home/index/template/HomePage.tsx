@@ -20,6 +20,7 @@ import { useFlow } from '@hooks/common/useStackFlow';
 import useModal from '@hooks/store/useModal';
 import useReviewState from '@hooks/store/useReviewState';
 import { Spacer, Tab } from '@nextui-org/react';
+import EmptyData from '@pages/home/index/atom/EmptyData';
 import HomeBackground from '@pages/home/index/organism/HomeBackground';
 import HeaderContainer from '@pages/mypage/index/molecule/HeaderContainer';
 import SelfTestModal from '@pages/mypage/index/molecule/SelfTestModal';
@@ -131,14 +132,18 @@ const HomePage: ActivityComponentType = () => {
             </UnderlineTabs>
             <ErrorBoundaryWithSuspense>
               {isFetchingNextPage && <Spinner />}
-              <UserProfileList
-                data={data?.pages.flatMap(profile =>
-                  profile.result.filter(
-                    profile => !profile.job.includes('WITHDRAWAL'),
-                  ),
-                )}
-                isLoading={isLoading}
-              />
+              {data?.pages.every(profile => profile.result.length === 0) ? (
+                <EmptyData />
+              ) : (
+                <UserProfileList
+                  data={data?.pages.flatMap(profile =>
+                    profile.result.filter(
+                      profile => !profile.job.includes('WITHDRAWAL'),
+                    ),
+                  )}
+                  isLoading={isLoading}
+                />
+              )}
               <IntersectionBox ref={intersectionRef} />
             </ErrorBoundaryWithSuspense>
             <Spacer y={12} />
