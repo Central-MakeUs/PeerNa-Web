@@ -1,10 +1,12 @@
 import Button from '@components/common/atom/Button';
-import TopHeader from '@components/common/organism/TopHeader';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
+import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
+import Header from '@components/wrapper/Header';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
 import usePostPeerInviteProject from '@hooks/api/project/projectId/usePostPeerInviteProject';
 import { useFlow } from '@hooks/common/useStackFlow';
+import { Spacer } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
 import PeerProjectInfo from '../molecule/PeerProjectInfo';
 
@@ -33,13 +35,21 @@ const PeerProjectDetailPage: ActivityComponentType<
   const handleBack = () => pop();
   return (
     <AppScreenContainer>
-      <TopHeader onClick={handleBack} />
-      <div className="w-full">
+      <Header>
+        <Header.TopBar>
+          <Header.BackIcon handleClick={handleBack} />
+        </Header.TopBar>
+        <Header.Body>
+          <Header.Title>{projectInfo.projectName}</Header.Title>
+        </Header.Body>
+      </Header>
+      <Content>
+        <Spacer y={8} />
         {projectInfo && <PeerProjectInfo projectInfo={projectInfo} />}
-        <Footer bottom={5} className="px-4">
-          <Button onClick={handleInvitePeer}>동료 초대하기</Button>
-        </Footer>
-      </div>
+      </Content>
+      <Footer bottom={5} className="px-4">
+        <Button onClick={handleInvitePeer}>동료 초대하기</Button>
+      </Footer>
     </AppScreenContainer>
   );
 };
