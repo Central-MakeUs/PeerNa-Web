@@ -8,8 +8,8 @@ import { useActivity } from '@stackflow/react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-export default function ProjectJoinDeclineModal() {
-  const { isOpen, openModal, closeModal } = useModal('projectJoinDecline');
+export default function ProjectJoinRequestModal() {
+  const { isOpen, openModal, closeModal } = useModal('projectJoinRequest');
   const { mutate, isSuccess } = usePostProjectRequestJoin();
 
   const { params } = useActivity();
