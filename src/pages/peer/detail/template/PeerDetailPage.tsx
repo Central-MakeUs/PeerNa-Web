@@ -28,7 +28,7 @@ const PeerDetailPage: ActivityComponentType<peerDetailPageParams> = ({
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
   const { openModal: peerRequestOpen } = useModal('peerVerify');
   const { memberSimpleProfileDto, peerProjectDtoList } = peerInfo;
-  const projectId = peerProjectDtoList.map(project => project.projectId);
+  const projectId = peerProjectDtoList?.map(project => project.projectId);
   const username = memberSimpleProfileDto.name;
 
   const handleMoreFeedback = () => {
