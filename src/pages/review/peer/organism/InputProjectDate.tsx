@@ -5,6 +5,8 @@ import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import usePostPeerReviewReject from '@hooks/api/review/index/usePostPeerReviewReject';
 import { useFlow } from '@hooks/common/useStackFlow';
+import useReviewHistory from '@hooks/store/useReviewHistory';
+import useReviewState from '@hooks/store/useReviewState';
 import { Divider, Spacer } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
 import { differenceInDays } from 'date-fns';
@@ -33,10 +35,13 @@ export default function InputProjectDate({
 
   // 30일보다 크면 4번(진행), 작으면 3번(에러)
   const isValidDate = isLessThan30Days(new Date(startDate), new Date(endDate));
-
+  const { handleAddUuid } = useReviewHistory();
   const { push } = useFlow();
+  const { review } = useReviewState();
   const handleClick = () => {
     if (params.memberId) mutate(params.memberId);
+    if (!isValidDate && review.uuid) handleAddUuid(review.uuid);
+
     push('ReviewPeerPage', { step: isValidDate ? '4' : '3' });
   };
 

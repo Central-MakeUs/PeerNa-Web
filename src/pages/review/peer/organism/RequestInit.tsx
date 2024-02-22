@@ -1,14 +1,17 @@
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
+import { StackModals } from '@components/common/molecule/Modals';
 import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import useGetUserName from '@hooks/api/member/index/useGetUserName';
 import { useFlow } from '@hooks/common/useStackFlow';
+import useModal from '@hooks/store/useModal';
+import useReviewHistory from '@hooks/store/useReviewHistory';
 import useReviewState from '@hooks/store/useReviewState';
 import { Spacer } from '@nextui-org/react';
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 interface RequestInitProps {
   uuid?: string;
@@ -25,13 +28,27 @@ export default function RequestInit({ uuid, memberId }: RequestInitProps) {
   const { push } = useFlow();
   const handleClick = () => push('ReviewPeerPage', { step: '2', memberId });
 
+  const { isExistUuid } = useReviewHistory();
+  const [alreadyReview, setAlreadyReview] = useState<boolean>(false);
+
   useEffect(() => {
     if (username) {
       handleChangeUuid(uuid!);
       handleChangeTargetId(memberId!);
       handleChangePeerName(username);
     }
+
+    if (uuid) {
+      // 포함돼있으면 true를 던짐
+      const isExistUuidReivew = isExistUuid(uuid);
+      setAlreadyReview(isExistUuidReivew);
+    }
   }, []);
+
+  const { openModal } = useModal('alreadyReview');
+  useEffect(() => {
+    if (alreadyReview) openModal();
+  }, [alreadyReview]);
 
   return (
     <Fragment>
@@ -66,8 +83,11 @@ export default function RequestInit({ uuid, memberId }: RequestInitProps) {
         >
           함께 프로젝트를 한 경험이 있다면?
         </Typography>
-        <Button onClick={handleClick}>피어 테스트 응답하기</Button>
+        <Button isDisabled={alreadyReview} onClick={handleClick}>
+          피어 테스트 응답하기
+        </Button>
       </Footer>
+      <StackModals />
     </Fragment>
   );
 }

@@ -7,6 +7,7 @@ import { REVIEW_PICKER } from '@constants/review';
 import usePostSigninUserReviewPeer from '@hooks/api/review/index/usePostSigninUserReviewPeer';
 import usePostUnknownUserReviewPeer from '@hooks/api/review/index/usePostUnknownUserReviewPeer';
 import { useFlow, useStepFlow } from '@hooks/common/useStackFlow';
+import useReviewHistory from '@hooks/store/useReviewHistory';
 import useReviewState from '@hooks/store/useReviewState';
 import { Spacer } from '@nextui-org/react';
 import ReviewCenterImage from '@pages/review/index/atom/ReviewCenterImage';
@@ -75,6 +76,7 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
   const unknownMutation = usePostUnknownUserReviewPeer();
   const singinMutation = usePostSigninUserReviewPeer();
   const { review } = useReviewState();
+  const { handleAddUuid } = useReviewHistory();
   const handleClickLastButton = () => {
     const hasUuid = localStorage.getItem(UtilityKeys.UUID);
     const uuid = hasUuid ? hasUuid : uuidv4();
@@ -82,13 +84,20 @@ const ReviewPage: ActivityComponentType<ReviewPageParams> = ({ params }) => {
 
     if (type === 'peer') {
       if (review.uuid) {
-        unknownMutation.mutate({
-          targetUuid: review.uuid,
-          uuid: uuid,
-          answerIdList: review.answers,
-          feedback: review.feedback,
-          peerGrade: review.peerGrade,
-        });
+        unknownMutation.mutate(
+          {
+            targetUuid: review.uuid,
+            uuid: uuid,
+            answerIdList: review.answers,
+            feedback: review.feedback,
+            peerGrade: review.peerGrade,
+          },
+          {
+            onSuccess: () => {
+              handleAddUuid(review.uuid!);
+            },
+          },
+        );
       }
       if (review.targetId) {
         singinMutation.mutate({
