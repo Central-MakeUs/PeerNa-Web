@@ -55,7 +55,7 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
             handleClick={() => {
               const { activity, params } = history.history;
 
-              if (activity === 'HomePage') {
+              if (curStep === 0 && activity === 'HomePage') {
                 push('HomePage', { ...params });
                 return;
               } else {
