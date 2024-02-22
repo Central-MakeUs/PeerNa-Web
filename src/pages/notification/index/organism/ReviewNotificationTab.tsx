@@ -23,10 +23,17 @@ export default function ReviewNotificationTab() {
     title: string,
     subtitle: string,
     readFlag: boolean,
+    doneFlag: boolean,
   ) => {
     switch (type) {
       case NoticeType.PEER_TEST_REQUEST:
-        return new ReviewRequestNotification(params, title, subtitle, readFlag);
+        return new ReviewRequestNotification(
+          params,
+          title,
+          subtitle,
+          readFlag,
+          doneFlag,
+        );
       case NoticeType.PEER_TEST_RESULT_UPDATE:
         return new ReviewUpdateNotification(params, title, subtitle, readFlag);
       default:
@@ -49,6 +56,7 @@ export default function ReviewNotificationTab() {
               notification.contents,
               getTimeDifference(notification.createdTime),
               notification.readFlag,
+              notification.doneFlag == 'true',
             );
             return NotificationInstance ? (
               <Notification key={index} notification={NotificationInstance} />

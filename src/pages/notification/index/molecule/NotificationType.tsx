@@ -15,18 +15,21 @@ export class ReviewRequestNotification implements NotificationBase {
   private readonly title: string;
   private readonly subtitle: string;
   private readonly readFlag: boolean;
+  private readonly doneFlag: boolean;
 
   constructor(
     params: Record<string, string>,
     title: string,
     subtitle: string,
     readFlag: boolean,
+    doneFlag: boolean,
   ) {
     this.activity = 'ReviewPeerPage';
     this.params = params;
     this.title = title;
     this.subtitle = subtitle;
     this.readFlag = readFlag;
+    this.doneFlag = doneFlag;
   }
 
   display(push: PushFunction<string>) {
@@ -58,6 +61,7 @@ export class ReviewRequestNotification implements NotificationBase {
         </div>
         <div>
           <Button
+            isDisabled={this.doneFlag}
             buttonVariant="secondary"
             buttonSize="sm"
             onClick={() => push(this.activity, this.params)}
