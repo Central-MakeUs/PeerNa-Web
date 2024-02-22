@@ -6,10 +6,10 @@ import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 
 export default function SelfTestModal() {
   const { isOpen, closeModal } = useModal('selfTest');
-  const { replace } = useFlow();
+  const { push } = useFlow();
 
   const handleClickSelfTest = () => {
-    replace('ReviewSelfPage', { step: '1' });
+    push('ReviewSelfPage', { step: '0' });
     closeModal();
   };
 

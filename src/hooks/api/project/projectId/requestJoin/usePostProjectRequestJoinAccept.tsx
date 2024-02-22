@@ -5,17 +5,17 @@ import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
 
 interface ProjectRequestJoinAcceptDTO {
-  projectId: number;
-  peerId: number;
+  projectId: string;
+  peerId: string;
 }
 
-interface ProjectRequestJoinDeclineDTO extends ProjectInviteSuccessType {}
+interface ProjectResponseJoinDeclineDTO extends ProjectInviteSuccessType {}
 
 const postProjectRequestJoinAccept = async ({
   projectId,
   peerId,
 }: ProjectRequestJoinAcceptDTO): Promise<
-  ApiResponse<ProjectRequestJoinDeclineDTO>
+  ApiResponse<ProjectResponseJoinDeclineDTO>
 > => {
   return await http.post(
     `/project/${projectId}/request-join/${peerId}/accept`,

@@ -2,11 +2,17 @@ import IconButton from '@components/common/atom/IconButton';
 import Typography, {
   TypographyProps,
 } from '@components/common/atom/Typography';
-import { PropsWithChildren } from 'react';
+import { ComponentProps, PropsWithChildren } from 'react';
 
-function Header({ children }: PropsWithChildren) {
+function Header({
+  children,
+  ...props
+}: PropsWithChildren<ComponentProps<'div'>>) {
   return (
-    <div className="w-full box-border flex flex-col bg-transparent px-4">
+    <div
+      {...props}
+      className={`w-full box-border flex flex-col bg-transparent px-4 ${props.className}`}
+    >
       {children}
     </div>
   );
@@ -14,7 +20,7 @@ function Header({ children }: PropsWithChildren) {
 
 function TopBar({ children }: PropsWithChildren) {
   return (
-    <div className="w-full flex items-center justify-between h-[68px] px-2 py-[18px]">
+    <div className="w-full flex items-center justify-between h-[68px] py-[18px]">
       {children}
     </div>
   );
@@ -27,7 +33,7 @@ interface BackIconProps {
 function BackIcon({ handleClick }: BackIconProps) {
   return (
     <IconButton
-      iconProps={{ id: 'ArrowLeft', color: 'black' }}
+      iconProps={{ id: 'ArrowLeft', color: 'gray07', width: 20, height: 20 }}
       onClick={handleClick}
     />
   );

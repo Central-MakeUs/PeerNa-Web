@@ -1,8 +1,10 @@
 import Button from '@components/common/atom/Button';
+import Typography from '@components/common/atom/Typography';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { REVIEW_SELF_TITLE } from '@constants/review';
+import useHistory from '@hooks/common/useHistory';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewSelfState from '@hooks/store/useReviewSelfState';
 import { Spacer } from '@nextui-org/react';
@@ -43,24 +45,41 @@ const ReviewSelfPage: ActivityComponentType<ReviewSelfParams> = ({
 
   const isValidPush = stepValidation();
 
+  const history = useHistory();
+
   return (
     <AppScreenContainer>
       <Header>
         <Header.TopBar>
-          <Header.BackIcon handleClick={() => pop({ animate: true })} />
+          <Header.BackIcon
+            handleClick={() => {
+              const { activity, params } = history.history;
+
+              if (activity === 'HomePage') {
+                push('HomePage', { ...params });
+                return;
+              } else {
+                pop();
+                return;
+              }
+            }}
+          />
         </Header.TopBar>
-        <Header.Body className="mt-12">
-          <Header.Title>{REVIEW_SELF_TITLE[curStep]}</Header.Title>
-        </Header.Body>
       </Header>
+      <Spacer y={10} />
+      <div className="w-full px-4">
+        <Typography variant="header01" fontColor="gray08" className="text-left">
+          {REVIEW_SELF_TITLE[curStep]}
+        </Typography>
+      </div>
       <Spacer y={4} />
-      <div className="w-full flex flex-col gap-4 px-4">
+      <div className="w-full flex flex-col px-4">
         {curStep === 0 && <ReviewGuide />}
         {curStep === 1 && <InputName />}
         {curStep === 2 && <SelectJob />}
         {curStep === 3 && <SelectPosition />}
       </div>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleClick} isDisabled={isValidPush}>
           {curStep === lastStep ? '시작하기' : '다음'}
         </Button>

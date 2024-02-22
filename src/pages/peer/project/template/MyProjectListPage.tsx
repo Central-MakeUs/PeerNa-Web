@@ -86,7 +86,7 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
           </div>
         </div>
       </Content>
-      <Footer bottom={3} className="px-4">
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleInvite} isDisabled={!selectedProjectId}>
           초대하기
         </Button>

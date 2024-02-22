@@ -43,7 +43,9 @@ export default function ProjectNotificationTab() {
   return (
     <Fragment>
       {data?.pages.every(group => group.result.length === 0) ? (
-        <EmptyNotification />
+        <div className="w-full h-[calc(100%-50px)] flex items-center justify-center">
+          <EmptyNotification />
+        </div>
       ) : (
         data?.pages.map(group =>
           group.result.map((notification, index) => {

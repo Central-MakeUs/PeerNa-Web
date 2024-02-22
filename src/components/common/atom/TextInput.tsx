@@ -44,6 +44,7 @@ function CustomTextInput(
       classNames={{
         clearButton: '!h-[24px] box-content',
         innerWrapper: '!pb-0',
+        inputWrapper: 'border-gray02 border-1 !shadow-none',
       }}
       endContent={
         <IconButton

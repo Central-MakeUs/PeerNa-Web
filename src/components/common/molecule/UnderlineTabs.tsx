@@ -16,12 +16,12 @@ export default function UnderlineTabs({
       aria-label="Options"
       color="primary"
       variant="underlined"
-      className="flex w-full px-4"
+      className="flex w-full"
       classNames={{
         tabList:
-          'gap-6 w-full relative rounded-none p-0 border-b border-divider',
-        cursor: 'w-full bg-[#67737E]',
-        tab: 'px-0 h-12',
+          'w-full relative rounded-none p-0 border-b border-divider overflow-y-hidden',
+        cursor: 'w-[80%] bg-[#67737E] h-[2px]',
+        tab: 'px-4 !h-12',
         tabContent: `${FontVariantsClassName.body01} text-gray04 group-data-[selected=true]:text-gray08`,
       }}
     >

@@ -1,11 +1,13 @@
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
-import FixedCenter from '@components/wrapper/FixedCenter';
+import Typography from '@components/common/atom/Typography';
+import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { UtilityKeys } from '@constants/localStorage';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
+import { Spacer } from '@nextui-org/react';
 import { Fragment, useEffect } from 'react';
 
 export default function ThanksReview() {
@@ -25,20 +27,29 @@ export default function ThanksReview() {
   return (
     <Fragment>
       <Header>
-        <Header.TopBar />
-        <Header.Body className="gap-4">
-          <Header.Title>소중한 응답 감사해요!</Header.Title>
-          <Header.Subtitle>
+        <Spacer y={10} />
+        <Header.Body className="gap-1">
+          <Typography variant="header01" color="gray08">
+            소중한 응답 감사해요!
+          </Typography>
+          <Typography variant="body02" color="gray06">
             {`${review.peerName}님도 매우 고마워할 거에요!`}
-          </Header.Subtitle>
+          </Typography>
         </Header.Body>
       </Header>
-      <FixedCenter>
-        <div className="w-[124px] h-[124px] bg-primary100 rounded-full flex justify-center items-center">
-          <SvgIcon id="CheckboxPerson" color="primary" width={64} height={64} />
+      <Content>
+        <div className="w-full h-[calc(100%-180px)] flex items-center justify-center">
+          <div className="w-[124px] h-[124px] bg-primary100 rounded-full flex justify-center items-center">
+            <SvgIcon
+              id="CheckboxPerson"
+              color="primary"
+              width={64}
+              height={64}
+            />
+          </div>
         </div>
-      </FixedCenter>
-      <Footer bottom={3} className="px-4">
+      </Content>
+      <Footer bottom={5} className="px-4">
         <Button onClick={handleClick}>확인</Button>
       </Footer>
     </Fragment>

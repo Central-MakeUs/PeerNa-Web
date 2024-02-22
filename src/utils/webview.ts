@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { setIsApp, setPadding } from '@utils';
 import { fcmInit } from '@utils/fcm';
 import {
   getAccessToken,
@@ -35,8 +36,11 @@ export class WebviewBridge {
         );
         switch (message.type) {
           case 'init':
+            setIsApp();
             // eslint-disable-next-line no-case-declarations
-            const { accessToken, refreshToken, fcmToken } = message.data;
+            const { accessToken, refreshToken, fcmToken, padding } =
+              message.data;
+            setPadding(padding);
             setAccessToken(JSON.parse(accessToken ?? ''));
             setRefreshToken(JSON.parse(refreshToken ?? ''));
             setFcmToken(JSON.parse(fcmToken ?? ''));

@@ -8,9 +8,8 @@ import useGetMe from '@hooks/api/member/index/useGetMe';
 import useGetProjectById from '@hooks/api/project/index/useGetProjectById';
 import useShareLink from '@hooks/common/useShareLink';
 import { useFlow } from '@hooks/common/useStackFlow';
-import useModal from '@hooks/store/useModal';
 import { Spacer } from '@nextui-org/react';
-import ProjectJoinModal from '@pages/project/projectId/molecule/ProjectJoinModal';
+import ProjectJoinRequestButton from '@pages/project/projectId/molecule/ProjectJoinRequestButton';
 import ProjectInformation from '@pages/project/projectId/organism/ProjectInformation';
 import ShareDrawer from '@pages/review/result/molecule/ShareDrawer';
 import { ActivityComponentType, useActivity } from '@stackflow/react';
@@ -27,11 +26,10 @@ const ProjectDetailPage: ActivityComponentType<ProjectDetailPageParams> = ({
   const { type } = params;
   const { pop } = useFlow();
   const handleClickBackIcon = () => pop({ animate: true });
-  const { openModal } = useModal('projectJoin');
   const [openBottomSheet, setOpenBottomSheet] = useState<boolean>(false);
   const { data: user } = useGetMe();
   const username = user?.name ?? '';
-  const handleClickJoinProject = () => openModal();
+
   const handleClickShare = () => setOpenBottomSheet(true);
   const { handleSendKakaoMessage, handleShareLink } = useShareLink();
 
@@ -70,14 +68,11 @@ const ProjectDetailPage: ActivityComponentType<ProjectDetailPageParams> = ({
         <ProjectInformation projectInformation={projectInformation} />
         <Spacer y={16} />
       </Content>
-      <Footer bottom={3} className="px-4">
-        {type === 'other' && (
-          <Button onClick={handleClickJoinProject}>참가 신청하기</Button>
-        )}
+      <Footer bottom={5} className="px-4">
+        {type === 'other' && <ProjectJoinRequestButton />}
         {type === 'my' && (
           <Button onClick={handleClickShare}>동료 초대하기</Button>
         )}
-        <ProjectJoinModal />
       </Footer>
       <ShareDrawer
         openBottomSheet={openBottomSheet}

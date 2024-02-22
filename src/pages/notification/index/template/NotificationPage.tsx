@@ -1,3 +1,4 @@
+import Typography from '@components/common/atom/Typography';
 import BottomNavigation from '@components/common/molecule/BottomNavigation';
 import UnderlineTabs from '@components/common/molecule/UnderlineTabs';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
@@ -13,17 +14,20 @@ const NotificationPage: ActivityComponentType = () => {
   return (
     <AppScreenContainer>
       <Header>
-        <Header.TopBar />
+        <Spacer y={10} />
         <Header.Body>
-          <Header.Title>알림</Header.Title>
+          <Typography variant="header01" fontColor="gray08">
+            알림
+          </Typography>
         </Header.Body>
       </Header>
+      <Spacer y={4} />
       <Content>
         <UnderlineTabs>
-          <Tab className="w-full" title="피어 테스트">
+          <Tab className="w-full h-full" title="피어 테스트">
             <ReviewNotificationTab />
           </Tab>
-          <Tab className="w-full" title="프로젝트">
+          <Tab className="w-full h-full" title="프로젝트">
             <ProjectNotificationTab />
           </Tab>
         </UnderlineTabs>
