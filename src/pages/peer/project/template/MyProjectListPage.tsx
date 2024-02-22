@@ -63,7 +63,9 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
           <Spacer y={3} />
           <div className="flex flex-col gap-3">
             {data?.pages.every(group => group.result.length === 0) ? (
-              <div className="w-full h-[calc(100%-200px)] flex items-center justify-center">
+              <div>
+                <Spacer y={20} />
+                <Spacer y={2} />
                 <EmptyProject />
               </div>
             ) : (

@@ -21,6 +21,7 @@ export default function TotalScoreToolTip({
   return (
     <Tooltip
       content={`${totalScore}점`}
+      placement="top"
       showArrow
       isOpen={isOpen}
       className="bg-gray07 text-white"

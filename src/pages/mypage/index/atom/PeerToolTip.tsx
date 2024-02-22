@@ -24,6 +24,7 @@ export default function PeerToolTip({ type }: PeerToolTipProps) {
     <Tooltip
       content={toolTip}
       showArrow
+      placement="top"
       isOpen={isOpen}
       className="bg-gray07 text-white !whitespace-pre-line mt-9"
       classNames={{
