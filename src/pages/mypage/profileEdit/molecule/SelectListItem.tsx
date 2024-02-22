@@ -13,19 +13,21 @@ export default function SelectListItem({
   onClick,
 }: SelectListItemProps) {
   return (
-    <div
-      className="w-full !h-[70px] pl-[28px] flex flex-col justify-center box-content cursor-pointer"
+    <ul
+      className="w-full !h-[70px] flex flex-col justify-center box-content cursor-pointer"
       onClick={onClick}
     >
-      <div className="w-full flex justify-between">
+      <li className="w-full flex justify-between px-5">
         <Typography
           variant="body01"
           className={`${isSelect ? 'text-primary500' : 'text-gray08'}`}
         >
           {title}
         </Typography>
-        {isSelect && <SvgIcon id="Check" color="primary500" />}
-      </div>
-    </div>
+        {isSelect && (
+          <SvgIcon id="Check" color="primary500" width={17.5} height={13} />
+        )}
+      </li>
+    </ul>
   );
 }

@@ -1,10 +1,10 @@
+import SelectListItem from '@components/common/atom/SelectListItem';
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
 import { PART_LIST } from '@constants/list';
 import { profileSelfState } from '@store/profileSelfState';
 import { PartType } from '@type/enums';
 import { useRecoilState } from 'recoil';
-import SelectListItem from './SelectListItem';
 
 interface PartDrawerProps {
   openPartBottomSheet: boolean;
@@ -21,7 +21,6 @@ export default function PositionDrawer({
       ...prev,
       part: newPart,
     }));
-    setOpenPartBottomSheet(false);
   };
 
   return (

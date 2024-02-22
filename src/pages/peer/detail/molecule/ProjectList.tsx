@@ -8,11 +8,13 @@ import { Fragment } from 'react';
 interface ProjectListProps {
   projectList: ProjectItemType[];
   handleClick: () => void;
+  handlePeerProject?: () => void;
 }
 
 export default function ProjectList({
   projectList,
   handleClick,
+  handlePeerProject,
 }: ProjectListProps) {
   return (
     <Fragment>
@@ -37,6 +39,7 @@ export default function ProjectList({
               title={project.projectName}
               subtitle={project.introduce}
               date={`${project.startDate} ~ ${project.endDate}`}
+              handleClick={handlePeerProject}
             />
           </li>
         ))}

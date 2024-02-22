@@ -1,5 +1,5 @@
 import { Button, Tooltip } from '@nextui-org/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type TotalScoreToolTipProps = {
   totalScore: number;
@@ -11,6 +11,12 @@ export default function TotalScoreToolTip({
   children,
 }: TotalScoreToolTipProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    let focusTimeout: NodeJS.Timeout;
+    if (isOpen) focusTimeout = setTimeout(() => setIsOpen(false), 3000);
+    return () => clearTimeout(focusTimeout);
+  }, [isOpen]);
 
   return (
     <Tooltip

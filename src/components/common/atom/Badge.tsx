@@ -7,7 +7,7 @@ interface BadgeProps extends CodeProps {
 }
 
 export default function Badge({ type = 'default', children }: BadgeProps) {
-  const badgeVariantClassed = `font-Pretendard !px-1 !py-[2px] 
+  const badgeVariantClassed = `font-Pretendard !px-1 !rounded !py-0
   ${type === 'default' ? 'text-gray07 bg-gray02' : 'text-gray01 bg-primary100'}`;
   const fontStyle = type === 'default' ? 'gray07' : 'primary500';
 

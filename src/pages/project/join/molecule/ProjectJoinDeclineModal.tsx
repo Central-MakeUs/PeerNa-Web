@@ -1,21 +1,22 @@
 import Button from '@components/common/atom/Button';
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import usePostProjectRespondInvitation from '@hooks/api/project/projectId/usePostProjectRespondInvitation';
-import { useFlow } from '@hooks/common/useStackFlow';
+import usePostProjectRequestJoinAccept from '@hooks/api/project/projectId/requestJoin/usePostProjectRequestJoinAccept';
 import useModal from '@hooks/store/useModal';
 import { Modal, ModalContent, ModalFooter } from '@nextui-org/react';
 import { useActivity } from '@stackflow/react';
-import { RespondType } from '@type/enums';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-export default function ProjectDeclineModal() {
-  const { isOpen, openModal, closeModal } = useModal('projectDecline');
-  const { mutate, isSuccess } = usePostProjectRespondInvitation();
+export default function ProjectJoinDeclineModal() {
+  const { isOpen, openModal, closeModal } = useModal('projectJoinDecline');
+
+  const { mutate, isSuccess } = usePostProjectRequestJoinAccept();
 
   const { params } = useActivity();
-  const { replace } = useFlow();
+
+  const projectId = params.id ?? '';
+  const memberId = params.subTargetId ?? '';
 
   const handleOpenChange = (isOpen: boolean) => {
     if (isOpen) openModal();
@@ -23,17 +24,18 @@ export default function ProjectDeclineModal() {
   };
 
   const handleClickAgree = () => {
-    mutate({ projectId: params.id!, type: RespondType.DECLINE });
+    mutate({ peerId: memberId, projectId: projectId });
     toast.success('거절 완료!', {
       icon: <SvgIcon id="Complete" color="gray08" />,
     });
   };
-  const handleClickDisagree = () => closeModal();
+  const handleClickDisagree = () => {
+    closeModal();
+  };
 
   useEffect(() => {
     if (isSuccess) {
       closeModal();
-      replace('ProjectPage', {});
     }
   }, [isSuccess]);
 
@@ -52,10 +54,10 @@ export default function ProjectDeclineModal() {
       <ModalContent className="w-[310px] m-auto">
         <div className="pt-10 pb-4 px-4">
           <Typography className="text-center mb-5" variant="header03">
-            프로젝트 제안을 거절할까요?
+            프로젝트 참여 신청을 거절할까요?
           </Typography>
           <Typography className="text-center" variant="body02">
-            {'거절한 프로젝트는 \n 다시 참여할 수 없어요'}
+            {`신청을 거절하면\n 해당 동료와 프로젝트를 함께 할 수 없어요`}
           </Typography>
         </div>
         <ModalFooter>
