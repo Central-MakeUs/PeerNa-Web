@@ -44,36 +44,42 @@ export default function ProjectInformation({
             소개 링크
           </Typography>
           <div className="flex flex-col gap-2">
-            <Code className="flex gap-2 items-center px-4 py-2">
-              <Typography
-                variant="body02"
-                fontColor="gray06"
-                as="a"
-                href={openChattingLink}
-              >
-                {openChattingLink}
-              </Typography>
-            </Code>
-            <Code className="flex gap-2 items-center px-4 py-2">
-              <Typography
-                variant="body02"
-                fontColor="gray06"
-                as="a"
-                href={notionLink}
-              >
-                {notionLink}
-              </Typography>
-            </Code>
-            <Code className="flex gap-2 items-center px-4 py-2">
-              <Typography
-                variant="body02"
-                fontColor="gray06"
-                as="a"
-                href={githubLink}
-              >
-                {githubLink}
-              </Typography>
-            </Code>
+            {openChattingLink !== '' ? (
+              <Code className="flex gap-2 items-center px-4 py-2">
+                <Typography
+                  variant="body02"
+                  fontColor="gray06"
+                  as="a"
+                  href={openChattingLink}
+                >
+                  {openChattingLink}
+                </Typography>
+              </Code>
+            ) : null}
+            {notionLink !== '' ? (
+              <Code className="flex gap-2 items-center px-4 py-2">
+                <Typography
+                  variant="body02"
+                  fontColor="gray06"
+                  as="a"
+                  href={notionLink}
+                >
+                  {notionLink}
+                </Typography>
+              </Code>
+            ) : null}
+            {githubLink !== '' ? (
+              <Code className="flex gap-2 items-center px-4 py-2">
+                <Typography
+                  variant="body02"
+                  fontColor="gray06"
+                  as="a"
+                  href={githubLink}
+                >
+                  {githubLink}
+                </Typography>
+              </Code>
+            ) : null}
           </div>
         </div>
         <div className="w-full flex flex-col gap-3">
