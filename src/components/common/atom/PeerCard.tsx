@@ -25,7 +25,7 @@ export default function PeerCard({ size, type, testResult }: CardProps) {
   const cardSize =
     size === 'L'
       ? 'w-[294px] h-[408px] py-7 gap-6'
-      : ' w-[171px] h-[238px] py-4 bg-100 gap-2';
+      : ' w-[171px] h-[238px] py-4 bg-100 gap-3';
 
   const iconSize = size === 'L' ? 'w-[200px] h-[200px]' : 'w-[110px] h-[110px]';
 
