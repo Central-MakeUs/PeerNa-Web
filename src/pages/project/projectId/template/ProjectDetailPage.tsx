@@ -1,4 +1,5 @@
 import Button from '@components/common/atom/Button';
+import { StackModals } from '@components/common/molecule/Modals';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
@@ -80,6 +81,7 @@ const ProjectDetailPage: ActivityComponentType<ProjectDetailPageParams> = ({
         handleClickShareLink={handleCopyLink}
         handleClickKakaoShare={handleKakaoShare}
       />
+      <StackModals />
     </AppScreenContainer>
   );
 };
