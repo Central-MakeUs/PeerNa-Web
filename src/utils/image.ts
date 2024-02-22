@@ -7,7 +7,7 @@ export function setThumbnailBasedOnUrl() {
 
     if (url.includes('review/peer/?uuid=')) {
       thumbnailImage =
-        'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYSZ6v5XcEHtBLPg5K85rHsv6_s9UW5N1uynvNC8N7nBp1FY7fNHjadGZmtwV9GFaIL70cV4h9Z8ZT1wylnXgBst_K5J=w1920-h868';
+        'https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTYouYZh6_YU9jCfKbLJxRYDjDgokrpVnu4B_xytwiqBFVnqR6cwDh1w8h83P-yIrZQiKLk7gzlLI7YYtPxoxL5GEYj=w800-h400';
       description = `저는 어떤 동료인가요? \n피어테스트를 통해 솔직하게 알려주세요`;
     } else if (url.includes('/project')) {
       thumbnailImage =
