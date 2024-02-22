@@ -3,11 +3,11 @@ import ProjectAcceptModal from '@components/common/molecule/ProjectAcceptModal';
 import ProjectDeclineModal from '@components/common/molecule/ProjectDeclineModal';
 import ProjectJoinAcceptModal from '@components/common/molecule/ProjectJoinAcceptModal';
 import ProjectJoinDeclineModal from '@components/common/molecule/ProjectJoinDeclineModal';
+import ProjectJoinRequestModal from '@components/common/molecule/ProjectJoinRequestModal';
 import PushModal from '@components/common/molecule/PushModal';
 import WithdrawalModal from '@components/common/molecule/WithdrawalModal';
 import LoginModal from '@pages/auth/redirect/organism/LoginModal';
 import SelfTestModal from '@pages/mypage/index/molecule/SelfTestModal';
-import ProjectJoinRequestButton from '@pages/project/projectId/molecule/ProjectJoinRequestButton';
 import { ModalType, modalState } from '@store/modal';
 import { ReactNode } from 'react';
 import { useRecoilValue } from 'recoil';
@@ -47,7 +47,7 @@ export function StackModals() {
         withdrawal: <WithdrawalModal />,
         projectJoinAccept: <ProjectJoinAcceptModal />,
         projectJoinDecline: <ProjectJoinDeclineModal />,
-        projectJoinRequest: <ProjectJoinRequestButton />,
+        projectJoinRequest: <ProjectJoinRequestModal />,
       }}
     />
   );
