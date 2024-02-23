@@ -16,7 +16,6 @@ export default function PeerProfileCard({
   const peerType = memberInfo.peerTestType;
   const type = peerType === null ? 'analyze' : undefined;
 
-  console.log(peerType);
   return (
     <Fragment>
       <article className="flex flex-col items-center mb-8">

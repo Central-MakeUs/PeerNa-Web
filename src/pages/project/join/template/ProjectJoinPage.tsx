@@ -38,7 +38,6 @@ const ProjectJoinPage: ActivityComponentType<ProjectJoinPageParams> = ({
   const { openModal: declineModal } = useModal('projectJoinDecline');
 
   const { data: peerInfo } = useGetPeerDetail(parseInt(memberId));
-  console.log(peerInfo);
 
   const {
     peerTestMoreThanThree,
