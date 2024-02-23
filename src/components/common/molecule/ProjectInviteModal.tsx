@@ -28,10 +28,16 @@ export default function ProjectInviteModal() {
 
   const handleClickAgree = () => {
     if (projectId) {
-      mutate({ projectId: projectId, peerId: memberId });
-      toast.success('초대 완료!', {
-        icon: <SvgIcon id="Complete" color="gray08" />,
-      });
+      mutate(
+        { projectId: projectId, peerId: memberId },
+        {
+          onSuccess: () => {
+            toast.success('초대 완료!', {
+              icon: <SvgIcon id="Complete" color="gray08" />,
+            });
+          },
+        },
+      );
     }
   };
   const handleClickDisagree = () => {
