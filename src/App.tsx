@@ -3,6 +3,7 @@ import { Modals } from '@components/common/molecule/Modals';
 import BottomSheet from '@components/common/organism/BottomSheet';
 import useHttpInterceptor from '@hooks/common/useHttpInterceptor';
 import { Stack } from '@hooks/common/useStackFlow';
+import { getIsApp } from '@utils';
 import { http } from '@utils/API';
 import { WebviewBridge } from '@utils/webview';
 import { useEffect } from 'react';
@@ -36,6 +37,7 @@ function App() {
         <Toaster
           toastOptions={{
             style: {
+              marginTop: getIsApp() ? '50px' : '0px',
               borderRadius: '100px',
             },
           }}
