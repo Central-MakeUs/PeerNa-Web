@@ -14,6 +14,7 @@ type KeywordProps = {
 
 export default function KeywordContent({ data, handleClick }: KeywordProps) {
   const {
+    peerTestMoreThanThree,
     colorAnswerIdList,
     selfTestAnswerIdList,
     peerCardList,
@@ -39,7 +40,7 @@ export default function KeywordContent({ data, handleClick }: KeywordProps) {
           <OverallOpinion totalEvaluation={totalEvaluation} />
         )}
       </ErrorBoundaryWithSuspense>
-      {totalScore && <OverallScore totalScore={totalScore} />}
+      {peerTestMoreThanThree && <OverallScore totalScore={totalScore} />}
       {peerFeedbackList.length > 0 && (
         <Feedback
           peerFeedbackList={peerFeedbackList}

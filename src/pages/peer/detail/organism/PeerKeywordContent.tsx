@@ -43,7 +43,7 @@ export default function PeerKeywordContent({
           />
         )}
       </ErrorBoundaryWithSuspense>
-      {colorAnswerIdList.length === 0 && <NoTestKeywordResult type="peer" />}{' '}
+      {colorAnswerIdList.length === 0 && <NoTestKeywordResult type="peer" />}
       <ErrorBoundaryWithSuspense>
         {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
           <OverallOpinion totalEvaluation={totalEvaluation} />

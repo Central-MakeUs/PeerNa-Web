@@ -1,4 +1,4 @@
-import { ICON_MAPPER } from '@constants/mapper';
+import { PEER_ICON_LIST } from '@constants/images';
 import useFocusTimeout from '@hooks/common/useFocusTimeout';
 import { TestType } from '@type/enums';
 
@@ -12,18 +12,19 @@ export default function AvatarButton({ type, handleClick }: AvatarButtonProps) {
 
   const backgroundColor = isFocused ? 'bg-gray02' : 'bg-gray01';
 
-  const bgImage = ICON_MAPPER[type];
-  //TODO) 반응형으로 구현할 것
+  const bgImage = PEER_ICON_LIST[type];
   return (
     <div className="flex justify-center items-center shadow-default w-[72px] h-[72px] rounded-full">
       <button
-        className={`${backgroundColor} ${bgImage} w-[68px] h-[68px] bg-44 bg-no-repeat bg-center 
+        className={`${backgroundColor} flex justify-center items-center w-[68px] h-[68px] bg-44 bg-no-repeat bg-center 
   rounded-full border-1 border-[#E3E6E8]`}
         onClick={() => {
           handleFocus();
           handleClick?.();
         }}
-      ></button>
+      >
+        <img src={bgImage} className="w-11 h-11" />
+      </button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
+import { QUERY_KEY } from '@constants/queryKey';
 import useErrorHandler from '@hooks/common/useErrorHandler';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { MemberDefaultInformationType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
@@ -30,11 +31,14 @@ const editProfileInformation = async ({
   return response.data;
 };
 
-export default function usePatchMyProfile(successCallback?: () => void) {
+export default function usePatchMyProfile() {
   const { handleError } = useErrorHandler();
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: editProfileInformation,
-    onSuccess: successCallback,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.MYPAGE_INFO] });
+    },
     onError: (error: AxiosError) => {
       handleError(error);
     },
