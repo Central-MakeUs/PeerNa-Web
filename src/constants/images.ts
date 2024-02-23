@@ -1,4 +1,5 @@
 import Analytical from '@assets/common/analytical.png';
+import HomeBg from '@assets/common/bg_gradient.png';
 import CardLocked from '@assets/common/card_locked.png';
 import Cautious from '@assets/common/cautious.png';
 import Challenging from '@assets/common/challenging.png';
@@ -32,6 +33,8 @@ import onboardingCarousel from '@assets/review/onboarding_carousel.json';
 import Peer1 from '@assets/review/peer/peer1.png';
 import Peer2 from '@assets/review/peer/peer2.png';
 import Peer3 from '@assets/review/peer/peer3.png';
+
+export const HOME_BG = HomeBg;
 
 export const REVIEW_LOTTIES = [Lottie1, Lottie2, Lottie3, Lottie4];
 export const CONFETTI = confetti;
