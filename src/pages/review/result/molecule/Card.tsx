@@ -9,7 +9,7 @@ interface CardItemProps {
 export default function Card({ type }: CardItemProps) {
   const { image, caption, title, content } = KEYWORD_CARD_INFO[type];
   return (
-    <section className="flex w-[350px] gap-3">
+    <section className="flex gap-3">
       <img src={image} width={82} height={144} alt={`${type} card`} />
       <div className="py-[12.5px]">
         <Typography variant="caption01" fontColor="gray05" className="mb-1">

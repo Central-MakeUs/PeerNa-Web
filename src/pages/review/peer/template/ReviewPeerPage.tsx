@@ -1,4 +1,3 @@
-import gradient from '@assets/common/bg_gradient.png';
 import Spinner from '@components/common/atom/Spinner';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import GuessWhoResponse from '@pages/review/peer/organism/GuessWhoResponse';
@@ -11,7 +10,7 @@ import ThanksReview from '@pages/review/peer/organism/ThanksReview';
 import WonderingMyCard from '@pages/review/peer/organism/WonderingMyCard';
 import { ActivityComponentType } from '@stackflow/react';
 import { isValidDateRange } from '@utils/date';
-import { CSSProperties, Suspense, useState } from 'react';
+import { Suspense, useState } from 'react';
 import toast from 'react-hot-toast';
 
 type ReviewPeerPageParams = {
@@ -36,16 +35,10 @@ const ReviewPeerPage: ActivityComponentType<ReviewPeerPageParams> = ({
     }
   };
 
-  const bgStyle: CSSProperties =
-    curStep === 8
-      ? {
-          backgroundImage: `url(${gradient})`,
-          backgroundSize: 'cover',
-        }
-      : {};
-
   return (
-    <AppScreenContainer className={'bg-transparent'} style={bgStyle}>
+    <AppScreenContainer
+      className={`${curStep === 8 ? 'bg-peer-bg' : 'bg-transparent'}`}
+    >
       {curStep === 1 && (
         <Suspense fallback={<Spinner />}>
           <RequestInit uuid={params.uuid} memberId={params.memberId} />

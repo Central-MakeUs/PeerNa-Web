@@ -1,4 +1,5 @@
 import Button from '@components/common/atom/Button';
+import SvgIcon from '@components/common/atom/SvgIcon';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
 import Footer from '@components/wrapper/Footer';
@@ -8,6 +9,7 @@ import usePostPeerInviteProject from '@hooks/api/project/projectId/usePostPeerIn
 import { useFlow } from '@hooks/common/useStackFlow';
 import { Spacer } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
+import toast from 'react-hot-toast';
 import PeerProjectInfo from '../molecule/PeerProjectInfo';
 
 type PeerProjectDetailPageParams = {
@@ -26,10 +28,19 @@ const PeerProjectDetailPage: ActivityComponentType<
   const mutation = usePostPeerInviteProject();
 
   const handleInvitePeer = () => {
-    mutation.mutate({
-      projectId: projectId,
-      peerId: memberId,
-    });
+    mutation.mutate(
+      {
+        projectId: projectId,
+        peerId: memberId,
+      },
+      {
+        onSuccess: () => {
+          toast.success('초대 완료!', {
+            icon: <SvgIcon id="Complete" color="gray08" />,
+          });
+        },
+      },
+    );
   };
   const { pop } = useFlow();
   const handleBack = () => pop();

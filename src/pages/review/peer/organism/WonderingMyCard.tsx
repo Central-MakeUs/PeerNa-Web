@@ -1,4 +1,3 @@
-import whatsMyTypeCard from '@assets/common/whats_my_type_card.png';
 import Button from '@components/common/atom/Button';
 import Typography from '@components/common/atom/Typography';
 import Content from '@components/wrapper/Content';
@@ -6,8 +5,8 @@ import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
 import { useFlow } from '@hooks/common/useStackFlow';
 import useReviewState from '@hooks/store/useReviewState';
-import { Card } from '@nextui-org/react';
-import { motion } from 'framer-motion';
+import FlipCard from '@pages/review/result/molecule/FlipCard';
+import { TestType } from '@type/enums';
 import { Fragment } from 'react';
 
 export default function WonderingMyCard() {
@@ -34,25 +33,11 @@ export default function WonderingMyCard() {
       </Header>
       <Content>
         <div className="py-6 flex flex-col items-center justify-center gap-3">
-          <motion.div
-            className="card"
-            animate={{ rotateY: 360, rotateZ: [0, 5, 0, -5, 0] }}
-            transition={{
-              duration: 4,
-              ease: 'linear',
-              repeat: Infinity,
-              repeatType: 'loop',
-              repeatDelay: 1,
-            }}
-          >
-            <Card className="w-[294px] h-[408px]">
-              <img
-                src={whatsMyTypeCard}
-                alt="Card"
-                className="w-full h-full object-cover rounded-lg"
-              />
-            </Card>
-          </motion.div>
+          <FlipCard
+            selfTestType={TestType.UNKNOWN}
+            peerTestType={TestType.UNKNOWN}
+            size="L"
+          />
         </div>
       </Content>
       <Footer bottom={5} className="px-4">
