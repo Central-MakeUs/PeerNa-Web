@@ -3,7 +3,6 @@ import { useMutation } from '@tanstack/react-query';
 import { ProjectInviteSuccessType } from '@type/index';
 import { ApiResponse, http } from '@utils/API';
 import { AxiosError } from 'axios';
-import toast from 'react-hot-toast';
 
 interface MemberProjectRequestDTO {
   projectId: number;
@@ -26,9 +25,6 @@ export default function usePostPeerInviteProject() {
   const { handleError } = useErrorHandler();
   return useMutation({
     mutationFn: postPeerInviteProject,
-    onSuccess: () => {
-      toast.success('프로젝트 초대가 완료되었습니다.');
-    },
     onError: (error: AxiosError) => {
       handleError(error);
     },
