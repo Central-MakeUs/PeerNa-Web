@@ -10,6 +10,7 @@ import Content from '@components/wrapper/Content';
 import ErrorBoundaryWithSuspense from '@components/wrapper/ErrorBoundaryWithSuspense';
 import Footer from '@components/wrapper/Footer';
 import Header from '@components/wrapper/Header';
+import { HOME_BG } from '@constants/images';
 import { PART_LIST } from '@constants/list';
 import { UtilityKeys } from '@constants/localStorage';
 import useGetSearchPeerPart from '@hooks/api/home/search/useGetSearchPeerPart';
@@ -96,14 +97,15 @@ const HomePage: ActivityComponentType = () => {
     <AppScreenContainer>
       <Content>
         <HomeBackground>
-          <Header>
+          <Header className="!px-0">
             <Header.Body className="relative h-[200px]">
+              <img src={HOME_BG} />
               <SvgIcon
                 id="PeerNaLogo"
                 color="gray08"
                 width={80}
                 height={18}
-                className="absolute top-16 left-3"
+                className="absolute top-16 left-7"
               />
               <img
                 src={peerImage}
