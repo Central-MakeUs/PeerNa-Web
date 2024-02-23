@@ -18,17 +18,9 @@ import { ActivityComponentType } from '@stackflow/react';
 import { ProjectIdStateType, projectIdState } from '@store/projectId';
 import { useRecoilState } from 'recoil';
 
-type MyProjectListPageParams = {
-  memberId: string;
-};
-
-const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
-  params,
-}) => {
+const MyProjectListPage: ActivityComponentType = () => {
   const { pop } = useFlow();
   const handleBack = () => pop();
-  const memberId = parseInt(params.memberId);
-  console.log(memberId);
   const { openModal } = useModal('projectInvite');
 
   const { data, fetchNextPage, isFetchingNextPage } = useGetMyProjectList();

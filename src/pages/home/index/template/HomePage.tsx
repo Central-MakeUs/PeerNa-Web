@@ -1,4 +1,3 @@
-import peerImage from '@assets/common/home_peer.png';
 import IntersectionBox from '@components/common/atom/IntersectionBox';
 import Spinner from '@components/common/atom/Spinner';
 import SvgIcon from '@components/common/atom/SvgIcon';
@@ -99,18 +98,17 @@ const HomePage: ActivityComponentType = () => {
         <HomeBackground>
           <Header className="!px-0">
             <Header.Body className="relative h-[200px]">
-              <img src={HOME_BG} />
+              <img
+                src={HOME_BG}
+                alt="홈 배경 이미지"
+                className="absolute -bottom-11 w-full"
+              />
               <SvgIcon
                 id="PeerNaLogo"
                 color="gray08"
                 width={80}
                 height={18}
                 className="absolute top-16 left-7"
-              />
-              <img
-                src={peerImage}
-                className="max-w-[218px] max-h-[180px] absolute top-6 right-6"
-                alt="피어나 이미지"
               />
             </Header.Body>
           </Header>
