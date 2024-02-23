@@ -1,6 +1,7 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
 import Typography from '@components/common/atom/Typography';
-import { ICON_MAPPER, JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
+import { PEER_ICON_LIST } from '@constants/images';
+import { JOB_MAPPER, PART_MAPPER } from '@constants/mapper';
 import { CreatorSimpleProfileType } from '@type/index';
 
 interface ProfileListItemProps extends CreatorSimpleProfileType {
@@ -18,7 +19,7 @@ export default function ProfileListItem({
   oneLiner,
   children,
 }: ProfileListItemProps) {
-  const peerType = ICON_MAPPER[peerTestType];
+  const peerType = PEER_ICON_LIST[peerTestType];
   return (
     <div
       className={`flex flex-1 justify-between items-center ${isMyProfile ? 'w-full' : 'max-w-[524px]'} px-5 mx-auto pt-8 pb-4`}
@@ -28,8 +29,9 @@ export default function ProfileListItem({
           className={`max-w-[64px] min-w-12 max-h-[64px] min-h-12 !bg-gray01 flex items-center justify-center box-content rounded-full border-1 border-[#E3E6E8] ${isMyProfile ? 'bg-gray07' : 'bg-white'}`}
         >
           {peerTestType && (
-            <div
-              className={`${peerType} w-8 h-8 bg-no-repeat bg-center bg-32`}
+            <img
+              src={peerType}
+              className="w-8 h-8 bg-no-repeat bg-center bg-32"
             />
           )}
           {!peerTestType && (
