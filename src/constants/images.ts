@@ -1,5 +1,4 @@
 import Analytical from '@assets/common/analytical.png';
-import HomeBg from '@assets/common/bg_gradient.png';
 import CardLocked from '@assets/common/card_locked.png';
 import Cautious from '@assets/common/cautious.png';
 import Challenging from '@assets/common/challenging.png';
@@ -7,6 +6,7 @@ import Comprehensive from '@assets/common/comprehensive.png';
 import Cooperative from '@assets/common/cooperative.png';
 import Driving from '@assets/common/driving.png';
 import FutureOriented from '@assets/common/future_oriented.png';
+import HomeBg from '@assets/common/home_bg.png';
 import TypeC from '@assets/common/icon_C.png';
 import TypeD from '@assets/common/icon_D.png';
 import TypeI from '@assets/common/icon_I.png';
