@@ -116,7 +116,7 @@ const MyPage: ActivityComponentType = () => {
             <ButtonContainer direction="row">
               <Button
                 buttonVariant="primary"
-                className="px-4 my-8"
+                className="px-4 my-4"
                 onClick={handleClickShare}
               >
                 동료에게 물어보기

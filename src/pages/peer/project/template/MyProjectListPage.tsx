@@ -42,6 +42,9 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
   const [selectedProjectId, setSelectedProjectId] =
     useRecoilState<ProjectIdStateType>(projectIdState);
 
+  const isDisabled =
+    !selectedProjectId || data?.pages.every(group => group.result.length === 0);
+
   return (
     <AppScreenContainer>
       <Header>
@@ -96,7 +99,7 @@ const MyProjectListPage: ActivityComponentType<MyProjectListPageParams> = ({
         </div>
       </Content>
       <Footer bottom={5} className="px-4">
-        <Button onClick={handleInvite} isDisabled={!selectedProjectId}>
+        <Button onClick={handleInvite} isDisabled={isDisabled}>
           초대하기
         </Button>
         {selectedProjectId && <ProjectInviteModal />}
