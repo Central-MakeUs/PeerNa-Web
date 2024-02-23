@@ -21,7 +21,7 @@ export default function ShareDrawer({
       open={openBottomSheet}
       onOpenChange={open => setOpenBottomSheet(open)}
     >
-      <DrawerContent className="mx-auto max-w-screen-md">
+      <DrawerContent className="z-50 mx-auto max-w-screen-md">
         <div className="p-4 flex justify-center gap-4">
           <div className="flex flex-col gap-2 items-center">
             <IconButton
