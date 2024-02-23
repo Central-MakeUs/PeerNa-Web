@@ -20,9 +20,7 @@ export default function Header({
   mainText,
   subText,
 }: HeaderProps) {
-  const handleBack = () => {
-    console.log('Back button clicked');
-  };
+  const handleBack = () => {};
 
   return (
     <header className="max-w-screen-md px-5 mx-auto">

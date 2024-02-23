@@ -29,6 +29,7 @@ export default function Typography({
         break-all
         whitespace-pre-line
         ${props.className ?? ''}`}
+      style={props.style}
       href={href}
       target={href ? '_blank' : ''}
     >

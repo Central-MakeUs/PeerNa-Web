@@ -34,11 +34,9 @@ const DeveloperPage: ActivityComponentType = () => {
           };
           reader.readAsDataURL(blob);
         } else {
-          console.log(href);
           const link = document.createElement('a');
           link.href = href;
           link.download = FLOWER_CARDS['I'];
-          console.log(link.download);
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

@@ -34,7 +34,6 @@ export default function PeerCardContent({
     peerProjectDtoList,
   } = data;
   const username = memberSimpleProfileDto.name;
-  console.log(data);
   return (
     <Fragment>
       <ErrorBoundaryWithSuspense>

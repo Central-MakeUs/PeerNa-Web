@@ -37,12 +37,18 @@ export class ReviewRequestNotification implements NotificationBase {
       <ListItemContainer>
         <div className="flex gap-3">
           <div
-            className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary200`}
+            className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary100`}
           >
             <SvgIcon id="ColorLine" color="primary400" />
           </div>
           <div className="flex flex-col gap-1">
-            <Typography variant="body01">{this.title}</Typography>
+            <Typography
+              variant="body02"
+              fontColor="gray08"
+              style={{ wordBreak: 'keep-all' }}
+            >
+              {this.title}
+            </Typography>
             <div className="flex flex-row gap-1">
               <Typography
                 variant="body05"
@@ -99,12 +105,18 @@ export class ReviewUpdateNotification implements NotificationBase {
       <ListItemContainer>
         <div className="flex gap-3">
           <div
-            className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary200`}
+            className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary100`}
           >
             <SvgIcon id="AlertFill" color="primary400" />
           </div>
           <div className="flex flex-col gap-1">
-            <Typography variant="body01">{this.title}</Typography>
+            <Typography
+              variant="body02"
+              fontColor="gray08"
+              style={{ wordBreak: 'keep-all' }}
+            >
+              {this.title}
+            </Typography>
             <div className="flex flex-row gap-1">
               <Typography
                 variant="body05"
