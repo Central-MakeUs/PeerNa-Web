@@ -19,7 +19,7 @@ export default function PeerCard({ size, type, testResult }: CardProps) {
 
   const peerBg =
     peerType === TestType.UNKNOWN
-      ? 'bg-peer-bg bg-no-repeat bg-cover bg-bottom'
+      ? '!bg-peer-bg !bg-no-repeat !bg-cover !bg-bottom'
       : 'bg-white';
 
   const cardSize =
