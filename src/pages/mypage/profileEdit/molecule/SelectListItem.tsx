@@ -17,7 +17,7 @@ export default function SelectListItem({
       className="w-full !h-[70px] flex flex-col justify-center box-content cursor-pointer"
       onClick={onClick}
     >
-      <li className="w-full flex justify-between px-5">
+      <li className="w-full flex justify-between px-7">
         <Typography
           variant="body01"
           className={`${isSelect ? 'text-primary500' : 'text-gray08'}`}

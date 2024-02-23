@@ -1,7 +1,7 @@
-import SelectListItem from '@components/common/atom/SelectListItem';
 import Typography from '@components/common/atom/Typography';
 import { Drawer, DrawerContent } from '@components/shadcn/drawer';
 import { JOB_LIST } from '@constants/list';
+import SelectListItem from '@pages/mypage/profileEdit/molecule/SelectListItem';
 import { profileSelfState } from '@store/profileSelfState';
 import { JobType } from '@type/enums';
 import { useRecoilState } from 'recoil';
