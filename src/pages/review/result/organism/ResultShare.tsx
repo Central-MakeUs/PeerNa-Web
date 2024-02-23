@@ -135,7 +135,7 @@ export default function ResultShare({ type, curStep }: ResultShareProps) {
           animationData={CONFETTI}
           autoPlay={false}
           loop={false}
-          className="z-[5] absolute"
+          className="z-[5] absolute pointer-events-none"
         />
       )}
       <FlipCard
