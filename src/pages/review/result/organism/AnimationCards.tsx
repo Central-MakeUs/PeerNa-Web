@@ -32,7 +32,7 @@ export default function AnayzePeerCardFetcher() {
         </Header.Body>
       </Header>
       <Content>
-        <div className="py-6 flex flex-col gap-3">
+        <div className="py-6 px-4 flex flex-col gap-3">
           {cards.map((card, index) => (
             <motion.div
               key={card}
