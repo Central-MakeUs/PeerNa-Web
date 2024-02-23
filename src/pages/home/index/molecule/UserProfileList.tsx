@@ -12,7 +12,7 @@ type UserProfileListProps = {
 };
 
 export default function UserProfileList({
-  data = [],
+  data,
   isLoading,
 }: UserProfileListProps) {
   const { push } = useFlow();
@@ -23,7 +23,7 @@ export default function UserProfileList({
 
   if (isLoading) return <Spinner />;
 
-  if (data.length === 0) {
+  if (data?.length === 0) {
     return <EmptyData />;
   }
 
