@@ -17,7 +17,6 @@ export default function MyProject() {
   const { data, fetchNextPage, isFetchingNextPage } = useGetMyProjectList();
 
   const intersectionRef = useIntersection(fetchNextPage);
-  console.log(data);
   return (
     <Fragment>
       <div className="w-full" onClick={handlePushCreateProjectPage}>

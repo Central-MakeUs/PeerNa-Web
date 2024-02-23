@@ -11,7 +11,7 @@ export default function ListItemContainer({
   return (
     <div
       {...props}
-      className={`flex justify-between items-center w-full px-5 py-4 rounded-xl ${props.className}`}
+      className={`flex justify-between items-center w-full px-5 py-4 rounded-xl ${props.className} gap-4`}
     >
       {children}
     </div>

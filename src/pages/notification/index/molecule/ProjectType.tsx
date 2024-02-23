@@ -51,7 +51,13 @@ export class ProjectRecruitPropose implements ProjectBase {
             <SvgIcon id="DocumentText" color="primary400" />
           </div>
           <div className="flex flex-col gap-1">
-            <Typography variant="body01">{this.title}</Typography>
+            <Typography
+              variant="body01"
+              fontColor="gray08"
+              style={{ wordBreak: 'keep-all' }}
+            >
+              {this.title}
+            </Typography>
             <div className="flex flex-row gap-1">
               <Typography
                 variant="body05"
@@ -125,7 +131,13 @@ export class ProjectProposeResult implements ProjectBase {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <Typography variant="body01">{this.title}</Typography>
+            <Typography
+              variant="body01"
+              fontColor="gray08"
+              style={{ wordBreak: 'keep-all' }}
+            >
+              {this.title}
+            </Typography>
             <div className="flex flex-row gap-1">
               <Typography
                 variant="body05"
@@ -170,17 +182,22 @@ export class ProjectRequestJoin implements ProjectBase {
   }
 
   display(push: PushFunction<string>) {
-    console.log(this.params);
     return (
       <ListItemContainer>
         <div className="flex gap-3">
           <div
-            className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary200`}
+            className={`w-[24px] h-[24px] p-3 box-content rounded-full bg-primary100`}
           >
             <SvgIcon id="DocumentText" color="primary400" />
           </div>
           <div className="flex flex-col gap-1">
-            <Typography variant="body01">{this.title}</Typography>
+            <Typography
+              variant="body01"
+              fontColor="gray08"
+              style={{ wordBreak: 'keep-all' }}
+            >
+              {this.title}
+            </Typography>
             <div className="flex flex-row gap-1">
               <Typography
                 variant="body05"

@@ -17,8 +17,6 @@ export default function WithdrawalModal() {
     closeModal,
   } = useModal('withdrawal');
 
-  console.log(isOpen);
-
   const { mutate, isSuccess } = usePostMemberWithdrawal();
 
   const { replace } = useFlow();
