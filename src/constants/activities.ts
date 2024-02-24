@@ -79,7 +79,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ReviewPeerPage: '/review/peer',
   ReviewResultPage: '/review/result',
   RedirectPage: '/auth/redirect',
-  DeveloperPage: '/developer',
+  DeveloperPage: '/cmc',
 };
 
 export const TabItem = {
