@@ -7003,6 +7003,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-gtm-module@npm:^2":
+  version: 2.0.3
+  resolution: "@types/react-gtm-module@npm:2.0.3"
+  checksum: 73895910e375fd45315a285b8b5019f7d923f3aefd0bd26b421166253d9b8bdc3273e63764910b3e0ac6192e3eeedb5bee6db0aeb64137776968312fe675302a
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.43":
   version: 18.2.48
   resolution: "@types/react@npm:18.2.48"
@@ -12576,6 +12583,7 @@ __metadata:
     "@types/file-saver": "npm:^2.0.7"
     "@types/react": "npm:^18.2.43"
     "@types/react-dom": "npm:^18.2.17"
+    "@types/react-gtm-module": "npm:^2"
     "@types/uuid": "npm:^9"
     "@typescript-eslint/eslint-plugin": "npm:^6.14.0"
     "@typescript-eslint/parser": "npm:^6.14.0"
@@ -12607,6 +12615,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-error-boundary: "npm:^4.0.12"
     react-freeze: "npm:^1.0.3"
+    react-gtm-module: "npm:^2.0.11"
     react-hot-toast: "npm:^2.4.1"
     recoil: "npm:^0.7.7"
     recoil-persist: "npm:^5.1.0"
@@ -13143,6 +13152,13 @@ __metadata:
   peerDependencies:
     react: ">=17.0.0"
   checksum: d42cb9c0efbb4a9c38d3c9a5ee060febb273bf0acee2ccacba8d70abda1a47dfe678979bc7d421d9674fa9cb23085e95eeaae7b24dac29ab059f60c29c3eee71
+  languageName: node
+  linkType: hard
+
+"react-gtm-module@npm:^2.0.11":
+  version: 2.0.11
+  resolution: "react-gtm-module@npm:2.0.11"
+  checksum: ceedf296a1232934788583e4a20452a82e872fcd79e24827bf615b1cd3bceb59c294d169b1bf8313ba48b9e480e681ce520cd2a5cf2381c5aaa1fb74d4f88930
   languageName: node
   linkType: hard
 
