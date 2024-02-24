@@ -10,6 +10,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { removeAccessToken, removeRefreshToken } from '@utils/token.ts';
 import { AxiosError } from 'axios';
 import ReactDOM from 'react-dom/client';
+import TagManager from 'react-gtm-module';
 import toast from 'react-hot-toast';
 import { RecoilRoot } from 'recoil';
 import App from './App.tsx';
@@ -33,6 +34,12 @@ export const queryClient = new QueryClient({
     },
   }),
 });
+
+const tagManagerArgs = {
+  gtmId: 'GTM-NPSLCJJ6',
+};
+
+TagManager.initialize(tagManagerArgs);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
