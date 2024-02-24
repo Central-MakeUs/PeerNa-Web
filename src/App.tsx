@@ -1,9 +1,9 @@
+import { queryClient } from '@/main';
 import ErrorFallback from '@components/common/molecule/ErrorFallback';
 import { Modals } from '@components/common/molecule/Modals';
 import BottomSheet from '@components/common/organism/BottomSheet';
 import useHttpInterceptor from '@hooks/common/useHttpInterceptor';
 import { Stack } from '@hooks/common/useStackFlow';
-import { queryClient } from '@main';
 import { getIsApp } from '@utils';
 import { http } from '@utils/API';
 import { WebviewBridge } from '@utils/webview';
