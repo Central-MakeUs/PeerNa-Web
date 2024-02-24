@@ -15,8 +15,8 @@ export default function AppScreenContainer({
     <AppScreen>
       <div
         {...props}
-        className={`${props.className ?? ''} w-screen h-full max-h-screen flex justify-center`}
-        style={{ paddingTop: top, paddingBottom: bottom }}
+        className={`${props.className ?? ''} w-screen h-full max-h-screen flex justify-center bg-white`}
+        style={{ marginTop: top, marginBottom: bottom }}
       >
         <div className="w-full h-full max-w-md flex flex-col items-center mb-20 relative">
           {children}
