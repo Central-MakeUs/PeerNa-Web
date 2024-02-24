@@ -67,7 +67,7 @@ export default function ProfileListItem({
               fontColor={isMyProfile ? 'gray04' : 'gray07'}
               className="!whitespace-nowrap before:mr-1"
             >
-              {totalScore > 1 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
+              {totalScore > 13 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
             </Typography>
           </div>
           <Typography

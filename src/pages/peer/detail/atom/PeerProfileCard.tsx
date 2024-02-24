@@ -31,7 +31,7 @@ export default function PeerProfileCard({
           </Typography>
           <SvgIcon id="Line" color="gray04" height={10} width={4} />
           <Typography variant="body04" fontColor="gray06">
-            {totalScore > 1 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
+            {totalScore > 13 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
           </Typography>
         </div>
         <Talk type="filled">{memberInfo.oneLiner}</Talk>
