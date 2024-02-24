@@ -23,9 +23,7 @@ export default function PeerCard({ size, type, testResult }: CardProps) {
       : 'bg-white';
 
   const cardSize =
-    size === 'L'
-      ? 'w-[294px] h-[408px] py-7 gap-6'
-      : ' w-[171px] h-[238px] py-4 bg-100 gap-3';
+    size === 'L' ? 'w-[294px] py-7 gap-6' : ' w-[171px] py-4 bg-100 gap-3';
 
   const iconSize = size === 'L' ? 'w-[200px] h-[200px]' : 'w-[110px] h-[110px]';
 
@@ -45,7 +43,7 @@ export default function PeerCard({ size, type, testResult }: CardProps) {
           {badgeText}
         </Badge>
       ) : (
-        <Spacer y={6} />
+        <Spacer y={3} />
       )}
       <img src={PEER_ICON_LIST[peerType]} className={`${iconSize}`} />
       <div className="mt-auto">
