@@ -40,37 +40,37 @@ export default function PeerProjectInfo({
             소개 링크
           </Typography>
           <div className="flex flex-col gap-2">
-            {openChattingLink !== '' ? (
+            {openChattingLink !== null ? (
               <Code className="flex gap-2 items-center px-4 py-2">
                 <Typography
                   variant="body02"
                   fontColor="gray06"
-                  as="a"
-                  href={openChattingLink}
+                  // as="a"
+                  // href={openChattingLink}
                 >
                   {openChattingLink}
                 </Typography>
               </Code>
             ) : null}
-            {notionLink !== '' ? (
+            {notionLink !== null ? (
               <Code className="flex gap-2 items-center px-4 py-2">
                 <Typography
                   variant="body02"
                   fontColor="gray06"
-                  as="a"
-                  href={notionLink}
+                  // as="a"
+                  // href={notionLink}
                 >
                   {notionLink}
                 </Typography>
               </Code>
             ) : null}
-            {githubLink !== '' ? (
+            {githubLink !== null ? (
               <Code className="flex gap-2 items-center px-4 py-2">
                 <Typography
                   variant="body02"
                   fontColor="gray06"
-                  as="a"
-                  href={githubLink}
+                  // as="a"
+                  // href={githubLink}
                 >
                   {githubLink}
                 </Typography>
