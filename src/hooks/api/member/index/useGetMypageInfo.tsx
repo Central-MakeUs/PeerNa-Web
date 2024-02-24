@@ -33,5 +33,6 @@ export default function useGetMyPageInfo() {
     queryKey: [QUERY_KEY.MYPAGE_INFO],
     queryFn: getMyPageInfo,
     select: data => data.result,
+    staleTime: 0,
   });
 }

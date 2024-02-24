@@ -25,7 +25,7 @@ export default function useReviewState() {
   const handleChangePeerGrade = (type: PeerGradeTypes) => {
     setReview(prev => ({
       ...prev,
-      peerType: type,
+      peerGrade: type,
     }));
   };
 
