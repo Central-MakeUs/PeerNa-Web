@@ -3,6 +3,7 @@ import { Modals } from '@components/common/molecule/Modals';
 import BottomSheet from '@components/common/organism/BottomSheet';
 import useHttpInterceptor from '@hooks/common/useHttpInterceptor';
 import { Stack } from '@hooks/common/useStackFlow';
+import { queryClient } from '@main';
 import { getIsApp } from '@utils';
 import { http } from '@utils/API';
 import { WebviewBridge } from '@utils/webview';
@@ -26,7 +27,12 @@ function App() {
   return (
     <div className="w-screen min-h-screen flex justify-center">
       <ErrorBoundary
-        onReset={() => (window.location.href = '/')}
+        onReset={() => {
+          delete http.defaults.headers.common.Authorization;
+          localStorage.clear();
+          queryClient.clear();
+          window.location.href = '/';
+        }}
         fallbackRender={({ resetErrorBoundary }) => (
           <ErrorFallback handleClick={resetErrorBoundary} />
         )}
