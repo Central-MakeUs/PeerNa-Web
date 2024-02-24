@@ -1,4 +1,5 @@
 import RedirectPage from '@pages/auth/redirect/template/RedirectPage';
+import DeveloperPage from '@pages/developer/DeveloperPage';
 import HomePage from '@pages/home/index/template/HomePage';
 import MyPage from '@pages/mypage/index/template/MyPage';
 import MoreFeedbackPage from '@pages/mypage/moreFeedback/template/MoreFeedbackPage';
@@ -48,6 +49,7 @@ export const Pages = {
   ProjectDetailPage,
   ProjectProposePage,
   ProjectJoinPage,
+  DeveloperPage: DeveloperPage,
 };
 
 export type ActivityTypes = keyof typeof Pages;
@@ -77,6 +79,7 @@ export const PageRoutes: Record<keyof typeof Pages, string> = {
   ReviewPeerPage: '/review/peer',
   ReviewResultPage: '/review/result',
   RedirectPage: '/auth/redirect',
+  DeveloperPage: '/developer',
 };
 
 export const TabItem = {

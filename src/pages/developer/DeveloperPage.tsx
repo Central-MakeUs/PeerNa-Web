@@ -1,4 +1,5 @@
 import SvgIcon from '@components/common/atom/SvgIcon';
+import Typography from '@components/common/atom/Typography';
 import LoadingFallback from '@components/common/molecule/LoadingFallback';
 import AppScreenContainer from '@components/wrapper/AppScreenContainter';
 import Content from '@components/wrapper/Content';
@@ -8,7 +9,7 @@ import Header from '@components/wrapper/Header';
 import Test from '@components/wrapper/Test';
 import { FLOWER_CARDS } from '@constants/images';
 import useModal from '@hooks/store/useModal';
-import { Button } from '@nextui-org/react';
+import { Button, Code } from '@nextui-org/react';
 import { ActivityComponentType } from '@stackflow/react';
 import { removeAccessToken, removeRefreshToken } from '@utils/token';
 import { WebviewBridge } from '@utils/webview';
@@ -58,6 +59,16 @@ const DeveloperPage: ActivityComponentType = () => {
         </Header.Body>
       </Header>
       <Content>
+        <Code className="flex gap-2 items-center px-4 py-2">
+          <Typography
+            variant="body02"
+            fontColor="gray06"
+            as="a"
+            href="https://github.com/Central-MakeUs/PeerNa-Server/blob/dev/src/main/java/cmc/peerna/domain/enums/PeerGrade.java"
+          >
+            https://github.com/Central-MakeUs/PeerNa-Server/blob/dev/src/main/java/cmc/peerna/domain/enums/PeerGrade.java
+          </Typography>
+        </Code>
         <div className="min-h-screen">
           {!navigator.userAgent.includes('Android') && (
             <Button onClick={handleDownload}>카드 저장하기</Button>
