@@ -45,12 +45,12 @@ export default function PeerKeywordContent({
       </ErrorBoundaryWithSuspense>
       {colorAnswerIdList.length === 0 && <NoTestKeywordResult type="peer" />}
       <ErrorBoundaryWithSuspense>
-        {Array.isArray(totalEvaluation) && totalEvaluation.length > 0 && (
+        {Array.isArray(totalEvaluation) && peerTestMoreThanThree && (
           <OverallOpinion totalEvaluation={totalEvaluation} />
         )}
       </ErrorBoundaryWithSuspense>
       {peerTestMoreThanThree && <OverallScore totalScore={totalScore} />}
-      {peerFeedbackList.length > 0 && (
+      {peerTestMoreThanThree && (
         <Feedback
           peerFeedbackList={peerFeedbackList}
           handleClick={handleMoreFeedback}

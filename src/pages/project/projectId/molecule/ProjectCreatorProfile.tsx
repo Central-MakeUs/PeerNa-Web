@@ -48,7 +48,7 @@ export default function ProjectCreatorProfile({
             </Typography>
             <span className="text-gray04">|</span>
             <Typography variant="body04" className="text-gray07 ml-1">
-              {` 종합점수 ${totalScore}점`}
+              {totalScore > 13 ? `종합점수 ${totalScore}점` : '종합점수 분석중'}
             </Typography>
           </div>
           <Typography variant="body05" className="text-gray05">
