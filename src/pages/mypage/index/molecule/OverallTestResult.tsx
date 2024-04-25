@@ -79,11 +79,11 @@ export default function OverallTestResult({
           selfTestIdList={selfIdList.D}
         />
         <KeywordCard
-          title="소통 방식"
+          title={type === 'self' ? '소통 방식' : '사고 방식'}
           subtitle={
             type === 'self'
               ? (KEYWORD_CARD_INFO[peerCardList[1]].content as string)
-              : (PeerKeywordList[1] as string)
+              : (PeerKeywordList[2] as string)
           }
           testType="I"
           keywords={getKeywordsByIdList(TestType.I, selfIdList.I)}
@@ -91,11 +91,11 @@ export default function OverallTestResult({
           selfTestIdList={selfIdList.I}
         />
         <KeywordCard
-          title="사고 방식"
+          title={type === 'self' ? '사고 방식' : '소통 방식'}
           subtitle={
             type === 'self'
               ? (KEYWORD_CARD_INFO[peerCardList[2]].content as string)
-              : (PeerKeywordList[2] as string)
+              : (PeerKeywordList[1] as string)
           }
           testType="S"
           keywords={getKeywordsByIdList(TestType.S, selfIdList.S)}

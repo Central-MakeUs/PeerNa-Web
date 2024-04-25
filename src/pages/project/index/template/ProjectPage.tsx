@@ -25,7 +25,7 @@ const ProjectPage: ActivityComponentType = () => {
       <Spacer y={4} />
       <Content>
         <UnderlineTabs>
-          <Tab className="w-full h-full px-4" title="최신순">
+          <Tab className="w-full h-full px-4" title="전체 프로젝트">
             <ErrorBoundaryWithSuspense>
               <RecentProjectTab />
             </ErrorBoundaryWithSuspense>
