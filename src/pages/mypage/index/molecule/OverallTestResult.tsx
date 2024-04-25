@@ -37,7 +37,7 @@ export default function OverallTestResult({
   const PeerKeywordList = [
     '가치관이 잘 맞는 동료와 함께 한다면 이해와 존중을 바탕으로 원활하게 협력하며 공동의 목표를 향해 함께 성장할 수 있어요.',
     '소통 방식이 잘 맞는 동료와 함께 한다면 오해나 갈등 없이 자유롭게 의견을 나누며 높은 업무 효율성으로 팀의 성과를 향상시킬 수 있어요.',
-    '사고 방식이 잘 맞는 동료와 함께 한다면 빠르고 효율적으로 문제의 해결책을 찾아 보다 많은 가능성을 탐색하며 효과적인 전략을 세울 수 있어요.',
+    '사고 방식이 잘 맞는 동료와 함께 한다면 빠르고 효율적으로 문제의 해결책을 찾아 효과적인 전략을 세울 수 있어요.',
     '결정 방식이 잘 맞는 동료와 함께 한다면 존중을 바탕으로 신속하고 효율적인 결정을 통해 지체 없이 팀의 목표를 달성할 수 있어요. ',
   ];
 
@@ -79,10 +79,10 @@ export default function OverallTestResult({
           selfTestIdList={selfIdList.D}
         />
         <KeywordCard
-          title={type === 'self' ? '소통 방식' : '사고 방식'}
+          title="사고 방식"
           subtitle={
             type === 'self'
-              ? (KEYWORD_CARD_INFO[peerCardList[1]].content as string)
+              ? (KEYWORD_CARD_INFO[peerCardList[2]].content as string)
               : (PeerKeywordList[2] as string)
           }
           testType="I"
@@ -91,10 +91,10 @@ export default function OverallTestResult({
           selfTestIdList={selfIdList.I}
         />
         <KeywordCard
-          title={type === 'self' ? '사고 방식' : '소통 방식'}
+          title="소통 방식"
           subtitle={
             type === 'self'
-              ? (KEYWORD_CARD_INFO[peerCardList[2]].content as string)
+              ? (KEYWORD_CARD_INFO[peerCardList[1]].content as string)
               : (PeerKeywordList[1] as string)
           }
           testType="S"
