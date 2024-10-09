@@ -66,6 +66,8 @@ function App() {
       if (kakaoScript) {
         kakaoScript.removeEventListener('load', initializeKakao);
       }
+
+      WebviewBridge.removeMessageListener();
     };
   }, []);
 

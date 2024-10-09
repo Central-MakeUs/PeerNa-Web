@@ -11,12 +11,14 @@ import {
 import toast from 'react-hot-toast';
 
 export class WebviewBridge {
+  static messageEventListener: ((event: Event) => void) | null = null;
+
   static postMessage({ type, data }: WebviewPostMessageRequestType) {
     if (
       navigator.userAgent.includes('iPhone') ||
       navigator.userAgent.includes('Android')
     ) {
-      const webview = window.ReactNativeWebView;
+      const webview = (window as any).ReactNativeWebView;
       if (webview) {
         const message = JSON.stringify({ type, data });
         webview.postMessage(message);
@@ -28,7 +30,8 @@ export class WebviewBridge {
 
   static registerMessageListener() {
     const global = navigator.userAgent.includes('iPhone') ? window : document;
-    global.addEventListener('message', event => {
+
+    WebviewBridge.messageEventListener = (event: Event) => {
       const messageEvent = event as MessageEvent;
       try {
         const message: WebviewMessageEventResponseType = JSON.parse(
@@ -57,9 +60,19 @@ export class WebviewBridge {
             break;
         }
       } catch (error) {
-        console.error('Error parsing message:', error);
+        console.error('메시지 파싱 에러:', error);
       }
-    });
+    };
+
+    global.addEventListener('message', WebviewBridge.messageEventListener);
+  }
+
+  static removeMessageListener() {
+    const global = navigator.userAgent.includes('iPhone') ? window : document;
+    if (WebviewBridge.messageEventListener) {
+      global.removeEventListener('message', WebviewBridge.messageEventListener);
+      WebviewBridge.messageEventListener = null;
+    }
   }
 }
 
