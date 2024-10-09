@@ -13,15 +13,60 @@ import { Toaster } from 'react-hot-toast';
 
 function App() {
   useHttpInterceptor(http);
+
   useEffect(() => {
     WebviewBridge.registerMessageListener();
-    window.AppleID.auth.init({
-      clientId: import.meta.env.VITE_APPLE_CLIENT_ID,
-      scope: 'email',
-      redirectURI: import.meta.env.VITE_APPLE_REDIRECT_URI,
-      usePopup: false,
-    });
-    window.Kakao.init(import.meta.env.VITE_JAVASCRIPT_KEY);
+
+    const initializeAppleID = () => {
+      if (window.AppleID) {
+        window.AppleID.auth.init({
+          clientId: import.meta.env.VITE_APPLE_CLIENT_ID,
+          scope: 'email',
+          redirectURI: import.meta.env.VITE_APPLE_REDIRECT_URI,
+          usePopup: false,
+        });
+      }
+    };
+
+    const initializeKakao = () => {
+      if (window.Kakao) {
+        window.Kakao.init(import.meta.env.VITE_JAVASCRIPT_KEY);
+      }
+    };
+
+    const appleScript = document.querySelector(
+      'script[src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"]',
+    );
+
+    if (appleScript) {
+      if ((appleScript as HTMLScriptElement).async) {
+        appleScript.addEventListener('load', initializeAppleID);
+      } else {
+        initializeAppleID();
+      }
+    }
+
+    const kakaoScript = document.querySelector(
+      'script[src="https://developers.kakao.com/sdk/js/kakao.js"]',
+    );
+
+    if (kakaoScript) {
+      if ((kakaoScript as HTMLScriptElement).async) {
+        kakaoScript.addEventListener('load', initializeKakao);
+      } else {
+        initializeKakao();
+      }
+    }
+
+    return () => {
+      if (appleScript) {
+        appleScript.removeEventListener('load', initializeAppleID);
+      }
+
+      if (kakaoScript) {
+        kakaoScript.removeEventListener('load', initializeKakao);
+      }
+    };
   }, []);
 
   return (
